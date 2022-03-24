@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\FrontController;
+use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
@@ -64,16 +64,35 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/subcategories', [CategoryController::class, 'subindex'])->name('subcategories');
         Route::get('/categories/subcategory_create', [CategoryController::class, 'subcategory_create'])->name('subcategories.form');
         Route::post('/categories/submit_subcategory', [CategoryController::class, 'submit_subcategory'])->name('submit_subcategory');
-        
+
         ////route of features////////
         Route::get('/features', [FeaturesController::class, 'index'])->name('features');
         Route::get('/features/create', [FeaturesController::class, 'create'])->name('features.form');
         Route::post('/features/submit', [FeaturesController::class, 'submit'])->name('features_submit');
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
-        
-      
+
+
     });
 });
+
+///Front
+Route::get('/',[FrontController::class,'view'])->name('front.index');
+Route::get('/list',[FrontController::class,'list'])->name('front.list');
+Route::get('/agent',[FrontController::class,'agent'])->name('front.agent');
+Route::get('/agent/detail',[FrontController::class,'agent_detail'])->name('front.agent_detail');
+Route::get('/agency',[FrontController::class,'agency'])->name('front.agency');
+Route::get('/agency/detail',[FrontController::class,'agency_detail'])->name('front.agency_detail');
+Route::get('/property',[FrontController::class,'property'])->name('front.property');
+Route::get('/property/detail',[FrontController::class,'property_detail'])->name('front.property_detail');
+Route::get('/blog',[FrontController::class,'blog'])->name('front.blog');
+Route::get('/blog/detail',[FrontController::class,'blog_detail'])->name('front.blog_detail');
+Route::get('/contact',[FrontController::class,'contact'])->name('front.contact');
+Route::get('/about',[FrontController::class,'about'])->name('front.about');
+Route::get('/faq',[FrontController::class,'faq'])->name('front.faq');
+Route::get('/pricing',[FrontController::class,'pricing'])->name('front.pricing');
+Route::get('/error',[FrontController::class,'error'])->name('front.error');
+Route::get('/soon',[FrontController::class,'soon'])->name('front.soon');
+/////end front
 
 Route::get('/clear', function () {
   Artisan::call('cache:clear');
