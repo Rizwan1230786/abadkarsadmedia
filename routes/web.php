@@ -74,17 +74,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
       
     });
 });
-Route::get('/', [FrontController::class, 'home'])->name('homepage');
-Route::get('/about', [FrontController::class, 'about'])->name('about');
-Route::get('/prevent', [FrontController::class, 'prevent'])->name('prevent');
-Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
-Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
-Route::get('/outbreak', [FrontController::class, 'outbreak'])->name('outbreak');
-Route::get('/comingsoon', [FrontController::class, 'comingsoon'])->name('comingsoon');
-Route::get('/handwash', [FrontController::class, 'handwash'])->name('handwash');
-Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
-Route::post('/contactus', [FrontController::class, 'submit'])->name('contactus');
-
 
 Route::get('/clear', function () {
   Artisan::call('cache:clear');
