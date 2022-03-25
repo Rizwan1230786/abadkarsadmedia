@@ -10,7 +10,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:users') }}" class="btn btn-success"><i class="fe fe-block mr-1"></i> Back </a>
+                <a href="{{ route('admin:users') }}" class="btn btn-primary"><i class="fe fe-block mr-1"></i> Back </a>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="btn btn-list" style="text-align:center;width:100%">
-                                                <button type="submit" class="btn btn-success user_form submit_button">Save
+                                                <button type="submit" class="btn btn-primary user_form submit_button">Save
                                                 </button>
                                                 <button type="button" href="{{ url('admin/users') }}"
                                                     class="btn btn-warning">Cancel </button>

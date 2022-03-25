@@ -17,7 +17,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{url('admin/create_user') }}" class="btn btn-success"><i class="fe fe-user mr-1"></i> Add New
+                <a href="{{url('admin/create_user') }}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add New
                     User </a>
             </div>
         </div>

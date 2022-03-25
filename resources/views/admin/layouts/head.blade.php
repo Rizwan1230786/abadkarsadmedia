@@ -40,33 +40,11 @@
         <script src="{{URL::asset('assets/js/toastr.min.js')}}"></script>
 
 <style>
-.logo{
-    font-size: 1.9rem;
-    color:var(--dark-blue);
-}
-
-.logo span{
-    color:var(--blue);
-}
-.bounce {
-    animation-name: spin;
-    animation-duration: 10000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; 
-}
-
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
-}
 /* endenimation */
 .m-badge--danger{
-	background:red;
+	background:#705ec8;
 	color:white;
+	border-color: #705ec8;
 	border-radius: 3px;
 	padding: 4px
 }
@@ -94,5 +72,12 @@
 .fa-caret-down {
   float: right;
   padding-right: 8px;
+}
+.custom{
+	font-size: 17px !important;
+    padding: 3px !important;
+}
+.padding{
+	padding: 0px;
 }
 </style>

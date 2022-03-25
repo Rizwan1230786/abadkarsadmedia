@@ -13,9 +13,9 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:subcategories.form')}}" class="btn btn-success"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:subcategories.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
-
+                <a href="{{ route('admin:categories')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Back</a>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:categories.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                    <a href="{{ route('admin:subcategories.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
                                                    
                                                     <a href="#">
                                                     <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
@@ -93,5 +93,5 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
-    <script src="{{ URL::asset('assets/themeJquery/categories/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/subcategories/jquery.js') }}"></script>
 @endsection
