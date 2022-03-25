@@ -8,7 +8,7 @@
         theme: "modern",
         width: '100%',
         height: 500,
-        autoresize_min_height: 200,
+        autoresize_min_height: 500,
         autoresize_max_height: 800,
         plugins: [
           "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
