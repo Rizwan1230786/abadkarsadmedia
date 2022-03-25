@@ -1,22 +1,20 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\realestate\FacilitiesController;
-use App\Http\Controllers\admin\realestate\FeaturesController;
-use App\Http\Controllers\admin\realestate\CategoryController;
-use App\Http\Controllers\admin\realestate\InvestorController;
-use App\Http\Controllers\admin\realestate\CitiesController;
-use App\Http\Controllers\admin\realestate\ProjectsController;
-use App\Http\Controllers\admin\InqueryController;
-use App\Http\Controllers\admin\OurclinetsController;
-use App\Http\Controllers\admin\OurteamController;
-use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\QouteControlles;
+use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
+use App\Http\Controllers\admin\OurteamController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OurclinetsController;
+use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\admin\realestate\CategoryController;
+use App\Http\Controllers\admin\realestate\FeaturesController;
+use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\admin\realestate\PropertiesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,10 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_facilities', [FacilitiesController::class, 'update_facilities_status'])->name('update_status_facilities');
         Route::post('/delete_facilities/{id}', [FacilitiesController::class, 'destroy'])->name('delete_facilities');
         /////route of projects/////////
-        Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
-        Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.form');
-        Route::post('/projects/submit', [ProjectsController::class, 'submit'])->name('projects_submit');
-        Route::post('/delete_projects/{id}', [ProjectsController::class, 'destroy'])->name('delete_projects');
+        Route::get('/projects', [FacilitiesController::class, 'index'])->name('projects');
         //////route of categories/////////
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.form');
@@ -70,20 +65,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/subcategories', [CategoryController::class, 'subindex'])->name('subcategories');
         Route::get('/categories/subcategory_create', [CategoryController::class, 'subcategory_create'])->name('subcategories.form');
         Route::post('/categories/submit_subcategory', [CategoryController::class, 'submit_subcategory'])->name('submit_subcategory');
-        Route::post('/update_status_subcategory', [CategoryController::class, 'update_subcategory_status'])->name('update_status_subcategory');
-        Route::post('/delete_subcategories/{id}', [CategoryController::class, 'subcategory_destroy'])->name('delete_subcategories');
-        ////route of investor////////////
-        Route::get('/investor', [InvestorController::class, 'index'])->name('investor');
-        Route::get('/investor/create', [InvestorController::class, 'create'])->name('investor.form');
-        Route::post('/investor/submit', [InvestorController::class, 'submit'])->name('investor_submit');
-        Route::post('/update_status_investor', [InvestorController::class, 'update_investor_status'])->name('update_status_facilities');
-        Route::post('/delete_investor/{id}', [InvestorController::class, 'destroy'])->name('delete_investor');
-        /////route of cities////////
-        Route::get('/cities', [CitiesController::class, 'index'])->name('cities');
-        Route::get('/cities/create', [CitiesController::class, 'create'])->name('cities.form');
-        Route::post('/cities/submit', [CitiesController::class, 'submit'])->name('cities_submit');
-        Route::post('/update_status_cities', [CitiesController::class, 'update_cities_status'])->name('update_status_cities');
-        Route::post('/delete_cities/{id}', [CitiesController::class, 'destroy'])->name('delete_cities');
 
         ////route of features////////
         Route::get('/features', [FeaturesController::class, 'index'])->name('features');
@@ -92,11 +73,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
 
      
+        ////route of properties////////
+        Route::get('/properties', [PropertiesController::class, 'index'])->name('properties');
+        Route::get('/properties/create', [PropertiesController::class, 'create'])->name('properties.form');
+        Route::post('/properties/submit', [PropertiesController::class, 'submit'])->name('properties_submit');
+        Route::post('/delete_properties/{id}', [PropertiesController::class, 'destroy'])->name('properties_features');
 
 
 
 
-        
+
+
     });
 });
 
