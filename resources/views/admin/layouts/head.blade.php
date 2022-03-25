@@ -80,4 +80,30 @@
 .padding{
 	padding: 0px;
 }
+.seting{
+	position: relative;
+    top: 2px
+}
+.meta-boxes {
+    margin-top: 20px;
+}
+.widget {
+    background: #fff;
+    clear: both;
+    margin-bottom: 20px;
+}
+.meta-boxes .widget-title {
+    background: none;
+    border-bottom: 1px solid #eee;
+    cursor: move;
+    height: 35px;
+    overflow: hidden;
+    padding: 0 5px;
+}
+.widget-title>h4 .control-label {
+    padding-left: 10px;
+}
+.meta-boxes .widget-body {
+    min-height: 0;
+}
 </style>

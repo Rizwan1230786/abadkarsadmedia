@@ -121,7 +121,7 @@
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Feature</label>
                                             @foreach($feature as $feature)
-                                            <label class="col-md-3">{{ Form::checkbox('feature[]', $feature->id, false, array('class' => 'name')) }}
+                                            <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, array('class' => 'seting')) }}
                                                 {{ $feature->name }}</label>
                                             @endforeach
                                         </div>
@@ -135,10 +135,41 @@
                                                 <button type="button" href="{{ route('admin:facilities') }}" class="btn btn-warning">Cancel </button>
                                             </div>
                                         </div>
+                                        <div class="col-lg-12 form-group">
+                                            <label class="form-label">Category</label>
+                                            @foreach ($categories as $category)
+                                            <li class="no-border">
+                                                <input type="checkbox" name="category[]" value="{{ $category->id }}" id="{{ $category->id }}">
+                                                <label for="{{ $category->id }}">{{ $category->name}}</label>
+                                                <ul style="margin-left: 34px;margin-bottom: 0;">
+                                                    @foreach($category->subCategory as $sub_cat)
+                                                    <li>
+                                                        <input type="checkbox" name="category[]" value="{{ $sub_cat->id }}" id="{{ $sub_cat->id }}">
+                                                        <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
+                                                    </li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            @endforeach
+                                        </div>
+                                        <div class="widget meta-boxes" data-select2-id="select2-data-10-x9c6">
+                                            <div class="widget-title">
+                                                <h4><label for="investor_id" class="control-label">Investor</label></h4>
+                                            </div>
+                                            <div class="widget-body" data-select2-id="select2-data-9-ar47">
+                                                <select id="cars" class="form-control" name="investor_id">
+                                                    <option value="">--select--</option>
+                                                    @foreach($investor as $investor)
+                                                    <option value="{{$investor->id}}" <?php if (($data['record']->investor_id ?? '') == $investor->id) {
+                                                                                        echo 'selected';
+                                                                                    } ?>>{{$investor->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

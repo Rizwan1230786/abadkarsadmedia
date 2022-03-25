@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Projects;
 use App\Models\Cities;
 use App\Models\Features;
+use App\Models\Category;
+use App\Models\Investor;
 
 class ProjectsController extends Controller
 {
@@ -18,14 +20,18 @@ class ProjectsController extends Controller
     }
     public function create(Request $request)
     {
+        
+      
         $city=Cities::all();
         $feature=Features::all();
+        $categories=Category::with('SubCategory')->get();
+        $investor=Investor::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Projects::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data','city','feature'));
+        return view('admin.modules.realestate.projects.create', compact('data','city','feature','categories','investor'));
     }
     public function submit(Request $request)
     {
