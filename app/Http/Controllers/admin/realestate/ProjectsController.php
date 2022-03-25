@@ -15,8 +15,8 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        // $record = Projects::all();
-        return view('admin.modules.realestate.projects.listing');
+        $record = Projects::all();
+        return view('admin.modules.realestate.projects.listing',compact('record'));
     }
     public function create(Request $request)
     {
@@ -37,18 +37,19 @@ class ProjectsController extends Controller
     {
         $type = 'error';
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'title' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("name" => $request->name, "detail" => $request->detail);
+            $data = array("title" => $request->title, "detail" => $request->detail,"page_content" => $request->page_content,"city_name" => $request->city_name,"location" => $request->location,"latitude"=>$request->latitude,"longitude"=>$request->longitude,"num_of_blocks"=>$request->num_of_blocks,"num_of_floors"=>$request->num_of_floors,"num_of_flats"=>$request->num_of_flats,"lowest_price"=>$request->lowest_price,"max_price"=>$request->max_price,"currency_name"=>$request->currency_name,"commercial_area_min"=>$request->commercial_area_min,"commercial_area_max"=>$request->commercial_area_max,"residential_area_min"=>$request->residential_area_min,"residential_area_max"=>$request->residential_area_max,"category"=>$request->category,"investor_name"=>$request->investor_name,"status"=>$request->status,"expire_date"=>$request->expire_date,"Open_sell_date"=>$request->Open_sell_date);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
-            Projects::updateOrCreate(array('id' => $updateId), $data);
+            $projects=Projects::updateOrCreate(array('id' => $updateId), $data);
+            $projects->brand()->sync($request->feature);
         } else {
             $message = $validator->errors()->toArray();
         }

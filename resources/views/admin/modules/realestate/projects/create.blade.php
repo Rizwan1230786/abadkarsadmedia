@@ -32,8 +32,8 @@
                                 <div class="row row-sm">
                                     <div class="col-9">
                                         <div class="col-12 form-group padding">
-                                            <label class="form-label">Name</label>
-                                            <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
+                                            <label class="form-label">Title</label>
+                                            <input class="form-control notrequired" placeholder="Name" name="title" value="{{ $data['record']->name ?? '' }}" type="text">
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Description</label>
@@ -45,14 +45,14 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" name="image" />
+                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
-                                            <select id="cars" class="form-control" name="city_id">
+                                            <select id="cars" class="form-control" name="city_name">
                                                 <option value="">--select--</option>
                                                 @foreach($city as $city)
-                                                <option value="{{$city->id}}" <?php if (($data['record']->city_id ?? '') == $city->id) {
+                                                <option value="{{$city->name}}" <?php if (($data['record']->city_name ?? '') == $city->id) {
                                                                                     echo 'selected';
                                                                                 } ?>>{{$city->name}}</option>
                                                 @endforeach
@@ -65,37 +65,45 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->name ?? '' }}" type="text">
+                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="text">
+                                                <a class="form-control notrequired" style="background-color: #d9edf7"
+                                                        href="https://www.latlong.net/convert-address-to-lat-long.html"
+                                                        target="_blank" rel="nofollow">
+                                                        Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->name ?? '' }}" type="text">
+                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="text">
+                                                <a class="form-control notrequired" style="background-color: #d9edf7"
+                                                        href="https://www.latlong.net/convert-address-to-lat-long.html"
+                                                        target="_blank" rel="nofollow">
+                                                        Go here to get Longitude from address. </a>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number blocks</label>
-                                                <input class="form-control notrequired" placeholder="Number blocks" name="blocks" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number blocks" name="num_of_blocks" value="{{ $data['record']->num_of_blocks ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number floors</label>
-                                                <input class="form-control notrequired" placeholder="Number floors" name="floors" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number floors" name="num_of_floors" value="{{ $data['record']->num_of_floors ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number flats</label>
-                                                <input class="form-control notrequired" placeholder="Number flats" name="flats" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number flats" name="num_of_flats" value="{{ $data['record']->num_of_flats ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Lowest price</label>
-                                                <input class="form-control notrequired" placeholder="Lowest price" name="lowest_price" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Lowest price" name="lowest_price" value="{{ $data['record']->lowest_price ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Max price</label>
-                                                <input class="form-control notrequired" placeholder="Max price" name="max_price" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Max price" name="max_price" value="{{ $data['record']->max_price ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" class="form-control" name="city_id">
+                                                <select id="cars" class="form-control" name="currency_name">
                                                     <option value="">--select--</option>
                                                     <option value="pkr">PKR</option>
                                                     <option value="Usa">USA</option>
@@ -103,19 +111,19 @@
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Commercial Area</label>
-                                                <input class="form-control notrequired" placeholder="size in marala (min)" name="commercial_area_min" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="size in marala (min)" name="commercial_area_min" value="{{ $data['record']->commercial_area_min ?? '' }}" type="number">
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Commercial Area</label>
-                                                <input class="form-control notrequired" placeholder="size in marala (max)" name="commercial_area_max" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="size in marala (max)" name="commercial_area_max" value="{{ $data['record']->commercial_area_max ?? '' }}" type="number">
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Residential Area</label>
-                                                <input class="form-control notrequired" placeholder="size in marala (min)" name="residential_area_min" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="size in marala (min)" name="residential_area_min" value="{{ $data['record']->residential_area_min ?? '' }}" type="number">
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Residential Area</label>
-                                                <input class="form-control notrequired" placeholder="size in marala (max)" name="residential_area_max" value="{{ $data['record']->name ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="size in marala (max)" name="residential_area_max" value="{{ $data['record']->residential_area_max ?? '' }}" type="number">
                                             </div>
                                         </div>
                                         <div class="col-12 form-group padding">
@@ -135,36 +143,60 @@
                                                 <button type="button" href="{{ route('admin:facilities') }}" class="btn btn-warning">Cancel </button>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 form-group">
-                                            <label class="form-label">Category</label>
-                                            @foreach ($categories as $category)
-                                            <li class="no-border">
-                                                <input type="checkbox" name="category[]" value="{{ $category->id }}" id="{{ $category->id }}">
-                                                <label for="{{ $category->id }}">{{ $category->name}}</label>
-                                                <ul style="margin-left: 34px;margin-bottom: 0;">
-                                                    @foreach($category->subCategory as $sub_cat)
-                                                    <li>
-                                                        <input type="checkbox" name="category[]" value="{{ $sub_cat->id }}" id="{{ $sub_cat->id }}">
-                                                        <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                            @endforeach
-                                        </div>
-                                        <div class="widget meta-boxes" data-select2-id="select2-data-10-x9c6">
-                                            <div class="widget-title">
-                                                <h4><label for="investor_id" class="control-label">Investor</label></h4>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12 form-group">
+                                                <label class="form-label">Category</label>
+                                                @foreach ($categories as $category)
+                                                <li class="no-border">
+                                                    <input type="checkbox" name="category[]" value="{{ $category->name }}" id="{{ $category->id }}">
+                                                    <label for="{{ $category->id }}">{{ $category->name}}</label>
+                                                    <ul style="margin-left: 34px;margin-bottom: 0;">
+                                                        @foreach($category->subCategory as $sub_cat)
+                                                        <li>
+                                                            <input type="checkbox" name="category[]" value="{{ $sub_cat->name }}" id="{{ $sub_cat->id }}">
+                                                            <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                                @endforeach
                                             </div>
-                                            <div class="widget-body" data-select2-id="select2-data-9-ar47">
-                                                <select id="cars" class="form-control" name="investor_id">
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12 form-group">
+                                                <label class="form-label">Investor</label>
+                                                <select id="cars" class="form-control" name="investor_name">
                                                     <option value="">--select--</option>
                                                     @foreach($investor as $investor)
-                                                    <option value="{{$investor->id}}" <?php if (($data['record']->investor_id ?? '') == $investor->id) {
-                                                                                        echo 'selected';
-                                                                                    } ?>>{{$investor->name}}</option>
+                                                    <option value="{{$investor->name}}" <?php if (($data['record']->investor_id ?? '') == $investor->id) {
+                                                                                            echo 'selected';
+                                                                                        } ?>>{{$investor->name}}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Status</label>
+                                                <select id="cars" class="form-control " name="status">
+                                                    <option value="">Not available</option>
+                                                    <option value="preparing_selling">Preparing selling</option>
+                                                    <option value="selling">Selling</option>
+                                                    <option value="sold">Sold</option>
+                                                    <option value="building">Building</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Finish date</label>
+                                                <input class="form-control notrequired" placeholder="Finish date" name="expire_date" value="{{ $data['record']->expire_date ?? '' }}" type="date">
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Open sell date</label>
+                                                <input class="form-control notrequired" placeholder="Open sell date" name="Open_sell_date" value="{{ $data['record']->Open_sell_date ?? '' }}" type="date">
                                             </div>
                                         </div>
                                     </div>
