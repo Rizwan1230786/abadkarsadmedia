@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\realestate\CategoryController;
 use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\CitiesController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
+use App\Http\Controllers\admin\realestate\PropetyController;
 use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\admin\OurteamController;
@@ -90,7 +91,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/features/create', [FeaturesController::class, 'create'])->name('features.form');
         Route::post('/features/submit', [FeaturesController::class, 'submit'])->name('features_submit');
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
-  
+
+
+          ////route of properties////////
+          Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
+          Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
+          Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
+          Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
+
     });
 });
 
