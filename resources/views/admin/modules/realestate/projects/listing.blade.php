@@ -48,13 +48,13 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name}}</td>
+                                            <td>{{ $item->title}}</td>
                                             <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{ $status != '1' ? 'UnPublish' : 'Publish' }}</span>
                                             </td>
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:facilities.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                    <a href="{{ route('admin:projects.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
                                                     <a href="#">
                                                     <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
                                                     </a>
