@@ -148,8 +148,7 @@
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Feature</label>
                                                 @foreach ($feature as $feature)
-                                                    <label
-                                                        class="col-md-3">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'name']) }}
+                                                    <label>{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'name']) }}
                                                         {{ $feature->name }}</label>
                                                 @endforeach
                                             </div>
@@ -189,6 +188,32 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            {{--  --}}
+                                            <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                                <div class="col-lg-12 form-group">
+                                                    <label class="form-label">Category</label>
+                                                    @foreach ($categories as $category)
+                                                    <li class="no-border">
+                                                        <input type="checkbox" name="category[]" value="{{ $category->id }}" id="{{ $category->id }}">
+                                                        <label for="{{ $category->id }}">{{ $category->name}}</label>
+                                                        <ul style="margin-left: 34px;margin-bottom: 0;">
+                                                            @foreach($category->subCategory as $sub_cat)
+                                                            <li>
+                                                                <input type="checkbox" name="category[]" value="{{ $sub_cat->id }}" id="{{ $sub_cat->id }}">
+                                                                <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
+
+
+
+
+
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12">
                                                     <label class="form-label">Project</label>

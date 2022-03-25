@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\admin\realestate;
 
 use App\Models\Cities;
+use App\Models\Category;
 use App\Models\Features;
 use App\Models\Projects;
-use App\Models\property;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +14,7 @@ class PropetyController extends Controller
 {
     public function index()
     {
-        // $record = property::all();
+        // $record = Property::all();
         return view('admin.modules.realestate.property.listing');
     }
     public function create(Request $request)
@@ -21,12 +22,13 @@ class PropetyController extends Controller
         $city=Cities::all();
         $project=Projects::all();
         $feature=Features::all();
+        $categories=Category::with('SubCategory')->get();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
-            $data['record'] = property::where('id', $updateId)->first();
+            $data['record'] = Property::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.property.create', compact('data','city','feature','project'));
+        return view('admin.modules.realestate.property.create', compact('data','city','feature','project','categories'));
     }
 
 
