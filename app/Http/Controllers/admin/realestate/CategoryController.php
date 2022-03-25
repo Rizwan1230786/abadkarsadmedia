@@ -76,9 +76,9 @@ class CategoryController extends Controller
     }
 
     /////function of subcategory/////
-    public function subindex()
+    public function subindex(Request $request)
     {
-        $record = SubCategory::all();
+        $record = SubCategory::where('category_id','=',$request->id)->get();
         return view('admin.modules.realestate.categories.subcategory_list', compact('record'));
     }
     public function subcategory_create(Request $request)
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
-            $data['record'] = Category::where('id', $updateId)->first();
+            $data['record'] = SubCategory::where('id', $updateId)->first();
         }
         return view('admin.modules.realestate.categories.subcategory-create', compact('data','category'));
     }
@@ -96,19 +96,46 @@ class CategoryController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'category_id'=>'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("name" => $request->name, "detail" => $request->detail);
+            $data = array("name" => $request->name, "detail" => $request->detail,"category_id" => $request->category_id);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
-            Category::updateOrCreate(array('id' => $updateId), $data);
+            SubCategory::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
+        }
+        return response()->json(['type' => $type, 'message' => $message]);
+    }
+    public function subcategory_destroy($id)
+    {
+        $delete = SubCategory::findOrFail($id);
+        $user = $delete->delete();
+        if ($user) {
+            return response(['status' => true]);
+        } else {
+            return response(['status' => false]);
+        }
+    }
+    public function update_subcategory_status(Request $request)
+    {
+        $userid = $request->id;
+        $status = $request->status;
+        if ($status == 1) {
+            $status = 0;
+        } else {
+            $status = 1;
+        }
+        $status = SubCategory::whereId($userid)->update(array('status' => $status));
+        if (isset($status) && !empty($status)) {
+            $type = "success";
+            $message = "Status updated successfully";
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }

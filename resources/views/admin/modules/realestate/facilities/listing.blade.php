@@ -13,7 +13,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:facilities.form')}}" class="btn btn-success"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:facilities.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>

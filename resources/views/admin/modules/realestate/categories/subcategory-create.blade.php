@@ -35,11 +35,13 @@
                                         <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                     </div>
                                     <div class="col-lg-6 form-group">
-                                    <label class="form-label">Select Category</label>
+                                        <label class="form-label">Select Category</label>
                                         <select id="cars" class="form-control" name="category_id">
-                                            @foreach($category as $category)
                                             <option value="">--select--</option>
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @foreach($category as $category)
+                                            <option value="{{$category->id}}" <?php if (($data['record']->category_id ?? '') == $category->id) {
+                                                                                    echo 'selected';
+                                                                                } ?>>{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -49,7 +51,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">
-                                            <button type="submit" class="btn btn-success user_form submit_button">Save
+                                            <button type="submit" class="btn btn-primary user_form submit_button">Save
                                             </button>
                                             <button type="button" href="{{ route('admin:categories') }}" class="btn btn-warning">Cancel </button>
                                         </div>
@@ -74,5 +76,5 @@
 @include('admin.layouts.fancy-uploader-js')
 @include('admin.layouts.tinymce-js')
 @include('admin.layouts.templateJquery')
-<script src="{{ URL::asset('assets/themeJquery/categories/jquery.js') }}"></script>
+<script src="{{ URL::asset('assets/themeJquery/subcategories/jquery.js') }}"></script>
 @endsection

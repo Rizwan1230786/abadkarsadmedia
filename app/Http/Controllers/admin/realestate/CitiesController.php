@@ -5,27 +5,23 @@ namespace App\Http\Controllers\admin\realestate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Projects;
 use App\Models\Cities;
-use App\Models\Features;
 
-class ProjectsController extends Controller
+class CitiesController extends Controller
 {
     public function index()
     {
-        // $record = Projects::all();
-        return view('admin.modules.realestate.projects.listing');
+        $record = Cities::all();
+        return view('admin.modules.realestate.cities.listing', compact('record'));
     }
     public function create(Request $request)
     {
-        $city=Cities::all();
-        $feature=Features::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
-            $data['record'] = Projects::where('id', $updateId)->first();
+            $data['record'] = Cities::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data','city','feature'));
+        return view('admin.modules.realestate.cities.create', compact('data'));
     }
     public function submit(Request $request)
     {
@@ -42,7 +38,7 @@ class ProjectsController extends Controller
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
-            Projects::updateOrCreate(array('id' => $updateId), $data);
+            Cities::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }
@@ -58,7 +54,7 @@ class ProjectsController extends Controller
         } else {
             $status = 1;
         }
-        $status = Projects::whereId($userid)->update(array('status' => $status));
+        $status = Cities::whereId($userid)->update(array('status' => $status));
         if (isset($status) && !empty($status)) {
             $type = "success";
             $message = "Status updated successfully";
@@ -68,7 +64,7 @@ class ProjectsController extends Controller
     }
     public function destroy($id)
     {
-        $delete = Projects::findOrFail($id);
+        $delete = Cities::findOrFail($id);
         $user = $delete->delete();
         if ($user) {
             return response(['status' => true]);
