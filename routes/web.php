@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\realestate\FacilitiesController;
-use App\Http\Controllers\admin\realestate\FeaturesController;
-use App\Http\Controllers\admin\realestate\CategoryController;
-use App\Http\Controllers\admin\InqueryController;
-use App\Http\Controllers\admin\OurclinetsController;
-use App\Http\Controllers\admin\OurteamController;
-use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\QouteControlles;
+use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
+use App\Http\Controllers\admin\OurteamController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OurclinetsController;
+use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\admin\realestate\CategoryController;
+use App\Http\Controllers\admin\realestate\FeaturesController;
+use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\admin\realestate\PropertiesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +71,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/features/create', [FeaturesController::class, 'create'])->name('features.form');
         Route::post('/features/submit', [FeaturesController::class, 'submit'])->name('features_submit');
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
+
+        ////route of properties////////
+        Route::get('/properties', [PropertiesController::class, 'index'])->name('properties');
+        Route::get('/properties/create', [PropertiesController::class, 'create'])->name('properties.form');
+        Route::post('/properties/submit', [PropertiesController::class, 'submit'])->name('properties_submit');
+        Route::post('/delete_properties/{id}', [PropertiesController::class, 'destroy'])->name('properties_features');
 
 
     });
