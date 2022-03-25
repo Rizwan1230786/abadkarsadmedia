@@ -91,7 +91,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/features/submit', [FeaturesController::class, 'submit'])->name('features_submit');
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
 
+     
 
+
+
+
+        
     });
 });
 
