@@ -90,13 +90,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/features/create', [FeaturesController::class, 'create'])->name('features.form');
         Route::post('/features/submit', [FeaturesController::class, 'submit'])->name('features_submit');
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
-
-     
-
-
-
-
-        
+  
     });
 });
 
