@@ -41,6 +41,7 @@
 								<span class="side-menu__label">Real Estate</span><i class="fa fa-caret-down"></i></a>
 							<div class="dropdown-container">
 								<ul>
+<<<<<<< HEAD
 									<a class="side-menu__item" href="{{route('admin:facilities')}}">
 										<i class="fas fa-band-aid side-menu__icon custom"></i>
 										<span class="side-menu__label">Facilites</span>
@@ -68,6 +69,33 @@
 										<i class="fas fa-globe-americas side-menu__icon custom"></i>
 										<span class="side-menu__label">Cities</span>
 									</a>
+=======
+								<a class="side-menu__item" href="{{route('admin:facilities')}}">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								  <span class="side-menu__label">Facilites</span></a>
+
+								  <a class="side-menu__item" href="{{route('admin:projects')}}">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								  <span class="side-menu__label">Projects</span></a>
+								  <a class="side-menu__item" href="{{route('admin:categories')}}">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								  <span class="side-menu__label">Categories</span></a>
+								  <a class="side-menu__item" href="{{route('admin:features')}}">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								  <span class="side-menu__label">Features</span></a>
+>>>>>>> parent of 1615c61 (properties module layout)
 								</ul>
 							</div>
 						</li>
