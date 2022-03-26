@@ -25,13 +25,13 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <?php 
-                          if(isset($data['record']->id) && $data['record']->id !=0){
-                              $url=route('admin:projects_update', [$data['updateId'] ?? 0]);
-                          }else{
-                              $url=route('admin:projects_submit');
-                          }
-                        
+                        <?php
+                        if (isset($data['record']->id) && $data['record']->id != 0) {
+                            $url = route('admin:projects_update', [$data['updateId'] ?? 0]);
+                        } else {
+                            $url = route('admin:projects_submit');
+                        }
+
                         ?>
                         <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
                             @csrf
@@ -53,14 +53,14 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
+                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple />
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
                                             <select id="cars" class="form-control" name="city_name">
                                                 <option value="">--select--</option>
                                                 @foreach($city as $city)
-                                                <option value="{{$city->name}}" <?php if (($data['record']->city_name ?? '') == $city->id) {
+                                                <option value="{{$city->name}}" <?php if (($data['record']->city_name ?? '') == $city->name) {
                                                                                     echo 'selected';
                                                                                 } ?>>{{$city->name}}</option>
                                                 @endforeach
@@ -74,18 +74,14 @@
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
                                                 <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="text">
-                                                <a class="form-control notrequired" style="background-color: #d9edf7"
-                                                        href="https://www.latlong.net/convert-address-to-lat-long.html"
-                                                        target="_blank" rel="nofollow">
-                                                        Go here to get Latitude from address. </a>
+                                                <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
+                                                    Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
                                                 <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="text">
-                                                <a class="form-control notrequired" style="background-color: #d9edf7"
-                                                        href="https://www.latlong.net/convert-address-to-lat-long.html"
-                                                        target="_blank" rel="nofollow">
-                                                        Go here to get Longitude from address. </a>
+                                                <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
+                                                    Go here to get Longitude from address. </a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -136,10 +132,22 @@
                                         </div>
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Feature</label>
-                                            @foreach($feature as $feature)
-                                            <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, array('class' => 'seting')) }}
-                                                {{ $feature->name }}</label>
-                                            @endforeach
+                                            <?php
+                                            if (isset($data['record']) && !empty($data['record'])) { ?>
+                                                @foreach($feature as $feature)
+                                                <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, in_array($feature->id, $features_projects) ? true : false, array('class' => 'name')) }}
+                                                    {{ $feature->name }}</label>
+                                                @endforeach
+                                            <?php
+                                            } else { ?>
+                                                @foreach($feature as $feature)
+                                                <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, array('class' => 'seting')) }}
+                                                    {{ $feature->name }}</label>
+                                                @endforeach
+                                            <?php
+                                            }
+
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -176,7 +184,7 @@
                                                 <select id="cars" class="form-control" name="investor_name">
                                                     <option value="">--select--</option>
                                                     @foreach($investor as $investor)
-                                                    <option value="{{$investor->name}}" <?php if (($data['record']->investor_id ?? '') == $investor->id) {
+                                                    <option value="{{$investor->name}}" <?php if (($data['record']->investor_name ?? '') == $investor->name) {
                                                                                             echo 'selected';
                                                                                         } ?>>{{$investor->name}}</option>
                                                     @endforeach
@@ -186,13 +194,23 @@
                                         <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                             <div class="col-lg-12">
                                                 <label class="form-label">Status</label>
+                                                @if($data['record']->status && !empty($data['record']->status))
                                                 <select id="cars" class="form-control " name="status">
-                                                    <option value="">Not available</option>
+                                                    <option value="{{$data['record']->status}}">{{$data['record']->status}}</option>
                                                     <option value="preparing_selling">Preparing selling</option>
                                                     <option value="selling">Selling</option>
                                                     <option value="sold">Sold</option>
                                                     <option value="building">Building</option>
                                                 </select>
+                                                @else
+                                                <select id="cars" class="form-control " name="status">
+                                                    <option value="">Not avalibale</option>
+                                                    <option value="preparing_selling">Preparing selling</option>
+                                                    <option value="selling">Selling</option>
+                                                    <option value="sold">Sold</option>
+                                                    <option value="building">Building</option>
+                                                </select>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
