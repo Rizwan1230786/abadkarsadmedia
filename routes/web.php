@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
         Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.form');
         Route::post('/projects/submit', [ProjectsController::class, 'submit'])->name('projects_submit');
+        Route::post('/projects/update', [ProjectsController::class, 'update'])->name('projects_update');
         Route::post('/delete_projects/{id}', [ProjectsController::class, 'destroy'])->name('delete_projects');
         //////route of categories/////////
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');

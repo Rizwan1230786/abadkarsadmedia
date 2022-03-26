@@ -1,10 +1,11 @@
 $('.formSubmited').submit(function(e) {
     e.preventDefault();
     var self = this;
+    var action=$(this).attr('action');
     if (validateForm()) {
             $.ajax({
                 type: 'POST',
-                url:  '/admin/projects/submit',
+                url:  action,
                 dataType: "JSON",
                 data: new FormData(this),
                 processData: false,

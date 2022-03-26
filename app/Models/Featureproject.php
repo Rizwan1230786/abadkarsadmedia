@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FeaturePermission extends Model
+class Featureproject extends Model
 {
     use HasFactory;
-    
-    protected $fillable=['project_id','feature_id'];
-  
 }

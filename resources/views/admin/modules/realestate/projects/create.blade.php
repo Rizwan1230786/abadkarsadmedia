@@ -25,7 +25,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:projects_submit', [$data['updateId'] ?? 0]) }}">
+                        <?php 
+                          if(isset($data['record']->id) && $data['record']->id !=0){
+                              $url=route('admin:projects_update', [$data['updateId'] ?? 0]);
+                          }else{
+                              $url=route('admin:projects_submit');
+                          }
+                        
+                        ?>
+                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
                             @csrf
                             <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">
@@ -33,7 +41,7 @@
                                     <div class="col-9">
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Title</label>
-                                            <input class="form-control notrequired" placeholder="Name" name="title" value="{{ $data['record']->name ?? '' }}" type="text">
+                                            <input class="form-control notrequired" placeholder="Name" name="title" value="{{ $data['record']->title ?? '' }}" type="text">
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Description</label>
@@ -148,12 +156,12 @@
                                                 <label class="form-label">Category</label>
                                                 @foreach ($categories as $category)
                                                 <li class="no-border">
-                                                    <input type="checkbox" name="category[]" value="{{ $category->name }}" id="{{ $category->id }}">
+                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" id="{{ $category->id }}">
                                                     <label for="{{ $category->id }}">{{ $category->name}}</label>
                                                     <ul style="margin-left: 34px;margin-bottom: 0;">
                                                         @foreach($category->subCategory as $sub_cat)
                                                         <li>
-                                                            <input type="checkbox" name="category[]" value="{{ $sub_cat->name }}" id="{{ $sub_cat->id }}">
+                                                            <input type="checkbox" name="category[]" value="{{ $sub_cat->id }}" id="{{ $sub_cat->id }}">
                                                             <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
                                                         </li>
                                                         @endforeach

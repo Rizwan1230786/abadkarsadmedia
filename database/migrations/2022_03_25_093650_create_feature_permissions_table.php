@@ -14,9 +14,11 @@ class CreateFeaturePermissionsTable extends Migration
     public function up()
     {
         Schema::create('feature_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('feature_id');
-            $table->unsignedBigInteger('project_id');
-            $table->timestamps();
+            $table->integer('feature_id')->unsigned();
+            $table->integer('project_id')->unsigned();
+            $table->primary(['feature_id', 'project_id']);
+            $table->foreign('feature_id')->references('id')->on('features')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
