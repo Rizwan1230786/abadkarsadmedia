@@ -20,7 +20,7 @@ $('.formSubmited').submit(function(e) {
                             toastr['error'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
                     } else {
                         toastr['success'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
-                        window.location.href ='/admin/projects';
+                        window.location.href ='/admin/properties';
                     }
                 }
             });
@@ -31,7 +31,6 @@ $('.formSubmited').submit(function(e) {
 $(document).on('click', '.delete_record', function (e) {
     e.preventDefault();
     var id = $(this).data('id');
-
     swal({
             title: "Are you sure!",
             text: "You will not be able to recover this imaginary file!",
@@ -44,7 +43,7 @@ $(document).on('click', '.delete_record', function (e) {
         function() {
             $.ajax({
                 type: "post",
-                url: '/admin/delete_projects/' + id,
+                url: '/admin/delete_properties/' + id,
                 data: {id:id},
                 success: function (data) {
                         swal("Deleted!", "Product has been deleted.", "success");

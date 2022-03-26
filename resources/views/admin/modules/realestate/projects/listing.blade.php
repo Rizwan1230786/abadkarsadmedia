@@ -94,5 +94,5 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
-    <!-- <script src="{{ URL::asset('assets/themeJquery/facilities/jquery.js') }}"></script> -->
+     <script src="{{ URL::asset('assets/themeJquery/projects/jquery.js') }}"></script>
 @endsection

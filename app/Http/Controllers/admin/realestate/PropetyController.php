@@ -9,13 +9,14 @@ use App\Models\Projects;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class PropetyController extends Controller
 {
     public function index()
     {
-        // $record = Property::all();
-        return view('admin.modules.realestate.property.listing');
+        $record = Property::all();
+        return view('admin.modules.realestate.property.listing',compact('record'));
     }
     public function create(Request $request)
     {
@@ -33,13 +34,41 @@ class PropetyController extends Controller
 
 
 
+    public function submit(Request $request)
+    {
+        $type = 'error';
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'image'=>'required',
+        ]);
+        if ($validator->passes()) {
+            $type = 'success';
+            $message = "Data add successfully";
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            if ($request->file('image')) {
+                $imagePath = $request->file('image');
+                request()->image->move(public_path('assets/images/properties/'), $filename);
+            }
+            $data = array("name" => $request->name,"image" => $filename, "type" => $request->type,"descripition" => $request->descripition,"content" => $request->content,"city_name" => $request->city_name,"location"=>$request->location,"latitude"=>$request->latitude,"longitude"=>$request->longitude,"number_of_bedrooms"=>$request->number_of_bedrooms,"number_of_bathrooms"=>$request->number_of_bathrooms,"number_of_floors"=>$request->number_of_floors,"square"=>$request->square,"marala"=>$request->marala,"currency"=>$request->currency,"price"=>$request->price,"property_status"=>$request->property_status,"project_id"=>$request->project_id,"status"=>$request->status,"moderation_status"=>$request->moderation_status,
+            "category"=>$request->category,);
+            $post=Property::Create($data);
+            // $post->features()->attach($request->feature);
+
+        }else{
+            $message = $validator->errors()->toArray();
+        }
+        return response()->json(['type' => $type, 'message' => $message]);
+    }
+
+
+
 
 
 
 
     public function destroy($id)
     {
-        $delete = property::findOrFail($id);
+        $delete = Property::findOrFail($id);
         $user = $delete->delete();
         if ($user) {
             return response(['status' => true]);
