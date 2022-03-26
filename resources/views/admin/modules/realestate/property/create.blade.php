@@ -25,6 +25,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
+                            <?php
+                            if(isset($data['record']->id) && $data['record']->id !=0){
+                                $url=route('admin:properties_update', [$data['updateId'] ?? 0]);
+                            }else{
+                                $url=route('admin:properties_submit');
+                            }
+
+                          ?>
                             <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data"
                                 method="POST" action="{{ route('admin:properties_submit', [$data['updateId'] ?? 0]) }}">
                                 @csrf
@@ -61,10 +69,10 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Select City</label>
-                                                <select id="cars" class="form-control" name="city_id">
+                                                <select id="cars" class="form-control" name="city_name">
                                                     <option value="">--select--</option>
                                                     @foreach ($city as $city)
-                                                        <option value="{{ $city->id }}" <?php if (($data['record']->city_id ?? '') == $city->id) {
+                                                        <option value="{{ $city->name }}" <?php if (($data['record']->city_id ?? '') == $city->id) {
     echo 'selected';
 } ?>>
                                                             {{ $city->name }}</option>
@@ -74,7 +82,7 @@
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Property Location</label>
                                                 <input class="form-control notrequired" placeholder="Property Location"
-                                                    name="property_location"
+                                                    name="location"
                                                     value="{{ $data['record']->property_location ?? '' }}" type="text">
                                             </div>
                                             <div class="row">
@@ -103,19 +111,19 @@
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Number bedrooms</label>
                                                     <input class="form-control notrequired" placeholder="Number bedrooms"
-                                                        name="bedrooms" value="{{ $data['record']->bedrooms ?? '' }}"
+                                                        name="number_of_bedrooms" value="{{ $data['record']->bedrooms ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Number bathrooms</label>
                                                     <input class="form-control notrequired" placeholder="Number bathrooms"
-                                                        name="bathrooms" value="{{ $data['record']->bathrooms ?? '' }}"
+                                                        name="number_of_bathrooms" value="{{ $data['record']->bathrooms ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Number floors</label>
                                                     <input class="form-control notrequired" placeholder="Number floors"
-                                                        name="floors" value="{{ $data['record']->floors ?? '' }}"
+                                                        name="number_of_floors" value="{{ $data['record']->floors ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
@@ -132,7 +140,7 @@
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Currency</label>
-                                                    <select id="cars" class="form-control" name="city_id">
+                                                    <select id="cars" class="form-control" name="currency">
                                                         <option value="">--select--</option>
                                                         <option value="pkr">PKR</option>
                                                         <option value="Usa">USA</option>
@@ -148,8 +156,7 @@
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Feature</label>
                                                 @foreach ($feature as $feature)
-                                                    <label
-                                                        class="col-md-3">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'name']) }}
+                                                    <label>{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'name']) }}
                                                         {{ $feature->name }}</label>
                                                 @endforeach
                                             </div>
@@ -167,7 +174,7 @@
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12">
                                                     <label class="form-label">Status</label>
-                                                    <select id="cars" class="form-control " name="">
+                                                    <select id="cars" class="form-control " name="property_status">
                                                         <option value="">Not available</option>
                                                         <option value="preparing_selling">Preparing selling</option>
                                                         <option value="selling">Selling</option>
@@ -181,7 +188,7 @@
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12">
                                                     <label class="form-label">Moderation status</label>
-                                                    <select id="cars" class="form-control " name="">
+                                                    <select id="cars" class="form-control " name="moderation_status">
                                                         <option value="pending">Pending</option>
                                                         <option value="approved">Approved</option>
                                                         <option value="rejected">Rejected</option>
@@ -189,6 +196,32 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            {{--  --}}
+                                            <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                                <div class="col-lg-12 form-group">
+                                                    <label class="form-label">Category</label>
+                                                    @foreach ($categories as $category)
+                                                    <li class="no-border">
+                                                        <input type="radio" name="category" value="{{ $category->name }}" id="{{ $category->id }}">
+                                                        <label for="{{ $category->id }}">{{ $category->name}}</label>
+                                                        <ul style="margin-left: 34px;margin-bottom: 0;">
+                                                            @foreach($category->subCategory as $sub_cat)
+                                                            <li>
+                                                                <input type="radio" name="category" value="{{ $sub_cat->name }}" id="{{ $sub_cat->id }}">
+                                                                <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
+
+
+
+
+
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12">
                                                     <label class="form-label">Project</label>
@@ -198,7 +231,7 @@
                                                             <option value="{{ $project->id }}" <?php if (($data['record']->project_id ?? '') == $project->id) {
         echo 'selected';
     } ?>>
-                                                                {{ $project->name }}</option>
+                                                                {{ $project->title }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -224,5 +257,5 @@
     @include('admin.layouts.fancy-uploader-js')
     @include('admin.layouts.tinymce-js')
     @include('admin.layouts.templateJquery')
-    <script src="{{ URL::asset('assets/themeJquery/projects/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/property/jquery.js') }}"></script>
 @endsection
