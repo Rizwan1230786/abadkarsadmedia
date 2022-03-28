@@ -30,7 +30,7 @@
                             </li>
                             <li><a href="#">Listing</a>
                                 <ul>
-                                    <li><a href="{{ route('front.list') }}">Listing Grid</a>
+                                    <li><a href="{{ route('front.property') }}">Listing Grid</a>
                                     </li>
                                     <li><a href="#">Agent View</a>
                                         <ul>
@@ -117,7 +117,7 @@
     </header>
     @endsection
   <!-- STAR HEADER SEARCH -->
-  <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
+  <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5" >
     <div class="hero-main">
         <div class="container" data-aos="zoom-in">
             <div class="row">
@@ -457,101 +457,19 @@
         </div>
         <div class="row">
             <!-- Single category -->
+           @foreach ( $city as $cities )
             <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
                 <div class="small-category-2">
                     <div class="small-category-2-thumb img-1">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/12.jpg') }}" alt=""></a>
+                        <a href="properties-map.html"><img src="{{asset('assets/images/cities/'.$cities->image)}}" alt=""></a>
                     </div>
                     <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">New York</a></h4>
+                        <h4 class="sc-jb-title"><a href="properties-map.html">{{ $cities->name }}</a></h4>
                         <span>203 Properties</span>
                     </div>
                 </div>
             </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="250">
-                <div class="small-category-2">
-                    <div class="small-category-2-thumb img-2">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/13.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Los Angeles</a></h4>
-                        <span>307 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="350">
-                <div class="small-category-2">
-                    <div class="small-category-2-thumb img-3">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/14.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">San Francisco</a></h4>
-                        <span>409 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="450">
-                <div class="small-category-2">
-                    <div class="small-category-2-thumb img-3">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/9.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Atlanta</a></h4>
-                        <span>409 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
-                <div class="small-category-2 mob-mt">
-                    <div class="small-category-2-thumb img-8">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/15.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Miami</a></h4>
-                        <span>145 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="250">
-                <div class="small-category-2">
-                    <div class="small-category-2-thumb img-10">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/10.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Chicago</a></h4>
-                        <span>112 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="350">
-                <div class="small-category-2 si-mt">
-                    <div class="small-category-2-thumb img-11">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/5.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Houston</a></h4>
-                        <span>254 Properties</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Single category -->
-            <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="450">
-                <div class="small-category-2 no-mb si-mt">
-                    <div class="small-category-2-thumb img-11">
-                        <a href="properties-map.html"><img src="{{ asset('/front/images/popular-places/6.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="sc-2-detail">
-                        <h4 class="sc-jb-title"><a href="properties-map.html">Orlando</a></h4>
-                        <span>254 Properties</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <!-- /row -->
     </div>
@@ -709,25 +627,26 @@
 <section class="featured portfolio rec-pro disc">
     <div class="container-fluid">
         <div class="sec-title discover">
-            <h2><span>Discover </span>Popular Properties</h2>
+            <h2><span></span>Popular Projects</h2>
             <p>We provide full service at every step.</p>
         </div>
         <div class="portfolio col-xl-12">
             <div class="slick-lancers">
+                @foreach ($project as $projects )
                 <div class="agents-grid" data-aos="fade-up" data-aos-delay="150">
                     <div class="landscapes">
                         <div class="project-single">
                             <div class="project-inner project-head">
                                 <div class="homes">
                                     <!-- homes img -->
-                                    <a href="single-property-1.html" class="homes-img">
+                                    <a href="{{ route('front.project_detail',$projects->id) }}" class="homes-img">
                                         <div class="homes-tag button alt featured">Featured</div>
                                         <div class="homes-tag button alt sale">For Sale</div>
-                                        <img src="{{ asset('/front/images/blog/b-11.jpg') }}" alt="home-1" class="img-responsive">
+                                        <img src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="button-effect">
-                                    <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                    <a href="{{ route('front.project_detail',$projects->id) }}" class="btn"><i class="fa fa-link"></i></a>
                                     <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                     <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                 </div>
@@ -735,52 +654,19 @@
                             <!-- homes content -->
                             <div class="homes-content">
                                 <!-- homes address -->
-                                <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
+                                <h3><a href="{{ route('front.project_detail',$projects->id) }}">{{ $projects->title }}</a></h3>
                                 <p class="homes-address mb-3">
                                     <a href="single-property-1.html">
-                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                        <i class="fa fa-map-marker"></i><span>{{ $projects->location }}</span>
                                     </a>
                                 </p>
-                                <!-- homes List -->
-                                <ul class="homes-list clearfix pb-3">
-                                    <li class="the-icons">
-                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                                <div class="price-properties footer pt-3 pb-0">
-                                    <h3 class="title mt-3">
-                                        <a href="single-property-1.html">$ 350,000</a>
-                                    </h3>
-                                    <div class="compare">
-                                        <a href="#" title="Compare">
-                                            <i class="flaticon-compare"></i>
-                                        </a>
-                                        <a href="#" title="Share">
-                                            <i class="flaticon-share"></i>
-                                        </a>
-                                        <a href="#" title="Favorites">
-                                            <i class="flaticon-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="agents-grid" data-aos="fade-up" data-aos-delay="250">
+                @endforeach
+                {{-- <div class="agents-grid" data-aos="fade-up" data-aos-delay="250">
                     <div class="people">
                         <div class="project-single">
                             <div class="project-inner project-head">
@@ -1236,7 +1122,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

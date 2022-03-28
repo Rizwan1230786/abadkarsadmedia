@@ -5768,7 +5768,7 @@ a.button,
 /*--- 19. HOME 5 IMAGE  ---*/
 /*---------------------------------------*/
 .homepage-5 .parallax-searchs.home17 {
-  background: url(/assets/front/images/bg/bg-home-5.jpg) no-repeat center top;
+  background: url(../images/bg/bg-home-5.jpg) no-repeat center top;
   background-size: cover;
   background-attachment: scroll !important;
   width: 100%;

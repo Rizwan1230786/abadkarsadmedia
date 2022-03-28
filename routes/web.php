@@ -106,7 +106,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
 ///Front
 Route::get('/',[FrontController::class,'view'])->name('front.index');
-Route::get('/list',[FrontController::class,'list'])->name('front.list');
+Route::get('/project',[FrontController::class,'list'])->name('front.project');
+Route::get('/project/detail/{id}',[FrontController::class,'project_detail'])->name('front.project_detail');
 Route::get('/agent',[FrontController::class,'agent'])->name('front.agent');
 Route::get('/agent/detail',[FrontController::class,'agent_detail'])->name('front.agent_detail');
 Route::get('/agency',[FrontController::class,'agency'])->name('front.agency');
@@ -129,4 +130,5 @@ Route::get('/clear', function () {
   // Artisan::call('view:clear');
   // Artisan::call('config:cache');
   dd("Cache Clear All");
+
 });

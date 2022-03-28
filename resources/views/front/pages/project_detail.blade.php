@@ -109,7 +109,7 @@
     <section class="single-proper blog details">
         <div class="container">
             <div class="row">
-                @foreach ($property as $properties)
+                @foreach ($project as $properties)
                 <div class="col-lg-8 col-md-12 blog-pots">
                     <div class="row">
                         <div class="col-md-12">
@@ -117,7 +117,7 @@
                                 <div class="pro-wrapper">
                                     <div class="detail-wrapper-body">
                                         <div class="listing-title-bar">
-                                            <h3>{{ $properties->name }}<span class="mrg-l-5 category-tag">For Sale</span></h3>
+                                            <h3>{{ $properties->title }}<span class="mrg-l-5 category-tag">For Sale</span></h3>
                                             <div class="mt-0">
                                                 <a href="#listing-location" class="listing-address">
                                                     <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>{{ $properties->location }}
@@ -128,7 +128,7 @@
                                     <div class="single detail-wrapper mr-2">
                                         <div class="detail-wrapper-body">
                                             <div class="listing-title-bar">
-                                                <h4>{{ $properties->currency  }} {{ $properties->price  }}</h4>
+                                                <h4>{{ $properties->currency_name  }} {{ $properties->max_price  }}</h4>
                                                 <div class="mt-0">
                                                     <a href="#listing-location" class="listing-address">
                                                         <p>$ 1,200 / sq ft</p>
@@ -149,7 +149,7 @@
                                 </ol>
                                 <div class="carousel-inner carus" role="listbox">
                                     <div class="carousel-item active">
-                                        <img class="d-block img-fluid" src="{{asset('assets/images/properties/'.$properties->image)}}" alt="First slide">
+                                        <img class="d-block img-fluid" src="{{asset('assets/images/projects/'.$properties->image)}}" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block img-fluid" src="{{ asset('/front/images/slider/home-slider-2.jpg') }}" alt="Second slide">
@@ -173,7 +173,7 @@
                             <!-- cars content -->
                             <div class="homes-content details-2 mb-4">
                                 <!-- cars List -->
-                                <ul class="homes-list clearfix">
+                                {{-- <ul class="homes-list clearfix">
                                     <li>
                                         <i class="fa fa-bed" aria-hidden="true"></i>
                                         <span>Beds {{ $properties->number_of_bedrooms }}</span>
@@ -198,11 +198,11 @@
                                         <i class="fa fa-columns" aria-hidden="true"></i>
                                         <span>{{ $properties->number_of_floors  }}</span>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                             <div class="blog-info details mb-30">
                                 <h5 class="mb-4">Description</h5>
-                                <p class="mb-3"> {!! $properties->content !!}</p>
+                                <p class="mb-3"> {!! $properties->page_content !!}</p>
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Property status:</span>
-                                <span class="det">{{ $properties->property_status }}</span>
+                                <span class="det">{{ $properties->status }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Property Price:</span>
@@ -228,16 +228,39 @@
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Floors:</span>
-                                <span class="det">{{ $properties->number_of_floors }}</span>
+                                <span class="det">{{ $properties->num_of_floors }}</span>
                             </li>
                             <li>
-                                <span class="font-weight-bold mr-1">Bedrooms:</span>
-                                <span class="det">{{ $properties->number_of_bedrooms }}</span>
+                                <span class="font-weight-bold mr-1">BLocks</span>
+                                <span class="det">{{ $properties->num_of_blocks }}</span>
                             </li>
                             <li>
-                                <span class="font-weight-bold mr-1">Bath:</span>
-                                <span class="det">{{ $properties->number_of_bathrooms }}</span>
+                                <span class="font-weight-bold mr-1">Flats</span>
+                                <span class="det">{{ $properties->num_of_flats }}</span>
                             </li>
+                            @if ($properties->commercial_area_min || $properties->commercial_area_max)
+                            <li>
+                                <span class="font-weight-bold mr-1">Commercial Area (min)</span>
+                                <span class="det">{{ $properties->commercial_area_min }}</span>
+                            </li>
+                            <li>
+                                <span class="font-weight-bold mr-1">Commercial Area (max)</span>
+                                <span class="det">{{ $properties->commercial_area_max }}</span>
+                            </li>
+                            @endif
+                            @if ($properties->residential_area_min || $properties->residential_area_max)
+                            <li>
+                                <span class="font-weight-bold mr-1">Residential Area (min)</span>
+                                <span class="det">{{ $properties->residential_area_min }}</span>
+                            </li>
+                            <li>
+                                <span class="font-weight-bold mr-1">Residential Area (max)</span>
+                                <span class="det">{{ $properties->residential_area_max }}</span>
+                            </li>
+                            @endif
+
+
+
 
                         </ul>
                         <!-- title -->
@@ -246,7 +269,7 @@
                         <ul class="homes-list clearfix">
 
                             @foreach ($assign as $assigns )
-                            @if ($assigns->propertiesID == $properties->id)
+                            @if ($assigns->projectID == $properties->id)
                             <li>
                                 <i class="fa fa-check-square" aria-hidden="true"></i>
                                 <span>{{ $assigns->FeaturesName }}</span>

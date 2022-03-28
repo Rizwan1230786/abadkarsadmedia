@@ -34,6 +34,14 @@
                                         <label class="form-label">Name</label>
                                         <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                     </div>
+                                    <div class="col-lg-12 col-sm-12 form-group ">
+                                        <label class="form-label">Image</label>
+                                        @if(isset($data['record']->image) && !empty($data['record']->image))
+                                        <input type="file" name="image" class="dropify notrequired" data-default-file="{{asset('assets/images/cities/'.$data['record']->image)}}" data-height="180" />
+                                        @else
+                                        <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                                        @endif
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">
                                             <button type="submit" class="btn btn-primary user_form submit_button">Save

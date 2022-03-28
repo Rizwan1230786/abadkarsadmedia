@@ -28,16 +28,23 @@ class CitiesController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'image' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("name" => $request->name, "detail" => $request->detail);
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            if ($request->file('image')) {
+                $imagePath = $request->file('image');
+                request()->image->move(public_path('assets/images/cities/'), $filename);
+            }
+            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
+
             Cities::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
@@ -46,7 +53,7 @@ class CitiesController extends Controller
     }
     public function update_facilities_status(Request $request)
     {
-       
+
         $userid = $request->id;
         $status = $request->status;
         if ($status == 1) {

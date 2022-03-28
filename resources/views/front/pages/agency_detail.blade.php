@@ -28,33 +28,23 @@
                             <li><a href="{{ route('front.index') }}">Home</a>
 
                             </li>
-                            <li><a href="#">Listing</a>
-                                <ul>
-                                    <li><a href="{{ route('front.list') }}">Listing Grid</a>
-                                    </li>
-                                    <li><a href="#">Agent View</a>
-                                        <ul>
-                                            <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                            <li><a href="{{ route('front.agent_detail') }}">Agent Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Agencies View</a>
-                                        <ul>
-                                            <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
-                                            <li><a href="{{ route('front.agency_detail') }}">Agencies Details</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li><a href="{{ route('front.project') }}">Projects</a>
                             </li>
                             <li><a href="{{ route('front.property') }}">Property</a>
                             </li>
-                            <li><a href="#">Pages</a>
+                            {{-- <li><a href="#">Pages</a>
                                 <ul>
                                     <li><a href="{{ route('front.about') }}">About Us</a></li>
                                     <li><a href="{{ route('front.faq') }}">Faq</a></li>
                                     <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
                                     <li><a href="{{ route('front.error') }}">Page 404</a></li>
                                     <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
+                                </ul>
+                            </li> --}}
+                            <li><a href="#">Agents</a>
+                                <ul>
+                                    <li><a href="{{ route('front.agent') }}">Agent View</a></li>
+                                    <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('front.blog') }}">Blog</a>
