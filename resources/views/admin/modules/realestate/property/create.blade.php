@@ -63,8 +63,13 @@
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <label class="form-label">Image</label>
+                                                @if(isset($data['record']->image) && !empty($data['record']->image))
                                                 <input type="file" name="image" class="dropify notrequired"
-                                                    data-default-file="" data-height="180" name="image" />
+                                                    data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180"/>
+                                                 @else
+                                                 <input type="file" name="image" class="dropify notrequired"
+                                                    data-default-file="" data-height="180"/>
+                                                 @endif      
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Select City</label>
