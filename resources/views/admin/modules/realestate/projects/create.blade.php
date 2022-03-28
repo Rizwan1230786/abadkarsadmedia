@@ -194,7 +194,7 @@
                                         <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                             <div class="col-lg-12">
                                                 <label class="form-label">Status</label>
-                                                @if($data['record']->status && !empty($data['record']->status))
+                                                @if(isset($data['record']->status) && !empty($data['record']->status))
                                                 <select id="cars" class="form-control " name="status">
                                                     <option value="{{$data['record']->status}}">{{$data['record']->status}}</option>
                                                     <option value="preparing_selling">Preparing selling</option>
