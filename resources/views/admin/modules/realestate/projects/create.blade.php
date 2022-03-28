@@ -73,13 +73,13 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="text">
+                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="number">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="text">
+                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="number">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Longitude from address. </a>
                                             </div>

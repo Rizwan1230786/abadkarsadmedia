@@ -89,7 +89,7 @@
                                                     <label class="form-label">Latitude</label>
                                                     <input class="form-control notrequired" placeholder="Ex: 1.462260"
                                                         name="latitude" value="{{ $data['record']->latitude ?? '' }}"
-                                                        type="text">
+                                                        type="number">
                                                     <a class="form-control notrequired" style="background-color: #d9edf7"
                                                         href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                         target="_blank" rel="nofollow">
@@ -99,7 +99,7 @@
                                                     <label class="form-label">Longitude</label>
                                                     <input class="form-control notrequired" placeholder="Ex: 103.812530"
                                                         name="longitude" value="{{ $data['record']->longitude ?? '' }}"
-                                                        type="text">
+                                                        type="number">
                                                     <a class="form-control notrequired" style="background-color: #d9edf7"
                                                         href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                         target="_blank" rel="nofollow">
