@@ -10,6 +10,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class PropetyController extends Controller
 {
@@ -26,10 +27,14 @@ class PropetyController extends Controller
         $categories=Category::with('SubCategory')->get();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
+        $features_property = DB::table("features_property")->where("features_property.property_id", $updateId)
+        ->pluck('features_property.features_id', 'features_property.features_id')
+        ->all();
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
+           
         }
-        return view('admin.modules.realestate.property.create', compact('data','city','feature','project','categories'));
+        return view('admin.modules.realestate.property.create', compact('data','city','feature','project','categories','features_property'));
     }
 
 
@@ -88,12 +93,6 @@ class PropetyController extends Controller
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
-
-
-
-
-
-
 
     public function destroy($id)
     {

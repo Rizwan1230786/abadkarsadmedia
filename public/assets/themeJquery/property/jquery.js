@@ -2,12 +2,14 @@ $('.formSubmited').submit(function(e) {
     e.preventDefault();
     var self = this;
     var action=$(this).attr('action');
+    var data = new FormData(this);
+    data.append('content', tinyMCE.activeEditor.getContent());
     if (validateForm()) {
             $.ajax({
                 type: 'POST',
                 url:  action,
                 dataType: "JSON",
-                data: new FormData(this),
+                data: data,
                 processData: false,
                 contentType: false,
                 success: function(result) {
