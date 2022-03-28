@@ -37,6 +37,7 @@
                                     <th class="wd-15p border-bottom-0">ID</th>
                                     <th class="wd-15p border-bottom-0">image</th>
                                     <th class="wd-15p border-bottom-0">Title</th>
+                                    <th class="wd-15p border-bottom-0">Created At</th>
                                     <th class="wd-10p border-bottom-0">Status</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
@@ -51,6 +52,7 @@
                                             <td>{{ $item->id }}</td>
                                             <td><img src="{{asset('assets/images/projects/'.$item->image)}}" width="50px" height="50px"></td>
                                             <td>{{ $item->title}}</td>
+                                            <td>{{ $item->created_at}}</td>
                                             <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->status}}</span>
                                             </td>

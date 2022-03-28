@@ -37,6 +37,7 @@
                                     <th class="wd-15p border-bottom-0">ID</th>
                                     <th class="wd-15p border-bottom-0">image</th>
                                     <th class="wd-15p border-bottom-0">Name</th>
+                                    <th class="wd-15p border-bottom-0">Created At</th>
                                     <th class="wd-10p border-bottom-0">Status</th>
                                     <th class="wd-10p border-bottom-0">Moderation Status</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
@@ -52,21 +53,21 @@
                                             <td>{{ $item->id }}</td>
                                             <td><img src="{{asset('assets/images/properties/'.$item->image)}}" width="50px" height="50px"></td>
                                             <td>{{ $item->name}}</td>
+                                            <td>{{ $item->created_at}}</td>
                                             <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->property_status}}</span>
                                             </td>
                                             <td style="text-align: center;"><span
                                                 class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->moderation_status}}</span>
                                         </td>
-                                            <td>
-                                                <ul class="icons-list">
-                                                    <a href="{{ route('admin:properties.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
-                                                    <a href="#">
-                                                        <a href="javascript:void(0)">
-                                                            <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
-                                                        </a>
-                                                </ul>
-                                            </td>
+                                        <td>
+                                            <ul class="icons-list">
+                                                <a href="{{ route('admin:properties.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                <a href="javascript:void(0)">
+                                                  <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
+                                                </a>
+                                            </ul>
+                                        </td>
                                         </tr>
                                     @endforeach
                                 @endisset

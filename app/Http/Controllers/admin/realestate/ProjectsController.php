@@ -50,7 +50,7 @@ class ProjectsController extends Controller
             $data = array("title" => $request->title,"image" => $filename, "detail" => $request->detail,"page_content" => $request->page_content,"city_name" => $request->city_name,"location" => $request->location,"latitude"=>$request->latitude,"longitude"=>$request->longitude,"num_of_blocks"=>$request->num_of_blocks,"num_of_floors"=>$request->num_of_floors,"num_of_flats"=>$request->num_of_flats,"lowest_price"=>$request->lowest_price,"max_price"=>$request->max_price,"currency_name"=>$request->currency_name,"commercial_area_min"=>$request->commercial_area_min,"commercial_area_max"=>$request->commercial_area_max,"residential_area_min"=>$request->residential_area_min,"residential_area_max"=>$request->residential_area_max,"investor_name"=>$request->investor_name,"status"=>$request->status,"expire_date"=>$request->expire_date,"Open_sell_date"=>$request->Open_sell_date);
             $post=Projects::Create($data);
             $post->features()->attach($request->feature);
-            
+
         }else{
             $message = $validator->errors()->toArray();
         }
@@ -65,7 +65,7 @@ class ProjectsController extends Controller
         ]);
         if ($validator->passes()) {
             $type = 'success';
-            $message = "Data add successfully";
+            $message = "Data updated successfully";
             $post=Projects::find($updatedId);
             $filename = time() . '.' . request()->image->getClientOriginalExtension();
             if ($request->file('image')) {
@@ -75,7 +75,7 @@ class ProjectsController extends Controller
             $data = array("title" => $request->title,"image" => $filename, "detail" => $request->detail,"page_content" => $request->page_content,"city_name" => $request->city_name,"location" => $request->location,"latitude"=>$request->latitude,"longitude"=>$request->longitude,"num_of_blocks"=>$request->num_of_blocks,"num_of_floors"=>$request->num_of_floors,"num_of_flats"=>$request->num_of_flats,"lowest_price"=>$request->lowest_price,"max_price"=>$request->max_price,"currency_name"=>$request->currency_name,"commercial_area_min"=>$request->commercial_area_min,"commercial_area_max"=>$request->commercial_area_max,"residential_area_min"=>$request->residential_area_min,"residential_area_max"=>$request->residential_area_max,"category"=>$request->category,"investor_name"=>$request->investor_name,"status"=>$request->status,"expire_date"=>$request->expire_date,"Open_sell_date"=>$request->Open_sell_date);
             $post->update($data);
             $post->features()->attach($request->feature);
-            
+
         }else{
             $message = $validator->errors()->toArray();
         }

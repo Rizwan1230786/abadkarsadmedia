@@ -33,10 +33,9 @@
                             }
 
                           ?>
-                            <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data"
-                                method="POST" action="{{ route('admin:properties_submit', [$data['updateId'] ?? 0]) }}">
+                            <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $data['updateId'] ?? 0 }}">
+                                <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
                                 <div class="card-body pb-2">
                                     <div class="row row-sm">
                                         <div class="col-9">
