@@ -46,7 +46,7 @@
                                             </div>
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Type</label>
-                                                <select id="cars" class="form-control" name="type">
+                                                <select id="cars" class="form-control" name="type" >
                                                     <option value="rent">Rent</option>
                                                     <option value="sale">Sale</option>
                                                 </select>
@@ -71,7 +71,7 @@
                                                 <select id="cars" class="form-control" name="city_name">
                                                     <option value="">--select--</option>
                                                     @foreach ($city as $city)
-                                                        <option value="{{ $city->name }}" <?php if (($data['record']->city_id ?? '') == $city->id) {
+                                                        <option value="{{ $city->name }}" <?php if (($data['record']->city_name ?? '') == $city->name) {
     echo 'selected';
 } ?>>
                                                             {{ $city->name }}</option>
@@ -139,10 +139,10 @@
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Currency</label>
-                                                    <select id="cars" class="form-control" name="currency">
+                                                    <select id="cars" class="form-control" name="currency" >
                                                         <option value="">--select--</option>
                                                         <option value="pkr">PKR</option>
-                                                        <option value="Usa">USA</option>
+                                                        <option value="usd">USA</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group mb-3 col-md-4">

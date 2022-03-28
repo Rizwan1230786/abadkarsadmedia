@@ -112,7 +112,7 @@ Route::get('/agent/detail',[FrontController::class,'agent_detail'])->name('front
 Route::get('/agency',[FrontController::class,'agency'])->name('front.agency');
 Route::get('/agency/detail',[FrontController::class,'agency_detail'])->name('front.agency_detail');
 Route::get('/property',[FrontController::class,'property'])->name('front.property');
-Route::get('/property/detail',[FrontController::class,'property_detail'])->name('front.property_detail');
+Route::get('/property/detail/{id}',[FrontController::class,'property_detail'])->name('front.property_detail');
 Route::get('/blog',[FrontController::class,'blog'])->name('front.blog');
 Route::get('/blog/detail',[FrontController::class,'blog_detail'])->name('front.blog_detail');
 Route::get('/contact',[FrontController::class,'contact'])->name('front.contact');

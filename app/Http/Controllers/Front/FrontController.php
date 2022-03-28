@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function view(){
-        return view('front.index');
+        $property=Property::all();
+        return view('front.index',compact('property'));
     }
     public function list(){
         return view('front.pages.list');
@@ -26,10 +28,12 @@ class FrontController extends Controller
         return view('front.pages.agency_detail');
     }
     public function property(){
-        return view('front.pages.property');
+        $property=Property::all();
+        return view('front.pages.property',compact('property'));
     }
-    public function property_detail(){
-        return view('front.pages.property_detail');
+    public function property_detail($id){
+        $property = Property::where('id',$id)->get();
+        return view('front.pages.property_detail',compact('property'));
     }
     public function blog(){
         return view('front.pages.blog');

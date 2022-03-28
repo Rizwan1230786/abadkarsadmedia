@@ -67,6 +67,7 @@ class PropetyController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'image' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';

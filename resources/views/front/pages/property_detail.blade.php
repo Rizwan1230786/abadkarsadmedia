@@ -119,6 +119,7 @@
     <section class="single-proper blog details">
         <div class="container">
             <div class="row">
+                @foreach ($property as $properties)
                 <div class="col-lg-8 col-md-12 blog-pots">
                     <div class="row">
                         <div class="col-md-12">
@@ -126,10 +127,10 @@
                                 <div class="pro-wrapper">
                                     <div class="detail-wrapper-body">
                                         <div class="listing-title-bar">
-                                            <h3>Luxury Villa House <span class="mrg-l-5 category-tag">For Sale</span></h3>
+                                            <h3>{{ $properties->name }}<span class="mrg-l-5 category-tag">For Sale</span></h3>
                                             <div class="mt-0">
                                                 <a href="#listing-location" class="listing-address">
-                                                    <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>77 - Central Park South, NYC
+                                                    <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>{{ $properties->location }}
                                                 </a>
                                             </div>
                                         </div>
@@ -137,7 +138,7 @@
                                     <div class="single detail-wrapper mr-2">
                                         <div class="detail-wrapper-body">
                                             <div class="listing-title-bar">
-                                                <h4>$ 230,000</h4>
+                                                <h4>{{ $properties->currency  }} {{ $properties->price  }}</h4>
                                                 <div class="mt-0">
                                                     <a href="#listing-location" class="listing-address">
                                                         <p>$ 1,200 / sq ft</p>
@@ -158,7 +159,7 @@
                                 </ol>
                                 <div class="carousel-inner carus" role="listbox">
                                     <div class="carousel-item active">
-                                        <img class="d-block img-fluid" src="{{ asset('/front/images/slider/home-slider-1.jpg') }}" alt="First slide">
+                                        <img class="d-block img-fluid" src="{{asset('assets/images/properties/'.$properties->image)}}" alt="First slide">
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block img-fluid" src="{{ asset('/front/images/slider/home-slider-2.jpg') }}" alt="Second slide">
@@ -185,35 +186,33 @@
                                 <ul class="homes-list clearfix">
                                     <li>
                                         <i class="fa fa-bed" aria-hidden="true"></i>
-                                        <span>Beds 6</span>
+                                        <span>Beds {{ $properties->number_of_bedrooms }}</span>
                                     </li>
                                     <li>
                                         <i class="fa fa-bath" aria-hidden="true"></i>
-                                        <span>Baths 3</span>
+                                        <span>Baths {{ $properties->number_of_bathrooms }}</span>
                                     </li>
+                                    @if ($properties->square)
                                     <li>
                                         <i class="fa fa-object-group" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
+                                        <span>{{ $properties->square }} sq ft</span>
                                     </li>
+                                    @endif
+                                    @if ($properties->marala)
                                     <li>
-                                        <i class="fa fa-car" aria-hidden="true"></i>
-                                        <span>Garages 2</span>
+                                        <i class="fa fa-object-group" aria-hidden="true"></i>
+                                        <span>{{ $properties->marala }} marala</span>
                                     </li>
+                                    @endif
                                     <li>
                                         <i class="fa fa-columns" aria-hidden="true"></i>
-                                        <span>Kitchen 2</span>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-clone" aria-hidden="true"></i>
-                                        <span>Balcony 2</span>
+                                        <span>{{ $properties->number_of_floors  }}</span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="blog-info details mb-30">
                                 <h5 class="mb-4">Description</h5>
-                                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
+                                <p class="mb-3"> {!! $properties->content !!}</p>
                             </div>
                         </div>
                     </div>
@@ -223,40 +222,33 @@
                         <ul class="homes-list clearfix">
                             <li>
                                 <span class="font-weight-bold mr-1">Property ID:</span>
-                                <span class="det">V254680</span>
+                                <span class="det">{{ $properties->id }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Property Type:</span>
-                                <span class="det">House</span>
+                                <span class="det">{{ $properties->category }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Property status:</span>
-                                <span class="det">For Sale</span>
+                                <span class="det">{{ $properties->status }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Property Price:</span>
-                                <span class="det">$230,000</span>
+                                <span class="det">{{ $properties->currency }} {{ $properties->price }}</span>
                             </li>
                             <li>
-                                <span class="font-weight-bold mr-1">Rooms:</span>
-                                <span class="det">6</span>
+                                <span class="font-weight-bold mr-1">Floors:</span>
+                                <span class="det">{{ $properties->number_of_floors }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Bedrooms:</span>
-                                <span class="det">7</span>
+                                <span class="det">{{ $properties->number_of_bedrooms }}</span>
                             </li>
                             <li>
                                 <span class="font-weight-bold mr-1">Bath:</span>
-                                <span class="det">4</span>
+                                <span class="det">{{ $properties->number_of_bathrooms }}</span>
                             </li>
-                            <li>
-                                <span class="font-weight-bold mr-1">Garages:</span>
-                                <span class="det">2</span>
-                            </li>
-                            <li>
-                                <span class="font-weight-bold mr-1">Year Built:</span>
-                                <span class="det">10/6/2020</span>
-                            </li>
+
                         </ul>
                         <!-- title -->
                         <h5 class="mt-5">Amenities</h5>
@@ -456,157 +448,10 @@
                         <div class="divider-fade"></div>
                         <div id="map-contact" class="contact-map"></div>
                     </div>
-                    <!-- Star Reviews -->
-                    <section class="reviews comments">
-                        <h3 class="mb-5">3 Reviews</h3>
-                        <div class="row mb-5">
-                            <ul class="col-12 commented pl-0">
-                                <li class="comm-inf">
-                                    <div class="col-md-2">
-                                        <img src="{{ asset('/front/images/testimonials/ts-5.jpg') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-md-10 comments-info">
-                                        <div class="conra">
-                                            <h5 class="mb-2">Mary Smith</h5>
-                                            <div class="rating-box">
-                                                <div class="detail-list-rating mr-0">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="mb-4">May 30 2020</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                        <div class="rest"><img src="{{ asset('/front/images/single-property/s-1.jpg') }}" class="img-fluid" alt=""></div>
-                                    </div>
-                                </li>
 
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <ul class="col-12 commented pl-0">
-                                <li class="comm-inf">
-                                    <div class="col-md-2">
-                                        <img src="{{ asset('/front/images/testimonials/ts-4.jpg') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-md-10 comments-info">
-                                        <div class="conra">
-                                            <h5 class="mb-2">Abraham Tyron</h5>
-                                            <div class="rating-box">
-                                                <div class="detail-list-rating mr-0">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="mb-4">june 1 2020</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                    </div>
-                                </li>
 
-                            </ul>
-                        </div>
-                        <div class="row mt-5">
-                            <ul class="col-12 commented mb-0 pl-0">
-                                <li class="comm-inf">
-                                    <div class="col-md-2">
-                                        <img src="{{ asset('/front/images/testimonials/ts-3.jpg') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="col-md-10 comments-info">
-                                        <div class="conra">
-                                            <h5 class="mb-2">Lisa Williams</h5>
-                                            <div class="rating-box">
-                                                <div class="detail-list-rating mr-0">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="mb-4">jul 12 2020</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                        <div class="resti">
-                                            <div class="rest"><img src="{{ asset('/front/images/single-property/s-2.jpg') }}" class="img-fluid" alt=""></div>
-                                            <div class="rest"><img src="{{ asset('/front/images/single-property/s-3.jpg') }}" class="img-fluid" alt=""></div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <!-- End Reviews -->
-                    <!-- Star Add Review -->
-                    <section class="single reviews leve-comments details">
-                        <div id="add-review" class="add-review-box">
-                            <!-- Add Review -->
-                            <h3 class="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
-                            <span class="leave-rating-title">Your rating for this listing</span>
-                            <!-- Rating / Upload Button -->
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <!-- Leave Rating -->
-                                    <div class="clearfix"></div>
-                                    <div class="leave-rating margin-bottom-30">
-                                        <input type="radio" name="rating" id="rating-1" value="1" />
-                                        <label for="rating-1" class="fa fa-star"></label>
-                                        <input type="radio" name="rating" id="rating-2" value="2" />
-                                        <label for="rating-2" class="fa fa-star"></label>
-                                        <input type="radio" name="rating" id="rating-3" value="3" />
-                                        <label for="rating-3" class="fa fa-star"></label>
-                                        <input type="radio" name="rating" id="rating-4" value="4" />
-                                        <label for="rating-4" class="fa fa-star"></label>
-                                        <input type="radio" name="rating" id="rating-5" value="5" />
-                                        <label for="rating-5" class="fa fa-star"></label>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Uplaod Photos -->
-                                    <div class="add-review-photos margin-bottom-30">
-                                        <div class="photoUpload">
-                                            <span><i class="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
-                                            <input type="file" class="upload" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 data">
-                                    <form action="#">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="name" class="form-control" placeholder="First Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="name" class="form-control" placeholder="Last Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <textarea class="form-control" id="exampleTextarea" rows="8" placeholder="Review" required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-lg mt-2">Submit Review</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- End Add Review -->
                 </div>
+                @endforeach
                 <aside class="col-lg-4 col-md-12 car">
                     <div class="single widget">
                         <!-- Start: Schedule a Tour -->
