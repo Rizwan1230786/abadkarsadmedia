@@ -14,4 +14,9 @@ class Features extends Model
     {
         return $this->belongsToMany(Projects::class);
     }
+
+    public function property()
+    {
+        return $this->belongsToMany(Property::class);
+    }
 }

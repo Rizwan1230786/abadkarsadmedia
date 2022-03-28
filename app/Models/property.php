@@ -36,4 +36,9 @@ class Property extends Model
         'moderation_status'
 
     ];
+
+    public function features()
+    {
+        return $this->belongsToMany(Features::class);
+    }
 }
