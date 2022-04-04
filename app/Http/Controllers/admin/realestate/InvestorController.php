@@ -46,7 +46,7 @@ class InvestorController extends Controller
     }
     public function update_facilities_status(Request $request)
     {
-       
+
         $userid = $request->id;
         $status = $request->status;
         if ($status == 1) {

@@ -16,8 +16,8 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->nullable();
-            $table->string('detail')->nullable();
-            $table->string('page_content')->nullable();
+            $table->longtext('detail')->nullable();
+            $table->longText('page_content')->nullable();
             $table->string('image')->nullable();
             $table->string('city_name')->nullable();
             $table->string('location')->nullable();
@@ -36,9 +36,14 @@ class CreateProjectsTable extends Migration
             $table->string('feature')->nullable();
             $table->string('category')->nullable();
             $table->string('investor_name')->nullable();
-            $table->string('status')->nullable();
+            $table->boolean('status')->default(0);
             $table->string('expire_date')->nullable();
             $table->string('Open_sell_date')->nullable();
+            $table->string('agent_id')->nullable();
+            $table->string('agency_id')->nullable();
+            $table->string('project_map')->nullable();
+            $table->string('price_plan')->nullable();
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }

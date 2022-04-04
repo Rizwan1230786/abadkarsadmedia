@@ -32,8 +32,8 @@
     {{-- <link rel="stylesheet" href="{{ asset('/front/css/timedropper.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/datedropper.css') }}"> --}}
     <!-- LEAFLET MAP -->
-    {{-- <link rel="stylesheet" href="{{ asset('/front/css/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ asset('/front/css/leaflet.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet-gesture-handling.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.css') }}">
-    <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}">
 </head>

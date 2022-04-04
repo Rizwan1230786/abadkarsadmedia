@@ -17,7 +17,9 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('image')->nullable();
-            $table->string('status')->default(0);
+            $table->string('state')->nullable();
+            $table->string('area')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

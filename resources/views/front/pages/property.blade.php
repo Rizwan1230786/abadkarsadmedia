@@ -332,7 +332,7 @@
                                     <!-- homes img -->
                                     <a href="{{ route('front.property_detail',$properties->id) }}" class="homes-img">
                                         <div class="homes-tag button alt featured">Featured</div>
-                                        <div class="homes-tag button alt sale">For Sale</div>
+                                        <div class="homes-tag button alt sale">{{ $properties->type }}</div>
                                         <div class="homes-price">Family Home</div>
                                         <img src="{{asset('assets/images/properties/'.$properties->image)}}"
                                             alt="home-1" class="img-responsive">

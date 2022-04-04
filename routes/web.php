@@ -18,6 +18,10 @@ use App\Http\Controllers\admin\OurteamController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\QouteControlles;
 use App\Http\Controllers\admin\OurblogController;
+use App\Http\Controllers\admin\realestate\AgencyController;
+use App\Http\Controllers\admin\realestate\AgentController;
+use App\Http\Controllers\admin\realestate\StateController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,11 +46,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
-          //////////edit proflie////////////
+        //////////edit proflie////////////
         Route::get('/create_user', [AuthController::class, 'create'])->name('create');
         Route::post('/signup_user', [AuthController::class, 'signup'])->name('signup');
         Route::get('/edit_profile/{id}', [AuthController::class, 'edit_proflie']);
-        Route::post('/update_profile/{id}',[AuthController::class, 'update']);
+        Route::post('/update_profile/{id}', [AuthController::class, 'update']);
         Route::post('/update_status_user', [AuthController::class, 'update_user_status'])->name('status');
         Route::post('/delete_user/{id}', [AuthController::class, 'destroy'])->name('destroy');
         /////////////////end route of users//////////////////////
@@ -94,41 +98,60 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/delete_features/{id}', [FeaturesController::class, 'destroy'])->name('delete_features');
 
 
-          ////route of properties////////
-          Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
-          Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
-          Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
-          Route::post('/properties/update', [PropetyController::class, 'update'])->name('properties_update');
-          Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
+        ////route of properties////////
+        Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
+        Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
+        Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
+        Route::post('/properties/update/', [PropetyController::class, 'update'])->name('properties_update');
+        Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
 
+        ///////route of agents//////
+        Route::get('/agent', [AgentController::class, 'index'])->name('agent');
+        Route::get('/agent/create', [AgentController::class, 'create'])->name('agent.form');
+        Route::post('/agent/submit', [AgentController::class, 'submit'])->name('agent_submit');
+        Route::post('/update_status_agent', [AgentController::class, 'update_agent_status'])->name('update_status_facilities');
+        Route::post('/delete_agent/{id}', [AgentController::class, 'destroy'])->name('delete_agent');
+
+        ///////route of agencies//////
+        Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
+        Route::get('/agency/create', [AgencyController::class, 'create'])->name('agency.form');
+        Route::post('/agency/submit', [AgencyController::class, 'submit'])->name('agency_submit');
+        Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
+        Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
+
+        ////Route of state////////
+        Route::get('/states', [StateController::class, 'index'])->name('state');
+        Route::get('/states/create', [StateController::class, 'create'])->name('state.form');
+        Route::post('/states/submit', [StateController::class, 'submit'])->name('state_submit');
+        Route::post('/update_status_states', [StateController::class, 'update_cities_status'])->name('update_status_state');
+        Route::post('/delete_states/{id}', [StateController::class, 'destroy'])->name('delete_state');
     });
 });
 
 ///Front
-Route::get('/',[FrontController::class,'view'])->name('front.index');
-Route::get('/project',[FrontController::class,'list'])->name('front.project');
-Route::get('/project/detail/{id}',[FrontController::class,'project_detail'])->name('front.project_detail');
-Route::get('/agent',[FrontController::class,'agent'])->name('front.agent');
-Route::get('/agent/detail',[FrontController::class,'agent_detail'])->name('front.agent_detail');
-Route::get('/agency',[FrontController::class,'agency'])->name('front.agency');
-Route::get('/agency/detail',[FrontController::class,'agency_detail'])->name('front.agency_detail');
-Route::get('/property',[FrontController::class,'property'])->name('front.property');
-Route::get('/property/detail/{id}',[FrontController::class,'property_detail'])->name('front.property_detail');
-Route::get('/blog',[FrontController::class,'blog'])->name('front.blog');
-Route::get('/blog/detail',[FrontController::class,'blog_detail'])->name('front.blog_detail');
-Route::get('/contact',[FrontController::class,'contact'])->name('front.contact');
-Route::get('/about',[FrontController::class,'about'])->name('front.about');
-Route::get('/faq',[FrontController::class,'faq'])->name('front.faq');
-Route::get('/pricing',[FrontController::class,'pricing'])->name('front.pricing');
-Route::get('/error',[FrontController::class,'error'])->name('front.error');
-Route::get('/soon',[FrontController::class,'soon'])->name('front.soon');
+Route::get('/', [FrontController::class, 'view'])->name('front.index');
+Route::get('/project', [FrontController::class, 'list'])->name('front.project');
+Route::get('/project/detail/{id}', [FrontController::class, 'project_detail'])->name('front.project_detail');
+Route::get('/agent', [FrontController::class, 'agent'])->name('front.agent');
+Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
+Route::get('/agency', [FrontController::class, 'agency'])->name('front.agency');
+Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
+Route::get('/property', [FrontController::class, 'property'])->name('front.property');
+Route::get('/property/detail/{id}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
+Route::get('/blog/detail', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
+Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
+Route::get('/about', [FrontController::class, 'about'])->name('front.about');
+Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
+Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
+Route::get('/error', [FrontController::class, 'error'])->name('front.error');
+Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
 /////end front
 
 Route::get('/clear', function () {
-  Artisan::call('cache:clear');
-  // Artisan::call('route:cache');
-  // Artisan::call('view:clear');
-  // Artisan::call('config:cache');
-  dd("Cache Clear All");
-
+    Artisan::call('cache:clear');
+    // Artisan::call('route:cache');
+    // Artisan::call('view:clear');
+    // Artisan::call('config:cache');
+    dd("Cache Clear All");
 });

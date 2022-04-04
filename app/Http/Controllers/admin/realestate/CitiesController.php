@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Cities;
+use App\Models\State;
 
 class CitiesController extends Controller
 {
@@ -16,12 +17,13 @@ class CitiesController extends Controller
     }
     public function create(Request $request)
     {
+        $state = State::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Cities::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.cities.create', compact('data'));
+        return view('admin.modules.realestate.cities.create', compact('data','state'));
     }
     public function submit(Request $request)
     {
@@ -39,7 +41,7 @@ class CitiesController extends Controller
                 $imagePath = $request->file('image');
                 request()->image->move(public_path('assets/images/cities/'), $filename);
             }
-            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail);
+            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail,"state" => $request->state,"area" => $request->area,);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";

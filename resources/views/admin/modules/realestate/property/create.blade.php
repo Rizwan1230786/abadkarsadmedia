@@ -27,7 +27,7 @@
                     <div class="col-lg-12 col-md-12">
                         <?php
                         if (isset($data['record']->id) && $data['record']->id != 0) {
-                            $url = route('admin:properties_update', [$data['updateId'] ?? 0]);
+                            $url = route('admin:properties_update', [$data['updateId'] ?? 0] ,);
                         } else {
                             $url = route('admin:properties_submit');
                         }
@@ -60,11 +60,22 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else
+                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else --}}
                                             <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            @endif
+                                            {{-- @endif --}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
+                                            <input
+                                                type="file"
+                                                name="images[]"
+                                                class="form-control"
+                                                accept="image/*"
+                                                multiple
+                                                style="padding-bottom: 40px"
+                                            >
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
@@ -118,10 +129,10 @@
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" class="form-control" name="currency">
+                                                <select id="cars" required class="form-control" name="currency">
                                                     <option value="">--select--</option>
-                                                    <option value="pkr">PKR</option>
-                                                    <option value="Usa">USA</option>
+                                                    <option value="Rs">PKR</option>
+                                                    <option value="$">USD</option>
                                                 </select>
                                             </div>
                                             <div class="form-group mb-3 col-md-4">
@@ -148,6 +159,26 @@
                                             }
 
                                             ?>
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Property Map</label>
+                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else --}}
+                                            <input type="file" name="property_map" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            {{-- @endif --}}
+                                        </div>
+                                        {{-- <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Price Plan</label> --}}
+                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else --}}
+                                            {{-- <input type="file" name="price_plan" class="dropify notrequired" data-default-file="" data-height="180" /> --}}
+                                            {{-- @endif --}}
+                                        {{-- </div> --}}
+                                        <div class="form-group">
+                                            <label>Choose Video</label>
+                                            <input type="file"  name="video">
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -192,7 +223,6 @@
                                                     <option value="pending">Pending</option>
                                                     <option value="approved">Approved</option>
                                                     <option value="rejected">Rejected</option>
-                                                    \
                                                 </select>
                                             </div>
                                         </div>
@@ -221,12 +251,42 @@
                                             <div class="col-lg-12">
                                                 <label class="form-label">Project</label>
                                                 <select id="cars" class="form-control" name="project_id">
-                                                    <option value="">Select a project</option>
+                                                    <option value="null">Select a project</option>
                                                     @foreach ($project as $project)
                                                     <option value="{{ $project->id }}" <?php if (($data['record']->project_id ?? '') == $project->id) {
                                                                                             echo 'selected';
                                                                                         } ?>>
                                                         {{ $project->title }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Agent</label>
+                                                <select id="cars" class="form-control" name="agent_id">
+                                                    <option value="null">Select a Agent</option>
+                                                    @foreach ($agent as $agent)
+                                                    <option value="{{ $agent->id }}" <?php if (($data['record']->agent_id ?? '') == $agent->id) {
+                                                                                            echo 'selected';
+                                                                                        } ?>>
+                                                        {{ $agent->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div> --}}
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Agency</label>
+                                                <select id="cars" class="form-control" name="agency_id">
+                                                    <option value="null">Select a Agency</option>
+                                                    @foreach ($agency as $agency)
+                                                    <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
+                                                                                            echo 'selected';
+                                                                                        } ?>>
+                                                        {{ $agency->name }}
                                                     </option>
                                                     @endforeach
                                                 </select>

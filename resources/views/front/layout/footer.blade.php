@@ -38,18 +38,18 @@
                         <h3>Navigation</h3>
                         <div class="nav-footer">
                             <ul>
-                                <li><a href="index.html">Home One</a></li>
-                                <li><a href="properties-right-sidebar.html">Properties Right</a></li>
-                                <li><a href="properties-full-list.html">Properties List</a></li>
-                                <li><a href="properties-details.html">Property Details</a></li>
-                                <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                                <li><a href="{{ route('front.index') }}">Home One</a></li>
+                                <li><a href="#">Properties Right</a></li>
+                                <li><a href="{{ route('front.property') }}">Properties List</a></li>
+                                <li><a href="{{ route('front.property') }}">Property Details</a></li>
+                                <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents Listing</a></li>
                             </ul>
                             <ul class="nav-right">
-                                <li><a href="agent-details.html">Agents Details</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="#">Agents Details</a></li>
+                                <li><a href="{{ route('front.about') }}">About Us</a></li>
+                                <li><a href="#">Blog Default</a></li>
+                                <li><a href="#">Blog Details</a></li>
+                                <li class="no-mgb"><a href="{{ route('front.contact') }}">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -109,8 +109,8 @@
     </div>
     <div class="second-footer rec-pro">
         <div class="container-fluid sd-f">
-            <p>2021 © Copyright - All Rights Reserved.</p>
-            <ul class="netsocials">
+            <p style="text-align: center">2021 © Copyright - All Rights Reserved.</p>
+            <ul class="netsocials" style="justify-content: center">
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>

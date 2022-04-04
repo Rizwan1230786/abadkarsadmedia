@@ -143,5 +143,5 @@ class AuthController extends Controller
             return response(['status' => false]);
         }
     }
-   
+
 }

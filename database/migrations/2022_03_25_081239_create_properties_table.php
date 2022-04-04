@@ -17,8 +17,8 @@ class CreatePropertiesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('type')->nullable();
-            $table->string('descripition')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('descripition')->nullable();
+            $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->string('city_name')->nullable();
             $table->string('location')->nullable();
@@ -36,7 +36,12 @@ class CreatePropertiesTable extends Migration
             $table->string('moderation_status')->nullable();
             $table->string('category')->nullable();
             $table->string('project_id')->nullable();
-            $table->string('status')->default(0);
+            $table->string('agent_id')->nullable();
+            $table->string('agency_id')->nullable();
+            $table->string('property_map')->nullable();
+            $table->string('price_plan')->nullable();
+            $table->string('video')->nullable();
+            $table->boolean('status')->default(0);;
             $table->timestamps();
         });
     }

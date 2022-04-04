@@ -17002,23 +17002,42 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   line-height: 70px;
   position: absolute;
   text-align: center;
-  top: 57%;
+  margin-top: 28%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
   width: 70px;
   z-index: 9;
 }
+.project .popup-youtube {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 100%;
+    color: #FF385C;
+    font-size: 30px;
+    height: 70px;
+    left: 50%;
+    line-height: 70px;
+    position: absolute;
+    text-align: center;
+    margin-top: 25%;
+    -webkit-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+    width: 70px;
+    z-index: 9;
+  }
 
 .property .popup-youtube i {
   margin-left: 5px;
 }
+
+.project .popup-youtube i {
+    margin-left: 5px;
+  }
 
 .property.wprt-image-video .iq-waves {
   height: 352px;
   height: 22rem;
   left: 50%;
   position: absolute;
-  top: 57%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 352px;
@@ -17028,7 +17047,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .property.vid-si2 .popup-youtube,
 .property.wprt-image-video.vid-si2 .iq-waves {
-  top: 50.8%;
+
 }
 
 .property.wprt-image-video .iq-waves .waves {

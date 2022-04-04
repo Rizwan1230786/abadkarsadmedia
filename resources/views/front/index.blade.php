@@ -28,33 +28,23 @@
                             <li><a href="{{ route('front.index') }}">Home</a>
 
                             </li>
-                            <li><a href="#">Listing</a>
-                                <ul>
-                                    <li><a href="{{ route('front.property') }}">Listing Grid</a>
-                                    </li>
-                                    <li><a href="#">Agent View</a>
-                                        <ul>
-                                            <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                            <li><a href="{{ route('front.agent_detail') }}">Agent Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Agencies View</a>
-                                        <ul>
-                                            <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
-                                            <li><a href="{{ route('front.agency_detail') }}">Agencies Details</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li><a href="{{ route('front.project') }}">Projects</a>
                             </li>
                             <li><a href="{{ route('front.property') }}">Property</a>
                             </li>
-                            <li><a href="#">Pages</a>
+                            {{-- <li><a href="#">Pages</a>
                                 <ul>
                                     <li><a href="{{ route('front.about') }}">About Us</a></li>
                                     <li><a href="{{ route('front.faq') }}">Faq</a></li>
                                     <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
                                     <li><a href="{{ route('front.error') }}">Page 404</a></li>
                                     <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
+                                </ul>
+                            </li> --}}
+                            <li><a href="#">Agents</a>
+                                <ul>
+                                    <li><a href="{{ route('front.agent') }}">Agent View</a></li>
+                                    <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('front.blog') }}">Blog</a>
@@ -121,7 +111,7 @@
     <div class="hero-main">
         <div class="container" data-aos="zoom-in">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12-xl">
                     <div class="hero-inner">
                         <!-- Welcome Text -->
                         <div class="welcome-text">
@@ -465,7 +455,7 @@
                     </div>
                     <div class="sc-2-detail">
                         <h4 class="sc-jb-title"><a href="properties-map.html">{{ $cities->name }}</a></h4>
-                        <span>203 Properties</span>
+                        {{-- <span>203 Properties</span> --}}
                     </div>
                 </div>
             </div>
@@ -477,6 +467,7 @@
 <!-- END SECTION POPULAR PLACES -->
 
 <!-- START SECTION FEATURED PROPERTIES -->
+@if(!empty($property))
 <section class="featured portfolio bg-white-2 rec-pro full-l">
     <div class="container-fluid">
         <div class="sec-title">
@@ -486,8 +477,6 @@
         <div class="row portfolio-items">
             @foreach ($property as $properties )
             @if ($properties->moderation_status == 'approved')
-
-
             <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
                 <div class="project-single" data-aos="fade-right">
                     <div class="project-inner project-head">
@@ -501,8 +490,8 @@
                         </div>
                         <div class="button-effect">
                             <a href="{{ route('front.property_detail',$properties->id) }}" class="btn"><i class="fa fa-link"></i></a>
-                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                            <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                            <a href="{{asset($properties->video)}}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                            <a href="{{ route('front.property_detail',$properties->id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                         </div>
                     </div>
                     <!-- homes content -->
@@ -560,10 +549,11 @@
             @endforeach
         </div>
         <div class="bg-all">
-            <a href="{{ route('front.property',$properties->id) }}" class="btn btn-outline-light">View More</a>
+            <a href="{{ route('front.property') }}" class="btn btn-outline-light">View More</a>
         </div>
     </div>
 </section>
+@endif
 <!-- END SECTION FEATURED PROPERTIES -->
 
 <!-- START SECTION WHY CHOOSE US -->
@@ -647,8 +637,8 @@
                                 </div>
                                 <div class="button-effect">
                                     <a href="{{ route('front.project_detail',$projects->id) }}" class="btn"><i class="fa fa-link"></i></a>
-                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                    <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                    <a href="{{asset($projects->video)}}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                    <a href="{{ route('front.project_detail',$projects->id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                 </div>
                             </div>
                             <!-- homes content -->
@@ -656,7 +646,7 @@
                                 <!-- homes address -->
                                 <h3><a href="{{ route('front.project_detail',$projects->id) }}">{{ $projects->title }}</a></h3>
                                 <p class="homes-address mb-3">
-                                    <a href="single-property-1.html">
+                                    <a href="{{ route('front.project_detail',$projects->id) }}">
                                         <i class="fa fa-map-marker"></i><span>{{ $projects->location }}</span>
                                     </a>
                                 </p>
@@ -1138,10 +1128,11 @@
         </div>
         <div class="row team-all">
             <!--Team Block-->
+            @foreach ($agents as $agent )
             <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="150">
                 <div class="inner-box team-details">
                     <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/t-5.jpg') }}" alt="" /></a>
+                        <a href="agents-listing-grid.html"><img src="{{asset('assets/images/agent/'.$agent->image)}}" alt=""/></a>
                         <div class="team-hover">
                             <ul class="team-social">
                                 <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -1152,109 +1143,12 @@
                         </div>
                     </div>
                     <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Carls Jhons</a></h3>
+                        <h3><a href="{{ route('front.agent_detail',$agent->id) }}">{{ $agent->name }}</a></h3>
                         <div class="designation">Real Estate Agent</div>
                     </div>
                 </div>
             </div>
-            <!--Team Block-->
-            <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="250">
-                <div class="inner-box team-details">
-                    <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/t-6.jpg') }}" alt="" /></a>
-                        <div class="team-hover">
-                            <ul class="team-social">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Arling Tracy</a></h3>
-                        <div class="designation">Real Estate Agent</div>
-                    </div>
-                </div>
-            </div>
-            <!--Team Block-->
-            <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="350">
-                <div class="inner-box team-details">
-                    <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/t-7.jpg') }}" alt="" /></a>
-                        <div class="team-hover">
-                            <ul class="team-social">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Mark Web</a></h3>
-                        <div class="designation">Real Estate Agent</div>
-                    </div>
-                </div>
-            </div>
-            <!--Team Block-->
-            <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up" data-aos-delay="450">
-                <div class="inner-box team-details">
-                    <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/t-8.jpg') }}" alt="" /></a>
-                        <div class="team-hover">
-                            <ul class="team-social">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Katy Grace</a></h3>
-                        <div class="designation">Real Estate Agent</div>
-                    </div>
-                </div>
-            </div>
-            <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up" data-aos-delay="550">
-                <div class="inner-box team-details">
-                    <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/team-image-2.jpg') }}" alt="" /></a>
-                        <div class="team-hover">
-                            <ul class="team-social">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Chris Melo</a></h3>
-                        <div class="designation">Real Estate Agent</div>
-                    </div>
-                </div>
-            </div>
-            <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up" data-aos-delay="650">
-                <div class="inner-box team-details">
-                    <div class="image team-head">
-                        <a href="agents-listing-grid.html"><img src="{{ asset('/front/images/team/team-image-7.jpg') }}" alt="" /></a>
-                        <div class="team-hover">
-                            <ul class="team-social">
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="lower-box">
-                        <h3><a href="agents-listing-grid.html">Nina Thomas</a></h3>
-                        <div class="designation">Real Estate Agent</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

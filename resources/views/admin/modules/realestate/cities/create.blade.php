@@ -34,13 +34,28 @@
                                         <label class="form-label">Name</label>
                                         <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                     </div>
+                                    <div class="col-lg-12 form-group ">
+                                        <label class="form-label">Select State</label>
+                                        <select id="cars" class="form-control" name="state">
+                                            <option value="">--select--</option>
+                                            @foreach($state as $state)
+                                            <option value="{{$state->name}}" <?php if (($data['record']->state ?? '') == $state->name) {
+                                                                                echo 'selected';
+                                                                            } ?>>{{$state->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label class="form-label">Area</label>
+                                        <input class="form-control notrequired" placeholder="Add Area" name="area" value="{{ $data['record']->area ?? '' }}" type="text">
+                                    </div>
                                     <div class="col-lg-12 col-sm-12 form-group ">
                                         <label class="form-label">Image</label>
-                                        @if(isset($data['record']->image) && !empty($data['record']->image))
+                                        {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
                                         <input type="file" name="image" class="dropify notrequired" data-default-file="{{asset('assets/images/cities/'.$data['record']->image)}}" data-height="180" />
-                                        @else
-                                        <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
-                                        @endif
+                                        @else --}}
+                                        <input type="file" name="image" required class="dropify notrequired" data-default-file="" data-height="180" />
+                                        {{-- @endif --}}
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">

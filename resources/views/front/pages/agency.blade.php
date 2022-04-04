@@ -151,202 +151,32 @@
                         </div>
                     </section>
                     <div class="row">
+                        @foreach ($agencies as $agency )
                         <div class="col-md-12 col-xs-12">
                             <div class="news-item news-item-sm">
                                 <a href="agencies-details.html" class="news-img-link">
                                     <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-1.png" alt="blog image">
+                                        {{-- <div class="homes-tag button alt featured">3 Listings</div> --}}
+                                        <img class="resp-img" src="{{asset('assets/images/agency/'.$agency->image)}}" alt="blog image">
                                     </div>
                                 </a>
                                 <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Capital Partners</h3></a>
+                                    <a href="{{ route('front.agency_detail',$agency->id) }}"><h3>{{ $agency->name }}</h3></a>
                                     <div class="the-agents">
                                         <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
+                                            <li><a href="#">Office:  {{ $agency->office_number }}</a></li>
+                                            <li><a href="#">Mobile:  {{ $agency->mobile_number }}</a></li>
+                                            <li><a href="#">Fax:   {{ $agency->fax_number }}</a></li>
+                                            <li><a href="#">Email:  {{ $agency->email }}</a></li>
                                         </ul>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Arling Tracy</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-1.jpg" alt="">
-                                        </div>
+                                        {{-- <a href="properties-full-grid-2.html" class="news-link">View My Listings</a> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-xs-12 space">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-2.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Legacy park</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Carls Jhons</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-3.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Live Property</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Katy Grace</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12 space">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-4.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Real Property</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Mark Web</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-4.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12 space2">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-5.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Mojo Homes</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Nina Thomas</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-5.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12 space2">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-6.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>Sweet Houses</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Ichiro Lee</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-6.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-xs-12 no-pb2 icho">
-                            <div class="news-item news-item-sm">
-                                <a href="agencies-details.html" class="news-img-link">
-                                    <div class="news-item-img homes">
-                                        <div class="homes-tag button alt featured">3 Listings</div>
-                                        <img class="resp-img" src="{{ asset('/front') }}/images/partners/ag-7.png" alt="blog image">
-                                    </div>
-                                </a>
-                                <div class="news-item-text">
-                                    <a href="agencies-details.html"><h3>True Home</h3></a>
-                                    <div class="the-agents">
-                                        <ul class="the-agents-details">
-                                            <li><a href="#">Office: (234) 0200 17813</a></li>
-                                            <li><a href="#">Mobile: (657) 9854 12095</a></li>
-                                            <li><a href="#">Fax: 809 123 0951</a></li>
-                                            <li><a href="#">Email: info@agent.com</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
-                                        <div class="admin">
-                                            <p>Ruth Thomas</p>
-                                            <img src="{{ asset('/front') }}/images/testimonials/ts-1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <aside class="col-lg-4 col-md-12 car">

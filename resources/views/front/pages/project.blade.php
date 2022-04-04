@@ -170,8 +170,8 @@
                                         <a href="{{ route('front.project_detail',$projects->id) }}" class="homes-img">
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
-                                            <div class="homes-price">{{$projects->max_price  }}/mo</div>
-                                            <img src="{{ asset('/front/images/blog/b-11.jpg') }}" alt="home-1" class="img-responsive">
+                                            {{-- <div class="homes-price">{{$projects->max_price  }}/mo</div> --}}
+                                            <img src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="button-effect">
@@ -202,7 +202,7 @@
                 <aside class="col-lg-4 col-md-12 car">
                     <div class="widget">
                         <!-- Search Fields -->
-                        <div class="widget-boxed main-search-field">
+                        {{-- <div class="widget-boxed main-search-field">
                             <div class="widget-boxed-header">
                                 <h4>Find Your House</h4>
                             </div>
@@ -500,7 +500,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="widget-boxed mt-5">
                             <div class="widget-boxed-header">
                                 <h4>Recent Properties</h4>

@@ -72,6 +72,18 @@
 										<i class="fas fa-globe-americas side-menu__icon custom"></i>
 										<span class="side-menu__label">Cities</span>
 									</a>
+                                    <a class="side-menu__item" href="{{route('admin:state')}}">
+										<i class="fas fa-globe-americas side-menu__icon custom"></i>
+										<span class="side-menu__label">States</span>
+									</a>
+                                    <a class="side-menu__item" href="{{route('admin:agent')}}">
+										<i class="fas fa-users side-menu__icon custom"></i>
+										<span class="side-menu__label">Agents</span>
+									</a>
+                                    <a class="side-menu__item" href="{{route('admin:agency')}}">
+										<i class="fas fa-users side-menu__icon custom"></i>
+										<span class="side-menu__label">Agencies</span>
+									</a>
 								</ul>
 							</div>
 						</li>

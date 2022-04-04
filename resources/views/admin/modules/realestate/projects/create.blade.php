@@ -53,7 +53,18 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple />
+                                            <input type="file" required name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
+                                            <input
+                                                type="file"
+                                                name="images[]"
+                                                class="form-control"
+                                                accept="image/*"
+                                                multiple
+                                                style="padding-bottom: 40px"
+                                            >
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
@@ -107,10 +118,10 @@
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" class="form-control" name="currency_name">
+                                                <select id="cars" required class="form-control" name="currency_name">
                                                     <option value="">--select--</option>
-                                                    <option value="pkr">PKR</option>
-                                                    <option value="Usa">USA</option>
+                                                    <option value="Rs">PKR</option>
+                                                    <option value="$">USA</option>
                                                 </select>
                                             </div>
                                             <div class="col-6 form-group">
@@ -149,6 +160,26 @@
 
                                             ?>
                                         </div>
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Project Map</label>
+                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else --}}
+                                            <input type="file" name="property_map" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            {{-- @endif --}}
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Price Plan</label>
+                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else --}}
+                                            <input type="file" name="price_plan" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            {{-- @endif --}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Choose Video</label>
+                                            <input type="file"  name="video">
+                                        </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="col-lg-12">
@@ -164,12 +195,12 @@
                                                 <label class="form-label">Category</label>
                                                 @foreach ($categories as $category)
                                                 <li class="no-border">
-                                                    <input type="checkbox" name="category[]" value="{{ $category->id }}" id="{{ $category->id }}">
+                                                    <input type="radio" name="category" value="{{ $category->name }}" id="{{ $category->id }}">
                                                     <label for="{{ $category->id }}">{{ $category->name}}</label>
                                                     <ul style="margin-left: 34px;margin-bottom: 0;">
                                                         @foreach($category->subCategory as $sub_cat)
                                                         <li>
-                                                            <input type="checkbox" name="category[]" value="{{ $sub_cat->id }}" id="{{ $sub_cat->id }}">
+                                                            <input type="radio" name="category" value="{{ $sub_cat->name }}" id="{{ $sub_cat->id }}">
                                                             <label for="{{ $sub_cat->id }}">{{ $sub_cat->name}}</label>
                                                         </li>
                                                         @endforeach
@@ -223,6 +254,36 @@
                                             <div class="col-lg-12">
                                                 <label class="form-label">Open sell date</label>
                                                 <input class="form-control notrequired" placeholder="Open sell date" name="Open_sell_date" value="{{ $data['record']->Open_sell_date ?? '' }}" type="date">
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Agent</label>
+                                                <select id="cars" class="form-control" name="agent_id">
+                                                    <option value="null">Select a Agent</option>
+                                                    @foreach ($agent as $agent)
+                                                    <option value="{{ $agent->id }}" <?php if (($data['record']->agent_id ?? '') == $agent->id) {
+                                                                                            echo 'selected';
+                                                                                        } ?>>
+                                                        {{ $agent->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Agency</label>
+                                                <select id="cars" class="form-control" name="agency_id">
+                                                    <option value="null">Select a Agency</option>
+                                                    @foreach ($agency as $agency)
+                                                    <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
+                                                                                            echo 'selected';
+                                                                                        } ?>>
+                                                        {{ $agency->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

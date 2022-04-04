@@ -7,8 +7,12 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\Cities;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
+use App\Models\Agency;
+use App\Models\Image;
+use App\Models\Project_image;
 
 class FrontController extends Controller
 {
@@ -16,27 +20,36 @@ class FrontController extends Controller
         $property=Property::all();
         $project=Projects::all();
         $city=Cities::all();
-        return view('front.index',compact('property','project','city'));
+        $agents=Agent::all();
+        return view('front.index',compact('property','project','city','agents'));
     }
     public function list(){
         $project=Projects::all();
         return view('front.pages.project',compact('project'));
     }
     public function agent(){
-        return view('front.pages.agent');
+        $agents=Agent::all();
+        return view('front.pages.agent',get_defined_vars());
     }
-    public function agent_detail(){
-        return view('front.pages.agent_detail');
+    public function agent_detail($id){
+        $agents=Agent::where('id',$id)->get();
+        $property=Property::all();
+        return view('front.pages.agent_detail',get_defined_vars());
     }
     public function agency(){
-        return view('front.pages.agency');
+        $agencies=Agency::all();
+
+        return view('front.pages.agency',get_defined_vars());
     }
-    public function agency_detail(){
-        return view('front.pages.agency_detail');
+    public function agency_detail($id){
+        $agency=Agency::where('id',$id)->first();
+        $projects=Projects::all();
+        $agents=Agent::all();
+        return view('front.pages.agency_detail',compact('agency','projects','agents'));
     }
     public function property(){
         $property=Property::all();
-        return view('front.pages.property',compact('property'));
+        return view('front.pages.property',compact('property',));
     }
     public function property_detail($id){
         $assign = DB::table('features_property')
@@ -44,9 +57,10 @@ class FrontController extends Controller
         ->join('properties','features_property.property_id','=','properties.id')
         ->select('features.name as FeaturesName', 'properties.id as propertiesID',)
         ->get();
-
-        $property = Property::where('id',$id)->get();
-        return view('front.pages.property_detail',compact('property','assign'));
+        $properties = Property::where('id',$id)->first();
+        $agent =Agent::all();
+        $images=Image::all();
+        return view('front.pages.property_detail',compact('properties','assign','agent','images'));
     }
     public function blog(){
         return view('front.pages.blog');
@@ -80,8 +94,11 @@ class FrontController extends Controller
         ->join('projects','features_projects.projects_id','=','projects.id')
         ->select('features.name as FeaturesName', 'projects.id as projectID',)
         ->get();
-        $project = Projects::where('id',$id)->get();
-        return view('front.pages.project_detail',compact('project','assign'));
+        $project = Projects::where('id',$id)->first();
+        $agent =Agent::all();
+        $agencies=Agency::all();
+        $images=Project_image::all();
+        return view('front.pages.project_detail',compact('project','assign','agent','agencies','images'));
     }
 
 }

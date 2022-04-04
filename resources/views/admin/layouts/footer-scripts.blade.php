@@ -29,6 +29,7 @@
 		<script src="{{URL::asset('assets/js/custom.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/dropzone.min.js"></script>
 <script>
      $.ajaxSetup({
             headers: {
@@ -131,24 +132,24 @@ $(document).on('click', '.delete_user', function (e) {
                             text: "SuperAdmin cannot be removed",
                             type: "error",
                             confirmButtonText: "Ok!",
-                           
-                        });  
-                    }    
-                }         
-            }); 
+
+                        });
+                    }
+                }
+            });
         });
 });
 </script>
 <!--detail modal ajax in inquary table -->
 <script type="text/javascript">
   $(function () {
-     
+
       $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
     });
-     
+
     $(document).on("click", ".view_details", function(event){
         event.preventDefault();
         var id = $(this).data('id');
