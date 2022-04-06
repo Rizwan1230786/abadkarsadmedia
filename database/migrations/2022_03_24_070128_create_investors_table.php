@@ -17,7 +17,7 @@ class CreateInvestorsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('detail')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

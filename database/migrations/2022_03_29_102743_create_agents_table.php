@@ -23,7 +23,7 @@ class CreateAgentsTable extends Migration
             $table->string('fax_number')->nullable();
             $table->longText('descripition')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->nullable(0);
             $table->string('agency')->nullable();
             $table->string('city_name')->nullable();
             $table->timestamps();

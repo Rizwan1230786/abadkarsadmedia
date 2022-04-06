@@ -95,13 +95,13 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="decimal">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="decimal">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Longitude from address. </a>
                                             </div>
@@ -220,8 +220,8 @@
                                             <div class="col-lg-12">
                                                 <label class="form-label">Moderation status</label>
                                                 <select id="cars" class="form-control " name="moderation_status">
-                                                    <option value="pending">Pending</option>
                                                     <option value="approved">Approved</option>
+                                                    <option value="pending">Pending</option>
                                                     <option value="rejected">Rejected</option>
                                                 </select>
                                             </div>

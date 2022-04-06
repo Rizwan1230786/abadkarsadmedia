@@ -171,7 +171,7 @@
                                         </ul>
                                     </div>
                                     <div class="news-item-bottom">
-                                        {{-- <a href="properties-full-grid-2.html" class="news-link">View My Listings</a> --}}
+                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
                                     </div>
                                 </div>
                             </div>

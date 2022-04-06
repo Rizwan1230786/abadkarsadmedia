@@ -11,6 +11,7 @@ use App\Models\Agent;
 use App\Models\Cities;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 use App\Models\Agency;
+use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Project_image;
 
@@ -63,10 +64,12 @@ class FrontController extends Controller
         return view('front.pages.property_detail',compact('properties','assign','agent','images'));
     }
     public function blog(){
-        return view('front.pages.blog');
+        $blog=Blog::all();
+        return view('front.pages.blog',get_defined_vars());
     }
-    public function blog_detail(){
-        return view('front.pages.blog_detail');
+    public function blog_detail($id){
+        $blog = Blog::where('id',$id)->first();
+        return view('front.pages.blog_detail',compact('blog'));
     }
     public function contact(){
         return view('front.pages.contact');

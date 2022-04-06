@@ -39,7 +39,6 @@
         <!-- Jquery js-->
 		<script src="{{URL::asset('assets/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{URL::asset('assets/js/toastr.min.js')}}"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/basic.min.css">
 
 <style>
 /* endenimation */

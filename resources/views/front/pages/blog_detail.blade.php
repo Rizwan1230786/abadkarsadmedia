@@ -137,31 +137,31 @@
                     <div class="row">
                         <div class="col-md-12 col-xs-12">
                             <div class="news-item details no-mb2">
-                                <a href="{{ route('front.blog_detail') }}" class="news-img-link">
+                                <a href="" class="news-img-link">
                                     <div class="news-item-img">
-                                        <img class="img-responsive" src="{{ asset('/front/images/blog/b-1.jpg') }}" alt="blog image">
+                                        <img class="img-responsive" src="{{ asset('storage/' . $blog->image) }}" alt="blog image">
                                     </div>
                                 </a>
                                 <div class="news-item-text details pb-0">
-                                    <a href="{{ route('front.blog_detail') }}"><h3>Real Estate News</h3></a>
+                                    <a href="#"><h3>{{ $blog->title }}</h3></a>
                                     <div class="dates">
-                                        <span class="date">April 11, 2020 &nbsp;/</span>
+                                        <span class="date">{{ $blog->created_at->format('d-m-y') }} &nbsp;/</span>
                                         <ul class="action-list pl-0">
                                             <li class="action-item pl-2"><i class="fa fa-heart"></i> <span>306</span></li>
                                             <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>
                                             <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span></li>
                                         </ul>
                                     </div>
-                                    <div class="news-item-descr big-news details visib mb-0">
-                                        <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ea? Vitae pariatur ab amet iusto tempore neque a, deserunt eaque recusandae obcaecati eos atque delectus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi labore vel enim repellendus excepturi autem. Eligendi cum laboriosam exercitationem illum repudiandae quasi sint dicta consectetur porro fuga ea, perspiciatis aut!</p>
-
-                                        <p class="d-none d-sm-none d-lg-block d-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ea? Vitae pariatur ab amet iusto tempore neque a, deserunt eaque recusandae obcaecati eos atque delectus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi labore vel enim repellendus excepturi autem. Eligendi cum laboriosam exercitationem illum repudiandae quasi sint dicta consectetur porro fuga ea, perspiciatis aut!</p>
+                                    <div class="blog-info details mb-30">
+                                        <h5 class="mb-4">Details</h5>
+                                        <p class="mb-3">{!! $blog->content !!}
+                                            </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <section class="comments">
+                    {{-- <section class="comments">
                         <h3 class="mb-5">5 Comments</h3>
                         <div class="row mb-4">
                             <ul class="col-12 commented">
@@ -205,8 +205,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </section>
-                    <section class="leve-comments wpb">
+                    </section> --}}
+                    {{-- <section class="leve-comments wpb">
                         <h3 class="mb-5">Leave a Comment</h3>
                         <div class="row">
                             <div class="col-md-12 data">
@@ -233,7 +233,7 @@
                                 </form>
                             </div>
                         </div>
-                    </section>
+                    </section> --}}
                 </div>
                 <aside class="col-lg-3 col-md-12">
                     <div class="widget">
@@ -278,7 +278,7 @@
                                 <span><a href="#" class="btn btn-outline-primary">Price</a></span>
                             </div>
                         </div>
-                        <div class="recent-post pt-5">
+                        {{-- <div class="recent-post pt-5">
                             <h5 class="font-weight-bold mb-4">Recent Posts</h5>
                             <div class="recent-main">
                                 <div class="recent-img">
@@ -307,7 +307,7 @@
                                     <p>May 10, 2020</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </aside>
             </div>
