@@ -136,8 +136,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+
+
     });
 });
+////tiny mce image uplod
+Route::post('/upload',[BlogController::class,'upload'] );
+
 
 ///Front
 Route::get('/', [FrontController::class, 'view'])->name('front.index');
