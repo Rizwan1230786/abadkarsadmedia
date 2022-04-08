@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\QouteControlles;
 use App\Http\Controllers\admin\OurblogController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\AgentController;
+use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\StateController;
 
 /*
@@ -125,8 +126,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/states/submit', [StateController::class, 'submit'])->name('state_submit');
         Route::post('/update_status_states', [StateController::class, 'update_cities_status'])->name('update_status_state');
         Route::post('/delete_states/{id}', [StateController::class, 'destroy'])->name('delete_state');
+
+        //////Route of  Blog////////
+
+        // Route::resource('/blog',BlogController::class);
+        Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+        Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+        Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
+        Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+
+
     });
 });
+////tiny mce image uplod
+Route::post('/upload',[BlogController::class,'upload'] );
+
 
 ///Front
 Route::get('/', [FrontController::class, 'view'])->name('front.index');
@@ -139,7 +155,7 @@ Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->na
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
 Route::get('/property/detail/{id}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
-Route::get('/blog/detail', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
+Route::get('/blog/detail/{id}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');

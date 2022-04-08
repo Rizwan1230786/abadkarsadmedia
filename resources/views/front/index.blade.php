@@ -490,7 +490,10 @@
                         </div>
                         <div class="button-effect">
                             <a href="{{ route('front.property_detail',$properties->id) }}" class="btn"><i class="fa fa-link"></i></a>
+                            @if ($properties->video)
                             <a href="{{asset($properties->video)}}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                            @endif
+
                             <a href="{{ route('front.property_detail',$properties->id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                         </div>
                     </div>

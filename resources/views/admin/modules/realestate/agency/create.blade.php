@@ -75,7 +75,7 @@
                                     <div class="col-lg-6 col-sm-12 form-group">
                                         <label class="form-label">Image</label>
                                         <input type="file" name="image" class="dropify notrequired"
-                                        data-default-file="{{asset('assets/images/photos/bcstart_right_image.jpg')}}" data-height="180"/>
+                                        data-default-file="{{asset('assets/images/photos/bcstart_right_image.jpg')}}" required data-height="180"/>
                                     </div>
 
 

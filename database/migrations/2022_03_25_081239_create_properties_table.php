@@ -41,7 +41,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_map')->nullable();
             $table->string('price_plan')->nullable();
             $table->string('video')->nullable();
-            $table->boolean('status')->default(0);;
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

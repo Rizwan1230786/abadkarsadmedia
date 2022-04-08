@@ -36,7 +36,7 @@ class CreateProjectsTable extends Migration
             $table->string('feature')->nullable();
             $table->string('category')->nullable();
             $table->string('investor_name')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('status')->nullable();
             $table->string('expire_date')->nullable();
             $table->string('Open_sell_date')->nullable();
             $table->string('agent_id')->nullable();
