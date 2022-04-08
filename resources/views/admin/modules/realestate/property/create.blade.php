@@ -60,22 +60,24 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else --}}
+                                            @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify" data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
+                                            @else 
                                             <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            {{-- @endif --}}
+                                            @endif 
                                         </div>
                                         <div class="form-group">
-                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
-                                            <input
-                                                type="file"
-                                                name="images[]"
-                                                class="form-control"
-                                                accept="image/*"
-                                                multiple
-                                                style="padding-bottom: 40px"
-                                            >
+                                            
+                                                <label for="files" class="form-label">Upload Multiple Property Images:</label>
+                                                <input
+                                                    type="file"
+                                                    name="images[]"
+                                                    class="form-control dropify"
+                                                    accept="image/*"
+                                                    multiple
+                                                    style="padding-bottom: 40px"
+                                                 >
+                                           
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>

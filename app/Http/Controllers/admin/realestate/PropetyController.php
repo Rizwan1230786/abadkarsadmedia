@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-
 class PropetyController extends Controller
 {
     public function index()
@@ -51,7 +50,7 @@ class PropetyController extends Controller
             'name' => 'required',
             'image' => 'required',
             'property_map' => 'required',
-            'video'          => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'
+            
         ]);
         if ($validator->passes()) {
             $type = 'success';
@@ -78,8 +77,8 @@ class PropetyController extends Controller
             }
 
             $data = array(
-                "name" => $request->name, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "status" => $request->status, "moderation_status" => $request->moderation_status,
-                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "property_map" => $mapname,"video" => $path, //"price_plan" => $pricename,
+                "name" => $request->name, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,"moderation_status" => $request->moderation_status,
+                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "property_map" => $mapname, //"price_plan" => $pricename,
             );
             $post = Property::Create($data);
             if ($request->has('images')) {
@@ -106,10 +105,9 @@ class PropetyController extends Controller
         $updatedId = $request->id;
         $type = 'error';
         $validator = Validator::make($request->all(), [
-            'image' => 'required',
-            'property_map' => 'required',
+           
             'name' => 'required',
-            'video' => 'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'
+           
         ]);
         if ($validator->passes()) {
             $type = 'success';

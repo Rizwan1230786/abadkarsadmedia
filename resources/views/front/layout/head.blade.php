@@ -4,7 +4,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="html 5 template">
     <meta name="author" content="">
-    <title>Find Houses - HTML5 Template</title>
+    <title>Abadkar</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{asset('/front/css/jquery-ui.css')}}">
