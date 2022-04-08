@@ -53,7 +53,11 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Image</label>
-                                            <input type="file" required name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple />
+                                            @if(isset($data['record']->image) && !empty($data['record']->image))
+                                            <input type="file" name="image" class="dropify" data-default-file="{{asset('assets/images/projects/'.$data['record']->image)}}" data-height="180" />
+                                            @else 
+                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="files" class="form-label">Upload Multiple Property Images:</label>
@@ -162,19 +166,19 @@
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Project Map</label>
-                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else --}}
-                                            <input type="file" name="property_map" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            {{-- @endif --}}
+                                            @if(isset($data['record']->project_map) && !empty($data['record']->project_map))
+                                            <input type="file" name="project_map" class="dropify" data-default-file="{{asset('assets/images/projects/maps/'.$data['record']->project_map)}}" data-height="180" />
+                                            @else
+                                            <input type="file" name="project_map" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            @endif 
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Price Plan</label>
-                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else --}}
+                                            @if(isset($data['record']->price_plan) && !empty($data['record']->price_plan))
+                                            <input type="file" name="price_plan" class="dropify" data-default-file="{{asset('assets/images/projects/price/'.$data['record']->price_plan)}}" data-height="180" />
+                                            @else
                                             <input type="file" name="price_plan" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            {{-- @endif --}}
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label>Choose Video</label>
