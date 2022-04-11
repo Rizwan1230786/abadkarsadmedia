@@ -60,7 +60,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
+                                        <label for="files" class="form-label">Upload Multiple Project Images:</label>
                                             <input
                                                 type="file"
                                                 name="images[]"
@@ -69,6 +69,14 @@
                                                 multiple
                                                 style="padding-bottom: 40px"
                                             >
+                                            @if(isset($data['record']->id) && !empty($data['record']->id))
+                                            @foreach($multiimages as $multi)
+                                            @if(isset($data['record']->id) && $data['record']->id == $multi->projects_id)
+                                            <input type="hidden" name="project_id[]" value="{{$multi->projectsimagesid}}">
+                                            <img src="{{asset('assets/images/projects/multipleimages/'.$multi->image)}}" alt="" width="60">
+                                            @endif
+                                            @endforeach
+                                            @endif
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
