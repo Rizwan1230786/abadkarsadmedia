@@ -7720,7 +7720,7 @@ html input[disabled] {
 }
 
 .header-widget.sign-in a {
-  color: #fff;
+  color: #666;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -7765,6 +7765,8 @@ html input[disabled] {
   margin-left: 0px !important;
   margin-right: 55px;
   display: inline-block;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
 }
 
 .show-lang span strong {

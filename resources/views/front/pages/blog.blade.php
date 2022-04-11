@@ -19,6 +19,7 @@
             <div class="row">
                 <div class="col-lg-9 col-md-12 col-xs-12">
                     <div class="row">
+
                         @foreach ($blog as $blogs)
 
                         <div class="col-md-12 col-xs-12 space">
@@ -97,7 +98,7 @@
                                 <span><a href="#" class="btn btn-outline-primary mb-0">Price</a></span>
                             </div>
                         </div>
-                        <div class="recent-post pt-5">
+                        {{-- <div class="recent-post pt-5">
                             <h5 class="font-weight-bold mb-4">Recent Posts</h5>
                             <div class="recent-main">
                                 <div class="recent-img">
@@ -126,7 +127,7 @@
                                     <p>May 10, 2020</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </aside>
             </div>
