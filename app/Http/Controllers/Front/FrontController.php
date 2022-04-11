@@ -22,7 +22,7 @@ class FrontController extends Controller
         $project=Projects::all();
         $city=Cities::all();
         $agents=Agent::all();
-        return view('front.index',compact('property','project','city','agents'));
+        return view('front.pages.index',compact('property','project','city','agents'));
     }
     public function list(){
         $project=Projects::all();

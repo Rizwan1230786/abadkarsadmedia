@@ -1,4 +1,4 @@
-@extends('front.layout.layout')
+@extends('front.layout')
 @section('body')
 
     <body>
