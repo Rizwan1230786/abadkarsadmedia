@@ -1,7 +1,7 @@
 @extends('front.layout')
-@section('body')
 
-    <body class="inner-pages sin-1 homepage-4 hd-white">
+
+
     @section('main')
     <section class="headings">
         <div class="text-heading text-center">
@@ -198,6 +198,5 @@
         </div>
     </section>
     <!-- END SECTION BLOG -->
-    @endsection
-</body>
+
 @endsection
