@@ -1,3 +1,6 @@
+<?php
+ use App\Models\subpages;
+?>
 <header id="header-container">
     <!-- Header -->
     <div id="header">
@@ -21,12 +24,21 @@
                     <ul id="responsive">
                         @foreach($data as $val)
                         <?php
-                        // $subPage = subpages::where(['parent_id'=>$val->id,'is_publish'=> 1])->orderBy('page_rank','asc')->get();
-                        ?>
-                        <li class="nav-item">
-                            <a class="nav-link" id="third-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/{{$val->url_slug}}" role="button">
+                        $subPage = subpages::where(['parent_id' => $val->id, 'is_publish' => 1])->orderBy('page_rank', 'asc')->get(); ?>
+                        <li class="nav-item <?= (isset($subPage[0]->id) && !empty($subPage[0]->id) ? 'dropdown' : '') ?>">
+                            <a href="/{{$val->url_slug}}" role="button">
                                 {{$val->page_title}}
                             </a>
+                            <ul> 
+                                <?php
+                                foreach ($subPage as $key => $value) {
+                                ?>
+                                    <li><a href="/{{$value->url_slug}}">{{$value->page_title}} </a></li>
+
+
+                                <?php }
+                                ?>
+                            </ul>
                         </li>
                         @endforeach
                         <!-- <li><a href="{{ route('front.index') }}">Home</a>
@@ -55,10 +67,10 @@
 
                     </li>
                     <li><a href="{{ route('front.contact') }}">Contact</a></li> -->
-                    <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
-                    <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                    <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add
-                            Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
+                        <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
+                        <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
+                        <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add
+                                Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
                     </ul>
                 </nav>
                 <!-- Main Navigation / End -->

@@ -15,9 +15,10 @@ use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Project_image;
 use App\Models\Webpages;
+use App\Models\subpages;
 class FrontController extends Controller
 {
-    public function view(){
+    public function index(){
         $property=Property::all();
         $project=Projects::all();
         $city=Cities::all();
@@ -26,20 +27,27 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.index',compact('property','project','city','agents','meta','data'));
     }
-    public function list(){
+    public function project(){
         $project=Projects::all();
-        return view('front.pages.project',compact('project'));
+        $meta = Webpages::Where("page_title", "project")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        return view('front.pages.project',compact('project','meta','data'));
     }
     public function agent(){
+        $meta = subpages::Where("page_title", "agents view")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $agents=Agent::all();
         return view('front.pages.agent',get_defined_vars());
     }
     public function agent_detail($id){
         $agents=Agent::where('id',$id)->get();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $property=Property::all();
         return view('front.pages.agent_detail',get_defined_vars());
     }
     public function agency(){
+        $meta = subpages::Where("page_title", "agents view")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $agencies=Agency::all();
 
         return view('front.pages.agency',get_defined_vars());
@@ -52,7 +60,9 @@ class FrontController extends Controller
     }
     public function property(){
         $property=Property::all();
-        return view('front.pages.property',compact('property',));
+        $meta = Webpages::Where("page_title", "property")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        return view('front.pages.property',compact('property','meta','data'));
     }
     public function property_detail($provider){
         $projectid=Property::where('url_slug','=',$provider)->first();
@@ -68,14 +78,19 @@ class FrontController extends Controller
     }
     public function blog(){
         $blog=Blog::all();
+        $meta = Webpages::Where("page_title", "blog")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.blog',get_defined_vars());
     }
     public function blog_detail($id){
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $blog = Blog::where('id',$id)->first();
-        return view('front.pages.blog_detail',compact('blog'));
+        return view('front.pages.blog_detail',compact('blog','data'));
     }
     public function contact(){
-        return view('front.pages.contact');
+        $meta = Webpages::Where("page_title", "contact")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        return view('front.pages.contact',get_defined_vars());
     }
     public function about(){
         return view('front.pages.about');

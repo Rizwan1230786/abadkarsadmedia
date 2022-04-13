@@ -413,7 +413,7 @@ a.button.border, a.button {
 #navigation ul ul li a:after {
     font-family: "FontAwesome";
 }
-#navigation ul li a:after {
+#navigation ul li a {
     content: '\f107';
     padding-left: 7px;
 }

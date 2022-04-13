@@ -49,6 +49,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/webpages/checkPageUrlSlug', [WebpagesController::class, 'checkPageUrlSlug'])->name('webpages.checkPageUrlSlug');
         Route::post('/update-status_webpages', [WebpagesController::class, 'update_webpage_status'])->name('status');
         Route::delete('/delete/{id}', [WebpagesController::class, 'destroy'])->name('destroy');
+        ///////route of subpages///////
+        Route::get('/subpageslisting', [WebpagesController::class, 'subpageslisting'])->name('subpageslisting');
+        Route::get('/createsubpages', [WebpagesController::class, 'subpages_create'])->name('createsubpages.form');
+        Route::post('/submitSubpages', [WebpagesController::class, 'submitSubpages'])->name('submitSubpages');
+        Route::post('/update_status_subpages', [WebpagesController::class, 'update_status_subpages'])->name('update_status_subpages');
+        Route::post('/delete_subcategories/{id}', [WebpagesController::class, 'subcategory_destroy'])->name('delete_subcategories');
         //////////edit proflie////////////
         Route::get('/create_user', [AuthController::class, 'create'])->name('create');
         Route::post('/signup_user', [AuthController::class, 'signup'])->name('signup');
@@ -152,12 +158,13 @@ Route::post('/upload',[BlogController::class,'upload'] );
 
 
 ///Front
-Route::get('/', [FrontController::class, 'view'])->name('front.index');
-Route::get('/project', [FrontController::class, 'list'])->name('front.project');
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/home', [FrontController::class, 'index'])->name('front.index');
+Route::get('/project', [FrontController::class, 'project'])->name('front.project');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
-Route::get('/agent', [FrontController::class, 'agent'])->name('front.agent');
+Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
-Route::get('/agency', [FrontController::class, 'agency'])->name('front.agency');
+Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
 Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');

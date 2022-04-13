@@ -6,11 +6,11 @@
 @section('page-header')
 <div class="page-header">
     <div class="page-leftheader">
-        <h4 class="page-title mb-0">Create Webpage</h4>
+        <h4 class="page-title mb-0">Create SubWebpage</h4>
     </div>
     <div class="page-rightheader">
         <div class="btn btn-list">
-            <a href="{{ route('admin:webpages') }}" class="btn btn-primary"><i class="fe fe-block mr-1"></i> Back </a>
+            <a href="{{ url('admin/subpageslisting') }}" class="btn btn-primary"><i class="fe fe-block mr-1"></i> Back </a>
         </div>
     </div>
 </div>
@@ -25,18 +25,29 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <form class="validationForm formSubmit" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:webpages.submitForm', [$data['updateId'] ?? 0]) }}">
+                        <form class="validationForm formSubmit" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:submitSubpages', [$data['updateId'] ?? 0]) }}">
                             @csrf
                             <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-lg-6 form-group">
                                         <label class="form-label">Page Title</label>
-                                        <input ect class="form-control txtPageTitle" placeholder="" name="page_title" value="{{ $data['record']->page_title ?? '' }}" >
+                                        <input class="form-control txtPageTitle" placeholder="" name="page_title" value="{{ $data['record']->page_title ?? '' }}">
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label class="form-label">Url Slug</label>
-                                        <input class="form-control txtPageUrl" placeholder="Url Slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="text" readonly>
+                                        <input class="form-control txtPageUrl" placeholder="Url Slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="text">
+                                    </div>
+                                    <div class="col-lg-6 form-group">
+                                        <label class="form-label">Select Webpage</label>
+                                        <select id="cars" class="form-control" name="parent_id">
+                                            <option value="">--select--</option>
+                                            @foreach($webpages as $webpages)
+                                            <option value="{{$webpages->id}}" <?php if (($data['record']->parent_id ?? '') == $webpages->id) {
+                                                                                    echo 'selected';
+                                                                                } ?>>{{$webpages->page_title}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label class="form-label">Page priority</label>
@@ -48,10 +59,10 @@
                                                 @endfor
                                         </select>
                                     </div>
-                                    <div class="col-lg-6 form-group">
-                                        <label class="form-label">Head Title</label>
-                                        <input class="form-control notrequired" placeholder="Head Title" name="head_title" value="{{ $data['record']->head ?? '' }}" type="text">
-                                    </div>
+                                    <!-- <div class="col-lg-6 form-group">
+                                        <label class="form-label">Website Title</label>
+                                        <input class="form-control notrequired" placeholder="Head Title" name="website_title" value="{{ $data['record']->website_title ?? '' }}" type="text">
+                                    </div> -->
                                     <div class="col-lg-6 form-group">
                                         <label class="form-label">Meta Title</label>
                                         <input class="form-control notrequired" placeholder="Meta Title" name="meta_title" value="{{ $data['record']->meta_title ?? '' }}" type="text">
@@ -65,10 +76,14 @@
                                         <textarea class="form-control notrequired" placeholder="Meta Description" name="meta_description" rows="3" spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
                                     </div>
                                     <div class="col-lg-6 form-group">
-                                        <label class="form-label">Short Description</label>
-                                        <textarea class="form-control notrequired" placeholder="Short Description" name="short_description" rows="3" spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
+                                        <label class="form-label">Head Title</label>
+                                        <input class="form-control notrequired" placeholder="Head Title" name="head_title" value="{{ $data['record']->head_title ?? '' }}" type="text">
                                     </div>
-                                    
+                                    <div class="col-lg-6 form-group">
+                                        <label class="form-label">Short Description</label>
+                                        <textarea class="form-control notrequired" placeholder="Short Description" name="short_description" rows="3" spellcheck="false">{{ $data['record']->short_description ?? '' }}</textarea>
+                                    </div>
+                                  
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">
                                             <button type="submit" class="btn btn-primary user_form submit_button">Save
@@ -78,12 +93,11 @@
                                     </div>
                                     <input class="form-control" name="updateId" type="hidden" value="{{ $record->id ?? '' }}" id="validationCustom01">
                                     <div class="formHiddenId noneDiv">{{ $record->id ?? '' }}</div>
-                                    <div class="checkUrlSlug noneDiv">{{ route('admin:webpages.checkPageUrlSlug') }}
-                                    </div>
+                                   
                                     <div class="formSubmitUrl noneDiv">
-                                        {{ route('admin:webpages.submitForm', ['id' => $record->id ?? 0]) }}
+                                        {{ route('admin:submitSubpages', ['id' => $record->id ?? 0]) }}
                                     </div>
-                                    <div class="formRedirectUrl noneDiv">{{ route('admin:webpages') }}</div>
+                                    <div class="formRedirectUrl noneDiv">{{ url('admin/subpageslisting') }}</div>
                                 </div>
                             </div>
                         </form>
@@ -103,5 +117,6 @@
 @include('admin.layouts.fancy-uploader-js')
 @include('admin.layouts.tinymce-js')
 @include('admin.layouts.templateJquery')
-<script src="{{ URL::asset('assets/themeJquery/webpages/jquery.js') }}"></script>
+<script src="{{ URL::asset('assets/themeJquery/webpages/subpagesjquery.js') }}"></script>
+
 @endsection

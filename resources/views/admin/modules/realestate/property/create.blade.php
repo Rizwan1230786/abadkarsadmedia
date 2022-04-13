@@ -259,7 +259,6 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        {{-- --}}
                                         <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                             <div class="col-lg-12 form-group">
                                                 <label class="form-label">Category</label>
