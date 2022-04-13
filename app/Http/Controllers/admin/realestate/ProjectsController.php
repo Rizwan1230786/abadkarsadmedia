@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\realestate;
 
+use App\Models\Area;
 use App\Models\Agent;
 use App\Models\Agency;
 use App\Models\Cities;
@@ -26,12 +27,13 @@ class ProjectsController extends Controller
     public function create(Request $request)
     {
 
-        $city = Cities::all();
+        $cities = Cities::get(["name", "id"]);
         $feature = Features::all();
         $categories = Category::with('SubCategory')->get();
         $investor = Investor::all();
         $agent = Agent::all();
         $agency = Agency::all();
+        $area=Area::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         $features_projects = DB::table("features_projects")->where("features_projects.projects_id", $updateId)
@@ -44,7 +46,7 @@ class ProjectsController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Projects::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data', 'city', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages'));
+        return view('admin.modules.realestate.projects.create', compact('data', 'cities', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages','area'));
     }
     public function submit(Request $request)
     {
@@ -74,7 +76,8 @@ class ProjectsController extends Controller
             $data = array("title" => $request->title, "url_slug" => $request->url_slug, "image" => $filename, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "category" => $request->category, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "project_map" => $mapname, "price_plan" => $pricename,"meta_title" => $request->meta_title,
             "meta_keywords" => $request->meta_keywords,
             "head_title" => $request->head_title,
-            "meta_description" => $request->meta_description,"video" => $request->video,);
+            "meta_description" => $request->meta_description,"video" => $request->video,
+            "area" => $request->area,);
             $post = Projects::Create($data);
             if ($request->has('images')) {
                 foreach ($request->file('images') as $image) {
@@ -136,6 +139,7 @@ class ProjectsController extends Controller
             "meta_keywords" => $request->meta_keywords,
             "head_title" => $request->head_title,
             "meta_description" => $request->meta_description,
+            "area" => $request->area,
         );
         $post->update($data);
         if ($request->hasFile('images')) {
@@ -187,5 +191,15 @@ class ProjectsController extends Controller
         } else {
             return response(['status' => false]);
         }
+    }
+    // public function city()
+    // {
+    //     $cities = Cities::get(["name", "id"]);
+    //     return view('admin.modules.realestate.projects.create',compact('cities'));
+    // }
+    public function fetchState(Request $request)
+    {
+        $data['areas'] = Area::where("city_id",$request->city_id)->get(["areaname", "id"]);
+        return response()->json($data);
     }
 }
