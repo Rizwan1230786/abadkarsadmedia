@@ -41,19 +41,18 @@ class CitiesController extends Controller
                 $imagePath = $request->file('image');
                 request()->image->move(public_path('assets/images/cities/'), $filename);
             }
-            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail,"state" => $request->state,"area" => $request->area,);
+            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail,"state" => $request->state);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
-
             Cities::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
-    public function update_facilities_status(Request $request)
+    public function update_status_states(Request $request)
     {
 
         $userid = $request->id;

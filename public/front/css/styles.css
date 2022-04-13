@@ -6446,7 +6446,7 @@ a.button,
 }
 .homepage-4 .header-user-name,
 .homepage-4 .header-user-name:before {
-  color: #fff;
+  color: #000;
 }
 
 .homepage-4 #navigation.style-2.cloned .header-user-name,
@@ -6713,8 +6713,8 @@ a.button,
 
 .homepage-4 a.button.border, a.button,
 .homepage-4 .header-image .left .btn-white {
-  background: #fff;
-  color: #FF385C !important;
+  background: #FF385C;
+  color: #fff !important;
   -webkit-box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.2);
           box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.2);
 }
@@ -7720,7 +7720,7 @@ html input[disabled] {
 }
 
 .header-widget.sign-in a {
-  color: #fff;
+  color: #000;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -7759,8 +7759,8 @@ html input[disabled] {
   float: right;
   width: 90px;
   padding: 0 10px 0 20px;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
   margin-top: 20px;
   margin-left: 0px !important;
   margin-right: 55px;
@@ -10591,7 +10591,7 @@ a.button {
 
 .homepage-1 .header-user-name,
 .homepage-1 .header-user-name:before {
-  color: #fff;
+  color: #000;
 }
 
 .homepage-1 .agents-grid .project-single {

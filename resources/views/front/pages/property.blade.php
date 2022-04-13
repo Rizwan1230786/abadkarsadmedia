@@ -1,113 +1,5 @@
-@extends('front.layout.layout')
-@section('body')
-
-    <body class="inner-pages agents hp-6 full hd-white">
-    @section('main')
-    @section('header')
-        <header id="header-container">
-            <!-- Header -->
-            <div id="header">
-                <div class="container container-header">
-                    <!-- Left Side Content -->
-                    <div class="left-side">
-                        <!-- Logo -->
-                        <div id="logo">
-                            <a href="{{ route('front.index') }}"><img
-                                    src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
-                        </div>
-                        <!-- Mobile Navigation -->
-                        <div class="mmenu-trigger">
-                            <button class="hamburger hamburger--collapse" type="button">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
-                        <!-- Main Navigation -->
-                        <nav id="navigation" class="style-1">
-                            <ul id="responsive">
-                                <li><a href="{{ route('front.index') }}">Home</a>
-
-                                </li>
-                                <li><a href="{{ route('front.project') }}">Projects</a>
-                                </li>
-                                <li><a href="{{ route('front.property') }}">Property</a>
-                                </li>
-                                {{-- <li><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="{{ route('front.about') }}">About Us</a></li>
-                                        <li><a href="{{ route('front.faq') }}">Faq</a></li>
-                                        <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
-                                        <li><a href="{{ route('front.error') }}">Page 404</a></li>
-                                        <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li><a href="#">Agents</a>
-                                    <ul>
-                                        <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                        <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{ route('front.blog') }}">Blog</a>
-
-                                </li>
-                                <li><a href="{{ route('front.contact') }}">Contact</a></li>
-                                <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
-                                        href="add-property.html" class="button border btn-lg btn-block text-center">Add
-                                        Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
-                            </ul>
-                        </nav>
-                        <!-- Main Navigation / End -->
-                    </div>
-                    <!-- Left Side Content / End -->
-
-                    <!-- Right Side Content / End -->
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
-                        <!-- Header Widget -->
-                        <div class="header-widget">
-                            <a href="{{ route('front.contact') }}" class="button border">Contact us<i
-                                    class="fas fa-laptop-house ml-2"></i></a>
-                        </div>
-                        <!-- Header Widget / End -->
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <!-- Right Side Content / End -->
-                    <div class="header-user-menu user-menu add">
-                        <div class="header-user-name">
-                            <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt=""></span>Hi, Mary!
-                        </div>
-                        <ul>
-                            <li><a href="user-profile.html"> Edit profile</a></li>
-                            <li><a href="add-property.html"> Add Property</a></li>
-                            <li><a href="payment-method.html"> Payments</a></li>
-                            <li><a href="change-password.html"> Change Password</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                        <!-- Header Widget -->
-                        <div class="header-widget sign-in">
-                            <div class="show-reg-form modal-open"><a href="#">Sign In</a></div>
-                        </div>
-                        <!-- Header Widget / End -->
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <!-- lang-wrap-->
-
-                    <!-- lang-wrap end-->
-
-                </div>
-            </div>
-            <!-- Header / End -->
-
-        </header>
-    @endsection
+@extends('front.layout')
+@section('main')
     <!-- START SECTION PROPERTIES LISTING -->
     <section class="properties-list full featured portfolio blog">
         <div class="container">
@@ -162,8 +54,8 @@
                                                 <!-- Form Property Status -->
                                                 <div class="form-group categories">
                                                     <div class="nice-select form-control wide" tabindex="0"><span
-                                                            class="current"><i
-                                                                class="fa fa-home"></i>Property Status</span>
+                                                            class="current"><i class="fa fa-home"></i>Property
+                                                            Status</span>
                                                         <ul class="list">
                                                             <li data-value="1" class="option selected ">For Sale</li>
                                                             <li data-value="2" class="option">For Rent</li>
@@ -222,16 +114,16 @@
                                                     <!-- Area Range -->
                                                     <div class="range-slider">
                                                         <label>Area Size</label>
-                                                        <div id="area-range" data-min="0" data-max="1300"
-                                                            data-unit="sq ft"></div>
+                                                        <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft">
+                                                        </div>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <br>
                                                     <!-- Price Range -->
                                                     <div class="range-slider">
                                                         <label>Price Range</label>
-                                                        <div id="price-range" data-min="0" data-max="600000"
-                                                            data-unit="$"></div>
+                                                        <div id="price-range" data-min="0" data-max="600000" data-unit="$">
+                                                        </div>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                 </div>
@@ -294,8 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
+                    <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
                         <div class="input-group border rounded input-group-lg w-auto mr-4">
                             <label
                                 class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3"
@@ -330,7 +221,7 @@
                                 </div>
                                 <div class="homes">
                                     <!-- homes img -->
-                                    <a href="{{ route('front.property_detail',$properties->id) }}" class="homes-img">
+                                    <a href="{{ url('/property',$properties->url_slug) }}" class="homes-img">
                                         <div class="homes-tag button alt featured">Featured</div>
                                         <div class="homes-tag button alt sale">{{ $properties->type }}</div>
                                         <div class="homes-price">Family Home</div>
@@ -341,8 +232,10 @@
                                 <div class="button-effect">
                                     <a href="{{ route('front.property_detail',$properties->id) }}" class="btn"><i
                                             class="fa fa-link"></i></a>
-                                    <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                        class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            @if ($properties->video )
+                                            <a href="{{ $properties->video }}"
+                                                class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            @endif
                                     <a href="{{ route('front.property_detail',$properties->id) }}" class="img-poppu btn"><i
                                             class="fa fa-photo"></i></a>
                                 </div>
@@ -352,9 +245,9 @@
                     <!-- homes content -->
                     <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
                         <!-- homes address -->
-                        <h3><a href="{{ route('front.property_detail',$properties->id) }}">{{ $properties->name }}</a></h3>
+                        <h3><a href="{{ url('/property',$properties->url_slug) }}">{{ $properties->name }}</a></h3>
                         <p class="homes-address mb-3">
-                            <a href="{{ route('front.property_detail',$properties->id) }}">
+                            <a href="{{ url('/property',$properties->url_slug) }}">
                                 <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
                             </a>
                         </p>
@@ -370,40 +263,48 @@
                             </li>
                             @if ($properties->square)
                                 <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->square }} ft</span>
+                                    <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->number_of_bedrooms }}</span>
                                 </li>
-                            @endif
-                            @if ($properties->marala)
                                 <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->marala }} marla</span>
+                                    <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->number_of_bathrooms }}</span>
                                 </li>
-                            @endif
-                        </ul>
-                        <!-- Price -->
-                        <div class="price-properties">
-                            <h3 class="title mt-3">
-                                <a href="{{ route('front.property_detail',$properties->id) }}">{{$properties->currency}}  {{ $properties->price }}</a>
-                            </h3>
-                            <div class="compare">
-                                <a href="#" title="Compare">
-                                    <i class="fas fa-exchange-alt"></i>
-                                </a>
-                                <a href="#" title="Share">
-                                    <i class="fas fa-share-alt"></i>
-                                </a>
-                                <a href="#" title="Favorites">
-                                    <i class="fa fa-heart-o"></i>
-                                </a>
+                                @if ($properties->square)
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>{{ $properties->square }} ft</span>
+                                    </li>
+                                @endif
+                                @if ($properties->marala)
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>{{ $properties->marala }} marla</span>
+                                    </li>
+                                @endif
+                            </ul>
+                            <!-- Price -->
+                            <div class="price-properties">
+                                <h3 class="title mt-3">
+                                    <a href="{{ route('front.property_detail', $properties->id) }}">{{ $properties->currency }}
+                                        {{ $properties->price }}</a>
+                                </h3>
+                                <div class="compare">
+                                    <a href="#" title="Compare">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </a>
+                                    <a href="#" title="Share">
+                                        <i class="fas fa-share-alt"></i>
+                                    </a>
+                                    <a href="#" title="Favorites">
+                                        <i class="fa fa-heart-o"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-            </div>
-            @endif
+                @endif
             @endforeach
     </section>
     <!-- END SECTION PROPERTIES LISTING -->
-@endsection
-</body>
 @endsection

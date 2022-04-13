@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="html 5 template">
-    <meta name="author" content="">
-    <title>Property Details</title>
+    <meta name="keywords" content="{{$properties->meta_keywords}}">
+    <meta name="description" content="{{$properties->meta_description}}">
+    <title>{{$properties->meta_title}}</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -284,13 +284,16 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @if(isset($properties->property_map) && !empty($properties->property_map))
                         <div class="floor-plan property wprt-image-video w50 pro">
                             <h5>Property Map</h5>
-                            <img alt="image" src="{{asset('assets/images/properties/maps/'.$properties->property_map)}}">
+                            <img width="100%" alt="Not Found" src="{{asset('assets/images/properties/maps/'.$properties->property_map)}}">
                         </div>
+                        @endif
+                        @if(isset($properties->video) && !empty($properties->video))
                         <div class="property wprt-image-video w50 pro vid-si2">
                             <h5>Property Video</h5>
-                            <img alt="image" src="{{asset('assets/images/properties/'.$properties->image)}}">
+                            <img width="100%" alt="image" src="{{asset('assets/images/properties/'.$properties->image)}}">
                             <a class="icon-wrap popup-video popup-youtube"
                                 href="{{asset($properties->video)}}">
                                 <i class="fa fa-play"></i>
@@ -301,6 +304,7 @@
                                 <div class="waves wave-3"></div>
                             </div> --}}
                         </div>
+                        @endif
                         {{-- <div class="property-location map">
                             <h5>Location</h5>
                             <div class="divider-fade"></div>

@@ -39,9 +39,13 @@
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-9">
-                                        <div class="col-12 form-group padding">
+                                        <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Title</label>
-                                            <input class="form-control notrequired" placeholder="Name" name="title" value="{{ $data['record']->title ?? '' }}" type="text">
+                                            <input class="form-control txtPageTitle" id="title" placeholder="Title" name="title" value="{{ $data['record']->title ?? '' }}">
+                                        </div>
+                                        <div class="col-lg-12 form-group padding">
+                                            <label class="form-label">Url Slug</label>
+                                            <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="text" readonly>
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Description</label>
@@ -55,20 +59,21 @@
                                             <label class="form-label">Image</label>
                                             @if(isset($data['record']->image) && !empty($data['record']->image))
                                             <input type="file" name="image" class="dropify" data-default-file="{{asset('assets/images/projects/'.$data['record']->image)}}" data-height="180" />
-                                            @else 
+                                            @else
                                             <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
-                                            <input
-                                                type="file"
-                                                name="images[]"
-                                                class="form-control"
-                                                accept="image/*"
-                                                multiple
-                                                style="padding-bottom: 40px"
-                                            >
+                                            <label for="files" class="form-label">Upload Multiple Project Images:</label>
+                                            <input type="file" name="images[]" class="form-control" accept="image/*" multiple style="padding-bottom: 40px">
+                                            @if(isset($data['record']->id) && !empty($data['record']->id))
+                                            @foreach($multiimages as $multi)
+                                            @if(isset($data['record']->id) && $data['record']->id == $multi->projects_id)
+                                            <input type="hidden" name="project_id[]" value="{{$multi->projectsimagesid}}">
+                                            <img src="{{asset('assets/images/projects/multipleimages/'.$multi->image)}}" alt="" width="60">
+                                            @endif
+                                            @endforeach
+                                            @endif
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
@@ -88,13 +93,13 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="decmial">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="decimal">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Longitude from address. </a>
                                             </div>
@@ -122,11 +127,19 @@
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" required class="form-control" name="currency_name">
+                                                @if(isset($data['record']->currrncy_name) && !empty($data['record']->currrncy_name))
+                                                <select id="cars"class="form-control" name="currency_name">
+                                                    <option value="{{$data['record']->currrncy_name}}">{{$data['record']->currrncy_name}}</option>
                                                     <option value="">--select--</option>
                                                     <option value="Rs">PKR</option>
                                                     <option value="$">USA</option>
                                                 </select>
+                                                @else
+                                                <select id="cars" required class="form-control" name="currency_name">
+                                                    <option value="Rs">PKR</option>
+                                                    <option value="$">USA</option>
+                                                </select>
+                                                @endif
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Commercial Area</label>
@@ -170,7 +183,7 @@
                                             <input type="file" name="project_map" class="dropify" data-default-file="{{asset('assets/images/projects/maps/'.$data['record']->project_map)}}" data-height="180" />
                                             @else
                                             <input type="file" name="project_map" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            @endif 
+                                            @endif
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Price Plan</label>
@@ -180,9 +193,36 @@
                                             <input type="file" name="price_plan" class="dropify notrequired" data-default-file="" data-height="180" />
                                             @endif
                                         </div>
-                                        <div class="form-group">
-                                            <label>Choose Video</label>
-                                            <input type="file"  name="video">
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Video</label>
+                                            <input class="form-control" placeholder="Enter Video URL" name="video" type="url" value="{{ $data['record']->video ?? '' }}">
+
+                                            {{-- @if(isset($data['record']->video) && !empty($data['record']->video))
+                                            <input type="file" name="video" class="dropify" data-default-file="{{asset('videos/projects'.$data['record']->video)}}" data-height="180" />
+                                            @else
+                                            <input type="file" name="video" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            @endif --}}
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <h4 class="text-success">Seo Tags</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Title</label>
+                                                    <input class="form-control notrequired" placeholder="Meta Title" name="meta_title" value="{{ $data['record']->meta_title ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Keyword</label>
+                                                    <input class="form-control notrequired" placeholder="Meta keywords" name="meta_keywords" value="{{ $data['record']->meta_keywords ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Head Title</label>
+                                                    <input class="form-control notrequired" placeholder="Head Title" name="head_title" value="{{ $data['record']->head ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Description</label>
+                                                    <textarea class="form-control notrequired" placeholder="Meta Description" name="meta_description" rows="3" spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -303,6 +343,12 @@
 </div>
 </div>
 </div>
+<script>
+    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+        var page_title = $(this).val();
+        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
+    });
+</script>
 @endsection
 @section('js')
 <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>

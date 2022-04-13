@@ -35,7 +35,8 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">ID</th>
-                                    <th class="wd-15p border-bottom-0">Name</th>
+                                    <th class="wd-15p border-bottom-0">image</th>
+                                    <th class="wd-15p border-bottom-0">City Name</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
+                                            <td><img src="{{asset('assets/images/cities/'.$item->image)}}" width="50px" height="50px"></td>
                                             <td>{{ $item->name}}</td>
                                             <td>
                                                 <ul class="icons-list">

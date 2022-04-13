@@ -36,6 +36,12 @@ class AgentController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
         ]);
+        if (isset($request->image) && !empty($request->image)) {
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            if ($request->file('image')) {
+                request()->image->move(public_path('assets/images/agent/'), $filename);
+            }
+        }
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
@@ -48,17 +54,10 @@ class AgentController extends Controller
                 "mobile_number" => $request->mobile_number,
                 "fax_number" => $request->fax_number,
                 "descripition" => $request->descripition,
-                "image" => $request->image,
                 "agency" => $request->agency_id,
                 "city_name" => $request->city_name,
             );
-            if (isset($data['image']) && !empty($data['image'])) {
-                $filename = time() . '.' . request()->image->getClientOriginalExtension();
-                if ($request->file('image')) {
-                    $imagePath = $request->file('image');
-                    request()->image->move(public_path('assets/images/agent/'), $filename);
-                }
-            }
+
             Agent::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();

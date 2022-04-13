@@ -37,10 +37,14 @@ class ProjectsController extends Controller
         $features_projects = DB::table("features_projects")->where("features_projects.projects_id", $updateId)
             ->pluck('features_projects.features_id', 'features_projects.features_id')
             ->all();
+        $multiimages = DB::table('project_images')
+            ->join("projects", "project_images.projects_id", "=", "projects.id")
+            ->select('project_images.id as projectsimagesid', 'project_images.projects_id', 'projects.id', 'project_images.image')
+            ->get();
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Projects::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data', 'city', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency'));
+        return view('admin.modules.realestate.projects.create', compact('data', 'city', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages'));
     }
     public function submit(Request $request)
     {
@@ -48,8 +52,6 @@ class ProjectsController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'image' => 'required',
-            'price_plan' => 'required',
-            'project_map' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
@@ -61,7 +63,7 @@ class ProjectsController extends Controller
                 $imagePath = $request->file('image');
                 request()->image->move(public_path('assets/images/projects/'), $filename);
             }
-            if ($request->file('property_map')) {
+            if ($request->file('project_map')) {
                 $imagePath = $request->file('project_map');
                 request()->project_map->move(public_path('assets/images/projects/maps'), $mapname);
             }
@@ -69,10 +71,10 @@ class ProjectsController extends Controller
                 $imagePath = $request->file('price_plan');
                 request()->price_plan->move(public_path('assets/images/projects/price'), $pricename);
             }
-            if ($request->hasFile('video')) {
-                $path = $request->file('video')->store('videos/projects', ['disk' =>      'my_files']);
-            }
-            $data = array("title" => $request->title, "image" => $request->image, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "category" => $request->category, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "project_map" => $mapname, "price_plan" => $pricename);
+            $data = array("title" => $request->title, "url_slug" => $request->url_slug, "image" => $filename, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "category" => $request->category, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "project_map" => $mapname, "price_plan" => $pricename,"meta_title" => $request->meta_title,
+            "meta_keywords" => $request->meta_keywords,
+            "head_title" => $request->head_title,
+            "meta_description" => $request->meta_description,"video" => $request->video,);
             $post = Projects::Create($data);
             if ($request->has('images')) {
                 foreach ($request->file('images') as $image) {
@@ -127,11 +129,31 @@ class ProjectsController extends Controller
             $post->price_plan = $pricename;
             request()->price_plan->move(public_path('assets/images/projects/price'), $pricename);
         }
+
         $data = array(
-            "title" => $request->title, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "category" => $request->category, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id, 
-            "agency_id" => $request->agency_id,
+            "title" => $request->title, "url_slug" => $request->url_slug, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "category" => $request->category, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id,
+            "agency_id" => $request->agency_id,"meta_title" => $request->meta_title,
+            "meta_keywords" => $request->meta_keywords,
+            "head_title" => $request->head_title,
+            "meta_description" => $request->meta_description,
         );
         $post->update($data);
+        if ($request->hasFile('images')) {
+            $images = array();
+            $images_id = $request->project_id;
+            if ($files = $request['images']) {
+                foreach ($files as $file) {
+                    $fileName = $file->getClientOriginalName();
+                    $file->move(public_path('assets/images/projects/multipleimages/'), $fileName);
+                    $images = $fileName;
+                    /*Insert your data*/
+                    Project_image::updateOrCreate(array('id' => $images_id),[
+                        'projects_id' => $post->id,
+                        'image' => $images
+                    ]);
+                }
+            }
+        }
         $post->features()->sync($request->feature);
         // $post->category()->sync($request->category);
         return response()->json(['type' => $type, 'message' => $message]);

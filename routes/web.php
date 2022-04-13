@@ -1,27 +1,21 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\realestate\FacilitiesController;
-use App\Http\Controllers\admin\realestate\FeaturesController;
-use App\Http\Controllers\admin\realestate\CategoryController;
-use App\Http\Controllers\admin\realestate\InvestorController;
-use App\Http\Controllers\admin\realestate\CitiesController;
-use App\Http\Controllers\admin\realestate\ProjectsController;
-use App\Http\Controllers\admin\realestate\PropetyController;
-use App\Http\Controllers\admin\InqueryController;
-use App\Http\Controllers\admin\OurclinetsController;
-use App\Http\Controllers\admin\OurteamController;
-use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\QouteControlles;
+use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
-use App\Http\Controllers\admin\realestate\AgencyController;
-use App\Http\Controllers\admin\realestate\AgentController;
+use App\Http\Controllers\admin\OurteamController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OurclinetsController;
+use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\realestate\BlogController;
+use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
+use App\Http\Controllers\admin\realestate\AreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +40,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
         Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
+        ////route of webpages///////
+        Route::get('/webpages', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         //////////edit proflie////////////
         Route::get('/create_user', [AuthController::class, 'create'])->name('create');
@@ -117,6 +114,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
         Route::get('/agency/create', [AgencyController::class, 'create'])->name('agency.form');
         Route::post('/agency/submit', [AgencyController::class, 'submit'])->name('agency_submit');
+        Route::post('/agency/update/', [AgencyController::class, 'update'])->name('agency_update');
         Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
         Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
 
@@ -127,8 +125,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_states', [StateController::class, 'update_cities_status'])->name('update_status_state');
         Route::post('/delete_states/{id}', [StateController::class, 'destroy'])->name('delete_state');
 
-        //////Route of  Blog////////
-
+        //////Route of  area////////
+        Route::get('/area', [AreaController::class, 'index'])->name('area');
+        Route::get('/area/create', [AreaController::class, 'create'])->name('area.form');
+        Route::post('/area/submit', [AreaController::class, 'submit'])->name('area_submit');
+        Route::post('/update_status_states', [AreaController::class, 'update_cities_status'])->name('update_status_state');
+        Route::post('/delete_area/{id}', [AreaController::class, 'destroy'])->name('delete_area');
         // Route::resource('/blog',BlogController::class);
         Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
@@ -147,13 +149,13 @@ Route::post('/upload',[BlogController::class,'upload'] );
 ///Front
 Route::get('/', [FrontController::class, 'view'])->name('front.index');
 Route::get('/project', [FrontController::class, 'list'])->name('front.project');
-Route::get('/project/detail/{id}', [FrontController::class, 'project_detail'])->name('front.project_detail');
+Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agent', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
-Route::get('/property/detail/{id}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('/blog/detail/{id}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
@@ -170,4 +172,12 @@ Route::get('/clear', function () {
     // Artisan::call('view:clear');
     // Artisan::call('config:cache');
     dd("Cache Clear All");
+});
+
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+    // Artisan::call('route:cache');
+    // Artisan::call('view:clear');
+    // Artisan::call('config:cache');
+    dd("storage");
 });

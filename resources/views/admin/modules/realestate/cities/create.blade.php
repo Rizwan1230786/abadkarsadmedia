@@ -31,7 +31,7 @@
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-12 form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">City Name</label>
                                         <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                     </div>
                                     <div class="col-lg-12 form-group ">
@@ -45,17 +45,13 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <label class="form-label">Area</label>
-                                        <input class="form-control notrequired" placeholder="Add Area" name="area" value="{{ $data['record']->area ?? '' }}" type="text">
-                                    </div>
                                     <div class="col-lg-12 col-sm-12 form-group ">
                                         <label class="form-label">Image</label>
-                                        {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
+                                        @if(isset($data['record']->image) && !empty($data['record']->image))
                                         <input type="file" name="image" class="dropify notrequired" data-default-file="{{asset('assets/images/cities/'.$data['record']->image)}}" data-height="180" />
-                                        @else --}}
+                                        @else
                                         <input type="file" name="image" required class="dropify notrequired" data-default-file="" data-height="180" />
-                                        {{-- @endif --}}
+                                        @endif
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">

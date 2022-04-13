@@ -39,6 +39,7 @@ class AgencyController extends Controller
             $message = "Data add successfully";
             $updateId = $request->id;
             if (isset($request->image) && !empty($request->image)) {
+                dd('ok');
                 $filename = time() . '.' . request()->image->getClientOriginalExtension();
                 if ($request->file('image')) {
                     $imagePath = $request->file('image');
@@ -53,15 +54,51 @@ class AgencyController extends Controller
                 "mobile_number" => $request->mobile_number,
                 "fax_number" => $request->fax_number,
                 "descripition" => $request->descripition,
-                "image" => $filename,
+                "image" => $request->image,
                 "city_name" => $request->city_name,
             );
-            Agency::updateOrCreate(array('id' => $updateId), $data);
+            Agency::Create($data);
         } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
+
+
+    public function update(Request $request)
+    {
+        $updatedId = $request->id;
+        dd($request->id);
+        $type = 'success';
+        $message = "Data Updated successfully";
+        $post = Agency::find($updatedId);
+        if (isset($request->image) && !empty($request->image)) {
+            $oldimage = public_path('assets/images/agency/' . $post->image);
+            if (File::exists($oldimage)) {
+                File::delete($oldimage);
+            }
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            $post->image = $filename;
+            $imagePath = $request->file('image');
+            request()->image->move(public_path('assets/images/agency/'), $filename);
+        }
+        $data = array(
+            "name" => $request->name,
+            "email" => $request->email,
+            "office_address" => $request->office_address,
+            "office_number" => $request->office_number,
+            "mobile_number" => $request->mobile_number,
+            "fax_number" => $request->fax_number,
+            "descripition" => $request->descripition,
+            "city_name" => $request->city_name,
+        );
+        $post->update($data);
+        return response()->json(['type' => $type, 'message' => $message]);
+    }
+
+
+
+
 
     public function destroy($id)
     {

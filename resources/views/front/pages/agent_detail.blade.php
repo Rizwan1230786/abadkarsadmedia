@@ -1,113 +1,5 @@
-@extends('front.layout.layout')
-@section('body')
-
-    <body class="inner-pages agents homepage-4 det hd-white">
-    @section('main')
-    @section('header')
-        <header id="header-container">
-            <!-- Header -->
-            <div id="header">
-                <div class="container container-header">
-                    <!-- Left Side Content -->
-                    <div class="left-side">
-                        <!-- Logo -->
-                        <div id="logo">
-                            <a href="{{ route('front.index') }}"><img
-                                    src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
-                        </div>
-                        <!-- Mobile Navigation -->
-                        <div class="mmenu-trigger">
-                            <button class="hamburger hamburger--collapse" type="button">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </div>
-                        <!-- Main Navigation -->
-                        <nav id="navigation" class="style-1">
-                            <ul id="responsive">
-                                <li><a href="{{ route('front.index') }}">Home</a>
-
-                                </li>
-                                <li><a href="{{ route('front.project') }}">Projects</a>
-                                </li>
-                                <li><a href="{{ route('front.property') }}">Property</a>
-                                </li>
-                                {{-- <li><a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="{{ route('front.about') }}">About Us</a></li>
-                                    <li><a href="{{ route('front.faq') }}">Faq</a></li>
-                                    <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
-                                    <li><a href="{{ route('front.error') }}">Page 404</a></li>
-                                    <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
-                                </ul>
-                            </li> --}}
-                                <li><a href="#">Agents</a>
-                                    <ul>
-                                        <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                        <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{ route('front.blog') }}">Blog</a>
-
-                                </li>
-                                <li><a href="{{ route('front.contact') }}">Contact</a></li>
-                                <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
-                                        href="add-property.html" class="button border btn-lg btn-block text-center">Add
-                                        Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
-                            </ul>
-                        </nav>
-                        <!-- Main Navigation / End -->
-                    </div>
-                    <!-- Left Side Content / End -->
-
-                    <!-- Right Side Content / End -->
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
-                        <!-- Header Widget -->
-                        <div class="header-widget">
-                            <a href="{{ route('front.contact') }}" class="button border">Contact us<i
-                                    class="fas fa-laptop-house ml-2"></i></a>
-                        </div>
-                        <!-- Header Widget / End -->
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <!-- Right Side Content / End -->
-                    <div class="header-user-menu user-menu add">
-                        <div class="header-user-name">
-                            <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt=""></span>Hi, Mary!
-                        </div>
-                        <ul>
-                            <li><a href="user-profile.html"> Edit profile</a></li>
-                            <li><a href="add-property.html"> Add Property</a></li>
-                            <li><a href="payment-method.html"> Payments</a></li>
-                            <li><a href="change-password.html"> Change Password</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                        <!-- Header Widget -->
-                        <div class="header-widget sign-in">
-                            <div class="show-reg-form modal-open"><a href="#">Sign In</a></div>
-                        </div>
-                        <!-- Header Widget / End -->
-                    </div>
-                    <!-- Right Side Content / End -->
-
-                    <!-- lang-wrap-->
-
-                    <!-- lang-wrap end-->
-
-                </div>
-            </div>
-            <!-- Header / End -->
-
-        </header>
-    @endsection
+@extends('front.layout')
+@section('main')
     <!-- START SECTION AGENTS DETAILS -->
     <section class="blog blog-section portfolio single-proper details mb-0">
         <div class="container">
@@ -180,7 +72,8 @@
                                                     <div class="project-inner project-head">
                                                         <div class="homes">
                                                             <!-- homes img -->
-                                                            <a href="{{ route('front.property_detail', $property->id) }}" class="homes-img">
+                                                            <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                class="homes-img">
                                                                 <div class="homes-tag button alt featured">Featured
                                                                 </div>
                                                                 <div class="homes-tag button alt sale">For Sale</div>
@@ -192,8 +85,7 @@
                                                         </div>
                                                         <div class="button-effect">
                                                             <a href="{{ route('front.property_detail', $property->id) }}"
-                                                                class="btn"><i
-                                                                    class="fa fa-link"></i></a>
+                                                                class="btn"><i class="fa fa-link"></i></a>
                                                             @if ($property->video)
                                                                 <a href="{{ asset($property->video) }}"
                                                                     class="btn popup-video popup-youtube"><i
@@ -201,8 +93,7 @@
                                                             @endif
 
                                                             <a href="{{ route('front.property_detail', $property->id) }}"
-                                                                class="img-poppu btn"><i
-                                                                    class="fa fa-photo"></i></a>
+                                                                class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                                         </div>
                                                     </div>
                                                     <!-- homes content -->
@@ -328,8 +219,8 @@
                                         <form name="contact_form" method="post" action="functions.php">
                                             <input type="text" id="fname" name="full_name" placeholder="Full Name"
                                                 required />
-                                            <input type="number" id="pnumber" name="phone_number"
-                                                placeholder="Phone Number" required />
+                                            <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number"
+                                                required />
                                             <input type="email" id="emailid" name="email_address"
                                                 placeholder="Email Address" required />
                                             <textarea placeholder="Message" name="message" required></textarea>
@@ -360,6 +251,4 @@
         </div>
     </section>
     <!-- END SECTION AGENTS DETAILS -->
-@endsection
-</body>
 @endsection
