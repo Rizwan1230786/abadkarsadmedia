@@ -1,8 +1,8 @@
 @extends('front.layout')
-@section('body')
 
-    <body class="inner-pages agents homepage-4 det ag-de hd-white">
-    @section('main')
+
+
+@section('main')
     <section class="headings">
         <div class="text-heading text-center">
             <div class="container">
@@ -26,22 +26,27 @@
                     <h3 class="mb-4">Contact Us</h3>
                     <form id="contactform" class="contact-form" name="contactform" method="post" novalidate>
                         <div id="success" class="successform">
-                            <p class="alert alert-success font-weight-bold" role="alert">Your message was sent successfully!</p>
+                            <p class="alert alert-success font-weight-bold" role="alert">Your message was sent successfully!
+                            </p>
                         </div>
                         <div id="error" class="errorform">
                             <p>Something went wrong, try refreshing and submitting the form again.</p>
                         </div>
                         <div class="form-group">
-                            <input type="text" required class="form-control input-custom input-full" name="name" placeholder="First Name">
+                            <input type="text" required class="form-control input-custom input-full" name="name"
+                                placeholder="First Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" required class="form-control input-custom input-full" name="lastname" placeholder="Last Name">
+                            <input type="text" required class="form-control input-custom input-full" name="lastname"
+                                placeholder="Last Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-custom input-full" name="email" placeholder="Email">
+                            <input type="text" class="form-control input-custom input-full" name="email"
+                                placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control textarea-custom input-full" id="ccomment" name="message" required rows="8" placeholder="Message"></textarea>
+                            <textarea class="form-control textarea-custom input-full" id="ccomment" name="message" required rows="8"
+                                placeholder="Message"></textarea>
                         </div>
                         <button type="submit" id="submit-contact" class="btn btn-primary btn-lg">Submit</button>
                     </form>
@@ -82,7 +87,4 @@
         </div>
     </section>
     <!-- END SECTION CONTACT US -->
-
-    @endsection
-</body>
 @endsection

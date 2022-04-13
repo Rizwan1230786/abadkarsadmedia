@@ -1,8 +1,5 @@
 @extends('front.layout')
-@section('body')
-
-    <body class="inner-pages agents homepage-4 det hd-white">
-    @section('main')
+@section('main')
     <!-- START SECTION AGENTS DETAILS -->
     <section class="blog blog-section portfolio single-proper details mb-0">
         <div class="container">
@@ -75,7 +72,8 @@
                                                     <div class="project-inner project-head">
                                                         <div class="homes">
                                                             <!-- homes img -->
-                                                            <a href="{{ route('front.property_detail', $property->id) }}" class="homes-img">
+                                                            <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                class="homes-img">
                                                                 <div class="homes-tag button alt featured">Featured
                                                                 </div>
                                                                 <div class="homes-tag button alt sale">For Sale</div>
@@ -87,8 +85,7 @@
                                                         </div>
                                                         <div class="button-effect">
                                                             <a href="{{ route('front.property_detail', $property->id) }}"
-                                                                class="btn"><i
-                                                                    class="fa fa-link"></i></a>
+                                                                class="btn"><i class="fa fa-link"></i></a>
                                                             @if ($property->video)
                                                                 <a href="{{ asset($property->video) }}"
                                                                     class="btn popup-video popup-youtube"><i
@@ -96,8 +93,7 @@
                                                             @endif
 
                                                             <a href="{{ route('front.property_detail', $property->id) }}"
-                                                                class="img-poppu btn"><i
-                                                                    class="fa fa-photo"></i></a>
+                                                                class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                                         </div>
                                                     </div>
                                                     <!-- homes content -->
@@ -223,8 +219,8 @@
                                         <form name="contact_form" method="post" action="functions.php">
                                             <input type="text" id="fname" name="full_name" placeholder="Full Name"
                                                 required />
-                                            <input type="number" id="pnumber" name="phone_number"
-                                                placeholder="Phone Number" required />
+                                            <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number"
+                                                required />
                                             <input type="email" id="emailid" name="email_address"
                                                 placeholder="Email Address" required />
                                             <textarea placeholder="Message" name="message" required></textarea>
@@ -255,6 +251,4 @@
         </div>
     </section>
     <!-- END SECTION AGENTS DETAILS -->
-@endsection
-</body>
 @endsection

@@ -684,7 +684,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="agents-grid" data-aos="fade-up" data-aos-delay="450">
