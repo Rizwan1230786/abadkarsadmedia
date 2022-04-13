@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\realestate;
 
+use App\Models\Area;
 use App\Models\Agent;
 use App\Models\Image;
 use App\Models\Agency;
@@ -25,7 +26,7 @@ class PropetyController extends Controller
     }
     public function create(Request $request)
     {
-        $city = Cities::all();
+        $cities = Cities::get(["name", "id"]);
         $project = Projects::all();
         $feature = Features::all();
         $agent = Agent::all();
@@ -44,7 +45,7 @@ class PropetyController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.property.create', compact('data', 'city', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages'));
+        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages'));
     }
 
 
@@ -81,6 +82,7 @@ class PropetyController extends Controller
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
+                "area" => $request->area,
             );
             $post = Property::Create($data);
             if ($request->file('property_map')) {
@@ -155,6 +157,7 @@ class PropetyController extends Controller
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
+                "area" => $request->area,
             );
             $post->update($data);
             if ($request->hasFile('images')) {
@@ -199,5 +202,11 @@ class PropetyController extends Controller
         } else {
             return response(['status' => false]);
         }
+    }
+
+    public function fetchState(Request $request)
+    {
+        $data['areas'] = Area::where("city_id",$request->city_id)->get(["areaname", "id"]);
+        return response()->json($data);
     }
 }

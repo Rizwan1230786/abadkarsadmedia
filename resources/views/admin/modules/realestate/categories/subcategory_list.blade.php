@@ -55,17 +55,17 @@
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ route('admin:subcategories.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
-                                                   
+
                                                     <a href="#">
                                                     <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
                                                     </a>
                                                     @if($status == 1)
                                                     <a href="javascript:void(0)">
-                                                      <li class="icons-list-item category_publish" rel="{{ $item->id }}" status="{{ $status }}"><i class="fe fe-arrow-up" data-toggle="tooltip" title="" data-original-title="Publish"></i></li>
+                                                      <li class="icons-list-item subcategory_publish" rel="{{ $item->id }}" status="{{ $status }}"><i class="fe fe-arrow-up" data-toggle="tooltip" title="" data-original-title="Publish"></i></li>
                                                     </a>
                                                     @else
                                                     <a href="javascript:void(0)">
-                                                    <li class="icons-list-item category_publish" rel="{{ $item->id }}"  status="{{ $status }}"><i class="fe fe-arrow-down" data-toggle="tooltip" title="" data-original-title="Un Publish"></i></li>
+                                                    <li class="icons-list-item subcategory_publish" rel="{{ $item->id }}"  status="{{ $status }}"><i class="fe fe-arrow-down" data-toggle="tooltip" title="" data-original-title="Un Publish"></i></li>
                                                     </a>
                                                     @endif
                                                     <a href="javascript:void(0)">

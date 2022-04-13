@@ -83,7 +83,7 @@
                                             @endforeach
                                             @endif
                                         </div>
-                                        <div class="col-lg-12 form-group padding">
+                                        {{-- <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
                                             <select id="cars" class="form-control" name="city_name">
                                                 <option value="">--select--</option>
@@ -92,6 +92,24 @@
                                                                                     echo 'selected';
                                                                                 } ?>>{{$city->name}}</option>
                                                 @endforeach
+                                            </select>
+                                        </div> --}}
+                                        <div class="col-lg-12 form-group padding">
+                                            <label class="form-label">Select City</label>
+                                            <select  id="country-dd" class="form-control" name="city_name">
+                                                <option value="">Select City</option>
+                                                @foreach ($cities as $data)
+                                                <option value="{{$data->id}}"<?php if (($data['record']->city_name ?? '') == $data->name) {
+                                                        echo 'selected';
+                                                    } ?>>
+                                                    {{$data->name}}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-12 form-group padding">
+                                            <label class="form-label">Select Area</label>
+                                            <select id="state-dd" class="form-control" name="area">
                                             </select>
                                         </div>
                                         <div class="col-12 form-group padding">
@@ -339,6 +357,32 @@
 </div>
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+            $('#country-dd').on('change', function () {
+                var idCountry = this.value;
+                $("#state-dd").html('');
+                $.ajax({
+                    url: "{{url('admin/property/fetch-states')}}",
+                    type: "POST",
+                    data: {
+                        city_id: idCountry,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#state-dd').html('<option value="">Select Area</option>');
+                        $.each(result.areas, function (key, value) {
+                            $("#state-dd").append('<option value="' + value
+                                .areaname + '">' + value.areaname + '</option>');
+                        });
+                    }
+                });
+            });
+
+        });
+</script>
 <script>
     $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
         var page_title = $(this).val();

@@ -39,7 +39,7 @@
                                         <select id="cars" class="form-control" name="city">
                                             <option value="">--select--</option>
                                             @foreach($city as $city)
-                                            <option value="{{$city->name}}" <?php if (($data['record']->city ?? '') == $city->name) {
+                                            <option value="{{$city->id}}" <?php if (($data['record']->city ?? '') == $city->name) {
                                                                                 echo 'selected';
                                                                             } ?>>{{$city->name}}</option>
                                             @endforeach

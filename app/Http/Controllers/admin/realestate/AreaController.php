@@ -35,13 +35,13 @@ class AreaController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("areaname" => $request->areaname,"city" => $request->city);
+            $data = array("areaname" => $request->areaname,"city_id" => $request->city);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
 
-            Area::updateOrCreate(array('id' => $updateId), $data);
+           $check= Area::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }

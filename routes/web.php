@@ -16,6 +16,11 @@ use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\admin\realestate\AreaController;
+use App\Http\Controllers\admin\realestate\CategoryController;
+use App\Http\Controllers\admin\realestate\ProjectsController;
+use App\Http\Controllers\admin\realestate\PropetyController;
+use App\Http\Controllers\admin\realestate\CitiesController;
+use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\WebpagesController;
 
 /*
@@ -64,6 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_facilities', [FacilitiesController::class, 'update_facilities_status'])->name('update_status_facilities');
         Route::post('/delete_facilities/{id}', [FacilitiesController::class, 'destroy'])->name('delete_facilities');
         /////route of projects/////////
+        Route::post('/fetch-states',[ProjectsController::class,'fetchState']);
         Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
         Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.form');
         Route::post('/projects/submit', [ProjectsController::class, 'submit'])->name('projects_submit');
@@ -102,6 +108,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
 
         ////route of properties////////
+        Route::post('/property/fetch-states',[ProjectsController::class,'fetchState']);
         Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
         Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
@@ -143,12 +150,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
-
-
     });
 });
 ////tiny mce image uplod
-Route::post('/upload',[BlogController::class,'upload'] );
+Route::post('/upload', [BlogController::class, 'upload']);
 
 
 ///Front
