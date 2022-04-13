@@ -299,10 +299,11 @@
                             <img alt="image"
                                 src="{{ asset('assets/images/projects/price/' . $project->price_plan) }}">
                         </div>
+                        @if ($project->video)
                         <div class="property wprt-image-video w50 pro vid-si2">
                             <h5>Property Video</h5>
                             <img alt="image" src="{{ asset('assets/images/projects/' . $project->image) }}">
-                            <a class="icon-wrap popup-video popup-youtube" href="{{ asset($project->video) }}">
+                            <a class="icon-wrap popup-video popup-youtube" href="{{ $project->video }}">
                                 <i class="fa fa-play"></i>
                             </a>
                             {{-- <div class="iq-waves">
@@ -311,6 +312,8 @@
                                 <div class="waves wave-3"></div>
                             </div> --}}
                         </div>
+                        @endif
+
                         {{-- <div class="property-location map">
                             <h5>Location</h5>
                             <div class="divider-fade"></div>

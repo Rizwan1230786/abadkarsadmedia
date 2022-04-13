@@ -40,7 +40,7 @@ class PropetyController extends Controller
             ->join("properties", "images.property_id", "=", "properties.id")
             ->select('images.id as propertiesimagesid', 'images.property_id', 'properties.id', 'images.image')
             ->get();
-          
+
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
         }

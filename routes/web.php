@@ -1,26 +1,19 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\realestate\FacilitiesController;
-use App\Http\Controllers\admin\realestate\FeaturesController;
-use App\Http\Controllers\admin\realestate\CategoryController;
-use App\Http\Controllers\admin\realestate\InvestorController;
-use App\Http\Controllers\admin\realestate\CitiesController;
-use App\Http\Controllers\admin\realestate\ProjectsController;
-use App\Http\Controllers\admin\realestate\PropetyController;
-use App\Http\Controllers\admin\InqueryController;
-use App\Http\Controllers\admin\OurclinetsController;
-use App\Http\Controllers\admin\OurteamController;
-use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\QouteControlles;
+use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
-use App\Http\Controllers\admin\realestate\AgencyController;
-use App\Http\Controllers\admin\realestate\AgentController;
+use App\Http\Controllers\admin\OurteamController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OurclinetsController;
+use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\realestate\BlogController;
+use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\WebpagesController;
@@ -126,6 +119,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/agency', [AgencyController::class, 'index'])->name('agency');
         Route::get('/agency/create', [AgencyController::class, 'create'])->name('agency.form');
         Route::post('/agency/submit', [AgencyController::class, 'submit'])->name('agency_submit');
+        Route::post('/agency/update/', [AgencyController::class, 'update'])->name('agency_update');
         Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
         Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
 
@@ -183,4 +177,12 @@ Route::get('/clear', function () {
     // Artisan::call('view:clear');
     // Artisan::call('config:cache');
     dd("Cache Clear All");
+});
+
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+    // Artisan::call('route:cache');
+    // Artisan::call('view:clear');
+    // Artisan::call('config:cache');
+    dd("storage");
 });

@@ -25,9 +25,17 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:agency_submit', [$data['updateId'] ?? 0]) }}">
+                        <?php
+                        if (isset($data['record']->id) && $data['record']->id != 0) {
+                            $url = route('admin:agency_update', [$data['updateId'] ?? 0] ,);
+                        } else {
+                            $url = route('admin:agency_submit');
+                        }
+
+                        ?>
+                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
+                            <input type="text" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-6 form-group">
@@ -72,10 +80,13 @@
                                         <label class="form-label">Description</label>
                                         <textarea class="form-control notrequired" placeholder="Short Description" name="descripition" rows="5" spellcheck="false">{{ $data['record']->descripition ?? '' }}</textarea>
                                     </div>
-                                    <div class="col-lg-6 col-sm-12 form-group">
+                                    <div class="col-6 form-group">
                                         <label class="form-label">Image</label>
-                                        <input type="file" name="image" class="dropify notrequired"
-                                        data-default-file="{{asset('assets/images/photos/bcstart_right_image.jpg')}}" required data-height="180"/>
+                                        @if(isset($data['record']->image) && !empty($data['record']->image))
+                                        <input type="file" name="image" class="dropify" data-default-file="{{asset('assets/images/agency/'.$data['record']->image)}}" data-height="180" />
+                                        @else
+                                        <input type="file" name="image" class="dropify notrequired" data-default-file="{{asset('assets/images/photos/bcstart_right_image.jpg')}}" data-height="180" />
+                                        @endif
                                     </div>
 
 

@@ -46,12 +46,13 @@ class BlogController extends Controller
         ]);
         $pic = $request->file('image')->store('public');
         $picture = explode('/', $pic);
-        Blog::create([
+        $check=Blog::create([
             'title' => $request->title,
             'image' => $picture[1],
             'descripition' => $request->descripition,
             'content' => $request->content,
         ]);
+        dd($check);
         return redirect()->route('admin:blog.index')->with('message', 'Blog added Successfully');
     }
 
@@ -87,7 +88,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->file('image') !== null) {
+        if ($request->hasfile('image') !== null) {
+            $imagePath = public_path('storage/'.$request->image);
             $pic = $request->file('image')->store('public');
             $picture = explode('/', $pic);
             Blog::where('id', $id)

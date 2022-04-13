@@ -93,13 +93,13 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Latitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 1.462260" name="latitude" value="{{ $data['record']->latitude ?? '' }}" type="decmial">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Latitude from address. </a>
                                             </div>
                                             <div class="col-6  form-group">
                                                 <label class="form-label">Longitude</label>
-                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Ex: 103.812530" name="longitude" value="{{ $data['record']->longitude ?? '' }}" type="decimal">
                                                 <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                     Go here to get Longitude from address. </a>
                                             </div>
@@ -127,11 +127,19 @@
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" required class="form-control" name="currency_name">
+                                                @if(isset($data['record']->currrncy_name) && !empty($data['record']->currrncy_name))
+                                                <select id="cars"class="form-control" name="currency_name">
+                                                    <option value="{{$data['record']->currrncy_name}}">{{$data['record']->currrncy_name}}</option>
                                                     <option value="">--select--</option>
                                                     <option value="Rs">PKR</option>
                                                     <option value="$">USA</option>
                                                 </select>
+                                                @else
+                                                <select id="cars" required class="form-control" name="currency_name">
+                                                    <option value="Rs">PKR</option>
+                                                    <option value="$">USA</option>
+                                                </select>
+                                                @endif
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label class="form-label">Commercial Area</label>
