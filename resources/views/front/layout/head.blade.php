@@ -2,9 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="html 5 template">
-    <meta name="author" content="">
-    <title>Abadkar</title>
+    <meta name="description" content="{{$meta->meta_description}}">
+    <meta name="meta_keywords" content="{{$meta->meta_keywords}}">
+    <title>{{$meta->meta_title}}</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{asset('/front/css/jquery-ui.css')}}">

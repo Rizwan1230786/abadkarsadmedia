@@ -1,5 +1,8 @@
 @extends('front.layout')
-@section('main')
+@section('body')
+
+    <body class="inner-pages listing homepage-4 agents hd-white">
+    @section('main')
     <!-- START SECTION PROPERTIES LISTING -->
     <section class="properties-right featured portfolio blog pt-5">
         <div class="container">
@@ -9,8 +12,7 @@
                         <div class="listing-title-bar">
                             <div class="text-heading text-left">
                                 <p class="pb-2"><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp;
-                                    <span>Listings</span>
-                                </p>
+                                    <span>Listings</span></p>
                             </div>
                             <h3>Projects</h3>
                         </div>
@@ -33,8 +35,10 @@
                                 <div class="input-group border rounded input-group-lg w-auto mr-4">
                                     <label
                                         class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3"
-                                        for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
-                                    <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby"
+                                        for="inputGroupSelect01"><i
+                                            class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
+                                    <select
+                                        class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby"
                                         data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3"
                                         id="inputGroupSelect01" name="sortby">
                                         <option selected>Top Selling</option>
@@ -44,35 +48,35 @@
                                     </select>
                                 </div>
                                 <div class="sorting-options">
-                                    <a href="#" class="change-view-btn lde"><i class="fa fa-th-list"></i></a>
-                                    <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-large"></i></a>
+                                    <a href="#" class="change-view-btn lde"><i
+                                            class="fa fa-th-list"></i></a>
+                                    <a href="#" class="change-view-btn active-view-btn"><i
+                                            class="fa fa-th-large"></i></a>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <div class="row">
                         @foreach ($project as $projects)
-                            <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
-                                <div class="project-single" data-aos="fade-up">
-                                    <div class="project-inner project-head">
-                                        <div class="homes">
-                                            <!-- homes img -->
-                                            <a href="{{ route('front.project_detail', $projects->id) }}"
-                                                class="homes-img">
-                                                <div class="homes-tag button alt featured">Featured</div>
-                                                <div class="homes-tag button alt sale">For Sale</div>
-                                                {{-- <div class="homes-price">{{$projects->max_price  }}/mo</div> --}}
-                                                <img src="{{ asset('assets/images/projects/' . $projects->image) }}"
-                                                    alt="home-1" class="img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="button-effect">
-                                            <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY"
-                                                class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                            <a href="{{ route('front.project_detail', $projects->id) }}"
-                                                class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                        </div>
+                        <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
+                            <div class="project-single" data-aos="fade-up">
+                                <div class="project-inner project-head">
+                                    <div class="homes">
+                                        <!-- homes img -->
+                                        <a href="{{ route('front.project_detail',$projects->id) }}" class="homes-img">
+                                            <div class="homes-tag button alt featured">Featured</div>
+                                            <div class="homes-tag button alt sale">For Sale</div>
+                                            {{-- <div class="homes-price">{{$projects->max_price  }}/mo</div> --}}
+                                            <img src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="button-effect">
+                                        <a href="#" class="btn"><i
+                                                class="fa fa-link"></i></a>
+                                        <a href="https://www.youtube.com/watch?v=14semTlwyUY"
+                                            class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                        <a href="{{ route('front.project_detail',$projects->id) }}" class="img-poppu btn"><i
+                                                class="fa fa-photo"></i></a>
                                     </div>
                                 </div>
                                 <!-- homes content -->
@@ -83,11 +87,11 @@
                                         <a href="{{ route('front.project_detail',$projects->id) }}">
                                             <i class="fa fa-map-marker"></i><span>{{$projects->location  }}
                                                 </span>
-                                            </a>
-                                        </p>
-                                    </div>
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -401,8 +405,7 @@
                                 <div class="recent-post">
                                     <div class="recent-main">
                                         <div class="recent-img">
-                                            <a href="blog-details.html"><img
-                                                    src="{{ asset('/front/images/feature-properties/fp-1.jpg') }}"
+                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-1.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                         <div class="info-img">
@@ -414,8 +417,7 @@
                                     </div>
                                     <div class="recent-main my-4">
                                         <div class="recent-img">
-                                            <a href="blog-details.html"><img
-                                                    src="{{ asset('/front/images/feature-properties/fp-2.jpg') }}"
+                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-2.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                         <div class="info-img">
@@ -427,8 +429,7 @@
                                     </div>
                                     <div class="recent-main">
                                         <div class="recent-img">
-                                            <a href="blog-details.html"><img
-                                                    src="{{ asset('/front/images/feature-properties/fp-3.jpg') }}"
+                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-3.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                         <div class="info-img">
@@ -493,4 +494,6 @@
         </div>
     </section>
     <!-- END SECTION PROPERTIES LISTING -->
+@endsection
+</body>
 @endsection

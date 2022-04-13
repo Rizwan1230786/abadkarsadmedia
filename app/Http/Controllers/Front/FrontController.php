@@ -14,7 +14,7 @@ use App\Models\Agency;
 use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Project_image;
-
+use App\Models\Webpages;
 class FrontController extends Controller
 {
     public function view(){
@@ -22,7 +22,9 @@ class FrontController extends Controller
         $project=Projects::all();
         $city=Cities::all();
         $agents=Agent::all();
-        return view('front.pages.index',compact('property','project','city','agents'));
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        return view('front.pages.index',compact('property','project','city','agents','meta','data'));
     }
     public function list(){
         $project=Projects::all();

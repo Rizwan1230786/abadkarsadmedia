@@ -6,8 +6,7 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{ route('front.index') }}"><img
-                            src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
+                    <a href="{{ route('front.index') }}"><img src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
@@ -20,7 +19,17 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
-                        <li><a href="{{ route('front.index') }}">Home</a>
+                        @foreach($data as $val)
+                        <?php
+                        // $subPage = subpages::where(['parent_id'=>$val->id,'is_publish'=> 1])->orderBy('page_rank','asc')->get();
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" id="third-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/{{$val->url_slug}}" role="button">
+                                {{$val->page_title}}
+                            </a>
+                        </li>
+                        @endforeach
+                        <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
                         </li>
                         <li><a href="{{ route('front.project') }}">Projects</a>
@@ -30,27 +39,26 @@
                         {{-- <li><a href="#">Pages</a>
                             <ul>
                                 <li><a href="{{ route('front.about') }}">About Us</a></li>
-                                <li><a href="{{ route('front.faq') }}">Faq</a></li>
-                                <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
-                                <li><a href="{{ route('front.error') }}">Page 404</a></li>
-                                <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
-                            </ul>
-                        </li> --}}
-                        <li><a href="#">Agents</a>
-                            <ul>
-                                <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('front.blog') }}">Blog</a>
+                        <li><a href="{{ route('front.faq') }}">Faq</a></li>
+                        <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
+                        <li><a href="{{ route('front.error') }}">Page 404</a></li>
+                        <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
+                    </ul>
+                    </li> --}}
+                    <li><a href="#">Agents</a>
+                        <ul>
+                            <li><a href="{{ route('front.agent') }}">Agent View</a></li>
+                            <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ route('front.blog') }}">Blog</a>
 
-                        </li>
-                        <li><a href="{{ route('front.contact') }}">Contact</a></li>
-                        <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
-                        <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                        <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
-                                href="add-property.html" class="button border btn-lg btn-block text-center">Add
-                                Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
+                    </li>
+                    <li><a href="{{ route('front.contact') }}">Contact</a></li> -->
+                    <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
+                    <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
+                    <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add
+                            Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
                     </ul>
                 </nav>
                 <!-- Main Navigation / End -->
@@ -61,8 +69,7 @@
             <div class="right-side d-none d-none d-lg-none d-xl-flex">
                 <!-- Header Widget -->
                 <div class="header-widget">
-                    <a href="{{ route('front.contact') }}" class="button border">Contact us<i
-                            class="fas fa-laptop-house ml-2"></i></a>
+                    <a href="{{ route('front.contact') }}" class="button border">Contact us<i class="fas fa-laptop-house ml-2"></i></a>
                 </div>
                 <!-- Header Widget / End -->
             </div>
@@ -101,4 +108,3 @@
     <!-- Header / End -->
 
 </header>
-

@@ -8,7 +8,8 @@
     @include('front.layout.head')
 </head>
 
-<body class="inner-pages sin-1 agents hp-6 full hd-white ui-elements det ag-de">
+<body>
+    @yield('body')
     <div id="wrapper">
 
         {{-- @yield('header') --}}

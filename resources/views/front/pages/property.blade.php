@@ -1,5 +1,8 @@
 @extends('front.layout')
-@section('main')
+@section('body')
+
+    <body class="inner-pages agents hp-6 full hd-white">
+    @section('main')
     <!-- START SECTION PROPERTIES LISTING -->
     <section class="properties-list full featured portfolio blog">
         <div class="container">
@@ -54,8 +57,8 @@
                                                 <!-- Form Property Status -->
                                                 <div class="form-group categories">
                                                     <div class="nice-select form-control wide" tabindex="0"><span
-                                                            class="current"><i class="fa fa-home"></i>Property
-                                                            Status</span>
+                                                            class="current"><i
+                                                                class="fa fa-home"></i>Property Status</span>
                                                         <ul class="list">
                                                             <li data-value="1" class="option selected ">For Sale</li>
                                                             <li data-value="2" class="option">For Rent</li>
@@ -114,16 +117,16 @@
                                                     <!-- Area Range -->
                                                     <div class="range-slider">
                                                         <label>Area Size</label>
-                                                        <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft">
-                                                        </div>
+                                                        <div id="area-range" data-min="0" data-max="1300"
+                                                            data-unit="sq ft"></div>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <br>
                                                     <!-- Price Range -->
                                                     <div class="range-slider">
                                                         <label>Price Range</label>
-                                                        <div id="price-range" data-min="0" data-max="600000" data-unit="$">
-                                                        </div>
+                                                        <div id="price-range" data-min="0" data-max="600000"
+                                                            data-unit="$"></div>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                 </div>
@@ -186,7 +189,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
+                    <div
+                        class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
                         <div class="input-group border rounded input-group-lg w-auto mr-4">
                             <label
                                 class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3"
@@ -261,48 +265,40 @@
                             </li>
                             @if ($properties->square)
                                 <li class="the-icons">
-                                    <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->number_of_bedrooms }}</span>
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->square }} ft</span>
                                 </li>
+                            @endif
+                            @if ($properties->marala)
                                 <li class="the-icons">
-                                    <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->number_of_bathrooms }}</span>
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->marala }} marla</span>
                                 </li>
-                                @if ($properties->square)
-                                    <li class="the-icons">
-                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>{{ $properties->square }} ft</span>
-                                    </li>
-                                @endif
-                                @if ($properties->marala)
-                                    <li class="the-icons">
-                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>{{ $properties->marala }} marla</span>
-                                    </li>
-                                @endif
-                            </ul>
-                            <!-- Price -->
-                            <div class="price-properties">
-                                <h3 class="title mt-3">
-                                    <a href="{{ route('front.property_detail', $properties->id) }}">{{ $properties->currency }}
-                                        {{ $properties->price }}</a>
-                                </h3>
-                                <div class="compare">
-                                    <a href="#" title="Compare">
-                                        <i class="fas fa-exchange-alt"></i>
-                                    </a>
-                                    <a href="#" title="Share">
-                                        <i class="fas fa-share-alt"></i>
-                                    </a>
-                                    <a href="#" title="Favorites">
-                                        <i class="fa fa-heart-o"></i>
-                                    </a>
-                                </div>
+                            @endif
+                        </ul>
+                        <!-- Price -->
+                        <div class="price-properties">
+                            <h3 class="title mt-3">
+                                <a href="{{ route('front.property_detail',$properties->id) }}">{{$properties->currency}}  {{ $properties->price }}</a>
+                            </h3>
+                            <div class="compare">
+                                <a href="#" title="Compare">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </a>
+                                <a href="#" title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                                <a href="#" title="Favorites">
+                                    <i class="fa fa-heart-o"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                @endif
+            </div>
+            @endif
             @endforeach
     </section>
     <!-- END SECTION PROPERTIES LISTING -->
+@endsection
+</body>
 @endsection

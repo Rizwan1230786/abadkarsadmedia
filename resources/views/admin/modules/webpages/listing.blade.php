@@ -46,7 +46,7 @@
                                 @isset($record)
                                     @foreach ($record as $item)
                                         @php
-                                            $status = $item->is_publish ?? 0;
+                                            $status = $item->status ?? 0;
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
@@ -62,10 +62,10 @@
                                                     <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
                                                     @if($status == 1)
                                                     <a href="javascript:void(0)">
-                                                      <li class="icons-list-item action_publish" rel="{{ $item->id }}" status="{{ $status }}"><i class="fe fe-arrow-up" data-toggle="tooltip" title="" data-original-title="Publish"></i></li>
+                                                      <li class="icons-list-item webpages_publish" rel="{{ $item->id }}" status="{{ $status }}"><i class="fe fe-arrow-up" data-toggle="tooltip" title="" data-original-title="Publish"></i></li>
                                                     </a>
                                                     @else
-                                                    <li class="icons-list-item action_publish" rel="{{ $item->id }}"  status="{{ $status }}"><i class="fe fe-arrow-down" data-toggle="tooltip" title="" data-original-title="Un Publish"></i></li>
+                                                    <li class="icons-list-item webpages_publish" rel="{{ $item->id }}"  status="{{ $status }}"><i class="fe fe-arrow-down" data-toggle="tooltip" title="" data-original-title="Un Publish"></i></li>
                                                     @endif
                                                     <a href="javascript:void(0)">
                                                       <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>

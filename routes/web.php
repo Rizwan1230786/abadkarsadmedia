@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\admin\realestate\AreaController;
+use App\Http\Controllers\admin\WebpagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +50,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         ////route of webpages///////
-        Route::get('/webpages', [UserController::class, 'index'])->name('users');
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
+        Route::get('/webpages', [WebpagesController::class, 'index'])->name('webpages');
+        Route::get('/webpages/create', [WebpagesController::class, 'create'])->name('webpages.form');
+        Route::post('/webpages/submitForm', [WebpagesController::class, 'submitForm'])->name('webpages.submitForm');
+        Route::post('/webpages/checkPageUrlSlug', [WebpagesController::class, 'checkPageUrlSlug'])->name('webpages.checkPageUrlSlug');
+        Route::post('/update-status_webpages', [WebpagesController::class, 'update_webpage_status'])->name('status');
+        Route::delete('/delete/{id}', [WebpagesController::class, 'destroy'])->name('destroy');
         //////////edit proflie////////////
         Route::get('/create_user', [AuthController::class, 'create'])->name('create');
         Route::post('/signup_user', [AuthController::class, 'signup'])->name('signup');

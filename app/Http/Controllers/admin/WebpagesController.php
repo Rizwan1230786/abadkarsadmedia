@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Webpages;
+use Illuminate\Support\Facades\Validator;
 class WebpagesController extends Controller
 {
     public function index(){
@@ -69,15 +70,21 @@ class WebpagesController extends Controller
     }
     public function update_webpage_status(Request $request){
        
+         
         $userid = $request->id;
         $status = $request->status;
-        if($status == 1){
+        if ($status == 1) {
             $status = 0;
-        }else{
+        } else {
             $status = 1;
         }
-       
-        Webpages::whereId($userid)->update(array('is_publish'=>$status));
+        $status = Webpages::whereId($userid)->update(array('status' => $status));
+        if (isset($status) && !empty($status)) {
+            $type = "success";
+            $message = "Status updated successfully";
+        }
+
+        return response()->json(['type' => $type, 'message' => $message]);
     }
     public function destroy($id)
     {
