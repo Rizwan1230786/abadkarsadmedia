@@ -52,13 +52,14 @@ class FrontController extends Controller
         $property=Property::all();
         return view('front.pages.property',compact('property',));
     }
-    public function property_detail($id){
+    public function property_detail($provider){
+        $projectid=Property::where('url_slug','=',$provider)->first();
         $assign = DB::table('features_property')
         ->join("features","features_property.features_id","=","features.id")
         ->join('properties','features_property.property_id','=','properties.id')
         ->select('features.name as FeaturesName', 'properties.id as propertiesID',)
         ->get();
-        $properties = Property::where('id',$id)->first();
+        $properties = Property::where('id',$projectid->id)->first();
         $agent =Agent::all();
         $images=Image::all();
         return view('front.pages.property_detail',compact('properties','assign','agent','images'));
@@ -90,14 +91,14 @@ class FrontController extends Controller
         return view('front.pages.coming_soon');
     }
 
-    public function project_detail($id){
-
+    public function project_detail($provider){
+        $projectid=Projects::where('url_slug','=',$provider)->first();
         $assign = DB::table('features_projects')
         ->join("features","features_projects.features_id","=","features.id")
         ->join('projects','features_projects.projects_id','=','projects.id')
         ->select('features.name as FeaturesName', 'projects.id as projectID',)
         ->get();
-        $project = Projects::where('id',$id)->first();
+        $project = Projects::where('id',$projectid->id)->first();
         $agent =Agent::all();
         $agencies=Agency::all();
         $images=Project_image::all();

@@ -27,7 +27,7 @@
                     <div class="col-lg-12 col-md-12">
                         <?php
                         if (isset($data['record']->id) && $data['record']->id != 0) {
-                            $url = route('admin:properties_update', [$data['updateId'] ?? 0] ,);
+                            $url = route('admin:properties_update', [$data['updateId'] ?? 0],);
                         } else {
                             $url = route('admin:properties_submit');
                         }
@@ -40,8 +40,12 @@
                                 <div class="row row-sm">
                                     <div class="col-9">
                                         <div class="col-12 form-group padding">
-                                            <label class="form-label">Name</label>
-                                            <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
+                                            <label class="form-label">Title</label>
+                                            <input class="form-control notrequired" id="title" placeholder="Title" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
+                                        </div>
+                                        <div class="col-lg-12 form-group padding">
+                                            <label class="form-label">Url Slug</label>
+                                            <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="text" readonly>
                                         </div>
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Type</label>
@@ -62,22 +66,22 @@
                                             <label class="form-label">Image</label>
                                             @if(isset($data['record']->image) && !empty($data['record']->image))
                                             <input type="file" name="image" class="dropify" data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else 
+                                            @else
                                             <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            @endif 
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            
-                                                <label for="files" class="form-label">Upload Multiple Property Images:</label>
-                                                <input
-                                                    type="file"
-                                                    name="images[]"
-                                                    class="form-control dropify"
-                                                    accept="image/*"
-                                                    multiple
-                                                    style="padding-bottom: 40px"
-                                                 >
-                                           
+
+                                            <label for="files" class="form-label">Upload Multiple Property Images:</label>
+                                            <input type="file" name="images[]" class="form-control dropify" accept="image/*" multiple style="padding-bottom: 40px">
+                                            @if(isset($data['record']->id) && !empty($data['record']->id))
+                                            @foreach($multiimages as $multi)
+                                            @if(isset($data['record']->id) && $data['record']->id == $multi->property_id)
+                                            <input type="hidden" name="property_id[]" value="{{$multi->propertiesimagesid}}">
+                                            <img src="{{asset('assets/images/properties/multipleimages/'.$multi->image)}}" alt="" width="60" height="60">
+                                            @endif
+                                            @endforeach
+                                            @endif
                                         </div>
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
@@ -111,15 +115,15 @@
                                         <div class="row">
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number bedrooms</label>
-                                                <input class="form-control notrequired" placeholder="Number bedrooms" name="number_of_bedrooms" value="{{ $data['record']->bedrooms ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number bedrooms" value="{{ $data['record']->number_of_bedrooms ?? '' }}" name="number_of_bedrooms" value="{{ $data['record']->bedrooms ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number bathrooms</label>
-                                                <input class="form-control notrequired" placeholder="Number bathrooms" name="number_of_bathrooms" value="{{ $data['record']->bathrooms ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number bathrooms" value="{{ $data['record']->number_of_bathrooms ?? '' }}" name="number_of_bathrooms" value="{{ $data['record']->bathrooms ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Number floors</label>
-                                                <input class="form-control notrequired" placeholder="Number floors" name="number_of_floors" value="{{ $data['record']->floors ?? '' }}" type="number">
+                                                <input class="form-control notrequired" placeholder="Number floors" value="{{ $data['record']->number_of_floors ?? '' }}" name="number_of_floors" value="{{ $data['record']->floors ?? '' }}" type="number">
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Square (m²)</label>
@@ -131,11 +135,19 @@
                                             </div>
                                             <div class="col-4 form-group">
                                                 <label class="form-label">Currency</label>
-                                                <select id="cars" required class="form-control" name="currency">
+                                                @if(isset($data['record']->currency) && !empty($data['record']->currency))
+                                                <select id="cars" class="form-control" name="currency">
+                                                    <option value="{{$data['record']->currency}}">{{$data['record']->currency}}</option>
                                                     <option value="">--select--</option>
                                                     <option value="Rs">PKR</option>
-                                                    <option value="$">USD</option>
+                                                    <option value="$">USA</option>
                                                 </select>
+                                                @else
+                                                <select id="cars" required class="form-control" name="currency">
+                                                    <option value="Rs">PKR</option>
+                                                    <option value="$">USA</option>
+                                                </select>
+                                                @endif
                                             </div>
                                             <div class="form-group mb-3 col-md-4">
                                                 <label for="price" class="form-label">Price</label>
@@ -163,24 +175,43 @@
                                             ?>
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
-                                            <label class="form-label">Property Map</label>
-                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else --}}
+                                            <label class="form-label">Project Map</label>
+                                            @if(isset($data['record']->property_map) && !empty($data['record']->property_map))
+                                            <input type="file" name="property_map" class="dropify" data-default-file="{{asset('assets/images/properties/maps/'.$data['record']->property_map)}}" data-height="180" />
+                                            @else
                                             <input type="file" name="property_map" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            {{-- @endif --}}
+                                            @endif
                                         </div>
-                                        {{-- <div class="col-lg-12 col-sm-12 form-group padding">
-                                            <label class="form-label">Price Plan</label> --}}
-                                            {{-- @if(isset($data['record']->image) && !empty($data['record']->image))
-                                            <input type="file" name="image" class="dropify " value=""{{asset('assets/images/properties/'.$data['record']->image)}}""   data-default-file="{{asset('assets/images/properties/'.$data['record']->image)}}" data-height="180" />
-                                            @else --}}
-                                            {{-- <input type="file" name="price_plan" class="dropify notrequired" data-default-file="" data-height="180" /> --}}
-                                            {{-- @endif --}}
-                                        {{-- </div> --}}
-                                        <div class="form-group">
-                                            <label>Choose Video</label>
-                                            <input type="file"  name="video">
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <label class="form-label">Video</label>
+                                            <input class="form-control" placeholder="Enter Video URL" name="video" type="url" value="{{ $data['record']->video ?? '' }}">
+
+                                            {{-- @if(isset($data['record']->video) && !empty($data['record']->video))
+                                            <input type="file" name="video" class="dropify" data-default-file="{{asset('videos/projects'.$data['record']->video)}}" data-height="180" />
+                                            @else
+                                            <input type="file" name="video" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            @endif --}}
+                                        </div>
+                                        <div class="col-lg-12 col-sm-12 form-group padding">
+                                            <h4 class="text-success">Seo Tags</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Title</label>
+                                                    <input class="form-control notrequired" placeholder="Meta Title" name="meta_title" value="{{ $data['record']->meta_title ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Keyword</label>
+                                                    <input class="form-control notrequired" placeholder="Meta keywords" name="meta_keywords" value="{{ $data['record']->meta_keywords ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Head Title</label>
+                                                    <input class="form-control notrequired" placeholder="Head Title" name="head_title" value="{{ $data['record']->head ?? '' }}" type="text">
+                                                </div>
+                                                <div class="col-lg-6 form-group">
+                                                    <label class="form-label">Meta Description</label>
+                                                    <textarea class="form-control notrequired" placeholder="Meta Description" name="meta_description" rows="3" spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -273,33 +304,32 @@
                                                     <option value="{{ $agent->id }}" <?php if (($data['record']->agent_id ?? '') == $agent->id) {
                                                                                             echo 'selected';
                                                                                         } ?>>
-                                                        {{ $agent->name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
-                                        <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                            <div class="col-lg-12">
-                                                <label class="form-label">Agency</label>
-                                                <select id="cars" class="form-control" name="agency_id">
-                                                    <option value="null">Select a Agency</option>
-                                                    @foreach ($agency as $agency)
-                                                    <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
-                                                                                            echo 'selected';
-                                                                                        } ?>>
-                                                        {{ $agency->name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
+                                        {{ $agent->name }}
+                                        </option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div> --}}
+                                <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                    <div class="col-lg-12">
+                                        <label class="form-label">Agency</label>
+                                        <select id="cars" class="form-control" name="agency_id">
+                                            <option value="null">Select a Agency</option>
+                                            @foreach ($agency as $agency)
+                                            <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
+                                                                                    echo 'selected';
+                                                                                } ?>>
+                                                {{ $agency->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
-                        </form>
+                            </div>
                     </div>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -308,6 +338,13 @@
 </div>
 </div>
 </div>
+</div>
+<script>
+    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+        var page_title = $(this).val();
+        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
+    });
+</script>
 @endsection
 @section('js')
 <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>

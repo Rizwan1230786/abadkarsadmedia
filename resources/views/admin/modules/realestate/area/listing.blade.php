@@ -9,11 +9,11 @@
     <!--Page header-->
     <div class="page-header">
         <div class="page-leftheader">
-            <h4 class="page-title mb-0">Cities</h4>
+            <h4 class="page-title mb-0">Area</h4>
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:cities.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:area.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>
@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Cities Listing</div>
+                    <div class="card-title">Area Listing</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,8 +35,8 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">ID</th>
-                                    <th class="wd-15p border-bottom-0">image</th>
-                                    <th class="wd-15p border-bottom-0">City Name</th>
+                                    <th class="wd-15p border-bottom-0">Area</th>
+                                    <th class="wd-15p border-bottom-0">City</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
@@ -48,11 +48,11 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td><img src="{{asset('assets/images/cities/'.$item->image)}}" width="50px" height="50px"></td>
-                                            <td>{{ $item->name}}</td>
+                                            <td>{{ $item->areaname}}</td>
+                                            <td>{{ $item->city}}</td>
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:cities.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                    <a href="{{ route('admin:area.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
                                                     <a href="#">
                                                     <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
                                                     </a>
@@ -81,5 +81,5 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
-    <script src="{{ URL::asset('assets/themeJquery/realestate/cities/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/area/jquery.js') }}"></script>
 @endsection

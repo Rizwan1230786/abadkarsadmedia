@@ -16,6 +16,7 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('url_slug')->nullable();
             $table->string('type')->nullable();
             $table->longText('descripition')->nullable();
             $table->longText('content')->nullable();
@@ -41,6 +42,10 @@ class CreatePropertiesTable extends Migration
             $table->string('property_map')->nullable();
             $table->string('price_plan')->nullable();
             $table->string('video')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('head_title')->nullable();
+            $table->string('meta_description')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

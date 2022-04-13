@@ -39,6 +39,7 @@ class AgencyController extends Controller
             $message = "Data add successfully";
             $updateId = $request->id;
             if (isset($request->image) && !empty($request->image)) {
+                dd('ok');
                 $filename = time() . '.' . request()->image->getClientOriginalExtension();
                 if ($request->file('image')) {
                     $imagePath = $request->file('image');
@@ -53,7 +54,7 @@ class AgencyController extends Controller
                 "mobile_number" => $request->mobile_number,
                 "fax_number" => $request->fax_number,
                 "descripition" => $request->descripition,
-                "image" => $filename,
+                "image" => $request->image,
                 "city_name" => $request->city_name,
             );
             Agency::updateOrCreate(array('id' => $updateId), $data);

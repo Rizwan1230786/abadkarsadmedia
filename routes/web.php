@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\StateController;
+use App\Http\Controllers\admin\realestate\AreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
         Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
+        ////route of webpages///////
+        Route::get('/webpages', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         //////////edit proflie////////////
         Route::get('/create_user', [AuthController::class, 'create'])->name('create');
@@ -127,8 +131,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_states', [StateController::class, 'update_cities_status'])->name('update_status_state');
         Route::post('/delete_states/{id}', [StateController::class, 'destroy'])->name('delete_state');
 
-        //////Route of  Blog////////
-
+        //////Route of  area////////
+        Route::get('/area', [AreaController::class, 'index'])->name('area');
+        Route::get('/area/create', [AreaController::class, 'create'])->name('area.form');
+        Route::post('/area/submit', [AreaController::class, 'submit'])->name('area_submit');
+        Route::post('/update_status_states', [AreaController::class, 'update_cities_status'])->name('update_status_state');
+        Route::post('/delete_area/{id}', [AreaController::class, 'destroy'])->name('delete_area');
         // Route::resource('/blog',BlogController::class);
         Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
@@ -147,13 +155,13 @@ Route::post('/upload',[BlogController::class,'upload'] );
 ///Front
 Route::get('/', [FrontController::class, 'view'])->name('front.index');
 Route::get('/project', [FrontController::class, 'list'])->name('front.project');
-Route::get('/project/detail/{id}', [FrontController::class, 'project_detail'])->name('front.project_detail');
+Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agent', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
-Route::get('/property/detail/{id}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('/blog/detail/{id}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');

@@ -5,54 +5,49 @@ namespace App\Http\Controllers\admin\realestate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Area;
 use App\Models\Cities;
-use App\Models\State;
 
-class CitiesController extends Controller
+class AreaController extends Controller
 {
     public function index()
     {
-        $record = Cities::all();
-        return view('admin.modules.realestate.cities.listing', compact('record'));
+        $record = Area::all();
+        return view('admin.modules.realestate.area.listing', compact('record'));
     }
     public function create(Request $request)
     {
-        $state = State::all();
+        $city = Cities::select('id','name')->get();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
-            $data['record'] = Cities::where('id', $updateId)->first();
+            $data['record'] = Area::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.cities.create', compact('data','state'));
+        return view('admin.modules.realestate.area.create', compact('data','city'));
     }
     public function submit(Request $request)
     {
         $type = 'error';
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'image' => 'required',
+            'areaname' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            if ($request->file('image')) {
-                $imagePath = $request->file('image');
-                request()->image->move(public_path('assets/images/cities/'), $filename);
-            }
-            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail,"state" => $request->state);
+            $data = array("areaname" => $request->areaname,"city" => $request->city);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
             }
-            Cities::updateOrCreate(array('id' => $updateId), $data);
+
+            Area::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
-    public function update_status_states(Request $request)
+    public function update_facilities_status(Request $request)
     {
 
         $userid = $request->id;
@@ -72,7 +67,7 @@ class CitiesController extends Controller
     }
     public function destroy($id)
     {
-        $delete = Cities::findOrFail($id);
+        $delete = Area::findOrFail($id);
         $user = $delete->delete();
         if ($user) {
             return response(['status' => true]);

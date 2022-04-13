@@ -225,7 +225,7 @@
                                 </div>
                                 <div class="homes">
                                     <!-- homes img -->
-                                    <a href="{{ route('front.property_detail',$properties->id) }}" class="homes-img">
+                                    <a href="{{ url('/property',$properties->url_slug) }}" class="homes-img">
                                         <div class="homes-tag button alt featured">Featured</div>
                                         <div class="homes-tag button alt sale">{{ $properties->type }}</div>
                                         <div class="homes-price">Family Home</div>
@@ -247,9 +247,9 @@
                     <!-- homes content -->
                     <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
                         <!-- homes address -->
-                        <h3><a href="{{ route('front.property_detail',$properties->id) }}">{{ $properties->name }}</a></h3>
+                        <h3><a href="{{ url('/property',$properties->url_slug) }}">{{ $properties->name }}</a></h3>
                         <p class="homes-address mb-3">
-                            <a href="{{ route('front.property_detail',$properties->id) }}">
+                            <a href="{{ url('/property',$properties->url_slug) }}">
                                 <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
                             </a>
                         </p>

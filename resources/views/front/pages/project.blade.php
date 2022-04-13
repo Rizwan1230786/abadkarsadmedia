@@ -82,7 +82,7 @@
                                 <!-- homes content -->
                                 <div class="homes-content">
                                     <!-- homes address -->
-                                    <h3><a href="{{ route('front.project_detail',$projects->id) }}">{{$projects->title  }}</a></h3>
+                                    <h3><a href="{{ url('/project',$projects->url_slug) }}">{{$projects->title  }}</a></h3>
                                     <p class="homes-address mb-3">
                                         <a href="{{ route('front.project_detail',$projects->id) }}">
                                             <i class="fa fa-map-marker"></i><span>{{$projects->location  }}
