@@ -117,7 +117,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
 
         ////route of properties////////
-        Route::post('/property/fetch-states',[ProjectsController::class,'fetchState']);
+        Route::post('/property/fetch-states',[PropetyController::class,'fetchState']);
+        Route::post('/property/fetch-facility',[PropetyController::class,'facility']);
         Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
         Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');

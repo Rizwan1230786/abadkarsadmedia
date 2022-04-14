@@ -14,6 +14,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Facilities;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,6 +34,7 @@ class PropetyController extends Controller
         $agency = Agency::all();
         $categories = Category::with('SubCategory')->get();
         $data = null;
+
         $data['updateId'] = $updateId = ($request->id ?? 0);
         $features_property = DB::table("features_property")->where("features_property.property_id", $updateId)
             ->pluck('features_property.features_id', 'features_property.features_id')
@@ -45,7 +47,8 @@ class PropetyController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages'));
+        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages',));
+
     }
 
 
@@ -207,6 +210,12 @@ class PropetyController extends Controller
     public function fetchState(Request $request)
     {
         $data['areas'] = Area::where("city",$request->city_id)->get(["areaname", "id"]);
+        return response()->json($data);
+    }
+
+    public function facility(Request $request)
+    {
+        $data['facility'] = Facilities::get(["name", "id"]);
         return response()->json($data);
     }
 }

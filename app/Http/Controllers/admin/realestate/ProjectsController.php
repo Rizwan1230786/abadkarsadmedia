@@ -27,7 +27,7 @@ class ProjectsController extends Controller
     public function create(Request $request)
     {
 
-        $cities = Cities::get(["name", "id"]);
+
         $feature = Features::all();
         $categories = Category::with('SubCategory')->get();
         $investor = Investor::all();
@@ -35,6 +35,7 @@ class ProjectsController extends Controller
         $agency = Agency::all();
         $area=Area::all();
         $data = null;
+        $cities = Cities::get(["name", "id"]);
         $data['updateId'] = $updateId = ($request->id ?? 0);
         $features_projects = DB::table("features_projects")->where("features_projects.projects_id", $updateId)
             ->pluck('features_projects.features_id', 'features_projects.features_id')

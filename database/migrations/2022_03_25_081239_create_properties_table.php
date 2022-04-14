@@ -47,6 +47,7 @@ class CreatePropertiesTable extends Migration
             $table->string('head_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('status')->nullable();
+            $table->string('area')->nullable();
             $table->timestamps();
         });
     }
