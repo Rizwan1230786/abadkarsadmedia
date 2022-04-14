@@ -42,6 +42,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_map')->nullable();
             $table->string('price_plan')->nullable();
             $table->string('video')->nullable();
+            $table->string('area')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('head_title')->nullable();

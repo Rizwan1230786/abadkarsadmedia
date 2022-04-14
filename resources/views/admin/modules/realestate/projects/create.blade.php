@@ -190,7 +190,7 @@
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Feature</label>
                                             <?php
-                                            if (isset($data['record']) && !empty($data['record'])) { ?>
+                                            if (isset($data['record']->id) && $data['record']->id !=0) { ?>
                                                 @foreach($feature as $feature)
                                                 <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, in_array($feature->id, $features_projects) ? true : false, array('class' => 'name')) }}
                                                     {{ $feature->name }}</label>
@@ -205,14 +205,6 @@
                                             }
 
                                             ?>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dynamic_field">
-                                                <tr>
-                                                    <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
-                                                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-                                                </tr>
-                                            </table>
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <label class="form-label">Project Map</label>
@@ -234,11 +226,6 @@
                                             <label class="form-label">Video</label>
                                             <input class="form-control" placeholder="Enter Video URL" name="video" type="url" value="{{ $data['record']->video ?? '' }}">
 
-                                            {{-- @if(isset($data['record']->video) && !empty($data['record']->video))
-                                            <input type="file" name="video" class="dropify" data-default-file="{{asset('videos/projects'.$data['record']->video)}}" data-height="180" />
-                                            @else
-                                            <input type="file" name="video" class="dropify notrequired" data-default-file="" data-height="180" />
-                                            @endif --}}
                                         </div>
                                         <div class="col-lg-12 col-sm-12 form-group padding">
                                             <h4 class="text-success">Seo Tags</h4>

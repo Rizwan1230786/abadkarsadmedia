@@ -35,7 +35,7 @@
                         ?>
                         <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
+                            <input type="text" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-9">
@@ -83,17 +83,6 @@
                                             @endforeach
                                             @endif
                                         </div>
-                                        {{-- <div class="col-lg-12 form-group padding">
-                                            <label class="form-label">Select City</label>
-                                            <select id="cars" class="form-control" name="city_name">
-                                                <option value="">--select--</option>
-                                                @foreach($city as $city)
-                                                <option value="{{$city->name}}" <?php if (($data['record']->city_name ?? '') == $city->name) {
-                                                                                    echo 'selected';
-                                                                                } ?>>{{$city->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div> --}}
                                         <div class="col-lg-12 form-group padding">
                                             <label class="form-label">Select City</label>
                                             <select  id="country-dd" class="form-control" name="city_name">
@@ -114,7 +103,7 @@
                                         </div>
                                         <div class="col-12 form-group padding">
                                             <label class="form-label">Property Location</label>
-                                            <input class="form-control notrequired" placeholder="Property Location" name="location" value="{{ $data['record']->property_location ?? '' }}" type="text">
+                                            <input class="form-control notrequired" placeholder="Property Location" name="location" value="{{ $data['record']->location ?? '' }}" type="text">
                                         </div>
                                         <div class="row">
                                             <div class="col-6 form-group">
@@ -277,6 +266,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        {{-- --}}
                                         <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                             <div class="col-lg-12 form-group">
                                                 <label class="form-label">Category</label>

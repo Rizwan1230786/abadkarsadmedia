@@ -83,9 +83,10 @@ class FrontController extends Controller
         return view('front.pages.blog',get_defined_vars());
     }
     public function blog_detail($id){
+        $meta = Webpages::Where("page_title", "blog")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $blog = Blog::where('id',$id)->first();
-        return view('front.pages.blog_detail',compact('blog','data'));
+        return view('front.pages.blog_detail',compact('blog','data','meta'));
     }
     public function contact(){
         $meta = Webpages::Where("page_title", "contact")->first();

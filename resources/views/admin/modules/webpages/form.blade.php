@@ -68,7 +68,7 @@
                                         <label class="form-label">Short Description</label>
                                         <textarea class="form-control notrequired" placeholder="Short Description" name="short_description" rows="3" spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
                                     </div>
-                                    
+
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">
                                             <button type="submit" class="btn btn-primary user_form submit_button">Save

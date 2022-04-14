@@ -49,6 +49,7 @@ class CreateProjectsTable extends Migration
             $table->string('meta_keywords')->nullable();
             $table->string('head_title')->nullable();
             $table->string('meta_description')->nullable();
+            $table->string('area')->nullable();
             $table->timestamps();
         });
     }
