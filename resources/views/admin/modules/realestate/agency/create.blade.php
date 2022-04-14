@@ -25,15 +25,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <?php
-                        if (isset($data['record']->id) && $data['record']->id != 0) {
-                            $url = route('admin:agency_update', [$data['updateId'] ?? 0] ,);
-                        } else {
-                            $url = route('admin:agency_submit');
-                        }
-
-                        ?>
-                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{$url}}">
+                        <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:agency_submit', [$data['updateId'] ?? 0]) }}">
                             @csrf
                             <input type="text" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">

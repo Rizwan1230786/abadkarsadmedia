@@ -99,7 +99,7 @@
                                             <select  id="country-dd" class="form-control" name="city_name">
                                                 <option value="">Select City</option>
                                                 @foreach ($cities as $data)
-                                                <option value="{{$data->id}}"<?php if (($data['record']->city_name ?? '') == $data->name) {
+                                                <option value="{{$data->name}}"<?php if (($data['record']->city_name ?? '') == $data->name) {
                                                         echo 'selected';
                                                     } ?>>
                                                     {{$data->name}}

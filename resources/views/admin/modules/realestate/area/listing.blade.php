@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->areaname}}</td>
-                                            <td>{{ $item->city_id}}</td>
+                                            <td>{{ $item->city}}</td>
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ route('admin:area.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>

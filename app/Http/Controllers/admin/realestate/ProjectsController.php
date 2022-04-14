@@ -199,7 +199,7 @@ class ProjectsController extends Controller
     // }
     public function fetchState(Request $request)
     {
-        $data['areas'] = Area::where("city_id",$request->city_id)->get(["areaname", "id"]);
+        $data['areas'] = Area::where("city",$request->city_id)->get(["areaname", "id"]);
         return response()->json($data);
     }
 }

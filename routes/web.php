@@ -21,6 +21,9 @@ use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\PropetyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
 use App\Http\Controllers\admin\realestate\InvestorController;
+use App\Http\Controllers\admin\realestate\AgencyController;
+use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\admin\realestate\FeaturesController;
 use App\Http\Controllers\admin\WebpagesController;
 
 /*
