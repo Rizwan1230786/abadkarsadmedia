@@ -377,13 +377,12 @@
                 @if ($properties->moderation_status == 'approved')
                 <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
                     <div class="project-single" data-aos="fade-right">
-                        <div class="project-inner project-head">
+                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/'.$properties->image)}}');">
                             <div class="homes">
                                 <!-- homes img -->
                                 <a href="{{ url('/property',$properties->url_slug) }}" class="homes-img">
                                     <div class="homes-tag button alt featured">Featured</div>
                                     <div class="homes-tag button alt sale">For Sale</div>
-                                    <img src="{{asset('assets/images/properties/'.$properties->image)}}" alt="home-1" style="height:264px;" class="img-fluid">
                                 </a>
                             </div>
                             <div class="button-effect">

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Facilities;
 
 class ProjectsController extends Controller
 {

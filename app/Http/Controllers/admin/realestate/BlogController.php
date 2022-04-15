@@ -52,7 +52,6 @@ class BlogController extends Controller
             'descripition' => $request->descripition,
             'content' => $request->content,
         ]);
-        dd($check);
         return redirect()->route('admin:blog.index')->with('message', 'Blog added Successfully');
     }
 

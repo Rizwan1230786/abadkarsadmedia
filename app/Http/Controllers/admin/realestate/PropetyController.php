@@ -25,9 +25,16 @@ class PropetyController extends Controller
         $record = Property::all();
         return view('admin.modules.realestate.property.listing', compact('record'));
     }
+    public function get_fecilites()
+    {
+        $record = Facilities::all();
+        return response()->json(['record' => $record]);
+    }
     public function create(Request $request)
     {
         $cities = Cities::get(["name", "id"]);
+        $facilites = Facilities::select('id','name')->get();
+
         $project = Projects::all();
         $feature = Features::all();
         $agent = Agent::all();

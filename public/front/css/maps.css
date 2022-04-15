@@ -2432,6 +2432,7 @@ section.feature-categories {
     box-shadow: none;
     margin-bottom: 0px;
     border: 1px solid #e7e7e7;
+    min-height: 288px;
 }
 .homepage-9 .portfolio .footer span {
     margin-top: 12px

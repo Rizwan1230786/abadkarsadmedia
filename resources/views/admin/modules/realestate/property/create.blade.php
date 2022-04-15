@@ -364,7 +364,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                            <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12 form-group padding">
                                                     <label class="form-label">Select City</label>
                                                     <select id="country-dd" class="form-control" name="city_name">
@@ -426,21 +426,33 @@
     <script>
         $(document).ready(function() {
             var postURL = "<?php echo url('admin/projects'); ?>";
-            var i = 1;
-            $('#add').click(function() {
-                i++;
-                $('#dynamic_field').append('<tr id="row' + i +
-                    '" class="dynamic-added"><td><input type="text" name="name[]" placeholder="" class="form-control name_list" /></td><td><input type="text" name="name[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
-                    i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+            $.ajax({
+                url: "{{ url('admin/get_fecilites') }}",
+                type: "GET",
+                dataType: 'json',
+                success: function(result) {
+                    caret(result.record);
+                }
             });
+            function caret(facilities){
+                var i = 1;
+                $('#add').click(function() {
+                    i++;
+                    var selectfacilites = '<tr id="row' + i +
+                        '" class="dynamic-added"><td><select  name="name[]"  class="form-control name_list">';
+                            facilities.map(function (item, index){
+                                selectfacilites += '<option value="'+item.name+'">'+item.name+'</option>';
+                            });
 
-
+                        selectfacilites += '</select></td><td><input type="text" name="name[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
+                        i + '" class="btn btn-danger btn_remove">X</button></td></tr>';
+                    $('#dynamic_field').append(selectfacilites);
+                });
+            }
             $(document).on('click', '.btn_remove', function() {
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

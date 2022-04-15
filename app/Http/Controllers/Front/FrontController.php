@@ -82,10 +82,11 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.blog',get_defined_vars());
     }
-    public function blog_detail($id){
+    public function blog_detail($provider){
+        $blogsetail = Blog::where('title',$provider)->first();
         $meta = Webpages::Where("page_title", "blog")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        $blog = Blog::where('id',$id)->first();
+        $blog = Blog::where('id',$blogsetail->id)->first();
         return view('front.pages.blog_detail',compact('blog','data','meta'));
     }
     public function contact(){

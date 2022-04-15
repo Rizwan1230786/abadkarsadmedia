@@ -23,13 +23,13 @@
 
                         <div class="col-md-12 col-xs-12 space">
                             <div class="news-item news-item-sm">
-                                <a href="{{ route('front.blog_detail',$blogs->id) }}" class="news-img-link">
+                                <a href="{{ route('front.blog_detail',$blogs->title) }}" class="news-img-link">
                                     <div class="news-item-img">
                                         <img class="resp-img" src="{{ asset('storage/' . $blogs->image) }}" alt="blog image">
                                     </div>
                                 </a>
                                 <div class="news-item-text">
-                                    <a href="{{ route('front.blog_detail',$blogs->id) }}"><h3>{{ $blogs->title }}</h3></a>
+                                    <a href="{{ route('front.blog_detail',$blogs->title) }}"><h3>{{ $blogs->title }}</h3></a>
                                     <div class="dates">
                                         <span class="date">{{ $blogs->created_at->format('d-m-y') }} &nbsp;/</span>
                                         <ul class="action-list pl-0">
@@ -42,7 +42,7 @@
                                         <p>{!! $blogs->content !!}</p>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="{{ route('front.blog_detail',$blogs->id) }}" class="news-link">Read more...</a>
+                                        <a href="{{ route('front.blog_detail',$blogs->title) }}" class="news-link">Read more...</a>
                                         {{-- <div class="admin">
                                             <p>By, Karl Smith</p>
                                             <img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt="">

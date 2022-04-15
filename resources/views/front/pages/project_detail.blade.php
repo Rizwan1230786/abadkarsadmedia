@@ -301,8 +301,8 @@
                         </div>
                         @if ($project->video)
                         <div class="property wprt-image-video w50 pro vid-si2">
-                            <h5>Property Video</h5>
-                            <img alt="image" src="{{ asset('assets/images/projects/' . $project->image) }}">
+                            <h5>Project Video</h5>
+                            <img alt="image" style="width:100%;" src="{{ asset('assets/images/projects/' . $project->image) }}">
                             <a class="icon-wrap popup-video popup-youtube" href="{{ $project->video }}">
                                 <i class="fa fa-play"></i>
                             </a>

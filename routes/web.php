@@ -72,6 +72,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/delete_user/{id}', [AuthController::class, 'destroy'])->name('destroy');
         /////////////////end route of users//////////////////////
         /////route of facileties//////////
+
+
         Route::get('/facilities', [FacilitiesController::class, 'index'])->name('facilities');
         Route::get('/facilities/create', [FacilitiesController::class, 'create'])->name('facilities.form');
         Route::post('/facilities/submit', [FacilitiesController::class, 'submit'])->name('facilites_submit');
@@ -117,6 +119,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
 
         ////route of properties////////
+        Route::get('/get_fecilites', [PropetyController::class, 'get_fecilites'])->name('get_fecilites');
         Route::post('/property/fetch-states',[PropetyController::class,'fetchState']);
         Route::post('/property/fetch-facility',[PropetyController::class,'facility']);
         Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
@@ -178,7 +181,7 @@ Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->na
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
 Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
-Route::get('/blog/detail/{id}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
+Route::get('/blog/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
