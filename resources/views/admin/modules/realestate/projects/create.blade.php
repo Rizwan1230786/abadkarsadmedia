@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content"
+                                                <textarea class="form-control disc_2 notrequired" name="page_content"
                                                     id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">

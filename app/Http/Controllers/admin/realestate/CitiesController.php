@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\admin\realestate;
 
-use App\Http\Controllers\Controller;
+use App\Models\State;
+use App\Models\Cities;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+<<<<<<< Updated upstream
 use App\Models\Cities;
 use Illuminate\Support\Facades\File;
 use App\Models\State;
+=======
+>>>>>>> Stashed changes
 
 class CitiesController extends Controller
 {

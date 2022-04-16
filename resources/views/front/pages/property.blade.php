@@ -215,10 +215,10 @@
             {{-- main portion --}}
             @foreach ($property as $properties)
             @if ($properties->moderation_status == 'approved')
-            <div class="row featured portfolio-items">
+            <div class="row featured portfolio-items mb-5">
                     <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
                         <div class="project-single mb-0 bb-0">
-                            <div class="project-inner project-head">
+                            <div class="project-inner project-head" >
                                 <div class="project-bottom">
                                     <h4><a href="{{ url('/property',$properties->url_slug) }}">View Property</a><span
                                             class="category">Real Estate</span></h4>
@@ -299,7 +299,15 @@
             </div>
             @endif
             @endforeach
+            <nav aria-label="..." class="pt-55">
+                <ul class="pagination disabled">
+                    <li class="page-item active">
+                        <li>{!! $property->links() !!}</li>
+                    </li>
+                </ul>
+            </nav>
     </section>
+
     <!-- END SECTION PROPERTIES LISTING -->
 @endsection
 </body>

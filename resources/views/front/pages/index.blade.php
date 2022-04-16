@@ -453,6 +453,7 @@
         </section>
         <!-- END HEADER SEARCH -->
 
+<<<<<<< Updated upstream
         <!-- START SECTION POPULAR PLACES -->
         <section class="feature-categories bg-white rec-pro">
             <div class="container-fluid">
@@ -472,6 +473,112 @@
                                 <div class="sc-2-detail">
                                     <a href="properties-map.html">
                                         <h4 class="sc-jb-title">{{ $cities->name }}</h4>
+=======
+    <!-- START SECTION POPULAR PLACES -->
+    <section class="feature-categories bg-white rec-pro">
+        <div class="container-fluid">
+            <div class="sec-title">
+                <h2><span>Popular </span>Places</h2>
+                <p>Properties In Most Popular Places.</p>
+            </div>
+            <div class="row">
+                <!-- Single category -->
+                @foreach ( $city as $cities )
+                <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="small-category-2">
+                        <div class="small-category-2-thumb img-1">
+                            <a href="#"><img src="{{asset('assets/images/cities/'.$cities->image)}}" alt=""></a>
+                        </div>
+                        <div class="sc-2-detail">
+                            <a href="#"><h4 class="sc-jb-title">{{ $cities->name }}</h4></a>
+                            <h4 class="sc-jb-title"><a href="#">{{ $cities->state }}</a></h4>
+                            {{-- <span>203 Properties</span> --}}
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <!-- /row -->
+        </div>
+    </section>
+    <!-- END SECTION POPULAR PLACES -->
+
+    <!-- START SECTION FEATURED PROPERTIES -->
+    @if(!empty($property))
+    <section class="featured portfolio bg-white-2 rec-pro full-l">
+        <div class="container-fluid">
+            <div class="sec-title">
+                <h2><span>Featured </span>Properties</h2>
+                <p>These are our featured properties</p>
+            </div>
+            <div class="row portfolio-items">
+                @foreach ($property as $properties )
+                @if ($properties->moderation_status == 'approved')
+                <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
+                    <div class="project-single" data-aos="fade-right">
+                        <div class="project-inner project-head backgroundimage">
+                            <div class="homes">
+                                <!-- homes img -->
+                                <a href="{{ url('/property',$properties->url_slug) }}" class="homes-img">
+                                    <div class="homes-tag button alt featured">Featured</div>
+                                    <div class="homes-tag button alt sale">For Sale</div>
+                                </a>
+                            </div>
+                            <div class="button-effect">
+                                <a href="{{ url('/property',$properties->url_slug) }}" class="btn"><i class="fa fa-link"></i></a>
+                                @if (isset($properties->video) && !empty($properties->video))
+                                <a href="{{asset($properties->video)}}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                @endif
+
+                                <a href="{{url('/property',$properties->url_slug) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                            </div>
+                        </div>
+                        <!-- homes content -->
+                        <div class="homes-content">
+                            <!-- homes address -->
+                            <h3><a href="{{ url('/property',$properties->url_slug) }}">{{ $properties->name }} {{ $properties->city_name }}</a></h3>
+                            <p class="homes-address mb-3">
+                                <a href="{{url('/property',$properties->url_slug) }}">
+                                    <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
+                                </a>
+                            </p>
+                            <!-- homes List -->
+                            <ul class="homes-list clearfix pb-3">
+                                <li class="the-icons">
+                                    <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->number_of_bedrooms }}</span>
+                                </li>
+                                <li class="the-icons">
+                                    <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->number_of_bathroom }}</span>
+                                </li>
+                                @if ($properties->square)
+                                <li class="the-icons">
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->square }} ft</span>
+                                </li>
+                                @endif
+                                @if ($properties->marala)
+                                <li class="the-icons">
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $properties->marala }} marla</span>
+                                </li>
+                                @endif
+                            </ul>
+                            <div class="price-properties footer pt-3 pb-0">
+                                <h3 class="title mt-3">
+                                    <a href="{{ route('front.property_detail',$properties->id) }}"> {{ $properties->currency }}: {{ $properties->price }}</a>
+                                </h3>
+                                <div class="compare">
+                                    <a href="#" title="Compare">
+                                        <i class="flaticon-compare"></i>
+                                    </a>
+                                    <a href="#" title="Share">
+                                        <i class="flaticon-share"></i>
+                                    </a>
+                                    <a href="#" title="Favorites">
+                                        <i class="flaticon-heart"></i>
+>>>>>>> Stashed changes
                                     </a>
                                     <h4 class="sc-jb-title"><a href="properties-map.html">{{ $cities->state }}</a>
                                     </h4>

@@ -9,4 +9,10 @@ class Facilities extends Model
 {
     use HasFactory;
     protected $fillable=['name','detail','status'];
+
+    public function property()
+    {
+        return $this->belongsToMany(Property::class);
+    }
+
 }

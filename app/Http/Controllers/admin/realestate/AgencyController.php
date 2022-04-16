@@ -65,6 +65,10 @@ class AgencyController extends Controller
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public function destroy($id)
     {
         $delete = Agency::findOrFail($id);

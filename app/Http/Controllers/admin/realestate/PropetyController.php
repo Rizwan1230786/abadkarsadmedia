@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Facilities;
+use App\Models\Property_facilities;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -55,7 +56,6 @@ class PropetyController extends Controller
             $data['record'] = Property::where('id', $updateId)->first();
         }
         return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages',));
-
     }
 
 
@@ -88,6 +88,7 @@ class PropetyController extends Controller
                 $data['project_map'] = $mapname;
                 request()->property_map->move(public_path('assets/images/properties/maps'), $mapname);
             }
+<<<<<<< Updated upstream
             // $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
             // if ($request->file('price_plan')) {
             //     $imagePath = $request->file('price_plan');
@@ -99,6 +100,9 @@ class PropetyController extends Controller
             //     $request->video = $path;
             //     request()->video->move(public_path('videos/'), $path);
             // }
+=======
+
+>>>>>>> Stashed changes
             $post = Property::Create($data);
             if ($request->has('images')) {
                 foreach ($request->file('images') as $image) {
@@ -110,6 +114,8 @@ class PropetyController extends Controller
                     ]);
                 }
             }
+            //////property_facilities/////
+
             $post->features()->attach($request->feature);
         } else {
             $message = $validator->errors()->toArray();
@@ -150,15 +156,6 @@ class PropetyController extends Controller
                 $imagePath = $request->file('image');
                 request()->property_map->move(public_path('assets/images/properties/maps'), $property_map);
             }
-            // if (isset($request->price_plan) && !empty($request->price_plan)) {
-            //     $oldimage = public_path('assets/images/properties/price/' . $post->price_plan);
-            //     if (File::exists($oldimage)) {
-            //         File::delete($oldimage);
-            //     }
-            //     $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
-            //     $post->price_plan = $pricename;
-            //     request()->price_plan->move(public_path('assets/images/properties/price'), $pricename);
-            // }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category, "agent_id" => $request->agent_id,
@@ -185,8 +182,16 @@ class PropetyController extends Controller
                     }
                 }
             }
+            $count = count($request->facility);
+            $images_id = $post->id;
+            for ($i=0; $i < $count; $i++){
+            $Check=Property_facilities::updateOrCreate(array('property_id' => $images_id),[
+                'property_id'=>$post->id,
+                'facility'=> $request->facility[$i],
+                'distance'=>$request->distance[$i],
+            ]);
 
-
+        }
             $post->features()->sync($request->feature);
         } else {
             $message = $validator->errors()->toArray();
@@ -219,9 +224,5 @@ class PropetyController extends Controller
         return response()->json($data);
     }
 
-    public function facility(Request $request)
-    {
-        $data['facility'] = Facilities::get(["name", "id"]);
-        return response()->json($data);
-    }
+
 }

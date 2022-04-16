@@ -19,7 +19,7 @@ use App\Models\subpages;
 class FrontController extends Controller
 {
     public function index(){
-        $property=Property::all();
+        $property=Property::limit(4)->get();
         $project=Projects::all();
         $city=Cities::all();
         $agents=Agent::all();
@@ -28,7 +28,7 @@ class FrontController extends Controller
         return view('front.pages.index',compact('property','project','city','agents','meta','data'));
     }
     public function project(){
-        $project=Projects::all();
+        $project=Projects::paginate(4);
         $meta = Webpages::Where("page_title", "project")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.project',compact('project','meta','data'));
@@ -36,7 +36,7 @@ class FrontController extends Controller
     public function agent(){
         $meta = subpages::Where("page_title", "agents view")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        $agents=Agent::all();
+        $agents=Agent::paginate(4);
         return view('front.pages.agent',get_defined_vars());
     }
     public function agent_detail($id){
@@ -48,7 +48,7 @@ class FrontController extends Controller
     public function agency(){
         $meta = subpages::Where("page_title", "agents view")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        $agencies=Agency::all();
+        $agencies=Agency::paginate(4);
 
         return view('front.pages.agency',get_defined_vars());
     }
@@ -59,7 +59,7 @@ class FrontController extends Controller
         return view('front.pages.agency_detail',compact('agency','projects','agents'));
     }
     public function property(){
-        $property=Property::all();
+        $property=Property::paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',compact('property','meta','data'));
@@ -77,7 +77,7 @@ class FrontController extends Controller
         return view('front.pages.property_detail',compact('properties','assign','agent','images'));
     }
     public function blog(){
-        $blog=Blog::all();
+        $blog=Blog::paginate(4);
         $meta = Webpages::Where("page_title", "blog")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.blog',get_defined_vars());
