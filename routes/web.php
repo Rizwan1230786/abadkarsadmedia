@@ -178,6 +178,7 @@ Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
+Route::get('/search_property', [FrontController::class, 'search_property'])->name('front.search_property');
 Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
