@@ -1492,10 +1492,15 @@ section.recently.portfolio {
 }
 
 .homepage-1 .portfolio.full-l .project-head {
-    /* display: block;
-    width: 320px;
-    height: 240px;
-    background-image: url("https://source.unsplash.com/320x240/?sky") */
+  border-radius: 3px 0 0 3px;
+  max-width: -webkit-fill-available;
+  margin: 0;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
 }
 
 .homepage-1 .portfolio .homes-content .homes-list li i {

@@ -377,7 +377,7 @@
                 @if ($properties->moderation_status == 'approved')
                 <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
                     <div class="project-single" data-aos="fade-right">
-                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/'.$properties->image)}}'); display: block; width: 320px; height: 240px; ">
+                        <div class="project-inner " style="background-image: url('{{ asset('assets/images/properties/'.$properties->image)}}'); display: block; background-size: cover;background-position: center;background-repeat: no-repeat;width: 70%; ">
                             <div class="homes">
                                 <!-- homes img -->
                                 <a href="{{ url('/property',$properties->url_slug) }}" class="homes-img">
@@ -428,7 +428,7 @@
                             </ul>
                             <div class="price-properties footer pt-3 pb-0">
                                 <h3 class="title mt-3">
-                                    <a href="{{ route('front.property_detail',$properties->id) }}">{{ $properties->price }} {{ $properties->currency }}</a>
+                                    <a href="{{ url('/property',$properties->url_slug) }}">{{ $properties->currency }}: {{ $properties->price }}</a>
                                 </h3>
                                 <div class="compare">
                                     <a href="#" title="Compare">
