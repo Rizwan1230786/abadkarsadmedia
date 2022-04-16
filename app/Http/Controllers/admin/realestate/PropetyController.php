@@ -34,7 +34,7 @@ class PropetyController extends Controller
     public function create(Request $request)
     {
         $cities = Cities::get(["name", "id"]);
-        $facilites = Facilities::select('id','name')->get();
+        $facilites = Facilities::select('id', 'name')->get();
 
         $project = Projects::all();
         $feature = Features::all();
@@ -55,8 +55,7 @@ class PropetyController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency','multiimages',));
-
+        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency', 'multiimages',));
     }
 
 
@@ -78,7 +77,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
-                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id,"video" => $request->video,"meta_title" => $request->meta_title,
+                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -88,7 +87,7 @@ class PropetyController extends Controller
             $post = Property::Create($data);
             if ($request->file('property_map')) {
                 $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
-                $post->property_map=$mapname;
+                $post->property_map = $mapname;
                 $imagePath = $request->file('property_map');
                 request()->property_map->move(public_path('assets/images/properties/maps'), $mapname);
             }
@@ -102,18 +101,17 @@ class PropetyController extends Controller
                     ]);
                 }
             }
-            $count = count($request->facility);
-            for ($i=0; $i < $count; $i++) {
-              $task = new Property_facilities();
-              $task->property_id = $post->id;
-              $task->facility = $request->facility[$i];
-              $task->distance = $request->distance[$i];
-              $task->save();
+            if (isset($request->facility) && !empty($request->facility)) {
+                $count = count($request->facility);
+                for ($i = 0; $i < $count; $i++) {
+                    $task = new Property_facilities();
+                    $task->property_id = $post->id;
+                    $task->facility = $request->facility[$i];
+                    $task->distance = $request->distance[$i];
+                    $task->save();
+                }
             }
             $post->features()->attach($request->feature);
-
-
-
         } else {
             $message = $validator->errors()->toArray();
         }
@@ -165,7 +163,7 @@ class PropetyController extends Controller
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category, "agent_id" => $request->agent_id,
-                "agency_id" => $request->agency_id, "video" => $request->video,"meta_title" => $request->meta_title,
+                "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -188,15 +186,15 @@ class PropetyController extends Controller
                     }
                 }
             }
-            $check= $post->id;
+            $check = $post->id;
             $count = count($request->facility);
-            for ($i=0; $i < $count; $i++) {
-            Property_facilities::where('property_id',$check)
-            ->update([
-                'distance'=>$request->distance[$i],
-                'facility'=>$request->facility[$i],
-            ]);
-        }
+            for ($i = 0; $i < $count; $i++) {
+                Property_facilities::where('property_id', $check)
+                    ->update([
+                        'distance' => $request->distance[$i],
+                        'facility' => $request->facility[$i],
+                    ]);
+            }
 
 
 
@@ -228,9 +226,7 @@ class PropetyController extends Controller
 
     public function fetchState(Request $request)
     {
-        $data['areas'] = Area::where("city",$request->city_id)->get(["areaname", "id"]);
+        $data['areas'] = Area::where("city", $request->city_id)->get(["areaname", "id"]);
         return response()->json($data);
     }
-
-
 }

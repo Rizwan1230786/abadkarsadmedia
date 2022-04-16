@@ -38,15 +38,4 @@
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
 </head>
-<style>
-    .backgroundimage{
-<<<<<<< Updated upstream
-=======
-        background-image: url('{{ asset('assets/images/properties/'.$properties->image)}}');
->>>>>>> Stashed changes
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 100vh;
-    }
-</style>
+
