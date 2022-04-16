@@ -85,8 +85,6 @@ class FrontController extends Controller
         $agent =Agent::all();
         $images=Image::all();
         $Check_facility=Property_facilities::all();
-
-        dd($Check_facility);
         return view('front.pages.property_detail',compact('properties','assign','agent','images'));
     }
     public function blog(){
