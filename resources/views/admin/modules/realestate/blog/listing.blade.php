@@ -55,7 +55,7 @@
                                     @foreach ($record as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td><img src="{{ asset('storage/' . $item->image) }}" width="100px" alt=""></td>
+                                            <td><img src="{{ asset('storage/' . $item->image) }}" width="50" height="50" alt=""></td>
                                             <td>{{ $item->title }}</td>
                                             <td>
                                                 <ul class="icons-list">

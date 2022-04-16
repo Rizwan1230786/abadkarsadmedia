@@ -46,7 +46,7 @@ class BlogController extends Controller
         ]);
         $pic = $request->file('image')->store('public');
         $picture = explode('/', $pic);
-        $check=Blog::create([
+        $check = Blog::create([
             'title' => $request->title,
             'image' => $picture[1],
             'descripition' => $request->descripition,
@@ -88,7 +88,12 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->hasfile('image') !== null) {
-            $imagePath = public_path('storage/'.$request->image);
+            $data = Blog::find($id);
+            $oldimage = public_path('storage/' . $data->image);
+            if (File::exists($oldimage)) {
+                File::delete($oldimage);
+            }
+            $imagePath = public_path('storage/' . $request->image);
             $pic = $request->file('image')->store('public');
             $picture = explode('/', $pic);
             Blog::where('id', $id)
@@ -99,15 +104,14 @@ class BlogController extends Controller
                     'content' => $request->content,
                 ]);
             return redirect()->route('admin:blog.index')->with('message', "Blog Updated Successfully");
-        }
-        else{
+        } else {
             Blog::where('id', $id)
-            ->update([
-                'title' => $request->title,
-                'descripition' => $request->descripition,
-                'content' => $request->content,
-            ]);
-        return redirect()->route('admin:blog.index')->with('message', "Blog Updated Successfully");
+                ->update([
+                    'title' => $request->title,
+                    'descripition' => $request->descripition,
+                    'content' => $request->content,
+                ]);
+            return redirect()->route('admin:blog.index')->with('message', "Blog Updated Successfully");
         }
     }
 
@@ -120,25 +124,22 @@ class BlogController extends Controller
     public function destroy($id)
     {
 
-        if(isset($id) && $id !=1){
-            $delete = Blog::findOrFail($id);
-            $oldimage = public_path( asset('storage/'.$delete->image) );
-            if (File::exists($oldimage)) {
-                File::delete($oldimage);
-            }
-            $user=$delete->delete();
-            if($user){
-                return response(['status' => true]);
-            }else{
-                return response(['status' => false]);
-            }
-        }else {
+        $delete = Blog::findOrFail($id);
+        $oldimage = public_path('storage/' . $delete->image);
+        if (File::exists($oldimage)) {
+            File::delete($oldimage);
+        }
+        $user = $delete->delete();
+        if ($user) {
+            return response(['status' => true]);
+        } else {
             return response(['status' => false]);
         }
     }
 
 
-    public function upload(Request $request){
+    public function upload(Request $request)
+    {
 
         // $fileName=$request->file('file')->getClientOriginalName();
         // $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
@@ -146,7 +147,5 @@ class BlogController extends Controller
 
         $imgpath = request()->file('file')->store('uploads', 'public');
         return response()->json(['location' => "/storage/$imgpath"]);
-
     }
-
 }

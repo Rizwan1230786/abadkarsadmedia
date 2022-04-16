@@ -27,7 +27,6 @@ class AgencyController extends Controller
         }
         return view('admin.modules.realestate.agency.create', compact('data', 'city'));
     }
-
     public function submit(Request $request)
     {
         $type = 'error';
@@ -37,86 +36,45 @@ class AgencyController extends Controller
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
+            $data=$request->all();
             $updateId = $request->id;
-            if (isset($request->image) && !empty($request->image)) {
-                $filename = time() . '.' . request()->image->getClientOriginalExtension();
-                if ($request->file('image')) {
-                    $imagePath = $request->file('image');
+            $post = Agency::find($updateId);
+            if (isset($updateId) && $updateId != 0) {
+                $type = 'success';
+                $message = "Data updated successfully";
+                if (isset($request->image) && !empty($request->image)) {
+                    $oldimage = public_path('assets/images/agency/' . $post->image);
+                    if (File::exists($oldimage)) {
+                        File::delete($oldimage);
+                    }
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image']=$filename;
                     request()->image->move(public_path('assets/images/agency/'), $filename);
                 }
+                $post->update($data);
+            } else {
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image']=$filename;
+                    request()->image->move(public_path('assets/images/agency/'), $filename);
+                }
+                Agency::Create($data);
             }
-            $data = array(
-                "name" => $request->name,
-                "email" => $request->email,
-                "office_address" => $request->office_address,
-                "office_number" => $request->office_number,
-                "mobile_number" => $request->mobile_number,
-                "fax_number" => $request->fax_number,
-                "descripition" => $request->descripition,
-                "image" => $filename,
-                "city_name" => $request->city_name,
-            );
-            if (isset($updateId) && !empty($updateId) && $updateId > 0) {
-                $data['id'] = $updateId;
-                $message = "Data update successfully";
-            }
-            Agency::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
-
-
-    // public function update(Request $request)
-    // {
-    //     $updatedId = $request->id;
-    //     dd($request->id);
-    //     $type = 'success';
-    //     $message = "Data Updated successfully";
-    //     $post = Agency::find($updatedId);
-    //     if (isset($request->image) && !empty($request->image)) {
-    //         $oldimage = public_path('assets/images/agency/' . $post->image);
-    //         if (File::exists($oldimage)) {
-    //             File::delete($oldimage);
-    //         }
-    //         $filename = time() . '.' . request()->image->getClientOriginalExtension();
-    //         $post->image = $filename;
-    //         $imagePath = $request->file('image');
-    //         request()->image->move(public_path('assets/images/agency/'), $filename);
-    //     }
-    //     $data = array(
-    //         "name" => $request->name,
-    //         "email" => $request->email,
-    //         "office_address" => $request->office_address,
-    //         "office_number" => $request->office_number,
-    //         "mobile_number" => $request->mobile_number,
-    //         "fax_number" => $request->fax_number,
-    //         "descripition" => $request->descripition,
-    //         "city_name" => $request->city_name,
-    //     );
-    //     $post->update($data);
-    //     return response()->json(['type' => $type, 'message' => $message]);
-    // }
-
-
-
-
-
     public function destroy($id)
     {
-        if (isset($id) && $id != 1) {
-            $delete = Agency::findOrFail($id);
-            $oldimage = public_path('assets/images/agent/' . $delete->image);
-            if (File::exists($oldimage)) {
-                File::delete($oldimage);
-            }
-            $user = $delete->delete();
-            if ($user) {
-                return response(['status' => true]);
-            } else {
-                return response(['status' => false]);
-            }
+        $delete = Agency::findOrFail($id);
+        $oldimage = public_path('assets/images/agency/' . $delete->image);
+        if (File::exists($oldimage)) {
+            File::delete($oldimage);
+        }
+        $user = $delete->delete();
+        if ($user) {
+            return response(['status' => true]);
         } else {
             return response(['status' => false]);
         }

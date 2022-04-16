@@ -60,26 +60,29 @@ class ProjectsController extends Controller
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            $mapname = time() . '.' . request()->project_map->getClientOriginalExtension();
-            $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
-            if ($request->file('image')) {
-                $imagePath = $request->file('image');
+            $data = array(
+                "title" => $request->title, "url_slug" => $request->url_slug, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "category" => $request->category, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id,
+                "agency_id" => $request->agency_id,"meta_title" => $request->meta_title,
+                "meta_keywords" => $request->meta_keywords,
+                "head_title" => $request->head_title,
+                "meta_description" => $request->meta_description,
+                "area" => $request->area,"image"=>$request->image,"project_map"=>$request->project_map,"price_plan"=>$request->price_plan,
+            );
+            if(isset($data['image']) && !empty($data['image'])) {
+                $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                $data['image'] = $filename;
                 request()->image->move(public_path('assets/images/projects/'), $filename);
             }
-            if ($request->file('project_map')) {
-                $imagePath = $request->file('project_map');
+            if (isset($data['project_map']) && !empty($data['project_map'])) {
+                $mapname = time() . '.' . request()->project_map->getClientOriginalExtension();
+                $data['project_map']= $mapname;
                 request()->project_map->move(public_path('assets/images/projects/maps'), $mapname);
             }
-            if ($request->file('price_plan')) {
-                $imagePath = $request->file('price_plan');
+            if (isset($data['price_plan']) && !empty($data['price_plan'])) {
+                $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
+                $data['price_plan']= $pricename;
                 request()->price_plan->move(public_path('assets/images/projects/price'), $pricename);
             }
-            $data = array("title" => $request->title, "url_slug" => $request->url_slug, "image" => $filename, "detail" => $request->detail, "page_content" => $request->page_content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "num_of_blocks" => $request->num_of_blocks, "num_of_floors" => $request->num_of_floors, "num_of_flats" => $request->num_of_flats, "lowest_price" => $request->lowest_price, "max_price" => $request->max_price, "currency_name" => $request->currency_name, "commercial_area_min" => $request->commercial_area_min, "commercial_area_max" => $request->commercial_area_max, "residential_area_min" => $request->residential_area_min, "residential_area_max" => $request->residential_area_max, "investor_name" => $request->investor_name, "status" => $request->status, "expire_date" => $request->expire_date, "category" => $request->category, "Open_sell_date" => $request->Open_sell_date, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "project_map" => $mapname, "price_plan" => $pricename,"meta_title" => $request->meta_title,
-            "meta_keywords" => $request->meta_keywords,
-            "head_title" => $request->head_title,
-            "meta_description" => $request->meta_description,"video" => $request->video,
-            "area" => $request->area,);
             $post = Projects::Create($data);
             if ($request->has('images')) {
                 foreach ($request->file('images') as $image) {

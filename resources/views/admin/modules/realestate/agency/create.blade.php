@@ -27,7 +27,7 @@
                     <div class="col-lg-12 col-md-12">
                         <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data" method="POST" action="{{ route('admin:agency_submit', [$data['updateId'] ?? 0]) }}">
                             @csrf
-                            <input type="text" name="id" value="{{$data['updateId'] ?? 0}}">
+                            <input type="hidden" name="id" value="{{$data['updateId'] ?? 0}}">
                             <div class="card-body pb-2">
                                 <div class="row row-sm">
                                     <div class="col-6 form-group">

@@ -70,10 +70,23 @@ class PropetyController extends Controller
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            if ($request->file('image')) {
-                $imagePath = $request->file('image');
+            $data = array(
+                "name" => $request->name, "url_slug" => $request->url_slug, "image" => $$request->image, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
+                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id,"video" => $request->video,"meta_title" => $request->meta_title,
+                "meta_keywords" => $request->meta_keywords,
+                "head_title" => $request->head_title,
+                "meta_description" => $request->meta_description,
+                "area" => $request->area,"property_map"=>$request->property_map,
+            );
+            if (isset($data['image']) && !empty($data['image'])) {
+                $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                $data['image'] = $filename;
                 request()->image->move(public_path('assets/images/properties/'), $filename);
+            }
+            if (isset($data['project_map']) && !empty($data['project_map'])) {
+                $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
+                $data['project_map'] = $mapname;
+                request()->property_map->move(public_path('assets/images/properties/maps'), $mapname);
             }
             // $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
             // if ($request->file('price_plan')) {
@@ -86,21 +99,7 @@ class PropetyController extends Controller
             //     $request->video = $path;
             //     request()->video->move(public_path('videos/'), $path);
             // }
-            $data = array(
-                "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
-                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id,"video" => $request->video,"meta_title" => $request->meta_title,
-                "meta_keywords" => $request->meta_keywords,
-                "head_title" => $request->head_title,
-                "meta_description" => $request->meta_description,
-                "area" => $request->area,
-            );
             $post = Property::Create($data);
-            if ($request->file('property_map')) {
-                $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
-                $post->property_map=$mapname;
-                $imagePath = $request->file('property_map');
-                request()->property_map->move(public_path('assets/images/properties/maps'), $mapname);
-            }
             if ($request->has('images')) {
                 foreach ($request->file('images') as $image) {
                     $imageName = time() . rand(1, 1000) . '.' . $image->extension();

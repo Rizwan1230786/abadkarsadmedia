@@ -220,7 +220,7 @@
                         <div class="project-single mb-0 bb-0">
                             <div class="project-inner project-head">
                                 <div class="project-bottom">
-                                    <h4><a href="{{ route('front.property_detail',$properties->id) }}">View Property</a><span
+                                    <h4><a href="{{ url('/property',$properties->url_slug) }}">View Property</a><span
                                             class="category">Real Estate</span></h4>
                                 </div>
                                 <div class="homes">

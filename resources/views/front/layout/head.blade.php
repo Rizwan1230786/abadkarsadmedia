@@ -37,3 +37,12 @@
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}">
 </head>
+<style>
+    .backgroundimage{
+        background-image: url('{{ asset('assets/images/properties/'.$properties->image)}}');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+    }
+</style>

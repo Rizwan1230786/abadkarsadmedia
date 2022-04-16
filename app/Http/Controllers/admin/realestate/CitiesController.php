@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Cities;
+use Illuminate\Support\Facades\File;
 use App\Models\State;
 
 class CitiesController extends Controller
@@ -23,30 +24,42 @@ class CitiesController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Cities::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.cities.create', compact('data','state'));
+        return view('admin.modules.realestate.cities.create', compact('data', 'state'));
     }
     public function submit(Request $request)
     {
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'image' => 'required',
+
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
+            $data = $request->all();
             $updateId = $request->id;
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            if ($request->file('image')) {
-                $imagePath = $request->file('image');
-                request()->image->move(public_path('assets/images/cities/'), $filename);
-            }
-            $data = array("name" => $request->name,"image" => $filename, "detail" => $request->detail,"state" => $request->state);
+            $post = Cities::find($updateId);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
-                $data['id'] = $updateId;
-                $message = "Data update successfully";
+                $type = 'success';
+                $message = "Data updated successfully";
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $oldimage = public_path('assets/images/cities/' . $post->image);
+                    if (File::exists($oldimage)) {
+                        File::delete($oldimage);
+                    }
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image']=$filename;
+                    request()->image->move(public_path('assets/images/cities/'), $filename);
+                }
+                $post->update($data);
+            } else {
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image']=$filename;
+                    request()->image->move(public_path('assets/images/cities/'), $filename);
+                }
+                Cities::Create($data);
             }
-            Cities::updateOrCreate(array('id' => $updateId), $data);
         } else {
             $message = $validator->errors()->toArray();
         }
@@ -73,6 +86,10 @@ class CitiesController extends Controller
     public function destroy($id)
     {
         $delete = Cities::findOrFail($id);
+        $oldimage = public_path('assets/images/cities/' . $delete->image);
+        if (File::exists($oldimage)) {
+            File::delete($oldimage);
+        }
         $user = $delete->delete();
         if ($user) {
             return response(['status' => true]);

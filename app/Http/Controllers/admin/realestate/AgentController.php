@@ -6,6 +6,7 @@ use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Agency;
+use App\Models\Area;
 use App\Models\Cities;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -28,61 +29,59 @@ class AgentController extends Controller
         }
         return view('admin.modules.realestate.agent.create', compact('data', 'agency', 'city'));
     }
-
-
     public function submit(Request $request)
     {
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
         ]);
-        if (isset($request->image) && !empty($request->image)) {
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            if ($request->file('image')) {
-                request()->image->move(public_path('assets/images/agent/'), $filename);
-            }
-        }
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
+            $data = $request->all();
             $updateId = $request->id;
-            $data = array(
-                "name" => $request->name,
-                "email" => $request->email,
-                "office_address" => $request->office_address,
-                "office_number" => $request->office_number,
-                "mobile_number" => $request->mobile_number,
-                "fax_number" => $request->fax_number,
-                "descripition" => $request->descripition,
-                "agency" => $request->agency_id,
-                "city_name" => $request->city_name,
-            );
-
-            Agent::updateOrCreate(array('id' => $updateId), $data);
+            $post = Agent::find($updateId);
+            if (isset($updateId) && $updateId != 0) {
+                $type = 'success';
+                $message = "Data updated successfully";
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $oldimage = public_path('assets/images/agent/' . $post->image);
+                    if (File::exists($oldimage)) {
+                        File::delete($oldimage);
+                    }
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image'] = $filename;
+                    request()->image->move(public_path('assets/images/agent/'), $filename);
+                }
+                $post->update($data);
+            } else {
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image'] = $filename;
+                    request()->image->move(public_path('assets/images/agent/'), $filename);
+                }
+                Agent::Create($data);
+            }
         } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
 
-
-
     public function destroy($id)
     {
-        if (isset($id) && $id != 1) {
-            $delete = Agent::findOrFail($id);
-            $oldimage = public_path('assets/images/agent/' . $delete->image);
-            if (File::exists($oldimage)) {
-                File::delete($oldimage);
-            }
-            $user = $delete->delete();
-            if ($user) {
-                return response(['status' => true]);
-            } else {
-                return response(['status' => false]);
-            }
+
+        $delete = Agent::findOrFail($id);
+        $oldimage = public_path('assets/images/agent/' . $delete->image);
+        if (File::exists($oldimage)) {
+            File::delete($oldimage);
+        }
+        $user = $delete->delete();
+        if ($user) {
+            return response(['status' => true]);
         } else {
             return response(['status' => false]);
         }
+
     }
 }
