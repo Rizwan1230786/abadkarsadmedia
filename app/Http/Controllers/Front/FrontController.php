@@ -14,6 +14,7 @@ use App\Models\Agency;
 use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Project_image;
+use App\Models\Property_facilities;
 use App\Models\Webpages;
 use App\Models\subpages;
 class FrontController extends Controller
@@ -74,6 +75,9 @@ class FrontController extends Controller
         $properties = Property::where('id',$projectid->id)->first();
         $agent =Agent::all();
         $images=Image::all();
+        $Check_facility=Property_facilities::all();
+
+        dd($Check_facility);
         return view('front.pages.property_detail',compact('properties','assign','agent','images'));
     }
     public function blog(){
