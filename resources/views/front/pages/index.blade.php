@@ -31,14 +31,15 @@
                                             </li>
                                         </ul>
                                         <div class="tab-content">
-                                            <form action="" method="post">
+                                            <form action="{{ url('/search_property') }}" method="get">
                                                 <div class="tab-pane fade show active" id="tabs_1">
                                                     <div class="rld-main-search">
                                                         <div class="row">
                                                             <div class="rld-single-select ml-22">
-                                                                <select id="search" class="select2"  name="city_id">
+                                                                <select id="cars" class="select single-select" name="city_name">
+                                                                    <option value="null">city</option>
                                                                     @foreach ($city as $cities)
-                                                                        <option value="{{ $cities->id }}">
+                                                                        <option value="{{ $cities->name }}">
                                                                             {{ $cities->name }}
                                                                         </option>
                                                                     @endforeach
@@ -65,7 +66,9 @@
                                                             </div>
                                                             <div class="dropdown-filter"><span>Advanced Search</span></div>
                                                             <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                                                <a class="btn btn-yellow" href="#">Search Now</a>
+                                                                <button class="btn btn-yellow" type="submit">
+                                                                    Search Now
+                                                                </button>
                                                             </div>
                                                             <div class="explore__form-checkbox-list full-filter">
                                                                 <div class="row">

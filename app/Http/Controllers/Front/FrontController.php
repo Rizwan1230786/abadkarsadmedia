@@ -64,6 +64,15 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',compact('property','meta','data'));
     }
+    public function search_property(Request $request){
+        $meta = Webpages::Where("page_title", "property")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        $city_name=$request->input('city_name');
+        if(isset($city_name) && !empty($city_name)){
+            $search_property=Property::where('city_name','LIKE','%'.$city_name.'%')->get();
+        }
+        return view('front.pages.property',compact('search_property','meta','data'));
+    }
     public function property_detail($provider){
         $projectid=Property::where('url_slug','=',$provider)->first();
         $assign = DB::table('features_property')
