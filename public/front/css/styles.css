@@ -2680,6 +2680,10 @@ section.portfolio {
 .homes-img {
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30vh;
 }
 
 .homes-tag.featured {

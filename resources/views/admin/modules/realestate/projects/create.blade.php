@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="form-control disc_2 notrequired" name="page_content"
+                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content"
                                                     id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
@@ -454,17 +454,12 @@
 
         });
     </script>
-
-
     <script>
         $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
             var page_title = $(this).val();
             $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
         });
     </script>
-
-
-
 @endsection
 @section('js')
     <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>
