@@ -190,6 +190,14 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         $delete = Projects::findOrFail($id);
+        $oldimage = public_path('assets/images/projects/' . $delete->image);
+        if (File::exists($oldimage)) {
+            File::delete($oldimage);
+        }
+        $oldimage2 = public_path('assets/images/projects/maps' . $delete->project_map);
+        if (File::exists($oldimage2)) {
+            File::delete($oldimage2);
+        }
         $user = $delete->delete();
         if ($user) {
             return response(['status' => true]);

@@ -425,7 +425,7 @@
     </script>
     <script>
         $(document).ready(function() {
-            var postURL = "<?php echo url('admin/projects'); ?>";
+            // var postURL = "<?php echo url('admin/projects'); ?>";
             $.ajax({
                 url: "{{ url('admin/get_fecilites') }}",
                 type: "GET",
@@ -439,12 +439,12 @@
                 $('#add').click(function() {
                     i++;
                     var selectfacilites = '<tr id="row' + i +
-                        '" class="dynamic-added"><td><select  name="name[]"  class="form-control name_list">';
+                        '" class="dynamic-added"><td><select  name="facility[]"  class="form-control name_list">';
                             facilities.map(function (item, index){
                                 selectfacilites += '<option value="'+item.name+'">'+item.name+'</option>';
                             });
 
-                        selectfacilites += '</select></td><td><input type="text" name="name[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
+                        selectfacilites += '</select></td><td><input type="text" name="distance[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
                         i + '" class="btn btn-danger btn_remove">X</button></td></tr>';
                     $('#dynamic_field').append(selectfacilites);
                 });

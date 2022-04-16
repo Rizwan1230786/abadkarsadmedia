@@ -320,23 +320,14 @@
                     </div>
                 </aside>
             </div>
-            <nav aria-label="..." class="pt-0">
+            <nav aria-label="..." class="pt-55">
                 <ul class="pagination disabled">
-                    <li class="page-item">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
                     <li class="page-item active">
-                        <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                        <li>{!! $property->links() !!}</li>
                     </li>
                 </ul>
             </nav>
+
         </div>
     </section>
     @endsection

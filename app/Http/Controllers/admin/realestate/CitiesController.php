@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\admin\realestate;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\Models\Cities;
-use Illuminate\Support\Facades\File;
 use App\Models\State;
+use App\Models\Cities;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class CitiesController extends Controller
 {

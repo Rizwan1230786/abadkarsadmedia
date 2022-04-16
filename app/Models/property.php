@@ -15,4 +15,8 @@ class Property extends Model
     {
         return $this->belongsToMany(Features::class);
     }
+    public function facilities()
+    {
+        return $this->belongsToMany(Facilities::class);
+    }
 }

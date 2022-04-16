@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Property;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacilitiesTable extends Migration
+class CreatePropertyFacilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,11 @@ class CreateFacilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('facilities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('detail')->nullable();
-            $table->string('status')->default(0);
+        Schema::create('property_facilities', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Property::class);
+            $table->string('facility')->nullable();
+            $table->string('distance')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateFacilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facilities');
+        Schema::dropIfExists('property_facilities');
     }
 }
