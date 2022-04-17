@@ -316,13 +316,13 @@
                     </div>
                 </aside>
             </div>
-            <nav aria-label="..." class="pt-55">
+            {{-- <nav aria-label="..." class="pt-55">
                 <ul class="pagination disabled">
                     <li class="page-item active">
                         <li>{!! $property->links() !!}</li>
                     </li>
                 </ul>
-            </nav>
+            </nav> --}}
         </div>
     </section>
     <!-- END SECTION BLOG -->

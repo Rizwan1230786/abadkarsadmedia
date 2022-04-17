@@ -58,7 +58,6 @@ $('.formSubmit').submit(function(e) {
     e.preventDefault();
     var self = this;
     var data = new FormData(this);
-    data.append('page_content', tinyMCE.activeEditor.getContent());
     if (validateForm()) {
         if (!$(titleClass).hasClass("is-invalid")) {
             $.ajax({
