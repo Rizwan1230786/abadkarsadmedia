@@ -213,6 +213,19 @@
                     </div>
                 </section>
                 {{-- main portion --}}
+                <h3>Areas</h3>
+                <div class="homes" style="display: flex">
+                        @foreach ($city_area as $area)
+                            <!-- homes img -->
+                            <ul>
+                                <li style="text-decoration: none">
+                                    <a href="{{ url('area/' .$area->slug.'/'.'city/'.$matchCity->slug) }}" class="homes-img">
+                                        {{ $area->areaname }}
+                                    </a>
+                                </li>
+                            </ul>
+                        @endforeach
+                </div>
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)
                         <div class="row featured portfolio-items">
@@ -225,7 +238,8 @@
                                         </div>
                                         <div class="homes">
                                             <!-- homes img -->
-                                            <a href="{{ url('/property', $search_property->url_slug) }}" class="homes-img">
+                                            <a href="{{ url('/property', $search_property->url_slug) }}"
+                                                class="homes-img">
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">{{ $search_property->type }}</div>
                                                 <div class="homes-price">Family Home</div>
@@ -234,14 +248,14 @@
                                             </a>
                                         </div>
                                         <div class="button-effect">
-                                            <a href="{{ route('front.property_detail', $search_property->id) }}"
+                                            <a href="#"
                                                 class="btn"><i class="fa fa-link"></i></a>
                                             @if ($search_property->video)
                                                 <a href="{{ $search_property->video }}"
                                                     class="btn popup-video popup-youtube"><i
                                                         class="fas fa-video"></i></a>
                                             @endif
-                                            <a href="{{ route('front.property_detail', $search_property->id) }}"
+                                            <a href="#"
                                                 class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                         </div>
                                     </div>
@@ -250,7 +264,8 @@
                             <!-- homes content -->
                             <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
                                 <!-- homes address -->
-                                <h3><a href="{{ url('/property', $search_property->url_slug) }}">{{ $search_property->name }}</a>
+                                <h3><a
+                                        href="{{ url('/property', $search_property->url_slug) }}">{{ $search_property->name }}</a>
                                 </h3>
                                 <p class="homes-address mb-3">
                                     <a href="{{ url('/property', $search_property->url_slug) }}">
@@ -283,7 +298,7 @@
                                 <!-- Price -->
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
-                                        <a href="{{ route('front.property_detail', $search_property->id) }}">{{ $search_property->currency }}
+                                        <a href="#">{{ $search_property->currency }}
                                             {{ $search_property->price }}</a>
                                     </h3>
                                     <div class="compare">
@@ -301,6 +316,96 @@
                             </div>
                         </div>
                     @endforeach
+                @elseif(isset($city_search_property) && !empty($city_search_property))
+                @foreach ($city_search_property as $city_search_property)
+                <div class="row featured portfolio-items">
+                    <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                        <div class="project-single mb-0 bb-0">
+                            <div class="project-inner project-head">
+                                <div class="project-bottom">
+                                    <h4><a href="{{ url('/property', $city_search_property->url_slug) }}">View
+                                            Property</a><span class="category">Real Estate</span></h4>
+                                </div>
+                                <div class="homes">
+                                    <!-- homes img -->
+                                    <a href="{{ url('/property', $city_search_property->url_slug) }}"
+                                        class="homes-img">
+                                        <div class="homes-tag button alt featured">Featured</div>
+                                        <div class="homes-tag button alt sale">{{ $city_search_property->type }}</div>
+                                        <div class="homes-price">Family Home</div>
+                                        <img src="{{ asset('assets/images/properties/' . $city_search_property->image) }}"
+                                            alt="home-1" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="button-effect">
+                                    <a href="#"
+                                        class="btn"><i class="fa fa-link"></i></a>
+                                    @if ($city_search_property->video)
+                                        <a href="{{ $city_search_property->video }}"
+                                            class="btn popup-video popup-youtube"><i
+                                                class="fas fa-video"></i></a>
+                                    @endif
+                                    <a href="#"
+                                        class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- homes content -->
+                    <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                        <!-- homes address -->
+                        <h3><a
+                                href="{{ url('/property'.'/'.$matchCity->slug.'/'.$city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
+                        </h3>
+                        <p class="homes-address mb-3">
+                            <a href="{{ url('/property', $city_search_property->url_slug) }}">
+                                <i class="fa fa-map-marker"></i><span>{{ $city_search_property->location }}</span>
+                            </a>
+                        </p>
+                        <!-- homes List -->
+                        <ul class="homes-list clearfix pb-3">
+                            <li class="the-icons">
+                                <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                <span>{{ $city_search_property->number_of_bedrooms }}</span>
+                            </li>
+                            <li class="the-icons">
+                                <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                <span>{{ $city_search_property->number_of_bathrooms }}</span>
+                            </li>
+                            @if (!empty($city_search_property->square))
+                                <li class="the-icons">
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $city_search_property->square }} ft</span>
+                                </li>
+                            @endif
+                            @if (!empty($city_search_property->marala))
+                                <li class="the-icons">
+                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                    <span>{{ $city_search_property->marala }} marla</span>
+                                </li>
+                            @endif
+                        </ul>
+                        <!-- Price -->
+                        <div class="price-properties">
+                            <h3 class="title mt-3">
+                                <a href="{{ url('/property', $city_search_property->id) }}">{{ $city_search_property->currency }}
+                                    {{ $city_search_property->price }}</a>
+                            </h3>
+                            <div class="compare">
+                                <a href="#" title="Compare">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </a>
+                                <a href="#" title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                                <a href="#" title="Favorites">
+                                    <i class="fa fa-heart-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
                 @else
                     @foreach ($property as $properties)
                         @if ($properties->moderation_status == 'approved')
@@ -325,14 +430,14 @@
                                                 </a>
                                             </div>
                                             <div class="button-effect">
-                                                <a href="{{ route('front.property_detail', $properties->id) }}"
+                                                <a href="#"
                                                     class="btn"><i class="fa fa-link"></i></a>
                                                 @if ($properties->video)
                                                     <a href="{{ $properties->video }}"
                                                         class="btn popup-video popup-youtube"><i
                                                             class="fas fa-video"></i></a>
                                                 @endif
-                                                <a href="{{ route('front.property_detail', $properties->id) }}"
+                                                <a href="$"
                                                     class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                             </div>
                                         </div>
@@ -375,7 +480,7 @@
                                     <!-- Price -->
                                     <div class="price-properties">
                                         <h3 class="title mt-3">
-                                            <a href="{{ route('front.property_detail', $properties->id) }}">{{ $properties->currency }}
+                                            <a href="#">{{ $properties->currency }}
                                                 {{ $properties->price }}</a>
                                         </h3>
                                         <div class="compare">

@@ -70,7 +70,6 @@
   <!-- END PRELOADER -->{}
 
   <!-- ARCHIVES JS -->
-  <script src="{{ asset('/front/js/jquery-3.5.1.min.js') }}"></script>
   <script src="{{ asset('/front/js/rangeSlider.js') }}"></script>
   <script src="{{ asset('/front/js/tether.min.js') }}"></script>
   <script src="{{ asset('/front/js/moment.js') }}"></script>
@@ -106,13 +105,23 @@
   <script src="{{ asset('/front/js/light.js') }}"></script>
   <script src="{{ asset('/front/js/popup.js') }}"></script>
   <script src="{{ asset('/front/js/inner.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        // Select2 Multiple
+        $('.select2-multiple').select2({
+            placeholder: "Select",
+            allowClear: true
+        });
+
+    });
+
+</script>
+
   <script>
       $(window).on('scroll load', function() {
           $("#header.cloned #logo img").attr("src", $('#header #logo img').attr('data-sticky-logo'));
-      });
-      $(document).ready(function() {
-          $('#search').select2();
       });
   </script>
 

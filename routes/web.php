@@ -126,6 +126,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
         Route::post('/properties/update/', [PropetyController::class, 'update'])->name('properties_update');
         Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
+        Route::get('/checkslug', [PropetyController::class, 'checkslug'])->name('checkslug');
 
         ///////route of agents//////
         Route::get('/agent', [AgentController::class, 'index'])->name('agent');
@@ -177,9 +178,14 @@ Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
+////// route of properties/////////
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
-Route::get('/search_property', [FrontController::class, 'search_property'])->name('front.search_property');
-Route::get('/property/{provider}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+Route::get('/property/{provider}', [FrontController::class, 'single_property_detail'])->name('front.single_property_detail');
+// Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
+Route::get('/{slug}/{slug2}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
+Route::get('/area/{slug1}/city/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
+Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+///////end properties///////
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');

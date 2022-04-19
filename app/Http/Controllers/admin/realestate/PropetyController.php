@@ -57,9 +57,6 @@ class PropetyController extends Controller
         }
         return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency', 'multiimages',));
     }
-
-
-
     public function submit(Request $request)
     {
         $type = 'error';
@@ -195,8 +192,6 @@ class PropetyController extends Controller
                         'facility' => $request->facility[$i],
                     ]);
             }
-
-
 
             $post->features()->sync($request->feature);
         } else {

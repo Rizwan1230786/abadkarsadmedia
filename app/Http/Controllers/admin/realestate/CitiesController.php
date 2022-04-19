@@ -31,7 +31,6 @@ class CitiesController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-
         ]);
         if ($validator->passes()) {
             $type = 'success';

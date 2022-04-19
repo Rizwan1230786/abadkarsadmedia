@@ -2,10 +2,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    {{-- <meta name="description" content="{{$meta->meta_description}}">
+    <meta name="description" content="{{$meta->meta_description}}">
     <meta name="meta_keywords" content="{{$meta->meta_keywords}}">
-    <title>{{$meta->meta_title}}</title> --}}
+    <title>{{$meta->meta_title}}</title>
     <!-- FAVICON -->
+    <script src="{{ asset('/front/js/jquery-3.5.1.min.js') }}"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{asset('/front/css/jquery-ui.css')}}">
     <!-- GOOGLE FONTS -->
@@ -36,6 +37,12 @@
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet-gesture-handling.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
+<style>
+    .btn1{
+         background: #18ba60 !important
+    }
+
+</style>
 

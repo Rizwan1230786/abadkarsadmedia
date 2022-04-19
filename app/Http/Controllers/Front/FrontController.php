@@ -11,6 +11,7 @@ use App\Models\Agent;
 use App\Models\Cities;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 use App\Models\Agency;
+use App\Models\Area;
 use App\Models\Blog;
 use App\Models\Image;
 use App\Models\Project_image;
@@ -65,16 +66,47 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',compact('property','meta','data'));
     }
-    public function search_property(Request $request){
+    public function show_city_area($slug){
+        $matchCity=Cities::where('slug','=',$slug)->first();
+        $city_area=Area::where('city','=',$matchCity->name)->get();
+        $city_search_property=Property::where('city_name','=',$matchCity->name)->get();
+        $property=Property::paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        $city_name=$request->input('city_name');
-        if(isset($city_name) && !empty($city_name)){
-            $search_property=Property::where('city_name','LIKE','%'.$city_name.'%')->get();
-        }
-        return view('front.pages.property',compact('search_property','meta','data'));
+        return view('front.pages.property',compact('property','meta','data','city_area','matchCity','city_search_property'));
     }
-    public function property_detail($provider){
+    public function area_peroperty($slug1 , $slug2){
+        $area=Area::where('slug','=',$slug1)->first();
+        $area_search_property=Property::where('area','=',$area->areaname)->get();
+        dd($area_search_property);
+        $property=Property::paginate(4);
+        $meta = Webpages::Where("page_title", "property")->first();
+        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+        return view('front.pages.property',compact('property','meta','data','city_area'));
+    }
+    // public function search_property(Request $request){
+    //     $meta = Webpages::Where("page_title", "property")->first();
+    //     $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
+    //     $city_name=$request->input('city');
+    //     if(isset($city_name) && !empty($city_name)){
+    //         $search_property=Property::where('city_name','LIKE','%'.$city_name.'%')->get();
+    //     }
+    //     return view('front.pages.property',compact('search_property','meta','data'));
+    // }
+    public function single_property_detail($provider){
+        $projectid=Property::where('url_slug','=',$provider)->first();
+        $assign = DB::table('features_property')
+        ->join("features","features_property.features_id","=","features.id")
+        ->join('properties','features_property.property_id','=','properties.id')
+        ->select('features.name as FeaturesName', 'properties.id as propertiesID',)
+        ->get();
+        $properties = Property::where('id',$projectid->id)->first();
+        $agent =Agent::all();
+        $images=Image::all();
+        $Check_facility=Property_facilities::all();
+        return view('front.pages.property_detail',compact('properties','assign','agent','images'));
+    }
+    public function property_detail($slug1 ,$provider){
         $projectid=Property::where('url_slug','=',$provider)->first();
         $assign = DB::table('features_property')
         ->join("features","features_property.features_id","=","features.id")
