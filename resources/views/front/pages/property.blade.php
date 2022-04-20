@@ -213,18 +213,20 @@
                     </div>
                 </section>
                 {{-- main portion --}}
+
                 <h3>Areas</h3>
                 <div class="homes" style="display: flex">
-                        @foreach ($city_area as $area)
                             <!-- homes img -->
+                            @foreach ($category as $category)
                             <ul>
                                 <li style="text-decoration: none">
-                                    <a href="{{ url('area/' .$area->slug.'/'.'city/'.$matchCity->slug) }}" class="homes-img">
-                                        {{ $area->areaname }}
+                                    <a href="#" class="homes-img">
+                                        {{ $category->name }}
                                     </a>
                                 </li>
                             </ul>
-                        @endforeach
+                            @endforeach
+
                 </div>
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)

@@ -314,7 +314,7 @@
                                                     @foreach ($categories as $category)
                                                         <li class="no-border">
                                                             <input type="radio" name="category"
-                                                                value="{{ $category->name }}"
+                                                                value="{{ $category->id }}"
                                                                 id="{{ $category->id }}">
                                                             <label
                                                                 for="{{ $category->id }}">{{ $category->name }}</label>
@@ -322,7 +322,7 @@
                                                                 @foreach ($category->subCategory as $sub_cat)
                                                                     <li>
                                                                         <input type="radio" name="category"
-                                                                            value="{{ $sub_cat->name }}"
+                                                                            value="{{ $sub_cat->id }}"
                                                                             id="{{ $sub_cat->id }}">
                                                                         <label
                                                                             for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
