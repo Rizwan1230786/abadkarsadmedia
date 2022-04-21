@@ -59,6 +59,8 @@ class PropetyController extends Controller
     }
     public function submit(Request $request)
     {
+
+
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -73,15 +75,23 @@ class PropetyController extends Controller
                 request()->image->move(public_path('assets/images/properties/'), $filename);
             }
             $data = array(
-                "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
+                "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "area_size" => $request->area_size, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
-                "area" => $request->area,
+                "area" => $request->area,"occupency" => $request->occupency,
+                "rental_contact_period" => $request->rental_contact_period,
+                "rental_contact_period_length" => $request->rental_contact_period_length,
+                "monthly_rent" => $request->monthly_rent,
+                "security_deposit" => $request->security_deposit,
+                "security_deposit_number_of_month"=>$request->security_deposit_number_of_month,
+                "advance_rent_number_of_month"=>$request->advance_rent_number_of_month,
+                "advance_rent" => $request->advance_rent,
             );
 
             $post = Property::Create($data);
+
             if ($request->file('property_map')) {
                 $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
                 $post->property_map = $mapname;
@@ -108,6 +118,7 @@ class PropetyController extends Controller
                     $task->save();
                 }
             }
+
             $post->features()->attach($request->feature);
         } else {
             $message = $validator->errors()->toArray();
@@ -148,23 +159,21 @@ class PropetyController extends Controller
                 $imagePath = $request->file('image');
                 request()->property_map->move(public_path('assets/images/properties/maps'), $property_map);
             }
-            // if (isset($request->price_plan) && !empty($request->price_plan)) {
-            //     $oldimage = public_path('assets/images/properties/price/' . $post->price_plan);
-            //     if (File::exists($oldimage)) {
-            //         File::delete($oldimage);
-            //     }
-            //     $pricename = time() . '.' . request()->price_plan->getClientOriginalExtension();
-            //     $post->price_plan = $pricename;
-            //     request()->price_plan->move(public_path('assets/images/properties/price'), $pricename);
-            // }
             $data = array(
-                "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "square" => $request->square, "marala" => $request->marala, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
+                "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "area_size" => $request->area_size, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category, "agent_id" => $request->agent_id,
                 "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
-                "area" => $request->area,
+                "area" => $request->area,"occupency" => $request->occupency,
+                "rental_contact_period" => $request->rental_contact_period,
+                "rental_contact_period_length" => $request->rental_contact_period_length,
+                "monthly_rent" => $request->monthly_rent,
+                "security_deposit" => $request->security_deposit,
+                "security_deposit_number_of_month"=>$request->security_deposit_number_of_month,
+                "advance_rent_number_of_month"=>$request->advance_rent_number_of_month,
+                "advance_rent" => $request->advance_rent,
             );
             $post->update($data);
             if ($request->hasFile('images')) {
@@ -183,17 +192,21 @@ class PropetyController extends Controller
                     }
                 }
             }
-            $check = $post->id;
-            $count = count($request->facility);
-            for ($i = 0; $i < $count; $i++) {
-                Property_facilities::where('property_id', $check)
-                    ->update([
-                        'distance' => $request->distance[$i],
-                        'facility' => $request->facility[$i],
-                    ]);
+            if (isset($request->facility) && !empty($request->facility)){
+                $check = $post->id;
+                $count = count($request->facility);
+                for ($i = 0; $i < $count; $i++) {
+                    Property_facilities::where('property_id', $check)
+                        ->update([
+                            'distance' => $request->distance[$i],
+                            'facility' => $request->facility[$i],
+                        ]);
+                }
             }
 
+
             $post->features()->sync($request->feature);
+
         } else {
             $message = $validator->errors()->toArray();
         }
