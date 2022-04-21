@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{asset('/front/css/lightcase.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('/front/css/menu.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/styles.css')}}">
@@ -44,6 +43,48 @@
     .btn1{
          background: #18ba60 !important
     }
-
+    .nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+}
+.nav>li {
+    position: relative;
+    display: block;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    text-decoration: none;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+.tab-pane ul li a{color: #337ab7;
+    text-decoration: none;
+    background-color: transparent;
+}
 </style>
 
