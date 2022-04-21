@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->id();
             $table->string('areaname')->nullable();
             $table->string('city')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
