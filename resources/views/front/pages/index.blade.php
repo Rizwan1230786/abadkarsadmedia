@@ -436,10 +436,11 @@
                 </div>
                 <div class="row">
                     <!-- Single category -->
+
                     @foreach ($city as $cities)
                         <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
                             <div class="small-category-2">
-                                <a href="{{ url('/' .$cities->slug) }}" class="homes-img">
+                                <a href="{{ url('/' . $cities->slug) }}" class="homes-img">
                                     <div class="small-category-2-thumb img-1">
                                         <img src="{{ asset('assets/images/cities/' . $cities->image) }}" alt="">
                                     </div>
@@ -455,12 +456,12 @@
                             </div>
                         </div>
                     @endforeach
+
                 </div>
                 <!-- /row -->
             </div>
         </section>
         <!-- END SECTION POPULAR PLACES -->
-
         <!-- START SECTION FEATURED PROPERTIES -->
         @if (!empty($property))
             <section class="featured portfolio bg-white-2 rec-pro full-l">
@@ -505,7 +506,7 @@
                                             <p class="homes-address mb-3">
                                                 <a href="{{ url('/property', $properties->url_slug) }}">
                                                     <i
-                                                        class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
+                                                        class="fa fa-map-marker"></i><span>{{ $properties->city_name }}</span>
                                                 </a>
                                             </p>
                                             <!-- homes List -->
@@ -1256,7 +1257,21 @@
             </div>
         </section>
         <!-- END SECTION TESTIMONIALS -->
-
+        <section>
+            <div class="partners bg-white rec-pro">
+                <div class="container-fluid">
+                    <div class="sec-title">
+                        <h2><span>Our </span>Partners</h2>
+                        <p>Papular Areas</p>
+                        @foreach ($category as $category)
+                            <div>
+                                <p><a href="{{ url('/'.$category->categoryName.'/'.$category->cityslug) }}">{{ $category->categoryName . ' for sale in ' . $category->city_name  }}</p></a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- STAR SECTION PARTNERS -->
         <div class="partners bg-white rec-pro">
             <div class="container-fluid">

@@ -182,8 +182,8 @@ Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->na
 Route::get('/property', [FrontController::class, 'property'])->name('front.property');
 Route::get('/property/{provider}', [FrontController::class, 'single_property_detail'])->name('front.single_property_detail');
 // Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
-Route::get('/{slug}/{slug2}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
-Route::get('/area/{slug1}/city/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
+Route::get('/{categoryName}/{slug}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
+Route::get('/property/{slug1}/city/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
 Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 ///////end properties///////
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
