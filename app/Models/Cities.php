@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Cities extends Model
 {
     use HasFactory;
-    protected $fillable=['name','image','state','slug'];
+    protected $fillable=['name','image','state','slug','category_id'];
 
     protected static function boot()
     {
@@ -36,6 +36,10 @@ class Cities extends Model
             return "{$slug}-2";
         }
         return $slug;
+    }
+    public function areas()
+    {
+        return $this->hasMany(Area::class, 'city_id', 'id');
     }
 }
 

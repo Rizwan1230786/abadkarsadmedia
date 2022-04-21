@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Area;
+use App\Models\Category;
 use App\Models\Cities;
 
 class AreaController extends Controller
@@ -17,13 +18,14 @@ class AreaController extends Controller
     }
     public function create(Request $request)
     {
-        $city = Cities::select('id','name')->get();
+        $city = Cities::all();
+        $category=Category::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Area::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.area.create', compact('data','city'));
+        return view('admin.modules.realestate.area.create', get_defined_vars());
     }
     public function submit(Request $request)
     {
@@ -35,7 +37,7 @@ class AreaController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("areaname" => $request->areaname,"city" => $request->city);
+            $data = array("areaname" => $request->areaname,"city_id" => $request->city_id,"slug" => $request->slug);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";

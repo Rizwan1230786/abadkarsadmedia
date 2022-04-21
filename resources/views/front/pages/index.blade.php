@@ -1264,9 +1264,12 @@
                         <h2><span>Our </span>Partners</h2>
                         <p>Papular Areas</p>
                         @foreach ($category as $category)
-                            <div>
-                                <p><a href="{{ url('/'.$category->categoryName.'/'.$category->cityslug) }}">{{ $category->categoryName . ' for sale in ' . $category->city_name  }}</p></a>
-                            </div>
+                            @foreach ($category->cities as $city)
+                                <div>
+                                    <p><a href="{{ url('/' . $category->name . '/' . $city->slug) }}">{{ $category->name . ' for sale in ' . $city->slug }}
+                                    </p></a>
+                                </div>
+                            @endforeach
                         @endforeach
                     </div>
                 </div>

@@ -6,6 +6,7 @@ use App\Models\State;
 use App\Models\Cities;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,12 +20,13 @@ class CitiesController extends Controller
     public function create(Request $request)
     {
         $state = State::all();
+        $category=Category::all();
         $data = null;
         $data['updateId'] = $updateId = ($request->id ?? 0);
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Cities::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.cities.create', compact('data', 'state'));
+        return view('admin.modules.realestate.cities.create', get_defined_vars());
     }
     public function submit(Request $request)
     {

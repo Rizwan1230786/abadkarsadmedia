@@ -22,11 +22,7 @@ use App\Models\Category;
 class FrontController extends Controller
 {
     public function index(){
-        $category = DB::table('categories')
-            ->join("properties", "categories.id", "=", "properties.category")
-            ->join('cities', 'properties.city_name', '=', 'cities.name')
-            ->select('cities.name as city_name','cities.slug as cityslug','categories.name as categoryName')
-            ->distinct()->get(['city_name','categoryName','cityslug']);
+        $category = Category::with('cities')->get();
         $property=Property::limit(4)->get();
         $project=Projects::all();
         $city=Cities::all();
@@ -72,24 +68,20 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',compact('property','meta','data'));
     }
-    public function show_city_area($categoryName,$slug){
-        $category=Category::all();
-        // $matchCity=Cities::where('slug','=',$slug)->first();
+    public function show_city_area($categoryName,$cityName){
+        $category = Category::with('cities')->with('areas')->get();
+        $matchCity=Cities::where('slug','=',$cityName)->first();
         // $city_area=Area::where('city','=',$matchCity->name)->get();
-        // $city_search_property=Property::where('city_name','=',$matchCity->name)->get();
-        $area = DB::table('categories')
-            ->join("properties", "categories.id", "=", "properties.category")
-            ->join('areas', 'properties.area', '=', 'areas.areaname')
-            ->join('cities', 'properties.city_name', '=', 'cities.name')
-            ->select('cities.slug as cityslug','areas.slug as areaslug','categories.name as categoryName')
-            ->distinct()->get(['categoryName','areaslug','cityslug']);
+        // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
 
+        $city_search_property=Property::where('city_name','=',$matchCity->id)->get();
         $property=Property::paginate(4);
-        $meta = Webpages::Where("page_title", "property")->first();
+        $meta = Webpages::Where("page_title", "home")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',get_defined_vars());
     }
-    public function area_peroperty($slug1 , $slug2){
+    public function area_peroperty($slug ,$slug1 , $slug2){
+        dd('ok');
         $area=Area::where('slug','=',$slug2)->first();
         $area_search_property=Property::where('area','=',$area->areaname)->get();
         dd($area_search_property);

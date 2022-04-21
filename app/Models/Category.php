@@ -22,4 +22,17 @@ class Category extends Model
     {
         return $this->belongsToMany(Projects::class);
     }
+
+    public function cities()
+    {
+        return $this->hasMany(Cities::class, 'category_id', 'id');
+    }
+
+    public function areas()
+    {
+        return $this->hasManyThrough(
+            'App\Models\Area', 'App\Models\Cities',
+            'category_id', 'city_id', 'id'
+        );
+    }
 }

@@ -105,6 +105,7 @@
   <script src="{{ asset('/front/js/light.js') }}"></script>
   <script src="{{ asset('/front/js/popup.js') }}"></script>
   <script src="{{ asset('/front/js/inner.js') }}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <script>

@@ -35,6 +35,17 @@
                                         <input class="form-control notrequired" placeholder="Name" name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                     </div>
                                     <div class="col-lg-12 form-group ">
+                                        <label class="form-label">Select Category</label>
+                                        <select id="cars" class="form-control" name="category_id">
+                                            <option value="">--select--</option>
+                                            @foreach($category as $category)
+                                            <option value="{{$category->id}}" <?php if (($data['record']->category_id ?? '') == $category->id) {
+                                                                                echo 'selected';
+                                                                            } ?>>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12 form-group ">
                                         <label class="form-label">Select State</label>
                                         <select id="cars" class="form-control" name="state">
                                             <option value="">--select--</option>

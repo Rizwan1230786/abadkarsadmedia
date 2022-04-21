@@ -314,8 +314,10 @@
                                                     @foreach ($categories as $category)
                                                         <li class="no-border">
                                                             <input type="radio" name="category"
-                                                                value="{{ $category->id }}"
-                                                                id="{{ $category->id }}">
+                                                                value="{{ $category->id }}" id="{{ $category->id }}"
+                                                                <?php if (($data['record']->category ?? '') == $category->id) {
+                                                                    echo 'selected';
+                                                                } ?>>
                                                             <label
                                                                 for="{{ $category->id }}">{{ $category->name }}</label>
                                                             <ul style="margin-left: 34px;margin-bottom: 0;">
@@ -323,7 +325,9 @@
                                                                     <li>
                                                                         <input type="radio" name="category"
                                                                             value="{{ $sub_cat->id }}"
-                                                                            id="{{ $sub_cat->id }}">
+                                                                            id="{{ $sub_cat->id }}" <?php if (($data['record']->category ?? '') == $sub_cat->id) {
+    echo 'selected';
+} ?>>
                                                                         <label
                                                                             for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
                                                                     </li>
@@ -370,9 +374,10 @@
                                                     <select id="country-dd" class="form-control" name="city_name">
                                                         <option value="">Select City</option>
                                                         @foreach ($cities as $data)
-                                                            <option value="{{ $data->name }}">
-                                                                {{ $data->name }}
-                                                            </option>
+                                                            <option value="{{ $data->id }}" <?php if (($data['record']->city_name ?? '') == $data->id) {
+    echo 'selected';
+} ?>>
+                                                                {{ $data->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -380,7 +385,7 @@
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12 form-group padding">
                                                     <label class="form-label">Select Area</label>
-                                                    <select id="state-dd" class="form-control" name="area">
+                                                    <select id="state-dd" class="form-control" name="area_id">
                                                     </select>
                                                 </div>
                                             </div>
@@ -415,7 +420,7 @@
                         $('#state-dd').html('<option value="">Select Area</option>');
                         $.each(result.areas, function(key, value) {
                             $("#state-dd").append('<option value="' + value
-                                .areaname + '">' + value.areaname + '</option>');
+                                .id + '">' + value.areaname + '</option>');
                         });
                     }
                 });
@@ -434,17 +439,20 @@
                     caret(result.record);
                 }
             });
-            function caret(facilities){
+
+            function caret(facilities) {
                 var i = 1;
                 $('#add').click(function() {
                     i++;
                     var selectfacilites = '<tr id="row' + i +
                         '" class="dynamic-added"><td><select  name="facility[]"  class="form-control name_list">';
-                            facilities.map(function (item, index){
-                                selectfacilites += '<option value="'+item.name+'">'+item.name+'</option>';
-                            });
+                    facilities.map(function(item, index) {
+                        selectfacilites += '<option value="' + item.name + '">' + item.name +
+                            '</option>';
+                    });
 
-                        selectfacilites += '</select></td><td><input type="text" name="distance[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
+                    selectfacilites +=
+                        '</select></td><td><input type="text" name="distance[]" placeholder="Distance in (KM)" class="form-control name_list" /></td><td><button type="button" name="remove" id="' +
                         i + '" class="btn btn-danger btn_remove">X</button></td></tr>';
                     $('#dynamic_field').append(selectfacilites);
                 });

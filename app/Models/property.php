@@ -20,32 +20,5 @@ class Property extends Model
     {
         return $this->belongsToMany(Facilities::class);
     }
-    protected static function boot()
-    {
-        parent::boot();
 
-        static::created(function ($property) {
-
-            $property->slug = $property->createSlug($property->city_name);
-
-            $property->save();
-        });
-    }
-    private function createSlug($city_name)
-    {
-        if (static::whereSlug($slug = Str::slug($city_name))->exists()) {
-
-            $max = static::whereName($city_name)->latest('id')->skip(1)->value('slug');
-
-            if (isset($max[-1]) && is_numeric($max[-1])) {
-
-                return preg_replace_callback('/(\d+)$/', function ($mathces) {
-
-                    return $mathces[1] + 1;
-                }, $max);
-            }
-            return "{$slug}-2";
-        }
-        return $slug;
-    }
 }

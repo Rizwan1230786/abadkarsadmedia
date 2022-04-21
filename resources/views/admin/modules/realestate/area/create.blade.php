@@ -32,14 +32,20 @@
                                 <div class="row row-sm">
                                     <div class="col-12 form-group">
                                         <label class="form-label">Area Name</label>
-                                        <input class="form-control notrequired" placeholder="Name" name="areaname" value="{{ $data['record']->areaname ?? '' }}" type="text">
+                                        <input class="form-control notrequired" id="title" placeholder="Name" name="areaname" value="{{ $data['record']->areaname ?? '' }}" type="text">
+                                    </div>
+                                    <div class="col-lg-12 form-group">
+                                        <label class="form-label">Url Slug</label>
+                                        <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug"
+                                            name="slug" value="{{ $data['record']->slug ?? '' }}"
+                                            type="text" readonly>
                                     </div>
                                     <div class="col-lg-12 form-group ">
                                         <label class="form-label">Select City</label>
-                                        <select id="cars" class="form-control" name="city">
+                                        <select id="cars" class="form-control" name="city_id">
                                             <option value="">--select--</option>
                                             @foreach($city as $city)
-                                            <option value="{{$city->name}}" <?php if (($data['record']->city ?? '') == $city->name) {
+                                            <option value="{{$city->id}}" <?php if (($data['record']->city_id ?? '') == $city->id) {
                                                                                 echo 'selected';
                                                                             } ?>>{{$city->name}}</option>
                                             @endforeach
@@ -65,6 +71,12 @@
 </div>
 </div>
 </div>
+<script>
+    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+        var page_title = $(this).val();
+        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''));
+    });
+</script>
 @endsection
 @section('js')
 <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>

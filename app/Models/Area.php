@@ -9,31 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Area extends Model
 {
     use HasFactory;
-    protected $fillable=['areaname','slug','city'];
-    protected static function boot()
+    protected $fillable=['areaname','slug','city_id'];
+
+    public function properties()
     {
-        parent::boot();
-
-        static::created(function ($area) {
-            $area->slug = $area->createSlug($area->areaname);
-            $area->save();
-        });
-    }
-    private function createSlug($areaname)
-    {
-        if (static::whereSlug($slug = Str::slug($areaname))->exists()) {
-
-            $max = static::whereName($areaname)->latest('id')->skip(1)->value('slug');
-
-            if (isset($max[-1]) && is_numeric($max[-1])) {
-
-                return preg_replace_callback('/(\d+)$/', function ($mathces) {
-
-                    return $mathces[1] + 1;
-                }, $max);
-            }
-            return "{$slug}-2";
-        }
-        return $slug;
+        return $this->hasMany(Property::class, 'area_id', 'id');
     }
 }

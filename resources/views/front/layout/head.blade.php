@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('/front/css/lightcase.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('/front/css/menu.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('/front/css/styles.css')}}">
