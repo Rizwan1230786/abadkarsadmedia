@@ -256,16 +256,15 @@
 
 
 
-                                @if ($properties->area_size)
+                                @if ($properties->marala)
                                 <li>
                                     <span class="font-weight-bold mr-1">Area:</span>
-                                    <span class="det">{{ $properties->area_size }} {{ $properties->unit }}</span>
+                                    <span class="det">{{ $properties->marala }} marala</span>
                                 </li>
-                                @endif
-                                @if ($properties->occupency)
+                              @else
                                 <li>
-                                    <span class="font-weight-bold mr-1">Occurence</span>
-                                    <span class="det">{{ $properties->occupency }}</span>
+                                    <span class="font-weight-bold mr-1">Area:</span>
+                                    <span class="det">{{ $properties->square }} Sq ft</span>
                                 </li>
                                 @endif
                             </ul>
