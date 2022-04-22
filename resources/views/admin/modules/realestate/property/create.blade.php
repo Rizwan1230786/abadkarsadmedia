@@ -37,7 +37,7 @@
                             <form class="validationForm formSubmited" id="myForm" enctype="multipart/form-data"
                                 method="POST" action="{{ $url }}">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $data['updateId'] ?? 0 }}">
+                                <input type="text" name="id" value="{{ $data['updateId'] ?? 0 }}">
                                 <div class="card-body pb-2">
                                     <div class="row row-sm">
                                         <div class="col-9">
@@ -300,89 +300,104 @@
                                             </div>
 
 
-                                         {{-- Rent details --}}
+                                            {{-- Rent details --}}
                                             <div class="Rent box"
-                                            style="background-color: #d9edf7;padding-top: 10px;padding-bottom: 2px;padding-left: 10px;">
-                                            <h6>RENTAL PRICE DETAILS</h6>
-                                        </div>
-                                        <p class="Rent box form-label mt-2 padding">Minimum Contract Period:</p>
-                                        <div class="Rent box" style="display: flex;" >
-                                            @if (isset($data['record']->rental_contact_period_length) && !empty($data['record']->rental_contact_period_length))
-                                            <select id="cars" class=" form-control"  name="rental_contact_period_length" style="margin-right: 10px">
-                                                <option value="{{ $data['record']->rental_contact_period_length }}">  {{ $data['record']->rental_contact_period_length }}</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                            @else
-                                            <select id="cars" class=" form-control"  name="rental_contact_period_length" style="margin-right: 10px">
-                                                <option value="">Please Select</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                            @endif
-                                            @if (isset($data['record']->rental_contact_period) && !empty($data['record']->rental_contact_period))
-                                            <select id="cars" class="form-control"  name="rental_contact_period">
-                                                <option value="{{ $data['record']->rental_contact_period }}">  {{ $data['record']->rental_contact_period }}</option>
-                                                <option value="year">Year</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                            @else
-                                            <select id="cars" class="form-control"  name="rental_contact_period">
-                                                <option value="">Please Select</option>
-                                                <option value="year">Year</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                            @endif
-                                    </div>
-                                    <div class="Rent box form-group mb-3 col-12 padding">
-                                        <label for="price" class="form-label">Monthly Rent: </label>
-                                        <input class="form-control notrequired" placeholder="" name="monthly_rent"
-                                            value="{{ $data['record']->monthly_rent ?? '' }}" type="number">
-                                    </div>
-                                    <p class="Rent box form-label mt-2 padding">Security Deposit</p>
-                                    <div class="Rent box form-group padding d-flex">
-                                        <input class="Rent box form-control notrequired" placeholder="" name="security_deposit" style="width: 35%"
-                                            value="{{ $data['record']->security_deposit ?? '' }}" type="text">
+                                                style="background-color: #d9edf7;padding-top: 10px;padding-bottom: 2px;padding-left: 10px;">
+                                                <h6>RENTAL PRICE DETAILS</h6>
+                                            </div>
+                                            <p class="Rent box form-label mt-2 padding">Minimum Contract Period:</p>
+                                            <div class="Rent box" style="display: flex;">
+                                                @if (isset($data['record']->rental_contact_period_length) && !empty($data['record']->rental_contact_period_length))
+                                                    <select id="cars" class=" form-control"
+                                                        name="rental_contact_period_length" style="margin-right: 10px">
+                                                        <option
+                                                            value="{{ $data['record']->rental_contact_period_length }}">
+                                                            {{ $data['record']->rental_contact_period_length }}</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                @else
+                                                    <select id="cars" class=" form-control"
+                                                        name="rental_contact_period_length" style="margin-right: 10px">
+                                                        <option value="">Please Select</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                @endif
+                                                @if (isset($data['record']->rental_contact_period) && !empty($data['record']->rental_contact_period))
+                                                    <select id="cars" class="form-control" name="rental_contact_period">
+                                                        <option value="{{ $data['record']->rental_contact_period }}">
+                                                            {{ $data['record']->rental_contact_period }}</option>
+                                                        <option value="year">Year</option>
+                                                        <option value="month">Month</option>
+                                                    </select>
+                                                @else
+                                                    <select id="cars" class="form-control" name="rental_contact_period">
+                                                        <option value="">Please Select</option>
+                                                        <option value="year">Year</option>
+                                                        <option value="month">Month</option>
+                                                    </select>
+                                                @endif
+                                            </div>
+                                            <div class="Rent box form-group mb-3 col-12 padding">
+                                                <label for="price" class="form-label">Monthly Rent: </label>
+                                                <input class="form-control notrequired" placeholder="" name="monthly_rent"
+                                                    value="{{ $data['record']->monthly_rent ?? '' }}" type="number">
+                                            </div>
+                                            <p class="Rent box form-label mt-2 padding">Security Deposit</p>
+                                            <div class="Rent box form-group padding d-flex">
+                                                <input class="Rent box form-control notrequired" placeholder=""
+                                                    name="security_deposit" style="width: 35%"
+                                                    value="{{ $data['record']->security_deposit ?? '' }}" type="text">
 
-                                            <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent box form-control notrequired" placeholder="" name="security_deposit_number_of_month" style="width: 34%"
-                                                value="{{ $data['record']->security_deposit_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
+                                                <input class="Rent box form-control notrequired" placeholder=""
+                                                    name="security_deposit_number_of_month" style="width: 34%"
+                                                    value="{{ $data['record']->security_deposit_number_of_month ?? '' }}"
+                                                    type="text">
+                                                <p class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
-                                    </div>
+                                            </div>
 
 
-                                    <p class="Rent box form-label mt-2 padding">Advance Rent:</p>
-                                    <div class="Rent box form-group padding d-flex">
-                                        <input class="Rent box form-control notrequired" placeholder="" name="advance_rent" style="width: 35%"
-                                            value="{{ $data['record']->advance_rent ?? '' }}" type="text">
+                                            <p class="Rent box form-label mt-2 padding">Advance Rent:</p>
+                                            <div class="Rent box form-group padding d-flex">
+                                                <input class="Rent box form-control notrequired" placeholder=""
+                                                    name="advance_rent" style="width: 35%"
+                                                    value="{{ $data['record']->advance_rent ?? '' }}" type="text">
 
-                                            <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent box form-control notrequired" placeholder="" name="advance_rent_number_of_month" style="width: 34%"
-                                                value="{{ $data['record']->advance_rent_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
+                                                <input class="Rent box form-control notrequired" placeholder=""
+                                                    name="advance_rent_number_of_month" style="width: 34%"
+                                                    value="{{ $data['record']->advance_rent_number_of_month ?? '' }}"
+                                                    type="text">
+                                                <p class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
-                                    </div>
+                                            </div>
+                                            {{-- end of rental --}}
+
+
+
 
 
                                         </div>
@@ -517,7 +532,11 @@
 
                                         </div>
                                     </div>
-
+                            </form>
+                            <h3 class="jumbotron">Laravel Multiple Images Upload Using Dropzone</h3>
+                            <form method="post" action="{{ url('admin/properties/upload/store') }}"
+                                enctype="multipart/form-data" class="dropzone" id="dropzone">
+                                @csrf
                             </form>
                         </div>
                     </div>
@@ -528,6 +547,52 @@
     </div>
     </div>
     </div>
+
+    <script type="text/javascript">
+        Dropzone.options.dropzone = {
+            maxFilesize: 12,
+            renameFile: function(file) {
+                var dt = new Date();
+                var time = dt.getTime();
+                return time + file.name;
+            },
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            addRemoveLinks: true,
+            timeout: 50000,
+            removedfile: function(file) {
+                var name = file.upload.filename;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '{{ url('admin/properties/upload/delete') }}',
+                    data: {
+                        filename: name
+                    },
+                    success: function(data) {
+                        console.log("File has been successfully removed!!");
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+
+            success: function(file, response) {
+                console.log(response);
+            },
+            error: function(file, response) {
+                return false;
+            }
+        };
+    </script>
+
+
+
     <script>
         $(document).ready(function() {
             $('input[type="radio"]').click(function() {

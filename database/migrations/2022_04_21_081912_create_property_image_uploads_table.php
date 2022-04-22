@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Property;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryToAreasTable extends Migration
+class CreatePropertyImageUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +14,11 @@ class AddCategoryToAreasTable extends Migration
      */
     public function up()
     {
-        Schema::table('areas', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->after('id');
+        Schema::create('property_image_uploads', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Property::class);
+            $table->text('filename');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddCategoryToAreasTable extends Migration
      */
     public function down()
     {
-        Schema::table('areas', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('property_image_uploads');
     }
 }

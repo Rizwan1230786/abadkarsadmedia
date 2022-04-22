@@ -22,10 +22,12 @@
   <script src="{{ URL::asset('assets/plugins/p-scrollbar/p-scroll1.js') }}"></script>
   <script src="{{ URL::asset('assets/plugins/p-scrollbar/p-scroll.js') }}"></script>
 
+
   @yield('js')
   <!-- Simplebar JS -->
   <script src="{{ URL::asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
   <!-- Custom js-->
+  <script src="{{ URL::asset('assets/js/dropzone.js') }}"></script>
   <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>

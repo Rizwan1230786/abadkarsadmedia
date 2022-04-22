@@ -11,11 +11,13 @@ use App\Models\Category;
 use App\Models\Features;
 use App\Models\Projects;
 use App\Models\Property;
+use App\Models\Facilities;
+use App\Models\ImageUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Facilities;
 use App\Models\Property_facilities;
+use App\Http\Controllers\Controller;
+use App\Models\PropertyImageUpload;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -121,7 +123,7 @@ class PropetyController extends Controller
         } else {
             $message = $validator->errors()->toArray();
         }
-        return response()->json(['type' => $type, 'message' => $message]);
+        return response()->json(['type' => $type, 'message' => $message,'success'=>$imageName]);
     }
 
 
@@ -236,4 +238,30 @@ class PropetyController extends Controller
         $data['areas'] = Area::where("city_id", $request->city_id)->get(["areaname", "id"]);
         return response()->json($data);
     }
+
+
+    public function fileStore(Request $request)
+    {
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('properties/multiple-images'),$imageName);
+        $imageUpload = new PropertyImageUpload();
+        $imageUpload->property_id=$request->id;
+        $imageUpload->filename = $imageName;
+        $imageUpload->save();
+        return response()->json(['success'=>$imageName]);
+    }
+
+    public function fileDestroy(Request $request)
+    {
+        $filename =  $request->get('filename');
+        PropertyImageUpload::where('filename',$filename)->delete();
+        $path=public_path().'properties/multiple-images'.$filename;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        return $filename;
+    }
+
+
 }
