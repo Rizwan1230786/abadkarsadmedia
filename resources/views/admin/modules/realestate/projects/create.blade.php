@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="form-control disc_2 notrequired" name="page_content"
+                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content"
                                                     id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
@@ -397,7 +397,7 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12 form-group padding">
+                                                <div class="col-lg-12 form-group ">
                                                     <label class="form-label">Select City</label>
                                                     <select id="country-dd" class="form-control" name="city_name">
                                                         <option value="">Select City</option>
@@ -410,7 +410,7 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12 form-group padding">
+                                                <div class="col-lg-12 form-group">
                                                     <label class="form-label">Select Area</label>
                                                     <select id="state-dd" class="form-control" name="area">
                                                     </select>
@@ -454,12 +454,17 @@
 
         });
     </script>
+
+
     <script>
         $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
             var page_title = $(this).val();
             $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
         });
     </script>
+
+
+
 @endsection
 @section('js')
     <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>
