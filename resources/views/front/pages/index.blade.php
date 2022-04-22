@@ -1257,6 +1257,7 @@
             </div>
         </section>
         <!-- END SECTION TESTIMONIALS -->
+        @if(!empty($category))
         <section>
             <div class="partners bg-white rec-pro">
                 <div class="container-fluid">
@@ -1265,16 +1266,20 @@
                         <p>Papular Areas</p>
                         @foreach ($category as $category)
                             @foreach ($category->cities as $city)
+                            @if(isset($city->category_id) && $city->name == 'Houses')
                                 <div>
                                     <p><a href="{{ url('/' . $category->name . '/' . $city->slug) }}">{{ $category->name . ' for sale in ' . $city->slug }}
                                     </p></a>
                                 </div>
+                                @endif
                             @endforeach
+
                         @endforeach
                     </div>
                 </div>
             </div>
         </section>
+        @endif
         <!-- STAR SECTION PARTNERS -->
         <div class="partners bg-white rec-pro">
             <div class="container-fluid">
