@@ -213,40 +213,53 @@
                     </div>
                 </section>
                 {{-- main portion --}}
-                <div role="tabpanel">
-                    <ul class="nav nav-tabs" role="tablist">
-                        @foreach ($category as $item)
-                            <li role="presentation" class="{{ $item->id == 1 ? 'active' : '' }}">
-                                <a href="/#{{ $item->name }}" aria-controls="home" role="tab"
-                                    data-toggle="tab">{{ $item->name }}</a>
-                            </li>
-                        @endforeach
+                 <?php
+                  $count=1;
+                 ?>
+                <h3>Areas</h3>
+                <div class="homes" style="display: flex">
+                    <div class="container">
+                        <h2>Dynamic Tabs</h2>
+                        <ul class="nav nav-tabs">
+                        @foreach ($category as $value)
+                          <li><a data-toggle="tab" href="#menu<?= $count++;  ?>">{{ $value->name }}</a></li>
+                          @endforeach
+                        </ul>
+                        <div class="tab-content">
+                          <div id="menu1" class="tab-pane fade">
+                            <h3>Menu 1</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                          </div>
+                          <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                          </div>
+                          <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                    <!-- homes img -->
+                    @foreach ($category as $value)
+                        <ul>
+                            <li style="text-decoration: none">
+                                <a href="#" class="homes-img">
+                                    {{ $value->name }}
+                                </a>
+                                @isset($value->areas)
+                                    @foreach ($value->areas as $area)
+                                    @foreach ($value->cities as $city)
+                                <li>
+                                    <a href="{{ url('/'.$value->name.'/'.$city->slug.'/'.$area->slug) }}">{{ $area->areaname }}</a>
+                                </li>
+                                @endforeach
+                                @endforeach
+                                @endisset
+                    </li>
                     </ul>
-                    <div class="tab-content">
-                        @foreach ($category as $item)
-                            <div role="tabpanel" class="tab-pane {{ $item->id == 1 ? 'active' : '' }}"
-                                id="{{ $item->name }}" class="active">
-                                <ul>
-
-                                    @isset($item->cities)
-                                        @foreach ($item->cities as $city)
-                                                <p>Locations of {{ $item->name }} For Sale in {{ $city->name }}</p>
-                                        @endforeach
-                                    @endisset
-
-                                    @foreach ($item->areas as $area)
-                                        @foreach ($item->cities as $city)
-                                            <li>
-                                            <a href="{{ url('/' . $item->name . '/' . $city->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
-                                            </li>
-                                        @endforeach
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        @endforeach
-
-                    </div>
+                    @endforeach
                 </div>
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)
@@ -263,8 +276,7 @@
                                             <a href="{{ url('/property', $search_property->url_slug) }}"
                                                 class="homes-img">
                                                 <div class="homes-tag button alt featured">Featured</div>
-                                                <div class="homes-tag button alt sale">{{ $search_property->type }}
-                                                </div>
+                                                <div class="homes-tag button alt sale">{{ $search_property->type }}</div>
                                                 <div class="homes-price">Family Home</div>
                                                 <img src="{{ asset('assets/images/properties/' . $search_property->image) }}"
                                                     alt="home-1" class="img-responsive">
@@ -524,10 +536,10 @@
     @endsection
 </body>
 <script>
-    $(document).ready(function() {
-        $(".nav-tabs a").click(function() {
-            $(this).tab('show');
-        });
+    $(document).ready(function(){
+      $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+      });
     });
-</script>
+    </script>
 @endsection
