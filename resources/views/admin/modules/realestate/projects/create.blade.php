@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="form-control disc_2 notrequired" name="page_content"
+                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content"
                                                     id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
@@ -402,7 +402,7 @@
                                                     <select id="country-dd" class="form-control" name="city_name">
                                                         <option value="">Select City</option>
                                                         @foreach ($cities as $data)
-                                                            <option value="{{ $data->name }}">
+                                                            <option value="{{ $data->id }}">
                                                                 {{ $data->name }}
                                                             </option>
                                                         @endforeach
