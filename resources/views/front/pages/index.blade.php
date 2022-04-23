@@ -1264,32 +1264,84 @@
                         <div class="sec-title">
                             <h2><span>Papular </span>Locations</h2>
                         </div>
-
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div>
+                            <div class="col-md-12">
                                 <p style="font-weight: bold">Popular Cities to Buy Properties</p>
-                                <hr style="height:1px;border-width:0;color:black;background-color:black;width: 1200px; ">
-                                <p style="font-weight: bold">Houses</p>
-                                <div class="col-9">
-                                @foreach ($category as $category)
-                                    @if (isset($category->name) && $category->name == 'Houses')
-                                        @foreach ($category->cities as $city)
-                                            @foreach ($category->url_slugs as $urlslugs )
-                                            <ul >
-                                                <li style="list-style: square;">
-                                                    <a style="color: black;" href="{{ url('/' . $category->name . '/' .$urlslugs->url_slug) }}">{{ $urlslugs->title }}
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                         @endforeach
+                                <hr style="width: 1200px; ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Houses</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($category as $category)
+                                            @if (isset($category->name) && $category->name == 'Houses')
+                                                @foreach ($category->cities as $city)
+                                                    @foreach ($category->url_slugs as $urlslugs)
+                                                        <ul>
+                                                            <li style="list-style: square;">
+                                                                <a style="color: black;"
+                                                                    href="{{ url('/' . $category->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    @endforeach
+                                                @endforeach
+                                                <a style="color: #338be7; margin-left: 38px;"
+                                                    href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all
+                                                    cities
+                                                </a>
+                                            @endif
                                         @endforeach
-                                    @endif
-                                @endforeach
-                                <a style="color: black;" href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all cities
-                                </a>
-                            </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Flats</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($flats as $flat)
+                                            @if (isset($flat->name) && $flat->name == 'flats')
+                                                @foreach ($flat->cities as $city)
+                                                    @foreach ($flat->url_slugs as $urlslugs)
+                                                        <ul>
+                                                            <li style="list-style: square;">
+                                                                <a style="color: black;"
+                                                                    href="{{ url('/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    @endforeach
+                                                @endforeach
+                                                <a style="color: #338be7; margin-left: 38px;"
+                                                    href="{{ url('/' . $flat->name . '/' . $city->slug) }}">view all
+                                                    cities
+                                                </a>
+                                            @endif
+                                        @endforeach
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Commercial</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($flats as $flat)
+                                            @if (isset($flat->name) && $flat->name == 'commercial')
+                                                @foreach ($flat->cities as $city)
+                                                    @foreach ($flat->url_slugs as $urlslugs)
+                                                        <ul>
+                                                            <li style="list-style: square;">
+                                                                <a style="color: black;"
+                                                                    href="{{ url('/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    @endforeach
+                                                @endforeach
+                                                <a style="color: #338be7; margin-left: 38px;"
+                                                    href="{{ url('/' . $flat->name . '/' . $city->slug) }}">view all
+                                                    cities
+                                                </a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1298,40 +1350,6 @@
         @endif
         <!-- END SECTION PARTNERS -->
         <section>
-            <div class="partners bg-white rec-pro">
-                <div class="container-fluid">
-                    <div class="sec-title">
-                        <h2><span>Papular </span>Locations</h2>
-                    </div>
-
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div>
-                            <p style="font-weight: bold">Popular Cities to Buy Properties</p>
-                            <hr style="height:1px;border-width:0;color:black;background-color:black;width: 1200px; ">
-                            <p style="font-weight: bold">Flats</p>
-                            <div class="col-9">
-                            @foreach ($flats as $flat)
-                                @if (isset($flat->name) && $flat->name == 'flats')
-                                    @foreach ($flat->cities as $city)
-                                        @foreach ($flat->url_slugs as $urlslugs )
-                                        <ul >
-                                            <li style="list-style: square;">
-                                                <a style="color: black;" href="{{ url('/' . $flat->name . '/' .$urlslugs->url_slug) }}">{{ $urlslugs->title }}
-                                                </a>
-                                            </li>
-                                        </ul>
-                                     @endforeach
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endsection
+        @endsection
 </body>
 @endsection

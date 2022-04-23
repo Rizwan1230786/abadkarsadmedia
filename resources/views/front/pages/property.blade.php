@@ -226,12 +226,12 @@
                         @foreach ($category as $item)
                             <div role="tabpanel" class="tab-pane {{ $item->id == $matchCity->category_id ? 'active' : '' }}"
                                 id="{{ $item->name }}" class="active">
-                                <ul>
-                                    <p>{{ $matchCity->title }}</p>
+                                <ul class="nav nav-tabs" style="display: table-header-group">
+                                    <p class="mt-4 ml-3"><b>{{ $matchCity->title }}</b></p>
                                     @foreach ($city_area as $area)
                                         @foreach ($item->cities as $city)
-                                            <li>
-                                                <a
+                                            <li style="list-style: square">
+                                                <a style="color: black"
                                                     href="{{ url('/' . $item->name . '/' . $city->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
                                             </li>
                                         @endforeach

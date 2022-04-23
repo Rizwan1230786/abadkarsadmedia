@@ -35,8 +35,8 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">ID</th>
+                                    <th class="wd-15p border-bottom-0">Title</th>
                                     <th class="wd-15p border-bottom-0">Slug</th>
-                                    <th class="wd-15p border-bottom-0">City</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title}}</td>
-                                            <td>{{ $item->city}}</td>
+                                            <td>{{ $item->url_slug}}</td>
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ route('admin:slugs.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>

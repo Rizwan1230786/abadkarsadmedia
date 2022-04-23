@@ -73,7 +73,7 @@ class FrontController extends Controller
     public function show_city_area($categoryName,$urlslug){
         $category = Category::with('cities')->with('url_slugs')->with('areas')->get();
         $matchCity=UrlSlug::where('url_slug','=',$urlslug)->first();
-        $city_area=Area::where('city_id','=',$matchCity->city_id)->get();
+        $city_area=Area::where('city_id','=',$matchCity->city_id)->orderBy('id', 'DESC')->get();
 
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
 
