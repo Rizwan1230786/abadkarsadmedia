@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Cities extends Model
 {
     use HasFactory;
@@ -41,5 +42,6 @@ class Cities extends Model
     {
         return $this->hasMany(Area::class, 'city_id', 'id');
     }
+
 }
 

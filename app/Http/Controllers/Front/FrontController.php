@@ -19,17 +19,19 @@ use App\Models\Property_facilities;
 use App\Models\Webpages;
 use App\Models\subpages;
 use App\Models\Category;
+use App\Models\UrlSlug;
 class FrontController extends Controller
 {
     public function index(){
-        $category = Category::with('cities')->get();
+        $category = Category::with('cities')->with('url_slugs')->get();
+        $flats = Category::with('cities')->with('url_slugs')->get();
         $property=Property::limit(4)->get();
         $project=Projects::all();
         $city=Cities::all();
         $agents=Agent::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        return view('front.pages.index',compact('property','project','city','agents','meta','data','category'));
+        return view('front.pages.index',compact('property','project','city','agents','meta','data','category','flats'));
     }
     public function project(){
         $project=Projects::paginate(4);
@@ -68,13 +70,14 @@ class FrontController extends Controller
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         return view('front.pages.property',compact('property','meta','data'));
     }
-    public function show_city_area($categoryName,$cityName){
-        $category = Category::with('cities')->with('areas')->get();
-        $matchCity=Cities::where('slug','=',$cityName)->first();
-        // $city_area=Area::where('city','=',$matchCity->name)->get();
+    public function show_city_area($categoryName,$urlslug){
+        $category = Category::with('cities')->with('url_slugs')->with('areas')->get();
+        $matchCity=UrlSlug::where('url_slug','=',$urlslug)->first();
+        $city_area=Area::where('city_id','=',$matchCity->city_id)->get();
+
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
 
-        $city_search_property=Property::where('city_name','=',$matchCity->id)->get();
+        $city_search_property=Property::where('city_name','=',$matchCity->city_id)->get();
         $property=Property::paginate(4);
         $meta = Webpages::Where("page_title", "home")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();

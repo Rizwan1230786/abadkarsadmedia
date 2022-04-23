@@ -1257,56 +1257,81 @@
             </div>
         </section>
         <!-- END SECTION TESTIMONIALS -->
+        @if (!empty($category))
+            <section>
+                <div class="partners bg-white rec-pro">
+                    <div class="container-fluid">
+                        <div class="sec-title">
+                            <h2><span>Papular </span>Locations</h2>
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <p style="font-weight: bold">Popular Cities to Buy Properties</p>
+                                <hr style="height:1px;border-width:0;color:black;background-color:black;width: 1200px; ">
+                                <p style="font-weight: bold">Houses</p>
+                                <div class="col-9">
+                                @foreach ($category as $category)
+                                    @if (isset($category->name) && $category->name == 'Houses')
+                                        @foreach ($category->cities as $city)
+                                            @foreach ($category->url_slugs as $urlslugs )
+                                            <ul >
+                                                <li style="list-style: square;">
+                                                    <a style="color: black;" href="{{ url('/' . $category->name . '/' .$urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                         @endforeach
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                                <a style="color: black;" href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all cities
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+        <!-- END SECTION PARTNERS -->
         <section>
             <div class="partners bg-white rec-pro">
                 <div class="container-fluid">
                     <div class="sec-title">
-                        <h2><span>Our </span>Partners</h2>
-                        <p>Papular Areas</p>
-                        @foreach ($category as $category)
-                            @foreach ($category->cities as $city)
-                                <div>
-                                    <p><a href="{{ url('/' . $category->name . '/' . $city->slug) }}">{{ $category->name . ' for sale in ' . $city->slug }}
-                                    </p></a>
-                                </div>
+                        <h2><span>Papular </span>Locations</h2>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <p style="font-weight: bold">Popular Cities to Buy Properties</p>
+                            <hr style="height:1px;border-width:0;color:black;background-color:black;width: 1200px; ">
+                            <p style="font-weight: bold">Flats</p>
+                            <div class="col-9">
+                            @foreach ($flats as $flat)
+                                @if (isset($flat->name) && $flat->name == 'flats')
+                                    @foreach ($flat->cities as $city)
+                                        @foreach ($flat->url_slugs as $urlslugs )
+                                        <ul >
+                                            <li style="list-style: square;">
+                                                <a style="color: black;" href="{{ url('/' . $flat->name . '/' .$urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                     @endforeach
+                                    @endforeach
+                                @endif
                             @endforeach
-                        @endforeach
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- STAR SECTION PARTNERS -->
-        <div class="partners bg-white rec-pro">
-            <div class="container-fluid">
-                <div class="sec-title">
-                    <h2><span>Our </span>Partners</h2>
-                    <p>The Companies That Represent Us.</p>
-                </div>
-                <div class="owl-carousel style2">
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/11.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/12.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/13.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/14.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/15.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/16.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/17.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/11.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/12.jpg') }}" alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img
-                            src="{{ asset('/front/images/partners/13.jpg') }}" alt=""></div>
-                </div>
-            </div>
-        </div>
-        <!-- END SECTION PARTNERS -->
     @endsection
 </body>
 @endsection

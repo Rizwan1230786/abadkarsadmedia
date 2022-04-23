@@ -35,4 +35,8 @@ class Category extends Model
             'category_id', 'city_id', 'id'
         );
     }
+    public function url_slugs()
+    {
+        return $this->hasMany(UrlSlug::class, 'category_id', 'id');
+    }
 }

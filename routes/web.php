@@ -9,22 +9,23 @@ use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
 use App\Http\Controllers\admin\OurteamController;
+use App\Http\Controllers\admin\UrlslugController;
+use App\Http\Controllers\admin\WebpagesController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
-use App\Http\Controllers\admin\realestate\AreaController;
-use App\Http\Controllers\admin\realestate\CategoryController;
-use App\Http\Controllers\admin\realestate\ProjectsController;
-use App\Http\Controllers\admin\realestate\PropetyController;
-use App\Http\Controllers\admin\realestate\CitiesController;
-use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\AgencyController;
-use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\admin\realestate\CitiesController;
+use App\Http\Controllers\admin\realestate\PropetyController;
+use App\Http\Controllers\admin\realestate\CategoryController;
 use App\Http\Controllers\admin\realestate\FeaturesController;
-use App\Http\Controllers\admin\WebpagesController;
+use App\Http\Controllers\admin\realestate\InvestorController;
+use App\Http\Controllers\admin\realestate\ProjectsController;
+use App\Http\Controllers\admin\realestate\FacilitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +164,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+        ////route of urlslug///////////
+        Route::get('/slugs', [UrlslugController::class, 'index'])->name('slugs');
+        Route::get('/slugs/create', [UrlslugController::class, 'create'])->name('slugs.form');
+        Route::post('/slugs/submit', [UrlslugController::class, 'submit'])->name('slugs.submit');
+        Route::post('/update_status_slugs', [UrlslugController::class, 'update_slugs_status'])->name('update_status_slugs');
+        Route::post('/delete_slugs/{id}', [UrlslugController::class, 'destroy'])->name('delete_slug');
     });
 });
 ////tiny mce image uplod
@@ -194,6 +201,8 @@ Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
+
+
 /////end front
 
 Route::get('/clear', function () {

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class UrlSlug extends Model
 {
     use HasFactory;
-    protected $fillable=['title','url_slug'];
+    protected $fillable=['title','url_slug','city_id','category_id'];
 }
