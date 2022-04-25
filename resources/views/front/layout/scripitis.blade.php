@@ -67,7 +67,7 @@
           <div class="status-mes"></div>
       </div>
   </div>
-  <!-- END PRELOADER -->{}
+  <!-- END PRELOADER -->
 
   <!-- ARCHIVES JS -->
   <script src="{{ asset('/front/js/rangeSlider.js') }}"></script>

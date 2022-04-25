@@ -12,7 +12,7 @@
     @yield('body')
     <div id="wrapper">
 
-        {{-- @yield('header') --}}
+
     @include('front.layout.header')
     <div class="clearfix"></div>
 

@@ -36,7 +36,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="navigation">
                         <h3>Navigation</h3>
-                        <div class="nav-footer">
+                        <div class="nav-footer" style="padding: 0px">
                             <ul>
                                 <li><a href="{{ route('front.index') }}">Home One</a></li>
                                 <li><a href="#">Properties Right</a></li>

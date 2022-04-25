@@ -2,9 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="{{ $meta->meta_description }}">
+    {{-- <meta name="description" content="{{ $meta->meta_description }}">
     <meta name="meta_keywords" content="{{ $meta->meta_keywords }}">
-    <title>{{ $meta->meta_title }}</title>
+    <title>{{ $meta->meta_title }}</title> --}}
     <!-- FAVICON -->
     <script src="{{ asset('/front/js/jquery-3.5.1.min.js') }}"></script>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">

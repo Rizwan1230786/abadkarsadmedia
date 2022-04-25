@@ -201,6 +201,7 @@ Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
+Route::get('/{slug}', [FrontController::class, 'list'])->name('front.list');
 
 
 /////end front

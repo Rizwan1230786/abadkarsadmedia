@@ -1277,7 +1277,7 @@
                                         @foreach ($category as $category)
                                             @if (isset($category->name) && $category->name == 'Houses')
                                                 @foreach ($category->cities as $city)
-                                                    @foreach ($category->url_slugs as $urlslugs)
+                                                    @foreach ($category->url_slugs->take(5) as $urlslugs)
                                                         <ul>
                                                             <li style="list-style: square;">
                                                                 <a style="color: black;"
@@ -1288,7 +1288,7 @@
                                                     @endforeach
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all
+                                                    href="{{ url('/' . $category->name) }}">view all
                                                     cities
                                                 </a>
                                             @endif
@@ -1300,7 +1300,7 @@
                                         @foreach ($flats as $flat)
                                             @if (isset($flat->name) && $flat->name == 'flats')
                                                 @foreach ($flat->cities as $city)
-                                                    @foreach ($flat->url_slugs as $urlslugs)
+                                                    @foreach ($flat->url_slugs->take(5) as $urlslugs)
                                                         <ul>
                                                             <li style="list-style: square;">
                                                                 <a style="color: black;"
@@ -1311,7 +1311,7 @@
                                                     @endforeach
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $flat->name . '/' . $city->slug) }}">view all
+                                                    href="{{ url('/' . $flat->name) }}">view all
                                                     cities
                                                 </a>
                                             @endif
@@ -1324,7 +1324,7 @@
                                         @foreach ($flats as $flat)
                                             @if (isset($flat->name) && $flat->name == 'commercial')
                                                 @foreach ($flat->cities as $city)
-                                                    @foreach ($flat->url_slugs as $urlslugs)
+                                                    @foreach ($flat->url_slugs->take(5) as $urlslugs)
                                                         <ul>
                                                             <li style="list-style: square;">
                                                                 <a style="color: black;"
@@ -1335,7 +1335,7 @@
                                                     @endforeach
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $flat->name . '/' . $city->slug) }}">view all
+                                                    href="{{ url('/' . $flat->name ) }}">view all
                                                     cities
                                                 </a>
                                             @endif
