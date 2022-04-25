@@ -213,35 +213,7 @@
                     </div>
                 </section>
                 {{-- main portion --}}
-                <div role="tabpanel">
-                    <ul class="nav nav-tabs" role="tablist">
-                        @foreach ($category as $item)
-                            <li role="presentation" class="{{ $item->id == $matchCity->category_id ? 'active' : '' }}">
-                                <a href="/#{{ $item->name }}" aria-controls="home" role="tab"
-                                    data-toggle="tab">{{ $item->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <div class="tab-content">
-                        @foreach ($category as $item)
-                            <div role="tabpanel" class="tab-pane {{ $item->id == $matchCity->category_id ? 'active' : '' }}"
-                                id="{{ $item->name }}" class="active">
-                                <ul class="nav nav-tabs" style="display: table-header-group">
-                                    <p class="mt-4 ml-3"><b>{{ $matchCity->title }}</b></p>
-                                    @foreach ($city_area as $area)
-                                        @foreach ($item->cities as $city)
-                                            <li style="list-style: square">
-                                                <a style="color: black"
-                                                    href="{{ url('/' . $item->name . '/' . $city->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
-                                            </li>
-                                        @endforeach
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endforeach
 
-                    </div>
-                </div>
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)
                         <div class="row featured portfolio-items">
@@ -332,6 +304,37 @@
                         </div>
                     @endforeach
                 @elseif(isset($city_search_property) && !empty($city_search_property))
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                            @foreach ($category as $item)
+                                <li role="presentation"
+                                    class="{{ $item->id == $url_slug->category_id ? 'active' : '' }}">
+                                    <a href="/#{{ $item->name }}" aria-controls="home" role="tab"
+                                        data-toggle="tab">{{ $item->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="tab-content">
+                            @foreach ($category as $item)
+                                <div role="tabpanel"
+                                    class="tab-pane {{ $item->id == $url_slug->category_id ? 'active' : '' }}"
+                                    id="{{ $item->name }}" class="active">
+                                    <ul class="nav nav-tabs" style="display: table-header-group">
+                                        <p class="mt-4 ml-3"><b>{{ $url_slug->title }}</b></p>
+                                        @foreach ($city_area as $area)
+                                            @foreach ($item->cities as $city)
+                                                <li style="list-style: square">
+                                                    <a style="color: black"
+                                                        href="{{ url('/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                                </li>
+                                            @endforeach
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
                     @foreach ($city_search_property as $city_search_property)
                         <div class="row featured portfolio-items">
                             <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
@@ -369,7 +372,7 @@
                             <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
                                 <!-- homes address -->
                                 <h3><a
-                                        href="{{ url('/property' . '/' . $matchCity->slug . '/' . $city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
+                                        href="{{ url('/property'. '/' . $city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
                                 </h3>
                                 <p class="homes-address mb-3">
                                     <a href="{{ url('/property', $city_search_property->url_slug) }}">
@@ -420,6 +423,97 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                @elseif(isset($area_search_property) && !empty($area_search_property))
+                    @foreach ($area_search_property as $area_search_propertys)
+                        @if ($area_search_propertys->moderation_status == 'approved')
+                            <div class="row featured portfolio-items">
+                                <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                    data-aos="fade-up">
+                                    <div class="project-single mb-0 bb-0">
+                                        <div class="project-inner project-head">
+                                            <div class="project-bottom">
+                                                <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
+                                                        Property</a><span class="category">Real Estate</span></h4>
+                                            </div>
+                                            <div class="homes">
+                                                <!-- homes img -->
+                                                <a href="{{ url('/property', $area_search_propertys->url_slug) }}"
+                                                    class="homes-img">
+                                                    <div class="homes-tag button alt featured">Featured</div>
+                                                    <div class="homes-tag button alt sale">{{ $area_search_propertys->type }}</div>
+                                                    <div class="homes-price">Family Home</div>
+                                                    <img src="{{ asset('assets/images/properties/' . $area_search_propertys->image) }}"
+                                                        alt="home-1" class="img-responsive">
+                                                </a>
+                                            </div>
+                                            <div class="button-effect">
+                                                <a href="#" class="btn"><i class="fa fa-link"></i></a>
+                                                @if ($area_search_propertys->video)
+                                                    <a href="{{ $area_search_propertys->video }}"
+                                                        class="btn popup-video popup-youtube"><i
+                                                            class="fas fa-video"></i></a>
+                                                @endif
+                                                <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- homes content -->
+                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                                    <!-- homes address -->
+                                    <h3><a
+                                            href="{{ url('/property', $area_search_propertys->url_slug) }}">{{ $area_search_propertys->name }}</a>
+                                    </h3>
+                                    <p class="homes-address mb-3">
+                                        <a href="{{ url('/property', $area_search_propertys->url_slug) }}">
+                                            <i class="fa fa-map-marker"></i><span>{{ $area_search_propertys->location }}</span>
+                                        </a>
+                                    </p>
+                                    <!-- homes List -->
+                                    <ul class="homes-list clearfix pb-3">
+                                        <li class="the-icons">
+                                            <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->number_of_bedrooms }}</span>
+                                        </li>
+                                        <li class="the-icons">
+                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
+                                        </li>
+                                        @if ($area_search_propertys->square)
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>{{ $area_search_propertys->square }} ft</span>
+                                            </li>
+                                        @endif
+                                        @if ($area_search_propertys->marala)
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>{{ $area_search_propertys->marala }} marla</span>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                    <!-- Price -->
+                                    <div class="price-properties">
+                                        <h3 class="title mt-3">
+                                            <a href="#">{{ $area_search_propertys->currency }}
+                                                {{ $area_search_propertys->price }}</a>
+                                        </h3>
+                                        <div class="compare">
+                                            <a href="#" title="Compare">
+                                                <i class="fas fa-exchange-alt"></i>
+                                            </a>
+                                            <a href="#" title="Share">
+                                                <i class="fas fa-share-alt"></i>
+                                            </a>
+                                            <a href="#" title="Favorites">
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
                 @else
                     @foreach ($property as $properties)
