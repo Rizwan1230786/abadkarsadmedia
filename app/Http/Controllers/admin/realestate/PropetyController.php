@@ -59,7 +59,7 @@ class PropetyController extends Controller
     }
     public function submit(Request $request)
     {
-
+      dd('ok');
 
         $type = 'error';
         $validator = Validator::make($request->all(), [

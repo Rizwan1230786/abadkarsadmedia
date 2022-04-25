@@ -98,7 +98,10 @@ class FrontController extends Controller
         $category = Category::where('name', $slug)->first();
         $city = Cities::where('slug', $slug1)->first();
         $area = Area::where('slug', '=', $slug2)->first();
-        $area_search_property = Property::where('category', '=', $category->id)->orWhere('area_id', $area->id)->get();
+
+        $area_search_property = Property::where('area_id', '=',  $area->id)->get();
+        dd( $area);
+        dd($area_search_property);
         $property = Property::paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
@@ -197,7 +200,6 @@ class FrontController extends Controller
         $images = Project_image::all();
         return view('front.pages.project_detail', compact('project', 'assign', 'agent', 'agencies', 'images'));
     }
-<<<<<<< Updated upstream
 
 
 
@@ -210,6 +212,4 @@ class FrontController extends Controller
         return view('front.pages.list',get_defined_vars());
     }
 
-=======
->>>>>>> Stashed changes
 }
