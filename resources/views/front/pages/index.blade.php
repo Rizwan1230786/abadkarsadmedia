@@ -1293,6 +1293,7 @@
                                                 </a>
                                             @endif
                                         @endforeach
+<<<<<<< Updated upstream
                                     </div>
                                     <div class="col-md-4">
                                         <p style="font-weight: bold; margin-left:24px;">Flats</p>
@@ -1342,6 +1343,13 @@
                                         @endforeach
                                     </div>
                                 </div>
+=======
+                                    @endif
+                                @endforeach
+                                {{-- <a style="color: black;" href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all cities
+                                </a> --}}
+                            </div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

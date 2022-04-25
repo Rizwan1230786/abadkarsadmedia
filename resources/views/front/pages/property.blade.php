@@ -213,6 +213,44 @@
                     </div>
                 </section>
                 {{-- main portion --}}
+<<<<<<< Updated upstream
+=======
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist">
+                        @foreach ($category as $item)
+                            <li role="presentation" class="{{ $item->id == $matchCity->category_id ? 'active' : '' }}">
+                                <a href="/#{{ $item->name }}" aria-controls="home" role="tab"
+                                    data-toggle="tab">{{ $item->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content">
+                        @foreach ($category as $item)
+                            <div role="tabpanel" class="tab-pane {{ $item->id == $matchCity->category_id ? 'active' : '' }}"
+                                id="{{ $item->name }}" class="active">
+<<<<<<< Updated upstream
+                                <ul class="nav nav-tabs" style="display: table-header-group">
+                                    <p class="mt-4 ml-3"><b>{{ $matchCity->title }}</b></p>
+                                    @foreach ($city_area as $area)
+                                        @foreach ($item->cities as $city)
+                                            <li style="list-style: square">
+                                                <a style="color: black"
+=======
+                                <ul class="nav nav-tabs" style="display: table-header-group;">
+                                    <p class="mt-4 ml-3" ><b>{{ $matchCity->title }}</b> </p>
+                                    @foreach ($city_area as $area)
+                                        @foreach ($item->cities as $city)
+                                            <li style="list-style: square;">
+                                                <a  style="color: black"
+>>>>>>> Stashed changes
+                                                    href="{{ url('/' . $item->name . '/' . $city->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                            </li>
+                                        @endforeach
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
+>>>>>>> Stashed changes
 
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)

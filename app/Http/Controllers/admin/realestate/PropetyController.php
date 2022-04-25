@@ -166,7 +166,7 @@ class PropetyController extends Controller
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
-                "area" => $request->area,"occupency" => $request->occupency,
+                "area_id" => $request->area_id,"occupency" => $request->occupency,
                 "rental_contact_period" => $request->rental_contact_period,
                 "rental_contact_period_length" => $request->rental_contact_period_length,
                 "monthly_rent" => $request->monthly_rent,
