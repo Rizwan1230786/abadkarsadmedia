@@ -134,7 +134,7 @@
         <nav aria-label="..." class="pt-55">
             <ul class="pagination disabled">
                 <li class="page-item active">
-                    <li>{!! $property->links() !!}</li>
+                    <li>{!! $blog->links() !!}</li>
                 </li>
             </ul>
         </nav>

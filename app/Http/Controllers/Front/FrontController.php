@@ -25,7 +25,8 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $category = Category::with('cities')->with('url_slugs')->get();
+        $category = Category::with('url_slugs')->get();
+
         $flats = Category::with('cities')->with('url_slugs')->get();
         $property = Property::limit(6)->get();
         $project = Projects::all();
@@ -75,7 +76,7 @@ class FrontController extends Controller
     }
     public function property()
     {
-        $property = Property::paginate(4);
+        $property = Property::paginate(2);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', compact('property', 'meta', 'data'));
@@ -227,9 +228,6 @@ class FrontController extends Controller
         return view('front.pages.project_detail', compact('project', 'assign', 'agent', 'agencies', 'images'));
     }
 
-
-
-
     public function list($slug)
     {
         $category = Category::where('name', $slug)->first();
@@ -238,4 +236,7 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.list', get_defined_vars());
     }
+
+
+
 }

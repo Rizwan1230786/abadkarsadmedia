@@ -215,14 +215,16 @@
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)
                         <div class="row featured portfolio-items">
-                            <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
-                                    <div class="project-inner project-head">
+                                    <div class="project-inner project-head"  style="background-image: url('{{ asset('assets/images/properties/' . $search_property->image) }}');  background-size: cover;
+                                        background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
                                         </div>
                                         <div class="homes">
+
                                             <!-- homes img -->
                                             <a href="{{ url('/property', $search_property->url_slug) }}"
                                                 class="homes-img">
@@ -230,8 +232,6 @@
                                                 <div class="homes-tag button alt sale">{{ $search_property->type }}
                                                 </div>
                                                 <div class="homes-price">Family Home</div>
-                                                <img src="{{ asset('assets/images/properties/' . $search_property->image) }}"
-                                                    alt="home-1" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -247,7 +247,7 @@
                                 </div>
                             </div>
                             <!-- homes content -->
-                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                            <div class="col-lg-8 col-md-12 homes-content pb-0  mb-5" data-aos="fade-up">
                                 <!-- homes address -->
                                 <h3><a
                                         href="{{ url('/property', $search_property->url_slug) }}">{{ $search_property->name }}</a>
@@ -323,7 +323,7 @@
                                             @foreach ($item->cities as $city)
                                                 <li style="list-style: square">
                                                     <a
-                                                        href="{{ url('/property'. '/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                                        href="{{ url('/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
                                                 </li>
                                             @endforeach
                                         @endforeach
@@ -335,9 +335,10 @@
                     </div>
                     @foreach ($city_search_property as $city_search_property)
                         <div class="row featured portfolio-items">
-                            <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
-                                    <div class="project-inner project-head">
+                                    <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $city_search_property->image) }}');  background-size: cover;
+                                        background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $city_search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -350,8 +351,6 @@
                                                 <div class="homes-tag button alt sale">{{ $city_search_property->type }}
                                                 </div>
                                                 <div class="homes-price">Family Home</div>
-                                                <img src="{{ asset('assets/images/properties/' . $city_search_property->image) }}"
-                                                    alt="home-1" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -367,7 +366,7 @@
                                 </div>
                             </div>
                             <!-- homes content -->
-                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                            <div class="col-lg-8 col-md-12 homes-content pb-0  mb-5" data-aos="fade-up">
                                 <!-- homes address -->
                                 <h3><a
                                         href="{{ url('/property'. '/' . $city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
@@ -426,10 +425,11 @@
                     @foreach ($area_search_property as $area_search_propertys)
                         @if ($area_search_propertys->moderation_status == 'approved')
                             <div class="row featured portfolio-items">
-                                <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                                     data-aos="fade-up">
                                     <div class="project-single mb-0 bb-0">
-                                        <div class="project-inner project-head">
+                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_property->image) }}');  background-size: cover;
+                                            background-position: center;background-repeat: no-repeat;height:30vh">>
                                             <div class="project-bottom">
                                                 <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
                                                         Property</a><span class="category">Real Estate</span></h4>
@@ -441,8 +441,6 @@
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">{{ $area_search_propertys->type }}</div>
                                                     <div class="homes-price">Family Home</div>
-                                                    <img src="{{ asset('assets/images/properties/' . $area_search_propertys->image) }}"
-                                                        alt="home-1" class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="button-effect">
@@ -458,7 +456,7 @@
                                     </div>
                                 </div>
                                 <!-- homes content -->
-                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
                                     <!-- homes address -->
                                     <h3><a
                                             href="{{ url('/property', $area_search_propertys->url_slug) }}">{{ $area_search_propertys->name }}</a>
@@ -517,10 +515,11 @@
                     @foreach ($property as $properties)
                         @if ($properties->moderation_status == 'approved')
                             <div class="row featured portfolio-items">
-                                <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
-                                    data-aos="fade-up">
+                                <div class="item mb-5 col-lg-4 col-md-12 col-xs-12   landscapes sale pr-0 pb-0"
+                                    data-aos="fade-up"  >
                                     <div class="project-single mb-0 bb-0">
-                                        <div class="project-inner project-head">
+                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}');  background-size: cover;
+                                            background-position: center;background-repeat: no-repeat;height:30vh" >
                                             <div class="project-bottom">
                                                 <h4><a href="{{ url('/property', $properties->url_slug) }}">View
                                                         Property</a><span class="category">Real Estate</span></h4>
@@ -532,8 +531,8 @@
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">{{ $properties->type }}</div>
                                                     <div class="homes-price">Family Home</div>
-                                                    <img src="{{ asset('assets/images/properties/' . $properties->image) }}"
-                                                        alt="home-1" class="img-responsive">
+                                                    {{-- <img src="{{ asset('assets/images/properties/' . $properties->image) }}"
+                                                        alt="home-1" class="img-responsive"> --}}
                                                 </a>
                                             </div>
                                             <div class="button-effect">
@@ -549,7 +548,7 @@
                                     </div>
                                 </div>
                                 <!-- homes content -->
-                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
                                     <!-- homes address -->
                                     <h3><a
                                             href="{{ url('/property', $properties->url_slug) }}">{{ $properties->name }}</a>
