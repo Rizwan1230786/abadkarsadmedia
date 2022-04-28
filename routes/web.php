@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\OurteamController;
 use App\Http\Controllers\admin\UrlslugController;
 use App\Http\Controllers\admin\WebpagesController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\Front\FrontUserController;
 use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\realestate\AreaController;
@@ -212,7 +213,18 @@ Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
 });
 
+//////user login//////////
+Route::prefix('user')->group(function () {
+    Route::get('/signin', [FrontUserController::class, 'index'])->name('signin');
+    Route::post('/submitlogin', [FrontUserController::class, 'submitLogin'])->name('submitLogin');
+    Route::get('/signup', [FrontUserController::class, 'signup'])->name('signup');
+    Route::post('/register', [FrontUserController::class, 'regester'])->name('register');
 
+    Route::group(['middleware' => 'auth:customeruser'], function () {
+        Route::get('/userpanel', [FrontUserController::class, 'panel'])->name('dashboard');
+    });
+
+});
 /////end front
 
 Route::get('/clear', function () {
