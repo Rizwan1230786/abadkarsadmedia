@@ -42,6 +42,13 @@ class Cities extends Model
     {
         return $this->hasMany(Area::class, 'city_id', 'id');
     }
-
+    public function url_slugs()
+    {
+        return $this->hasMany(UrlSlug::class, 'city_id', 'id');
+    }
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'city_name', 'id');
+    }
 }
 

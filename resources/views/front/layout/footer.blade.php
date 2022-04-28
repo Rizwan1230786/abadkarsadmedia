@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="netabout">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('/front/images/logo-footer.svg') }}" alt="netcom">
+                            <img src="{{ asset('/front/images/abadkar-logo.png') }}" alt="netcom">
                         </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
                     </div>

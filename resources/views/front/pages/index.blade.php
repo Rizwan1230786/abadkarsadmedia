@@ -428,35 +428,33 @@
         <!-- END HEADER SEARCH -->
 
         <!-- START SECTION POPULAR PLACES -->
-        <section class="feature-categories bg-white rec-pro">
+        <section class="feature-categories bg-white rec-pro mt-5">
             <div class="container-fluid">
                 <div class="sec-title">
                     <h2><span>Popular </span>Places</h2>
                     <p>Properties In Most Popular Places.</p>
                 </div>
-                <div class="row">
+                <div class="row mt-5">
                     <!-- Single category -->
-
-                    @foreach ($city as $cities)
+                    @foreach ($search_city as $city)
                         <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
                             <div class="small-category-2">
-                                <a href="{{ url('/' . $cities->slug) }}" class="homes-img">
+                                <a href="{{ url('/city' . '/' . $city->slug) }}" class="homes-img">
                                     <div class="small-category-2-thumb img-1">
-                                        <img src="{{ asset('assets/images/cities/' . $cities->image) }}" alt="">
+                                        <img src="{{ asset('assets/images/cities/' . $city->image) }}" alt="">
                                     </div>
                                 </a>
-                                <a href="{{ url('/' . $cities->slug) }}">
+                                <a href="{{ url('/city' . '/' . $city->slug) }}">
                                     <div class="sc-2-detail">
-                                        <h4 class="sc-jb-title">{{ $cities->name }}</h4>
+                                        <h4 class="sc-jb-title">{{ $city->name }}</h4>
 
-                                        <h4 class="sc-jb-title"><a href="#">{{ $cities->state }}</a></h4>
+                                        <h4 class="sc-jb-title"><a href="#">{{ $city->state }}</a></h4>
                                         {{-- <span>203 Properties</span> --}}
                                     </div>
                                 </a>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
                 <!-- /row -->
             </div>
@@ -1257,7 +1255,7 @@
             </div>
         </section>
         <!-- END SECTION TESTIMONIALS -->
-        @if (!empty($category))
+        @if (isset($category) && !empty($category))
             <section>
                 <div class="partners bg-white rec-pro">
                     <div class="container-fluid">
@@ -1275,41 +1273,39 @@
                                         <p style="font-weight: bold; margin-left:24px;">Houses</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($category as $category)
-                                            @if (isset($category->name) && $category->name == 'Houses')
-                                                @foreach ($category->cities as $city)
-                                                    @foreach ($category->url_slugs->take(5) as $urlslugs)
-                                                        <ul>
-                                                            <li style="list-style: square;">
-                                                                <a style="color: black;"
-                                                                    href="{{ url('/' . $category->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    @endforeach
+                                            @if (isset($category->name) && $category->name == 'Homes')
+                                                @foreach ($category->url_slugs->take(5) as $urlslugs)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/property' . '/' . $category->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 @endforeach
-                                                <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $category->name) }}">view all
-                                                    cities
-                                                </a>
+
+                                                @if (isset($category) && !empty($category))
+                                                    <a style="color: #338be7; margin-left: 38px;"
+                                                        href="{{ url('/' . $category->name) }}">view all
+                                                        cities
+                                                    </a>
+                                                @endif
                                             @endif
                                         @endforeach
-<<<<<<< Updated upstream
                                     </div>
                                     <div class="col-md-4">
                                         <p style="font-weight: bold; margin-left:24px;">Flats</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($flats as $flat)
-                                            @if (isset($flat->name) && $flat->name == 'flats')
-                                                @foreach ($flat->cities as $city)
-                                                    @foreach ($flat->url_slugs->take(5) as $urlslugs)
-                                                        <ul>
-                                                            <li style="list-style: square;">
-                                                                <a style="color: black;"
-                                                                    href="{{ url('/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    @endforeach
+                                            @if (isset($flat->name) && $flat->name == 'Plots')
+                                                @foreach ($flat->url_slugs->take(5) as $urlslugs)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/property' . '/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
                                                     href="{{ url('/' . $flat->name) }}">view all
@@ -1317,45 +1313,96 @@
                                                 </a>
                                             @endif
                                         @endforeach
-
                                     </div>
                                     <div class="col-md-4">
                                         <p style="font-weight: bold; margin-left:24px;">Commercial</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($flats as $flat)
-                                            @if (isset($flat->name) && $flat->name == 'commercial')
-                                                @foreach ($flat->cities as $city)
-                                                    @foreach ($flat->url_slugs->take(5) as $urlslugs)
-                                                        <ul>
-                                                            <li style="list-style: square;">
-                                                                <a style="color: black;"
-                                                                    href="{{ url('/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    @endforeach
+                                            @if (isset($flat->name) && $flat->name == 'Commercial')
+                                                @foreach ($flat->url_slugs->take(5) as $urlslugs)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/property' . '/' . $flat->name . '/' . $urlslugs->url_slug) }}">{{ $urlslugs->title }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $flat->name ) }}">view all
+                                                    href="{{ url('/' . $flat->name) }}">view all
                                                     cities
                                                 </a>
                                             @endif
                                         @endforeach
                                     </div>
                                 </div>
-=======
-                                    @endif
-                                @endforeach
-                                {{-- <a style="color: black;" href="{{ url('/' . $category->name . '/' . $city->slug) }}">view all cities
-                                </a> --}}
                             </div>
->>>>>>> Stashed changes
+                            <div class="col-md-12 mt-5">
+                                <p style="font-weight: bold">Most Popular Locations for Homes</p>
+                                <hr style="width: 1200px; ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Lahore</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($search_city as $search_cityies)
+                                            @if (isset($search_cityies->name) && $search_cityies->name == 'lahore')
+                                                @foreach ($search_cityies->areas->take(8) as $area)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/House_Property' . '/' . $search_cityies->name . '/' . $area->slug) }}">House
+                                                                for sale in {{ $area->areaname }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Karachi</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($search_city as $search_cityies)
+                                            @if (isset($search_cityies->name) && $search_cityies->name == 'Karachi')
+                                                @foreach ($search_cityies->areas->take(8) as $area)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/House_Property' . '/' . $search_cityies->name . '/' . $area->slug) }}">House
+                                                                for sale in {{ $area->areaname }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="font-weight: bold; margin-left:24px;">Rahim Yar Khan</p>
+                                        <hr style="width: 309px; ">
+                                        @foreach ($search_city as $search_cityies)
+                                            @if (isset($search_cityies->name) && $search_cityies->name == 'Rahim Yar Khan')
+                                                @foreach ($search_cityies->areas->take(8) as $area)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/House_Property' . '/' . $search_cityies->name . '/' . $area->slug) }}">House
+                                                                for sale in {{ $area->areaname }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         @endif
+
         <!-- END SECTION PARTNERS -->
         <section>
         @endsection

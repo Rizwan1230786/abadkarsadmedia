@@ -81,7 +81,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_facilities', [FacilitiesController::class, 'update_facilities_status'])->name('update_status_facilities');
         Route::post('/delete_facilities/{id}', [FacilitiesController::class, 'destroy'])->name('delete_facilities');
         /////route of projects/////////
-        Route::post('/fetch-states',[ProjectsController::class,'fetchState']);
+        Route::post('/fetch-states', [ProjectsController::class, 'fetchState']);
         Route::get('/projects', [ProjectsController::class, 'index'])->name('projects');
         Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.form');
         Route::post('/projects/submit', [ProjectsController::class, 'submit'])->name('projects_submit');
@@ -121,7 +121,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
         ////route of properties////////
         Route::get('/get_fecilites', [PropetyController::class, 'get_fecilites'])->name('get_fecilites');
-        Route::post('/property/fetch-states',[PropetyController::class,'fetchState']);
+        Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
         Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
         Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
@@ -178,7 +178,6 @@ Route::post('/upload', [BlogController::class, 'upload']);
 
 ///Front
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
-Route::get('/home', [FrontController::class, 'index'])->name('front.index');
 Route::get('/project', [FrontController::class, 'project'])->name('front.project');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
@@ -186,12 +185,17 @@ Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 ////// route of properties/////////
-Route::get('/property', [FrontController::class, 'property'])->name('front.property');
-Route::get('/property/{provider}', [FrontController::class, 'single_property_detail'])->name('front.single_property_detail');
-// Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
-Route::get('/{categoryName}/{slug}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
-Route::get('/{slug}/{slug1}/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
-Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+Route::prefix('property')->group(function () {
+    Route::get('/', [FrontController::class, 'property'])->name('front.property');
+    Route::get('/{provider}', [FrontController::class, 'single_property_detail'])->name('front.single_property_detail');
+    // Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
+    Route::get('/{categoryName}/{slug}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
+    Route::get('/{slug}/{slug1}/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
+    Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+});
+Route::prefix('House_Property')->group(function () {
+    Route::get('/{slug1}/{slug2}', [FrontController::class, 'search_city_area_base_property'])->name('search_city_area_base_property');
+});
 ///////end properties///////
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
 Route::get('/blog/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
@@ -202,6 +206,11 @@ Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing
 Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
 Route::get('/{slug}', [FrontController::class, 'list'])->name('front.list');
+
+
+Route::prefix('city')->group(function () {
+    Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
+});
 
 
 /////end front

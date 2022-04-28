@@ -26,10 +26,10 @@
                         <?php
                         $subPage = subpages::where(['parent_id' => $val->id, 'is_publish' => 1])->orderBy('page_rank', 'asc')->get(); ?>
                         <li class="nav-item <?= (isset($subPage[0]->id) && !empty($subPage[0]->id) ? 'dropdown' : '') ?>">
-                            <a href="/{{$val->url_slug}}" role="button">
+                            <a href="{{url($val->url_slug)}}" role="button">
                                 {{$val->page_title}}
                             </a>
-                            <ul> 
+                            <ul>
                                 <?php
                                 foreach ($subPage as $key => $value) {
                                 ?>
