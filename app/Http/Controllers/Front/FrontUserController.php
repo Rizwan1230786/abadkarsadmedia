@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
+use Session;
+use App\Models\Agent;
+use App\Models\Cities;
+use App\Models\Category;
+use App\Models\Projects;
 use App\Models\Webpages;
+use App\Models\Property;
 use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,8 +18,23 @@ use Illuminate\Support\Facades\Validator;
 
 class FrontUserController extends Controller
 {
-    public function panel(){
-        dd('ok');
+    public function userpanel(){
+        if(Auth::guard('customeruser')->check()){
+            $category = Category::with('cities')->with('url_slugs')->get();
+            $flats = Category::with('cities')->with('url_slugs')->get();
+            $property = Property::limit(6)->get();
+            $project = Projects::all();
+            $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
+
+            $city = Cities::all();
+            $agents = Agent::all();
+            $meta = Webpages::Where("page_title", "home")->first();
+            $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city'));
+        }else{
+            return view('front.pages.customeruser.login');
+        }
+
     }
     public function index(){
         $meta = Webpages::Where("page_title", "home")->first();
@@ -30,7 +51,7 @@ class FrontUserController extends Controller
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|unique:customerusers',
             'password' => 'required|string|min:8',
         ]);
 
@@ -73,5 +94,10 @@ class FrontUserController extends Controller
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
+    }
+    public function logout() {
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('front.index')->with('success',"Logout Successfully!");
     }
 }

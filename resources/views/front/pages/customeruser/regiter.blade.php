@@ -63,6 +63,9 @@
                                                         <div class="col-12">
                                                             <button type="submit" class="btn btn-primary btn-block px-4 submit_button">Register</button>
                                                         </div>
+                                                        <div class="col-12">
+                                                            <a href="{{ url('/user'.'/' . $page='signin')}}" class="btn btn-link box-shadow-0 px-0">Have an already acount go to login page?</a>
+                                                        </div>
                                                     </div>
                                                 </form>
 											</div>

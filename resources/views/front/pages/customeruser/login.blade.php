@@ -43,7 +43,7 @@
                                                             <a href="{{ url('/' . $page='forgot-password-3')}}" class="btn btn-link box-shadow-0 px-0">Forgot password?</a>
                                                         </div>
                                                         <div class="col-6 text-rght">
-                                                            <a href="{{ url('/user'.'/' . $page='signup')}}" class="btn btn-link box-shadow-0 px-0">Signup Acount</a>
+                                                            <a href="{{ url('/user'.'/' . $page='signup')}}" class="btn btn-link box-shadow-0 px-0">Signup Acount?</a>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -196,6 +196,7 @@ Route::prefix('property')->group(function () {
 });
 Route::prefix('House_Property')->group(function () {
     Route::get('/{slug1}/{slug2}', [FrontController::class, 'search_city_area_base_property'])->name('search_city_area_base_property');
+
 });
 ///////end properties///////
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
@@ -221,7 +222,8 @@ Route::prefix('user')->group(function () {
     Route::post('/register', [FrontUserController::class, 'regester'])->name('register');
 
     Route::group(['middleware' => 'auth:customeruser'], function () {
-        Route::get('/userpanel', [FrontUserController::class, 'panel'])->name('dashboard');
+        Route::get('/userpanel', [FrontUserController::class, 'userpanel'])->name('userpanel');
+        Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
     });
 
 });
