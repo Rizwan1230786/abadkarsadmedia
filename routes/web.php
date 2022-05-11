@@ -128,6 +128,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
         Route::post('/properties/update/', [PropetyController::class, 'update'])->name('properties_update');
+        Route::post('/update_property_status', [PropetyController::class, 'update_property_status'])->name('update_property_status');
         Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
         Route::get('/checkslug', [PropetyController::class, 'checkslug'])->name('checkslug');
 

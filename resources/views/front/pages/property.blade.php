@@ -323,7 +323,7 @@
                                             @foreach ($item->cities as $city)
                                                 <li style="list-style: square">
                                                     <a
-                                                        href="{{ url('/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                                        href="{{ url('/property'.'/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
                                                 </li>
                                             @endforeach
                                         @endforeach
@@ -423,7 +423,6 @@
                     @endforeach
                 @elseif(isset($area_search_property) && !empty($area_search_property))
                     @foreach ($area_search_property as $area_search_propertys)
-                        @if ($area_search_propertys->moderation_status == 'approved')
                             <div class="row featured portfolio-items">
                                 <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                                     data-aos="fade-up">
@@ -509,11 +508,11 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+
                     @endforeach
                 @else
                     @foreach ($property as $properties)
-                        @if ($properties->moderation_status == 'approved')
+
                             <div class="row featured portfolio-items">
                                 <div class="item mb-5 col-lg-4 col-md-12 col-xs-12   landscapes sale pr-0 pb-0"
                                     data-aos="fade-up"  >
@@ -601,7 +600,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+
                     @endforeach
                 @endif
                 <nav aria-label="..." class="pt-55">

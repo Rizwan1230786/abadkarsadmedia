@@ -234,6 +234,25 @@ class PropetyController extends Controller
             return response(['status' => false]);
         }
     }
+    public function update_property_status(Request $request)
+    {
+
+        $userid = $request->id;
+        $status = $request->status;
+        if ($status == 1) {
+            $status = 0;
+        } else {
+            $status = 1;
+        }
+        $status = Property::whereId($userid)->update(array('status' => $status));
+        if (isset($status) && !empty($status)) {
+            $type = "success";
+            $message = "Status updated successfully";
+        }
+
+        return response()->json(['type' => $type, 'message' => $message]);
+    }
+
 
     public function fetchState(Request $request)
     {

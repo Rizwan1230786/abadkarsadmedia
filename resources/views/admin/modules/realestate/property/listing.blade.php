@@ -13,7 +13,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:properties.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:properties.form') }}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>
@@ -51,23 +51,46 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td><img src="{{asset('assets/images/properties/'.$item->image)}}" width="50px" height="50px"></td>
-                                            <td>{{ $item->name}}</td>
-                                            <td>{{ $item->created_at}}</td>
+                                            <td><img src="{{ asset('assets/images/properties/' . $item->image) }}"
+                                                    width="50px" height="50px"></td>
+                                            <td>{{Str::limit($item->name, 20)}}</td>
+                                            <td>{{ $item->created_at }}</td>
                                             <td style="text-align: center;"><span
-                                                    class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->property_status}}</span>
+                                                    class="m-badge  m-badge--success">{{ $item->property_status }}</span>
                                             </td>
                                             <td style="text-align: center;"><span
-                                                class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->moderation_status}}</span>
-                                        </td>
-                                        <td>
-                                            <ul class="icons-list">
-                                                <a href="{{ route('admin:properties.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
-                                                <a href="javascript:void(0)">
-                                                  <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
-                                                </a>
-                                            </ul>
-                                        </td>
+                                                    class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{ $status != '1' ? 'Pendding' : 'Approved' }}</span>
+                                            </td>
+                                            <td>
+                                                <ul class="icons-list">
+                                                    <a href="{{ route('admin:properties.form', ['id' => $item->id]) }}">
+                                                        <li class="icons-list-item"><i class="fe fe-edit-3"
+                                                                data-toggle="tooltip" title="" data-original-title="Edit"></i>
+                                                        </li>
+                                                    </a>
+                                                    @if ($status == 1)
+                                                        <a href="javascript:void(0)">
+                                                            <li class="icons-list-item property_publish"
+                                                                rel="{{ $item->id }}" status="{{ $status }}"><i
+                                                                    class="fe fe-arrow-up" data-toggle="tooltip" title=""
+                                                                    data-original-title="Publish"></i></li>
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0)">
+                                                            <li class="icons-list-item property_publish"
+                                                                rel="{{ $item->id }}" status="{{ $status }}"><i
+                                                                    class="fe fe-arrow-down" data-toggle="tooltip" title=""
+                                                                    data-original-title="Un Publish"></i></li>
+                                                        </a>
+                                                    @endif
+                                                    <a href="javascript:void(0)">
+                                                        <li class="icons-list-item delete_record"
+                                                            data-id="{{ $item->id }}"><i class="fa fa-trash-o"
+                                                                data-toggle="tooltip" title="" data-original-title="Delete"></i>
+                                                        </li>
+                                                    </a>
+                                                </ul>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @endisset
@@ -88,5 +111,5 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
-   <script src="{{ URL::asset('assets/themeJquery/property/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/property/jquery.js') }}"></script>
 @endsection

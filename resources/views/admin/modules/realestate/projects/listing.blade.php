@@ -51,7 +51,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td><img src="{{asset('assets/images/projects/'.$item->image)}}" width="50px" height="50px"></td>
-                                            <td>{{ $item->title}}</td>
+                                            <td>{{Str::limit($item->title, 20)}}</td>
                                             <td>{{ $item->created_at}}</td>
                                             <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{$item->status}}</span>
