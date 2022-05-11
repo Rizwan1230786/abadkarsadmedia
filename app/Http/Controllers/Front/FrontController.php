@@ -84,7 +84,7 @@ class FrontController extends Controller
     }
     public function property()
     {
-        $property = Property::where('status', 1)->paginate(2);
+        $property = Property::where('status', 1)->paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', compact('property', 'meta', 'data'));
@@ -122,14 +122,10 @@ class FrontController extends Controller
         $city = Cities::where('slug', $slug1)->first();
         $area = Area::where('slug', '=', $slug2)->first();
         $area_search_property = Property::where(['area_id' => $area->id, 'status' => 1])->get();
-        $property = Property::where('status', 1)->paginate(4);
+        $property = Property::paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        if (isset($area_search_property) && !empty($area_search_property)) {
-            return view('front.pages.property', compact('property', 'meta', 'data', 'area_search_property'));
-        } else {
-            echo 'error';
-        }
+        return view('front.pages.property', compact('property', 'meta', 'data', 'area_search_property'));
     }
     // public function search_property(Request $request){
     //     $meta = Webpages::Where("page_title", "property")->first();

@@ -302,12 +302,12 @@
 
 
                                          {{-- Rent details --}}
-                                            <div class="Rent box"
+                                            <div class="Rent msg"
                                             style="background-color: #d9edf7;padding-top: 10px;padding-bottom: 2px;padding-left: 10px;">
                                             <h6>RENTAL PRICE DETAILS</h6>
                                         </div>
-                                        <p class="Rent box form-label mt-2 padding">Minimum Contract Period:</p>
-                                        <div class="Rent box" style="display: flex;" >
+                                        <p class="Rent msg form-label mt-2 padding">Minimum Contract Period:</p>
+                                        <div class="Rent msg" style="display: flex;" >
                                             @if (isset($data['record']->rental_contact_period_length) && !empty($data['record']->rental_contact_period_length))
                                             <select id="cars" class=" form-control"  name="rental_contact_period_length" style="margin-right: 10px">
                                                 <option value="{{ $data['record']->rental_contact_period_length }}">  {{ $data['record']->rental_contact_period_length }}</option>
@@ -355,33 +355,33 @@
                                             </select>
                                             @endif
                                     </div>
-                                    <div class="Rent box form-group mb-3 col-12 padding">
+                                    <div class="Rent msg form-group mb-3 col-12 padding">
                                         <label for="price" class="form-label">Monthly Rent: </label>
                                         <input class="form-control notrequired" placeholder="" name="monthly_rent"
                                             value="{{ $data['record']->monthly_rent ?? '' }}" type="number">
                                     </div>
-                                    <p class="Rent box form-label mt-2 padding">Security Deposit</p>
-                                    <div class="Rent box form-group padding d-flex">
-                                        <input class="Rent box form-control notrequired" placeholder="" name="security_deposit" style="width: 35%"
+                                    <p class="Rent msg form-label mt-2 padding">Security Deposit</p>
+                                    <div class="Rent msg form-group padding d-flex">
+                                        <input class="Rent msg form-control notrequired" placeholder="" name="security_deposit" style="width: 35%"
                                             value="{{ $data['record']->security_deposit ?? '' }}" type="text">
 
-                                            <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent box form-control notrequired" placeholder="" name="security_deposit_number_of_month" style="width: 34%"
+                                            <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
+                                            <input class="Rent msg form-control notrequired" placeholder="" name="security_deposit_number_of_month" style="width: 34%"
                                                 value="{{ $data['record']->security_deposit_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <p  class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
                                     </div>
 
 
-                                    <p class="Rent box form-label mt-2 padding">Advance Rent:</p>
-                                    <div class="Rent box form-group padding d-flex">
-                                        <input class="Rent box form-control notrequired" placeholder="" name="advance_rent" style="width: 35%"
+                                    <p class="Rent msg form-label mt-2 padding">Advance Rent:</p>
+                                    <div class="Rent msg form-group padding d-flex">
+                                        <input class="Rent msg form-control notrequired" placeholder="" name="advance_rent" style="width: 35%"
                                             value="{{ $data['record']->advance_rent ?? '' }}" type="text">
 
-                                            <span class="Rent box ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent box form-control notrequired" placeholder="" name="advance_rent_number_of_month" style="width: 34%"
+                                            <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
+                                            <input class="Rent msg form-control notrequired" placeholder="" name="advance_rent_number_of_month" style="width: 34%"
                                                 value="{{ $data['record']->advance_rent_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent box ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <p  class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
                                     </div>
 
@@ -422,16 +422,6 @@
                                                             <option value="building">Building</option>
                                                         </select>
                                                     @endif
-                                                </div>
-                                            </div>
-                                            <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12">
-                                                    <label class="form-label">Moderation status</label>
-                                                    <select id="cars" class="form-control " name="moderation_status">
-                                                        <option value="approved">Approved</option>
-                                                        <option value="pending">Pending</option>
-                                                        <option value="rejected">Rejected</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
@@ -595,6 +585,17 @@
             $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
         });
     </script>
+    {{-- <script type="text/javascript">
+        $(document).ready(function() {
+            $("div.Rent.msg").hide();
+            $('input[type="radio"]').click(function() {
+                var val = $(this).attr("value");
+                var target = $("." + val);
+                $(".msg").not(target).hide();
+                $(target).show();
+            });
+        });
+    </script> --}}
 @endsection
 @section('js')
     <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>

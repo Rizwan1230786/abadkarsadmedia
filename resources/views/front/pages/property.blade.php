@@ -427,7 +427,7 @@
                                 <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                                     data-aos="fade-up">
                                     <div class="project-single mb-0 bb-0">
-                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_property->image) }}');  background-size: cover;
+                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_propertys->image) }}');  background-size: cover;
                                             background-position: center;background-repeat: no-repeat;height:30vh">>
                                             <div class="project-bottom">
                                                 <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
