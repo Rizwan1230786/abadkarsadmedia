@@ -11,13 +11,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-       
+
         $user=User::count();
         return view('admin.modules.dashboard.index',compact('user'));
     }
     public function logout() {
         Session::flush();
         Auth::logout();
-        return redirect()->route('admin:login')->with('success',"Logout Successfully!");
+        return redirect('/admin/login')->with('success',"Logout Successfully!");
     }
 }

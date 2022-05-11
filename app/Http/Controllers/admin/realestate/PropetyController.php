@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Facilities;
 use App\Models\Property_facilities;
+use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Imagic;
 
 class PropetyController extends Controller
 {
@@ -78,17 +80,19 @@ class PropetyController extends Controller
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
-                "area_id" => $request->area_id,"occupency" => $request->occupency,
+                "area_id" => $request->area_id, "occupency" => $request->occupency,
                 "rental_contact_period" => $request->rental_contact_period,
                 "rental_contact_period_length" => $request->rental_contact_period_length,
                 "monthly_rent" => $request->monthly_rent,
                 "security_deposit" => $request->security_deposit,
-                "security_deposit_number_of_month"=>$request->security_deposit_number_of_month,
-                "advance_rent_number_of_month"=>$request->advance_rent_number_of_month,
+                "security_deposit_number_of_month" => $request->security_deposit_number_of_month,
+                "advance_rent_number_of_month" => $request->advance_rent_number_of_month,
                 "advance_rent" => $request->advance_rent,
             );
 
             $post = Property::Create($data);
+            UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
+            Area::where("id" , $request->area_id)->update(['status' => 1]);
 
             if ($request->file('property_map')) {
                 $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
@@ -127,7 +131,6 @@ class PropetyController extends Controller
 
     public function update(Request $request)
     {
-
         $updatedId = $request->id;
         $type = 'error';
         $validator = Validator::make($request->all(), [
@@ -164,33 +167,36 @@ class PropetyController extends Controller
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
-                "area_id" => $request->area_id,"occupency" => $request->occupency,
+                "area_id" => $request->area_id, "occupency" => $request->occupency,
                 "rental_contact_period" => $request->rental_contact_period,
                 "rental_contact_period_length" => $request->rental_contact_period_length,
                 "monthly_rent" => $request->monthly_rent,
                 "security_deposit" => $request->security_deposit,
-                "security_deposit_number_of_month"=>$request->security_deposit_number_of_month,
-                "advance_rent_number_of_month"=>$request->advance_rent_number_of_month,
+                "security_deposit_number_of_month" => $request->security_deposit_number_of_month,
+                "advance_rent_number_of_month" => $request->advance_rent_number_of_month,
                 "advance_rent" => $request->advance_rent,
             );
             $post->update($data);
+            UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
+            Area::where('city_id', $request->city_name)->update(['status' => 1]);
             if ($request->hasFile('images')) {
                 $images = array();
-                $images_id = $request->property_id;
                 if ($files = $request['images']) {
-                    foreach ($files as $file) {
-                        $fileName = $file->getClientOriginalName();
-                        $file->move(public_path('assets/images/properties/multipleimages/'), $fileName);
+                    foreach ($request->images as $file) {
+                        $fileName =  rand(100, 200) . '.' . $file->extension();
+                        $file->move("assets/images/properties/multipleimages/", $fileName);
                         $images = $fileName;
                         /*Insert your data*/
-                        Image::updateOrCreate(array('id' => $images_id), [
+                        Image::where(['id' => $request->property_id])->update([
                             'property_id' => $post->id,
                             'image' => $images
                         ]);
                     }
+
+                    dd($images);
                 }
             }
-            if (isset($request->facility) && !empty($request->facility)){
+            if (isset($request->facility) && !empty($request->facility)) {
                 $check = $post->id;
                 $count = count($request->facility);
                 for ($i = 0; $i < $count; $i++) {
@@ -204,7 +210,6 @@ class PropetyController extends Controller
 
 
             $post->features()->sync($request->feature);
-
         } else {
             $message = $validator->errors()->toArray();
         }

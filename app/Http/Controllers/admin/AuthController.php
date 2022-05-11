@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Session;
 
 class AuthController extends Controller
 {
@@ -61,7 +62,7 @@ class AuthController extends Controller
         if ($validator->passes()) {
             $credentials = $request->only('email', 'password');
             if (Auth::guard('web')->attempt($credentials)) {
-                $status = Auth::user()->status;
+                $status = Auth::guard('web')->user()->status;
                 if (isset($status) && $status != 0) {
                     $type = 'success';
                     $message = "User login successfully";

@@ -3,37 +3,37 @@
     <div class="top-footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-5 col-md-6">
                     <div class="netabout">
                         <a href="index.html" class="logo">
                             <img src="{{ asset('/front/images/abadkar-logo.png') }}" alt="netcom">
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                        <p>Abadkar, Leading Property Portal in  Pakistan - Property Buyers Sellers Landlords, and Real Estate Agents in Karachi, Lahore, Islamabad, and all over Pakistan. We are providing standard property - Commercial Plots, Lands & Markets - Villas - Apartments - Bungalows - Home Buying & Renting Villas.</p>
                     </div>
                     <div class="contactus">
                         <ul>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <p class="in-p">95 South Park Avenue, USA</p>
+                                    <p class="in-p">Rahim Yar Khan Abasiya Town, Pakistan</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <p class="in-p">+456 875 369 208</p>
+                                    <p class="in-p">+923009264940</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <p class="in-p ti">support@findhouses.com</p>
+                                    <p class="in-p ti">support@abadkar.com</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="navigation">
                         <h3>Navigation</h3>
                         <div class="nav-footer" style="padding: 0px">
@@ -51,42 +51,6 @@
                                 <li><a href="#">Blog Details</a></li>
                                 <li class="no-mgb"><a href="{{ route('front.contact') }}">Contact Us</a></li>
                             </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="widget">
-                        <h3>Twitter Feeds</h3>
-                        <div class="twitter-widget contuct">
-                            <div class="twitter-area">
-                                <div class="single-item">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
-                                    </div>
-                                </div>
-                                <div class="single-item">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
-                                    </div>
-                                </div>
-                                <div class="single-item">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
-                                        <h4>about 5 days ago</h4>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,7 +73,7 @@
     </div>
     <div class="second-footer rec-pro">
         <div class="container-fluid sd-f">
-            <p style="text-align: center">2021 © Copyright - All Rights Reserved.</p>
+            <p style="text-align: center">2022 © Copyright <a href="{{url('https://abadkar.com//')}}">Abadkar</a>  - All Rights Reserved.</p>
             <ul class="netsocials" style="justify-content: center">
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

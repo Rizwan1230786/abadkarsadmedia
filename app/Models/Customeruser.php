@@ -14,8 +14,12 @@ class Customeruser extends Authenticatable
         'lastname',
         'email',
         'password',
+        'google_id',
     ];
     protected $hidden = [
         'password', 'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\WebpagesController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Front\FrontUserController;
 use App\Http\Controllers\admin\OurclinetsController;
+use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
@@ -185,6 +186,13 @@ Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
+
+//////user add property//////
+Route::prefix('add-property')->group(function () {
+    Route::get('/', [AddProprtyController::class, 'add_property'])->name('front.add-property');
+    Route::post('/fetch-subtype', [AddProprtyController::class, 'fetch_subtype'])->name('front.fetch-subtype');
+    Route::post('/submit', [AddProprtyController::class, 'submit'])->name('front.submit');
+});
 ////// route of properties/////////
 Route::prefix('property')->group(function () {
     Route::get('/', [FrontController::class, 'property'])->name('front.property');
@@ -196,7 +204,6 @@ Route::prefix('property')->group(function () {
 });
 Route::prefix('House_Property')->group(function () {
     Route::get('/{slug1}/{slug2}', [FrontController::class, 'search_city_area_base_property'])->name('search_city_area_base_property');
-
 });
 ///////end properties///////
 Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
@@ -220,12 +227,17 @@ Route::prefix('user')->group(function () {
     Route::post('/submitlogin', [FrontUserController::class, 'submitLogin'])->name('submitLogin');
     Route::get('/signup', [FrontUserController::class, 'signup'])->name('signup');
     Route::post('/register', [FrontUserController::class, 'regester'])->name('register');
+    Route::get('/auth/google', [FrontUserController::class, 'redirectToGoogle']);
+    Route::get('/auth/google/callback', [FrontUserController::class, 'handleGoogleCallback']);
 
     Route::group(['middleware' => 'auth:customeruser'], function () {
         Route::get('/userpanel', [FrontUserController::class, 'userpanel'])->name('userpanel');
+        ////route of edit profile////////////////
+        Route::get('/profile', [FrontUserController::class, 'edit_profile'])->name('profile');
+        Route::post('/update_user/{id}', [FrontUserController::class, 'update_user'])->name('update_user');
+        ///////////end//////////
         Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
     });
-
 });
 /////end front
 

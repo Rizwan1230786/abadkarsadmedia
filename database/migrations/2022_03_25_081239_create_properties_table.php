@@ -14,7 +14,8 @@ class CreatePropertiesTable extends Migration
     public function up()
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
+            $table->bigInteger('user_id');
             $table->string('name')->nullable();
             $table->string('url_slug')->nullable();
             $table->string('type')->nullable();

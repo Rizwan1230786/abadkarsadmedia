@@ -47,8 +47,21 @@
   <script src="{{ asset('/front/js/light.js') }}"></script>
   <script src="{{ asset('/front/js/popup.js') }}"></script>
   <script src="{{ asset('/front/js/inner.js') }}"></script>
+  @yield('js')
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script src="{{ asset('front') }}/js/popper.min.js"></script>
+  <script src="{{ asset('front') }}/js/jquery-ui.js"></script>
+  <script src="{{ asset('front') }}/js/swiper.min.js"></script>
+  <script src="{{ asset('front') }}/js/swiper.js"></script>
+  <script src="{{ asset('front') }}/js/slick2.js"></script>
+  <script src="{{ asset('front') }}/js/fitvids.js"></script>
+  <script src="{{ asset('front') }}/js/dashbord-mobile-menu.js"></script>
+  <script src="{{ asset('front') }}/js/forms-2.js"></script>
+  <script src="{{ asset('front') }}/js/dropzone.js"></script>
+
+
 
   <script>
     $(document).ready(function() {

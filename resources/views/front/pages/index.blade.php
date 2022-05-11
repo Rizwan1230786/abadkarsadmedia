@@ -1273,7 +1273,7 @@
                                         <p style="font-weight: bold; margin-left:24px;">Houses</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($category as $category)
-                                            @if (isset($category->name) && $category->name == 'Homes')
+                                            @if (isset($category->name) && $category->name == 'homes')
                                                 @foreach ($category->url_slugs->take(5) as $urlslugs)
                                                     <ul>
                                                         <li style="list-style: square;">
@@ -1385,10 +1385,10 @@
                                         <p style="font-weight: bold; margin-left:24px;">Rahim Yar Khan</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
-                                            @foreach ($search_cityies->properties as $property)
+
                                                 @foreach ($search_cityies->areas->take(8) as $area)
                                                     @if (isset($search_cityies->name) && $search_cityies->name == 'rahim yar khan')
-                                                        @if ($search_cityies->id == $property->city_name)
+
                                                             <ul>
                                                                 <li style="list-style: square;">
                                                                     <a style="color: black;"
@@ -1397,10 +1397,10 @@
                                                                     </a>
                                                                 </li>
                                                             </ul>
-                                                        @endif
+
                                                     @endif
                                                 @endforeach
-                                            @endforeach
+
                                         @endforeach
                                     </div>
                                 </div>

@@ -20,7 +20,7 @@
 
     @include('front.layout.footer')
     @include('front.layout.scripitis')
-    @include('admin.layouts.templateJquery')
+    @include('front.layout.regestertheamjequery')
     </div>
 
 </body>

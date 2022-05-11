@@ -87,6 +87,7 @@
                                             </div>
                                             <div class="form-group">
 
+
                                                 <label for="files" class="form-label">Upload Multiple Property
                                                     Images:</label>
                                                 <input type="file" name="images[]" class="form-control dropify"

@@ -45,6 +45,7 @@ use App\Models\subpages;
                                 </ul>
                             </li>
                         @endforeach
+                        <li><a href="{{ url('/add-property') }}">Add Property</a>
                         <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
                         </li>
@@ -102,9 +103,7 @@ use App\Models\subpages;
                         <span><img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt=""></span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
                     </div>
                     <ul>
-                        <li><a href="user-profile.html"> Edit profile</a></li>
-                        <li><a href="add-property.html"> Add Property</a></li>
-                        <li><a href="payment-method.html"> Payments</a></li>
+                        <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
                         <li><a href="change-password.html"> Change Password</a></li>
                         <li><a href="{{ url('user/logout') }}">Log Out</a></li>
                     </ul>

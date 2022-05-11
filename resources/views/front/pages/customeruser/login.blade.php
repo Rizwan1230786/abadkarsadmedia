@@ -12,11 +12,16 @@
 									<div class="card-group mb-0">
 										<div class="card p-4">
 											<div class="card-body">
-												<div class="text-center title-style mb-6">
+												<div class="text-center title-style mb-2">
 													<h1 class="mb-2">Login</h1>
 													<hr>
 													<p class="text-muted">Sign In to your account</p>
 												</div>
+                                                <div class="flex mb-4 ml-6">
+                                                    <a href="{{ url('user/auth/google') }}">
+                                                        <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
+                                                    </a>
+                                                </div>
                                                 <form class="validationForm auth-login-form" action="javascript:void(0)" method="POST">
                                                     @csrf
                                                     <div class="input-group mb-4">

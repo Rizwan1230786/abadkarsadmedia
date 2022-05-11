@@ -9,14 +9,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/jquery-ui.css') }}">
     <!-- GOOGLE FONTS -->
+    @yield('css')
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
     <!-- FONT AWESOME -->
+    <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/front/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/fontawesome-5-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/font-awesome.min.css') }}">
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('/front/css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('/front/css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/aos2.css') }}">
@@ -37,10 +40,13 @@
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/leaflet.markercluster.default.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="{{URL::asset('assets/css/toastr.min.css')}}" rel="stylesheet" />
-    <script src="{{URL::asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+    <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" />
     <!-- Jquery js-->
-    <script src="{{URL::asset('assets/js/toastr.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/js/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('front') }}/css/dashbord-mobile-menu.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
+    <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
+    <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
 </head>
 <style>
     .btn1 {
@@ -98,10 +104,16 @@
         background-color: transparent;
     }
 
-    .tab-pane ul li a:hover{
+    .tab-pane ul li a:hover {
         color: #337ab7;
         text-decoration: underline;
         background-color: transparent;
+    }
+
+    .seting {
+        position: relative;
+        top: 2px;
+        left: 7px;
     }
 
 </style>
