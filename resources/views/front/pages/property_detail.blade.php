@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="keywords" content="{{$properties->meta_keywords}}">
-    <meta name="description" content="{{$properties->meta_description}}">
-    <title>{{$properties->meta_title}}</title>
+    <meta name="keywords" content="{{ $properties->meta_keywords }}">
+    <meta name="description" content="{{ $properties->meta_description }}">
+    <title>{{ $properties->meta_title }}</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -118,7 +118,8 @@
                     <!-- Right Side Content / End -->
                     <div class="header-user-menu user-menu add">
                         <div class="header-user-name">
-                            <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt=""></span>Hi, Mary!
+                            <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt=""></span>Hi,
+                            Mary!
                         </div>
                         <ul>
                             <li><a href="user-profile.html"> Edit profile</a></li>
@@ -154,12 +155,12 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 @foreach ($images as $image)
-                @if ($image->property_id == $properties->id)
-                <div class="swiper-slide {{ $loop->first ? 'active' : '' }}">
-                    <img src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/'.$image->image) : asset('assets/images/properties/multipleimages/'.$image->image) }}" class="d-block w-100" alt="..." height="300" width="350">
-                </div>
-                @endif
-
+                    @if ($image->property_id == $properties->id)
+                        <div class="swiper-slide {{ $loop->first ? 'active' : '' }}">
+                            <img src="{{ is_null($image->file)? asset('assets/images/properties/multipleimages/' . $image->image): asset('assets/images/properties/multipleimages/' . $image->image) }}"
+                                class="d-block w-100" alt="..." height="300" width="350">
+                        </div>
+                    @endif
                 @endforeach
             </div>
 
@@ -181,12 +182,12 @@
                                     <div class="pro-wrapper">
                                         <div class="detail-wrapper-body">
                                             <div class="listing-title-bar">
-                                                <h3>{{$properties->name  }} <span class="mrg-l-5 category-tag">For
+                                                <h3>{{ $properties->name }} <span class="mrg-l-5 category-tag">For
                                                         {{ $properties->type }}</span></h3>
                                                 <div class="mt-0">
                                                     <a href="#listing-location" class="listing-address">
                                                         <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>
-                                                       {{ $properties->location }}
+                                                        {{ $properties->location }}
                                                     </a>
                                                 </div>
                                             </div>
@@ -209,7 +210,7 @@
                                 <div class="blog-info details mb-30">
                                     <h5 class="mb-4">Description</h5>
                                     <p class="mb-3">{!! $properties->content !!}
-                                        </p>
+                                    </p>
                                 </div>
                                 <!-- End Description -->
                             </div>
@@ -233,39 +234,40 @@
                                 </li>
                                 <li>
                                     <span class="font-weight-bold mr-1">Property Price:</span>
-                                    <span class="det">{{ $properties->currency }}{{ $properties->price }}</span>
+                                    <span
+                                        class="det">{{ $properties->currency }}{{ $properties->price }}</span>
                                 </li>
                                 @if ($properties->number_of_floors)
-                                <li>
-                                    <span class="font-weight-bold mr-1">Floors:</span>
-                                    <span class="det">{{ $properties->number_of_floors }}</span>
-                                </li>
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Floors:</span>
+                                        <span class="det">{{ $properties->number_of_floors }}</span>
+                                    </li>
                                 @endif
-                                @if ($properties->number_of_bedrooms )
-                                <li>
-                                    <span class="font-weight-bold mr-1">Bedrooms:</span>
-                                    <span class="det">{{ $properties->number_of_bedrooms }}</span>
-                                </li>
+                                @if ($properties->number_of_bedrooms)
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bedrooms:</span>
+                                        <span class="det">{{ $properties->number_of_bedrooms }}</span>
+                                    </li>
                                 @endif
                                 @if ($properties->number_of_bathrooms)
-                                <li>
-                                    <span class="font-weight-bold mr-1">Bath:</span>
-                                    <span class="det">{{ $properties->number_of_bathrooms }}</span>
-                                </li>
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bath:</span>
+                                        <span class="det">{{ $properties->number_of_bathrooms }}</span>
+                                    </li>
                                 @endif
 
 
 
                                 @if ($properties->marala)
-                                <li>
-                                    <span class="font-weight-bold mr-1">Area:</span>
-                                    <span class="det">{{ $properties->marala }} marala</span>
-                                </li>
-                              @else
-                                <li>
-                                    <span class="font-weight-bold mr-1">Area:</span>
-                                    <span class="det">{{ $properties->square }} Sq ft</span>
-                                </li>
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Area:</span>
+                                        <span class="det">{{ $properties->marala }} marala</span>
+                                    </li>
+                                @else
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Area:</span>
+                                        <span class="det">{{ $properties->square }} Sq ft</span>
+                                    </li>
                                 @endif
                             </ul>
                             <!-- title -->
@@ -273,37 +275,37 @@
                             <!-- cars List -->
                             <ul class="homes-list clearfix">
 
-                                @foreach ($assign as $assigns )
-                                @if ($assigns->propertiesID == $properties->id)
-                                <li>
-                                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                                    <span>{{ $assigns->FeaturesName }}</span>
-                                </li>
-
-                                @endif
+                                @foreach ($assign as $assigns)
+                                    @if ($assigns->propertiesID == $properties->id)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>{{ $assigns->FeaturesName }}</span>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         </div>
-                        @if(isset($properties->property_map) && !empty($properties->property_map))
-                        <div class="floor-plan property wprt-image-video w50 pro">
-                            <h5>Property Map</h5>
-                            <img width="100%" alt="Not Found" src="{{asset('assets/images/properties/maps/'.$properties->property_map)}}">
-                        </div>
+                        @if (isset($properties->property_map) && !empty($properties->property_map))
+                            <div class="floor-plan property wprt-image-video w50 pro">
+                                <h5>Property Map</h5>
+                                <img width="100%" alt="Not Found"
+                                    src="{{ asset('assets/images/properties/maps/' . $properties->property_map) }}">
+                            </div>
                         @endif
-                        @if(isset($properties->video) && !empty($properties->video))
-                        <div class="property wprt-image-video w50 pro vid-si2">
-                            <h5>Property Video</h5>
-                            <img width="100%" alt="image" src="{{asset('assets/images/properties/'.$properties->image)}}">
-                            <a class="icon-wrap popup-video popup-youtube"
-                                href="{{asset($properties->video)}}">
-                                <i class="fa fa-play"></i>
-                            </a>
-                            {{-- <div class="iq-waves">
+                        @if (isset($properties->video) && !empty($properties->video))
+                            <div class="property wprt-image-video w50 pro vid-si2">
+                                <h5>Property Video</h5>
+                                <img width="100%" alt="image"
+                                    src="{{ asset('assets/images/properties/' . $properties->image) }}">
+                                <a class="icon-wrap popup-video popup-youtube" href="{{ asset($properties->video) }}">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                                {{-- <div class="iq-waves">
                                 <div class="waves wave-1"></div>
                                 <div class="waves wave-2"></div>
                                 <div class="waves wave-3"></div>
                             </div> --}}
-                        </div>
+                            </div>
                         @endif
                         {{-- <div class="property-location map">
                             <h5>Location</h5>
@@ -382,46 +384,60 @@
                             <!-- end author-verified-badge -->
                             <div class="sidebar">
                                 @if ($agent != null)
-                                <div class="widget-boxed mt-33 mt-5">
-                                    <div class="widget-boxed-header">
-                                        <h4>Agent Information</h4>
-                                    </div>
-                                    @foreach ($agent as $agent )
-                                    @if ($agent->id == $properties->agent_id)
-                                    <div class="widget-boxed-body">
-                                        <div class="sidebar-widget author-widget2">
-                                            <div class="author-box clearfix">
-                                                <img src="{{asset('assets/images/agent/'.$agent->image)}}" alt="author-image" class="author__img">
-                                                <h4 class="author__title">{{ $agent->name }}</h4>
-                                                <p class="author__meta">Agent of Property</p>
-                                            </div>
-                                            <ul class="author__contact">
-                                                <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>{{ $agent->office_address }}</li>
-                                                <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span><a href="#">{{ $agent->office_number }}</a></li>
-                                                <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#">{{ $agent->email }}</a></li>
-                                            </ul>
-                                            <div class="agent-contact-form-sidebar">
-                                                <h4>Request Inquiry</h4>
-                                                <form name="contact_form" method="post" action="functions.php">
-                                                    <input type="text" id="fname" name="full_name" placeholder="Full Name" required />
-                                                    <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number" required />
-                                                    <input type="email" id="emailid" name="email_address" placeholder="Email Address" required />
-                                                    <textarea placeholder="Message" name="message" required></textarea>
-                                                    <input type="submit" name="sendmessage" class="multiple-send-message" value="Submit Request" />
-                                                </form>
-                                            </div>
+                                    <div class="widget-boxed mt-33 mt-5">
+                                        <div class="widget-boxed-header">
+                                            <h4>Agent Information</h4>
                                         </div>
+                                        @foreach ($agent as $agent)
+                                            @if ($agent->id == $properties->agent_id)
+                                                <div class="widget-boxed-body">
+                                                    <div class="sidebar-widget author-widget2">
+                                                        <div class="author-box clearfix">
+                                                            <img src="{{ asset('assets/images/agent/' . $agent->image) }}"
+                                                                alt="author-image" class="author__img">
+                                                            <h4 class="author__title">{{ $agent->name }}</h4>
+                                                            <p class="author__meta">Agent of Property</p>
+                                                        </div>
+                                                        <ul class="author__contact">
+                                                            <li><span class="la la-map-marker"><i
+                                                                        class="fa fa-map-marker"></i></span>{{ $agent->office_address }}
+                                                            </li>
+                                                            <li><span class="la la-phone"><i class="fa fa-phone"
+                                                                        aria-hidden="true"></i></span><a
+                                                                    href="#">{{ $agent->office_number }}</a></li>
+                                                            <li><span class="la la-envelope-o"><i
+                                                                        class="fa fa-envelope"
+                                                                        aria-hidden="true"></i></span><a
+                                                                    href="#">{{ $agent->email }}</a></li>
+                                                        </ul>
+                                                        <div class="agent-contact-form-sidebar">
+                                                            <h4>Request Inquiry</h4>
+                                                            <form name="contact_form" method="post"
+                                                                action="functions.php">
+                                                                <input type="text" id="fname" name="full_name"
+                                                                    placeholder="Full Name" required />
+                                                                <input type="number" id="pnumber" name="phone_number"
+                                                                    placeholder="Phone Number" required />
+                                                                <input type="email" id="emailid" name="email_address"
+                                                                    placeholder="Email Address" required />
+                                                                <textarea placeholder="Message" name="message" required></textarea>
+                                                                <input type="submit" name="sendmessage"
+                                                                    class="multiple-send-message"
+                                                                    value="Submit Request" />
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    @endif
-                                    @endforeach
-                                </div>
                                 @endif
                                 {{-- @if ($agencies != null)
                                 <div class="widget-boxed mt-33 mt-5">
                                     <div class="widget-boxed-header">
                                         <h4>Agency Information</h4>
                                     </div>
-                                    @foreach ($agencies as $agencies )
+                                    @foreach ($agencies as $agencies)
                                     @if ($agencies->id == $properties->agency_id)
                                     <div class="widget-boxed-body">
                                         <div class="sidebar-widget author-widget2">
@@ -458,7 +474,9 @@
                                             <h4>Specials of the day</h4>
                                         </div>
                                         <div class="widget-boxed-body">
-                                            <div class="banner"><img src="{{ asset('/front') }}/images/single-property/banner.jpg" alt="">
+                                            <div class="banner"><img
+                                                    src="{{ asset('/front') }}/images/single-property/banner.jpg"
+                                                    alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -479,7 +497,8 @@
                                                     <span><a href="#" class="btn btn-outline-primary">Beds</a></span>
                                                 </div>
                                                 <div class="tags">
-                                                    <span><a href="#" class="btn btn-outline-primary">Garages</a></span>
+                                                    <span><a href="#"
+                                                            class="btn btn-outline-primary">Garages</a></span>
                                                     <span><a href="#" class="btn btn-outline-primary">Family</a></span>
                                                 </div>
                                                 <div class="tags">
@@ -517,7 +536,8 @@
                                 <a href="index.html" class="logo">
                                     <img src="{{ asset('/front/images/logo-footer.svg') }}" alt="netcom">
                                 </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto
+                                    soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
                             </div>
                             <div class="contactus">
                                 <ul>
@@ -551,14 +571,16 @@
                                         <li><a href="#">Properties Right</a></li>
                                         <li><a href="{{ route('front.property') }}">Properties List</a></li>
                                         <li><a href="{{ route('front.property') }}">Property Details</a></li>
-                                        <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents Listing</a></li>
+                                        <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents
+                                                Listing</a></li>
                                     </ul>
                                     <ul class="nav-right">
                                         <li><a href="#">Agents Details</a></li>
                                         <li><a href="{{ route('front.about') }}">About Us</a></li>
                                         <li><a href="#">Blog Default</a></li>
                                         <li><a href="#">Blog Details</a></li>
-                                        <li class="no-mgb"><a href="{{ route('front.contact') }}">Contact Us</a></li>
+                                        <li class="no-mgb"><a href="{{ route('front.contact') }}">Contact
+                                                Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -573,7 +595,8 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
+                                                </h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -582,7 +605,8 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
+                                                </h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -591,7 +615,8 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.
+                                                </h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -602,7 +627,8 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="newsletters">
                                 <h3>Newsletters</h3>
-                                <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive news in your inbox.</p>
+                                <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive
+                                    news in your inbox.</p>
                             </div>
                             <form class="bloq-email mailchimp form-inline" method="post">
                                 <label for="subscribeEmail" class="error"></label>
@@ -630,7 +656,8 @@
         </footer>
 
 
-        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up"
+                aria-hidden="true"></i></a>
         <!-- END FOOTER -->
 
         <!--register form -->
@@ -642,7 +669,8 @@
                     <h3>Welcome to <span>Find<strong>Houses</strong></span></h3>
                     <div class="soc-log fl-wrap">
                         <p>Login</p>
-                        <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
+                        <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with
+                            Facebook</a>
                         <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
                     </div>
                     <div class="log-separator fl-wrap"><span>Or</span></div>
@@ -753,13 +781,11 @@
                     },
                 }
             });
-
         </script>
 
         <!-- Date Dropper Script-->
         <script>
             $('#reservation-date').dateDropper();
-
         </script>
         <!-- Time Dropper Script-->
         <script>
@@ -770,11 +796,10 @@
                 borderColor: "#e8212a",
                 minutesInterval: '15'
             });
-
         </script>
 
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
                     disableOn: 700,
                     type: 'iframe',
@@ -784,11 +809,10 @@
                     fixedContentPos: false
                 });
             });
-
         </script>
 
         <script>
-            $('.slick-carousel').each(function () {
+            $('.slick-carousel').each(function() {
                 var slider = $(this);
                 $(this).slick({
                     infinite: true,
@@ -798,14 +822,13 @@
                     centerPadding: '0'
                 });
 
-                $(this).closest('.slick-slider-area').find('.slick-prev').on("click", function () {
+                $(this).closest('.slick-slider-area').find('.slick-prev').on("click", function() {
                     slider.slick('slickPrev');
                 });
-                $(this).closest('.slick-slider-area').find('.slick-next').on("click", function () {
+                $(this).closest('.slick-slider-area').find('.slick-next').on("click", function() {
                     slider.slick('slickNext');
                 });
             });
-
         </script>
 
     </div>
@@ -813,4 +836,3 @@
 </body>
 
 </html>
-
