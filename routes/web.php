@@ -123,7 +123,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
         ////route of properties////////
         Route::get('/get_fecilites', [PropetyController::class, 'get_fecilites'])->name('get_fecilites');
-        Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
         Route::get('/properties', [PropetyController::class, 'index'])->name('properties');
         Route::get('/properties/create', [PropetyController::class, 'create'])->name('properties.form');
         Route::post('/properties/submit', [PropetyController::class, 'submit'])->name('properties_submit');
@@ -174,6 +173,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_slugs', [UrlslugController::class, 'update_slugs_status'])->name('update_status_slugs');
         Route::post('/delete_slugs/{id}', [UrlslugController::class, 'destroy'])->name('delete_slug');
     });
+    Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
 });
 ////tiny mce image uplod
 Route::post('/upload', [BlogController::class, 'upload']);
@@ -191,6 +191,7 @@ Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->na
 //////user add property//////
 Route::prefix('add-property')->group(function () {
     Route::get('/', [AddProprtyController::class, 'add_property'])->name('front.add-property');
+    Route::get('/myform/ajax/{id}', [AddProprtyController::class, 'myformAjax'])->name('myform.ajax');
     Route::post('/fetch-subtype', [AddProprtyController::class, 'fetch_subtype'])->name('front.fetch-subtype');
     Route::post('/submit', [AddProprtyController::class, 'submit'])->name('front.submit');
 });

@@ -10,10 +10,12 @@ use App\Models\Webpages;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Property\addProperty;
 use App\Models\Customeruser;
 use App\Models\Image;
 use App\Models\Property;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AddProprtyController extends Controller
@@ -28,49 +30,48 @@ class AddProprtyController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.userside.property.add_property', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
+    public function myformAjax($id)
+
+    {
+
+        $areas = DB::table("areas")
+
+            ->where("city_id", $id)
+
+            ->lists("name", "id");
+
+        return json_encode($areas);
+    }
     public function fetch_subtype(Request $request)
     {
         $data['areas'] = SubCategory::where("category_id", $request->city_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function submit(Request $request)
+    public function submit(addProperty $request)
     {
-        $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'address' => 'required',
-            'city_name' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'unit' => 'required',
-            'type' => 'required',
-            'email' => 'required|unique:customerusers',
-            'contact' => 'required',
-            'password' =>  'required|min:6',
-            'image' => 'required',
-        ]);
         $data = $request->all();
-        if ($data['email']) {
-            $user = Customeruser::where('email', $data['email'])->first();
+        dd($data);
+        if ($data['email'] || $data['email1'] ?? '') {
+            $user = Customeruser::where('email', $data['email'])->orwhere('email', $data['email1'])->first();
             if ($user == null) {
                 $data = array('email' => $data['email'], 'password' => Hash::make($data['password']), 'firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'contact' => $data['contact']);
-                $newUser = Customeruser::create($data);
+                Customeruser::create($data);
                 $credentials = $request->only('email', 'password');
             } else {
-                $credentials = $request->only('email', 'password');
+                $credentials = array();
+                $credentials['email'] = $request->email1;
+                $credentials['password'] = $request->password1;
+          
             }
             Auth::guard('customeruser')->attempt($credentials);
         }
-        $id = Auth::guard('customeruser')->user()->id;
+        $user_id = Auth::guard('customeruser')->user()->id;
         if (isset($data['image']) && !empty($data['image'])) {
             $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            $data['image']=$filename;
+            $data['image'] = $filename;
             request()->image->move(public_path('assets/images/properties/'), $filename);
         }
-        $data = array('user_id' => $id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'description' => $data['description']);
+        $data = array('area_id' => 0,'user_id' => $user_id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description']);
         $query = Property::create($data);
         $query->features()->attach($request->feature);
         Auth::logout();
