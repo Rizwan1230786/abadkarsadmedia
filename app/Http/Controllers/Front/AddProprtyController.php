@@ -35,11 +35,28 @@ class AddProprtyController extends Controller
     }
     public function submit(Request $request)
     {
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'city_name' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'unit' => 'required',
+            'type' => 'required',
+            'email' => 'required|unique:customerusers',
+            'contact' => 'required',
+            'password' =>  'required|min:6',
+            'image' => 'required',
+        ]);
         $data = $request->all();
         if ($data['email']) {
             $user = Customeruser::where('email', $data['email'])->first();
             if ($user == null) {
-                $data = array('email' => $data['email'], 'password' => Hash::make($data['password']), 'firstname' => $data['name']);
+                $data = array('email' => $data['email'], 'password' => Hash::make($data['password']), 'firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'contact' => $data['contact']);
                 $newUser = Customeruser::create($data);
                 $credentials = $request->only('email', 'password');
             } else {
@@ -47,9 +64,16 @@ class AddProprtyController extends Controller
             }
             Auth::guard('customeruser')->attempt($credentials);
         }
-        $id = Auth::user()->id;
-        $data = array('user_id' => $id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude']);
-        $newUser = Property::create($data);
+        $id = Auth::guard('customeruser')->user()->id;
+        if (isset($data['image']) && !empty($data['image'])) {
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            $data['image']=$filename;
+            request()->image->move(public_path('assets/images/properties/'), $filename);
+        }
+        $data = array('user_id' => $id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'description' => $data['description']);
+        $query = Property::create($data);
+        $query->features()->attach($request->feature);
         Auth::logout();
+        return redirect()->back()->with('message', 'Property Add Successfully');
     }
 }

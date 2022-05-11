@@ -49,6 +49,17 @@
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
 </head>
 <style>
+    .error{
+        color: #FF385C;
+    }
+    .form {
+        display: none;
+    }
+
+    .form.active {
+        display: block
+    }
+
     .btn1 {
         background: #18ba60 !important
     }
