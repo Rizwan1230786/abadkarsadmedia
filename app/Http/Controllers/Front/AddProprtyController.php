@@ -50,7 +50,6 @@ class AddProprtyController extends Controller
     public function submit(addProperty $request)
     {
         $data = $request->all();
-        dd($data);
         if ($data['email'] || $data['email1'] ?? '') {
             $user = Customeruser::where('email', $data['email'])->orwhere('email', $data['email1'])->first();
             if ($user == null) {
@@ -61,7 +60,6 @@ class AddProprtyController extends Controller
                 $credentials = array();
                 $credentials['email'] = $request->email1;
                 $credentials['password'] = $request->password1;
-          
             }
             Auth::guard('customeruser')->attempt($credentials);
         }
@@ -71,7 +69,7 @@ class AddProprtyController extends Controller
             $data['image'] = $filename;
             request()->image->move(public_path('assets/images/properties/'), $filename);
         }
-        $data = array('area_id' => 0,'user_id' => $user_id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description']);
+        $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description']);
         $query = Property::create($data);
         $query->features()->attach($request->feature);
         Auth::logout();
