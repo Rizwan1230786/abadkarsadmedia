@@ -148,28 +148,28 @@
                                         <div class="col-lg-6 col-md-12">
                                             <p class="no-mb">
                                                 <label for="price">Front Dimension:</label>
-                                                <input style="border-radius: 5px;" type="number" value="{{ old('price') }}" name="front_dimantion" placeholder="" id="price">
+                                                <input style="border-radius: 5px;" type="number" value="{{ old('price') }}" name="front_dim" placeholder="" id="price">
                                             </p>
-                                            @if ($errors->has('front_dimantion'))
-                                            <div class="error">{{ $errors->first('front_dimantion') }}</div>
+                                            @if ($errors->has('front_dim'))
+                                            <div class="error">{{ $errors->first('front_dim') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             <p class="no-mb" style="margin-bottom: 4px;">
                                                 <label for="price">Back Dimension:</label>
-                                                <input type="number" value="{{ old('price') }}" name="back_dimantion" placeholder="" id="price">
+                                                <input type="number" value="{{ old('price') }}" name="back_dim" placeholder="" id="back_dim">
                                             </p>
-                                            @if ($errors->has('back_dimantion'))
-                                            <div class="error">{{ $errors->first('back_dimantion') }}</div>
+                                            @if ($errors->has('back_dim'))
+                                            <div class="error">{{ $errors->first('back_dim') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             <p class="no-mb" style="margin-bottom: 4px;">
                                                 <label for="price">Land Area:</label>
-                                                <input type="number" value="{{ old('price') }}" name="area_size" placeholder="" id="price">
+                                                <input type="number" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
                                             </p>
-                                            @if ($errors->has('area_size'))
-                                            <div class="error">{{ $errors->first('area_size') }}</div>
+                                            @if ($errors->has('land_area'))
+                                            <div class="error">{{ $errors->first('land_area') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-lg-6 col-md-12">
@@ -200,13 +200,13 @@
                                         <div class="col-lg-6 col-md-12">
                                             <div class="form-group">
                                                 <label class="form-label">Expires After:</label>
-                                                <select id="cars" class="form-control" name="expire_date">
-                                                    <option value="square feet">1 Month</option>
-                                                    <option value="square yard">3 Months</option>
-                                                    <option value="square meter">6 Months</option>
+                                                <select id="cars" class="form-control" name="is_expired">
+                                                    <option value="1">1 Month</option>
+                                                    <option value="3">3 Months</option>
+                                                    <option value="6">6 Months</option>
                                                 </select>
-                                                @if ($errors->has('expire_date'))
-                                                <div class="error">{{ $errors->first('expire_date') }}</div>
+                                                @if ($errors->has('is_expired'))
+                                                <div class="error">{{ $errors->first('is_expired') }}</div>
                                                 @endif
                                             </div>
                                         </div>

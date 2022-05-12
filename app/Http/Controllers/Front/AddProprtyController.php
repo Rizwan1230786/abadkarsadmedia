@@ -14,9 +14,11 @@ use App\Http\Requests\Property\addProperty;
 use App\Models\Customeruser;
 use App\Models\Image;
 use App\Models\Property;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 
 class AddProprtyController extends Controller
 {
@@ -51,28 +53,34 @@ class AddProprtyController extends Controller
     {
         $data = $request->all();
         if ($data['email'] || $data['email1'] ?? '') {
-            $user = Customeruser::where('email', $data['email'])->orwhere('email', $data['email1'])->first();
+            $user = Customeruser::where('email', $data['email1'])->first();
             if ($user == null) {
-                $data = array('email' => $data['email'], 'password' => Hash::make($data['password']), 'firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'contact' => $data['contact']);
-                Customeruser::create($data);
-                $credentials = $request->only('email', 'password');
+                $newData = array('email' => $data['email'], 'password' => Hash::make($data['password']), 'firstname' => $data['firstname'], 'lastname' => $data['lastname'], 'contact' => $data['contact']);
+                Customeruser::create($newData);
+                $newCustomer = Customeruser::select(["id", "firstname", "lastname", "email"])->Where(['email' => $request["email"]])->first();
+                Auth::guard('customeruser')->login($newCustomer);
             } else {
-                $credentials = array();
-                $credentials['email'] = $request->email1;
-                $credentials['password'] = $request->password1;
+                $oldCustomer = Customeruser::select(["id", "password", "email"])->Where(['email' => $request["email1"]])->first();
+                $nextContinue = Hash::check($request["password1"], $oldCustomer['password']);
+                Auth::guard('customeruser')->login($oldCustomer);
             }
-            Auth::guard('customeruser')->attempt($credentials);
+            if (Auth::check()) {
+                $user_id = Auth::guard('customeruser')->user()->id;
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $filename = time() . '.' . request()->image->extension();
+                    $data['image'] = $filename;
+                    request()->image->move(public_path('assets/images/properties/'), $filename);
+                }
+                $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
+                $data = array('area_id' => $data['area_id'] ?? '0', 'user_id' => $user_id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired']);
+                $query = Property::create($data);
+                $query->features()->attach($request->feature);
+                Auth::logout();
+                return redirect()->back()->with('message', 'Property Added!');
+            } else {
+                return redirect()->back()->with('message', 'email or password is incorrect');
+            }
         }
-        $user_id = Auth::guard('customeruser')->user()->id;
-        if (isset($data['image']) && !empty($data['image'])) {
-            $filename = time() . '.' . request()->image->extension();
-            $data['image'] = $filename;
-            request()->image->move(public_path('assets/images/properties/'), $filename);
-        }
-        $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'location' => $data['address'], 'city_name' => $data['city_name'], 'latitude' => $data['latitude'], 'longitude' => $data['longitude'], 'name' => $data['title'], 'type' => $data['type'], 'category' => $data['category_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description']);
-        $query = Property::create($data);
-        $query->features()->attach($request->feature);
-        Auth::logout();
-        return redirect()->back()->with('message', 'Property Add Successfully');
+        return redirect()->back()->with('message', 'Fill the data in properway!');
     }
 }

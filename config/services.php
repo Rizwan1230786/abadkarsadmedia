@@ -31,9 +31,9 @@ return [
     ],
 
         'google' => [
-            'client_id' => '379290926773-8mhh93ubrujvciln0ksogc3e1sqbmre9.apps.googleusercontent.com',
-            'client_secret' => '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',
-            'redirect' => 'http://127.0.0.1:8000/user/auth/google/callback',
+            'client_id' => '11250526982-tn94ac2q1o9osuvkgs3fc5rnjs2ri638.apps.googleusercontent.com',
+            'client_secret' => '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',
+            'redirect' => 'https://abadkar.com/user/auth/google/callback',
         ],
 
 

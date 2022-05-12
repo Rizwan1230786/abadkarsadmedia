@@ -234,6 +234,7 @@ class FrontController extends Controller
 
     public function list($slug)
     {
+        dd($slug);
         $category = Category::where('name', $slug)->first();
         $check = UrlSlug::where('category_id', $category->id)->get();
         $meta = Webpages::Where("page_title", "blog")->first();

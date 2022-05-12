@@ -41,6 +41,11 @@ class addProperty extends FormRequest
             'type' => 'required',
             'contact' => 'required_without_all:email1,password1',
             'image' => 'required',
+            'front_dim' => 'required',
+            'back_dim' => 'required',
+            'land_area' => 'required',
+            'is_expired' => 'required',
+
         ];
     }
     public function messages()
@@ -52,17 +57,21 @@ class addProperty extends FormRequest
             'email1.required_without_all' => __('The email field is required.'),
             'firstname.required_without_all' => __('Users firstname is required.'),
             'lastname.required_without_all' => __('Users lastname is required.'),
-            'address' => __('Address is required.'),
-            'city_name' => __('City Name is required.'),
-            'latitude' => __('Lattitude is required.'),
-            'longitude' => __('Longitude is required.'),
-            'title' => __('Title is required.'),
-            'description' => __('Description is required.'),
-            'price' => __('Price is required.'),
-            'unit' => __('Unit is required.'),
-            'type' => __('Property type is required.'),
+            'address.required' => __('Address is required.'),
+            'city_name.required' => __('City Name is required.'),
+            'latitude.required' => __('Lattitude is required.'),
+            'longitude.required' => __('Longitude is required.'),
+            'title.required' => __('Title is required.'),
+            'description.required' => __('Description is required.'),
+            'price.required' => __('Price is required.'),
+            'unit.required' => __('Unit is required.'),
+            'type.required' => __('Property type is required.'),
             'contact.required_without_all' => __('Contact number is required.'),
-            'image' => __('Images are required.'),
+            'image.required' => __('Images are required.'),
+            'front_dim.required' => __('House front dimenssion is required.'),
+            'back_dim.required' => __('House back dimenssion is required.'),
+            'land_area.required' => __('House area siza is required.'),
+            'is_expired.required' => __('Property expiry duration is required.'),
         ];
     }
 }

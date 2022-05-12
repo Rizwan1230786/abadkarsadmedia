@@ -15,9 +15,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Exception;
+use Facade\FlareClient\Http\Client;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class FrontUserController extends Controller
 {
@@ -85,9 +87,13 @@ class FrontUserController extends Controller
         try {
 
             $user = Socialite::driver('google')->user();
-            $finduser = Customeruser::where('google_id', $user->id)->first();
+            $finduser = Customeruser::where('google_id', $user->id)->orwhere('email', $user->email)->first();
 
             if ($finduser) {
+                $newUser = Customeruser::where('email', $user->email)->update([
+                    'firstname' => $user->name,
+                    'google_id' => $user->id,
+                ]);
                 Auth::login($finduser);
                 return redirect()->intended('user/userpanel');
             } else {

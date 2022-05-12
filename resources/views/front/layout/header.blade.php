@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\subpages;
 ?>
 <header id="header-container">
@@ -9,8 +10,7 @@ use App\Models\subpages;
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{ route('front.index') }}"><img src="{{ asset('/front/images/abadkar-logo.png') }}"
-                            alt=""></a>
+                    <a href="{{ route('front.index') }}"><img src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
@@ -24,29 +24,28 @@ use App\Models\subpages;
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
                         @foreach ($data as $val)
-                            <?php
-                            $subPage = subpages::where(['parent_id' => $val->id, 'is_publish' => 1])
-                                ->orderBy('page_rank', 'asc')
-                                ->get(); ?>
-                            <li
-                                class="nav-item <?= isset($subPage[0]->id) && !empty($subPage[0]->id) ? 'dropdown' : '' ?>">
-                                <a href="{{ url($val->url_slug) }}" role="button">
-                                    {{ $val->page_title }}
-                                </a>
-                                <ul>
-                                    <?php
+                        <?php
+                        $subPage = subpages::where(['parent_id' => $val->id, 'is_publish' => 1])
+                            ->orderBy('page_rank', 'asc')
+                            ->get(); ?>
+                        <li class="nav-item <?= isset($subPage[0]->id) && !empty($subPage[0]->id) ? 'dropdown' : '' ?>">
+                            <a href="{{ url($val->url_slug) }}" role="button">
+                                {{ $val->page_title }}
+                            </a>
+                            <ul>
+                                <?php
                                 foreach ($subPage as $key => $value) {
                                 ?>
                                     <li><a href="/{{ $value->url_slug }}">{{ $value->page_title }} </a></li>
 
 
-                                    <?php }
+                                <?php }
                                 ?>
-                                </ul>
-                            </li>
+                            </ul>
+                        </li>
                         @endforeach
                         <li><a href="{{ url('/add-property') }}">Add Property</a>
-                        <!-- <li><a href="{{ route('front.index') }}">Home</a>
+                            <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
                         </li>
                         <li><a href="{{ route('front.project') }}">Projects</a>
@@ -74,8 +73,7 @@ use App\Models\subpages;
                     <li><a href="{{ route('front.contact') }}">Contact</a></li> -->
                         <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                        <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
-                                href="add-property.html" class="button border btn-lg btn-block text-center">Add
+                        <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add
                                 Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
                     </ul>
                 </nav>
@@ -87,8 +85,7 @@ use App\Models\subpages;
             <div class="right-side d-none d-none d-lg-none d-xl-flex">
                 <!-- Header Widget -->
                 <div class="header-widget">
-                    <a href="{{ route('front.contact') }}" class="button border">Contact us<i
-                            class="fas fa-laptop-house ml-2"></i></a>
+                    <a href="{{ route('front.contact') }}" class="button border">Contact us<i class="fas fa-laptop-house ml-2"></i></a>
                 </div>
                 <!-- Header Widget / End -->
             </div>
@@ -98,24 +95,24 @@ use App\Models\subpages;
 
             <!-- Right Side Content / End -->
             @if (Auth::guard('customeruser')->user())
-                <div class="header-user-menu user-menu add">
-                    <div class="header-user-name">
-                        <span><img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt=""></span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
-                    </div>
-                    <ul>
-                        <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
-                        <li><a href="change-password.html"> Change Password</a></li>
-                        <li><a href="{{ url('user/logout') }}">Log Out</a></li>
-                    </ul>
+            <div class="header-user-menu user-menu add">
+                <div class="header-user-name">
+                    <span> @if (Auth::guard('customeruser')->user()->image)<img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt="">@else<img src="{{URL::asset('/default/nodp.jpg')}}" alt="">@endif</span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
                 </div>
+                <ul>
+                    <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
+                    <li><a href="change-password.html"> Change Password</a></li>
+                    <li><a href="{{ url('user/logout') }}">Log Out</a></li>
+                </ul>
+            </div>
             @else
-                <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                    <!-- Header Widget -->
-                    <div class="header-widget sign-in">
-                        <div class="show-reg-form "><a href="{{ url('user/signin') }}">Sign In</a></div>
-                    </div>
-                    <!-- Header Widget / End -->
+            <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                <!-- Header Widget -->
+                <div class="header-widget sign-in">
+                    <div class="show-reg-form "><a href="{{ url('user/signin') }}">Sign In</a></div>
                 </div>
+                <!-- Header Widget / End -->
+            </div>
             @endif
             <!-- Right Side Content / End -->
 
