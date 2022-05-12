@@ -22308,6 +22308,7 @@ form label.error {
 .inner-pages .prperty-submit-button > button {
   background: #FF385C none repeat scroll 0 0;
   border: medium none;
+  border-radius: 10px;;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -22321,7 +22322,12 @@ form label.error {
 }
 
 .inner-pages .prperty-submit-button > button:hover {
-  background: #121B22 none repeat scroll 0 0;
+background: #df3755 none repeat scroll 0 0;
+border: 1px solid #df3755;
+  outline: none;
+    text-decoration: none;
+    font-size: 85%;
+    opacity: 1;
 }
 
 .inner-pages .royal-complete-order-head > p {
