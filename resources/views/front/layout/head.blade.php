@@ -49,9 +49,10 @@
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
 </head>
 <style>
-    .error{
+    .error {
         color: #FF385C;
     }
+
     .form {
         display: none;
     }
@@ -120,11 +121,12 @@
         text-decoration: underline;
         background-color: transparent;
     }
-
     .seting {
         position: relative;
         top: 2px;
         left: 7px;
     }
-
+    .left-side {
+        display: inline-block;
+    }
 </style>
