@@ -61,7 +61,7 @@ class AddProprtyController extends Controller
                 $credentials = array();
                 $credentials['email'] = $request->email1;
                 $credentials['password'] = $request->password1;
-          
+
             }
             Auth::guard('customeruser')->attempt($credentials);
         }
