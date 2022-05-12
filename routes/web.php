@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
+use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
 use App\Http\Controllers\admin\realestate\PropetyController;
@@ -53,6 +54,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
 
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
+        /////customerusers//////////
+        Route::get('/customerusers', [CustomerController::class, 'index'])->name('customerusers');
+        Route::post('/update_status_customer', [CustomerController::class, 'update_status_customer'])->name('update_status_customer');
+        Route::post('/delete_customeruser/{id}', [CustomerController::class, 'destroy'])->name('destroy');
+
         ////route of webpages///////
         Route::get('/webpages', [WebpagesController::class, 'index'])->name('webpages');
         Route::get('/webpages/create', [WebpagesController::class, 'create'])->name('webpages.form');
