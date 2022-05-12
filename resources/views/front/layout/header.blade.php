@@ -97,7 +97,7 @@ use App\Models\subpages;
             @if (Auth::guard('customeruser')->user())
             <div class="header-user-menu user-menu add">
                 <div class="header-user-name">
-                    <span> @if (Auth::guard('customeruser')->user()->image)<img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt="">@else<img src="{{URL::asset('/default/nodp.jpg')}}" alt="">@endif</span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
+                    <span> @if (Auth::guard('customeruser')->user()->image != null)<img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt="">@else<img src="{{URL::asset('/default/nodp.jpg')}}" alt="">@endif</span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
                 </div>
                 <ul>
                     <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
