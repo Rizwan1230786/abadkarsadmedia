@@ -352,12 +352,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-property-button pt-5">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="prperty-submit-button">
-                                                <button type="submit">Submit Property</button>
-                                            </div>
+                                <div class="row form form-a active">
+                                    <div class="col-lg-6 col-md-12">
+                                        <p>
+                                            <label for="con-user">Email</label>
+                                            <input type="email" value="{{old('email')}}" placeholder="Enter Your Email" id="con-user" name="email1">
+                                            @if ($errors->has('email1'))
+                                        <div class="error">{{ $errors->first('email1') }}</div>
+                                        @endif
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <p style="margin-bottom: 4px;">
+                                            <label for="con-name">Password</label>
+                                            <input type="password" placeholder="Enter Your password" id="con-name" name="password1">
+                                            @if ($errors->has('password1'))
+                                        <div class="error">{{ $errors->first('password1') }}</div>
+                                        @endif
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-property-button pt-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="prperty-submit-button">
+                                            <button type="submit">Submit Property</button>
                                         </div>
                                     </div>
                                 </div>

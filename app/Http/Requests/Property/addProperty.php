@@ -24,10 +24,12 @@ class addProperty extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required_without_all:email1|email|unique:customerusers',
-            'email1' => 'required_without_all:email',
-            'firstname' => 'required',
-            'lastname' => 'required',
+            'email' => 'required_without_all:email1,password1',
+            'email1' => 'required_without_all:email,password',
+            'password' =>  'required_without_all:email1,password1',
+            'password1' =>  'required_without_all:email,password',
+            'firstname' => 'required_without_all:email1,password1',
+            'lastname' => 'required_without_all:email1,password1',
             'address' => 'required',
             'city_name' => 'required',
             'latitude' => 'required',
@@ -37,28 +39,19 @@ class addProperty extends FormRequest
             'price' => 'required',
             'unit' => 'required',
             'type' => 'required',
-            'contact' => 'required',
-            'password' =>  'required_without_all:password1|min:6',
-            'password1' =>  'required_without_all:password|min:6',
+            'contact' => 'required_without_all:email1,password1',
             'image' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'password.required_without_all' => __('Password is required.'),
-            'password1.required_without_all' => __('Password is required.'),
-            'email.required_without_all' => __('The email field is required.'),
+            'password.required_without_all' => __('New password is required with provided email.'),
+            'password1.required_without_all' => __('Password is required with provided email.'),
+            'email.required_without_all' => __('New email is required.'),
             'email1.required_without_all' => __('The email field is required.'),
-            'email.email' => __('You need to provide valid email address.'),
-            'email1.email' => __('You need to provide valid email address.'),
-            'email.exists' => __('Provided email is invalid.'),
-            'email1.exists' => __('Provided email is invalid.'),
-            'password.min' => __('Password length should be 4.'),
-            'password.max' => __('Password length should be less then 100.'),
-            'password.required' => __('Password length should be less then 100.'),
-            'firstname' => __('Users firstname is required.'),
-            'lastname' => __('Users lastname is required.'),
+            'firstname.required_without_all' => __('Users firstname is required.'),
+            'lastname.required_without_all' => __('Users lastname is required.'),
             'address' => __('Address is required.'),
             'city_name' => __('City Name is required.'),
             'latitude' => __('Lattitude is required.'),
@@ -68,8 +61,8 @@ class addProperty extends FormRequest
             'price' => __('Price is required.'),
             'unit' => __('Unit is required.'),
             'type' => __('Property type is required.'),
-            'contact' => __('Contact number is required.'),
-            'image' =>__('Images are required.'),
+            'contact.required_without_all' => __('Contact number is required.'),
+            'image' => __('Images are required.'),
         ];
     }
 }
