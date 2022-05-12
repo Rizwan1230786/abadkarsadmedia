@@ -62,7 +62,7 @@
                                         <p class="no-mb first" style="margin-bottom: 4px;">
                                             <label for="latitude">Google Maps latitude</label>
                                             <input type="number" value="{{ old('latitude') }}" name="latitude" step="0.01" placeholder="Google Maps latitude" id="latitude">
-                                            <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
+                                            <a class="form-control notrequired" style="background-color: #d9edf7; margin-top:4px; border:none;" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                 Go here to get Latitude from address. </a>
                                             @if ($errors->has('latitude'))
                                         <div class="error">{{ $errors->first('latitude') }}</div>
@@ -73,7 +73,7 @@
                                         <p class="no-mb last" style="margin-bottom: 4px;">
                                             <label for="longitude">Google Maps longitude</label>
                                             <input type="number" value="{{ old('longitude') }}" name="longitude" step="0.01" placeholder="Google Maps longitude" id="longitude">
-                                            <a class="form-control notrequired" style="background-color: #d9edf7" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
+                                            <a class="form-control notrequired" style="background-color: #d9edf7; margin-top:4px; border:none;" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank" rel="nofollow">
                                                 Go here to get Longitude from address. </a>
                                             @if ($errors->has('longitude'))
                                         <div class="error">{{ $errors->first('longitude') }}</div>
@@ -116,6 +116,7 @@
                                     <div class="row" style="margin-top: 35px;">
                                         <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                             <div class="form-group padding">
+                                                <label for="title">purpose</label>
                                                 <select class="form-control" style="display: block;" name="type">
                                                     <option value="">Select purpose</option>
                                                     <option value="sale">For Sale</option>
@@ -125,6 +126,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             <div class="form-group padding">
+                                                <label for="title">Category</label>
                                                 <select id="country-dd" class="form-control" name="category_id">
                                                     <option value="">Select Category</option>
                                                     @foreach ($category as $value)
