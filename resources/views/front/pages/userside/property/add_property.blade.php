@@ -54,6 +54,9 @@
                                             <select id="state-dd" class="form-control" name="area_id">
                                                 <option value="">Select Area</option>
                                             </select>
+                                            @if ($errors->has('area_id'))
+                                            <div class="error">{{ $errors->first('area_id') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
