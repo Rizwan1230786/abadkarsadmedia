@@ -85,7 +85,6 @@ class FrontUserController extends Controller
     public function handleGoogleCallback()
     {
         try {
-
             $user = Socialite::driver('google')->user();
             $finduser = Customeruser::where('google_id', $user->id)->orwhere('email', $user->email)->first();
 

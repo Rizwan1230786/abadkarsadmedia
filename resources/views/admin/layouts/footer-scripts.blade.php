@@ -143,6 +143,33 @@
               }
           });
       });
+      /////customerstatus/////////
+      $(document).on("click", ".customer_publish", function(event) {
+          event.preventDefault();
+          var id = $(this).attr('rel');
+          var status = $(this).attr('status');
+          $.ajax({
+              type: 'POST',
+              url: "{{ url('admin/update_status_customer') }}",
+              data: {
+                  'id': id,
+                  'status': status
+              },
+              async: false,
+              success: function(result) {
+                  var message = (_.hasIn(result, "message") ? result.message : "");
+                  var type = (_.hasIn(result, "type") ? result.type : 'success');
+                  if (_.isEqual(type, 'success')) {
+                      toastr['success'](message, {
+                          showMethod: 'slideDown',
+                          hideMethod: 'slideUp',
+                          timeOut: 2000
+                      });
+                      location.reload();
+                  }
+              }
+          });
+      });
       ////////////////////////realstate sub-category status code /////////
       $(document).on("click", ".subcategory_publish", function(event) {
           event.preventDefault();
@@ -234,7 +261,35 @@
                   });
               });
       });
+      ////customer user delete code//////
+      $(document).on('click', '.delete_customeruser', function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+          swal({
+                  title: "Are you sure!",
+                  text: "You will not be able to recover this User Data!",
+                  type: "error",
+                  confirmButtonClass: "btn-danger",
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "Yes!",
+                  showCancelButton: true,
+              },
+              function() {
+                  $.ajax({
+                      type: "POST",
+                      url: "{{ url('admin/delete_customeruser') }}/" + id,
+                      data: {
+                          id: id
+                      },
+                      success: function(result) {
+                          swal("Deleted!", "User has been deleted.", "success");
+                          location.reload();
+                      }
+                  });
+              });
+      });
   </script>
+
   <!--detail modal ajax in inquary table -->
   <script type="text/javascript">
       $(function() {
