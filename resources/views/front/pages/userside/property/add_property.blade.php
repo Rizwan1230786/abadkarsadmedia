@@ -23,7 +23,7 @@
                             <h3>property Location</h3>
                             <div class="property-form-group">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-12 col-md-12">
                                         <p style="margin-bottom: 4px;">
                                             <label for="address">Address</label>
                                             <input type="text" name="address" value="{{ old('address') }}" placeholder="Enter Your Address" id="address">
@@ -48,8 +48,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6 col-md-12">
                                         <div class="form-group">
                                             <label class="form-label">Select Area</label>
@@ -58,6 +56,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6 col-md-12">
                                         <p class="no-mb first" style="margin-bottom: 4px;">
                                             <label for="latitude">Google Maps latitude</label>
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 35px;">
-                                        <div class="col-lg-4 col-md-12 dropdown faq-drop">
+                                        <div class="col-lg-6 col-md-12 dropdown faq-drop">
                                             <div class="form-group padding">
                                                 <select class="form-control" style="display: block;" name="type">
                                                     <option value="">Select purpose</option>
@@ -123,7 +123,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-12">
+                                        <div class="col-lg-6 col-md-12">
                                             <div class="form-group padding">
                                                 <select id="country-dd" class="form-control" name="category_id">
                                                     <option value="">Select Category</option>
