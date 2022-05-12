@@ -236,9 +236,10 @@ class FrontController extends Controller
         $meta = Webpages::Where("page_title", "property")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $city_name=$request->input('city_name');
+        $city_id=Cities::where('slug',$city_name)->first();
         $property = Property::paginate(5);
-        if(isset($city_name) && !empty($city_name)){
-            $search_property=Property::where('city_name','LIKE','%'.$city_name.'%')->get();
+        if(isset($city_id) && !empty($city_id)){
+            $search_property=Property::where('city_name','LIKE','%'.$city_id->id.'%')->get();
         }
         return view('front.pages.property',compact('search_property','meta','data','property'));
     }

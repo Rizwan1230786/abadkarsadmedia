@@ -41,7 +41,7 @@
                                                             <select id="country-dd" class="form-control single-select" name="city_name">
                                                                 <option value="">Select City</option>
                                                                 @foreach ($city as $value)
-                                                                <option value="{{ $value->id }}">
+                                                                <option value="{{ $value->slug }}">
                                                                     {{ $value->name }}
                                                                 </option>
                                                                 @endforeach
