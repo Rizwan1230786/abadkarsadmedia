@@ -39,7 +39,7 @@
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
                                                             <select id="cars" class="select single-select" name="city">
-                                                                <option value="null">city</option>
+                                                                <option value="null">City</option>
                                                                 @foreach ($city as $cities)
                                                                     <option value="{{ $cities->name }}">
                                                                         {{ $cities->name }}
