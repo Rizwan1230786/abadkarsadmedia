@@ -145,21 +145,4 @@
         scrollbar-width: thin;
     }
 
-    .btnseting {
-        background: #FF385C none repeat scroll 0 0;
-        border: medium none;
-        border-radius: 10px;
-        padding: 50px;
-        transition: transform 1s;
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-    }
-
-    .btnseting:hover {
-        background: #df3755 none repeat scroll 0 0;
-        border: 1px solid #df3755;
-        -ms-transform: scale(1.5);/ IE 9 / -webkit-transform: scale(1.5);/ Safari 3-8 / transform: scale(1.5);
-    }
-
 </style>
