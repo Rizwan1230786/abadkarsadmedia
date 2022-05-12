@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
+
 </head>
 <style>
     .error {
@@ -121,12 +122,27 @@
         text-decoration: underline;
         background-color: transparent;
     }
+
     .seting {
         position: relative;
         top: 2px;
         left: 7px;
     }
+
     .left-side {
         display: inline-block;
     }
+
+    .single-add-property .row input {
+        border-radius: 5px;
+    }
+
+    .scroller {
+        width: 300px;
+        height: 100px;
+        overflow-y: scroll;
+        scrollbar-color: rebeccapurple green;
+        scrollbar-width: thin;
+    }
+
 </style>
