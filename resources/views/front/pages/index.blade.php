@@ -31,7 +31,7 @@
                                         </li>
                                     </ul>
                                     @foreach ($property as $properties)
-                                    <form action="{{ url('/' . $properties->category) . '/' }}" method="get">
+                                    <form action="{{ url('/search_property'.'/')}}" method="get">
                                         @endforeach
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="tabs_1">

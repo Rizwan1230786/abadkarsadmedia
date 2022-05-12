@@ -222,8 +222,10 @@ Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
-Route::get('/{slug}', [FrontController::class, 'list'])->name('front.list');
-
+Route::get('/all/{slug}', [FrontController::class, 'list'])->name('front.list');
+Route::prefix('search_property')->group(function () {
+    Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
+});
 
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
