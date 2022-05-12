@@ -65,7 +65,7 @@ class AddProprtyController extends Controller
         }
         $user_id = Auth::guard('customeruser')->user()->id;
         if (isset($data['image']) && !empty($data['image'])) {
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            $filename = time() . '.' . request()->image->extension();
             $data['image'] = $filename;
             request()->image->move(public_path('assets/images/properties/'), $filename);
         }

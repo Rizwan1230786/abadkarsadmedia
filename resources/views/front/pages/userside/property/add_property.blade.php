@@ -10,7 +10,7 @@
     <section class="user-page section-padding pt-5" style="margin-top: 0px;">
         <div class="container">
             <div class="row">
-                <form action="{{ url('add-property/submit') }}" method="post">
+                <form action="{{ url('add-property/submit') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-lg-12 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
                         @if (session()->has('message'))
