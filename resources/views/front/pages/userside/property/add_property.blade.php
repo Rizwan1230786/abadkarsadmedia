@@ -283,7 +283,7 @@
                                             <label for="con-name">Password</label>
                                             <input type="password" placeholder="Enter Your password" id="con-name" name="password1">
                                             @if ($errors->has('password1'))
-                                        <div class="error">{{ $errors->first('password') }}</div>
+                                        <div class="error">{{ $errors->first('password1') }}</div>
                                         @endif
                                         </p>
                                     </div>
