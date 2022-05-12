@@ -135,12 +135,12 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-12">
+                                        <!-- <div class="col-lg-4 col-md-12">
                                             <div class="col-lg-12 form-group padding">
-                                                <select id="state-dd" class="form-control" style="display: block;" name="subcat">
+                                                <select class="form-control" style="display: block;" name="subcat">
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12">
@@ -321,6 +321,7 @@
         $('#country-dd').on('change', function() {
             var idCountry = this.value;
             $("#state-dd").html('');
+            $("#state-dd").parent().find('.nice-select .list').html('');
             $.ajax({
                 url: "{{ url('admin/property/fetch-states') }}",
                 type: "POST",
@@ -330,10 +331,12 @@
                 },
                 dataType: 'json',
                 success: function(result) {
-                    $('#state-dd').html('<select value=""">Select Area</select>');
+                    // $('#state-dd').html('<select value=""">Select Area</select>');
                     $.each(result.areas, function(key, value) {
                         $("#state-dd").append('<option value="' + value
                             .id + '">' + value.areaname + '</option>');
+                        $("#state-dd").parent().find('.nice-select .list').append('<li value="' + value
+                            .id + '" class="option">' + value.areaname + '</li>');
                     });
                 }
             });
