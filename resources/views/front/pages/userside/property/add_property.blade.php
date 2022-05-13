@@ -11,7 +11,6 @@
         align-items: center;
         background-color: #cecece;
         height: 28px;
-        border-radius: 7px;
         box-shadow: inset 0.5px 0.5px 2px 0 rgb(0 0 0 / 15%);
     }
 
@@ -39,29 +38,29 @@
         font-weight: 900;
         transition: 0.3s;
     }
-</style>
 
-.lable1 {
-font-size: 20px;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: inherit;
-background-image: linear-gradient(0deg, #a7a1a161, transparent);
-width: 95%;
-text-align: center;
-transition: linear 0.3s;
-color: #6e6e6edd;
-}
+    .lable1 {
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+        background-image: linear-gradient(0deg, #a7a1a161, transparent);
+        width: 95%;
+        text-align: center;
+        transition: linear 0.3s;
+        color: #6e6e6edd;
+    }
 
-.padding0 {
-padding-right: 0px;
-padding-left: 0px;
-}
-.lable1{
-padding-left: 15px;
-text-align: left;
-}
+    .padding0 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .lable1 {
+        padding-left: 15px;
+        text-align: left;
+    }
 </style>
 
 <body class="homepage-9 hp-6 homepage-1 inner-pages">
@@ -87,7 +86,7 @@ text-align: left;
                                             </span></label>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="radio" name="radio" id="one">
-                                            <label for="one" class="lable radio_container">For Rent</label>
+                                            <label for="one" class="lable radio_container" style="margin-left: 5px;">For Rent</label>
                                             <input type="radio" class="radio" name="radio" id="two">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
@@ -99,7 +98,7 @@ text-align: left;
                                                     <label class="form-label">Property Type:<span style="color: red"> *
                                                         </span></label>
                                                     <input type="radio" class="form-switch1 radio" data-id="a" name="Homes" id="three">
-                                                    <label for="three" class="lable radio_container">Homes</label>
+                                                    <label for="three" class="lable radio_container" style="margin-left: 5px;">Homes</label>
                                                     <input type="radio" class="form-switch1 radio" data-id="b" name="Homes" id="four">
                                                     <label for="four" class="lable radio_container">Plots</label>
                                                     <input type="radio" class="form-switch1 radio" data-id="c" name="Homes" id="five">
@@ -110,22 +109,30 @@ text-align: left;
                                                 </select> --}}
                                                 </div>
                                             </div>
-                                            <div class="row form1 form1-a">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <input type="radio" class="form-switch1 radio" name="colorCheckbox" value="green" style="margin-left: 10px;">
-                                                    <label for="Rent">Homes</label>
+                                            <div class="row" style="margin-left: 20px;">
+                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
+                                                    <input type="radio"  class="radio" name="home" id="6">
+                                                    <label for="6" class="lable1 radio_container"> Homes</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
+                                                    <input type="radio"  class="radio" name="home" id="7">
+                                                    <label for="7" class="lable1 radio_container">Homes</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
+                                                    <input type="radio"  class="radio" name="home" id="8">
+                                                    <label for="8" class="lable1 radio_container">Homes</label>
                                                 </div>
                                             </div>
-                                            <div class="row form1 form1-b">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <input type="radio" class="form-switch1 radio" name="colorCheckbox" value="green" style="margin-left: 10px;">
-                                                    <label for="Rent">Plots</label>
+                                            <div class="row" style="margin-left: 20px;">
+                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-b">
+                                                    <input type="radio" class="radio" name="plots" id="9">
+                                                    <label for="9" class="lable1 radio_container">Plots</label>
                                                 </div>
                                             </div>
-                                            <div class="row form1 form1-c">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <input type="radio" class="form-switch1 radio" name="colorCheckbox" value="green" style="margin-left: 10px;">
-                                                    <label for="Rent">Commercial</label>
+                                            <div class="row" style="margin-left: 20px;">
+                                                <div class="col-lg-4 col-md-12  padding0 form1 form1-c">
+                                                    <input type="radio"  class="radio" name="commerical" id="10">
+                                                    <label for="10" class="lable1 radio_container">commerical</label>
                                                 </div>
                                             </div>
                                         </div>
