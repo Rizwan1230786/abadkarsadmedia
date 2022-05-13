@@ -41,6 +41,29 @@
     }
 </style>
 
+.lable1 {
+font-size: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: inherit;
+background-image: linear-gradient(0deg, #a7a1a161, transparent);
+width: 95%;
+text-align: center;
+transition: linear 0.3s;
+color: #6e6e6edd;
+}
+
+.padding0 {
+padding-right: 0px;
+padding-left: 0px;
+}
+.lable1{
+padding-left: 15px;
+text-align: left;
+}
+</style>
+
 <body class="homepage-9 hp-6 homepage-1 inner-pages">
     @section('main')
     <section class="user-page section-padding pt-5" style="margin-top: 0px;">
@@ -147,255 +170,254 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-add-property">
-                            <h3>Add a Property</h3>
-                            <div class="property-form-group">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p style="margin-bottom: 4px;">
-                                                <label for="title">Property Title</label>
-                                                <input type="text" name="title" value="{{ old('title') }}" id="title" placeholder="Enter your property title">
-                                            </p>
-                                            @if ($errors->has('title'))
-                                            <div class="error" style="position: absolute; right: 10px;">
-                                                {{ $errors->first('title') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p style="margin-bottom: 3px;">
-                                                <label for="description">Property Description</label>
-                                                <textarea id="description" name="description" placeholder="Describe about your property">{{ old('description') }}</textarea>
-                                            </p>
-                                            @if ($errors->has('description'))
-                                            <div class="error" style="position: absolute; right: 10px;">
-                                                {{ $errors->first('description') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 35px;">
-                                        <!-- <div class="col-lg-4 col-md-12">
-                                                                        <div class="col-lg-12 form-group padding">
-                                                                            <select class="form-control" style="display: block;" name="subcat">
-                                                                            </select>
-                                                                        </div>
-                                                                    </div> -->
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-12">
-                                            <p class="no-mb">
-                                                <label for="price">Front Dimension:</label>
-                                                <input style="border-radius: 5px;" type="number" value="{{ old('price') }}" name="front_dim" placeholder="" id="price">
-                                            </p>
-                                            @if ($errors->has('front_dim'))
-                                            <div class="error">{{ $errors->first('front_dim') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <p class="no-mb" style="margin-bottom: 4px;">
-                                                <label for="price">Back Dimension:</label>
-                                                <input type="number" value="{{ old('price') }}" name="back_dim" placeholder="" id="back_dim">
-                                            </p>
-                                            @if ($errors->has('back_dim'))
-                                            <div class="error">{{ $errors->first('back_dim') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <p class="no-mb" style="margin-bottom: 4px;">
-                                                <label for="price">Land Area:</label>
-                                                <input type="number" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
-                                            </p>
-                                            @if ($errors->has('land_area'))
-                                            <div class="error">{{ $errors->first('land_area') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Unit:</label>
-                                                <select id="cars" class="form-control" name="unit" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                                                    <option value="">Select unit</option>
-                                                    <option value="square feet">Square feet</option>
-                                                    <option value="square yard">Square yard</option>
-                                                    <option value="square meter">Square meter</option>
-                                                    <option value="marla">Marala</option>
-                                                    <option value="kanal">Kanal</option>
-                                                </select>
-                                                @if ($errors->has('unit'))
-                                                <div class="error">{{ $errors->first('unit') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <p class="no-mb" style="margin-bottom: 4px;">
-                                                <label for="price">All Inclusive Price: (PKR)</label>
-                                                <input type="number" value="{{ old('price') }}" name="price" placeholder="PKR" id="price">
-                                            </p>
-                                            @if ($errors->has('price'))
-                                            <div class="error">{{ $errors->first('price') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-lg-6 col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Expires After:</label>
-                                                <select id="cars" class="form-control" name="is_expired">
-                                                    <option value="1">1 Month</option>
-                                                    <option value="3">3 Months</option>
-                                                    <option value="6">6 Months</option>
-                                                </select>
-                                                @if ($errors->has('is_expired'))
-                                                <div class="error">{{ $errors->first('is_expired') }}
+                            <div class="single-add-property">
+                                <h3>Add a Property</h3>
+                                <div class="property-form-group">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p style="margin-bottom: 4px;">
+                                                    <label for="title">Property Title</label>
+                                                    <input type="text" name="title" value="{{ old('title') }}" id="title" placeholder="Enter your property title">
+                                                </p>
+                                                @if ($errors->has('title'))
+                                                <div class="error" style="position: absolute; right: 10px;">
+                                                    {{ $errors->first('title') }}
                                                 </div>
                                                 @endif
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="single-add-property">
-                            <h3>property Media</h3>
-                            <div class="property-form-group">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
-                                        @if ($errors->has('image'))
-                                        <div class="error">{{ $errors->first('image') }}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-add-property">
-                            <h3>Property Features</h3>
-                            <div class="property-form-group">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="pro-feature-add pl-0">
-                                            <li class="fl-wrap filter-tags clearfix">
-                                                <div class="filter-tags-wrap">
-                                                    @foreach ($feature as $feature)
-                                                    <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'seting']) }}
-                                                        {{ $feature->name }}</label>
-                                                    @endforeach
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p style="margin-bottom: 3px;">
+                                                    <label for="description">Property Description</label>
+                                                    <textarea id="description" name="description" placeholder="Describe about your property">{{ old('description') }}</textarea>
+                                                </p>
+                                                @if ($errors->has('description'))
+                                                <div class="error" style="position: absolute; right: 10px;">
+                                                    {{ $errors->first('description') }}
                                                 </div>
-                                            </li>
-
-                                        </ul>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 35px;">
+                                            <!-- <div class="col-lg-4 col-md-12">
+                                                                            <div class="col-lg-12 form-group padding">
+                                                                                <select class="form-control" style="display: block;" name="subcat">
+                                                                                </select>
+                                                                            </div>
+                                                                        </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb">
+                                                    <label for="price">Front Dimension:</label>
+                                                    <input style="border-radius: 5px;" type="number" value="{{ old('price') }}" name="front_dim" placeholder="" id="price">
+                                                </p>
+                                                @if ($errors->has('front_dim'))
+                                                <div class="error">{{ $errors->first('front_dim') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Back Dimension:</label>
+                                                    <input type="number" value="{{ old('price') }}" name="back_dim" placeholder="" id="back_dim">
+                                                </p>
+                                                @if ($errors->has('back_dim'))
+                                                <div class="error">{{ $errors->first('back_dim') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Land Area:</label>
+                                                    <input type="number" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
+                                                </p>
+                                                @if ($errors->has('land_area'))
+                                                <div class="error">{{ $errors->first('land_area') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Unit:</label>
+                                                    <select id="cars" class="form-control" name="unit" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                                        <option value="">Select unit</option>
+                                                        <option value="square feet">Square feet</option>
+                                                        <option value="square yard">Square yard</option>
+                                                        <option value="square meter">Square meter</option>
+                                                        <option value="marla">Marala</option>
+                                                        <option value="kanal">Kanal</option>
+                                                    </select>
+                                                    @if ($errors->has('unit'))
+                                                    <div class="error">{{ $errors->first('unit') }}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">All Inclusive Price: (PKR)</label>
+                                                    <input type="number" value="{{ old('price') }}" name="price" placeholder="PKR" id="price">
+                                                </p>
+                                                @if ($errors->has('price'))
+                                                <div class="error">{{ $errors->first('price') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Expires After:</label>
+                                                    <select id="cars" class="form-control" name="is_expired">
+                                                        <option value="1">1 Month</option>
+                                                        <option value="3">3 Months</option>
+                                                        <option value="6">6 Months</option>
+                                                    </select>
+                                                    @if ($errors->has('is_expired'))
+                                                    <div class="error">{{ $errors->first('is_expired') }}
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="single-add-property">
+                                <h3>property Media</h3>
+                                <div class="property-form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            @if ($errors->has('image'))
+                                            <div class="error">{{ $errors->first('image') }}</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-add-property">
-                            <h3>Contact Information</h3>
-                            <div class="property-form-group">
-                                <div class="col-12 form-group padding">
-                                    <label class="form-label">Membership Status: </label>
-                                    <input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked style="margin-left: 10px;">
-                                    <label for="Sale">Existing Member</label>
-                                    <input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" style="margin-left: 10px;">
-                                    <label for="Rent">New Member (Free)</label>
+                            <div class="single-add-property">
+                                <h3>Property Features</h3>
+                                <div class="property-form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul class="pro-feature-add pl-0">
+                                                <li class="fl-wrap filter-tags clearfix">
+                                                    <div class="filter-tags-wrap">
+                                                        @foreach ($feature as $feature)
+                                                        <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'seting']) }}
+                                                            {{ $feature->name }}</label>
+                                                        @endforeach
+                                                    </div>
+                                                </li>
 
-                                    {{-- <select id="cars" class="form-control" name="type">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-add-property">
+                                <h3>Contact Information</h3>
+                                <div class="property-form-group">
+                                    <div class="col-12 form-group padding">
+                                        <label class="form-label">Membership Status: </label>
+                                        <input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked style="margin-left: 10px;">
+                                        <label for="Sale">Existing Member</label>
+                                        <input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" style="margin-left: 10px;">
+                                        <label for="Rent">New Member (Free)</label>
+
+                                        {{-- <select id="cars" class="form-control" name="type">
                                         <option value="rent">Rent</option>
                                         <option value="sale">Sale</option>
                                     </select> --}}
-                                </div>
-                                <div class="row form form-b">
-                                    <div class="col-lg-6 col-md-12">
-                                        <p>
-                                            <label for="con-name">First Name</label>
-                                            <input type="text" value="{{ old('firstname') }}" placeholder="Enter Your Name" id="con-name" name="firstname">
-                                            @if ($errors->has('firstname'))
-                                        <div class="error">{{ $errors->first('firstname') }}</div>
-                                        @endif
-                                        </p>
                                     </div>
-                                    <div class="col-lg-6 col-md-12">
-                                        <p>
-                                            <label for="con-user">Last Name</label>
-                                            <input type="text" value="{{ old('lastname') }}" placeholder="Enter Your Username" id="con-user" name="lastname">
-                                            @if ($errors->has('lastname'))
-                                        <div class="error">{{ $errors->first('lastname') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12">
-                                        <p class="no-mb first">
-                                            <label for="con-email">Email</label>
-                                            <input type="email" placeholder="Enter Your Email" id="con-email" name="email">
-                                            @if ($errors->has('email'))
-                                        <div class="error">{{ $errors->first('email') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 Rent msg">
-                                        <p class="no-mb last">
-                                            <label for="con-phn">Phone</label>
-                                            <input type="text" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="con-phn" name="contact">
-                                            @if ($errors->has('contact'))
-                                        <div class="error">{{ $errors->first('contact') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 Rent msg">
-                                        <p>
-                                            <label for="con-name">Password</label>
-                                            <input type="password" placeholder="Enter Your password" id="con-name" name="password">
-                                            @if ($errors->has('password'))
-                                        <div class="error">{{ $errors->first('password') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 Rent msg">
-                                        <p>
-                                            <label for="con-name">Security Code</label>
-                                            <input class="form-control" type="text" id="CaptchaCode" name="CaptchaCode">
-                                            @if ($errors->has('CaptchaCode'))
-                                        <div class="error">{{ $errors->first('CaptchaCode') }}
+                                    <div class="row form form-b">
+                                        <div class="col-lg-6 col-md-12">
+                                            <p>
+                                                <label for="con-name">First Name</label>
+                                                <input type="text" value="{{ old('firstname') }}" placeholder="Enter Your Name" id="con-name" name="firstname">
+                                                @if ($errors->has('firstname'))
+                                            <div class="error">{{ $errors->first('firstname') }}</div>
+                                            @endif
+                                            </p>
                                         </div>
-                                        @endif
-                                        {!! captcha_image_html('ContactCaptcha') !!}
+                                        <div class="col-lg-6 col-md-12">
+                                            <p>
+                                                <label for="con-user">Last Name</label>
+                                                <input type="text" value="{{ old('lastname') }}" placeholder="Enter Your Username" id="con-user" name="lastname">
+                                                @if ($errors->has('lastname'))
+                                            <div class="error">{{ $errors->first('lastname') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <p class="no-mb first">
+                                                <label for="con-email">Email</label>
+                                                <input type="email" placeholder="Enter Your Email" id="con-email" name="email">
+                                                @if ($errors->has('email'))
+                                            <div class="error">{{ $errors->first('email') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 Rent msg">
+                                            <p class="no-mb last">
+                                                <label for="con-phn">Phone</label>
+                                                <input type="text" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="con-phn" name="contact">
+                                                @if ($errors->has('contact'))
+                                            <div class="error">{{ $errors->first('contact') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 Rent msg">
+                                            <p>
+                                                <label for="con-name">Password</label>
+                                                <input type="password" placeholder="Enter Your password" id="con-name" name="password">
+                                                @if ($errors->has('password'))
+                                            <div class="error">{{ $errors->first('password') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 Rent msg">
+                                            <p>
+                                                <label for="con-name">Security Code</label>
+                                                <input class="form-control" type="text" id="CaptchaCode" name="CaptchaCode">
+                                                @if ($errors->has('CaptchaCode'))
+                                            <div class="error">{{ $errors->first('CaptchaCode') }}
+                                            </div>
+                                            @endif
+                                            {!! captcha_image_html('ContactCaptcha') !!}
 
-                                        </p>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row form form-a active">
+                                        <div class="col-lg-6 col-md-12">
+                                            <p>
+                                                <label for="con-user">Email</label>
+                                                <input type="email" value="{{ old('email') }}" placeholder="Enter Your Email" id="con-user" name="email1">
+                                                @if ($errors->has('email1'))
+                                            <div class="error">{{ $errors->first('email1') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <p style="margin-bottom: 4px;">
+                                                <label for="con-name">Password</label>
+                                                <input type="password" placeholder="Enter Your password" id="con-name" name="password1">
+                                                @if ($errors->has('password1'))
+                                            <div class="error">{{ $errors->first('password1') }}</div>
+                                            @endif
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row form form-a active">
-                                    <div class="col-lg-6 col-md-12">
-                                        <p>
-                                            <label for="con-user">Email</label>
-                                            <input type="email" value="{{ old('email') }}" placeholder="Enter Your Email" id="con-user" name="email1">
-                                            @if ($errors->has('email1'))
-                                        <div class="error">{{ $errors->first('email1') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12">
-                                        <p style="margin-bottom: 4px;">
-                                            <label for="con-name">Password</label>
-                                            <input type="password" placeholder="Enter Your password" id="con-name" name="password1">
-                                            @if ($errors->has('password1'))
-                                        <div class="error">{{ $errors->first('password1') }}</div>
-                                        @endif
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="add-property-button pt-5">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="prperty-submit-button">
-                                            <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="submit">Submit Property</button>
+                                <div class="add-property-button pt-5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="prperty-submit-button">
+                                                <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="submit">Submit Property</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                 </form>
             </div>
         </div>
