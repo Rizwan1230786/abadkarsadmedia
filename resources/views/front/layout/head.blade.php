@@ -61,6 +61,12 @@
     .form.active {
         display: block
     }
+    .form1{
+        display: none;
+    }
+    .form1.active {
+        display: block
+    }
 
     .btn1 {
         background: #18ba60 !important
