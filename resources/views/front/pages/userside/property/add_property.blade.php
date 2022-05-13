@@ -26,6 +26,7 @@
         justify-content: center;
         align-items: center;
         background-color: inherit;
+        background-image: linear-gradient(0deg, #a7a1a161, transparent);
         width: 80px;
         text-align: center;
         transition: linear 0.3s;
@@ -33,7 +34,7 @@
     }
 
     input[type="radio"]:checked+label {
-        background-color: #1e90ff;
+        background-color: #FF385C;
         color: #f1f3f5;
         font-weight: 900;
         transition: 0.3s;
@@ -75,7 +76,7 @@
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Property Type:<span style="color: red"> *
                                                     </span></label>
-                                                <input type="radio" class="form-switch1 " data-id="a" name="radio" id="one" checked>
+                                                <input type="radio" class="form-switch1 " data-id="a" name="radio" id="one">
                                                 <label for="one" class="lable radio_container">Homes</label>
                                                 <input type="radio" class="form-switch1" data-id="b" name="radio" id="two">
                                                 <label for="two" class="lable radio_container">Plots</label>
