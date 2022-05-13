@@ -233,13 +233,18 @@ class FrontController extends Controller
         return view('front.pages.list', get_defined_vars());
     }
     public function search_property(Request $request){
+        dd($request);
         $meta = Webpages::Where("page_title", "property")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $city_name=$request->input('city_name');
+        $category_name=$request->input('category');
         $city_id=Cities::where('slug',$city_name)->first();
-        $property = Property::paginate(5);
+        $category_id=Category::where('name',$category_name)->first();
+        $property = Property::paginate(4);
         if(isset($city_id) && !empty($city_id)){
             $search_property=Property::where('city_name','LIKE','%'.$city_id->id.'%')->get();
+        }elseif(isset($category_id) && !empty($category_id)){
+            $search_property=Property::where('category','LIKE','%'.$category_id->id.'%')->get();
         }
         return view('front.pages.property',compact('search_property','meta','data','property'));
     }
