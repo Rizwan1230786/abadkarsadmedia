@@ -243,12 +243,21 @@ class FrontController extends Controller
         $property = Property::paginate(4);
         if(isset($city_id) && !empty($city_id)){
             $search_property=Property::where('city_name','LIKE','%'.$city_id->id.'%')->get();
+            foreach($search_property as $search){
+                $city_name=Category::where('id',$search->city_name)->first();
+            }
+            $count=Property::where('city_name','LIKE','%'.$city_id->id.'%')->count();
         }elseif(isset($category_id) && !empty($category_id)){
             $search_property=Property::where('category','LIKE','%'.$category_id->id.'%')->get();
+            foreach($search_property as $search){
+                $category_name=Category::where('id',$search->category)->first();
+            }
+            $count=Property::where('category','LIKE','%'.$category_id->id.'%')->count();
         }elseif(isset($area_id) && !empty($area_id)){
-            $search_property=Property::where('category','LIKE','%'.$area_id.'%')->get();
+            $search_property=Property::where('area_id','LIKE','%'.$area_id.'%')->get();
+            $count=Property::where('area_id','LIKE','%'.$area_id.'%')->count();
         }
-        return view('front.pages.property',compact('search_property','meta','data','property'));
+        return view('front.pages.property',compact('search_property','meta','data','property','count','category_name','city_name'));
     }
     public function fetchState(Request $request)
     {
