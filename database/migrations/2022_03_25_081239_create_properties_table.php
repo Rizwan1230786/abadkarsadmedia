@@ -15,7 +15,6 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->bigInteger('user_id');
             $table->string('name')->nullable();
             $table->string('url_slug')->nullable();
             $table->string('type')->nullable();
@@ -23,7 +22,6 @@ class CreatePropertiesTable extends Migration
             $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->string('city_name')->nullable();
-            $table->string('location')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('number_of_bedrooms')->nullable();

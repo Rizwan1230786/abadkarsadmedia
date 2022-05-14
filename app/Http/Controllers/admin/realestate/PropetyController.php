@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Facilities;
 use App\Models\Property_facilities;
+use App\Models\SubCategory;
 use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -257,6 +258,11 @@ class PropetyController extends Controller
     public function fetchState(Request $request)
     {
         $data['areas'] = Area::where("city_id", $request->city_id)->get(["areaname", "id"]);
+        return response()->json($data);
+    }
+    public function fetchsubcat(Request $request)
+    {
+        $data['subcat'] = SubCategory::where("category_id", $request->cat_id)->get();
         return response()->json($data);
     }
 }

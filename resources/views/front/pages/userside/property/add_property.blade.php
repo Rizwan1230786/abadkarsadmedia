@@ -20,13 +20,14 @@
     }
 
     .lable {
-        font-size: 20px;
+        font-size: 14px !important;
+        font-weight: 550 !important;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: inherit;
         background-image: linear-gradient(0deg, #a7a1a161, transparent);
-        width: 80px;
+        width: 95px;
         text-align: center;
         transition: linear 0.3s;
         color: #6e6e6edd;
@@ -40,7 +41,8 @@
     }
 
     .lable1 {
-        font-size: 20px;
+        font-size: 14px !important;
+        font-weight: 550 !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -85,9 +87,9 @@
                                         <label class="form-label">Purpose:<span style="color: red"> *
                                             </span></label>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="radio" name="radio" id="one">
+                                            <input type="radio" class="radio" name="property_purpose" id="one" value="for_rent">
                                             <label for="one" class="lable radio_container" style="margin-left: 5px;">For Rent</label>
-                                            <input type="radio" class="radio" name="radio" id="two">
+                                            <input type="radio" class="radio" name="property_purpose" id="two" value="for_sale">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
                                     </div>
@@ -97,43 +99,21 @@
                                                 <div class="form-check form-check-inline">
                                                     <label class="form-label">Property Type:<span style="color: red"> *
                                                         </span></label>
-                                                    <input type="radio" class="form-switch1 radio" data-id="a" name="Homes" id="three">
-                                                    <label for="three" class="lable radio_container" style="margin-left: 5px;">Homes</label>
-                                                    <input type="radio" class="form-switch1 radio" data-id="b" name="Homes" id="four">
+                                                    @foreach($category as $val)
+                                                    <input type="radio" class="form-switch1 radio cat" data-id="{{$val->id}}" name="category_id" id="{{$val->id}}" type="{{$val->id}}" value="{{$val->id}}">
+                                                    <label for="{{$val->id}}" class="lable radio_container">{{$val->name}}</label>
+                                                    @endforeach
+                                                    <!-- <input type="radio" class="form-switch1 radio" data-id="b" name="Homes" id="four">
                                                     <label for="four" class="lable radio_container">Plots</label>
                                                     <input type="radio" class="form-switch1 radio" data-id="c" name="Homes" id="five">
-                                                    <label for="five" class="lable radio_container" style="width: 100px;">Commercials</label>
+                                                    <label for="five" class="lable radio_container" style="width: 100px;">Commercials</label> -->
                                                     {{-- <select id="cars" class="form-control" name="type">
                                                     <option value="rent">Rent</option>
                                                     <option value="sale">Sale</option>
                                                 </select> --}}
                                                 </div>
                                             </div>
-                                            <div class="row" style="margin-left: 20px;">
-                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
-                                                    <input type="radio"  class="radio" name="home" id="6">
-                                                    <label for="6" class="lable1 radio_container"> Homes</label>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
-                                                    <input type="radio"  class="radio" name="home" id="7">
-                                                    <label for="7" class="lable1 radio_container">Homes</label>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-a">
-                                                    <input type="radio"  class="radio" name="home" id="8">
-                                                    <label for="8" class="lable1 radio_container">Homes</label>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-left: 20px;">
-                                                <div class="col-lg-4 col-md-12 padding0 form1 form1-b">
-                                                    <input type="radio" class="radio" name="plots" id="9">
-                                                    <label for="9" class="lable1 radio_container">Plots</label>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-left: 20px;">
-                                                <div class="col-lg-4 col-md-12  padding0 form1 form1-c">
-                                                    <input type="radio"  class="radio" name="commerical" id="10">
-                                                    <label for="10" class="lable1 radio_container">commerical</label>
-                                                </div>
+                                            <div class="row cat_data" style="margin-left: 20px;">
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +199,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb">
                                                     <label for="price">Front Dimension:</label>
-                                                    <input style="border-radius: 5px;" type="number" value="{{ old('price') }}" name="front_dim" placeholder="" id="price">
+                                                    <input style="border-radius: 5px;" type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="front_dim" placeholder="" id="price f1qs3">
                                                 </p>
                                                 @if ($errors->has('front_dim'))
                                                 <div class="error">{{ $errors->first('front_dim') }}</div>
@@ -228,7 +208,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
                                                     <label for="price">Back Dimension:</label>
-                                                    <input type="number" value="{{ old('price') }}" name="back_dim" placeholder="" id="back_dim">
+                                                    <input type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="back_dim" placeholder="" id="back_dim">
                                                 </p>
                                                 @if ($errors->has('back_dim'))
                                                 <div class="error">{{ $errors->first('back_dim') }}</div>
@@ -237,7 +217,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
                                                     <label for="price">Land Area:</label>
-                                                    <input type="number" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
                                                 </p>
                                                 @if ($errors->has('land_area'))
                                                 <div class="error">{{ $errors->first('land_area') }}</div>
@@ -262,7 +242,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
                                                     <label for="price">All Inclusive Price: (PKR)</label>
-                                                    <input type="number" value="{{ old('price') }}" name="price" placeholder="PKR" id="price">
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('price') }}" name="price" placeholder="PKR" id="price">
                                                 </p>
                                                 @if ($errors->has('price'))
                                                 <div class="error">{{ $errors->first('price') }}</div>
@@ -365,7 +345,7 @@
                                         <div class="col-lg-6 col-md-12 Rent msg">
                                             <p class="no-mb last">
                                                 <label for="con-phn">Phone</label>
-                                                <input type="text" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="con-phn" name="contact">
+                                                <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="con-phn" name="contact">
                                                 @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
                                             @endif
@@ -383,7 +363,7 @@
                                         <div class="col-lg-6 col-md-12 Rent msg">
                                             <p>
                                                 <label for="con-name">Security Code</label>
-                                                <input class="form-control" type="text" id="CaptchaCode" name="CaptchaCode">
+                                                <input class="form-control" placeholder="Enter Captcha here!" type="text" id="CaptchaCode" name="CaptchaCode">
                                                 @if ($errors->has('CaptchaCode'))
                                             <div class="error">{{ $errors->first('CaptchaCode') }}
                                             </div>
@@ -431,20 +411,40 @@
     </section>
     @endsection
 </body>
+<script>
+    $(function() {
+        $("input[class='numonly']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+</script>
+<script>
+    function onlynum() {
+        var fm = document.getElementById("form2");
+        var ip = document.getElementById("num");
+        var tag = document.getElementById("value");
+        var res = ip.value;
+
+        if (res != '') {
+            if (isNaN(res)) {
+
+                // Set input value empty
+                ip.value = "";
+
+                // Reset the form
+                fm.reset();
+                return false;
+            } else {
+                return true
+            }
+        }
+    }
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.form-switch').on('change', function() {
             $('.form').removeClass('active');
             var formToShow = '.form-' + $(this).data('id');
-            $(formToShow).addClass('active');
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.form-switch1').on('change', function() {
-            $('.form1').removeClass('active');
-            var formToShow = '.form1-' + $(this).data('id');
             $(formToShow).addClass('active');
         });
     });
@@ -476,6 +476,44 @@
                     });
                 }
             });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.cat').on('change', function() {
+            var cat_id = this.value;
+            $.ajax({
+                url: "{{ url('admin/property/fetch-subcat') }}",
+                type: "POST",
+                data: {
+                    cat_id: cat_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(result) {
+                    $.each(result.subcat, function(key, value) {
+                        $('.cat_data').html('');
+                    });
+                    $.each(result.subcat, function(key, value) {
+                        //  $('.cat_data').append(
+                        //     ' <div class="col-lg-4 col-md-12 form1 form1-'+value.category_id+' '+value.category_id+'"></div>'
+                        // );
+                        $('.cat_data').append(
+                            '<div class="col-lg-4 col-md-12 padding0 form1-' + value.category_id + ' ' + value.category_id + '" active><input type="radio" class="radio" name="subcat_id" id=' + value.id + ' value=' + value.id + '><label for=' + value.id + ' class="lable1 radio_container">' + value.name + '</label></div>'
+                        );
+                    });
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.form-switch1').on('change', function() {
+            $('.form1').removeClass('active');
+            var formToShow = '.form1-' + $(this).data('id');
+            $(formToShow).addClass('active');
         });
     });
 </script>

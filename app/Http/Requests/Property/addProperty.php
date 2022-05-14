@@ -74,7 +74,7 @@ class addProperty extends FormRequest
             'back_dim.required' => __('House back dimenssion is required.'),
             'land_area.required' => __('House area siza is required.'),
             'is_expired.required' => __('Property expiry duration is required.'),
-            'CaptchaCode.required' => 'valid_captcha code is required.'
+            'CaptchaCode.required' => 'Valid Captcha code is required.'
         ];
     }
 }

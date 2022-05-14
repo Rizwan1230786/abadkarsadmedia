@@ -180,6 +180,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/delete_slugs/{id}', [UrlslugController::class, 'destroy'])->name('delete_slug');
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
+    Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
 });
 ////tiny mce image uplod
 Route::post('/upload', [BlogController::class, 'upload']);
