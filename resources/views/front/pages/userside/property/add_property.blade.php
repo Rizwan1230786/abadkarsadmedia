@@ -135,12 +135,8 @@
                                     </div>
                                     <div class="col-lg-4 col-md-12">
                                         <p class="no-mb first" style="margin-bottom: 4px;">
-                                            <label for="latitude">Location</label>
-                                            <input type="text" value="{{ old('latitude') }}" name="location" step="0.01" placeholder="Enter location here" id="latitude">
-
-                                            @if ($errors->has('latitude'))
-                                        <div class="error">{{ $errors->first('latitude') }}</div>
-                                        @endif
+                                            <label for="location">Location</label>
+                                            <input type="text" value="{{ old('latitude') }}" name="location" step="0.01" placeholder="Enter location here" id="location">
                                         </p>
                                     </div>
                                     <div class="showarea col-lg-4 col-md-12 d-none">

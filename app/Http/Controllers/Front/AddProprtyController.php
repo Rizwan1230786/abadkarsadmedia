@@ -49,7 +49,7 @@ class AddProprtyController extends Controller
         $data['areas'] = SubCategory::where("category_id", $request->city_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function submit(addProperty $request)
+    public function submit(Request $request)
     {
         $data = $request->all();
         if ($data['email'] || $data['email1'] ?? '') {
@@ -62,7 +62,8 @@ class AddProprtyController extends Controller
             } else {
                 $oldCustomer = Customeruser::select(["id", "password", "email"])->Where(['email' => $request["email1"]])->first();
                 $nextContinue = Hash::check($request["password1"], $oldCustomer['password']);
-                Auth::guard('customeruser')->login($oldCustomer);
+                if ($nextContinue == true)
+                    Auth::guard('customeruser')->login($oldCustomer);
             }
             if (Auth::check()) {
                 $user_id = Auth::guard('customeruser')->user()->id;
@@ -72,9 +73,17 @@ class AddProprtyController extends Controller
                     request()->image->move(public_path('assets/images/properties/'), $filename);
                 }
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'],'location' => $data['location'], 'category' => $data['category_id'],'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired']);
+                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired']);
 
                 $query = Property::create($data);
+                foreach ($request['feature'] as $features) {
+                    DB::table('features_property')->insert(
+                        [
+                            'features_id' => $features,
+                            'property_id' => 1
+                        ]
+                    );
+                }
                 $query->features()->attach($request->feature);
                 Auth::logout();
                 return redirect()->back()->with('message', 'Property Added!');
