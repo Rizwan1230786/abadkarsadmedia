@@ -233,11 +233,11 @@ class FrontController extends Controller
         return view('front.pages.list', get_defined_vars());
     }
     public function search_property(Request $request){
-        dd($request);
         $meta = Webpages::Where("page_title", "property")->first();
         $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
         $city_name=$request->input('city_name');
         $category_name=$request->input('category');
+        $area_id=$request->input('area_id');
         $city_id=Cities::where('slug',$city_name)->first();
         $category_id=Category::where('name',$category_name)->first();
         $property = Property::paginate(4);
@@ -245,7 +245,16 @@ class FrontController extends Controller
             $search_property=Property::where('city_name','LIKE','%'.$city_id->id.'%')->get();
         }elseif(isset($category_id) && !empty($category_id)){
             $search_property=Property::where('category','LIKE','%'.$category_id->id.'%')->get();
+        }elseif(isset($area_id) && !empty($area_id)){
+            $search_property=Property::where('category','LIKE','%'.$area_id.'%')->get();
         }
         return view('front.pages.property',compact('search_property','meta','data','property'));
     }
+    public function fetchState(Request $request)
+    {
+        $city_id=Cities::where('slug',$request->city_slug)->first();
+        $data['areas'] = Area::where("city_id", $city_id->id)->get(["areaname", "id","slug"]);
+        return response()->json($data);
+    }
+
 }

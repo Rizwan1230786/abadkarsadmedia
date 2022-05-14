@@ -31,12 +31,22 @@
                                         </li>
                                     </ul>
                                     @foreach ($property as $properties)
-                                    <form action="{{ url('/search_property'.'/')}}" method="get">
+                                    <form action="{{ url('/search_property')}}" method="get">
                                         @endforeach
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="tabs_1">
                                                 <div class="rld-main-search">
                                                     <div class="row">
+                                                        <div class="rld-single-select ml-22">
+                                                            <select  class="form-control single-select" name="category">
+                                                                <option value="">Property Type</option>
+                                                                @foreach ($category as $value)
+                                                                <option value="{{ $value->name }}">
+                                                                    {{ $value->name }}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                         <div class="rld-single-select ml-22">
                                                             <select id="country-dd" class="form-control single-select" name="city_name">
                                                                 <option value="">Select City</option>
@@ -50,14 +60,6 @@
                                                             <div class="error">{{ $errors->first('city_name') }}</div>
                                                             @endif
 
-                                                        </div>
-                                                        <div class="rld-single-select ml-22">
-                                                            <select class="select single-select">
-                                                                <option value="1">Property Type</option>
-                                                                <option value="2">Family House</option>
-                                                                <option value="3">Apartment</option>
-                                                                <option value="3">Condo</option>
-                                                            </select>
                                                         </div>
                                                         <div class="rld-single-select">
                                                         <select id="state-dd" class="form-control single-select" name="area_id">
@@ -1357,10 +1359,10 @@
                     $("#state-dd").html('');
                     $("#state-dd").parent().find('.nice-select .list').html('');
                     $.ajax({
-                        url: "{{ url('admin/property/fetch-states') }}",
+                        url: "{{ url('/search_property/fetch-states') }}",
                         type: "POST",
                         data: {
-                            city_id: idCountry,
+                            city_slug: idCountry,
                             _token: '{{ csrf_token() }}'
                         },
                         dataType: 'json',
@@ -1370,7 +1372,7 @@
                                 $("#state-dd").append('<option value="' + value
                                     .id + '">' + value.areaname + '</option>');
                                 $("#state-dd").parent().find('.nice-select .list').append(
-                                    '<li value="' + value
+                                    '<li data-value="' + value
                                     .id + '" class="option">' + value.areaname + '</li>'
                                 );
                             });

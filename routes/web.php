@@ -225,6 +225,7 @@ Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
 Route::get('/all/{slug}', [FrontController::class, 'list'])->name('front.list');
 Route::prefix('search_property')->group(function () {
+    Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
 });
 
