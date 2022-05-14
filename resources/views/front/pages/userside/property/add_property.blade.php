@@ -496,7 +496,7 @@
                         //     ' <div class="col-lg-4 col-md-12 form1 form1-'+value.category_id+' '+value.category_id+'"></div>'
                         // );
                         $('.cat_data').append(
-                            '<div class="col-lg-4 col-md-12 padding0 form1-' + value.category_id + ' ' + value.category_id + '" active><input type="radio" class="radio" name="subcat_id" id=' + value.id + ' value=' + value.id + '><label for=' + value.id + ' class="lable1 radio_container">' + value.name + '</label></div>'
+                            '<div class="col-lg-4 col-md-12 padding0 form1-' + value.category_id + ' ' + value.category_id + '" active><input type="radio" class="radio" name="subcat_id" id=' + value.name + ' value=' + value.id + '><label for=' + value.name + ' class="lable1 radio_container">' + value.name + '</label></div>'
                         );
                     });
                 }
