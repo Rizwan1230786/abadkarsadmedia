@@ -185,7 +185,7 @@
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
-                                    <p class="font-weight-bold mb-0 mt-3">(6 Search results)</p>
+                                    <p class="font-weight-bold mb-0 mt-3">({{ $count; }} Search results of <?= if ($city_name){ echo $city_name->name }else{ echo  $category_name->name;  } ?>) </p>
                                 </div>
                             </div>
                         </div>
