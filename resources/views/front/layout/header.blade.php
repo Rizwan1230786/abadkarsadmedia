@@ -44,7 +44,9 @@ use App\Models\subpages;
                             </ul>
                         </li>
                         @endforeach
+                        @guest
                         <li><a href="{{ url('/add-property') }}">Add Property</a>
+                        @endguest
                             <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
                         </li>

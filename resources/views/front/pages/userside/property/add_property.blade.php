@@ -340,8 +340,10 @@
                                         </div>
                                         <div class="col-lg-6 col-md-12 Rent msg">
                                             <p class="no-mb last">
-                                                <label for="con-phn">Phone</label>
-                                                <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="con-phn" name="contact">
+                                                <label for="phone">Phone</label>
+                                                <div class="input-group mb-3">
+                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
+                                                </div>
                                                 @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
                                             @endif
@@ -351,7 +353,7 @@
                                             <p>
                                                 <label for="con-name">Password</label>
                                                 <input type="password" placeholder="Enter Your password" id="con-name" name="password">
-                                                @if ($errors->has('password'))
+                                            @if ($errors->has('password'))
                                             <div class="error">{{ $errors->first('password') }}</div>
                                             @endif
                                             </p>
@@ -409,7 +411,7 @@
 </body>
 <script>
     $(function() {
-        $("input[class='numonly']").on('input', function(e) {
+        $(".numonly").on('input', function(e) {
             $(this).val($(this).val().replace(/[^0-9]/g, ''));
         });
     });
@@ -521,4 +523,13 @@
 @include('admin.layouts.tinymce-js')
 @include('admin.layouts.templateJquery')
 <script src="{{ URL::asset('assets/themeJquery/customeruser/jquery1.js') }}"></script>
+<script src="{{ URL::asset('front/js/Tellcustom.js') }}"></script>
+<link href="{{ URL::asset('front/css/intlTelInput.css?1613236686837') }}" rel="stylesheet" >
+<script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
+<script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
+<script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
+
+
+
+
 @endsection
