@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\Contactus;
+use App\Models\Customeruser;
 use App\Models\User;
 class DashboardController extends Controller
 {
@@ -13,7 +14,8 @@ class DashboardController extends Controller
     {
 
         $user=User::count();
-        return view('admin.modules.dashboard.index',compact('user'));
+        $customer=Customeruser::count();
+        return view('admin.modules.dashboard.index',compact('user','customer'));
     }
     public function logout() {
         Session::flush();

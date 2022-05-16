@@ -182,13 +182,15 @@
                 <!--/ End Search Form -->
                 <section class="headings-2 pt-0">
                     <div class="pro-wrapper">
+                        @if (isset($search_property) && !empty($search_property))
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
-                                    <p class="font-weight-bold mb-0 mt-3">({{ $count; }} Search results of <?= if ($city_name){ echo $city_name->name }else{ echo  $category_name->name;  } ?>) </p>
+                                    <h5 class="font-weight-bold mb-0 mt-3">({{ $count; }} Search results of {{ $name }}) </h5>
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <div
                             class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
                             <div class="input-group border rounded input-group-lg w-auto mr-4">
