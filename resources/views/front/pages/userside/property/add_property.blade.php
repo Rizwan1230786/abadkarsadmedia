@@ -341,10 +341,10 @@
                                         <div class="col-lg-6 col-md-12 Rent msg">
                                             <p class="no-mb last">
                                                 <label for="phone">Phone</label>
-                                                <div class="input-group mb-3">
+                                            <div class="input-group mb-3">
                                                 <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
-                                                </div>
-                                                @if ($errors->has('contact'))
+                                            </div>
+                                            @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
                                             @endif
                                             </p>
@@ -353,7 +353,7 @@
                                             <p>
                                                 <label for="con-name">Password</label>
                                                 <input type="password" placeholder="Enter Your password" id="con-name" name="password">
-                                            @if ($errors->has('password'))
+                                                @if ($errors->has('password'))
                                             <div class="error">{{ $errors->first('password') }}</div>
                                             @endif
                                             </p>
@@ -407,6 +407,74 @@
             </div>
         </div>
     </section>
+    <!-- <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Place Autocomplete With Latitude & Longitude </title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <style>
+            #pac-input {
+                background-color: #fff;
+                padding: 0 11px 0 13px;
+                width: 400px;
+                font-family: Roboto;
+                font-size: 15px;
+                font-weight: 300;
+                text-overflow: ellipsis;
+            }
+
+            #pac-input:focus {
+                border-color: #4d90fe;
+                margin-left: -1px;
+                padding-left: 14px;
+                /* Regular padding-left + 1. */
+                width: 401px;
+            }
+            }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC-btU-x7YgZuLvv45OME1B8-iY4DLMEvI"></script>
+        <script>
+            function initialize() {
+                var address = (document.getElementById('pac-input'));
+                var autocomplete = new google.maps.places.Autocomplete(address);
+                autocomplete.setTypes(['geocode']);
+                google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                    var place = autocomplete.getPlace();
+                    if (!place.geometry) {
+                        return;
+                    }
+
+                    var address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name || ''),
+                            (place.address_components[1] && place.address_components[1].short_name || ''),
+                            (place.address_components[2] && place.address_components[2].short_name || '')
+                        ].join(' ');
+                    }
+                    /*********************************************************************/
+                    /* var address contain your autocomplete address *********************/
+                    /* place.geometry.location.lat() && place.geometry.location.lat() ****/
+                    /* will be used for current address latitude and longitude************/
+                    /*********************************************************************/
+                    document.getElementById('lat').innerHTML = place.geometry.location.lat();
+                    document.getElementById('long').innerHTML = place.geometry.location.lng();
+                });
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+
+    <body>
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+        <div id="lat"></div>
+        <div id="long"></div>
+    </body>
+
+    </html> -->
     @endsection
 </body>
 <script>
@@ -524,7 +592,7 @@
 @include('admin.layouts.templateJquery')
 <script src="{{ URL::asset('assets/themeJquery/customeruser/jquery1.js') }}"></script>
 <script src="{{ URL::asset('front/js/Tellcustom.js') }}"></script>
-<link href="{{ URL::asset('front/css/intlTelInput.css?1613236686837') }}" rel="stylesheet" >
+<link href="{{ URL::asset('front/css/intlTelInput.css?1613236686837') }}" rel="stylesheet">
 <script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
 <script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
 <script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
