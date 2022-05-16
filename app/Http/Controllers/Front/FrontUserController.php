@@ -12,6 +12,7 @@ use App\Models\Webpages;
 use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Features;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Exception;
@@ -31,12 +32,12 @@ class FrontUserController extends Controller
             $property = Property::limit(6)->get();
             $project = Projects::all();
             $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
-
+            $feature=Features::all();
             $city = Cities::all();
             $agents = Agent::all();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city'));
+            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city','feature'));
         } else {
             return view('front.pages.customeruser.login');
         }
