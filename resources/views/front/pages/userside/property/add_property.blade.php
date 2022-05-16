@@ -97,7 +97,7 @@
                                         <div class="property-form-group">
                                             <div class="col-12 form-group padding">
                                                 <div class="form-check form-check-inline">
-                                                    <label class="form-label">Property Type:<span style="color: red"> *
+                                                    <label style="margin-right: 5px;" class="form-label">Property Type:<span style="color: red"> *
                                                         </span></label>
                                                     @foreach($category as $val)
                                                     <input type="radio" class="form-switch1 radio cat" data-id="{{$val->id}}" name="category_id" id="{{$val->id}}" type="{{$val->id}}" value="{{$val->id}}">
