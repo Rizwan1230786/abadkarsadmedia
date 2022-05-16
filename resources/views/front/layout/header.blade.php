@@ -103,6 +103,7 @@ use App\Models\subpages;
                 </div>
                 <ul>
                     <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
+                    <li><a href="{{ url('user/dashboard')}}"> Dashboard</a></li>
                     <li><a href="change-password.html"> Change Password</a></li>
                     <li><a href="{{ url('user/logout') }}">Log Out</a></li>
                 </ul>

@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
+use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
@@ -244,6 +245,8 @@ Route::prefix('user')->group(function () {
 
     Route::group(['middleware' => 'auth:customeruser'], function () {
         Route::get('/userpanel', [FrontUserController::class, 'userpanel'])->name('userpanel');
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+
         ////route of edit profile////////////////
         Route::get('/profile', [FrontUserController::class, 'edit_profile'])->name('profile');
         Route::post('/update_user/{id}', [FrontUserController::class, 'update_user'])->name('update_user');
