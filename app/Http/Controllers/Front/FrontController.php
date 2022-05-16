@@ -40,7 +40,7 @@ class FrontController extends Controller
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
         })->with('properties')->get();
-        $feature =Features::all();
+        $feature=Features::all();
         $city = Cities::all();
         $agents = Agent::all();
         $meta = Webpages::Where("page_title", "home")->first();
@@ -235,7 +235,6 @@ class FrontController extends Controller
     }
     public function search_property(Request $request)
     {
-
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $city_name = $request->input('city_name');
@@ -262,12 +261,12 @@ class FrontController extends Controller
                     $name=$get->name;
                 }
             }
-            $name = Category::where('id', $category_id->id)->first();
             $count = Property::where('category', 'LIKE', '%' . $category_id->id . '%')->count();
         }elseif (isset($area_id) && !empty($area_id)) {
             $search_property = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->get();
             $count = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->count();
         }elseif(isset($purpose) && !empty($purpose)){
+            dd($purpose);
             $search_property = Property::where('type', 'LIKE', '%' . $purpose . '%')->get();
             $name = $purpose;
             $count = Property::where('type', 'LIKE', '%' . $purpose . '%')->count();
