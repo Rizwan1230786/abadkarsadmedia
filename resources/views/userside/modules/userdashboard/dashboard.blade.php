@@ -16,7 +16,7 @@
                                     <h5>Congratulations 🎉 John!</h5>
                                     <p class="card-text font-small-3">You have won gold medal</p>
                                     <h3 class="mb-75 mt-2 pt-50">
-                                        <a href="#">$48.9k</a>
+                                    <a href="#" style="color: #ff385c;">$48.9k</a>
                                     </h3>
                                     <button type="button" class="btn btn-primary">View Sales</button>
                                     <img src="../../../app-assets/images/illustration/badge.svg"
@@ -911,12 +911,6 @@
 
     </div>
     <!-- End: Customizer-->
-
-    <!-- Buynow Button-->
-    <div class="buy-now"><a href="https://1.envato.market/vuexy_admin" target="_blank" class="btn btn-danger">Buy
-            Now</a>
-
-    </div>
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
 @endsection
