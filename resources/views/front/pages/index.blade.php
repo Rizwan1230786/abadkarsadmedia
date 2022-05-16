@@ -76,7 +76,7 @@
                                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                                                     <!-- Form Property Status -->
                                                                     <div class="form-group categories">
-                                                                        <select id="country-dd" class="form-control single-select" name="type">
+                                                                        <select id="country-dd" class="form-control single-select" name="type1">
                                                                             <option value="">Select purpose</option>
                                                                             <option value="sale">For Sale</option>
                                                                         </select>
