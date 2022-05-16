@@ -52,6 +52,7 @@ class AddProprtyController extends Controller
     public function submit(Request $request)
     {
         $data = $request->all();
+        dd($data);
         if ($data['email'] || $data['email1'] ?? '') {
             $user = Customeruser::where('email', $data['email1'])->first();
             if ($user == null) {

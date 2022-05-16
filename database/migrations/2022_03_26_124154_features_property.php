@@ -16,6 +16,7 @@ class FeaturesProperty extends Migration
         Schema::create('features_property', function (Blueprint $table) {
             $table->integer('features_id')->unsigned();
             $table->integer('property_id')->unsigned();
+            $table->primary(['features_id', 'property_id']);
             $table->foreign('features_id')->references('id')->on('features')->onDelete('cascade');
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
