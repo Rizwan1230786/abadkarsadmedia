@@ -19,7 +19,7 @@
             <div class="property-location mb-5">
                 <h3>Our Location</h3>
                 <div class="divider-fade"></div>
-                <div id="map-contact" class="contact-map"></div>
+                <div id="map-contact" class="contact-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877.3788938820865!2d70.27730412916567!3d28.403695878566722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39375d3c7e06bae7%3A0x5496092a6f04362e!2sSaad%20Media!5e0!3m2!1sen!2s!4v1652696304546!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-md-12">
@@ -54,7 +54,7 @@
                             <li>
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <p class="in-p">95 South Park Ave, USA</p>
+                                    <p class="in-p">Main Nor-e-Wali Tibi Rd, Rahim Yar Khan, Punjab, Pakistan</p>
                                 </div>
                             </li>
                             <li>
@@ -66,13 +66,13 @@
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <p class="in-p ti">support@findhouses.com</p>
+                                    <p class="in-p ti">support@abadkar.com</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info cll">
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    <p class="in-p ti">8:00 a.m - 9:00 p.m</p>
+                                    <p class="in-p ti">8:00 a.m - 7:00 p.m</p>
                                 </div>
                             </li>
                         </ul>

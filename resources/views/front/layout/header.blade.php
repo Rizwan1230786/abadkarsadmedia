@@ -2,7 +2,7 @@
 
 use App\Models\subpages;
 ?>
-<header id="header-container">
+<header id="header-container" >
     <!-- Header -->
     <div id="header">
         <div class="container container-header">
@@ -84,7 +84,7 @@ use App\Models\subpages;
             <!-- Left Side Content / End -->
 
             <!-- Right Side Content / End -->
-            <div class="right-side d-none d-none d-lg-none d-xl-flex">
+            <div class="right-side d-none d-none d-lg-none d-xl-flex" style="width:150px ;">
                 <!-- Header Widget -->
                 <div class="header-widget">
                     <a href="{{ route('front.contact') }}" class="button border">Contact us<i class="fas fa-laptop-house ml-2"></i></a>

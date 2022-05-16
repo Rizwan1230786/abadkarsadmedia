@@ -40,12 +40,12 @@ class FrontController extends Controller
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
         })->with('properties')->get();
-        $feature=Features::all();
+        $feature = Features::all();
         $city = Cities::all();
         $agents = Agent::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city','feature'));
+        return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city', 'feature'));
     }
     public function project()
     {
@@ -235,48 +235,51 @@ class FrontController extends Controller
     }
     public function search_property(Request $request)
     {
+        if ($request->type == null)
+            $request->type = $request->type1;
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        $city_name = $request->input('city_name');
+        $city_name = $request->input('city_
+        if(isset($request->type) && $request->type == null){
+        }name');
         $category_name = $request->input('category');
         $area_id = $request->input('area_id');
         $city_id = Cities::where('slug', $city_name)->first();
         $category_id = Category::where('name', $category_name)->first();
-        $purpose=$request->input('type');
-        $bedrooms=$request->input('number_of_bedrooms');
-        $bathrooms=$request->input('number_of_bathrooms');
+        $purpose = $request->type;
+        $bedrooms = $request->input('number_of_bedrooms');
+        $bathrooms = $request->input('number_of_bathrooms');
         $property = Property::paginate(4);
         if (isset($city_id) && !empty($city_id)) {
             $search_property = Property::where('city_name', 'LIKE', '%' . $city_id->id . '%')->get();
             foreach ($search_property as $search) {
                 $get = Cities::where('id', $search->city_name)->first();
-                $name=$get->name;
+                $name = $get->name;
             }
             $count = Property::where('city_name', 'LIKE', '%' . $city_id->id . '%')->count();
-        }elseif (isset($category_id) && !empty($category_id)) {
+        } elseif (isset($category_id) && !empty($category_id)) {
             $search_property = Property::where('category', 'LIKE', '%' . $category_id->id . '%')->get();
             foreach ($search_property as $search) {
                 if (isset($search) && !empty($search)) {
                     $get = Category::where('id', $search->category)->first();
-                    $name=$get->name;
+                    $name = $get->name;
                 }
             }
             $count = Property::where('category', 'LIKE', '%' . $category_id->id . '%')->count();
-        }elseif (isset($area_id) && !empty($area_id)) {
+        } elseif (isset($area_id) && !empty($area_id)) {
             $search_property = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->get();
             $count = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->count();
-        }elseif(isset($purpose) && !empty($purpose)){
-            dd($purpose);
+        } elseif (isset($purpose) && !empty($purpose)) {
             $search_property = Property::where('type', 'LIKE', '%' . $purpose . '%')->get();
             $name = $purpose;
             $count = Property::where('type', 'LIKE', '%' . $purpose . '%')->count();
-        }elseif(isset($bedrooms) && !empty($bedrooms)){
+        } elseif (isset($bedrooms) && !empty($bedrooms)) {
             $search_property = Property::where('number_of_bedrooms', 'LIKE', '%' . $bedrooms . '%')->get();
-            $name = $bedrooms." ". "Bedrooms";
+            $name = $bedrooms . " " . "Bedrooms";
             $count = Property::where('number_of_bedrooms', 'LIKE', '%' . $bedrooms . '%')->count();
-        }elseif(isset($bathrooms) && !empty($bathrooms)){
+        } elseif (isset($bathrooms) && !empty($bathrooms)) {
             $search_property = Property::where('number_of_bathrooms', 'LIKE', '%' . $bathrooms . '%')->get();
-            $name =  $bathrooms." ". "Bathrooms";;
+            $name =  $bathrooms . " " . "Bathrooms";;
             $count = Property::where('number_of_bathrooms', 'LIKE', '%' . $bathrooms . '%')->count();
         }
         return view('front.pages.property', compact('search_property', 'meta', 'data', 'property', 'count', 'name'));
