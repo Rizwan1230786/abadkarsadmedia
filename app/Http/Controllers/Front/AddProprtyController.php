@@ -76,14 +76,6 @@ class AddProprtyController extends Controller
                 $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired']);
 
                 $query = Property::create($data);
-                foreach ($request['feature'] as $features) {
-                    DB::table('features_property')->insert(
-                        [
-                            'features_id' => $features,
-                            'property_id' => 1
-                        ]
-                    );
-                }
                 $query->features()->attach($request->feature);
                 Auth::logout();
                 return redirect()->back()->with('message', 'Property Added!');

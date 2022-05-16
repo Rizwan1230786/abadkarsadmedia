@@ -19,6 +19,7 @@ use App\Models\Property_facilities;
 use App\Models\Webpages;
 use App\Models\subpages;
 use App\Models\Category;
+use App\Models\Features;
 use App\Models\UrlSlug;
 
 class FrontController extends Controller
@@ -39,12 +40,12 @@ class FrontController extends Controller
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
         })->with('properties')->get();
-
+        $feature =Features::all();
         $city = Cities::all();
         $agents = Agent::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city'));
+        return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city','feature'));
     }
     public function project()
     {
@@ -232,38 +233,59 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.list', get_defined_vars());
     }
-    public function search_property(Request $request){
+    public function search_property(Request $request)
+    {
+
         $meta = Webpages::Where("page_title", "property")->first();
-        $data=Webpages::where("status", "=", 1)->orderBy('page_rank','asc')->get();
-        $city_name=$request->input('city_name');
-        $category_name=$request->input('category');
-        $area_id=$request->input('area_id');
-        $city_id=Cities::where('slug',$city_name)->first();
-        $category_id=Category::where('name',$category_name)->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        $city_name = $request->input('city_name');
+        $category_name = $request->input('category');
+        $area_id = $request->input('area_id');
+        $city_id = Cities::where('slug', $city_name)->first();
+        $category_id = Category::where('name', $category_name)->first();
+        $purpose=$request->input('type');
+        $bedrooms=$request->input('number_of_bedrooms');
+        $bathrooms=$request->input('number_of_bathrooms');
         $property = Property::paginate(4);
-        if(isset($city_id) && !empty($city_id)){
-            $search_property=Property::where('city_name','LIKE','%'.$city_id->id.'%')->get();
-            foreach($search_property as $search){
-                $city_name=Category::where('id',$search->city_name)->first();
+        if (isset($city_id) && !empty($city_id)) {
+            $search_property = Property::where('city_name', 'LIKE', '%' . $city_id->id . '%')->get();
+            foreach ($search_property as $search) {
+                $get = Cities::where('id', $search->city_name)->first();
+                $name=$get->name;
             }
-            $count=Property::where('city_name','LIKE','%'.$city_id->id.'%')->count();
-        }elseif(isset($category_id) && !empty($category_id)){
-            $search_property=Property::where('category','LIKE','%'.$category_id->id.'%')->get();
-            foreach($search_property as $search){
-                $category_name=Category::where('id',$search->category)->first();
+            $count = Property::where('city_name', 'LIKE', '%' . $city_id->id . '%')->count();
+        }elseif (isset($category_id) && !empty($category_id)) {
+            $search_property = Property::where('category', 'LIKE', '%' . $category_id->id . '%')->get();
+            foreach ($search_property as $search) {
+                if (isset($search) && !empty($search)) {
+                    $get = Category::where('id', $search->category)->first();
+                    $name=$get->name;
+                }
             }
-            $count=Property::where('category','LIKE','%'.$category_id->id.'%')->count();
-        }elseif(isset($area_id) && !empty($area_id)){
-            $search_property=Property::where('area_id','LIKE','%'.$area_id.'%')->get();
-            $count=Property::where('area_id','LIKE','%'.$area_id.'%')->count();
+            $name = Category::where('id', $category_id->id)->first();
+            $count = Property::where('category', 'LIKE', '%' . $category_id->id . '%')->count();
+        }elseif (isset($area_id) && !empty($area_id)) {
+            $search_property = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->get();
+            $count = Property::where('area_id', 'LIKE', '%' . $area_id . '%')->count();
+        }elseif(isset($purpose) && !empty($purpose)){
+            $search_property = Property::where('type', 'LIKE', '%' . $purpose . '%')->get();
+            $name = $purpose;
+            $count = Property::where('type', 'LIKE', '%' . $purpose . '%')->count();
+        }elseif(isset($bedrooms) && !empty($bedrooms)){
+            $search_property = Property::where('number_of_bedrooms', 'LIKE', '%' . $bedrooms . '%')->get();
+            $name = $bedrooms." ". "Bedrooms";
+            $count = Property::where('number_of_bedrooms', 'LIKE', '%' . $bedrooms . '%')->count();
+        }elseif(isset($bathrooms) && !empty($bathrooms)){
+            $search_property = Property::where('number_of_bathrooms', 'LIKE', '%' . $bathrooms . '%')->get();
+            $name =  $bathrooms." ". "Bathrooms";;
+            $count = Property::where('number_of_bathrooms', 'LIKE', '%' . $bathrooms . '%')->count();
         }
-        return view('front.pages.property',compact('search_property','meta','data','property','count','category_name','city_name'));
+        return view('front.pages.property', compact('search_property', 'meta', 'data', 'property', 'count', 'name'));
     }
     public function fetchState(Request $request)
     {
-        $city_id=Cities::where('slug',$request->city_slug)->first();
-        $data['areas'] = Area::where("city_id", $city_id->id)->get(["areaname", "id","slug"]);
+        $city_id = Cities::where('slug', $request->city_slug)->first();
+        $data['areas'] = Area::where("city_id", $city_id->id)->get(["areaname", "id", "slug"]);
         return response()->json($data);
     }
-
 }

@@ -38,8 +38,8 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 								<div class="card overflow-hidden dash1-card border-0">
 									<div class="card-body">
-										<p class=" mb-1 ">Total Inquery</p>
-										<h2 class="mb-1 number-font">1875</h2>
+										<p class=" mb-1 ">Total Customer</p>
+										<h2 class="mb-1 number-font">{{ $customer }}</h2>
 										<span class="ratio bg-danger"><br></span>
 									</div>
 									<div id="spark3"></div>
@@ -59,11 +59,11 @@
 						<!-- End Row-1 -->
 
 						<!-- Row-2 -->
-						
+
 						<!-- End Row-2 -->
 
 						<!-- Row-3 -->
-						
+
 						<!-- End Row-3 -->
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12">

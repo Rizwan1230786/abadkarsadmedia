@@ -21,24 +21,8 @@ $("#area-range").each(function () {
     var dataMax = $(this).attr('data-max');
     var dataUnit = $(this).attr('data-unit');
 
-    $(this).append("<input type='text' class='first-slider-value'disabled/><input type='text' class='second-slider-value' disabled/>");
+    $(this).append("<input type='text' name='area_size' class='first-slider-value'/><input type='text' name='area_size' class='second-slider-value' />");
 
-    $(this).slider({
-
-        range: true,
-        min: dataMin,
-        max: dataMax,
-        step: 10,
-        values: [dataMin, dataMax],
-
-        slide: function (event, ui) {
-            event = event;
-            $(this).children(".first-slider-value").val(ui.values[0] + " " + dataUnit);
-            $(this).children(".second-slider-value").val(ui.values[1] + " " + dataUnit);
-        }
-    });
-    $(this).children(".first-slider-value").val($(this).slider("values", 0) + " " + dataUnit);
-    $(this).children(".second-slider-value").val($(this).slider("values", 1) + " " + dataUnit);
 
 });
 
