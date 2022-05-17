@@ -1,7 +1,7 @@
 @extends('front.layout')
 @section('body')
 
-    <body class="inner-pages agents homepage-4 det ag-de hd-white">
+<body class="inner-pages agents homepage-4 det ag-de hd-white">
     @section('main')
     <section class="headings">
         <div class="text-heading text-center">
@@ -24,7 +24,8 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <h3 class="mb-4">Contact Us</h3>
-                    <form id="contactform" class="contact-form" name="contactform" method="post" novalidate>
+                    <form action="/user/contact_us" class="contact-form" name="contactform" method="post">
+                        @csrf
                         <div id="success" class="successform">
                             <p class="alert alert-success font-weight-bold" role="alert">Your message was sent successfully!</p>
                         </div>
@@ -33,17 +34,29 @@
                         </div>
                         <div class="form-group">
                             <input type="text" required class="form-control input-custom input-full" name="name" placeholder="First Name">
+                            @if($errors->has('name'))
+                            <div class="error">{{ $errors->first('name') }}</div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <input type="text" required class="form-control input-custom input-full" name="lastname" placeholder="Last Name">
+                            @if($errors->has('lastname'))
+                            <div class="error">{{ $errors->first('lastname') }}</div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control input-custom input-full" name="email" placeholder="Email">
+                            @if($errors->has('email'))
+                            <div class="error">{{ $errors->first('email') }}</div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <textarea class="form-control textarea-custom input-full" id="ccomment" name="message" required rows="8" placeholder="Message"></textarea>
+                            @if($errors->has('message'))
+                            <div class="error">{{ $errors->first('message') }}</div>
+                            @endif
                         </div>
-                        <button type="submit" id="submit-contact" class="btn btn-primary btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                     </form>
                 </div>
                 <div class="col-lg-4 col-md-12 bgc">

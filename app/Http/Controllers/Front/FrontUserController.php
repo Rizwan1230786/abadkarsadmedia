@@ -12,6 +12,7 @@ use App\Models\Webpages;
 use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactUs\Contact;
 use App\Models\Features;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class FrontUserController extends Controller
 {
@@ -32,12 +34,12 @@ class FrontUserController extends Controller
             $property = Property::limit(6)->get();
             $project = Projects::all();
             $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
-            $feature=Features::all();
+            $feature = Features::all();
             $city = Cities::all();
             $agents = Agent::all();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city','feature'));
+            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city', 'feature'));
         } else {
             return view('front.pages.customeruser.login');
         }
@@ -47,6 +49,7 @@ class FrontUserController extends Controller
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.customeruser.login', compact('meta', 'data'));
+    
     }
     public function signup()
     {
@@ -115,7 +118,7 @@ class FrontUserController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|min:4',
-            'password' => 'required|min:6',
+            'password' => 'required',
         ]);
         if ($validator->passes()) {
             $credentials = $request->only('email', 'password');
@@ -172,5 +175,21 @@ class FrontUserController extends Controller
         if (isset($data) && !empty($data)) {
             return response()->json(['type' => $type, 'message' => $message]);
         }
+    }
+    public function contact_us(Contact $request)
+    {
+        $message = "Fill the data in proper way!";
+        $data = $request->all();
+        if (isset($data["email"]) && !empty($data["email"])) {
+            Mail::send('front.email.contact_us', ['data' => $data], function ($message) use ($data) {
+                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->from($data["email"]);
+                $message->subject('Customer Support');
+            });
+            $message = "Our support team contact you soon!";
+        } else {
+            $message = "Please provide an email.";
+        }
+        return redirect()->back()->with('message', $message);
     }
 }

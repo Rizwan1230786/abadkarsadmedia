@@ -2,7 +2,14 @@
 
 use App\Models\subpages;
 ?>
-<header id="header-container" >
+<!-- START PRELOADER -->
+<div id="preloader">
+    <div id="status">
+        <div class="status-mes"></div>
+    </div>
+</div>
+<!-- END PRELOADER -->
+<header id="header-container">
     <!-- Header -->
     <div id="header">
         <div class="container container-header">
@@ -46,7 +53,7 @@ use App\Models\subpages;
                         @endforeach
                         @guest
                         <li><a href="{{ url('/add-property') }}">Add Property</a>
-                        @endguest
+                            @endguest
                             <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
                         </li>

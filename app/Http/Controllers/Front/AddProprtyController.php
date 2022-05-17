@@ -49,10 +49,9 @@ class AddProprtyController extends Controller
         $data['areas'] = SubCategory::where("category_id", $request->city_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function submit(Request $request)
+    public function submit(addProperty $request)
     {
         $data = $request->all();
-        dd($data);
         if ($data['email'] || $data['email1'] ?? '') {
             $user = Customeruser::where('email', $data['email1'])->first();
             if ($user == null) {
