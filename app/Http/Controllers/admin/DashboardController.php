@@ -12,7 +12,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
         $user=User::count();
         $customer=Customeruser::count();
         return view('admin.modules.dashboard.index',compact('user','customer'));
