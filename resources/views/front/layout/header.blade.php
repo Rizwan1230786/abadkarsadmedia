@@ -102,9 +102,7 @@ use App\Models\subpages;
                     <span> @if (Auth::guard('customeruser')->user()->image != null)<img src="{{URL::asset('assets/images/userphoto/'.Auth::guard('customeruser')->user()->image ?? '')}}" alt="">@else<img src="{{URL::asset('/default/nodp.jpg')}}" alt="">@endif</span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
                 </div>
                 <ul>
-                    <li><a href="{{ url('user/profile')}}"> Edit profile</a></li>
                     <li><a href="{{ url('user/dashboard')}}"> Dashboard</a></li>
-                    <li><a href="change-password.html"> Change Password</a></li>
                     <li><a href="{{ url('user/logout') }}">Log Out</a></li>
                 </ul>
             </div>

@@ -16,7 +16,7 @@
 <!-- BEGIN: Page JS-->
 <script src="{{ asset('/userside') }}/app-assets/js/scripts/pages/dashboard-ecommerce.min.js"></script>
 <!-- END: Page JS-->
-
+@yield('js')
 <script>
   $(window).on('load',  function(){
     if (feather) {

@@ -33,4 +33,5 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/assets/css/style.css">
+    @yield('css')
     <!-- END: Custom CSS-->
