@@ -228,6 +228,7 @@ Route::get('/all/{slug}', [FrontController::class, 'list'])->name('front.list');
 Route::prefix('search_property')->group(function () {
     Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
+    Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
 });
 
 Route::prefix('city')->group(function () {
