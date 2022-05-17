@@ -21,175 +21,160 @@
                 <!-- Search Form -->
                 <div class="col-12 px-0 parallax-searchs">
                     <div class="banner-search-wrap">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tabs_1">
-                                <div class="rld-main-search">
-                                    <div class="row">
-                                        <div class="rld-single-input">
-                                            <input type="text" placeholder="Enter Keyword...">
-                                        </div>
-                                        <div class="rld-single-select ml-22">
-                                            <select class="select single-select">
-                                                <option value="1">Property Type</option>
-                                                <option value="2">Family House</option>
-                                                <option value="3">Apartment</option>
-                                                <option value="3">Condo</option>
-                                            </select>
-                                        </div>
-                                        <div class="rld-single-select">
-                                            <select class="select single-select mr-0">
-                                                <option value="1">Location</option>
-                                                <option value="2">Los Angeles</option>
-                                                <option value="3">Chicago</option>
-                                                <option value="3">Philadelphia</option>
-                                                <option value="3">San Francisco</option>
-                                                <option value="3">Miami</option>
-                                                <option value="3">Houston</option>
-                                            </select>
-                                        </div>
-                                        <div class="dropdown-filter"><span>Advanced Search</span></div>
-                                        <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                            <a class="btn btn-yellow" href="#">Search Now</a>
-                                        </div>
-                                        <div class="explore__form-checkbox-list full-filter">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
-                                                    <!-- Form Property Status -->
-                                                    <div class="form-group categories">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span
-                                                                class="current"><i
-                                                                    class="fa fa-home"></i>Property Status</span>
-                                                            <ul class="list">
-                                                                <li data-value="1" class="option selected ">For Sale</li>
-                                                                <li data-value="2" class="option">For Rent</li>
-                                                            </ul>
+                        <form action="{{ url('/search_property/redirect') }}" method="get">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tabs_1">
+                                    <div class="rld-main-search">
+                                        <div class="row">
+                                            <div class="rld-single-select ml-22">
+                                                <select class="form-control single-select" name="category">
+                                                    <option value="">Property Type</option>
+                                                    @foreach ($category as $value)
+                                                        <option value="{{ $value->name }}">
+                                                            {{ $value->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="rld-single-select ml-22">
+                                                <select id="country-dd" class="form-control single-select"
+                                                    name="city_name">
+                                                    <option value="">Select City</option>
+                                                    @foreach ($city as $value)
+                                                        <option value="{{ $value->slug }}">
+                                                            {{ $value->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('city_name'))
+                                                    <div class="error">{{ $errors->first('city_name') }}</div>
+                                                @endif
+
+                                            </div>
+                                            <div class="rld-single-select">
+                                                <select id="state-dd" class="form-control single-select" name="area_id">
+                                                    <option value="">Select Area</option>
+                                                </select>
+                                            </div>
+                                            <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                            <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                                <button class="btn btn-yellow" type="submit">Search
+                                                    Now</button>
+                                            </div>
+                                            <div class="explore__form-checkbox-list full-filter">
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                        <!-- Form Property Status -->
+                                                        <div class="form-group categories">
+                                                            <select id="country-dd" class="form-control single-select"
+                                                                name="type">
+                                                                <option value="">Select purpose</option>
+                                                                <option value="sale">For Sale</option>
+                                                                <option value="rent">Rent</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--/ End Form Property Status -->
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                        <!-- Form Bedrooms -->
+                                                        <div class="form-group beds">
+                                                            <div class="form-group categories">
+                                                                <select id="country-dd" class="form-control single-select"
+                                                                    name="number_of_bedrooms">
+                                                                    <option value="">Bedrooms</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--/ End Form Bedrooms -->
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+                                                        <!-- Form Bathrooms -->
+                                                        <div class="form-group bath">
+                                                            <div class="form-group categories">
+                                                                <select id="country-dd" class="form-control single-select"
+                                                                    name="number_of_bathrooms">
+                                                                    <option value="">Bathrooms</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!--/ End Form Bathrooms -->
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                        <!-- Price Fields -->
+                                                        <div class="main-search-field-2">
+                                                            <!-- Area Range -->
+                                                            <div class="range-slider">
+                                                                <label>Area Size</label>
+                                                                <div id="area-range" data-min="0" data-max="1300"
+                                                                    data-unit="sqft"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <br>
+                                                            <!-- Price Range -->
+                                                            <div class="range-slider">
+                                                                <label>Price Range</label>
+                                                                <div id="price-range" data-min="0" data-max="600000"
+                                                                    data-unit="$"></div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!--/ End Form Property Status -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
-                                                    <!-- Form Bedrooms -->
-                                                    <div class="form-group beds">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span
-                                                                class="current"><i class="fa fa-bed"
-                                                                    aria-hidden="true"></i> Bedrooms</span>
-                                                            <ul class="list">
-                                                                <li data-value="1" class="option selected">1</li>
-                                                                <li data-value="2" class="option">2</li>
-                                                                <li data-value="3" class="option">3</li>
-                                                                <li data-value="3" class="option">4</li>
-                                                                <li data-value="3" class="option">5</li>
-                                                                <li data-value="3" class="option">6</li>
-                                                                <li data-value="3" class="option">7</li>
-                                                                <li data-value="3" class="option">8</li>
-                                                                <li data-value="3" class="option">9</li>
-                                                                <li data-value="3" class="option">10</li>
-                                                            </ul>
+                                                    <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
+                                                        <!-- Checkboxes -->
+                                                        <div class="row">
+                                                            @foreach ($feature as $value)
+                                                                <div class="col-lg-6">
+
+                                                                    <input style="position:absolute;top: 7px;" id="check-2"
+                                                                        type="checkbox" name="check1">
+                                                                    <label style="margin-left: 30px;"
+                                                                        for="check-2">{{ $value->name }}</label>
+
+
+
+                                                                </div>
+                                                            @endforeach
+
                                                         </div>
+                                                        <!-- Checkboxes / End -->
                                                     </div>
-                                                    <!--/ End Form Bedrooms -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
-                                                    <!-- Form Bathrooms -->
-                                                    <div class="form-group bath">
-                                                        <div class="nice-select form-control wide" tabindex="0"><span
-                                                                class="current"><i class="fa fa-bath"
-                                                                    aria-hidden="true"></i> Bathrooms</span>
-                                                            <ul class="list">
-                                                                <li data-value="1" class="option selected">1</li>
-                                                                <li data-value="2" class="option">2</li>
-                                                                <li data-value="3" class="option">3</li>
-                                                                <li data-value="3" class="option">4</li>
-                                                                <li data-value="3" class="option">5</li>
-                                                                <li data-value="3" class="option">6</li>
-                                                                <li data-value="3" class="option">7</li>
-                                                                <li data-value="3" class="option">8</li>
-                                                                <li data-value="3" class="option">9</li>
-                                                                <li data-value="3" class="option">10</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ End Form Bathrooms -->
-                                                </div>
-                                                <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
-                                                    <!-- Price Fields -->
-                                                    <div class="main-search-field-2">
-                                                        <!-- Area Range -->
-                                                        <div class="range-slider">
-                                                            <label>Area Size</label>
-                                                            <div id="area-range" data-min="0" data-max="1300"
-                                                                data-unit="sq ft"></div>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                        <br>
-                                                        <!-- Price Range -->
-                                                        <div class="range-slider">
-                                                            <label>Price Range</label>
-                                                            <div id="price-range" data-min="0" data-max="600000"
-                                                                data-unit="$"></div>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
-                                                    <!-- Checkboxes -->
-                                                    <div class="checkboxes one-in-row margin-bottom-10 ch-1">
-                                                        <input id="check-2" type="checkbox" name="check">
-                                                        <label for="check-2">Air Conditioning</label>
-                                                        <input id="check-3" type="checkbox" name="check">
-                                                        <label for="check-3">Swimming Pool</label>
-                                                        <input id="check-4" type="checkbox" name="check">
-                                                        <label for="check-4">Central Heating</label>
-                                                        <input id="check-5" type="checkbox" name="check">
-                                                        <label for="check-5">Laundry Room</label>
-                                                        <input id="check-6" type="checkbox" name="check">
-                                                        <label for="check-6">Gym</label>
-                                                        <input id="check-7" type="checkbox" name="check">
-                                                        <label for="check-7">Alarm</label>
-                                                        <input id="check-8" type="checkbox" name="check">
-                                                        <label for="check-8">Window Covering</label>
-                                                    </div>
-                                                    <!-- Checkboxes / End -->
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
-                                                    <!-- Checkboxes -->
-                                                    <div class="checkboxes one-in-row margin-bottom-10 ch-2">
-                                                        <input id="check-9" type="checkbox" name="check">
-                                                        <label for="check-9">WiFi</label>
-                                                        <input id="check-10" type="checkbox" name="check">
-                                                        <label for="check-10">TV Cable</label>
-                                                        <input id="check-11" type="checkbox" name="check">
-                                                        <label for="check-11">Dryer</label>
-                                                        <input id="check-12" type="checkbox" name="check">
-                                                        <label for="check-12">Microwave</label>
-                                                        <input id="check-13" type="checkbox" name="check">
-                                                        <label for="check-13">Washer</label>
-                                                        <input id="check-14" type="checkbox" name="check">
-                                                        <label for="check-14">Refrigerator</label>
-                                                        <input id="check-15" type="checkbox" name="check">
-                                                        <label for="check-15">Outdoor Shower</label>
-                                                    </div>
-                                                    <!-- Checkboxes / End -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!--/ End Search Form -->
                 <section class="headings-2 pt-0">
                     <div class="pro-wrapper">
                         @if (isset($search_property) && !empty($search_property))
-                        <div class="detail-wrapper-body">
-                            <div class="listing-title-bar">
-                                <div class="text-heading text-left">
-                                    <h5 class="font-weight-bold mb-0 mt-3">({{ $count; }} Search results of {{ $name }}) </h5>
+                            <div class="detail-wrapper-body">
+                                <div class="listing-title-bar">
+                                    <div class="text-heading text-left">
+                                        <h5 class="font-weight-bold mb-0 mt-3">({{ $count }} Search results of
+                                            Property in {{ $name }}) </h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
                         <div
                             class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
@@ -217,10 +202,11 @@
                 @if (isset($search_property) && !empty($search_property))
                     @foreach ($search_property as $search_property)
                         <div class="row featured portfolio-items">
-                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
-                                    <div class="project-inner project-head"  style="background-image: url('{{ asset('assets/images/properties/' . $search_property->image) }}');  background-size: cover;
-                                        background-position: center;background-repeat: no-repeat;height:30vh">
+                                    <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $search_property->image) }}');  background-size: cover;
+                                            background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -240,8 +226,7 @@
                                             <a href="#" class="btn"><i class="fa fa-link"></i></a>
                                             @if ($search_property->video)
                                                 <a href="{{ $search_property->video }}"
-                                                    class="btn popup-video popup-youtube"><i
-                                                        class="fas fa-video"></i></a>
+                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                             @endif
                                             <a href="#" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                         </div>
@@ -325,7 +310,7 @@
                                             @foreach ($item->cities as $city)
                                                 <li style="list-style: square">
                                                     <a
-                                                        href="{{ url('/property'.'/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                                        href="{{ url('/property' . '/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
                                                 </li>
                                             @endforeach
                                         @endforeach
@@ -337,10 +322,11 @@
                     </div>
                     @foreach ($city_search_property as $city_search_property)
                         <div class="row featured portfolio-items">
-                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                            <div class="item  mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
                                     <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $city_search_property->image) }}');  background-size: cover;
-                                        background-position: center;background-repeat: no-repeat;height:30vh">
+                                            background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $city_search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -371,7 +357,7 @@
                             <div class="col-lg-8 col-md-12 homes-content pb-0  mb-5" data-aos="fade-up">
                                 <!-- homes address -->
                                 <h3><a
-                                        href="{{ url('/property'. '/' . $city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
+                                        href="{{ url('/property' . '/' . $city_search_property->url_slug) }}">{{ $city_search_property->name }}</a>
                                 </h3>
                                 <p class="homes-address mb-3">
                                     <a href="{{ url('/property', $city_search_property->url_slug) }}">
@@ -425,190 +411,189 @@
                     @endforeach
                 @elseif(isset($area_search_property) && !empty($area_search_property))
                     @foreach ($area_search_property as $area_search_propertys)
-                            <div class="row featured portfolio-items">
-                                <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
-                                    data-aos="fade-up">
-                                    <div class="project-single mb-0 bb-0">
-                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_propertys->image) }}');  background-size: cover;
-                                            background-position: center;background-repeat: no-repeat;height:30vh">>
-                                            <div class="project-bottom">
-                                                <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
-                                                        Property</a><span class="category">Real Estate</span></h4>
-                                            </div>
-                                            <div class="homes">
-                                                <!-- homes img -->
-                                                <a href="{{ url('/property', $area_search_propertys->url_slug) }}"
-                                                    class="homes-img">
-                                                    <div class="homes-tag button alt featured">Featured</div>
-                                                    <div class="homes-tag button alt sale">{{ $area_search_propertys->type }}</div>
-                                                    <div class="homes-price">Family Home</div>
-                                                </a>
-                                            </div>
-                                            <div class="button-effect">
-                                                <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                                @if ($area_search_propertys->video)
-                                                    <a href="{{ $area_search_propertys->video }}"
-                                                        class="btn popup-video popup-youtube"><i
-                                                            class="fas fa-video"></i></a>
-                                                @endif
-                                                <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                            </div>
+                        <div class="row featured portfolio-items">
+                            <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                data-aos="fade-up">
+                                <div class="project-single mb-0 bb-0">
+                                    <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_propertys->image) }}');  background-size: cover;
+                                                background-position: center;background-repeat: no-repeat;height:30vh">>
+                                        <div class="project-bottom">
+                                            <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
+                                                    Property</a><span class="category">Real Estate</span></h4>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
-                                    <!-- homes address -->
-                                    <h3><a
-                                            href="{{ url('/property', $area_search_propertys->url_slug) }}">{{ $area_search_propertys->name }}</a>
-                                    </h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="{{ url('/property', $area_search_propertys->url_slug) }}">
-                                            <i class="fa fa-map-marker"></i><span>{{ $area_search_propertys->location }}</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix pb-3">
-                                        <li class="the-icons">
-                                            <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                            <span>{{ $area_search_propertys->number_of_bedrooms }}</span>
-                                        </li>
-                                        <li class="the-icons">
-                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                            <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
-                                        </li>
-                                        @if ($area_search_propertys->square)
-                                            <li class="the-icons">
-                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>{{ $area_search_propertys->square }} ft</span>
-                                            </li>
-                                        @endif
-                                        @if ($area_search_propertys->marala)
-                                            <li class="the-icons">
-                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>{{ $area_search_propertys->marala }} marla</span>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">{{ $area_search_propertys->currency }}
-                                                {{ $area_search_propertys->price }}</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="{{ url('/property', $area_search_propertys->url_slug) }}"
+                                                class="homes-img">
+                                                <div class="homes-tag button alt featured">Featured</div>
+                                                <div class="homes-tag button alt sale">
+                                                    {{ $area_search_propertys->type }}</div>
+                                                <div class="homes-price">Family Home</div>
                                             </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="#" class="btn"><i class="fa fa-link"></i></a>
+                                            @if ($area_search_propertys->video)
+                                                <a href="{{ $area_search_propertys->video }}"
+                                                    class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
+                                            @endif
+                                            <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- homes content -->
+                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
+                                <!-- homes address -->
+                                <h3><a
+                                        href="{{ url('/property', $area_search_propertys->url_slug) }}">{{ $area_search_propertys->name }}</a>
+                                </h3>
+                                <p class="homes-address mb-3">
+                                    <a href="{{ url('/property', $area_search_propertys->url_slug) }}">
+                                        <i
+                                            class="fa fa-map-marker"></i><span>{{ $area_search_propertys->location }}</span>
+                                    </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    <li class="the-icons">
+                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                        <span>{{ $area_search_propertys->number_of_bedrooms }}</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                        <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
+                                    </li>
+                                    @if ($area_search_propertys->square)
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->square }} ft</span>
+                                        </li>
+                                    @endif
+                                    @if ($area_search_propertys->marala)
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->marala }} marla</span>
+                                        </li>
+                                    @endif
+                                </ul>
+                                <!-- Price -->
+                                <div class="price-properties">
+                                    <h3 class="title mt-3">
+                                        <a href="#">{{ $area_search_propertys->currency }}
+                                            {{ $area_search_propertys->price }}</a>
+                                    </h3>
+                                    <div class="compare">
+                                        <a href="#" title="Compare">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </a>
+                                        <a href="#" title="Share">
+                                            <i class="fas fa-share-alt"></i>
+                                        </a>
+                                        <a href="#" title="Favorites">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 @else
                     @foreach ($property as $properties)
-
-                            <div class="row featured portfolio-items">
-                                <div class="item mb-5 col-lg-4 col-md-12 col-xs-12   landscapes sale pr-0 pb-0"
-                                    data-aos="fade-up"  >
-                                    <div class="project-single mb-0 bb-0">
-                                        <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}');  background-size: cover;
-                                            background-position: center;background-repeat: no-repeat;height:30vh" >
-                                            <div class="project-bottom">
-                                                <h4><a href="{{ url('/property', $properties->url_slug) }}">View
-                                                        Property</a><span class="category">Real Estate</span></h4>
-                                            </div>
-                                            <div class="homes">
-                                                <!-- homes img -->
-                                                <a href="{{ url('/property', $properties->url_slug) }}"
-                                                    class="homes-img">
-                                                    <div class="homes-tag button alt featured">Featured</div>
-                                                    <div class="homes-tag button alt sale">{{ $properties->type }}</div>
-                                                    <div class="homes-price">Family Home</div>
-                                                    {{-- <img src="{{ asset('assets/images/properties/' . $properties->image) }}"
-                                                        alt="home-1" class="img-responsive"> --}}
-                                                </a>
-                                            </div>
-                                            <div class="button-effect">
-                                                <a href="#" class="btn"><i class="fa fa-link"></i></a>
-                                                @if ($properties->video)
-                                                    <a href="{{ $properties->video }}"
-                                                        class="btn popup-video popup-youtube"><i
-                                                            class="fas fa-video"></i></a>
-                                                @endif
-                                                <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                                            </div>
+                        <div class="row featured portfolio-items">
+                            <div class="item mb-5 col-lg-4 col-md-12 col-xs-12   landscapes sale pr-0 pb-0"
+                                data-aos="fade-up">
+                                <div class="project-single mb-0 bb-0">
+                                    <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}');  background-size: cover;
+                                                background-position: center;background-repeat: no-repeat;height:30vh">
+                                        <div class="project-bottom">
+                                            <h4><a href="{{ url('/property', $properties->url_slug) }}">View
+                                                    Property</a><span class="category">Real Estate</span></h4>
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- homes content -->
-                                <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
-                                    <!-- homes address -->
-                                    <h3><a
-                                            href="{{ url('/property', $properties->url_slug) }}">{{ $properties->name }}</a>
-                                    </h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="{{ url('/property', $properties->url_slug) }}">
-                                            <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix pb-3">
-                                        <li class="the-icons">
-                                            <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                            <span>{{ $properties->number_of_bedrooms }}</span>
-                                        </li>
-                                        <li class="the-icons">
-                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                            <span>{{ $properties->number_of_bathrooms }}</span>
-                                        </li>
-                                        @if ($properties->square)
-                                            <li class="the-icons">
-                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>{{ $properties->square }} ft</span>
-                                            </li>
-                                        @endif
-                                        @if ($properties->marala)
-                                            <li class="the-icons">
-                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>{{ $properties->marala }} marla</span>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                    <!-- Price -->
-                                    <div class="price-properties">
-                                        <h3 class="title mt-3">
-                                            <a href="#">{{ $properties->currency }}
-                                                {{ $properties->price }}</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="fas fa-exchange-alt"></i>
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="{{ url('/property', $properties->url_slug) }}"
+                                                class="homes-img">
+                                                <div class="homes-tag button alt featured">Featured</div>
+                                                <div class="homes-tag button alt sale">{{ $properties->type }}</div>
+                                                <div class="homes-price">Family Home</div>
+                                                {{-- <img src="{{ asset('assets/images/properties/' . $properties->image) }}"
+                                                        alt="home-1" class="img-responsive"> --}}
                                             </a>
-                                            <a href="#" title="Share">
-                                                <i class="fas fa-share-alt"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="#" class="btn"><i class="fa fa-link"></i></a>
+                                            @if ($properties->video)
+                                                <a href="{{ $properties->video }}"
+                                                    class="btn popup-video popup-youtube"><i
+                                                        class="fas fa-video"></i></a>
+                                            @endif
+                                            <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- homes content -->
+                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
+                                <!-- homes address -->
+                                <h3><a
+                                        href="{{ url('/property', $properties->url_slug) }}">{{ $properties->name }}</a>
+                                </h3>
+                                <p class="homes-address mb-3">
+                                    <a href="{{ url('/property', $properties->url_slug) }}">
+                                        <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
+                                    </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    <li class="the-icons">
+                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                        <span>{{ $properties->number_of_bedrooms }}</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                        <span>{{ $properties->number_of_bathrooms }}</span>
+                                    </li>
+                                    @if ($properties->square)
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $properties->square }} ft</span>
+                                        </li>
+                                    @endif
+                                    @if ($properties->marala)
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $properties->marala }} marla</span>
+                                        </li>
+                                    @endif
+                                </ul>
+                                <!-- Price -->
+                                <div class="price-properties">
+                                    <h3 class="title mt-3">
+                                        <a href="#">{{ $properties->currency }}
+                                            {{ $properties->price }}</a>
+                                    </h3>
+                                    <div class="compare">
+                                        <a href="#" title="Compare">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </a>
+                                        <a href="#" title="Share">
+                                            <i class="fas fa-share-alt"></i>
+                                        </a>
+                                        <a href="#" title="Favorites">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 @endif
                 <nav aria-label="..." class="pt-55">
                     <ul class="pagination disabled">
                         <li class="page-item active">
-                            <li>{!! $property->links() !!}</li>
+                        <li>{!! $property->links() !!}</li>
                         </li>
                     </ul>
                 </nav>
@@ -623,4 +608,34 @@
         });
     });
 </script>
+    <script>
+        $(document).ready(function() {
+            $('#country-dd').on('change', function() {
+                var idCountry = this.value;
+                $("#state-dd").html('');
+                $("#state-dd").parent().find('.nice-select .list').html('');
+                $.ajax({
+                    url: "{{ url('/search_property/fetch-states') }}",
+                    type: "POST",
+                    data: {
+                        city_slug: idCountry,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        // $('#state-dd').html('<select value=""">Select Area</select>');
+                        $.each(result.areas, function(key, value) {
+                            $("#state-dd").append('<option value="' + value
+                                .id + '">' + value.areaname + '</option>');
+                            $("#state-dd").parent().find('.nice-select .list').append(
+                                '<li data-value="' + value
+                                .id + '" class="option">' + value.areaname + '</li>'
+                            );
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
+

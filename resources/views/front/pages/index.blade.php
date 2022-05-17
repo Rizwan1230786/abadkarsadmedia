@@ -38,7 +38,7 @@
                                                 <div class="rld-main-search">
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
-                                                            <select  class="form-control single-select" name="category">
+                                                            <select  class="form-control single-select" name="category1">
                                                                 <option value="">Property Type</option>
                                                                 @foreach ($category as $value)
                                                                 <option value="{{ $value->name }}">
@@ -48,7 +48,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="rld-single-select ml-22">
-                                                            <select id="country-dd" class="form-control single-select" name="city_name">
+                                                            <select id="country-dd" class="form-control single-select" name="city_name1">
                                                                 <option value="">Select City</option>
                                                                 @foreach ($city as $value)
                                                                 <option value="{{ $value->slug }}">
@@ -87,7 +87,7 @@
                                                                     <!-- Form Bedrooms -->
                                                                     <div class="form-group beds">
                                                                         <div class="form-group categories">
-                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bedrooms">
+                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bedrooms1">
                                                                                 <option value="">Bedrooms</option>
                                                                                 <option value="1">1</option>
                                                                                 <option value="2">2</option>
@@ -106,7 +106,7 @@
                                                                     <!-- Form Bathrooms -->
                                                                     <div class="form-group bath">
                                                                         <div class="form-group categories">
-                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bathrooms">
+                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bathrooms1">
                                                                                 <option value="">Bathrooms</option>
                                                                                 <option value="1">1</option>
                                                                                 <option value="2">2</option>
@@ -145,7 +145,7 @@
                                                                         @foreach ($feature as $value )
                                                                         <div class="col-lg-6">
 
-                                                                            <input style="position:absolute;left: 20px;top: 7px;" id="check-2" type="checkbox" name="check">
+                                                                            <input style="position:absolute;left: 20px;top: 7px;" id="check-2" type="checkbox" name="check1">
                                                                             <label  for="check-2">{{ $value->name }}</label>
 
 
