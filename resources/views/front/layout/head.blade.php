@@ -150,5 +150,7 @@
         scrollbar-color: rebeccapurple green;
         scrollbar-width: thin;
     }
-
+    .header-user-menu ul li a:hover{
+        color: #FF385C;
+    }
 </style>
