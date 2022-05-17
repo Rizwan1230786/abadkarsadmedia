@@ -27,8 +27,6 @@ class ProjectsController extends Controller
     }
     public function create(Request $request)
     {
-
-
         $feature = Features::all();
         $categories = Category::with('SubCategory')->get();
         $investor = Investor::all();

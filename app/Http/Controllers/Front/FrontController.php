@@ -202,8 +202,10 @@ class FrontController extends Controller
         $agent = Agent::all();
         $images = Image::all();
         $Check_facility = Property_facilities::all();
+        
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "property")->first();
-        return view('front.pages.property_detail', compact('properties', 'assign', 'agent', 'images','meta'));
+        return view('front.pages.property_detail', compact('properties', 'assign', 'agent', 'images','meta','data'));
     }
     public function search_city_area_base_property($slug1, $slug2)
     {
