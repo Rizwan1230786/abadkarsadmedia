@@ -87,7 +87,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->hasfile('image') !== null) {
+        if ($request->hasfile('image')) {
             $data = Blog::find($id);
             $oldimage = public_path('storage/' . $data->image);
             if (File::exists($oldimage)) {

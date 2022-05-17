@@ -50,9 +50,10 @@ class FrontController extends Controller
     public function project()
     {
         $project = Projects::paginate(4);
+        $count = Projects::all()->count();
         $meta = Webpages::Where("page_title", "project")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.project', compact('project', 'meta', 'data'));
+        return view('front.pages.project', compact('project', 'meta', 'data','count'));
     }
     public function agent()
     {
@@ -66,6 +67,7 @@ class FrontController extends Controller
         $agents = Agent::where('id', $id)->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $property = Property::all();
+        $meta = Webpages::Where("page_title", "home")->first();
         return view('front.pages.agent_detail', get_defined_vars());
     }
     public function agency()
