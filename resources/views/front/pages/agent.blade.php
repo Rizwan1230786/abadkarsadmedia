@@ -156,33 +156,17 @@
                                     </div>
                                     <div class="widget-boxed-body">
                                         <div class="recent-post">
-                                            <div class="recent-main">
-                                                <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-1.jpg') }}" alt=""></a>
-                                                </div>
-                                                <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                    <p>$230,000</p>
-                                                </div>
-                                            </div>
+                                            @foreach($property as $val)
                                             <div class="recent-main my-4">
                                                 <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-2.jpg') }}" alt=""></a>
+                                                    <a href="{{ url('/property', $val->url_slug) }}"><img src="{{ asset('assets/images/properties/' . $val->image) }}" alt="No Image"></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                    <p>$230,000</p>
+                                                    <a href="blog-details.html"><h6>{{$val->title}}</h6></a>
+                                                    <p>RS-{{$val->price}}</p>
                                                 </div>
                                             </div>
-                                            <div class="recent-main">
-                                                <div class="recent-img">
-                                                    <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-3.jpg') }}" alt=""></a>
-                                                </div>
-                                                <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                    <p>$230,000</p>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
