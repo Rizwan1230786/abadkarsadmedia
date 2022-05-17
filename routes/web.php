@@ -253,6 +253,7 @@ Route::prefix('user')->group(function () {
         ///////////end//////////
         Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
     });
+    Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });
 /////end front
 

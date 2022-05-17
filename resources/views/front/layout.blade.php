@@ -16,6 +16,7 @@
         @include('front.layout.footer')
         @include('front.layout.scripitis')
         @include('front.layout.regestertheamjequery')
+        @include('front.layout.toaster')
     </div>
 </body>
 
