@@ -51,6 +51,12 @@ class AddProprtyController extends Controller
     }
     public function submit(addProperty $request)
     {
+        if ($request->email1 == null) {
+            $request->validate([
+                'CaptchaCode' => 'required|valid_captcha',
+
+            ]);
+        }
         $data = $request->all();
         if ($data['email'] || $data['email1'] ?? '') {
             $user = Customeruser::where('email', $data['email1'])->first();

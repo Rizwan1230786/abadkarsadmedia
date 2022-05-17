@@ -30,21 +30,21 @@ class addProperty extends FormRequest
             'password1' =>  'required_without_all:email,password',
             'firstname' => 'required_without_all:email1,password1',
             'lastname' => 'required_without_all:email1,password1',
-            'address' => 'required',
             'city_name' => 'required',
             'area_id' => 'required',
             'title' => 'required',
             'description' => 'required',
             'price' => 'required',
             'unit' => 'required',
-            'type' => 'required',
             'contact' => 'required_without_all:email1,password1',
             'image' => 'required',
             'front_dim' => 'required',
             'back_dim' => 'required',
             'land_area' => 'required',
             'is_expired' => 'required',
-            'CaptchaCode' => 'required|valid_captcha'
+            'category_id' => 'required',
+            'subcat_id' => 'required',
+            'property_purpose' => 'required'
         ];
     }
     public function messages()
@@ -56,21 +56,21 @@ class addProperty extends FormRequest
             'email1.required_without_all' => __('The email field is required.'),
             'firstname.required_without_all' => __('Users firstname is required.'),
             'lastname.required_without_all' => __('Users lastname is required.'),
-            'address.required' => __('Address is required.'),
             'city_name.required' => __('City Name is required.'),
             'area_id.required' => __('Area name is required.'),
             'title.required' => __('Title is required.'),
             'description.required' => __('Description is required.'),
             'price.required' => __('Price is required.'),
             'unit.required' => __('Unit is required.'),
-            'type.required' => __('Property type is required.'),
             'contact.required_without_all' => __('Contact number is required.'),
             'image.required' => __('Images are required.'),
             'front_dim.required' => __('House front dimenssion is required.'),
             'back_dim.required' => __('House back dimenssion is required.'),
             'land_area.required' => __('House area siza is required.'),
             'is_expired.required' => __('Property expiry duration is required.'),
-            'CaptchaCode.required' => 'Valid Captcha code is required.'
+            'category_id.required' => 'Please select any category name.',
+            'subcat_id.required' => 'Please select any sub-category name.',
+            'property_purpose.required' => 'Please select Rent or Sale.',
         ];
     }
 }

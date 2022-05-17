@@ -92,6 +92,9 @@
                                             <input type="radio" class="radio" name="property_purpose" id="two" value="for_sale">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
+                                        @if ($errors->has('property_purpose'))
+                                        <div class="error">{{ $errors->first('property_purpose') }}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-8 col-md-12 dropdown faq-drop">
                                         <div class="property-form-group">
@@ -112,9 +115,15 @@
                                                     <option value="sale">Sale</option>
                                                 </select> --}}
                                                 </div>
+                                                @if ($errors->has('category_id'))
+                                                <div class="error">{{ $errors->first('category_id') }}</div>
+                                                @endif
                                             </div>
                                             <div class="row cat_data" style="margin-left: 20px;">
                                             </div>
+                                            @if ($errors->has('subcat_id'))
+                                            <div class="error">{{ $errors->first('subcat_id') }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-12">
