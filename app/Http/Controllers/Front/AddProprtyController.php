@@ -33,15 +33,8 @@ class AddProprtyController extends Controller
         return view('front.pages.userside.property.add_property', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
     public function myformAjax($id)
-
     {
-
-        $areas = DB::table("areas")
-
-            ->where("city_id", $id)
-
-            ->lists("name", "id");
-
+        $areas = DB::table("areas")->where("city_id", $id)->lists("name", "id");
         return json_encode($areas);
     }
     public function fetch_subtype(Request $request)
@@ -54,7 +47,6 @@ class AddProprtyController extends Controller
         if ($request->email1 == null) {
             $request->validate([
                 'CaptchaCode' => 'required|valid_captcha',
-
             ]);
         }
         $data = $request->all();

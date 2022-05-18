@@ -217,7 +217,6 @@ class FrontController extends Controller
 
         return view('front.pages.property', compact('property', 'meta', 'data', 'area_search_property'));
     }
-
     public function blog()
     {
         $blog = Blog::paginate(4);
@@ -259,7 +258,6 @@ class FrontController extends Controller
     {
         return view('front.pages.coming_soon');
     }
-
     public function project_detail($provider)
     {
         $projectid = Projects::where('url_slug', '=', $provider)->first();
@@ -274,7 +272,6 @@ class FrontController extends Controller
         $images = Project_image::all();
         return view('front.pages.project_detail', compact('project', 'assign', 'agent', 'agencies', 'images'));
     }
-
     public function list($slug)
     {
         dd($slug);
@@ -295,7 +292,6 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $category = Category::all();
-
         if ($request->type == null) {
             $request->type = $request->type1;
         }
