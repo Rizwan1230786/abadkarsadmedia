@@ -1,0 +1,44 @@
+.right-section-zone {
+    padding: 0px 10px;
+    text-align: justify;
+}
+
+.right-section-zone h4 {
+    color: black;
+}
+
+.row-filters {
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.row-filters select {
+    width: 175px;
+    height: 28px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.zone-label {
+    margin-right: 5px;
+}
+
+.ml-50 {
+    margin-left: 50px;
+}
+
+.zone_locations {
+    clear: both;
+    margin-left: 15px;
+}
+
+.zone_locations ul li {
+    line-height: 22px;
+    /*color:;*/
+    font-size: 12px;
+}
+
+.zone_locations ul li:nth-child(2n) {
+    background-color: #efefef;
+}

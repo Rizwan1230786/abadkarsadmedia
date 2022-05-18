@@ -1,0 +1,213 @@
+#adCompaignEdit {
+    float: left;
+    width: 650px;
+    margin: 5px;
+}
+
+#innerListBanner {
+    width: 100%;
+    border: 0px;
+    padding: 0px 0px 0px 1%;
+    clear: both;
+}
+
+#innerListBanner span {
+    color: #000000;
+    margin: 1px;
+    font-size: 11px;
+    line-height: 80px;
+    float: left;
+}
+
+.adCompaign {
+    border: 1px solid #CCCCCC;
+    float: left;
+    width: 750px;
+}
+
+#titlebarPay {
+    width: 730px;
+    border: 0px;
+    padding: 0px 0px 0px 5px;
+    clear: both;
+}
+
+#titlebarPay span {
+    background: #386932;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 17px;
+    float: left;
+}
+
+#innerListsComp {
+    width: 730px;
+    border: 0px;
+    padding: 0px 0px 0px 5px;
+    clear: both;
+}
+
+#innerListsComp span {
+    float: left;
+    /*margin:1px;*/
+    margin: 0px 0px 0px 0px;
+    font-size: 11px;
+    line-height: 20px;
+}
+
+#innerListsComp label {
+    margin: 1px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+#innerListComp {
+    width: 650px;
+    border: 0px;
+    padding: 0px 0px 0px 1%;
+}
+
+#innerListComp span {
+    float: left;
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+#innerListCompC {
+    width: 650px;
+    border: 0px;
+    padding: 0px 0px 0px 1%;
+}
+
+#innerListCompC span {
+    float: none;
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+#innerListComp span.combox {
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+#innerListComp label {
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+.activeCamp {}
+
+.pausedCamp {}
+
+.editedCamp {}
+
+.pendingCamp {}
+
+.expiredCamp {
+    color: #FF0000;
+}
+
+.delCamp {
+    color: #FF0000;
+}
+
+.rejectCamp {
+    color: #FF0000;
+}
+
+.cls_Active {
+    color: #599F55;
+}
+
+.cls_Paused {
+    color: #000000;
+}
+
+.cls_Edited {
+    color: #000000;
+}
+
+.cls_Pending {
+    color: #000000;
+}
+
+.cls_Expired {
+    color: #FF0000;
+}
+
+.cls_Deleted {
+    color: #FF0000;
+}
+
+.cls_Rejected {
+    color: #FF0000;
+}
+
+#innerListsCompDel {
+    width: 720px;
+    border: 0px;
+    padding: 2px;
+}
+
+#innerListsCompDel span {
+    float: left;
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+#innerListsCompDel label {
+    margin: 1px;
+    font-size: 11px;
+    line-height: 25px;
+}
+
+#gallerytabs {
+    clear: both;
+    margin: 2% 0px 0px 0px;
+}
+
+#gallerytabs ul {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 20px;
+}
+
+#gallerytabs ul li {
+    background: url(../../images/common/unselected_large.jpg) no-repeat;
+    margin: 0px 10px 0px 0px;
+    display: block;
+    float: left;
+    width: 140px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+#gallerytabs ul li.selected {
+    background: url(../../images/common/selected_large.jpg) no-repeat;
+    margin: 0px 10px 0px 0px;
+    display: block;
+    float: left;
+    width: 140px;
+    height: 20px;
+    font-weight: bold;
+}
+
+#gallerytabs ul li a,
+#gallerytabs ul li A:link,
+#gallerytabs ul li A:active,
+#gallerytabs ul li A:visited {
+    position: relative;
+}
+
+#gallerytabs ul li.selected a {
+    position: relative;
+    color: #FFFFFF;
+}

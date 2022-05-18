@@ -258,7 +258,10 @@ Route::prefix('user')->group(function () {
 
         ////Property Management
         Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
-        
+        ///////inventory search////////
+        Route::get('/inventory_search', [PropertyManagementController::class, 'inventory_search'])->name('inventory_search');
+
+
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

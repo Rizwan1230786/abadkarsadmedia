@@ -1,31 +1,13 @@
+<link rel="shortcut icon" href="{{asset('userside')}}/favicon.ico">
+<link rel="stylesheet" href="https://assets.zameen.com/profolio/css/plugins1_25.css?v=5" type="text/css" />
 
-    <link rel="apple-touch-icon" href="{{ asset('/userside') }}/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/userside') }}/app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('userside')}}/css/profolio4_28.css?v=12" type="text/css" />
+<link rel="stylesheet" href="{{asset('userside')}}/css/add_property_single1_14.css?v=28" type="text/css">
+<link rel="stylesheet" href="{{asset('userside')}}/css/mybayut/campaign_css.css" type="text/css">
+<link rel="stylesheet" href="{{asset('userside')}}/css/featuredcontentglider.css" type="text/css">
+<script type="text/javascript" src="{{asset('userside')}}/javascript/featuredcontentglider.js"></script>
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/vendors/css/extensions/toastr.min.css">
-    <!-- END: Vendor CSS-->
-
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/bootstrap-extended.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/colors.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/themes/dark-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/themes/bordered-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/themes/semi-dark-layout.min.css">
-
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/core/menu/menu-types/horizontal-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/pages/dashboard-ecommerce.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/plugins/charts/chart-apex.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
-    <!-- END: Page CSS-->
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/userside') }}/assets/css/style.css">
-    @yield('css')
-    <!-- END: Custom CSS-->
+<link rel="stylesheet" href="{{asset('userside')}}/css/jquery-ui-1_5.css" type="text/css">
+<link rel="stylesheet" href="{{asset('userside')}}/css/datePicker.css" type="text/css" />
+<link rel="stylesheet" href="{{asset('userside')}}/lib/combo/combo1_6.css?v=1" type="text/css" />
+<link rel="stylesheet" href="{{asset('userside')}}/css/mapbox-gl.css" type="text/css">

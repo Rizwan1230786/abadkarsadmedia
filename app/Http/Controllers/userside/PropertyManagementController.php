@@ -22,4 +22,10 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.post_listing', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
+    public function inventory_search(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+
+        return view('userside.modules.property_management.inventory_search',get_defined_vars());
+    }
 }
