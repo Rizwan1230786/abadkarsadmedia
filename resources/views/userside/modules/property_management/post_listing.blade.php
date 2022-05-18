@@ -406,6 +406,7 @@
                                         <div class="col-md-12">
                                             <div class="prperty-submit-button">
                                                 <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="submit">Submit Property</button>
+                                                <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="button" onclick="window.location='{{ url()->previous() }}'">Back</button>
                                             </div>
                                         </div>
                                     </div>
