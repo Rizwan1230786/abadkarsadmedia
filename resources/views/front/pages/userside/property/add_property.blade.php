@@ -605,8 +605,4 @@
 <script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
 <script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
 <script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
-
-
-
-
 @endsection
