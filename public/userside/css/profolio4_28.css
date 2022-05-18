@@ -81,7 +81,7 @@
 #mybayut_tabs li:visited,
 #mybayut_tabs li:active {
     border-bottom: 5px solid #FF385c;
-    background-color: #E7F3EF;
+    background-color: #FF385c;
 }
 
 #mybayut_tabs li a,
@@ -100,18 +100,23 @@
     padding: 0px 10px 6px 9px;
     box-sizing: border-box;
 }
+#mybayut_tabs li a:active{
+    text-decoration: none;
+    color: white !important;
+}
 
 #mybayut_tabs li a:hover {
     text-decoration: none;
+    color: white !important;
 }
 
 #mybayut_tabs #current,
 #mybayut_tabs li:hover {
-    background-color: #E7F3EF !important;
+    background-color: #FF385c !important;
     border-bottom: 5px solid #FF385c;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    color: #1f1f1f;
+    color: #fff;
 }
 
 #mytabs_search {

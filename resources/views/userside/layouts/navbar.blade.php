@@ -3,12 +3,11 @@
 		<div id="header_body" >
 			<ul>
 				<li class="z-logo-icon-header">
-					<a href="https://www.zameen.com/" rel="nofollow" id="header_home">Go to Zameen.com</a>
+					<a href="https://www.abadkar.com/" rel="nofollow" id="header_home">Go to abadkar.com</a>
 				</li>
-				<li class="z-email-icon-header">
-					jahanzaib.shakeel.75@gmail.com				</li>
+				<li class="z-email-icon-header">{{ Auth::guard('customeruser')->user()->email }}</li>
 				<li class="z-logout-icon-header">
-					<a href="{{asset('userside')}}/profolio/logout.php" id="" rel="nofollow">
+					<a href="{{asset('front')}}/profolio/logout.php" id="" rel="nofollow">
 						Logout					</a>
 				</li>
 			</ul>
@@ -16,7 +15,7 @@
 	</div>
 
 	<a href="{{asset('userside')}}/profolio/">
-	<div id="headerleftcorner" style="background:url('{{asset('userside')}}/images/common/logo_software.gif') 10px 0px no-repeat;"></div>
+	<div id="headerleftcorner"><img src="{{ asset('front/images/abadkar-logo.png') }}" alt="" width="150" style="margin-top: 1px;"></div>
 	</a>
 </div>
 
