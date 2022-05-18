@@ -1,0 +1,110 @@
+.expired_text {
+    color: #990033;
+}
+
+.alert2box {
+    padding: 5px;
+    width: 315px;
+    border: 1px #FF0000 solid;
+    background: #FBDBE0;
+    clear: both;
+}
+
+.tableHotProp {
+    float: left;
+    margin: 5px;
+    padding: 5px;
+    width: 400px;
+    border: 1px #CCCCCC solid;
+}
+
+.justBold {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.price_breakdown_div {
+    background-color: #EEEEEE;
+    font-size: 10px;
+    padding: 10px;
+    width: 500px;
+}
+
+.price_breakdown_div div {
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    padding: 5px 0px 5px 0px;
+}
+
+.price_breakdown_div div label {
+    display: block;
+    width: 30%;
+    float: left;
+    text-indent: 2px;
+}
+
+.price_breakdown_div .tprice {
+    display: block;
+    width: 109px;
+    float: left;
+    padding: 0px 2px;
+    margin-right: 35px;
+    border: 1px solid #CCCCCC;
+    background: #F9F9F9;
+    height: 16px;
+}
+
+.price_breakdown_div .price_span {
+    display: block;
+    width: 35%;
+    float: left;
+    padding: 0px 2px;
+    margin-right: 2px;
+    border: 1px solid #CCCCCC;
+    background: #F9F9F9;
+    height: 16px;
+}
+
+.price_breakdown_div #org_text {
+    display: block;
+    width: 35%;
+    float: left;
+    padding: 0px 2px;
+    height: 16px;
+    margin-right: 0px;
+    border: 1px solid #CCCCCC;
+    background: #F9F9F9;
+}
+
+.price_breakdown_div #btn_okprice {
+    cursor: pointer;
+}
+
+#div_show_breakdown {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background: #FFFFFF;
+}
+
+#shortlistings_search_heading {
+    font-size: 11px;
+    background-color: #386932;
+    color: #FFFFFF;
+    font-weight: bold;
+    width: 99%;
+    display: block;
+    float: left;
+    padding-bottom: 3px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+
+#shortlistings_search_heading span {
+    display: block;
+    float: left;
+    height: auto;
+    padding-top: 2px;
+    line-height: 13px;
+}

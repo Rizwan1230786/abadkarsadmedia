@@ -11,3 +11,4 @@
 <link rel="stylesheet" href="{{asset('userside')}}/css/datePicker.css" type="text/css" />
 <link rel="stylesheet" href="{{asset('userside')}}/lib/combo/combo1_6.css?v=1" type="text/css" />
 <link rel="stylesheet" href="{{asset('userside')}}/css/mapbox-gl.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/inventory_css1_3.css">

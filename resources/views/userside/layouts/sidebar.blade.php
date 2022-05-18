@@ -3,7 +3,7 @@
     <div id="leftcolumn">
         <div id="mybayut_menu">
             <span class="leftcolumheadings">Tools</span>
-            <a href="{{asset('userside')}}/profolio/index.php?tabs=2&section=inventory_search" class="leftcolumnlink">Inventory Search</a>
+            <a href="{{ url('user/inventory_search') }}" class="leftcolumnlink">Inventory Search</a>
             <a href="{{asset('userside')}}/profolio/index.php?tabs=2&section=add_property" class="leftcolumnlink">Post New Listing</a>
             <a href="{{asset('userside')}}/profolio/index.php?tabs=2&section=zone_details" class="leftcolumnlink">Zone Details</a>
             <a href="{{asset('userside')}}/profolio/index.php?tabs=2&section=listing_policy" class="leftcolumnlink">Listing Policy</a>

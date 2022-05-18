@@ -121,6 +121,11 @@
 <script src="{{asset('userside')}}/javascript/jquery.tools.min.js"></script>
 <script src="{{asset('userside')}}/javascript/jquery/jquery.tools.min1_1.js"></script>
 <script type='text/javascript' src='{{asset('userside')}}/javascript/m_jquery-ui-1_2.js'></script>
+<script type='text/javascript' src='{{asset('userside')}}/javascript/overlib/combo_
+19.js'></script>
+<script type='text/javascript' src='{{asset('userside')}}/javascript/mybayut/commonlisting_java3_35'></script>
+<script type='text/javascript' src='{{asset('userside')}}/javascript/mybayut/inventory_java4_17'></script>
+<script type='text/javascript' src='{{asset('userside')}}/javascript/lib/combo/combo_tm1_19'></script>
 <script>
 	var dataLayer = [];
 	dataLayer.push({
