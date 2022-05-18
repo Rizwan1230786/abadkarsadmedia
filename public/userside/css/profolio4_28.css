@@ -100,9 +100,8 @@
     padding: 0px 10px 6px 9px;
     box-sizing: border-box;
 }
-#mybayut_tabs li a:active{
-    text-decoration: none;
-    color: white !important;
+#mybayut_tabs #current{
+    color: #ffff;
 }
 
 #mybayut_tabs li a:hover {

@@ -37,7 +37,6 @@
 
         </style>
         @include('userside.layouts.navbar')
-        @include('userside.layouts.sidebar')
         @yield('main')
         @include('userside.layouts.footer')
         @include('userside.layouts.script')

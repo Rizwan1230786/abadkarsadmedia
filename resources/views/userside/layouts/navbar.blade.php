@@ -7,7 +7,7 @@
 				</li>
 				<li class="z-email-icon-header">{{ Auth::guard('customeruser')->user()->email }}</li>
 				<li class="z-logout-icon-header">
-					<a href="{{asset('front')}}/profolio/logout.php" id="" rel="nofollow">
+					<a href="{{ url('user/logout') }}" id="" rel="nofollow">
 						Logout					</a>
 				</li>
 			</ul>
