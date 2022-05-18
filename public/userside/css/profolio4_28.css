@@ -88,7 +88,7 @@
 #mybayut_tabs li a:link,
 #mybayut_tabs li a:active,
 #mybayut_tabs li a:visited {
-    color: #707070 !important;
+    color: #707070;
     background: transparent !important;
     text-align: left;
     font-weight: 600;
@@ -96,12 +96,12 @@
     line-height: 38px;
     margin-left: 0px !important;
     float: left;
-    color: #707070 !important;
+    color: #707070;
     padding: 0px 10px 6px 9px;
     box-sizing: border-box;
 }
-#mybayut_tabs #current{
-    color: #ffff;
+.active{
+    color: white !important;
 }
 
 #mybayut_tabs li a:hover {
