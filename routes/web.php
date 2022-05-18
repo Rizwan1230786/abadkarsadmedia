@@ -30,6 +30,7 @@ use App\Http\Controllers\admin\realestate\FeaturesController;
 use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\userside\PropertyManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -254,6 +255,10 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user/{id}', [FrontUserController::class, 'update_user'])->name('update_user');
         ///////////end//////////
         Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
+
+        ////Property Management
+        Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
+        
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

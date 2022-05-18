@@ -222,7 +222,7 @@
                             data-feather="search"></i><span data-i18n="Misc">Inventory Search</span></a>
 
                 </li>
-                <li><a class="nav-link d-flex btn btn-primary" style="height: 90%"  href="#" data-bs-toggle="dropdown"><i
+                <li><a class="nav-link d-flex btn btn-primary" style="height: 90%"  href="/user/post-listing"><i
                             data-feather="plus"></i><span data-i18n="Misc">Post Listing</span></a>
 
                 </li>
