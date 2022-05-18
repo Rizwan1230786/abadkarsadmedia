@@ -44,6 +44,9 @@ class AddProprtyController extends Controller
     }
     public function submit(addProperty $request)
     {
+        $request->validate([
+            'subcat_id' => 'required',
+        ]);
         if ($request->email1 == null) {
             $request->validate([
                 'CaptchaCode' => 'required|valid_captcha',

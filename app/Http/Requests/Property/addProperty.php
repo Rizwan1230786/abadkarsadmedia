@@ -43,7 +43,6 @@ class addProperty extends FormRequest
             'land_area' => 'required',
             'is_expired' => 'required',
             'category_id' => 'required',
-            'subcat_id' => 'required',
             'property_purpose' => 'required'
         ];
     }
@@ -69,7 +68,6 @@ class addProperty extends FormRequest
             'land_area.required' => __('House area siza is required.'),
             'is_expired.required' => __('Property expiry duration is required.'),
             'category_id.required' => 'Please select any category name.',
-            'subcat_id.required' => 'Please select any sub-category name.',
             'property_purpose.required' => 'Please select Rent or Sale.',
         ];
     }
