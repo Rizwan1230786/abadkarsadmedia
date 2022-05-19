@@ -357,7 +357,6 @@ class FrontController extends Controller
     {
 
         $category = Category::with('url_slugs')->get();
-
         $flats = Category::with('cities')->with('url_slugs')->get();
         $property = Property::where('status', 1)->limit(6)->get();
         $project = Projects::all();

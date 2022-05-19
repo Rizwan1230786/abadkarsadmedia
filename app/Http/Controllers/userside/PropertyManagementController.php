@@ -11,6 +11,7 @@ use App\Models\Property;
 use App\Models\State;
 use App\Models\Webpages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class PropertyManagementController extends Controller
 {
@@ -41,27 +42,70 @@ class PropertyManagementController extends Controller
         $box = $request->all();
         $data =  array();
         parse_str($box['data'], $data);
-        dd($data);
-        $data['area'] = Property::where(
-            [
-                'category_id' => $data['category_id'],
-                'subcat_id' => $data['category_id'],
-                'property_perpose' => $data['property_perpose'],
-                'area_size' => $data['size'],
-                'price' => $data['price'],
-                'location' => $data['location'],
-                // 'state_id' => $data['state_id'],
-                'city_name' => $data['city_id'],
-                'area_id' => $data['area_id'],
-                // 'member_ship' => $data['user_name'],
-                // 'id' => $data['id_or_ref'],
-                'date_from' => $data['date_from'],
-                'date_to' => $data['date_to'],
-                // 'user_id sy get karna' => $data['contact_person_name'],
-                // 'user_id sy get karna' => $data['contact_phone'],
-                // 'unit' => $data['h_areaunit'],
-            ]
-        )->get();
+
+        $user = Property::query();
+
+        // Search for a property based on their category name.
+        if (!empty($data['category_id'])) {
+            $data['category_id'] = Category::select('name')->where('id', $data['category_id'])->first();
+            $user->where('category', $data['category_id']->name);
+            if (!empty($data['subcat_id'])) {
+                $user->where(['subcat_id' => $data['subcat_id'], 'category' => $data['category_id']->name]);
+            }
+        }
+        // Search for a property based on their property_purpose or type.
+        if (!empty($data['property_perpose'])) {
+            $user->orwhere('type', $data['property_perpose']);
+        }
+        // Search for a property based on their area_size.
+        if (!empty($data['size'])) {
+            $user->orwhere('area_size', $data['size']);
+        }
+        // Search for a property based on their price.
+        if (!empty($data['price'])) {
+            $user->orwhere('price', $data['price']);
+        }
+        // Search for a property based on their location.
+        if (!empty($data['location'])) {
+            $user->where('location', $data['location']);
+        }
+        // Search for a property based on their state_id.
+        // if (Arr::has($data, 'state_id')) {
+        //     $user->where('state_id', $data['state_id']);
+        // }
+        // Search for a property based on their city_name.
+        if (Arr::has($data, 'city_name')) {
+            $user->where('city_name', $data['city_name']);
+        }
+        // Search for a property based on their area_id.
+        if (Arr::has($data, 'area_id')) {
+            $user->where('area_id', $data['area_id']);
+        }
+        // Search for a property based on their user_name.
+        // if (Arr::has($data, 'user_name')) {
+        //     $user->where('member_ship', $data['user_name']);
+        // }
+        // Search for a property based on their id_or_ref.
+        if (Arr::has($data, 'id_or_ref')) {
+            $user->orwhere('id', $data['id_or_ref']);
+        }
+        // Search for a property based on their date_from.
+        // if (Arr::has($data, 'date_from')) {
+        //     $user->whereDate('created_at', $data['date_from']);
+        // }
+        // Search for a property based on their date_to.
+        // if (Arr::has($data, 'date_to')) {
+        //     $user->whereDate('created_at', $data['date_to']);
+        // }
+        // Search for a property based on their contact_person_name.
+        // if (Arr::has($data, 'contact_person_name')) {
+        //     $user->where('user_id sy get karna', $data['contact_person_name']);
+        // }
+        // Search for a property based on their contact_person_name.
+        // if (Arr::has($data, 'contact_phone')) {
+        //     $user->where('user_id sy get karna', $data['contact_phone']);
+        // }
+        $data = $user->get();
         return response()->json($data);
     }
     public function post_listing()
