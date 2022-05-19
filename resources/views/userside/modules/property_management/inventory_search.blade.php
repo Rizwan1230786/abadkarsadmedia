@@ -1,6 +1,6 @@
 @extends('userside.layout')
 @section('main')
-<script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+
 <style>
 	.d-none {
 		display: none;
@@ -204,10 +204,9 @@
 			<div style="clear:both;"></div>
 		</div>
 		<!--action="https://profolio.zameen.com/profolio/includes/inventory_search/inventory_results.php"-->
-		<form name="frm_inventorysearch" id="frm_inventorysearch" class="frm_inventorysearch" method="post" action="?ajax=1&ajax_section=dash_prop_invent&ajax_action=get_inventory_search_list">
+		<form name="frm_inventorysearch" id="form_serializa" class="frm_inventorysearch" method="post" action="?ajax=1&ajax_section=dash_prop_invent&ajax_action=get_inventory_search_list">
 			<div id="search">
 				<div class="searchbox" style="padding:1%">
-					<input type="hidden" name="listing_platform" value="" id="dropdown-content-tab-inventory-input">
 					<div class="search_div">
 						<label class="search_label">Type</label>
 						<span>
@@ -228,7 +227,7 @@
 						<label class="search_label">Purpose</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="cm_combo style-update" width='100' id='type_n' name='property_perpose' onchange="" style='width: 100px;'>
 									<option value=''>Any</option>
 									<option value='for_sale'>Buy</option>
 									<option value='for_rent'>Rent</option>
@@ -240,7 +239,7 @@
 						<label class="search_label">Area</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="cm_combo style-update" width='100' id='type_n' name='size' onchange="" style='width: 100px;'>
 									<option value='0'>Any</option>
 									<option value='225'>Below 1 Marla</option>
 									<option value='225_1125'>1 to 5 Marla</option>
@@ -259,7 +258,7 @@
 						<label class="search_label">Price</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="cm_combo style-update" width='100' name='price' onchange="" style='width: 100px;'>
 									<option value=''>Any</option>
 									<option value='200000'>Under 200,000</option>
 									<option value='200000_500000'>200,000 to 500,000</option>
@@ -306,26 +305,19 @@
 						<label class="search_label">Users</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="cm_combo style-update" width='100' name='user_name' onchange="" style='width: 100px;'>
 									<option value='0'>Any</option>
-									<option value='225'>abadkar.com member</option>
-									<option value='225_1125' selected>{{auth()->user()->name}}</option>
+									<option value='member'>abadkar.com member</option>
+									<option value='user' selected>{{auth()->user()->firstname}}</option>
 								</select>
 							</div>
 						</span>
 					</div>
 					<div class="search_div">
-						<label class="search_label">ID or Ref</label>
-						<span>
-							<input type="text" id="txt_idref" name="txt_idref" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-						</span>
-						<div id="subtype_container" style="display:none;"></div>
-					</div>
-					<div class="search_div">
 						<label class="search_label">Construction Status</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='bulding_status' onchange="" style='width: 100px;'>
 									<option value='0'>Any</option>
 									<option value='Complete'>Complete</option>
 									<option value='Under Construction'>Under Construction</option>
@@ -334,9 +326,16 @@
 						</span>
 					</div>
 					<div class="search_div">
+						<label class="search_label">ID or Ref</label>
+						<span>
+							<input type="text" id="txt_idref" name="id_or_ref" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
+					</div>
+					<div class="search_div">
 						<label class="search_label">Listed Date</label>
 						<span style="width:45%">
-							<input type="date" id="txt_listed_date_from" name="txt_listed_date_from" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />&nbsp;&nbsp;To&nbsp;&nbsp;<input type="date" id="txt_listed_date_to" name="txt_listed_date_to" value="" data-value="1" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+							<input type="date" id="txt_listed_date_from" name="date_from" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />&nbsp;&nbsp;To&nbsp;&nbsp;<input type="date" id="txt_listed_date_to" name="date_to" value="" data-value="1" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
 						</span>
 						<div id="subtype_container" style="display:none;"></div>
 					</div>
@@ -344,7 +343,7 @@
 					<div class="search_div">
 						<label class="search_label">Contact Person</label>
 						<span>
-							<input type="text" id="txt_person_name" name="txt_person_name" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+							<input type="text" id="txt_person_name" name="contact_person_name" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
 						</span>
 						<div id="subtype_container" style="display:none;"></div>
 					</div>
@@ -352,7 +351,7 @@
 					<div class="search_div">
 						<label class="search_label">Contact Cell</label>
 						<span>
-							<input type="text" id="txt_cell" name="txt_cell" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+							<input type="text" id="txt_cell" name="contact_phone" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
 						</span>
 						<div id="subtype_container" style="display:none;"></div>
 					</div>
@@ -361,7 +360,7 @@
 						<label class="search_label">&nbsp;</label>
 						<span>
 							<!-- <a href="javascript:void(0)" name="sbsearch" id="sbsearch" onclick="submit_inventoryform();"><img src="/images/search_button1_1.png" border="0" /></a> -->
-							<a href="javascript:void(0)" name="sbsearch" id="sbsearch" class="search-box" onclick="submit_inventoryform();" style="background-color: #FF385c ;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
+							<a href="javascript:void(0)" name="sbsearch" id="form_submit" class="search-box"  style="background-color: #FF385c ;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
 						</span>
 					</div>
 					<br>
@@ -697,7 +696,10 @@
 						$('#subtype_select').html('<option value="">Any</option');
 						$('#subtype_select').removeClass('d-none');
 						$.each(result.subcat, function(key, value) {
-							$('#subtype_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+							$('#subtype_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -722,7 +724,10 @@
 						$('#location_select').html('<option value="">Any</option');
 						$('#location_select').removeClass('d-none');
 						$.each(result.state, function(key, value) {
-							$('#location_select').append('<option value="' + value.name + '">' + value.name + '<option>');
+							$('#location_select').append($('<option>', {
+								value: value.name,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -747,7 +752,10 @@
 						$('#state_select').html('<option value="">Any</option');
 						$('#state_select').removeClass('d-none');
 						$.each(result.city, function(key, value) {
-							$('#state_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+							$('#state_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -772,7 +780,38 @@
 						$('#city_select').html('<option value="">Any</option');
 						$('#city_select').removeClass('d-none');
 						$.each(result.area, function(key, value) {
-							$('#city_select').append('<option value="' + value.id + '">' + value.areaname + '<option>');
+							$('#city_select').append($('<option>', {
+								value: value.id,
+								text: value.areaname
+							}));
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- Form Submit -->
+	<script>
+		$(document).ready(function() {
+			$('#form_submit').on('click', function() {
+				var data = $('#form_serializa').serialize();
+				$.ajax({
+					url: "{{ url('user/fetch-data') }}",
+					type: "POST",
+					data: {
+						data: data,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#city_select').html('');
+						$('#city_select').html('<option value="">Any</option');
+						$('#city_select').removeClass('d-none');
+						$.each(result.area, function(key, value) {
+							$('#city_select').append($('<option>', {
+								value: value.id,
+								text: value.areaname
+							}));
 						});
 					}
 				});

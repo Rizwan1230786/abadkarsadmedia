@@ -263,6 +263,7 @@ Route::prefix('user')->group(function () {
         Route::post('/fetch-states', [PropertyManagementController::class, 'fetchState']);
         Route::post('/fetch-city', [PropertyManagementController::class, 'fetchCity']);
         Route::post('/fetch-area', [PropertyManagementController::class, 'fetchArea']);
+        Route::post('/fetch-data', [PropertyManagementController::class, 'fetchData']);
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');

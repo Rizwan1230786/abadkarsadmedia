@@ -20,16 +20,16 @@
 </div>
 
 <div id="mybayut_tabs">
-	<li><a href='/user/dashboard'>Dashboard</a></li>
-	<li><a href='/user/post-listing'>Property Management</a></li>
-	<li><a href='#'>Message Center</a></li>
-	<li><a href='#'>My Account & Profiles</a></li>
-	<li><a href='#'>Reports</a></li>
-	<li><a href='#'>Tools</a></li>
-	<li><a href='#'>Agency Staff</a></li>
-	<li><a href='#' class='client_n_leads'>Clients & Leads</a></li>
-	<li><a href='#'>Agency Website</a></li>
-	<li><a href='#'>Advertise</a></li>
+	<li><a id="navigation" href='/user/dashboard'>Dashboard</a></li>
+	<li><a id="navigation" href='#'>Property Management</a></li>
+	<li><a id="navigation" href='#'>Message Center</a></li>
+	<li><a id="navigation" href='#'>My Account & Profiles</a></li>
+	<li><a id="navigation" href='#'>Reports</a></li>
+	<li><a id="navigation" href='#'>Tools</a></li>
+	<li><a id="navigation" href='#'>Agency Staff</a></li>
+	<li><a id="navigation" href='#' class='client_n_leads'>Clients & Leads</a></li>
+	<li><a id="navigation" href='#'>Agency Website</a></li>
+	<li><a id="navigation" href='#'>Advertise</a></li>
 	<div class="clearfix"></div>
 </div>
 <div class="prop-nav left">
@@ -49,7 +49,26 @@
 		<a href="https://www.zameen.com/advertise/index.html" rel="nofollow" id="header_advertise" class="menu_list transparent advertise-icon icon-utl">Advertise</a>
 	</div>
 	<div class="right">
-		<a href="{{asset('userside')}}/profolio/index.php?tabs=2&section=inventory_search" class="menu_list invent_search_icon icon-utl">Inventory Search</a>
-		<a href="index.php?tabs=2&section=add_property" target="_self" class="menu_list post_list_icon icon-utl">Post Listing</a>
+		<a href="/user/inventory_search" class="menu_list invent_search_icon icon-utl">Inventory Search</a>
+		<a href="/user/post-listing" target="_self" class="menu_list post_list_icon icon-utl">Post Listing</a>
 	</div>
 </div>
+<script>
+	$(function() {
+		var current = location.pathname;
+		$("#navigation").each(function() {
+			var $this = $(this);
+			// if the current path is like this link, make it active
+			if ($this.attr('href').indexOf(current) !== -1) {
+				$this.parent().attr('id', 'current');
+				$this.addClass('active');
+			}
+		})
+	})
+	// $(document).ready(function() {
+	// 	$("li a").click(function() {
+	// 		$("li a").parent().attr('id', '');
+	// 		$(this).parent().attr('id', 'current');
+	// 	});
+	// });
+</script>

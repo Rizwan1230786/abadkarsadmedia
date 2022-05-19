@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Category;
 use App\Models\Cities;
 use App\Models\Features;
+use App\Models\Property;
 use App\Models\State;
 use App\Models\Webpages;
 use Illuminate\Http\Request;
@@ -37,12 +38,40 @@ class PropertyManagementController extends Controller
     }
     public function fetchCity(Request $request)
     {
-        $data['city'] = Cities::where('state',$request->state_id)->get();
+        $data['city'] = Cities::where('state', $request->state_id)->get();
         return response()->json($data);
     }
     public function fetchArea(Request $request)
     {
-        $data['area'] = Area::where('city_id',$request->city_id)->get();
+        $data['area'] = Area::where('city_id', $request->city_id)->get();
+        return response()->json($data);
+    }
+    public function fetchData(Request $request)
+    {
+        $box = $request->all();
+        $data =  array();
+        parse_str($box['data'], $data);
+        dd($data);
+        $data['area'] = Property::where(
+            [
+                'category_id' => $data['category_id'],
+                'subcat_id' => $data['category_id'],
+                'property_perpose' => $data['property_perpose'],
+                'area_size' => $data['size'],
+                'price' => $data['price'],
+                'location' => $data['location'],
+                // 'state_id' => $data['state_id'],
+                'city_name' => $data['city_id'],
+                'area_id' => $data['area_id'],
+                // 'member_ship' => $data['user_name'],
+                // 'id' => $data['id_or_ref'],
+                'date_from' => $data['date_from'],
+                'date_to' => $data['date_to'],
+                // 'user_id sy get karna' => $data['contact_person_name'],
+                // 'user_id sy get karna' => $data['contact_phone'],
+                // 'unit' => $data['h_areaunit'],
+            ]
+        )->get();
         return response()->json($data);
     }
 }
