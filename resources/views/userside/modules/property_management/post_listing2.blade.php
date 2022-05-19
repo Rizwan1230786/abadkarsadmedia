@@ -1004,4 +1004,650 @@
         </div>
     </div>
     </div>
+
+    <script type="text/javascript">
+        request_url = "{{ asset('userside') }}/profolio/includes/add_edit_property_single.php?ajax=1&id=0";
+        request_url_image = "{{ asset('userside') }}/profolio/includes/add_edit_property_single_image.php?ajax=1&id=0";
+        cat_combo_width = 210;
+        validate_fields = ["purpose", "wanted_for", "type", "city", "last_location", "name", "email", "title",
+            "description", "price", "area"
+        ];
+        config_options_data = {
+            "1": {
+                "8": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Flat #",
+                    "show_finance": 1
+                },
+                "9": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "11": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "12": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "13": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Office #",
+                    "show_finance": 1
+                },
+                "14": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Factory #",
+                    "show_finance": 1
+                },
+                "15": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Shop #",
+                    "show_finance": 1
+                },
+                "17": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Warehouse #",
+                    "show_finance": 1
+                },
+                "18": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Unit #",
+                    "show_finance": 1
+                },
+                "16": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Building #",
+                    "show_finance": 1
+                },
+                "19": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "20": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "21": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "22": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "23": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 0,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "24": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "25": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #",
+                    "show_finance": 1
+                },
+                "26": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 0,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "27": {
+                    "beds": 0,
+                    "baths": 0,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": "",
+                    "show_finance": 1
+                },
+                "": {
+                    "beds": 1,
+                    "baths": 1,
+                    "ow_status": 1,
+                    "oc_status": 1,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 1,
+                    "label": "House #",
+                    "show_finance": 1
+                }
+            },
+            "2": {
+                "all": {
+                    "rental": 1000
+                },
+                "8": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Flat #"
+                },
+                "9": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "11": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": ""
+                },
+                "12": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": ""
+                },
+                "13": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Office #"
+                },
+                "14": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Factory #"
+                },
+                "15": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Shop #"
+                },
+                "17": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 0,
+                    "label": "Warehouse #"
+                },
+                "18": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Unit #"
+                },
+                "16": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "Building #"
+                },
+                "19": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": ""
+                },
+                "20": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "21": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "22": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "23": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 0,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": ""
+                },
+                "24": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "25": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": "House #"
+                },
+                "26": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 0,
+                    "show_floor": 0,
+                    "show_plot": 0,
+                    "label": ""
+                },
+                "27": {
+                    "beds": 0,
+                    "baths": 0,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 0,
+                    "show_street": 1,
+                    "show_floor": 0,
+                    "show_plot": 1,
+                    "label": ""
+                },
+                "": {
+                    "beds": 1,
+                    "baths": 1,
+                    "oc_status": 0,
+                    "min_price": 10000,
+                    "show_unit": 1,
+                    "show_street": 1,
+                    "show_floor": 1,
+                    "show_plot": 1,
+                    "label": "House #"
+                }
+            },
+            "3": {
+                "8": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "9": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "11": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "12": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "13": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "14": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "15": {
+                    "beds": 0,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "17": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "18": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "16": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "19": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "20": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "21": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "22": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "23": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "24": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "25": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                },
+                "26": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "27": {
+                    "beds": 0,
+                    "baths": 0,
+                    "min_price": 10000
+                },
+                "": {
+                    "beds": 1,
+                    "baths": 1,
+                    "min_price": 10000
+                }
+            }
+        };
+        city_area_unit = {
+            "default": "Sq. Ft.",
+            "1": "Marla",
+            "2": "Square Yards",
+            "4": "Square Meters"
+        };
+        var agency_user_quota = {};
+        agency_user_quota[1001388906] = {
+            "name": "Muhammad Rizwan Akhtar",
+            "userid": "1001388906",
+            "unlimited_rent_listings": 0,
+            "premium_user": 0,
+            "auto_approve_listing": 0,
+            "hot_quota": 0,
+            "used_hot": 0,
+            "remaining_hot": 0,
+            "remaining_super_hot": 0,
+            "total_sale": 1,
+            "total_rent": 0,
+            "total_used": 1,
+            "quota_standard": 5,
+            "extended_basic": 5,
+            "remaining_total_qouta": 4,
+            "remaining_basic_1": 0,
+            "remaining_basic_2": 4,
+            "remaining_basic_3": 9999999
+        };
+        quota_array = {
+            "premium_user": 0,
+            "1": false,
+            "2": true,
+            "3": true
+        };
+        ajax_location_url = "{{ asset('userside') }}/v3/cache/js/locations";
+        ajax_cache_ver = "1652932691";
+        step_value = "1";
+        paths.images_css = this_domain + "/images/common";
+        mapbox_api = "pk.eyJ1IjoiZGV2emFtZWVuIiwiYSI6ImNrMXEzYWVzeDEwaTEzb3RpNGN3dm5xZWoifQ.8uE-PyKCVPtoyeMmNJsPWg";
+        default_area_unit = "Sq. Ft.";
+        var cuipplf = 0;
+        var is_new_olx_system = 0;
+        zone_city_id = "";
+        zn_cross_city_restriction = 0;
+        olx_cross_city_restriction = 0;
+        zn_quota_checkbox_enabled = 1;
+        olx_quota_checkbox_enabled = 1;
+    </script>
 @endsection
