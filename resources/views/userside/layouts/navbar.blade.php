@@ -21,7 +21,7 @@
 
 <div id="mybayut_tabs">
 	<li><a id="navigation" href='/user/dashboard'>Dashboard</a></li>
-	<li><a id="navigation" href='/user/post-listing'>Property Management</a></li>
+	<li><a id="navigation" href='#'>Property Management</a></li>
 	<li><a id="navigation" href='#'>Message Center</a></li>
 	<li><a id="navigation" href='#'>My Account & Profiles</a></li>
 	<li><a id="navigation" href='#'>Reports</a></li>
@@ -50,7 +50,7 @@
 	</div>
 	<div class="right">
 		<a href="/user/inventory_search" class="menu_list invent_search_icon icon-utl">Inventory Search</a>
-		<a href="index.php?tabs=2&section=add_property" target="_self" class="menu_list post_list_icon icon-utl">Post Listing</a>
+		<a href="/user/post-listing" target="_self" class="menu_list post_list_icon icon-utl">Post Listing</a>
 	</div>
 </div>
 <script>
