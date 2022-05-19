@@ -6,7 +6,7 @@
 {{-- jqueryy files --}}
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <script type='text/javascript' src='{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js'></script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript" ></script>
+<script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
 <script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
 {{-- end --}}
 <link rel="stylesheet" href="{{ asset('userside') }}/css/profolio4_28.css?v=12" type="text/css" />

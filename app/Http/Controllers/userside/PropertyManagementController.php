@@ -42,9 +42,7 @@ class PropertyManagementController extends Controller
         $box = $request->all();
         $data =  array();
         parse_str($box['data'], $data);
-
         $user = Property::query();
-
         // Search for a property based on their category name.
         if (!empty($data['category_id'])) {
             $data['category_id'] = Category::select('name')->where('id', $data['category_id'])->first();
@@ -67,46 +65,46 @@ class PropertyManagementController extends Controller
         }
         // Search for a property based on their location.
         if (!empty($data['location'])) {
-            $user->where('location', $data['location']);
-        }
-        // Search for a property based on their state_id.
-        // if (Arr::has($data, 'state_id')) {
-        //     $user->where('state_id', $data['state_id']);
-        // }
-        // Search for a property based on their city_name.
-        if (Arr::has($data, 'city_name')) {
-            $user->where('city_name', $data['city_name']);
-        }
-        // Search for a property based on their area_id.
-        if (Arr::has($data, 'area_id')) {
-            $user->where('area_id', $data['area_id']);
+            $user->orwhere('location', $data['location']);
+            // Search for a property based on their state_id.
+            if (!empty($data['state_id'])) {
+                // $user->orwhere(['state_id'=> $data['state_id'],'location', $data['location']]);
+            }
+            // Search for a property based on their city_name.
+            if (!empty($data['city_id'])) {
+                // 'state_id'=> $data['state_id'],'location', $data['location']
+                $user->orwhere(['city_name' =>  $data['city_id'],]);
+            }
+            // Search for a property based on their area_id.
+            if (!empty($data['area_id'])) {
+                // 'state_id'=> $data['state_id'],'location', $data['location']
+                $user->orwhere(['area_id' =>  $data['area_id'], 'city_name' =>  $data['city_id'],]);
+            }
         }
         // Search for a property based on their user_name.
-        // if (Arr::has($data, 'user_name')) {
+        // if (!empty($data['user_name'])) {
         //     $user->where('member_ship', $data['user_name']);
         // }
         // Search for a property based on their id_or_ref.
-        if (Arr::has($data, 'id_or_ref')) {
+        if (!empty($data['id_or_ref'])) {
             $user->orwhere('id', $data['id_or_ref']);
         }
         // Search for a property based on their date_from.
-        // if (Arr::has($data, 'date_from')) {
-        //     $user->whereDate('created_at', $data['date_from']);
-        // }
-        // Search for a property based on their date_to.
-        // if (Arr::has($data, 'date_to')) {
-        //     $user->whereDate('created_at', $data['date_to']);
-        // }
+        if (!empty($data['date_from'])) {
+            $from =  $data['date_from'];
+            $to =  $data['date_to'];
+            $user->WhereBetween('created_at', [$from, $to]);
+        }
+
         // Search for a property based on their contact_person_name.
-        // if (Arr::has($data, 'contact_person_name')) {
+        // if (!empty($data['contact_person_name])) {
         //     $user->where('user_id sy get karna', $data['contact_person_name']);
         // }
         // Search for a property based on their contact_person_name.
-        // if (Arr::has($data, 'contact_phone')) {
+        // if (!empty($data['contact_phone'])) {
         //     $user->where('user_id sy get karna', $data['contact_phone']);
         // }
-        $data = $user->get();
-        return response()->json($data);
+        return response()->json($user->get());
     }
     public function post_listing()
     {
@@ -118,7 +116,8 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.post_listing2', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
-    public function listing_policy(){
+    public function listing_policy()
+    {
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.listing_policy', compact('meta', 'data'));
