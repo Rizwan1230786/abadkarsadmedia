@@ -309,7 +309,7 @@
 								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
 									<option value='0'>Any</option>
 									<option value='225'>abadkar.com member</option>
-									<option value='225_1125' selected>{{auth()->user()->name}}</option>
+									<option value='225_1125' selected>{{auth()->user()->firstname}}</option>
 								</select>
 							</div>
 						</span>
