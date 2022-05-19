@@ -1,5 +1,4 @@
 @extends('userside.layout')
 @section('main')
-  @include('userside.layouts.sidebar')
-
+    <h1>user panel Devwloping Modd</h1>
 @endsection
