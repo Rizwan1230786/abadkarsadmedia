@@ -697,7 +697,10 @@
 						$('#subtype_select').html('<option value="">Any</option');
 						$('#subtype_select').removeClass('d-none');
 						$.each(result.subcat, function(key, value) {
-							$('#subtype_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+							$('#subtype_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -722,7 +725,10 @@
 						$('#location_select').html('<option value="">Any</option');
 						$('#location_select').removeClass('d-none');
 						$.each(result.state, function(key, value) {
-							$('#location_select').append('<option value="' + value.name + '">' + value.name + '<option>');
+							$('#location_select').append($('<option>', {
+								value: value.name,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -747,7 +753,10 @@
 						$('#state_select').html('<option value="">Any</option');
 						$('#state_select').removeClass('d-none');
 						$.each(result.city, function(key, value) {
-							$('#state_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+							$('#state_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
 						});
 					}
 				});
@@ -772,7 +781,10 @@
 						$('#city_select').html('<option value="">Any</option');
 						$('#city_select').removeClass('d-none');
 						$.each(result.area, function(key, value) {
-							$('#city_select').append('<option value="' + value.id + '">' + value.areaname + '<option>');
+							$('#city_select').append($('<option>', {
+								value: value.id,
+								text: value.areaname
+							}));
 						});
 					}
 				});
