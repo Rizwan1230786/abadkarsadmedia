@@ -122,4 +122,10 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.listing_policy', compact('meta', 'data'));
     }
+    public function zone_detail(){
+        $city = Cities::all();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.property_management.zone_detail', get_defined_vars());
+    }
 }

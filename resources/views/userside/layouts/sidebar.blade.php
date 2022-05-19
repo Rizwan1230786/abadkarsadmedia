@@ -4,7 +4,7 @@
             <span class="leftcolumheadings">Tools</span>
             <a href="{{ url('/user/inventory_search') }}" class="leftcolumnlink">Inventory Search</a>
             <a href="{{ url('/user/post-listing') }}" class="leftcolumnlink">Post New Listing</a>
-            <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=zone_details"
+            <a href="{{ url('user/zone_detail') }}"
                 class="leftcolumnlink">Zone
                 Details</a>
             <a href="/user/listing_policy"

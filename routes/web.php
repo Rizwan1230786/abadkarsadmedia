@@ -259,6 +259,7 @@ Route::prefix('user')->group(function () {
         ////Property Management
         Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
         Route::get('/listing_policy', [PropertyManagementController::class, 'listing_policy'])->name('listing_policy');
+        Route::get('/zone_detail', [PropertyManagementController::class, 'zone_detail'])->name('zone_detail');
         ///////inventory search////////
         Route::get('/inventory_search', [PropertyManagementController::class, 'inventory_search'])->name('inventory_search');
         Route::post('/fetch-states', [PropertyManagementController::class, 'fetchState']);

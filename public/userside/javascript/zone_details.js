@@ -25,6 +25,7 @@ function fetch_locs(page_no = 0, per_page = 20) {
         $.ajax({
             data: data,
             success: function(str) {
+                alert(data)
                 // console.log(str);
                 var html_locs = "<h3 style='margin-bottom: 20px; color:#00A651;letter-spacing: 0.3px;'>Areas in " + city_name + " " + " " + zone_name + " </h3>";
                 html_locs = html_locs + str
