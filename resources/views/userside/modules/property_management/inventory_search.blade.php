@@ -1,6 +1,11 @@
 @extends('userside.layout')
 @section('main')
 <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+<style>
+	.d-none {
+		display: none;
+	}
+</style>
 
 <body>
 
@@ -207,7 +212,7 @@
 						<label class="search_label">Type</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cat cm_combo style-update" width='100' name='type' style='width: 100px;'>
+								<select class="cat cm_combo style-update" width='100' name='category_id' style='width: 100px;'>
 									<option value=''>Any</option>
 									@foreach($category as $val)
 									<option value='{{$val->id}}'>{{$val->name}}</option>
@@ -215,7 +220,9 @@
 								</select>
 							</div>
 						</span>
-						<div id="subtype_container"></div>
+						<div id="subtype_container"><select id="subtype_select" class="cm_combo style-update d-none" width="100" name="subcat_id" style="margin-left:20px ;">
+								<option value="">Any</option>
+							</select></div>
 					</div>
 					<div class="search_div">
 						<label class="search_label">Purpose</label>
@@ -269,12 +276,31 @@
 						<label class="search_label">Location</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
+								<select class="location cm_combo style-update" width='100' name='location' style='width: 100px;'>
 									<option value=''>Any</option>
 									<option value='pakistan'>Pakistan</option>
 								</select>
 							</div>
 						</span>
+						<!-- State Picker -->
+						<span>
+							<div id="State_container"><select id="location_select" class="state cm_combo style-update d-none" width="100" name="state_id" style="margin-left:20px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
+						<!-- City Picker -->
+						<span>
+							<div id="City_container"><select id="state_select" class="city cm_combo style-update d-none" width="100" name="city_id" style="margin-left:20px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
+						<!-- Area Picker -->
+						<span>
+							<div id="Area_container"><select id="city_select" class="cm_combo style-update d-none" width="100" name="area_id" style="margin-left:40px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
+
 					</div>
 					<div class="search_div">
 						<label class="search_label">Users</label>
@@ -667,11 +693,86 @@
 					},
 					dataType: 'json',
 					success: function(result) {
+						$('#subtype_select').html('');
+						$('#subtype_select').html('<option value="">Any</option');
+						$('#subtype_select').removeClass('d-none');
 						$.each(result.subcat, function(key, value) {
-							$('#subtype_container').html('');
-							$('#subtype_container').append(
-								'<select class="cat cm_combo style-update" width="100" name="type"> <option value="">Any<option>/select>'
-							);
+							$('#subtype_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- State picker -->
+	<script>
+		$(document).ready(function() {
+			$('.location').on('change', function() {
+				var cat_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-states') }}",
+					type: "POST",
+					data: {
+						cat_id: cat_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#location_select').html('');
+						$('#location_select').html('<option value="">Any</option');
+						$('#location_select').removeClass('d-none');
+						$.each(result.state, function(key, value) {
+							$('#location_select').append('<option value="' + value.name + '">' + value.name + '<option>');
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- City picker -->
+	<script>
+		$(document).ready(function() {
+			$('.state').on('change', function() {
+				var state_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-city') }}",
+					type: "POST",
+					data: {
+						state_id: state_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#state_select').html('');
+						$('#state_select').html('<option value="">Any</option');
+						$('#state_select').removeClass('d-none');
+						$.each(result.city, function(key, value) {
+							$('#state_select').append('<option value="' + value.id + '">' + value.name + '<option>');
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- Area picker -->
+	<script>
+		$(document).ready(function() {
+			$('.city').on('change', function() {
+				var city_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-area') }}",
+					type: "POST",
+					data: {
+						city_id: city_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#city_select').html('');
+						$('#city_select').html('<option value="">Any</option');
+						$('#city_select').removeClass('d-none');
+						$.each(result.area, function(key, value) {
+							$('#city_select').append('<option value="' + value.id + '">' + value.areaname + '<option>');
 						});
 					}
 				});
