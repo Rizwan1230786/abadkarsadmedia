@@ -21,7 +21,7 @@
 
 <div id="mybayut_tabs">
 	<li><a href='/user/dashboard'>Dashboard</a></li>
-	<li><a href='#'>Property Management</a></li>
+	<li><a href='/user/post-listing'>Property Management</a></li>
 	<li><a href='#'>Message Center</a></li>
 	<li><a href='#'>My Account & Profiles</a></li>
 	<li><a href='#'>Reports</a></li>

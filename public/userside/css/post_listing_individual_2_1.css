@@ -1,0 +1,1374 @@
+/*Author: Irtaza Inam/ Profolio UI
+Team: Tech-Zameen
+Date: 14-01-2021
+Purpose: Post Listiong Individual
+Ticket ID: ZNWEB-7360
+*/
+
+body {
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.pull-left {
+    float: left;
+}
+
+.post-individual-listing-status {
+    display: block;
+    margin-top: 35px;
+    width: 100%;
+}
+
+.post-individual-listing-status .section-content .heading-cta {
+    width: 100%;
+}
+
+.post-individual-listing-status .section-content .heading-cta .heading h2 {
+    text-align: left;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    font-weight: 700;
+    position: relative;
+    top: 4px;
+}
+
+.post-individual-listing-status .section-content .property-cta .edit-property-btn {
+    padding: 8px 12px 8px 10px;
+    border-radius: 5px;
+    background-color: #00A651;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-align: left;
+    border: 0px;
+    border: 1px solid #00a651;
+    outline: none;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.post-individual-listing-status .section-content .property-cta .add-another-property {
+    padding: 8px 12px 8px 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: #00a651;
+    text-align: left;
+    border: 0px;
+    border: 1px solid #00a651;
+    outline: none;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.post-individual-listing-status .section-content .property-cta .goto-dashboard-btn {
+    padding: 8px 12px 8px 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: #00a651;
+    text-align: left;
+    border: 0px;
+    border: 1px solid #00a651;
+    outline: none;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.post-individual-listing-status .section-content .details-text {
+    margin-right: 70px;
+    width: 260px;
+}
+
+/*======================= Zameen Post Listing ==============================*/
+
+.post-individual-listing-status .property-status.individual {
+    margin-top: 40px;
+    border-radius: 6px;
+    height: auto;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary {
+    border: 1px solid #00A651;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits {
+    border: 1px solid #E6E6E6;
+    margin-top: 16px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits {
+    border: 1px solid #E6E6E6;
+    margin-top: 16px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary {
+    border: 1px solid #2874FF;
+    margin-top: 16px;
+}
+
+.post-individual-listing-status .property-status.individual .add-details {
+    padding: 20px 24px 20px 18px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.post-individual-listing-status .property-status.individual .add-details .logo.zameen-icon {
+    display: block;
+    margin-right: 70px;
+    position: relative;
+    top: 7px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .add-details .logo.zameen-icon img {
+    position: relative;
+    top: 2px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .add-details .logo.olx-icon img {
+    position: relative;
+    top: 2px;
+}
+
+.post-individual-listing-status .property-status.individual .add-details .logo.olx-icon {
+    display: block;
+    margin-right: 164px;
+    position: relative;
+    top: 7px;
+}
+
+.post-individual-listing-status .property-status.individual .add-details .logo {
+    display: block;
+    margin-right: 70px;
+    position: relative;
+    top: 7px;
+}
+
+.post-individual-listing-status .property-status.individual .add-details .logo.loader.olx-icon {
+    top: 11px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3 {
+    padding-left: 24px;
+    box-sizing: border-box;
+    color: #00a651;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0px;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-success {
+    color: #00A651 !important;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-detail {
+    color: #FF9D00 !important
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-error {
+    color: #D61715 !important;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-success:before {
+    position: absolute;
+    content: "";
+    background-image: url('https://assets.zameen.com/profolio/images/checked_status_page_inventory_zameen_list1_1.svg');
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-error:before {
+    background-image: url('https://assets.zameen.com/profolio/images/cross_icon_no_credits-available1_1.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.checked-detail:before {
+    background-image: url('https://assets.zameen.com/profolio/images/info_after_posting_under_review1_1.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 1px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.txt-olx-add:before {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+    background-image: url('https://assets.zameen.com/profolio/images/checked_status_page_inventory_olx_list1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.txt-olx-add.error-no-credit {
+    color: #E83A3A;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary .details-text h3 {
+    color: #2874FF;
+}
+
+.post-individual-listing-status .property-status.individual .details-text span {
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #707070;
+    display: inline-block;
+    padding-left: 24px;
+    margin-top: 4px;
+}
+
+.post-individual-listing-status .property-status.individual .status-category ul li {
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    font-weight: 700;
+    color: #A3A3A3;
+    width: 101px;
+    float: left;
+}
+
+.post-individual-listing-status .property-status.individual .status-category ul li:not(:last-child) {
+    margin-right: 14px;
+}
+
+.post-individual-listing-status .property-status.individual .status-category ul li span {
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    font-weight: 700;
+    color: #1F1F1F;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+/*========== Upgrate Property Content===============*/
+
+.post-individual-listing-status .property-status.individual .upgrade-property {
+    padding: 24px 12px;
+}
+
+.post-individual-listing-status .property-status.individual .upgrade-property h2 {
+    margin-bottom: 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    padding-left: 6px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing {
+    padding: 12px 16px 12px 12px;
+    background-color: #FAFAFA;
+    border-radius: 6px;
+    height: 67px;
+    box-sizing: border-box;
+}
+
+.property-listing.hot {
+    margin-top: 12px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li {
+    height: 44px;
+    float: left;
+    position: relative;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li:not(:last-child) {
+    margin-right: 63px;
+    width: 295px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li:nth-child(1) .info-after-posting.super_hot_listings_cls {
+    margin-right: 1px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary .property-listing.hot ul li:nth-child(1) .info-after-posting.hot_listings_cls {
+    margin-right: -10px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary .property-listing ul li:not(:last-child) {
+    width: 349px;
+    margin-right: 25px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary .property-listing ul li:nth-child(1) {
+    margin-right: 80px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li:nth-child(3) {
+    float: right
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li:nth-child(2),
+.post-individual-listing-status .property-status.individual.olx-primary .property-listing ul li:nth-child(2) {
+    width: 132px;
+    margin-right: 46px;
+}
+
+.type {
+    padding: 3px 7px 3px 7px;
+    color: #ffffff;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .type.superhot {
+    background-color: #D61715;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .type.featured {
+    background-color: #FFDD6A;
+    color: #1F1F1F;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing ul li .sell-text {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    color: #707070;
+    display: block;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .sp-credit-avail {
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #707070;
+    display: block;
+    padding: 0;
+    margin: 0px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .sp-count-credit {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    display: block;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .btn-status {
+    width: 185px;
+    border-radius: 6px;
+    border: 1px solid #E6E6E6;
+    padding: 6px 8px 6px 38px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    position: relative;
+    top: 7px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-superhot:before {
+    position: absolute;
+    content: "";
+    left: 17px;
+    right: auto;
+    width: 17px;
+    height: 17px;
+    top: 6px;
+    background-image: url('https://assets.zameen.com/profolio/images/unmark_status_page_superhot_icon1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-hot {
+    padding-left: 55px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-hot:before {
+    position: absolute;
+    content: "";
+    left: 33px;
+    right: auto;
+    width: 17px;
+    height: 17px;
+    top: 6px;
+    background-image: url('https://assets.zameen.com/profolio/images/unmark_status_page_hot_icon1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-featured {
+    padding-left: 47px;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-featured:before {
+    position: absolute;
+    content: "";
+    left: 22px;
+    right: auto;
+    width: 17px;
+    height: 17px;
+    top: 6px;
+    background-image: url('https://assets.zameen.com/profolio/images/featured_on_post_listing1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-superhot.marked,
+.post-individual-listing-status .property-status.individual .property-listing .mark-hot.marked,
+.post-individual-listing-status .property-status.individual .property-listing .mark-featured.marked {
+    background-color: #E7F3EF;
+    padding-left: 68px;
+    color: #00a651;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .mark-hot.marked {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .btn-status.marked:before {
+    position: absolute;
+    content: "";
+    left: 45px;
+    right: auto;
+    top: 7px;
+    background-image: url('https://assets.zameen.com/profolio/images/checked_status_page_inventory_zameen_list1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-individual-listing-status .property-status.individual .property-listing .btn-status.mark-hot.marked:before {
+    left: 60px;
+}
+
+/*=============== NO credits olx ============== */
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .add-details {
+    border-bottom: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .details-text {
+    margin-right: 124px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.txt-olx-add.error-no-credit:before {
+    background-image: url('https://assets.zameen.com/profolio/images/cross_icon_no_credits-available1_1.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .status-category .call-to-buy {
+    position: relative;
+    padding-left: 40px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .status-category .call-to-buy:before {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    right: auto;
+    content: "";
+    background-image: url('https://assets.zameen.com/profolio/images/call_to_buy_olx_credits_icon1_1.svg');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .status-category .call-to-buy .text-credit {
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.post-individual-listing-status .property-status.individual.olx-primary.no-credits .status-category .call-to-buy .number-buy-quota {
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    display: block;
+    margin-top: 2px;
+}
+
+/* ================ NO Creditd Zameen ==================*/
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .add-details {
+    border-bottom: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .details-text {
+    margin-right: 20px;
+}
+
+.post-individual-listing-status .property-status.individual .details-text h3.txt-olx-add.error-no-credit:before {
+    background-image: url('https://assets.zameen.com/profolio/images/cross_icon_no_credits-available1_1.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 0px;
+}
+
+.info-after-posting {
+    background-image: url('https://assets.zameen.com/profolio/images/info_after_posting.svg');
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 27px;
+    right: 0px;
+    left: auto;
+    width: 17px;
+    height: 17px;
+}
+
+.info-after-posting.hot_listings_cls_olx {
+    right: -4px;
+}
+
+.info-after-posting.pending_listing_feature_msg {
+    right: 18px;
+    top: 15px;
+}
+
+@-moz-document url-prefix() {
+    .post-individual-listing-status .property-status.individual .property-listing .btn-status {
+        width: 190px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing ul li:not(:last-child) {
+        margin-right: 40px;
+    }
+    .post-individual-listing-status .property-status.individual.zameen-primary .property-listing ul li:nth-child(1) {
+        margin-right: 43px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing ul li:nth-child(1) {
+        width: 333px;
+    }
+    .post-individual-listing-status .property-status.individual.olx-primary .property-listing ul li:nth-child(1) {
+        width: 349px;
+    }
+    .post-individual-listing-status .property-status.individual.olx-primary .property-listing ul li:nth-child(2) {
+        margin-right: 25px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing ul li .sell-text {
+        font-weight: 500
+    }
+    .post-individual-listing-status .property-status.individual .property-listing ul li:nth-child(1) .info-after-posting.super_hot_listings_cls {
+        margin-right: 43px;
+    }
+    .post-individual-listing-status .property-status.individual.zameen-primary .property-listing.hot ul li:nth-child(1) .info-after-posting.hot_listings_cls {
+        margin-right: 33px;
+    }
+    .post-individual-listing-status .property-status.individual.post-propert-zameen .details-text {
+        margin-right: 90px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .post-individual-listing-status .property-status.individual.post-propert-olx .details-text {
+        margin-right: 130px;
+    }
+    .post-individual-listing-status .property-status.individual.zameen-primary.no-credits .details-text {
+        margin-right: 4px;
+    }
+}
+
+@supports (-webkit-hyphens:none) {
+    .post-individual-listing-status .property-status.individual .property-listing ul li .sell-text {
+        font-weight: 500;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing .mark-featured {
+        padding-left: 36px;
+        padding-right: 0px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing .mark-featured:before {
+        left: 14px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing .mark-superhot {
+        padding-left: 25px;
+        padding-right: 0px;
+    }
+    .post-individual-listing-status .property-status.individual .property-listing .mark-superhot:before {
+        left: 7px;
+    }
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .call-to-buy {
+    position: relative;
+    padding-left: 40px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .call-to-buy:before {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    right: auto;
+    content: "";
+    background-image: url('https://assets.zameen.com/profolio/images/call_to_buy_olx_credits_icon1_1.svg');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .call-to-buy .text-credit {
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .call-to-buy .number-buy-quota {
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: 'Lato', sans-serif;
+    color: #1F1F1F;
+    display: block;
+    margin-top: 2px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .buy-more-credits {
+    margin-top: 4px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .buy-more-credits button {
+    padding: 6px 10px 6px 31px;
+    background-color: #00A651;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #00a651;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    cursor: pointer;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .buy-more-credits button:before {
+    position: absolute;
+    content: "";
+    top: 6px;
+    left: 8px;
+    background-image: url('https://assets.zameen.com/profolio/images/post_listing_credit_box_buy_more_btn1_1.svg');
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 16px;
+}
+
+.post-individual-listing-status .property-status.individual.zameen-primary.no-credits .status-category .buy-more-credits span {
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0px 15px;
+    padding-top: 6px;
+    display: inline-block;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .add-details {
+    border-bottom: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .details-text {
+    margin-right: 130px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .details-text span {
+    padding-left: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .details-text h3.txt-olx-add.post-text {
+    color: #1F1F1F;
+    padding-left: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .details-text h3.txt-olx-add.post-text:before {
+    display: none;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .status-category .post-olx-btn {
+    cursor: pointer;
+    padding: 6px 64px 6px 36px;
+    border: 1px solid #2874FF;
+    border-radius: 4px;
+    color: #1F1F1F;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    margin-top: 4px;
+    position: relative;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-olx .status-category .post-olx-btn:after {
+    position: absolute;
+    content: "";
+    left: auto;
+    right: 36px;
+    background-image: url('https://assets.zameen.com/profolio/images/post_listing_credit_box_olx_logo1_1.svg');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 130px;
+    top: 9px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .add-details {
+    border-bottom: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen {
+    border: 1px solid #e6e6e6;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .details-text {
+    margin-right: 97px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .details-text span {
+    padding-left: 0px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .details-text h3.txt-olx-add.post-text {
+    color: #1F1F1F;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .details-text h3.txt-olx-add.post-text:before {
+    display: none;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .status-category .post-olx-btn {
+    cursor: pointer;
+    padding: 6px 122px 6px 13px;
+    border: 1px solid #4AA35A;
+    border-radius: 4px;
+    color: #1F1F1F;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    margin-top: 4px;
+    position: relative;
+}
+
+.post-individual-listing-status .property-status.individual.post-propert-zameen .status-category .post-olx-btn:after {
+    position: absolute;
+    content: "";
+    left: auto;
+    right: 22px;
+    background-image: url('https://assets.zameen.com/profolio/images/post_listing_credit_box_zlogo1_1.svg');
+    background-repeat: no-repeat;
+    width: 95px;
+    height: 14px;
+    top: 8px;
+}
+
+#full-body-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.platform-utl-credit-popup {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0px;
+    padding-bottom: 16px;
+    position: relative;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+    z-index: 10;
+    display: none;
+}
+
+.platform-utl-credit-popup .utl-heading-credit-popup {
+    text-align: left;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+    padding: 16px 0px 16px 20px;
+    border: 0px;
+    position: relative;
+}
+
+.platform-utl-credit-popup .utl-heading-credit-popup:after {
+    background-color: #E6E6E6;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+}
+
+.utl-icon-close {
+    position: absolute;
+    left: auto;
+    right: 20px;
+    content: "";
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("https://zameen-assets-prod-static.s3-eu-west-1.amazonaws.com/profolio/images/auto_utl_close_icon1_1.svg");
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.platform-utl-credit-popup .popup-content {
+    padding: 20px;
+}
+
+.platform-utl-credit-popup .popup-content h3 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+}
+
+.platform-utl-credit-popup .popup-content p {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+    margin-top: 4px;
+}
+
+.platform-utl-credit-popup .popup-content p.utl-continue-text {
+    text-align: left;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.utl-goback-btn {
+    background: transparent 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #747474;
+    padding: 10px 15px 11px 15px;
+    text-transform: capitalize;
+    border: 1px soild #111111;
+}
+
+.utl-confirm-btn {
+    background: #00A651 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    padding: 10px 83px 11px 84px;
+    text-transform: capitalize;
+    margin: 0px 20px 0px 20px;
+    border: 0px;
+    cursor: pointer;
+}
+
+.utl-box-content {
+    margin: 20px 20px 20px 20px;
+    float: left;
+}
+
+.utl-box-content p {
+    text-align: left;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+    margin: 0px;
+    padding: 0px;
+}
+
+.utl-mrtop20 {
+    margin-top: 20px !important;
+}
+
+.btn-stopage-popup {
+    text-align: right;
+    width: 100%;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+
+.table-utl-wrapper {
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #E6E6E6;
+    outline: none;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.field-error {
+    border: 1px solid red !important;
+}
+
+.utl-popup1 {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+.table-utl-wrapper {
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #E6E6E6;
+    outline: none;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.utl-table {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    opacity: 1;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border-collapse: collapse;
+}
+
+.utl-table th {
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 42px;
+    background-color: #E6E6E6;
+    padding: 7px 42px 8px 20px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 12px;
+    line-height: 17px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    font-weight: 600;
+}
+
+.utl-table tr td {
+    text-align: left;
+    padding: 11px 42px 11px 20px;
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'lato', sans-serif;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    font-weight: 600;
+}
+
+.utl-table tr:nth-child(odd) {
+    background-color: #F5F5F5;
+}
+
+.platform-utl-credit-popup .utl-table tr:nth-child(odd) {
+    background-color: #ffffff
+}
+
+.utl-table tr td.utl-superhot,
+.utl-table tr td.utl-hot,
+.utl-table tr td.mark-featured {
+    padding-left: 20px;
+}
+
+.utl-table tr td.mark-featured img,
+.utl-table tr td.utl-hot img,
+.utl-table tr td.utl-superhot img {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.utl-table tr td.mark-featured span,
+.utl-table tr td.utl-hot span,
+.utl-table tr td.utl-superhot span {
+    padding-left: 30px;
+}
+
+.utl-table tr td.utl-superhot:before {
+    left: 20px;
+}
+
+.utl-table tr td.utl-hot:before {
+    left: 20px;
+}
+
+.utl-table tr td.mark-featured:before {
+    left: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.post-list-popup {
+    border-radius: 8px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    left: 0;
+    right: 0;
+    width: 600px;
+    margin: auto;
+}
+
+.post-list-popup .close_btn {
+    position: absolute;
+    left: auto;
+    right: 26.7px;
+    top: 23.7px;
+    width: 12px;
+    height: 12px;
+    background-image: url('https://zameen-assets-prod-static.s3-eu-west-1.amazonaws.com/profolio/images/close_btn_credits_popup1_1.svg');
+    background-repeat: no-repeat;
+}
+
+.post-list-popup .content {
+    padding: 20px 20px 24px;
+}
+
+.post-list-popup .title {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    text-align: left;
+    padding: 18px 20px 16px;
+    color: #1F1F1F;
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.post-list-popup .title .type {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    text-align: left;
+    padding: 3px 11px 3px;
+    color: #ffffff;
+    position: relative;
+    top: -2px;
+    margin: 0px 5px;
+    border-radius: 6px;
+    font-family: 'Lato', sans-serif;
+}
+
+.post-list-popup.superhot .title .type {
+    background-color: #FC1B2E;
+}
+
+.post-list-popup.hot .title .type {
+    background-color: #F88700;
+    color: #ffffff;
+}
+
+.post-list-popup.featured .title .type {
+    background-color: #F9DD3B;
+    color: #000000;
+}
+
+â€‹ .post-list-popup .content .center-align {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+.post-list-popup .content .right-align {
+    text-align: right;
+    width: 100%;
+    margin: auto;
+}
+
+.post-list-popup .content .contact-details {
+    padding-left: 44px;
+    position: relative;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 700;
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+}
+
+.post-list-popup .content .contact-details:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-image: url('https://zameen-assets-prod-static.s3-eu-west-1.amazonaws.com/profolio/images/superhot_contact_icon_post_popup.svg');
+}
+
+.superhot-icon-popup {
+    /* position: absolute;content:"";top: 0;left: 0px;width:32px;height:32px;background-repeat: no-repeat; */
+    background-image: url('https://assets.zameen.com/profolio/images/unmark_status_page_superhot_icon1_1.sv');
+}
+
+.post-list-popup .content .contact-details span {
+    display: block;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 2px;
+    font-family: 'Lato', sans-serif;
+}
+
+.post-list-popup .discription {
+    text-align: left;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0px;
+    color: #1F1F1F;
+    font-weight: 400;
+}
+
+.post-list-popup .btn-buycredit {
+    background-color: #00a651;
+    text-align: center;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 10px 23px;
+    margin-top: 24px;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.before-hide:before {
+    display: none;
+}
+
+.transparent {
+    background: transparent !important;
+    color: #747474 !important;
+}
+
+/*======================= Olx Post Listing ==============================*/
+
+.property-status.olx-individual {
+    margin-top: 16px;
+    border: 1px solid #2874FF;
+    border-radius: 6px;
+    height: 239px;
+}
+
+#sum_confirm_txt {
+    font-weight: 700;
+}
+
+.platform-logo-client-zameen {
+    position: relative;
+    top: 2px;
+    margin-left: 4px;
+}
+
+.platform-logo-client-olx {
+    position: relative;
+    top: 4px;
+    margin-left: 3px;
+}
+
+.loader-olx {
+    display: inline-block;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    float: left;
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: 16px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #6BC4FC;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.label-loader {
+    text-align: left;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0px;
+    color: #1F1F1F;
+    opacity: 1;
+    font-family: 'lato', sans-serif;
+    font-weight: 600;
+    padding-top: 13px;
+    padding-left: 10px;
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
