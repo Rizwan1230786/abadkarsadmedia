@@ -1,5 +1,6 @@
 @extends('userside.layout')
 @section('main')
+<script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
 
 <body>
 
@@ -194,51 +195,6 @@
 					<option value='6750_7875'>30 to 35 Marla</option>
 					<option value='7875_9000'>35 to 40 Marla</option>
 				</select>
-				<div tabindex='0' id='hiddenMarla_combo' onmousedown='toggle_contaier("hiddenMarla_container");' onmouseout='setflag(0);' onblur='hc("hiddenMarla");' class='cm_combo style-update' style='width: 100px;  background-color:#FFFFFF; '>
-					<div id='hiddenMarla_combo_text' class='cm_combo_txt' style='width:80px;' onmouseout='setflag(0);' onblur='hc("hiddenMarla");'>Any</div>
-					<div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("hiddenMarla");'></div>
-				</div>
-				<div tabindex='0' id='hiddenMarla_container' onmouseover='setflag(1);' onmouseout='setflag(0);' onblur=hc("hiddenMarla"); style='display: none; z-index:1000; ' class='cm_container facebox'>
-					<div class='facebox_popup'>
-						<table style='width: 251px;'>
-							<tr>
-								<td class='facebox_tl' />
-								<td class='facebox_b' />
-								<td class='facebox_tr' />
-							</tr>
-							<tr>
-								<td class='facebox_b' />
-								<td class='facebox_body'>
-									<div class='facebox_content'>
-										<div>
-											<ul>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','0');  ">Any</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','225');  ">Below 1 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','225_1125');  ">1 to 5 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','1125_2250');  ">5 to 10 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','2250_3375');  ">10 to 15 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','3375_4500');  ">15 to 20 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','4500_5625');  ">20 to 25 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','5625_6750');  ">25 to 30 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','6750_7875');  ">30 to 35 Marla</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'hiddenMarla','7875_9000');  ">35 to 40 Marla</li>
-											</ul>
-											<div class='si'><input id='hiddenMarla_input1' onmouseover='setflag(1)' onblur='hc("hiddenMarla"); ' type='text' tabindex='0' /><label> to </label><input id='hiddenMarla_input2' onmouseover='setflag(1)' onblur='hc("hiddenMarla"); ' type='text' tabindex='0' /><img tabindex='0' border='0' src='https://profolio.zameen.com/gmaps/imgs/ok.gif' onmouseover='setflag(1)' onblur='hc("hiddenMarla");' onmousedown='add_select_option("hiddenMarla","hiddenMarla_input1","hiddenMarla_input2","","")' /> </div>
-										</div>
-									</div>
-
-								</td>
-								<td class='facebox_b' />
-							</tr>
-							<tr>
-								<td class='facebox_bl' />
-								<td class='facebox_b' />
-								<td class='facebox_br' />
-							</tr>
-
-						</table>
-					</div>
-				</div>
 			</div>
 			<div style="clear:both;"></div>
 		</div>
@@ -251,24 +207,24 @@
 						<label class="search_label">Type</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
-								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
-									<option value='0'>Any</option>
-									<option value='1'>Homes</option>
-									<option value='2'>Plots</option>
-									<option value='3'>Commercial</option>
+								<select class="cat cm_combo style-update" width='100' name='type' style='width: 100px;'>
+									<option value=''>Any</option>
+									@foreach($category as $val)
+									<option value='{{$val->id}}'>{{$val->name}}</option>
+									@endforeach
 								</select>
 							</div>
 						</span>
-						<div id="subtype_container" style="display:none;"></div>
+						<div id="subtype_container"></div>
 					</div>
 					<div class="search_div">
 						<label class="search_label">Purpose</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
 								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
-									<option value='0'>Any</option>
-									<option value='1'>Buy</option>
-									<option value='2'>Rent</option>
+									<option value=''>Any</option>
+									<option value='for_sale'>Buy</option>
+									<option value='for_rent'>Rent</option>
 								</select>
 							</div>
 						</span>
@@ -297,7 +253,7 @@
 						<span>
 							<div class='cm' style='width: 100px;  '>
 								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
-									<option value='0'>Any</option>
+									<option value=''>Any</option>
 									<option value='200000'>Under 200,000</option>
 									<option value='200000_500000'>200,000 to 500,000</option>
 									<option value='500000_750000'>500,000 to 750,000</option>
@@ -314,16 +270,8 @@
 						<span>
 							<div class='cm' style='width: 100px;  '>
 								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
-									<option value='0'>Any</option>
-									<option value='225'>Below 1 Marla</option>
-									<option value='225_1125'>1 to 5 Marla</option>
-									<option value='1125_2250'>5 to 10 Marla</option>
-									<option value='2250_3375'>10 to 15 Marla</option>
-									<option value='3375_4500'>15 to 20 Marla</option>
-									<option value='4500_5625'>20 to 25 Marla</option>
-									<option value='5625_6750'>25 to 30 Marla</option>
-									<option value='6750_7875'>30 to 35 Marla</option>
-									<option value='7875_9000'>35 to 40 Marla</option>
+									<option value=''>Any</option>
+									<option value='pakistan'>Pakistan</option>
 								</select>
 							</div>
 						</span>
@@ -352,7 +300,7 @@
 						<span>
 							<div class='cm' style='width: 100px;  '>
 								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='type_n' onchange="" style='width: 100px;'>
-								<option value='0'>Any</option>
+									<option value='0'>Any</option>
 									<option value='Complete'>Complete</option>
 									<option value='Under Construction'>Under Construction</option>
 								</select>
@@ -387,7 +335,7 @@
 						<label class="search_label">&nbsp;</label>
 						<span>
 							<!-- <a href="javascript:void(0)" name="sbsearch" id="sbsearch" onclick="submit_inventoryform();"><img src="/images/search_button1_1.png" border="0" /></a> -->
-							<a href="javascript:void(0)" name="sbsearch" id="sbsearch" class="search-box" onclick="submit_inventoryform();" style="background-color: #00a651;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
+							<a href="javascript:void(0)" name="sbsearch" id="sbsearch" class="search-box" onclick="submit_inventoryform();" style="background-color: #FF385c ;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
 						</span>
 					</div>
 					<br>
@@ -676,51 +624,6 @@
 					<option value='2000000_5000000'>2,000,000 to 5,000,000</option>
 					<option value='5000000'>over 5,000,000</option>
 				</select>
-				<div tabindex='0' id='price_n_combo' onmousedown='toggle_contaier("price_n_container");' onmouseout='setflag(0);' onblur='hc("price_n");' class='cm_combo style-update' style='width: 160px;  background-color:#FFFFFF; '>
-					<div id='price_n_combo_text' class='cm_combo_txt' style='width:140px;' onmouseout='setflag(0);' onblur='hc("price_n");'>Any</div>
-					<div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("price_n");'></div>
-				</div>
-				<div tabindex='0' id='price_n_container' onmouseover='setflag(1);' onmouseout='setflag(0);' onblur=hc("price_n"); style='display: none; z-index:1000; ' class='cm_container facebox'>
-					<div class='facebox_popup'>
-						<table style='width: 251px;'>
-							<tr>
-								<td class='facebox_tl' />
-								<td class='facebox_b' />
-								<td class='facebox_tr' />
-							</tr>
-							<tr>
-								<td class='facebox_b' />
-								<td class='facebox_body'>
-									<div class='facebox_content'>
-										<div>
-											<ul>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','0');  ">Any</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','200000');  ">Under 200,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','200000_500000');  ">200,000 to 500,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','500000_750000');  ">500,000 to 750,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','750000_1000000');  ">750,000 to 1,000,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','1000000_2000000');  ">1,000,000 to 2,000,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','2000000_5000000');  ">2,000,000 to 5,000,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','5000000');  ">over 5,000,000</li>
-											</ul>
-											<div class='si'><input id='price_n_input1' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><label> to </label><input id='price_n_input2' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><img tabindex='0' border='0' src='https://profolio.zameen.com/gmaps/imgs/ok.gif' onmouseover='setflag(1)' onblur='hc("price_n");' onmousedown='add_select_option("price_n","price_n_input1","price_n_input2","1000","Price should be in Thousands")' />
-												<div style='margin: 5px 0px 0px 3px;'>Price unit: PKR</div>
-											</div>
-										</div>
-									</div>
-
-								</td>
-								<td class='facebox_b' />
-							</tr>
-							<tr>
-								<td class='facebox_bl' />
-								<td class='facebox_b' />
-								<td class='facebox_br' />
-							</tr>
-
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div id='price_rent' style="display:none;">
@@ -734,51 +637,6 @@
 					<option value='300000_500000'>300,000 to 500,000</option>
 					<option value='500000'>Over 500,000</option>
 				</select>
-				<div tabindex='0' id='price_n_combo' onmousedown='toggle_contaier("price_n_container");' onmouseout='setflag(0);' onblur='hc("price_n");' class='cm_combo style-update' style='width: 160px;  background-color:#FFFFFF; '>
-					<div id='price_n_combo_text' class='cm_combo_txt' style='width:140px;' onmouseout='setflag(0);' onblur='hc("price_n");'>Any</div>
-					<div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("price_n");'></div>
-				</div>
-				<div tabindex='0' id='price_n_container' onmouseover='setflag(1);' onmouseout='setflag(0);' onblur=hc("price_n"); style='display: none; z-index:1000; ' class='cm_container facebox'>
-					<div class='facebox_popup'>
-						<table style='width: 251px;'>
-							<tr>
-								<td class='facebox_tl' />
-								<td class='facebox_b' />
-								<td class='facebox_tr' />
-							</tr>
-							<tr>
-								<td class='facebox_b' />
-								<td class='facebox_body'>
-									<div class='facebox_content'>
-										<div>
-											<ul>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','0');  ">Any</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','50000');  ">Under 50,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','50000_100000');  ">50,000 to 100,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','100000_150000');  ">100,000 to 150,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','150000_200000');  ">150,000 to 200,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','200000_300000');  ">200,000 to 300,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','300000_500000');  ">300,000 to 500,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','500000');  ">Over 500,000</li>
-											</ul>
-											<div class='si'><input id='price_n_input1' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><label> to </label><input id='price_n_input2' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><img tabindex='0' border='0' src='https://profolio.zameen.com/gmaps/imgs/ok.gif' onmouseover='setflag(1)' onblur='hc("price_n");' onmousedown='add_select_option("price_n","price_n_input1","price_n_input2","1000","Price should be in Thousands")' />
-												<div style='margin: 5px 0px 0px 3px;'>Price unit: PKR</div>
-											</div>
-										</div>
-									</div>
-
-								</td>
-								<td class='facebox_b' />
-							</tr>
-							<tr>
-								<td class='facebox_bl' />
-								<td class='facebox_b' />
-								<td class='facebox_br' />
-							</tr>
-
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div id='price_wanted' style="display:none;">
@@ -792,261 +650,33 @@
 					<option value='1000000_2000000'>1,000,000 to 2,000,000</option>
 					<option value='2000000'>Over 2,000,000</option>
 				</select>
-				<div tabindex='0' id='price_n_combo' onmousedown='toggle_contaier("price_n_container");' onmouseout='setflag(0);' onblur='hc("price_n");' class='cm_combo style-update' style='width: 160px;  background-color:#FFFFFF; '>
-					<div id='price_n_combo_text' class='cm_combo_txt' style='width:140px;' onmouseout='setflag(0);' onblur='hc("price_n");'>Any</div>
-					<div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("price_n");'></div>
-				</div>
-				<div tabindex='0' id='price_n_container' onmouseover='setflag(1);' onmouseout='setflag(0);' onblur=hc("price_n"); style='display: none; z-index:1000; ' class='cm_container facebox'>
-					<div class='facebox_popup'>
-						<table style='width: 251px;'>
-							<tr>
-								<td class='facebox_tl' />
-								<td class='facebox_b' />
-								<td class='facebox_tr' />
-							</tr>
-							<tr>
-								<td class='facebox_b' />
-								<td class='facebox_body'>
-									<div class='facebox_content'>
-										<div>
-											<ul>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','0');  ">Any</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','50000');  ">Under 50,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','50000_100000');  ">50,000 to 100,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','100000_200000');  ">100,000 to 200,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','200000_500000');  ">200,000 to 500,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','500000_1000000');  ">500,000 to 1,000,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','1000000_2000000');  ">1,000,000 to 2,000,000</li>
-												<li class='cli' id='c_li' onmouseover='lib(this)' onmouseout='liw(this)' onmousedown="liv(this,'price_n','2000000');  ">Over 2,000,000</li>
-											</ul>
-											<div class='si'><input id='price_n_input1' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><label> to </label><input id='price_n_input2' onmouseover='setflag(1)' onblur='hc("price_n"); ' type='text' tabindex='0' onkeyup="showPriceText(this);" onmousedown="showPriceText(this);display_stext('price_n'); " /><img tabindex='0' border='0' src='https://profolio.zameen.com/gmaps/imgs/ok.gif' onmouseover='setflag(1)' onblur='hc("price_n");' onmousedown='add_select_option("price_n","price_n_input1","price_n_input2","1000","Price should be in Thousands")' />
-												<div style='margin: 5px 0px 0px 3px;'>Price unit: PKR</div>
-											</div>
-										</div>
-									</div>
-
-								</td>
-								<td class='facebox_b' />
-							</tr>
-							<tr>
-								<td class='facebox_bl' />
-								<td class='facebox_b' />
-								<td class='facebox_br' />
-							</tr>
-
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="facebox" id="stext_facebox" style="display:none; position:absolute; z-index:1">
-			<div class="facebox_popup">
-				<table style="width:251px;">
-					<tr>
-						<td class='facebox_tl' />
-						<td class='facebox_b' />
-						<td class='facebox_tr' />
-					</tr>
-					<tr>
-						<td class='facebox_b' />
-						<td class='facebox_body'>
-							<div class='facebox_content' style="height:18px;">
-								<div name="stext" id="stext"></div>
-							</div>
-						</td>
-						<td class='facebox_b' />
-					</tr>
-					<tr>
-						<td class='facebox_bl' />
-						<td class='facebox_b' />
-						<td class='facebox_br' />
-					</tr>
-				</table>
 			</div>
 		</div>
 	</div>
 	<input type="hidden" id="h_lbl_value" name="h_lbl_value" value="" />
-
-
 	<script>
-		$('#txt_listed_date_from').dateinput({
-			format: 'dd/mm/yyyy',
-			speed: 'fast',
-			firstDay: 1,
-			offset: [5, 0]
-		});
-		$('#txt_listed_date_to').dateinput({
-			format: 'dd/mm/yyyy',
-			speed: 'fast',
-			firstDay: 1,
-			offset: [5, 0]
-		});
-		if ($(".cbox").html()) {
-			var category = 'UAE';
-			category = '';
-			if (category == '') {
-				category = ''
-			}
-			var price = '';
-			var sqft = '';
-			var beds = '';
-			var baths = '';
-
-
-			ChangeComboBox(category, price, sqft, beds, baths);
-
-		}
-		last_events('new_combo'); //------------------------------------------------- SET DYNAMIC EVENTS FOR CUSTOM COMBO---------------------------------------------------------------------------------
-	</script>
-	<style type="text/css">
-		.inventory-div-table {
-			padding: 1% 0px !important;
-		}
-	</style>
-	<div id="inventory_area">
-		<div class="box_title">
-			<div><b>Inventory Results</b></div>
-		</div>
-		<div id="inventory_div" class="inventory-div-table">
-			<div id="main_inventory" style="overflow:unset; ">
-				<div id="paginate_inventory" class="paginate_inventory">
-					<div><b>Total Listings Found: <span id="total_inventory"></span></b></div>
-				</div>
-				<div id="inventory_sort" class="inventory_sort">
-					<div style="width:85px; float:left;">
-						Show <select id="sl_numrow" class="sl_numrow">
-							<!-- <option value="10">10</option> -->
-							<option value="15">15</option>
-							<option value="30">30</option>
-							<option value="50">50</option>
-							<option value="100">100</option>
-							<option value="200">200</option>
-						</select>
-					</div>
-					<div style="width:273px !important; width:260px; float:left;">
-						&nbsp;listings with status&nbsp;
-						<input type="text" name="txt_status_option" id="txt_status_option" class="radius-4p" value="All" onclick="display_status_option();" readonly="readonly" />
-						<div id="div_status_option" style="display:none;">
-							<div>
-								<input class="role_input" type="checkbox" value="on" id="Active" checked />
-								<label style="position:relative; top:-2px;">Active</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="edited" id="Edited" checked />
-								<label style="position:relative; top:-2px;">Edited</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="expired" id="Expired" />
-								<label style="position:relative; top:-2px;">Expired</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="Pending" id="Pending" checked />
-								<label style="position:relative; top:-2px;">Pending</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="Deleted" id="Deleted" />
-								<label style="position:relative; top:-2px;">Deleted</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="Rejected" id="Rejected" />
-								<label style="position:relative; top:-2px;">Rejected</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="u" id="Uploaded" />
-								<label style="position:relative; top:-2px;">Uploaded</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="u_e" id=" Uploaded-Error" />
-								<label style="position:relative; top:-2px;"> Uploaded-Error</label>
-							</div>
-							<div>
-								<input class="role_input" type="checkbox" value="downgraded" id="Downgraded" />
-								<label style="position:relative; top:-2px;">Downgraded</label>
-							</div>
-
-						</div>
-					</div>
-
-					<div id="div_userselect">
-						<img class="go_filter" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
-					</div>
-				</div>
-
-				<div style="margin:15px 0px 3px 10px;">
-
-					<!-- <label style="float:right;"><input type="checkbox" name="chk_moreinfo" id="chk_moreinfo" style="padding:0px;margin:0px;position:relative;top:2px;" onclick="show_more_info('inventory_info');"  />&nbsp;Show more information</label> -->
-					Sort By&nbsp;
-					<select name="inventory_order" id="inventory_order" class="radius-4p" style="width:135px;">
-						<option value="order_by_selector">ID</option>
-						<option value="order_by_type2title">Type</option>
-						<option value="order_by_purpose">Purpose</option>
-						<option value="order_by_title">Location</option>
-						<option value="order_by_price">Price</option>
-						<option value="order_by_land">Area</option>
-						<option value="order_by_cbeds">Beds</option>
-						<option value="order_by_cstate">Status</option>
-						<option value="order_by_date">Listed Date</option>
-						<option value="0" disabled="disabled">------------</option>
-						<option value="order_by_cl.name">Landlord</option>
-						<option value="order_by_persq">Price per area</option>
-						<option value="order_by_distance">Distance</option>
-						<option value="order_by_conststatus">Construction Status</option>
-						<option value="order_by_edate">Expiry</option>
-						<option value="order_by_image_count">Listing images count</option>
-					</select>&nbsp;in&nbsp;
-					<select name="sl_by" id="sl_by" class="radius-4p">
-						<option value="ASC">Ascending</option>
-						<option value="DESC" selected="selected">Descending</option>
-					</select>&nbsp;order.&nbsp;
-					<img class="go_filter" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
-				</div>
-				<div id="inventory_result">
-					<a name="invertory"></a>
-					<div id="inventory_data" class="table" style="overflow: unset !important;"></div>
-					<br>
-
-				</div>
-			</div>
-			<div class="clear clearfix"></div>
-		</div>
-		<div id="div_show_breakdown" style="display:none;">
-			<table align="center">
-				<tr>
-					<td align="center"><img src="https://profolio.zameen.com/images/common/loading.gif" border="0" /></td>
-				</tr>
-			</table>
-		</div>
-		<div class="clear clearfix"></div>
-	</div>
-	<script type="text/javascript">
-		/* When the user clicks on the button,
-		toggle between hiding and showing the dropdown content */
-		function myFunction(obj) {
-			var id = $(obj).children('.dropdown-content').attr("id");
-			if (!$('#' + id).hasClass('show')) {
-				$('.dropdown-content').removeClass('show');
-				document.getElementById(id).classList.toggle("show");
-			} else
-				$('.dropdown-content').removeClass('show');
-		}
-
-		// Close the dropdown menu if the user clicks outside of it
-		window.onclick = function(event) {
-			if (!event.target.matches('.dropbtn')) {
-				var dropdowns = document.getElementsByClassName("dropdown-content");
-				var i;
-				for (i = 0; i < dropdowns.length; i++) {
-					var openDropdown = dropdowns[i];
-					if (openDropdown.classList.contains('show')) {
-						openDropdown.classList.remove('show');
+		$(document).ready(function() {
+			$('.cat').on('change', function() {
+				var cat_id = this.value;
+				$.ajax({
+					url: "{{ url('admin/property/fetch-subcat') }}",
+					type: "POST",
+					data: {
+						cat_id: cat_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$.each(result.subcat, function(key, value) {
+							$('#subtype_container').html('');
+							$('#subtype_container').append(
+								'<select class="cat cm_combo style-update" width="100" name="type"> <option value="">Any<option>/select>'
+							);
+						});
 					}
-				}
-			}
-		}
+				});
+			});
+		});
 	</script>
-	</div>
-	</div>
-	</div>
-	</div>
 
 	@endsection

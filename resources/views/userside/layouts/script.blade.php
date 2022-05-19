@@ -107,7 +107,6 @@
 	};
 	var is_new_olx_system = 0;
 </script>
-<script src="{{asset('userside')}}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
 <script src="{{asset('userside')}}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
 <link rel="stylesheet" href="{{asset('userside')}}/css/zone_details.css" type="text/css">
 <script type="text/javascript" src="{{asset('userside')}}/javascript/zone_details.js"></script>
