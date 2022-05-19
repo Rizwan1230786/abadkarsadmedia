@@ -108,6 +108,42 @@
 
     } );
 </script>
+<script type="text/javascript">
+    request_url = "{{ asset('userside') }}/profolio/includes/add_edit_property_single.php?ajax=1&id=0";
+    request_url_image = "{{ asset('userside') }}/profolio/includes/add_edit_property_single_image.php?ajax=1&id=0";
+    cat_combo_width = 210;
+    validate_fields = ["purpose", "wanted_for", "type", "city", "last_location", "name", "email", "title",
+        "description", "price", "area"
+    ];
+
+    city_area_unit = {
+        "default": "Sq. Ft.",
+        "1": "Marla",
+        "2": "Square Yards",
+        "4": "Square Meters"
+    };
+    var agency_user_quota = {};
+
+    quota_array = {
+        "premium_user": 0,
+        "1": false,
+        "2": true,
+        "3": true
+    };
+    ajax_location_url = "{{ asset('userside') }}/v3/cache/js/locations";
+    ajax_cache_ver = "1652932691";
+    step_value = "1";
+    paths.images_css = this_domain + "/images/common";
+    mapbox_api = "pk.eyJ1IjoiZGV2emFtZWVuIiwiYSI6ImNrMXEzYWVzeDEwaTEzb3RpNGN3dm5xZWoifQ.8uE-PyKCVPtoyeMmNJsPWg";
+    default_area_unit = "Sq. Ft.";
+    var cuipplf = 0;
+    var is_new_olx_system = 0;
+    zone_city_id = "";
+    zn_cross_city_restriction = 0;
+    olx_cross_city_restriction = 0;
+    zn_quota_checkbox_enabled = 1;
+    olx_quota_checkbox_enabled = 1;
+</script>
 <!-- Added by labeeb -->
 
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-ui-1.12.1.js"></script>
