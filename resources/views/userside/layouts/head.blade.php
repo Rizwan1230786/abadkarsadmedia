@@ -1,3 +1,6 @@
+<meta name="description" content="{{ $meta->meta_description }}">
+<meta name="meta_keywords" content="{{ $meta->meta_keywords }}">
+<title>{{ $meta->meta_title }}</title>
 <link rel="shortcut icon" href="{{ asset('userside') }}/favicon.ico">
 <link rel="stylesheet" href="https://assets.zameen.com/profolio/css/plugins1_25.css?v=5" type="text/css" />
 {{-- jqueryy files --}}
