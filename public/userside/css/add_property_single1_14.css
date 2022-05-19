@@ -16,7 +16,7 @@
 }
 
 a {
-    color: #00a651;
+    color: #FF385c;
 }
 
 /* common.css */
@@ -174,7 +174,7 @@ a {
 }
 
 .autofill .lang_button:hover {
-    border-color: #00a651
+    border-color: #FF385c
 }
 
 .autofill .lang_button.disabled {
@@ -490,7 +490,7 @@ a {
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    background: #00a651;
+    background: #FF385c;
     border-radius: 5px;
 }
 
@@ -610,7 +610,7 @@ a {
 }
 
 .add_property_page .mheading {
-    color: #00a651;
+    color: #FF385c;
 }
 
 .add_property_page {
@@ -796,7 +796,7 @@ ul.dropDown a {
 }
 
 .subhead {
-    background-color: #00a651;
+    background-color: #FF385c;
     border-radius: 3px;
     clear: both;
     color: #ffffff;
@@ -880,7 +880,7 @@ ul.dropDown a {
 }
 
 .ListItem .set_main_image {
-    color: #00a651;
+    color: #FF385c;
     cursor: pointer;
     text-decoration: underline
 }
@@ -956,7 +956,7 @@ ul.dropDown a {
     border: 1px solid #cbcbcb;
     border-radius: 5px;
     box-shadow: 0 10px 13px 0 #f4f4f4 inset;
-    color: #00a651;
+    color: #FF385c;
     float: left;
     list-style-type: square;
     margin-top: 15px;
@@ -1549,13 +1549,13 @@ input.submit_button {
 }
 
 .add_area_breakdown {
-    color: #00a651;
+    color: #FF385c;
     margin-top: 8px;
     text-decoration: underline
 }
 
 .add_price_breakdown {
-    color: #00a651;
+    color: #FF385c;
     margin-top: 8px;
     text-decoration: underline
 }
@@ -1786,7 +1786,7 @@ span.tpaid {
 
 #recalculate_div a {
     text-decoration: underline;
-    color: #00a651
+    color: #FF385c
 }
 
 .Uploadfloorplan .rfield {
@@ -1940,7 +1940,7 @@ span.tpaid {
 }
 
 .MyDataBank .heading {
-    background-color: #00a651;
+    background-color: #FF385c;
     box-shadow: 0 0 6px 0 #9f9f9f;
     color: #ffffff;
     font-weight: bold;
@@ -1969,8 +1969,8 @@ span.tpaid {
 .MyDataBank .submit_button {
     margin-left: 29%;
     margin-top: 17px;
-    background: #00a651;
-    box-shadow: 0 0 3px 1px #00a651;
+    background: #FF385c;
+    box-shadow: 0 0 3px 1px #FF385c;
     border-radius: 4px;
 }
 
@@ -2094,7 +2094,7 @@ span.change_step {
 }
 
 .change_step.current {
-    background-color: #00a651
+    background-color: #FF385c
 }
 
 .change_step.disabled {
@@ -2108,7 +2108,7 @@ span.change_step {
 .circleSteps {
     background-color: #ffffff;
     border-radius: 50px;
-    color: #00a651;
+    color: #FF385c;
     cursor: pointer;
     font-family: arial;
     font-size: 18px;
@@ -2136,7 +2136,7 @@ span.change_step {
 }
 
 .textHighlighted {
-    color: #00a651
+    color: #FF385c
 }
 
 .StepText {
@@ -2207,8 +2207,8 @@ span.change_step {
 }
 
 .btn_style1 {
-    background: #00a651;
-    border: 1px solid #00a651;
+    background: #FF385c;
+    border: 1px solid #FF385c;
     border-radius: 4px;
     box-shadow: 0 0 0 0 #878787;
     cursor: pointer;
@@ -2338,7 +2338,7 @@ span.change_step {
 }
 
 .BKPagination span.selected {
-    background-color: #00a651;
+    background-color: #FF385c;
     border: 1px solid #cdcdcd;
     border-radius: 3px;
     display: inline-block;
@@ -2350,7 +2350,7 @@ span.change_step {
 
 .BKPagination .selected {
     background-color: #d3d3d3;
-    box-shadow: 0 0 15px #00a651 inset;
+    box-shadow: 0 0 15px #FF385c inset;
     color: #ffffff
 }
 
@@ -2463,7 +2463,7 @@ span.change_step {
     background-color: #e8e8e8;
   }
   select optgroup option{
-    background-color: #e8e8e8;  
+    background-color: #e8e8e8;
   }  */
 
 /*
@@ -2471,7 +2471,7 @@ span.change_step {
     font-size: 11px;
     font-weight: bold;
     height: 15px;
-    padding: 3px 12px 5px 12px !important; 
+    padding: 3px 12px 5px 12px !important;
     background-color: #ddd !important;
   }
   .auto_suggest_disabled_item{
@@ -2500,7 +2500,7 @@ span.change_step {
 }
 
 /*.ui-menu li.ui-menu-item :hover{
-  
+
     background-color: green;
   }
   */
@@ -2550,8 +2550,8 @@ span.change_step {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-    border-color: #00a651 !important;
-    color: #00a651 !important;
+    border-color: #FF385c !important;
+    color: #FF385c !important;
 }
 
 .ui-state-disabled {
@@ -2938,7 +2938,7 @@ span.change_step {
     color: #ffffff;
     text-align: center;
     margin: 0 auto;
-    background-color: #00a651;
+    background-color: #FF385c;
     margin-bottom: 12px;
     text-transform: capitalize;
     font-weight: 700;
@@ -2990,7 +2990,7 @@ span.change_step {
 
 .buy-quota .contact-detials li h3 {
     text-align: center;
-    color: #00a651;
+    color: #FF385c;
     font-size: 18px;
     line-height: 22px;
     padding: 5px 0px 4px;
@@ -3076,7 +3076,7 @@ span.change_step {
     color: #ffffff;
     text-align: center;
     margin: 0 auto;
-    background-color: #00a651;
+    background-color: #FF385c;
     margin-bottom: 12px;
     text-transform: capitalize;
     font-weight: 700;
@@ -3128,7 +3128,7 @@ span.change_step {
 
 .insufficient-quota .contact-detials li h3 {
     text-align: center;
-    color: #00a651;
+    color: #FF385c;
     font-size: 18px;
     line-height: 22px;
     padding: 5px 0px 4px;
@@ -3226,7 +3226,7 @@ span.change_step {
 }
 
 .credit-runout .btn-buycredit {
-    background-color: #00a651;
+    background-color: #FF385c;
     text-align: center;
     font-size: 16px;
     line-height: 19px;
@@ -3590,7 +3590,7 @@ span.change_step {
 }
 
 .s__status-listCol h6.list__category-premium {
-    color: #00A651;
+    color: #FF385c;
 }
 
 .s__status-listCol h6.list__category-featured {
@@ -3619,7 +3619,7 @@ span.change_step {
 }
 
 .status__btn-main.green__status-btn {
-    background: #00A651;
+    background: #FF385c;
     color: #ffffff;
 }
 
@@ -3729,7 +3729,7 @@ span.change_step {
 }
 
 .post-listing-credit-box .contact-credit-info .zameen-details .buy-more-btn {
-    background-color: #00a651;
+    background-color: #FF385c;
     color: #ffffff;
     position: absolute;
     top: 75%;
@@ -3908,8 +3908,8 @@ span.change_step {
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #00a651;
-    color: #00A651;
+    background: #FF385c;
+    color: #FF385c;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 

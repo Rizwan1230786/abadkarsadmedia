@@ -28,13 +28,10 @@
                 width: 100%;
                 clear: both;
             }
-
-
             .cart_row_child {
                 float: left;
                 padding-left: 5px;
             }
-
         </style>
         @include('userside.layouts.navbar')
         @yield('main')
@@ -42,5 +39,4 @@
         @include('userside.layouts.script')
     </div>
 </body>
-
 </html>

@@ -1,0 +1,39 @@
+.error-msg-cell {
+    background-image: url("https://zameen-assets-prod-static.s3.amazonaws.com/profolio/images/zameen_cross_new_phonevalidation1_3.png");
+    height: 27px;
+    width: 28px;
+    left: auto;
+    right: 13px;
+    display: inline-block;
+    z-index: 99;
+    top: -3px;
+    position: relative;
+}
+
+.valid-msg-cell {
+    background-image: url("https://zameen-assets-prod-static.s3.amazonaws.com/profolio/images/zameen_arrow_new_phonevalidation1_1.png");
+    height: 28px;
+    width: 28px;
+    left: auto;
+    right: 13px;
+    display: inline-block;
+    z-index: 99;
+    top: -3px;
+    position: relative;
+}
+
+.intl-tel-input {
+    width: 224px !important;
+}
+
+.add_new_cell_input_listing_form {
+    margin-left: 10px;
+    position: absolute;
+    right: auto;
+    display: block;
+    left: 57%;
+}
+
+.cellinputs {
+    position: relative;
+}

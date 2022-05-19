@@ -21,7 +21,7 @@ class PropertyManagementController extends Controller
         $category = Category::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.property_management.post_listing', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
+        return view('userside.modules.property_management.post_listing2', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
     public function inventory_search()
     {
