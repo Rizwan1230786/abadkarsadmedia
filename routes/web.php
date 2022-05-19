@@ -260,7 +260,9 @@ Route::prefix('user')->group(function () {
         Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
         ///////inventory search////////
         Route::get('/inventory_search', [PropertyManagementController::class, 'inventory_search'])->name('inventory_search');
-
+        Route::post('/fetch-states', [PropertyManagementController::class, 'fetchState']);
+        Route::post('/fetch-city', [PropertyManagementController::class, 'fetchCity']);
+        Route::post('/fetch-area', [PropertyManagementController::class, 'fetchArea']);
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
