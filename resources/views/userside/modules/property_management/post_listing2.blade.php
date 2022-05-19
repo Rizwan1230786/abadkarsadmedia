@@ -19,7 +19,7 @@
                             <div class="number">
                                 Buy now or call<br /><b>0800-ZAMEEN (92633)</b>
                             </div>
-                            <a href="https://profolio.zameen.com/profolio/index.php?tabs=13&section=advertise"
+                            <a href="{{ asset('userside') }}/profolio/index.php?tabs=13&section=advertise"
                                 class="buy-more-btn">Buy More</a>
                         </div>
                         <div class="olx-details">
@@ -106,8 +106,7 @@
 
                     <!-- /////////////////////CITY///////////////////////// -->
                     <div class="divrow zameen-city-box">
-                        <label class="label l font_s">City: <img
-                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                        <label class="label l font_s">City:</label>
                         <div class=''><select name='city_name' onchange='onchange_city(this)' id='city'>
                                 <option value='' selected>Select City</option>
                                 @foreach ($city as $value)
@@ -115,14 +114,14 @@
                                 @endforeach
                             </select></div>
                         <div class="city_rest_tooltip" style="position: relative; top: -20px; left: 245px; display: none;">
-                            <img class="bgc" src="https://profolio.zameen.com/images/common/exclamation.gif"
+                            <img class="bgc" src="{{ asset('userside') }}/images/common/exclamation.gif"
                                 onmouseover="city_restriction_tooltip(this, 'Cross city restriction applied. You can post to specific platform only.');">
                         </div>
                     </div>
 
                     <div class="divrow">
                         <label class="label l font_s">Location: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
                         <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
                             <input type="text" id="location_id_input" class="autofilter disabled" data-value=""
                                 value="Then enter location here ..." disabled="disabled" />
@@ -195,7 +194,7 @@
                     <div class="subhead font_s ros subhead2" id="property_box_heading">PROPERTY SPECS AND PRICE</div>
                     <div class="divrow">
                         <label class="label l font_s">Area Size: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
                         <input type='text' name='area' id='area' value='' style='width:135px;' class='rfield l ' /> <label
                             class="label_inline l font_s">Unit: </label>
                         <span id='unit_sel_box' class='sb_combo sel_box ' style='width:135px'><select name='unit' id='unit'
@@ -311,7 +310,7 @@
 
                     <div class="divrow price_div">
                         <label class="label l font_s pheading display-block">Total Price: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
                         <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' />
                     </div>
                     <div class="divrow price_div">
@@ -332,19 +331,19 @@
                     <div class="instalments-box " style="display: none;">
                         <div class="divrow ">
                             <label class="label l font_s pheading display-block">Advance/Initial Payment: <img
-                                    src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
+                                    src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
                             <input type='text' name='adv_amount' id='adv_amount' value='' style='width:228px;'
                                 class='rfield l ' />
                         </div>
                         <div class="divrow">
                             <label class="label l font_s pheading display-block">No. of Remaining Installments: <img
-                                    src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
+                                    src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
                             <input type='text' name='no_of_instalments' id='no_of_instalments' value='' style='width:228px;'
                                 class='rfield l ' />
                         </div>
                         <div class="divrow">
                             <label class="label l font_s pheading display-block">Monthly Installment: <img
-                                    src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
+                                    src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
                             <input type='text' name='monthly_instalments' id='monthly_instalments' value=''
                                 style='width:228px;' class='rfield l ' />
                         </div>
@@ -427,7 +426,7 @@
                         </div>
                         <div class="divrow" style="display:block">
                             <label class="label l font_s">Monthly Rent: <img
-                                    src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
+                                    src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
                             <input type='text' name='rental' id='rental' value='' style='width:136px;' class='rfield l ' />
                         </div>
                         <div class="divrow">
@@ -459,7 +458,7 @@
                     <div class="subhead font_s ros subhead2">Property Title and Description</div>
                     <div class="divrow">
                         <label class="label l font_s">Property Title: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
                         <input type='text' name='title' id='title' value='' style='width:419px;' class='rfield l '
                             placeholder='Enter property title here...' /><br>
                         <div id="title_validation">*Minimum of 5 characters required </div>
@@ -467,7 +466,7 @@
 
                     <div class="divrow">
                         <label class="label l font_s">Description: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
                         <textarea name="description" id="description" style="width:418px" rows="5" class="rfield l"
                             placeholder="Enter property description here..."></textarea><br>
                         <div id="description_validation">*Minimum of 20 characters required </div>
@@ -494,7 +493,7 @@
                             </div>
                             <div class="uploading_images" style="display:none">
                                 <img class="l pleasewait"
-                                    src="https://profolio.zameen.com/images/common/pleasewait.gif" />
+                                    src="{{ asset('userside') }}/images/common/pleasewait.gif" />
                                 <span class="l">Uploading. Please Wait...</span>
                             </div>
                         </div>
@@ -600,7 +599,7 @@
                             </div>
                             <div class="uploading" style="display:none">
                                 <img class="l pleasewait"
-                                    src="https://profolio.zameen.com/images/common/pleasewait.gif" />
+                                    src="{{ asset('userside') }}/images/common/pleasewait.gif" />
                                 <span class="l">Uploading. Please Wait...</span>
                             </div>
                         </div>
@@ -630,7 +629,7 @@
                             </div>
                             <div class="uploading_documents" style="display:none">
                                 <img class="l pleasewait"
-                                    src="https://profolio.zameen.com/images/common/pleasewait.gif" />
+                                    src="{{ asset('userside') }}/images/common/pleasewait.gif" />
                                 <span class="l">Uploading. Please Wait...</span>
                             </div>
                         </div>
@@ -736,8 +735,8 @@
                     </div>
                     <div class="divrow">
                         <label class="label l font_s">Contact Person: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /> </label>
-                        <input type='text' name='name' id='name' value='Muhammad Rizwan Akhtar' style='width:228px;'
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                        <input type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;'
                             class='rfield l ' />
                         <div class="bgc infologo r">
                             <p>Please enter your first and last name respectively.</p>
@@ -750,7 +749,7 @@
                     <div class="divrow put_cell_input_after_this">
                         <label class="label l font_s">Landline Phone #: </label>
                         <span class="ph_input_box l">
-                            <input type='text' name='phone0' id='phone0' value='' style='width:33px;' maxlength='6'
+                            <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6'
                                 onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")'
                                 class='rfield l ' /> <label class="separator">-</label>
                             <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6'
@@ -767,7 +766,7 @@
 
                     <div class="divrow cellinputs">
                         <label class="label l font_s">Mobile #1: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
                         <span class="ph_input_box l">
                             <input type='text' name='cell[]' id='cell1' value='' style='width:245px;' maxlength='100'
                                 class='rfield l ' /><span id="valid-msg-cell1" class="valid-msg-cell"
@@ -787,8 +786,8 @@
 
                     <div class="divrow">
                         <label class="label l font_s">Email: <img
-                                src='https://profolio.zameen.com/images/common/asteriskred.gif' /></label>
-                        <input type='text' name='email' id='email' value='rizwan.13347@gmail.com' style='width:228px;'
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                        <input type='text' name='email' id='email' value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;'
                             class='rfield l ' />
                     </div>
                     <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />
