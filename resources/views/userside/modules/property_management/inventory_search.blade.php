@@ -1,6 +1,6 @@
 @extends('userside.layout')
 @section('main')
-<script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+
 <style>
 	.d-none {
 		display: none;
@@ -315,13 +315,6 @@
 						</span>
 					</div>
 					<div class="search_div">
-						<label class="search_label">ID or Ref</label>
-						<span>
-							<input type="text" id="txt_idref" name="txt_idref" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-						</span>
-						<div id="subtype_container" style="display:none;"></div>
-					</div>
-					<div class="search_div">
 						<label class="search_label">Construction Status</label>
 						<span>
 							<div class='cm' style='width: 100px;  '>
@@ -332,6 +325,13 @@
 								</select>
 							</div>
 						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">ID or Ref</label>
+						<span>
+							<input type="text" id="txt_idref" name="txt_idref" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
 					</div>
 					<div class="search_div">
 						<label class="search_label">Listed Date</label>
