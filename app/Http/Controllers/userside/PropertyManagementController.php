@@ -14,16 +14,6 @@ use Illuminate\Http\Request;
 
 class PropertyManagementController extends Controller
 {
-    public function post_listing()
-    {
-        $city = Cities::all();
-        $state = State::all();
-        $feature = Features::all();
-        $category = Category::all();
-        $meta = Webpages::Where("page_title", "home")->first();
-        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.property_management.post_listing2', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
-    }
     public function inventory_search()
     {
         $meta = Webpages::Where("page_title", "home")->first();
@@ -73,5 +63,20 @@ class PropertyManagementController extends Controller
             ]
         )->get();
         return response()->json($data);
+    }
+    public function post_listing()
+    {
+        $city = Cities::all();
+        $state = State::all();
+        $feature = Features::all();
+        $category = Category::all();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.property_management.post_listing2', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
+    }
+    public function listing_policy(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.property_management.listing_policy', compact('meta', 'data'));
     }
 }
