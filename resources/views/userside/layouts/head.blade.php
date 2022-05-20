@@ -65,4 +65,7 @@
     border-top: 0px;
     vertical-align: middle;
 }
+.dataTables_paginate.paging_simple_numbers{
+    padding-bottom: 0.25em;
+}
 </style>
