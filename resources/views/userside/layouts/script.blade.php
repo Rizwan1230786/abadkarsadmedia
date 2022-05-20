@@ -79,6 +79,8 @@
         refill_place_holder($(this));
     });
 </script>
+<script src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script src="{{{ URL::asset('js/jquery.dataTables.min.js')}}}"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/mybayut/mylisting_java3_30.js?v=15.3"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/autofill1_1.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/gmap_api1_13.js?v=1"></script>
@@ -92,7 +94,11 @@
 <script type="text/javascript">
     var $jQuery_1_12_4 = jQuery.noConflict();
 </script>
-
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-ui-1.12.1.js"></script>
 
 <script type="text/javascript">
