@@ -218,6 +218,16 @@
 
 				<table id="demoApi" class="listing_table list-table-left">
 					<thead class="thead-light" id="table_head">
+						<tr>
+							<th style="padding:0px 0px 0px 15px;">ID</th>
+							<th>Type</th>
+							<th>Location</th>
+							<th>Details</th>
+							<th>Price (PKR)</th>
+							<th>Platform</th>
+							<th>Quota</th>
+							<th>Listed Date</th>
+						</tr>
 					</thead>
 					<tbody id="table_data" style="float: none;">
 
@@ -364,7 +374,7 @@
 						$('#table_container').removeClass('d-none');
 						$('#table_head').append('<tr><th style="padding:0px 0px 0px 15px;">ID</th><th>Type</th><th>Location</th><th>Details</th><th>Price (PKR)</th><th>Platform</th><th>Quota</th><th>Listed Date</th></tr>');
 						$.each(result, function(key, value) {
-							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' + value.id +'&nbsp;</td><td class="selector-id-table inventory">' + value.category +'&nbsp;</td><td class="selector-id-table inventory">' + value.location +'&nbsp;</td><td class="selector-id-table inventory">' + value.area_size +'&nbsp;</td><td class="selector-id-table inventory">' + value.price +'&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' + value.listed_date + '&nbsp;</td></tr>');
+							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' + value.id + '&nbsp;</td><td class="selector-id-table inventory">' + value.category + '&nbsp;</td><td class="selector-id-table inventory">' + value.location + '&nbsp;</td><td class="selector-id-table inventory">' + value.area_size + '&nbsp;</td><td class="selector-id-table inventory">' + value.price + '&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' + value.listed_date + '&nbsp;</td></tr>');
 						});
 						$('#demoApi').DataTable();
 					}
