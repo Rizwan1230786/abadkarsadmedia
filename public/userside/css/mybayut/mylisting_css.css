@@ -1,0 +1,54 @@
+.propinfo_link {
+    background: url(../../images/common/questionbox.jpg) no-repeat right;
+    padding-bottom: 2px;
+}
+
+.propinfo_link:hover {
+    background: url(../../images/common/questionbox_hover.jpg) no-repeat right;
+    padding-bottom: 2px;
+}
+
+#botompad {
+    margin-bottom: 20px;
+}
+
+.last_margin {
+    margin-right: -1px;
+}
+
+html>
+/**/
+
+body .last_margin {
+    margin-right: 0px;
+}
+
+.listings_div {
+    height: 250;
+}
+
+.listing_data {
+    width: 100%;
+    padding: 2px 0px;
+    clear: both;
+    overflow: hidden;
+}
+
+.listing_data span {
+    display: block;
+    float: left;
+    float: left;
+    padding: 1px 0;
+}
+
+.mass_action {
+    clear: both;
+    background-color: #F2F2F2;
+    margin-top: 15px;
+    float: left;
+    width: 98%;
+}
+
+.mass_action div {
+    line-height: 16px;
+}
