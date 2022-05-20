@@ -101,11 +101,11 @@
 								<select class="cm_combo style-update" width='100' name='price' onchange="" style='width: 100px;'>
 									<option value=''>Any</option>
 									<option value='200000'>Under 200,000</option>
-									<option value='200000_500000'>200,000 to 500,000</option>
-									<option value='500000_750000'>500,000 to 750,000</option>
-									<option value='750000_1000000'>750,000 to 1,000,000</option>
-									<option value='1000000_2000000'>1,000,000 to 2,000,000</option>
-									<option value='2000000_5000000'>2,000,000 to 5,000,000</option>
+									<option value='200000 500000'>200,000 to 500,000</option>
+									<option value='500000 750000'>500,000 to 750,000</option>
+									<option value='750000 1000000'>750,000 to 1,000,000</option>
+									<option value='1000000 2000000'>1,000,000 to 2,000,000</option>
+									<option value='2000000 5000000'>2,000,000 to 5,000,000</option>
 									<option value='5000000'>over 5,000,000</option>
 								</select>
 							</div>

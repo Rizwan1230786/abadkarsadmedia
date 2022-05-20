@@ -12,6 +12,7 @@ use App\Models\State;
 use App\Models\Webpages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyManagementController extends Controller
 {
@@ -39,6 +40,7 @@ class PropertyManagementController extends Controller
     }
     public function fetchData(Request $request)
     {
+        $user_id = Auth::user()->id;
         $box = $request->all();
         $data =  array();
         parse_str($box['data'], $data);
@@ -61,7 +63,8 @@ class PropertyManagementController extends Controller
         }
         // Search for a property based on their price.
         if (!empty($data['price'])) {
-            $user->orwhere('price', $data['price']);
+            $price = explode(" ", $data['price']);
+            $user->whereBetween('price', [$price[0], $price[1]]);
         }
         // Search for a property based on their location.
         if (!empty($data['location'])) {
@@ -104,7 +107,8 @@ class PropertyManagementController extends Controller
         // if (!empty($data['contact_phone'])) {
         //     $user->where('user_id sy get karna', $data['contact_phone']);
         // }
-        return response()->json($user->get());
+        $user = $user->where('user_id', $user_id)->get();
+        return response()->json($user);
     }
     public function post_listing()
     {
@@ -122,7 +126,8 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.listing_policy', compact('meta', 'data'));
     }
-    public function zone_detail(){
+    public function zone_detail()
+    {
         $city = Cities::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
