@@ -210,225 +210,81 @@
 			<input type="hidden" name="_token" value="768739f3e486beee9dfa0ade40589f68fb0d3f9151fd9d1fb84c4b957272b3ea">
 		</form>
 	</div>
-
-	<div class="box_title">
-        <div><b>Inventory Results</b></div>
-    </div>
-    <div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
-        <div id="Sale_select" class="details-listing-table">
-    Show: <select class="show_select radius-4p" style="margin-left:10px; width:60px;margin-right:10px;">
-                            <option value="10" selected >10</option></select>  listings per page		<input type="hidden" name="listing_platform" class="listing_platform" value="" id="drp-Sale-input">
-        </div>
-        <input type="hidden" id="st_1" name="st_1" value="0" />
-        <div class="details-listing-table">Sort By:&nbsp;
-            <select name="order_Sale" class="radius-4p" id="order_Sale">
-                <option value="order_by_selector">ID</option>
-                <option value="order_by_type2title">Type</option>
-                <option value="order_by_title">Location</option>
-                <option value="order_by_price">Price</option>
-                <option value="order_by_edate">Expiry</option>
-                <option value="order_by_counter">Views</option>
-                <option value="order_by_image_count">Listing images count</option>
-            </select>&nbsp;in&nbsp;
-            <select name="by_Sale" class="radius-4p" id="by_Sale">
-                <option value="ASC">Ascending</option>
-                <option value="DESC" selected="selected">Descending</option>
-            </select>&nbsp;order.&nbsp;
-            <img id="go_Sale" class="go_sort" src="{{ asset('userside') }}/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
-        </div>
-
-        <div class="ant-table" id="data_Sale" style="height:auto">
-            <table class="main-table" cellpadding="0" cellspacing="0" style="margin-bottom: 18px;">
-                <tbody>
-                    <tr>
-                        <td class="col-9">
-                            <input type="hidden" id="is_new_olx_system" name="is_new_olx_system" value="">
-                            <table class="listing_table list-table-left">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th style="padding:0px 0px 0px 15px;width: 13px;">
-                                            <input type="checkbox" name="chkall_Sale" class="margin-0 chk_all" id="chkall_Sale" />
-                                        </th>
-                                        <th style="padding:0px 0px 0px 15px;">ID</th>
-                                        <th>Type</th>
-                                        <th>Location</th>
-                                        <th>Details</th>
-                                        <th>Price (PKR)</th>
-                                        <th>Views</th>
-                                        <th>Image</th>
-                                        <th>Health</th>
-                                        <th>Platform</th>
-                                        <th>Quota</th>
-                                        <th>Listed Date</th>
-                                        <th>Actions</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody style="float: none;">
-
-                                    <tr id="selector_38486606" class="grid-column-data">
-                                        <td style="padding: 0px 15px;" class="checkbox-inventor-table">
-                                            <input type="checkbox" name="chk_38486606" class="margin-0" id="chk_38486606" style="position:relative;top:-2px;" />
-                                        </td>
-                                        <td class="selector-id-table inventory">38486606</td>
-                                        <td class="property-type-table">House&nbsp;</td>
-
-                                        <td class="table-location">
-                                            <a href="javascript:void(0);" onmouseover="overlib('Punjab &raquo; Rahim Yar Khan &raquo; Manthar Road &raquo; Fahad Garden Housing Scheme',CAPTION,'Location',HEIGHT,40,WIDTH,300);" onmouseout="nd();">
-                                                Fahad Garden Housing ... <img src="{{ asset('userside') }}/profolio/images/icon-notification.svg" width="12" class="intimation-icon" border="0" />
-                                            </a>
-                                        </td>
-
-                                        <td class="title-details-table">
-                                            For Sale<br>900 sq. ft. </td>
-                                        <td class="title-price-table">2,500,000</td>
-
-
-                                        <!-- <td>Test Name</td> -->
-                                        <td class="title-view-table">51</td>
-                                        <td class="quota-image">0</td>
-                                        <td class="health-toltip">
-                                            <a href="javascript:void(0);" class="non-plot-listings-health" age-color-msg="2-green-Freshness score is full!" unique-images-color-msg="0-red-Upload maximum number of unique images!" feature-color-msg="3-green-Feature score is full! ">
-                                                <span class="" style="display:block;border-radius:5px;width:18px;background-color:yellow;color: white;;">&nbsp;&nbsp;</span>
-
-                                            </a>
-                                        </td>
-                                        <td class="table-platform multirow">
-                                            <table class="table-inside" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td name="Sale">
-                                                            <a href="javascript:void(0);" class="platform-logo   show-listing-status " data-status="Active" data-selector="38486606" data-platform='Zameen' data-purpose='1' data-type='9' data-location='13862' data-userid='1001388906'>
-
-                                                                <img src="{{ asset('userside') }}/profolio/images/zameen-icon-logo1_1.svg" alt="image" border="0" class="">
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class=" olx-hide">
-
-                                                        <td name="Sale" class="olx-border-transparent ">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="quota-used multirow">
-                                            <table class="table-inside" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td>1</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="table-listdate multirow">
-                                            <table class="table-inside" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                    <tr class="">
-                                                        <td class="listed-date z-date">
-                                                            <a href="javascript:void(0);" onmouseover="overlib('Expiry: 16 Aug 2022',CAPTION,'Expiry',HEIGHT,25,WIDTH,150);" onmouseout="nd();">
-                                                                18 May 2022 <img src="{{ asset('userside') }}/profolio/images/icon-notification.svg" width="12" class="intimation-icon dicon" border="0" />
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class=" olx-hide">
-                                                        <td class="listed-date olx-date ">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                        <td class="table-listing-action multirow">
-                                            <table class="table-inside" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                    <tr class="" style="font-size:0">
-                                                        <td class="action_td">
-                                                            <ul class="icon-list">
-                                                                <li name="Sale">
-                                                                    <a href="javascript:void(0);" class="super-hot-icon superhot tooltip-wrapper" data-days="0" data-hrs="0" id="super_h_38486606" name="" user="" rel="">
-                                                                    </a>
-                                                                </li>
-                                                                <li name="Sale"><a href="javascript:void(0);" class="hot-icon tooltip-wrapper mhot" data-days="0" data-hrs="0" id="h_38486606" name="" user="" rel="">
-                                                                    </a></li>
-
-                                                                <li name="Sale">
-                                                                    <a class="refresh-icon tooltip-wrapper go_refresh_listing go_refresh_listing" href="javascript:void(0);" accesskey="" rel="no_quota" id="refr_38486606" name="1001388906"></a>
-                                                                    <input type="hidden" name="credit_util" id="credit_util_38486606" value="1">
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                        <td class="action_btn zbtn">
-                                                            <div class="dropdown" onclick="myFunction(this)">
-                                                                <button class="dropbtn option_listing_table"></button>
-                                                                <div id="myDropdown_38486606" class="dropdown-content">
-                                                                    <ul class="dp_list">
-                                                                        <li name="Sale">
-                                                                            <a href="javascript:void(0);" class="view_detail_new" id="view_38486606">
-                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_1.png" alt="image"></span>
-                                                                                Listing Detail
-                                                                            </a>
-                                                                        </li>
-                                                                        <li name="Sale">
-                                                                            <a href='https://profolio.zameen.com/profolio/index.php?tabs=2&section=edit_property&id=38486606' onmouseover="return overlib('Click to edit listing',CELLPAD, 5, 5,CAPTION,'Edit Listing');" onmouseout="return nd();">
-                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_2.png" alt="image"></span>
-                                                                                Edit Listing
-                                                                            </a>
-                                                                        </li>
-                                                                        <li name="Sale">
-                                                                            <a href="javascript:void(0);" class="hide_listing" data-show="1" id="d_38486606" name="1">
-                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_4.png" width="18" alt="image"></span>
-                                                                                Hide Listing
-                                                                            </a>
-                                                                        </li>
-                                                                        <li name="Sale" disabled>
-                                                                            <a href="javascript:void(0);" class="no_priv_del cta-disabled" data-name='Undeleted' data-hrs="1" data-show="1" id="d_38486606" name="1" disabled>
-                                                                                <span><img src="{{ asset('userside') }}/profolio/images/delete_icon_disabled.svg" alt="image"></span>
-                                                                                Delete Listing
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class=" olx-hide" style="font-size:0">
-                                                        <td colspan=2></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
-            <div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
-                Total Listings: <span id="total_Sale">0</span>
-            </div>
-            <div id="Sale" style="text-align:right;width:78%;float:right" class="paginate">
-                            </div>
-        </div>
-    </div>
-	<div class="row">
-		<div class="col-lg-12">
-			<table id="table_container" class="d-none table table-striped" style="width:100% ;">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">First</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
-					</tr>
-				</thead>
-				<tbody id="table_data">
-				</tbody>
-			</table>
+	<span id="table_container" class="d-none">
+		<div class="box_title">
+			<div><b>Inventory Results</b></div>
 		</div>
-	</div>
+		<div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
+			<div id="Sale_select" class="details-listing-table">
+				Show: <select class="show_select radius-4p" style="margin-left:10px; width:60px;margin-right:10px;">
+					<option value="10" selected>10</option>
+				</select> listings per page <input type="hidden" name="listing_platform" class="listing_platform" value="" id="drp-Sale-input">
+			</div>
+			<input type="hidden" id="st_1" name="st_1" value="0" />
+			<div class="details-listing-table">Sort By:&nbsp;
+				<select name="order_Sale" class="radius-4p" id="order_Sale">
+					<option value="order_by_selector">ID</option>
+					<option value="order_by_type2title">Type</option>
+					<option value="order_by_title">Location</option>
+					<option value="order_by_price">Price</option>
+					<option value="order_by_edate">Expiry</option>
+					<option value="order_by_counter">Views</option>
+					<option value="order_by_image_count">Listing images count</option>
+				</select>&nbsp;in&nbsp;
+				<select name="by_Sale" class="radius-4p" id="by_Sale">
+					<option value="ASC">Ascending</option>
+					<option value="DESC" selected="selected">Descending</option>
+				</select>&nbsp;order.&nbsp;
+				<img id="go_Sale" class="go_sort" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
+			</div>
+
+			<div class="ant-table" id="data_Sale" style="height:auto">
+				<table class="main-table" cellpadding="0" cellspacing="0" style="margin-bottom: 18px;">
+					<tbody>
+						<tr>
+							<td class="col-9">
+								<input type="hidden" id="is_new_olx_system" name="is_new_olx_system" value="">
+								<table class="listing_table list-table-left">
+									<thead class="thead-light">
+										<tr>
+											<!-- <th style="padding:0px 0px 0px 15px;width: 13px;">
+											<input type="checkbox" name="chkall_Sale" class="margin-0 chk_all" id="chkall_Sale" />
+										</th> -->
+											<th style="padding:0px 0px 0px 15px;">ID</th>
+											<th>Type</th>
+											<th>Location</th>
+											<th>Details</th>
+											<th>Price (PKR)</th>
+											<th>Platform</th>
+											<th>Quota</th>
+											<th>Listed Date</th>
+											<!-- <th>Actions</th> -->
+
+										</tr>
+									</thead>
+									<tbody id="table_data" style="float: none;">
+
+
+										<!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
+											<input type="checkbox" name="chk_38486606" class="margin-0" id="chk_38486606" style="position:relative;top:-2px;" />
+										</td> -->
+
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
+				<div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
+					Total Listings: <span id="total_Sale">0</span>
+				</div>
+				<div id="Sale" style="text-align:right;width:78%;float:right" class="paginate">
+				</div>
+			</div>
+		</div>
+	</span>
 	<script>
 		$(document).ready(function() {
 			$('.cat').on('change', function() {
@@ -558,40 +414,35 @@
 						$('#table_data').html('');
 						$('#table_container').removeClass('d-none');
 						$.each(result, function(key, value) {
-							$('#table_data').append('<tr><td scope="col">' + value.id + '</td><td scope="col">' + value.name + '</td></tr>');
+							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' + value.id + '&nbsp;</td><td class="selector-id-table inventory">' + value.category + '&nbsp;</td><td class="selector-id-table inventory">' + value.location + '&nbsp;</td><td class="selector-id-table inventory">' + value.area_size + '&nbsp;</td><td class="selector-id-table inventory">' + value.price + '&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' + value.listed_date + '&nbsp;</td></tr>');
 						});
 					}
 				});
 			});
 		});
 
-        function myFunction(obj) {
-		var id = $(obj).children('.dropdown-content').attr("id");
-		if( !$('#'+id).hasClass('show'))
-		{
-			$('.dropdown-content').removeClass('show');
-  			document.getElementById(id).classList.toggle("show");
+		function myFunction(obj) {
+			var id = $(obj).children('.dropdown-content').attr("id");
+			if (!$('#' + id).hasClass('show')) {
+				$('.dropdown-content').removeClass('show');
+				document.getElementById(id).classList.toggle("show");
+			} else
+				$('.dropdown-content').removeClass('show');
 		}
-  		else
-			$('.dropdown-content').removeClass('show');
-	}
 
-	// Close the dropdown menu if the user clicks outside of it
-	window.onclick = function(event) {
-		if (!event.target.matches('.dropbtn'))
-		{
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			var i;
-			for (i = 0; i < dropdowns.length; i++)
-			{
-		  		var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show'))
-				{
-					openDropdown.classList.remove('show');
+		// Close the dropdown menu if the user clicks outside of it
+		window.onclick = function(event) {
+			if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
 				}
 			}
 		}
-	}
 	</script>
 
 	@endsection
