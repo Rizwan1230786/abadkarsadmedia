@@ -22,7 +22,7 @@ class PropertyManagementController extends Controller
         $category = Category::all();
         return view('userside.modules.property_management.inventory_search', get_defined_vars());
     }
-    public function fetchState(Request $request)
+    public function fetchState()
     {
         $data['state'] = State::all();
         return response()->json($data);
