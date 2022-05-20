@@ -59,4 +59,10 @@
     float: left;
     padding-top: 0.755em;
 }
+.listing_table.list-table-left tr>td {
+    padding: 0px;
+    height: 55px;
+    border-top: 0px;
+    vertical-align: middle;
+}
 </style>
