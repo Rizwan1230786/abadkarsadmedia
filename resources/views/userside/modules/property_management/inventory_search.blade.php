@@ -9,153 +9,136 @@
 
     <body>
 
-        <div class="box_title">
-            <div><b>Inventory Search</b></div>
-        </div>
-        <div class="box_body" style="width:97.6%">
-            <div style="display:none">
-                <div class='cm' style='width: 100px;  '><select width='100' onkeyup='filter_items();' id='hiddenSquareFeet'
-                        name='hiddenSquareFeet' onchange="" style='display:none;'>
-                        <option value='0'>Any</option>
-                        <option value='225'>Below 225 Sq Ft</option>
-                        <option value='225_1125'>225 to 1125 Sq Ft</option>
-                        <option value='1125_2250'>1125 to 2250 Sq Ft</option>
-                        <option value='2250_3375'>2250 to 3375 Sq Ft</option>
-                        <option value='3375_4500'>3375 to 4500 Sq Ft</option>
-                        <option value='4500_5625'>4500 to 5625 Sq Ft</option>
-                        <option value='5625_6750'>5625 to 6750 Sq Ft</option>
-                        <option value='6750_7875'>6750 to 7875 Sq Ft</option>
-                        <option value='7875_9000'>7875 to 9000 Sq Ft</option>
-                    </select>
-                    <div tabindex='0' id='hiddenSquareFeet_combo'
-                        onmousedown='toggle_contaier("hiddenSquareFeet_container");' onmouseout='setflag(0);'
-                        onblur='hc("hiddenSquareFeet");' class='cm_combo style-update'
-                        style='width: 100px;  background-color:#FFFFFF; '>
-                        <div id='hiddenSquareFeet_combo_text' class='cm_combo_txt' style='width:80px;'
-                            onmouseout='setflag(0);' onblur='hc("hiddenSquareFeet");'>Any</div>
-                        <div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("hiddenSquareFeet");'></div>
-                    </div>
-                    <div tabindex='0' id='hiddenSquareFeet_container' onmouseover='setflag(1);' onmouseout='setflag(0);'
-                        onblur=hc("hiddenSquareFeet"); style='display: none; z-index:1000; ' class='cm_container facebox'>
-                        <div class='facebox_popup'>
-                            <table style='width: 251px;'>
-                                <tr>
-                                    <td class='facebox_tl' />
-                                    <td class='facebox_b' />
-                                    <td class='facebox_tr' />
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--action="https://profolio.zameen.com/profolio/includes/inventory_search/inventory_results.php"-->
-            <form name="frm_inventorysearch" id="form_serializa" class="frm_inventorysearch" method="post"
-                action="?ajax=1&ajax_section=dash_prop_invent&ajax_action=get_inventory_search_list">
-                <div id="search">
-                    <div class="searchbox" style="padding:1%">
-                        <div class="search_div">
-                            <label class="search_label">Type</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cat cm_combo style-update" width='100' name='category_id'
-                                        style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        @foreach ($category as $val)
-                                            <option value='{{ $val->id }}'>{{ $val->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </span>
-                            <div id="subtype_container"><select id="subtype_select" class="cm_combo style-update d-none"
-                                    width="100" name="subcat_id" style="margin-left:20px ;">
-                                    <option value="">Any</option>
-                                </select></div>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Purpose</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cm_combo style-update" width='100' id='type_n' name='property_perpose'
-                                        onchange="" style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='for_sale'>Buy</option>
-                                        <option value='for_rent'>Rent</option>
-                                    </select>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Area</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cm_combo style-update" width='100' id='type_n' name='size' onchange=""
-                                        style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='225'>Below 1 Marla</option>
-                                        <option value='225_1125'>1 to 5 Marla</option>
-                                        <option value='1125_2250'>5 to 10 Marla</option>
-                                        <option value='2250_3375'>10 to 15 Marla</option>
-                                        <option value='3375_4500'>15 to 20 Marla</option>
-                                        <option value='4500_5625'>20 to 25 Marla</option>
-                                        <option value='5625_6750'>25 to 30 Marla</option>
-                                        <option value='6750_7875'>30 to 35 Marla</option>
-                                        <option value='7875_9000'>35 to 40 Marla</option>
-                                    </select>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Price</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cm_combo style-update" width='100' name='price' onchange=""
-                                        style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='200000'>Under 200,000</option>
-                                        <option value='200000 500000'>200,000 to 500,000</option>
-                                        <option value='500000 750000'>500,000 to 750,000</option>
-                                        <option value='750000 1000000'>750,000 to 1,000,000</option>
-                                        <option value='1000000 2000000'>1,000,000 to 2,000,000</option>
-                                        <option value='2000000 5000000'>2,000,000 to 5,000,000</option>
-                                        <option value='5000000'>over 5,000,000</option>
-                                    </select>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Location</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="location cm_combo style-update" width='100' name='location'
-                                        style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='pakistan'>Pakistan</option>
-                                    </select>
-                                </div>
-                            </span>
-                            <!-- State Picker -->
-                            <span>
-                                <div id="State_container"><select id="location_select"
-                                        class="state cm_combo style-update d-none" width="100" name="state_id"
-                                        style="margin-left:20px ;">
-                                        <option value="">Any</option>
-                                    </select></div>
-                            </span>
-                            <!-- City Picker -->
-                            <span>
-                                <div id="City_container"><select id="state_select" class="city cm_combo style-update d-none"
-                                        width="100" name="city_id" style="margin-left:20px ;">
-                                        <option value="">Any</option>
-                                    </select></div>
-                            </span>
-                            <!-- Area Picker -->
-                            <span>
-                                <div id="Area_container"><select id="city_select" class="cm_combo style-update d-none"
-                                        width="100" name="area_id" style="margin-left:40px ;">
-                                        <option value="">Any</option>
-                                    </select></div>
-                            </span>
+	<div class="box_title">
+		<div><b>Inventory Search</b></div>
+	</div>
+	<div class="box_body" style="width:97.6%">
+		<div style="display:none">
+			<div class='cm' style='width: 100px;  '><select width='100' onkeyup='filter_items();' id='hiddenSquareFeet' name='hiddenSquareFeet' onchange="" style='display:none;'>
+					<option value='0'>Any</option>
+					<option value='225'>Below 225 Sq Ft</option>
+					<option value='225_1125'>225 to 1125 Sq Ft</option>
+					<option value='1125_2250'>1125 to 2250 Sq Ft</option>
+					<option value='2250_3375'>2250 to 3375 Sq Ft</option>
+					<option value='3375_4500'>3375 to 4500 Sq Ft</option>
+					<option value='4500_5625'>4500 to 5625 Sq Ft</option>
+					<option value='5625_6750'>5625 to 6750 Sq Ft</option>
+					<option value='6750_7875'>6750 to 7875 Sq Ft</option>
+					<option value='7875_9000'>7875 to 9000 Sq Ft</option>
+				</select>
+				<div tabindex='0' id='hiddenSquareFeet_combo' onmousedown='toggle_contaier("hiddenSquareFeet_container");' onmouseout='setflag(0);' onblur='hc("hiddenSquareFeet");' class='cm_combo style-update' style='width: 100px;  background-color:#FFFFFF; '>
+					<div id='hiddenSquareFeet_combo_text' class='cm_combo_txt' style='width:80px;' onmouseout='setflag(0);' onblur='hc("hiddenSquareFeet");'>Any</div>
+					<div class='cm_combo_img' onmouseout='setflag(0);' onblur='hc("hiddenSquareFeet");'></div>
+				</div>
+				<div tabindex='0' id='hiddenSquareFeet_container' onmouseover='setflag(1);' onmouseout='setflag(0);' onblur=hc("hiddenSquareFeet"); style='display: none; z-index:1000; ' class='cm_container facebox'>
+					<div class='facebox_popup'>
+						<table style='width: 251px;'>
+							<tr>
+								<td class='facebox_tl' />
+								<td class='facebox_b' />
+								<td class='facebox_tr' />
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--action="https://profolio.zameen.com/profolio/includes/inventory_search/inventory_results.php"-->
+		<form name="frm_inventorysearch" id="form_serializa" class="frm_inventorysearch" method="post" action="?ajax=1&ajax_section=dash_prop_invent&ajax_action=get_inventory_search_list">
+			<div id="search">
+				<div class="searchbox" style="padding:1%">
+					<div class="search_div">
+						<label class="search_label">Type</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cat cm_combo style-update" width='100' name='category_id' style='width: 100px;'>
+									<option value=''>Any</option>
+									@foreach($category as $val)
+									<option value='{{$val->id}}'>{{$val->name}}</option>
+									@endforeach
+								</select>
+							</div>
+						</span>
+						<div id="subtype_container"><select id="subtype_select" class="cm_combo style-update d-none" width="100" name="subcat_id" style="margin-left:20px ;">
+								<option value="">Any</option>
+							</select></div>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Purpose</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cm_combo style-update" width='100' id='type_n' name='property_perpose' onchange="" style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='for_sale'>Buy</option>
+									<option value='for_rent'>Rent</option>
+								</select>
+							</div>
+						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Area</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cm_combo style-update" width='100' id='type_n' name='size' onchange="" style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='225'>Below 1 Marla</option>
+									<option value='225_1125'>1 to 5 Marla</option>
+									<option value='1125_2250'>5 to 10 Marla</option>
+									<option value='2250_3375'>10 to 15 Marla</option>
+									<option value='3375_4500'>15 to 20 Marla</option>
+									<option value='4500_5625'>20 to 25 Marla</option>
+									<option value='5625_6750'>25 to 30 Marla</option>
+									<option value='6750_7875'>30 to 35 Marla</option>
+									<option value='7875_9000'>35 to 40 Marla</option>
+								</select>
+							</div>
+						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Price</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cm_combo style-update" width='100' name='price' onchange="" style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='0 200000'>Under 200,000</option>
+									<option value='200000 500000'>200,000 to 500,000</option>
+									<option value='500000 750000'>500,000 to 750,000</option>
+									<option value='750000 1000000'>750,000 to 1,000,000</option>
+									<option value='1000000 2000000'>1,000,000 to 2,000,000</option>
+									<option value='2000000 5000000'>2,000,000 to 5,000,000</option>
+									<option value='5000000 0'>over 5,000,000</option>
+								</select>
+							</div>
+						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Location</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="location cm_combo style-update" width='100' name='location' style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='pakistan'>Pakistan</option>
+								</select>
+							</div>
+						</span>
+						<!-- State Picker -->
+						<span>
+							<div id="State_container"><select id="location_select" class="state cm_combo style-update d-none" width="100" name="state_id" style="margin-left:20px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
+						<!-- City Picker -->
+						<span>
+							<div id="City_container"><select id="state_select" class="city cm_combo style-update d-none" width="100" name="city_id" style="margin-left:20px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
+						<!-- Area Picker -->
+						<span>
+							<div id="Area_container"><select id="city_select" class="cm_combo style-update d-none" width="100" name="area_id" style="margin-left:40px ;">
+									<option value="">Any</option>
+								</select></div>
+						</span>
 
                         </div>
                         <div class="search_div">
