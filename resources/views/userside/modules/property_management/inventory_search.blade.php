@@ -234,7 +234,7 @@
                 <option value="ASC">Ascending</option>
                 <option value="DESC" selected="selected">Descending</option>
             </select>&nbsp;order.&nbsp;
-            <img id="go_Sale" class="go_sort" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
+            <img id="go_Sale" class="go_sort" src="{{ asset('userside') }}/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
         </div>
 
         <div class="ant-table" id="data_Sale" style="height:auto">
@@ -275,7 +275,7 @@
 
                                         <td class="table-location">
                                             <a href="javascript:void(0);" onmouseover="overlib('Punjab &raquo; Rahim Yar Khan &raquo; Manthar Road &raquo; Fahad Garden Housing Scheme',CAPTION,'Location',HEIGHT,40,WIDTH,300);" onmouseout="nd();">
-                                                Fahad Garden Housing ... <img src="https://assets.zameen.com/profolio/images/icon-notification.svg" width="12" class="intimation-icon" border="0" />
+                                                Fahad Garden Housing ... <img src="{{ asset('userside') }}/profolio/images/icon-notification.svg" width="12" class="intimation-icon" border="0" />
                                             </a>
                                         </td>
 
@@ -300,7 +300,7 @@
                                                         <td name="Sale">
                                                             <a href="javascript:void(0);" class="platform-logo   show-listing-status " data-status="Active" data-selector="38486606" data-platform='Zameen' data-purpose='1' data-type='9' data-location='13862' data-userid='1001388906'>
 
-                                                                <img src="https://assets.zameen.com/profolio/images/zameen-icon-logo1_1.svg" alt="image" border="0" class="">
+                                                                <img src="{{ asset('userside') }}/profolio/images/zameen-icon-logo1_1.svg" alt="image" border="0" class="">
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -327,7 +327,7 @@
                                                     <tr class="">
                                                         <td class="listed-date z-date">
                                                             <a href="javascript:void(0);" onmouseover="overlib('Expiry: 16 Aug 2022',CAPTION,'Expiry',HEIGHT,25,WIDTH,150);" onmouseout="nd();">
-                                                                18 May 2022 <img src="https://assets.zameen.com/profolio/images/icon-notification.svg" width="12" class="intimation-icon dicon" border="0" />
+                                                                18 May 2022 <img src="{{ asset('userside') }}/profolio/images/icon-notification.svg" width="12" class="intimation-icon dicon" border="0" />
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -338,7 +338,6 @@
                                                 </tbody>
                                             </table>
                                         </td>
-
                                         <td class="table-listing-action multirow">
                                             <table class="table-inside" cellpadding="0" cellspacing="0">
                                                 <tbody>
@@ -365,25 +364,25 @@
                                                                     <ul class="dp_list">
                                                                         <li name="Sale">
                                                                             <a href="javascript:void(0);" class="view_detail_new" id="view_38486606">
-                                                                                <span><img src="https://assets.zameen.com/profolio/images/list_icon_1.png" alt="image"></span>
+                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_1.png" alt="image"></span>
                                                                                 Listing Detail
                                                                             </a>
                                                                         </li>
                                                                         <li name="Sale">
                                                                             <a href='https://profolio.zameen.com/profolio/index.php?tabs=2&section=edit_property&id=38486606' onmouseover="return overlib('Click to edit listing',CELLPAD, 5, 5,CAPTION,'Edit Listing');" onmouseout="return nd();">
-                                                                                <span><img src="https://assets.zameen.com/profolio/images/list_icon_2.png" alt="image"></span>
+                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_2.png" alt="image"></span>
                                                                                 Edit Listing
                                                                             </a>
                                                                         </li>
                                                                         <li name="Sale">
                                                                             <a href="javascript:void(0);" class="hide_listing" data-show="1" id="d_38486606" name="1">
-                                                                                <span><img src="https://assets.zameen.com/profolio/images/list_icon_4.png" width="18" alt="image"></span>
+                                                                                <span><img src="{{ asset('userside') }}/profolio/images/list_icon_4.png" width="18" alt="image"></span>
                                                                                 Hide Listing
                                                                             </a>
                                                                         </li>
                                                                         <li name="Sale" disabled>
                                                                             <a href="javascript:void(0);" class="no_priv_del cta-disabled" data-name='Undeleted' data-hrs="1" data-show="1" id="d_38486606" name="1" disabled>
-                                                                                <span><img src="https://assets.zameen.com/profolio/images/delete_icon_disabled.svg" alt="image"></span>
+                                                                                <span><img src="{{ asset('userside') }}/profolio/images/delete_icon_disabled.svg" alt="image"></span>
                                                                                 Delete Listing
                                                                             </a>
                                                                         </li>
@@ -405,6 +404,60 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="mass_action" style="padding:1%">
+                <div id="mass_Sale" name="Sale" style="">
+                    <b style="">Mass Action:</b>&nbsp;&nbsp;
+                    <a href="javascript:void(0);" onclick="shortlist_properties('Sale')">
+                        <img src="{{ asset('userside') }}/images/common/add_to_shortlist.gif" align="absmiddle" /></a>&nbsp;&nbsp;
+                    <!--		<a href="javascript:void(0);" class="mdel" name="-->
+                    <!--">-->
+                    <!--			<img src="-->
+                    <!--/images/common/delete_selected.gif" align="absmiddle" /></a>&nbsp;&nbsp;-->
+
+                    <a href="javascript:void(0);" class="ch_date">
+                        <img src="{{ asset('userside') }}/images/common/change_expiry_date.gif" align="absmiddle" /></a>&nbsp;&nbsp;
+                    <a href="javascript:void(0);" class="ref_listing" data-platform="">
+                        <img src="{{ asset('userside') }}/images/common/Refresh_listing.gif" align="absmiddle" /></a>&nbsp;&nbsp;
+                </div>
+            </div><br />
+            <div id="hotquota_msg_admin_only" style="display:none;">
+                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
+                    <tr>
+                        <th>Users</th>
+                        <th>Assigned</th>
+                        <th>Available</th>
+                    </tr>
+                    <tr>
+                        <td colspan='4' align='center'>No user has hot listing quota</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="mzghotquota_msg_admin_only" style="display:none;">
+                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
+                    <tr>
+                        <th>Users</th>
+                        <th>Available</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td colspan='4' align='center'>No user has Magazine listing quota</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="refreshquota_msg_admin_only" style="display:none;">
+                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
+                    <tr>
+                        <th>Users</th>
+                        <th>Assigned</th>
+                        <th>Available</th>
+                    </tr>
+                    <tr>
+                        <td colspan='4' align='center'>No user has Refresh listing quota</td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
         <div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
             <div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
@@ -565,6 +618,34 @@
 				});
 			});
 		});
+
+        function myFunction(obj) {
+		var id = $(obj).children('.dropdown-content').attr("id");
+		if( !$('#'+id).hasClass('show'))
+		{
+			$('.dropdown-content').removeClass('show');
+  			document.getElementById(id).classList.toggle("show");
+		}
+  		else
+			$('.dropdown-content').removeClass('show');
+	}
+
+	// Close the dropdown menu if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn'))
+		{
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++)
+			{
+		  		var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show'))
+				{
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
 	</script>
 
 	@endsection
