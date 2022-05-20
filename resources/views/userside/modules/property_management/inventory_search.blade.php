@@ -210,84 +210,81 @@
 			<input type="hidden" name="_token" value="768739f3e486beee9dfa0ade40589f68fb0d3f9151fd9d1fb84c4b957272b3ea">
 		</form>
 	</div>
-
-	<div class="box_title">
-		<div><b>Inventory Results</b></div>
-	</div>
-	<div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
-		<div id="Sale_select" class="details-listing-table">
-			Show: <select class="show_select radius-4p" style="margin-left:10px; width:60px;margin-right:10px;">
-				<option value="10" selected>10</option>
-			</select> listings per page <input type="hidden" name="listing_platform" class="listing_platform" value="" id="drp-Sale-input">
+	<span id="table_container" class="d-none">
+		<div class="box_title">
+			<div><b>Inventory Results</b></div>
 		</div>
-		<input type="hidden" id="st_1" name="st_1" value="0" />
-		<div class="details-listing-table">Sort By:&nbsp;
-			<select name="order_Sale" class="radius-4p" id="order_Sale">
-				<option value="order_by_selector">ID</option>
-				<option value="order_by_type2title">Type</option>
-				<option value="order_by_title">Location</option>
-				<option value="order_by_price">Price</option>
-				<option value="order_by_edate">Expiry</option>
-				<option value="order_by_counter">Views</option>
-				<option value="order_by_image_count">Listing images count</option>
-			</select>&nbsp;in&nbsp;
-			<select name="by_Sale" class="radius-4p" id="by_Sale">
-				<option value="ASC">Ascending</option>
-				<option value="DESC" selected="selected">Descending</option>
-			</select>&nbsp;order.&nbsp;
-			<img id="go_Sale" class="go_sort" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
-		</div>
+		<div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
+			<div id="Sale_select" class="details-listing-table">
+				Show: <select class="show_select radius-4p" style="margin-left:10px; width:60px;margin-right:10px;">
+					<option value="10" selected>10</option>
+				</select> listings per page <input type="hidden" name="listing_platform" class="listing_platform" value="" id="drp-Sale-input">
+			</div>
+			<input type="hidden" id="st_1" name="st_1" value="0" />
+			<div class="details-listing-table">Sort By:&nbsp;
+				<select name="order_Sale" class="radius-4p" id="order_Sale">
+					<option value="order_by_selector">ID</option>
+					<option value="order_by_type2title">Type</option>
+					<option value="order_by_title">Location</option>
+					<option value="order_by_price">Price</option>
+					<option value="order_by_edate">Expiry</option>
+					<option value="order_by_counter">Views</option>
+					<option value="order_by_image_count">Listing images count</option>
+				</select>&nbsp;in&nbsp;
+				<select name="by_Sale" class="radius-4p" id="by_Sale">
+					<option value="ASC">Ascending</option>
+					<option value="DESC" selected="selected">Descending</option>
+				</select>&nbsp;order.&nbsp;
+				<img id="go_Sale" class="go_sort" src="https://assets.zameen.com/profolio/images/auto_utilization_go_button1_1.png" border="0" align="absmiddle" style="cursor:pointer;" />
+			</div>
 
-		<div class="ant-table" id="data_Sale" style="height:auto">
-			<table class="main-table" cellpadding="0" cellspacing="0" style="margin-bottom: 18px;">
-				<tbody>
-					<tr>
-						<td class="col-9">
-							<input type="hidden" id="is_new_olx_system" name="is_new_olx_system" value="">
-							<table class="listing_table list-table-left">
-								<thead class="thead-light">
-									<tr>
-										<!-- <th style="padding:0px 0px 0px 15px;width: 13px;">
+			<div class="ant-table" id="data_Sale" style="height:auto">
+				<table class="main-table" cellpadding="0" cellspacing="0" style="margin-bottom: 18px;">
+					<tbody>
+						<tr>
+							<td class="col-9">
+								<input type="hidden" id="is_new_olx_system" name="is_new_olx_system" value="">
+								<table class="listing_table list-table-left">
+									<thead class="thead-light">
+										<tr>
+											<!-- <th style="padding:0px 0px 0px 15px;width: 13px;">
 											<input type="checkbox" name="chkall_Sale" class="margin-0 chk_all" id="chkall_Sale" />
 										</th> -->
-										<th style="padding:0px 0px 0px 15px;">ID</th>
-										<th>Type</th>
-										<th>Location</th>
-										<th>Details</th>
-										<th>Price (PKR)</th>
-										<th>Platform</th>
-										<th>Quota</th>
-										<th>Listed Date</th>
-										<!-- <th>Actions</th> -->
+											<th style="padding:0px 0px 0px 15px;">ID</th>
+											<th>Type</th>
+											<th>Location</th>
+											<th>Details</th>
+											<th>Price (PKR)</th>
+											<th>Platform</th>
+											<th>Quota</th>
+											<th>Listed Date</th>
+											<!-- <th>Actions</th> -->
 
-									</tr>
-								</thead>
-								<tbody id="table_data" style="float: none;">
+										</tr>
+									</thead>
+									<tbody id="table_data" style="float: none;">
 
 
-									<!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
+										<!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
 											<input type="checkbox" name="chk_38486606" class="margin-0" id="chk_38486606" style="position:relative;top:-2px;" />
 										</td> -->
 
-								</tbody>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			</td>
-			</tr>
-			</tbody>
-			</table>
-		</div>
-		<div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
-			<div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
-				Total Listings: <span id="total_Sale">0</span>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div id="Sale" style="text-align:right;width:78%;float:right" class="paginate">
+			<div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
+				<div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
+					Total Listings: <span id="total_Sale">0</span>
+				</div>
+				<div id="Sale" style="text-align:right;width:78%;float:right" class="paginate">
+				</div>
 			</div>
 		</div>
-	</div>
+	</span>
 	<script>
 		$(document).ready(function() {
 			$('.cat').on('change', function() {
@@ -417,40 +414,35 @@
 						$('#table_data').html('');
 						$('#table_container').removeClass('d-none');
 						$.each(result, function(key, value) {
-							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">'+value.id+'&nbsp;</td><td class="selector-id-table inventory">'+value.category+'&nbsp;</td><td class="selector-id-table inventory">'+value.location+'&nbsp;</td><td class="selector-id-table inventory">'+value.area_size+'&nbsp;</td><td class="selector-id-table inventory">'+value.price+'&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">'+value.listed_date+'&nbsp;</td></tr>');
+							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' + value.id + '&nbsp;</td><td class="selector-id-table inventory">' + value.category + '&nbsp;</td><td class="selector-id-table inventory">' + value.location + '&nbsp;</td><td class="selector-id-table inventory">' + value.area_size + '&nbsp;</td><td class="selector-id-table inventory">' + value.price + '&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' + value.listed_date + '&nbsp;</td></tr>');
 						});
 					}
 				});
 			});
 		});
 
-        function myFunction(obj) {
-		var id = $(obj).children('.dropdown-content').attr("id");
-		if( !$('#'+id).hasClass('show'))
-		{
-			$('.dropdown-content').removeClass('show');
-  			document.getElementById(id).classList.toggle("show");
+		function myFunction(obj) {
+			var id = $(obj).children('.dropdown-content').attr("id");
+			if (!$('#' + id).hasClass('show')) {
+				$('.dropdown-content').removeClass('show');
+				document.getElementById(id).classList.toggle("show");
+			} else
+				$('.dropdown-content').removeClass('show');
 		}
-  		else
-			$('.dropdown-content').removeClass('show');
-	}
 
-	// Close the dropdown menu if the user clicks outside of it
-	window.onclick = function(event) {
-		if (!event.target.matches('.dropbtn'))
-		{
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			var i;
-			for (i = 0; i < dropdowns.length; i++)
-			{
-		  		var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show'))
-				{
-					openDropdown.classList.remove('show');
+		// Close the dropdown menu if the user clicks outside of it
+		window.onclick = function(event) {
+			if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
 				}
 			}
 		}
-	}
 	</script>
 
 	@endsection
