@@ -2,7 +2,7 @@
 <meta name="meta_keywords" content="{{ $meta->meta_keywords }}">
 <title>{{ $meta->meta_title }}</title>
 <link rel="shortcut icon" href="{{ asset('userside') }}/favicon.ico">
-<link rel="stylesheet" href="https://assets.zameen.com/profolio/css/plugins1_25.css?v=5" type="text/css" />
+<link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/plugins1_25.css?v=5" type="text/css" />
 {{-- jqueryy files --}}
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <script type='text/javascript' src='{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js'></script>
@@ -27,3 +27,11 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/css/intlTelInput_smp.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/intlTelInput_smp_1_2.css" type="text/css">
 
+<link rel="stylesheet" href="{{ asset('userside') }}/css/listing_css1_11.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('userside') }}/css/profolio_v2.css?v=38" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ asset('userside') }}/css/jtool_datepicker_css1_1.css"/>
+
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/combo1_19.js"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/lib/combo/combo_tm1_19.js" ></script>
+<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/mylisting_css.css" type="text/css">
+		<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">

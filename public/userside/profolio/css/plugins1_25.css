@@ -1,0 +1,2669 @@
+*::-moz-focus-inner {
+    border: 0;
+    outline: none;
+}
+
+* {
+    outline: none;
+}
+
+img {
+    border: 0 none;
+}
+
+p.spacer {
+    margin-top: -30px;
+}
+
+table {
+    border-collapse: collapse
+}
+
+/* cellspacing' equivalent */
+
+input,
+select,
+textarea {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #333333;
+}
+
+.clr {
+    clear: both;
+    overflow: hidden;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 18px;
+    color: #505050;
+    margin: 0px;
+}
+
+h2 {
+    font-size: 16px;
+    color: #505050;
+    margin: 0;
+}
+
+h4 {
+    color: #EF7C21;
+    margin-left: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+}
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    background-color: #FFFFFF;
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    width: 1003px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    line-height: 130%;
+    overflow: hidden;
+}
+
+#headerChangeSetttings {
+    position: absolute;
+    display: none;
+    top: 20px;
+    left: 43%; //left:44%;
+    z-index: 1000;
+    padding: 5px;
+    font-size: 11px;
+    color: #333333;
+    line-height: 130%;
+}
+
+#headerChangeSetttings div {
+    margin: 5px 0px;
+}
+
+#headerChangeSetttings div label {
+    display: block;
+    float: left;
+    width: 100px;
+}
+
+#headerChangeSetttings div select {
+    width: 180px;
+}
+
+.submit_btn {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0 -944px no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 70px;
+    cursor: pointer;
+}
+
+.cancel_btn {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0 -915px no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 70px;
+    cursor: pointer;
+}
+
+.hr_settings {
+    border-style: dashed;
+    clear: both;
+    border-color: rgb(239, 239, 239);
+    margin: 0px 0px 0px 4px;
+    padding: 0px;
+    width: 98%;
+}
+
+html>
+/**/
+
+body .hr_settings {
+    border-style: dashed;
+    clear: both;
+    border-color: rgb(239, 239, 239);
+    margin: 22px 0px 0px 4px;
+    padding: 0px;
+    width: 98%;
+}
+
+#newtabs {
+    float: left;
+    height: 34px;
+    line-height: normal;
+    width: 100%;
+}
+
+#newtabs UL {
+    float: left;
+    list-style-type: none;
+    margin: 0 0 0 15px;
+    padding: 10px 10px 0;
+}
+
+#newtabs LI {
+    background-image: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg");
+    background-position: left -477px;
+    float: left;
+    margin-right: 5px;
+    padding-left: 5px;
+}
+
+#newtabs A {
+    background-image: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg");
+    background-position: right -504px;
+    color: #666666;
+    float: left;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 5px 15px 7px 6px;
+}
+
+#newtabs A:hover {
+    TEXT-DECORATION: underline;
+}
+
+#newtabs #current {
+    background-position: left -409px;
+    position: relative;
+    z-index: 3;
+}
+
+#newtabs #current A {
+    background-position: right -436px;
+    color: #000000;
+}
+
+.comm_new_link {
+    width: 83px;
+}
+
+#header {
+    width: 100%;
+    height: 135px;
+    background-color: #FFFFFF;
+}
+
+#headerleftcorner {
+    height: 51px;
+    width: 299px;
+    position: relative;
+    top: 29px;
+    display: block;
+}
+
+#header #headerleftcorner #header_site_logo {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0px -1248px no-repeat;
+    width: 200px;
+    height: 55px;
+}
+
+#headerrightcorner {
+    float: right;
+    width: 700px;
+    height: 110px;
+    color: #666666;
+}
+
+#headerrightcorner #rborder {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") 0px -100px;
+    width: 5px;
+    float: right;
+    height: 21px;
+}
+
+#headerrightcorner #lborder {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") 0px -77px;
+    width: 5px;
+    float: right;
+    height: 21px;
+}
+
+#header_body ul {
+    float: right;
+}
+
+#header_body ul li {
+    display: inline-block;
+    margin-top: 16px;
+    padding-left: 20px;
+    color: #000000;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    position: relative;
+}
+
+#header_body ul li:not(:last-child) {
+    margin-right: 24px;
+}
+
+#header_body ul li.z-logo-icon-header:before {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    content: "";
+    background: url('https://assets.zameen.com/profolio/images/header_zlogo_icon_profolio1_2.png') no-repeat;
+    width: 15px;
+    height: 14px;
+}
+
+#header_body ul li.z-email-icon-header:before {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    content: "";
+    background: url('https://assets.zameen.com/profolio/images/header_email_icon_profolio1_2.png') no-repeat;
+    width: 12px;
+    height: 13px;
+}
+
+#header_body ul li.z-logout-icon-header:before {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    content: "";
+    background: url('https://assets.zameen.com/profolio/images/header_logout_icon_profolio1_2.png') no-repeat;
+    width: 11px;
+    height: 11px;
+}
+
+#header_body a {
+    color: #000000;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    font-family: 'lato', sans-serif;
+}
+
+#header_body a.header_setting_link {
+    background-image: none;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px;
+}
+
+#header_contact {
+    background-position: 0px -10px;
+}
+
+#header_news {
+    background-position: 0px -53px;
+}
+
+#header_advertise {
+    background-position: 0px 2px;
+}
+
+#header_login {
+    background-position: 0px -31px;
+}
+
+#header_logout {
+    background-position: 0px -20px;
+}
+
+#header_registration {
+    background-position: 0px -64px;
+}
+
+#header_profolio {
+    background-position: 0px -43px;
+}
+
+#header_blog {
+    background-position: 0px -241px;
+}
+
+#header_billing {
+    background-position: 0.5px -783px;
+}
+
+#header_settings {
+    margin: 12px 0px 0px 0px;
+    float: right;
+    width: 80%;
+}
+
+#header_settings a {
+    color: #848484;
+    float: right;
+    margin: 0px 6px 0px 6px;
+}
+
+#header_settings .sublinks {
+    cursor: pointer;
+    float: right;
+}
+
+#headerrightcorner .darrow {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") no-repeat -192px 3px;
+    height: 7px;
+    width: 7px;
+}
+
+#bookmark {
+    height: 16px;
+    float: right;
+    width: 125px;
+}
+
+.go {
+    background: url(https://assets.zameen.com/profolio/images/header_tabs1_2.jpg) 0px -45px;
+    width: 25px;
+    height: 19px;
+    border: 0px;
+    cursor: pointer;
+}
+
+#txt_tabs_search {
+    border: 1px solid #e6e6e6;
+    color: #454545;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 2px 2px 3px;
+    width: 67px;
+    border-radius: 4px;
+}
+
+#divider {
+    width: 1001px;
+    height: 62px;
+    clear: left;
+    border: 1px solid #9E9A74;
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") left -779px repeat-x;
+    position: relative;
+    top: -1px;
+    z-index: 2;
+}
+
+#header_search {
+    border: 1px solid #FFFFFF;
+    height: auto;
+    overflow: hidden;
+    width: 825px;
+    clear: both;
+    margin: 10px 0px 0px 90px;
+    padding: 10px 10px 0px 10px;
+    background: url("https://assets.zameen.com/profolio/images/search_bg.png");
+    _background: none;
+    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://assets.zameen.com/profolio/images/search_bg.png', sizingMethod='scale');
+    _height: 32px;
+}
+
+#tab_search_main {
+    height: 31px; //height:13px;
+}
+
+#tabs_search {
+    display: block;
+    float: right;
+    font: Verdana, Arial, Helvetica, sans-serif;
+    text-align: right;
+    position: relative;
+    top: 2px;
+    width: 30%;
+}
+
+.tab_search_div {
+    float: left;
+    margin: 0px 0px 0px 0px;
+    width: 165px;
+}
+
+.tab_search_button {
+    background: url("https://assets.zameen.com/profolio/images/search_button.png");
+    width: 82px;
+    height: 29px;
+    border: none;
+    float: left;
+    cursor: pointer;
+    margin: -1px 0px 0px 5px !important;
+    margin: 0px 0px 0px 5px;
+}
+
+#tab_search_container {
+    display: none;
+    height: 42px;
+    clear: both;
+    margin-top: -1px;
+    border: none;
+}
+
+#tab_search_pointer {
+    margin-left: 60px;
+    width: 165px;
+    height: 12px;
+}
+
+*:first-child+html #tab_search_pointer {
+    margin-top: 20px;
+}
+
+#sub_divider {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") left -169px repeat-x;
+    width: 1003px;
+    height: 9px;
+    margin-top: -1px;
+    overflow: hidden;
+}
+
+#sub_divider_search {
+    background: #D5D1AC;
+    border: 1px solid #9E9A74;
+    border-top: none;
+    height: 56px;
+    margin-top: -1px;
+    width: 1001px;
+    display: none;
+}
+
+.search_more_p {
+    background-image: url(https://assets.zameen.com/profolio/images/top_menu.gif);
+    background-repeat: no-repeat;
+    background-position: 0px -144px;
+    width: 19px;
+    padding-left: 14px;
+}
+
+.search_more_n {
+    background-image: url(https://assets.zameen.com/profolio/images/header_tabs1_2.jpg) 0 -611px;
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 129px;
+    padding-left: 14px;
+}
+
+#overdiv {
+    font-size: 11px;
+}
+
+#footer_top {
+    background: url("https://assets.zameen.com/profolio/images/footer.jpg") repeat-x center 0;
+    height: 139px;
+    clear: both;
+}
+
+#footer {
+    background: url("https://assets.zameen.com/profolio/images/footer_spacer.jpg") repeat-x 0 top;
+    font-size: 11px;
+    height: 90px;
+    color: #999999;
+    line-height: 22px;
+    text-align: center;
+}
+
+.rssfeeds {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") no-repeat right -29px;
+    padding: 1px 11px 0 0;
+}
+
+#footer div a {
+    color: #999999;
+}
+
+/*login_css.css*/
+
+.lgtop_border {
+    background: url('https://assets.zameen.com/profolio/images/gt_spacer.jpg') repeat-x 0 0;
+    width: 100%;
+    clear: left;
+}
+
+.lgbottom_border {
+    background: url('https://assets.zameen.com/profolio/images/gb_spacer.jpg') repeat-x 0 100%;
+}
+
+.lgleft_border {
+    background: url('https://assets.zameen.com/profolio/images/gl_spacer.jpg') repeat-y 0 0;
+}
+
+.lgright_border {
+    background: url('https://assets.zameen.com/profolio/images/gr_spacer.jpg') repeat-y 100% 0;
+}
+
+.lgbottom_left {
+    background: url('https://assets.zameen.com/profolio/images/gbl_curve.jpg') no-repeat 0 100%;
+}
+
+.lgbottom_right {}
+
+.lgtop_left {
+    background: url('https://assets.zameen.com/profolio/images/gtl_curve.jpg') no-repeat 0 0;
+}
+
+.lgtop_right {
+    padding: 5px;
+}
+
+.top_border {
+    background: url('https://assets.zameen.com/profolio/images/dt_spacer.jpg') repeat-x 0 0;
+    width: 100%;
+    clear: left;
+}
+
+.bottom_border {
+    background: url('https://assets.zameen.com/profolio/images/db_spacer.jpg') repeat-x 0 100%;
+}
+
+.left_border {
+    background: url('https://assets.zameen.com/profolio/images/dl_spacer.jpg') repeat-y 0 0;
+}
+
+.right_border {
+    background: url('https://assets.zameen.com/profolio/images/dr_spacer.jpg') repeat-y 100% 0;
+}
+
+.bottom_left {
+    background: url('https://assets.zameen.com/profolio/images/dbl_curve.jpg') no-repeat 0 100%;
+}
+
+.bottom_right {
+    background: url('https://assets.zameen.com/profolio/images/dbr_curve.jpg') no-repeat 100% 100%;
+}
+
+.top_left {
+    background: url('https://assets.zameen.com/profolio/images/dtl_curve.jpg') no-repeat 0 0;
+}
+
+.top_right {
+    background: url('https://assets.zameen.com/profolio/images/dtr_curve.jpg') no-repeat 100% 0;
+    padding: 5px;
+}
+
+#login_page {
+    background: url("https://assets.zameen.com/profolio/images/signin_page.jpg") no-repeat 0 0 transparent;
+    width: 900px;
+    overflow: hidden;
+    height: 260px;
+    padding-left: 35px;
+    color: #6B6B6B;
+    margin-top: 20px;
+    margin-bottom: 144px;
+}
+
+#login_info_main {
+    width: 350px;
+    color: #8A8B8C;
+    float: left;
+}
+
+#login_info_bg {
+    background-color: #6C922A;
+    width: 100%;
+    color: #FFFFFF;
+    height: 239px;
+}
+
+#login_bgimg {
+    background: url(https://assets.zameen.com/profolio/images/design_login.jpg) no-repeat left bottom;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+    top: 23px;
+    left: -5px;
+}
+
+#login_bgimg,
+x:-moz-any-link,
+x:default {
+    background: url(https://assets.zameen.com/profolio/images/design_login.jpg) no-repeat left bottom;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+    top: 21px;
+    left: -5px;
+}
+
+*:first-child+html #login_bgimg {
+    background: url(https://assets.zameen.com/profolio/images/design_login.jpg) no-repeat left bottom;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+    top: 15px;
+    left: -5px;
+}
+
+*html #login_bgimg {
+    background: url(https://assets.zameen.com/profolio/images/design_login.jpg) no-repeat left bottom;
+    margin: 0px 0px 0px 0px;
+    position: relative;
+    top: 15px;
+    left: -5px;
+}
+
+#login_info {
+    float: right;
+    margin: 28px 15px 0;
+    width: 360px;
+}
+
+#login_info h4 {
+    color: #6B6B6B;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#login_info p {
+    margin: 0px;
+    padding: 0px;
+    text-indent: 1px;
+}
+
+#login_info ul {
+    padding: 0px;
+    margin: 10px 0px 0px 7px;
+}
+
+#login_info ul li {
+    color: #6B6B6B;
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") no-repeat -190px -83px;
+    display: block;
+    float: left;
+    height: 9px;
+    margin-top: 5px;
+    padding: 0 0 0 13px;
+}
+
+#login_info ul i {
+    font-style: normal;
+    color: #6A6A6A;
+    display: table;
+    line-height: 20px;
+}
+
+#login_info .list {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") no-repeat -190px -83px;
+    display: block;
+    float: left;
+    height: 9px;
+    width: 9px;
+    margin-top: 6px;
+}
+
+#login_info .text {
+    font-style: normal;
+    color: #6A6A6A;
+    display: block;
+    line-height: 23px;
+    margin-left: 12px;
+    width: 342px;
+}
+
+#info_pic {
+    width: 208px;
+    float: left;
+    margin-left: -10px;
+}
+
+#loginfields {
+    width: 247px;
+    float: right;
+    margin: 24px 0 0;
+}
+
+#loginfields .text {
+    font-size: 10px;
+    border: 1px solid #C9C9C9;
+    padding: 3px 2px 4px;
+}
+
+#loginbox h1,
+#forgotbox h1 {
+    color: #EE7C23;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.become_member {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0px -180px no-repeat;
+    width: 193px;
+    height: 28px;
+    display: block;
+}
+
+.submit {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0px -212px no-repeat;
+    width: 82px;
+    height: 26px;
+    display: block;
+    border: 0px none;
+    cursor: pointer;
+}
+
+#loginbox div {
+    margin-top: 17px;
+}
+
+#loginbox div label {
+    margin-top: 3px;
+    width: 73px;
+    float: left;
+}
+
+#loginbox div span {
+    display: block;
+}
+
+/**:first-child+html #loginbox div { padding-bottom:5px;padding-top:5px  }*/
+
+#forgotbox div {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 5px 0px !important;
+    padding: 0px 0px 5px 0px;
+}
+
+#forgotbox div label {
+    margin-top: 3px;
+    display: block;
+    width: 80px;
+    float: left;
+}
+
+#loginbox_ajax {
+    width: 99%;
+    padding-top: 1%;
+    /*  height:190px !important;
+	 height:187px; */
+    overflow: auto;
+    /*height:auto; */
+}
+
+*html #loginbox_ajax {
+    /* height:193px;  */
+}
+
+#loginbox_ajax div.login_field_ajax {
+    width: 65%;
+    margin-left: 20%;
+}
+
+#loginbox_ajax h1 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+#loginbox_ajax div.login_field_ajax div {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 5px 0px !important;
+    padding: 0px 0px 12px 0px;
+}
+
+#loginbox_ajax div.login_field_ajax div input#submitlogin {
+    margin-top: 5px;
+}
+
+#loginbox_ajax div.login_field_ajax div label {
+    display: block;
+    width: 40%;
+    float: left;
+}
+
+#login_ajax {
+    visibility: visible;
+    width: 400px;
+    margin-left: 8%;
+    color: #8A8B8C;
+}
+
+.login_top_heading {
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+.login_h1 {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 3px;
+    width: 90% !important;
+    width: 87%;
+}
+
+#login_top_part {
+    background-image: url(https://assets.zameen.com/profolio/images/t1_curve.gif);
+    width: 400px;
+    height: 6px;
+    font-size: 2px;
+}
+
+#login_bottom_part {
+    background-image: url(https://assets.zameen.com/profolio/images/b1_curve.gif);
+    width: 400px;
+    height: 6px;
+    font-size: 2px;
+}
+
+/*combo.css*/
+
+.jqac-menu {
+    color: black;
+    background-color: white;
+    border: 1px solid #aaa;
+    font-size: 10px;
+    z-index: 1001;
+    margin-top: 4px;
+}
+
+/* unordered list for suggestions */
+
+.jqac-menu ul {
+    list-style: none;
+    margin: 1px;
+    padding: 1px;
+    overflow: visible;
+    cursor: default;
+}
+
+/* SPAN "link" */
+
+.jqac-menu .jqac-link {
+    /*cursor: hand; cursor: pointer;    */
+    display: block;
+}
+
+/* highlighted menu item */
+
+.jqac-menu .jqac-highlight {
+    background-color: #ddf;
+}
+
+.jqac-menu span:hover {
+    background-color: #E5ECF9;
+}
+
+/* warning for no results */
+
+.jqac-menu .jqac-warning {
+    font-style: italic;
+}
+
+/* loading for AJAX get */
+
+.jqac-menu .jqac-loading {
+    font-style: italic;
+    text-decoration: blink;
+}
+
+/* matched sub-string */
+
+.jqac-menu em {
+    border-bottom: 1px solid #DB0000;
+}
+
+/* suggestion info */
+
+.jqac-menu .jqs-info {
+    text-align: right;
+    font-style: italic;
+    font-size: .75em;
+    color: #666;
+}
+
+#stext {
+    padding-left: 3px;
+}
+
+.cboxDD li {
+    list-style-image: none;
+    list-style-type: none;
+}
+
+.cboxDD li:hover {
+    background-color: #E5ECF9;
+    list-style-image: none;
+}
+
+.lihover:hover {
+    background-color: #E5ECF9;
+    list-style-image: none;
+}
+
+.cboxDD:focus,
+.cboxDD:active {
+    outline: none;
+}
+
+.cboxDDAdv:focus,
+.cboxDDAdv:active {
+    outline: none;
+}
+
+.select_newrow {
+    width: 100px;
+    display: block;
+    float: left;
+    margin-left: 10px;
+}
+
+/*thickbox.css*/
+
+#TB_window {
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #333333;
+}
+
+#TB_secondLine {
+    font: 10px Arial, Helvetica, sans-serif;
+    color: #666666;
+}
+
+#TB_window a:link {
+    color: #666666;
+}
+
+#TB_window a:visited {
+    color: #666666;
+}
+
+#TB_window a:hover {
+    color: #000;
+}
+
+#TB_window a:active {
+    color: #666666;
+}
+
+#TB_window a:focus {
+    color: #666666;
+}
+
+#TB_overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.TB_overlayMacFFBGHack {
+    background: url(https://assets.zameen.com/profolio/images/macFFBgHack.png) repeat;
+}
+
+.TB_overlayBG {
+    background-color: #000;
+    filter: alpha(opacity=75);
+    -moz-opacity: 0.75;
+    opacity: 0.75;
+}
+
+* html #TB_overlay {
+    /* ie6 hack */
+    position: absolute;
+    height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight: document.body.offsetHeight + 'px');
+}
+
+#TB_window {
+    position: fixed;
+    z-index: 102;
+    color: #000000;
+    display: none;
+    border: 4px solid #525252;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+}
+
+* html #TB_window {
+    /* ie6 hack */
+    position: absolute;
+    margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin=document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+#TB_window img#TB_Image {
+    display: block;
+    margin: 15px 0 0 15px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+}
+
+#TB_caption {
+    height: 25px;
+    padding: 7px 30px 10px 25px;
+    float: left;
+}
+
+#TB_closeWindow {
+    height: 25px;
+    padding: 11px 25px 10px 0;
+    float: right;
+}
+
+#TB_closeAjaxWindow {
+    padding: 7px 10px 5px 0;
+    margin-bottom: 1px;
+    text-align: right;
+    float: right;
+}
+
+#TB_ajaxWindowTitle {
+    float: left;
+    padding: 7px 0 5px 10px;
+    margin-bottom: 1px;
+}
+
+#TB_title {
+    background-color: #e8e8e8;
+    height: 27px;
+}
+
+#TB_ajaxContent {
+    clear: both;
+    padding: 2px 15px 15px 15px;
+    overflow: auto;
+    text-align: left;
+    line-height: 1.4em;
+}
+
+#TB_ajaxContent.TB_modal {
+    padding: 15px;
+}
+
+#TB_ajaxContent p {
+    padding: 5px 0px 5px 0px;
+}
+
+#TB_load {
+    position: fixed;
+    display: none;
+    height: 13px;
+    width: 208px;
+    z-index: 103;
+    top: 50%;
+    left: 50%;
+    margin: -6px 0 0 -104px;
+    /* -height/2 0 0 -width/2 */
+}
+
+* html #TB_load {
+    /* ie6 hack */
+    position: absolute;
+    margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin=document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+#TB_HideSelect {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: none;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+}
+
+* html #TB_HideSelect {
+    /* ie6 hack */
+    position: absolute;
+    height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight: document.body.offsetHeight + 'px');
+}
+
+#TB_iframeContent {
+    clear: both;
+    border: none;
+    margin-bottom: -1px;
+    margin-top: 1px;
+    _margin-bottom: 1px;
+}
+
+#TB_window #reg_img_btn {
+    margin-top: -14px;
+}
+
+*:first-child+html #TB_window #reg_img_btn {
+    margin-top: -24px;
+}
+
+*html #TB_window #reg_img_btn {
+    margin-top: -24px;
+}
+
+#reg_img_btn {
+    margin-top: -14px;
+}
+
+*:first-child+html #reg_img_btn {
+    margin-top: -14px;
+}
+
+*html #reg_img_btn {
+    margin-top: -24px;
+}
+
+/*paginate_css.css*/
+
+.paginate {
+    font-size: 9px;
+    text-align: center;
+    overflow: visible;
+    padding: 5px 0px 5px 0px;
+}
+
+.paginate a {
+    margin: 0px 3px;
+    color: #A3A3A3;
+    background: #F0F0F0;
+    padding: 4px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0px;
+    color: #A3A3A3;
+    opacity: 1;
+    border: 1px solid #F0F0F0;
+}
+
+.paginate .selected {
+    margin: 0px 3px;
+    color: #00A651;
+    background: #F0F0F0;
+    border: 1px solid #4AA35A;
+    padding: 2px 6px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.paginate a:hover {
+    border: 1px solid #00a651;
+}
+
+.paginate .page_x_of_y {
+    margin-left: 6px;
+}
+
+.paginate_last {
+    margin: 20px 0px 0px 0px;
+}
+
+.paginate_last #txtGo {
+    border: 1px solid #ADADAD;
+    color: #454545;
+    padding: 2px 2px 3px;
+}
+
+.paginate_last #btnGo {
+    margin: 20px 0px 0px 0px;
+}
+
+#map_close {
+    font-family: Verdana, Helvetica;
+    font-size: 10pt;
+}
+
+/* preview.css*/
+
+.tooltiptitle {
+    color: #FFFFFF;
+    cursor: default;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #4F4F4F;
+    padding: 2px;
+    display: block;
+}
+
+.tooltipcontent {
+    color: #000000;
+    cursor: default;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10px;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+}
+
+#ToolTip {
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    visibility: hidden;
+    width: 100px;
+    z-index: 4;
+}
+
+/* common_functions.php */
+
+.success_msg_box {
+    background-color: #F0FBDB;
+    border: 1px solid #00a651;
+    border-radius: 5px;
+}
+
+.note_msg_box {
+    background-color: #F8FFFD;
+    border: 1px solid #00A651;
+    border-radius: 5px;
+}
+
+.error_msg_box {
+    background-color: #FFF5F5;
+    border: 1px solid #CC9999;
+    border-radius: 5px;
+}
+
+#mail_content {
+    margin-top: 10px;
+    margin-left: 5%;
+    padding: 5px;
+    width: 80%;
+}
+
+#mail_content div {
+    background-color: #F9F9F9;
+}
+
+#mail_content div div {
+    margin-bottom: 10px;
+}
+
+#mail_content div div label {
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: right;
+    font-weight: bold;
+}
+
+#mail_content div div span {
+    display: block;
+    width: 75%;
+    text-indent: 5px;
+    padding-left: 10px;
+}
+
+#home_infobox {
+    clear: both;
+    height: 860px;
+    background: #FFFFFF;
+    border-left: 1px solid #DCDCDC;
+    width: 99.9%;
+}
+
+*:first-child+html #home_infobox {
+    height: 930px !important;
+    height: 940px;
+}
+
+#home_infobox div {
+    width: 32%;
+    float: left;
+    padding: 0px 10px;
+    border-right: 1px dashed #D3D3D3;
+    text-align: justify;
+    height: 850px; //height:920px;
+}
+
+* html #home_infobox div {
+    height: 930px;
+}
+
+#home_infobox div h1 {
+    color: #EF7C21;
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+    text-align: left;
+}
+
+#home_info_news span {
+    width: 100%;
+    clear: both;
+    margin-bottom: 20px;
+    display: block;
+    overflow: auto;
+}
+
+#home_info_news span p {
+    padding: 0px;
+    margin: 0px;
+}
+
+#home_info_news span img {
+    float: left;
+    margin-right: 5px;
+}
+
+#home_info_news span i {
+    color: #666666;
+    font-size: 10px;
+    margin-top: 5px;
+    display: block;
+}
+
+#home_info_news span label a {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #386932;
+    text-align: justify;
+}
+
+#home_info_news span b {
+    text-align: justify;
+    font-weight: normal;
+}
+
+#home_info_news span b a {
+    font-size: 10px;
+    color: #333333;
+    text-decoration: underline;
+}
+
+#home_info_about {
+    padding-left: 0px;
+    text-align: justify;
+}
+
+#home_info_newsletter {
+    padding-left: 2px;
+    border: none;
+    width: 26%;
+    width: 28% !important;
+    padding: 0px 0px 0px 10px;
+}
+
+#info_email_div {
+    display: none;
+    position: absolute;
+    border: 2px solid #555555;
+    background: #F9F9F9;
+    z-index: 100;
+}
+
+#info_community_span .info_community_link {
+    text-decoration: none;
+    font-size: 11px;
+}
+
+#backgroundFilter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    display: none;
+    z-index: 99;
+    width: 100%;
+}
+
+#home_featured_agents {
+    margin-top: 15px;
+}
+
+#agent_featured_div {
+    overflow: hidden;
+    padding: 6px 0 10px;
+}
+
+.home_agent_div table {
+    height: 64px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.home_agent_div {
+    font-size: 10px;
+    text-align: center;
+    float: left;
+    width: 113px;
+    *width: 110px;
+    height: 85px;
+    margin: 10px 23px;
+    padding-top: 5px;
+}
+
+.home_agent_div a {
+    color: #776F42;
+}
+
+.home_agent_div a:hover {
+    color: #E4640E;
+}
+
+.a_center {
+    display: block;
+    text-align: center;
+    width: 99px;
+}
+
+#about_sub_div {
+    width: 100%;
+    position: relative;
+}
+
+#about_sub_div .content {
+    line-height: 130%;
+    color: #333333;
+    font-size: 10px;
+    display: block;
+}
+
+#hr_separator {
+    border-style: dashed;
+    border-color: #EFEFEF;
+    padding-left: 2;
+    margin: 10px 0px;
+    _margin: 0px;
+    _padding: 0px;
+    height: 1px;
+}
+
+.roundedcornr_box {
+    background: url("https://assets.zameen.com/profolio/images/roundedcornr.gif") no-repeat top left;
+    clear: both;
+}
+
+.roundedcornr_top {
+    background: url("https://assets.zameen.com/profolio/images/roundedcornr.gif") no-repeat top right;
+}
+
+.roundedcornr_bottom {
+    background: url("https://assets.zameen.com/profolio/images/roundedcornr.gif") no-repeat bottom left;
+}
+
+.roundedcornr_bottom div {
+    background: url("https://assets.zameen.com/profolio/images/roundedcornr.gif") no-repeat bottom right;
+    margin-left: 1%;
+}
+
+.roundedcornr_top div,
+.roundedcornr_top,
+.roundedcornr_bottom div,
+.roundedcornr_bottom {
+    height: 10px;
+    font-size: 1px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .roundedcornr_top div,
+    .roundedcornr_top,
+    .roundedcornr_bottom div,
+    .roundedcornr_bottom {
+        width: 99.6%;
+    }
+}
+
+.roundedcornr_top {
+    width: 95%;
+    float: right;
+}
+
+.roundedcornr_content {
+    border-right: 1px solid #DCDCDC;
+    padding: 0 10px;
+}
+
+.roundedcornr_spacer {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0px -368px repeat-x;
+    height: 25px;
+    margin: -26px 3px 0px 3px;
+}
+
+.img_search_submit {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0px -580px no-repeat;
+    width: 70px;
+    height: 26px;
+    margin-right: 38px;
+    border: none;
+    cursor: pointer;
+}
+
+.cmb_change_unit_separator {
+    margin: 12px 0px;
+}
+
+#middle-banner {
+    margin: 23px 0px;
+    text-align: center;
+    clear: both;
+}
+
+#middle-banner .center_banner_gap {
+    margin-right: 40px;
+}
+
+#stext_facebox {
+    color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 130%;
+}
+
+.register_now {
+    background: url(https://assets.zameen.com/profolio/images/header_tabs1_2.jpg) -40px 0px;
+    width: 128px;
+    height: 27px;
+}
+
+#view_enlarge {
+    color: #990000;
+}
+
+#view_enlarge img {
+    position: relative;
+    top: 5px;
+}
+
+.tab_menu {
+    clear: both;
+    float: left;
+    height: 20px;
+    margin: 2% 0 0;
+}
+
+.tab_menu div {
+    background: url(https://assets.zameen.com/profolio/images/menu.png) no-repeat left top;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.tab_menu a {
+    background: url(https://assets.zameen.com/profolio/images/menu.png) no-repeat right top;
+    float: left;
+    line-height: 19px;
+    color: #333333;
+    font-weight: normal;
+    margin-left: 5px;
+    padding-right: 10px;
+}
+
+.tab_menu .selected {
+    background: url(https://assets.zameen.com/profolio/images/menu_selected.png) no-repeat left top;
+}
+
+.tab_menu .selected a {
+    background: url(https://assets.zameen.com/profolio/images/menu_selected.png) no-repeat right top;
+    color: white;
+    font-weight: bold;
+}
+
+.cross_image {
+    background: url(https://assets.zameen.com/profolio/images/cross.jpg) no-repeat;
+    width: 19px;
+    height: 15px;
+    float: right;
+    display: block;
+    cursor: pointer;
+}
+
+.table {
+    overflow: hidden;
+}
+
+/*.table div
+{
+    overflow: hidden;
+    padding: 3px 0;
+    width: 100%;
+}*/
+
+/*.table span
+{
+    float: left;
+}
+*/
+
+.address {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -157px;
+    width: 18px;
+    height: 16px;
+}
+
+.cell {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 2px -184px;
+    width: 18px;
+    height: 18px;
+}
+
+.contact_person {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -137px;
+    width: 18px;
+    height: 16px;
+}
+
+.company {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -251px;
+    width: 18px;
+    height: 16px;
+}
+
+.fax {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -210px;
+    width: 18px;
+    height: 16px;
+}
+
+.phone {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -234px;
+    width: 18px;
+    height: 16px;
+}
+
+.website {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 0 -270px;
+    width: 18px;
+    height: 16px;
+}
+
+.mail {
+    background: url("https://assets.zameen.com/profolio/images/agent_icon.png") no-repeat 2px -309px;
+    width: 18px;
+    height: 16px;
+}
+
+.red_cross {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") no-repeat 0 -273px;
+    display: inline-block;
+    height: 15px;
+    width: 19px;
+    cursor: pointer;
+}
+
+.green_send {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") no-repeat 0 -317px;
+    display: inline-block;
+    height: 21px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.ok {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") no-repeat 0 -293px;
+    display: inline-block;
+    height: 19px;
+    width: 28px;
+    cursor: pointer;
+}
+
+.no_logo {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") 0 -700px no-repeat;
+    display: inline-block;
+    height: 45px;
+    width: 80px;
+}
+
+.no_image {
+    background: url("https://assets.zameen.com/profolio/images/header_tabs1_2.jpg") -101px -639px no-repeat;
+    display: inline-block;
+    height: 70px;
+    width: 90px;
+}
+
+.home_feature_agent_popup {
+    line-height: 18px;
+}
+
+.home_feature_agent_popup label {
+    display: block;
+    width: 60px;
+    float: left;
+}
+
+#combo_auto_fill_bottom {
+    height: 1px;
+    line-height: 1px;
+}
+
+*:first-child+html #combo_auto_fill_bottom {
+    height: 15px;
+    line-height: 15px;
+}
+
+.add_to_fav {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") 0 -342px no-repeat;
+    padding-left: 14px;
+}
+
+.added_to_fav {
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") 0 -359px no-repeat;
+    padding-left: 14px;
+}
+
+.overlib_price_text {
+    border-bottom: 1px dashed #999999;
+    display: block;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.hint {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    background: url("https://assets.zameen.com/profolio/images/top_menu.gif") 0 -178px no-repeat;
+    float: right;
+    margin-top: 7px;
+    overflow: hidden;
+}
+
+.page_loading_img {
+    position: absolute;
+    top: 0px;
+    background: #FFFFFF;
+}
+
+.page_loading_img div {
+    z-index: 1000;
+    text-align: center;
+    position: fixed;
+    top: 300px;
+    width: 66%;
+    _position: absolute;
+    _top: expression(((screen.height/3)+( ignoreMe=document.documentElement.scrollTop ? document.documentElement.scrollTop: document.body.scrollTop))+'px');
+}
+
+#ajax_listing {
+    position: relative;
+}
+
+#frm_loc_search {
+    /*   margin-left: 634px;
+    margin-top: -32px;
+    position: absolute;
+	*margin-left:317px; */
+}
+
+#txt_loc_search {
+    border: 1px solid #DCDCDC;
+    color: #454545;
+    margin-right: 3px;
+    padding: 2px 2px 3px;
+    width: 170px;
+    float: left;
+}
+
+.search_box {
+    overflow: hidden;
+    width: 837px;
+}
+
+.search_box .left {
+    background: url("https://assets.zameen.com/profolio/images/search_box.jpg") repeat-x left 0;
+    float: left;
+    height: 56px;
+    width: 12px;
+}
+
+.search_box .right {
+    background: url("https://assets.zameen.com/profolio/images/search_box.jpg") repeat-x right 0;
+    float: left;
+    height: 56px;
+    width: 12px;
+}
+
+.search_box .body {
+    background: url("https://assets.zameen.com/profolio/images/search_box.jpg") repeat-x 0 -64px;
+    float: left;
+    height: 56px;
+    width: 812px;
+}
+
+.search_box .body form {
+    margin-left: 50px;
+    margin-top: 15px;
+}
+
+.search_box .shadow_left {
+    background: url("https://assets.zameen.com/profolio/images/search_box.jpg") no-repeat 0 -142px;
+    float: left;
+    height: 15px;
+    width: 100%;
+}
+
+.search_box .shadow_right {
+    background: url("https://assets.zameen.com/profolio/images/search_box.jpg") no-repeat right -162px;
+    float: right;
+    height: 15px;
+    width: 200px;
+}
+
+.search_box .txt_search {
+    border: 1px solid #DAD8D9;
+    padding: 5px;
+    float: left;
+}
+
+.search_box option {
+    padding: 1px 0;
+}
+
+#header_settings .addthis_toolbox {
+    width: 145px;
+    float: right;
+}
+
+#header_settings .addthis_toolbox a {
+    margin: 0px 0px;
+    float: left;
+}
+
+#header_settings .addthis_toolbox a span {}
+
+/* round text area and select box */
+
+.round .t,
+.round .t div,
+.round .b,
+.round .b div {
+    background: url("https://assets.zameen.com/profolio/images/header.png") white;
+    background: url("https://assets.zameen.com/profolio/images/input.png") white;
+}
+
+.round .t {
+    height: 5px;
+}
+
+.round .t div {
+    background-position: right 0;
+    float: right;
+    height: 100%;
+    width: 20px;
+}
+
+.round .b {
+    background-position: 0 -20px;
+    height: 5px;
+    position: relative;
+    top: -2px;
+}
+
+.round .b div {
+    background-position: right -20px;
+    float: right;
+    height: 100%;
+    width: 20px;
+}
+
+.round .m {
+    background-color: white;
+    border-left: 1px solid #C6C6C6;
+    border-right: 1px solid #C6C6C6;
+    overflow: hidden;
+}
+
+.round textarea,
+.round select {
+    border: 0px;
+    padding-left: 5px;
+    line-height: 15px;
+}
+
+.round .m input {
+    border: 0;
+    color: #666666;
+    padding: 1px 0 4px;
+    *padding: 1px 0 3px;
+    width: 100%;
+}
+
+/* category box single css start*/
+
+.loc_box.round .m {
+    padding: 0 5px;
+}
+
+.loc_box .single a {
+    float: left;
+    padding-bottom: 2px;
+    color: #666666;
+    padding: 0 0 2px
+}
+
+.loc_box .single a:hover {
+    color: #333333
+}
+
+.loc_box .single b {
+    color: #AEAEAE;
+    padding-left: 5px;
+    padding-right: 3px;
+}
+
+.loc_box .single a:hover b {
+    color: #D15F5F;
+}
+
+/* category box single css end */
+
+/* category box multi css start */
+
+.tab_search_loc a {
+    background-color: #ECECEC;
+    border: 1px solid #ECECEC;
+    border-radius: 6px;
+    color: #0F7AAE;
+    margin: 3px 5px 5px 0;
+    padding: 3px 6px;
+    float: left;
+}
+
+.tab_search_loc a:hover {
+    background-color: #FFF1F1;
+    border: 1px solid #FFF1F1;
+}
+
+.tab_search_loc a b {
+    color: #AEAEAE;
+    padding: 4px;
+}
+
+.tab_search_loc a:hover b {
+    color: #D15F5F;
+}
+
+/* category box multi css end */
+
+.location_box .cm {
+    float: left;
+    margin-right: 12px;
+    padding-bottom: 7px;
+}
+
+/* popup_round box css */
+
+.popup_round {
+    display: none;
+    position: absolute;
+    font-size: 11px;
+    z-index: 100;
+    width: 463px;
+    color: #666666;
+}
+
+.popup_round.small {
+    width: 400px
+}
+
+.popup_round .top_part {
+    background: url("https://assets.zameen.com/profolio/images/popup_reg.png") repeat scroll 0 0 transparent;
+    height: 9px;
+    overflow: hidden;
+}
+
+.popup_round.small .top_part {
+    background-position: -942px 0;
+}
+
+.popup_round .mid_part {
+    background-color: #FAFAFA;
+    border-left: 3px solid #D5D5D5;
+    border-right: 3px solid #D5D5D5;
+    overflow: hidden;
+    clear: both;
+}
+
+.popup_round .bottom_part {
+    background: url("https://assets.zameen.com/profolio/images/popup_reg.png") repeat scroll -468px -5px transparent;
+    height: 9px;
+    clear: both;
+    overflow: hidden;
+}
+
+.popup_round.small .bottom_part {
+    background-position: -1351px -5px;
+}
+
+.popup_round .prompt {
+    display: none;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.popup_round .body {
+    padding: 2px 15px 5px;
+}
+
+.popup_round .req_label {
+    border-bottom: 1px solid #C9C7BD;
+    height: 23px;
+}
+
+.popup_round div.r {
+    background-image: none;
+    clear: both;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.popup_round span {
+    float: left;
+}
+
+.popup_round .label {
+    float: left;
+    font-weight: bold;
+    line-height: 18px;
+    margin-right: 5px;
+    text-align: right;
+    width: 35%;
+}
+
+.popup_round .close_cross {
+    background: url("https://assets.zameen.com/profolio/images/ob_cross.png") repeat scroll 0px 0px transparent;
+    height: 40px;
+    position: absolute;
+    top: -15px;
+    right: -18px;
+    width: 40px;
+}
+
+.close_cross_big {
+    background: url("https://assets.zameen.com/profolio/images/obb_cross.png") repeat scroll 0 0 transparent;
+    height: 49px;
+    position: absolute;
+    right: -23px;
+    top: -21px;
+    width: 51px;
+}
+
+/* popup_round box css end */
+
+/***************************/
+
+#msg_box {
+    line-height: 22px;
+    padding: 10px 10px 10px 50px;
+    overflow: hidden;
+    font-size: 11px;
+    border-radius: 6px;
+}
+
+#msg_box.info {
+    background: url("https://assets.zameen.com/profolio/images/warning.gif") no-repeat scroll 10px 7px #FFFFCC;
+    border: 1px solid #FFCC00;
+    color: #000000;
+}
+
+#msg_box.error {
+    background: url("https://assets.zameen.com/profolio/images/alert_icon.gif") no-repeat scroll 10px 7px #FFEEEE;
+    border: 1px solid #CC9999;
+    color: #AA0B0B;
+}
+
+#msg_box.success {
+    background: url("https://assets.zameen.com/profolio/images/tick_green_msg.gif") no-repeat scroll 10px 7px #F0FBDB;
+    border: 1px solid #A8D768;
+    color: #1B6242;
+}
+
+#msg_box i {
+    background: url("https://assets.zameen.com/profolio/images/redsquare.gif") no-repeat scroll 0 8px transparent;
+    float: left;
+    font-style: normal;
+    padding-left: 15px;
+}
+
+/***************************/
+
+textarea {
+    resize: none;
+}
+
+.forum_new {
+    background: url("https://assets.zameen.com/profolio/images/new.png") repeat scroll 0 0 transparent;
+    height: 32px;
+    margin-top: -23px;
+    position: absolute;
+    width: 24px;
+}
+
+#ask_comm,
+#ask_comm .ask_now {
+    background-image: url("https://assets.zameen.com/profolio/images/advice.png");
+    border: 0 none;
+}
+
+#ask_comm {
+    clear: both;
+    float: left;
+    height: 186px;
+    margin-top: 23px;
+    width: 183px;
+}
+
+#ask_comm #title {
+    color: #FF6000;
+    font-size: 14px;
+    font-weight: bold;
+    height: 38px;
+    padding-top: 5px;
+}
+
+#ask_comm textarea {
+    background-color: transparent;
+    border: 0 none;
+    height: 60px;
+    margin: 0;
+    width: 160px;
+}
+
+#ask_comm .ask_now {
+    background-color: transparent;
+    background-position: -92px -756px;
+    cursor: pointer;
+    float: right;
+    height: 25px;
+    margin-top: 14px;
+    width: 81px;
+}
+
+.auto_textbox.empty {
+    color: #999999;
+    border: 1px solid #1f1f1f;
+}
+
+#sitewide_ad {}
+
+/*****manage  category frontend*******/
+
+.tab_div {
+    /* width:804px;
+	 margin-left: 16px; */
+}
+
+.tab_div .bd_auto {
+    min-height: 400px;
+}
+
+.tab_div ul {
+    list-style: none;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+.tab_clr {
+    clear: both;
+}
+
+.sub_tab {
+    background: url("https://assets.zameen.com/profolio/images/trends.png") repeat scroll 0 -43px transparent;
+    height: 31px;
+    margin-bottom: 8px;
+}
+
+.sub_tab ul {
+    list-style: none;
+    padding-left: 18px;
+}
+
+.sub_tab li {
+    float: left;
+    padding: 3px 20px 3px 8px;
+    background-image: url("https://assets.zameen.com/profolio/images/header.png");
+    background-position: -199px 9px;
+    background-repeat: no-repeat;
+}
+
+.child_content a {
+    color: #0F7AAE;
+}
+
+.tab_images {
+    float: right;
+    margin-right: 10px;
+    margin-left: 20px;
+    position: relative;
+    top: -10px;
+}
+
+.tab_images img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: transparent;
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px #888888;
+}
+
+.tab_images .tab_image {
+    background: url("https://assets.zameen.com/profolio/images/icons_image.png") no-repeat scroll -7px -157px transparent;
+    clear: both;
+    float: left;
+    height: 130px;
+    margin-right: 1%;
+    text-align: center;
+    width: 130px;
+}
+
+.tab_content {
+    clear: both;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 22px;
+    text-align: justify;
+}
+
+.tab_hide {
+    display: none;
+}
+
+.tab_disc {
+    clear: both;
+    text-align: justify;
+    line-height: 20px;
+}
+
+.right_tab_btn {
+    background-image: url("https://assets.zameen.com/profolio/images/cat_location_text.png");
+    background-position: -121px -57px;
+    height: 36px;
+    width: 41px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 223px;
+    z-index: 2;
+    margin-left: -20px;
+}
+
+.right_tab_btn:hover {
+    background-position: -121px -135px;
+}
+
+.left_tab_btn {
+    background-image: url("https://assets.zameen.com/profolio/images/cat_location_text.png");
+    background-position: -10px -57px;
+    height: 36px;
+    width: 41px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 223px;
+    z-index: 2;
+    margin-left: -20px;
+}
+
+.left_tab_btn:hover {
+    background-position: -10px -135px;
+}
+
+.rtab_btn_div {
+    float: right;
+}
+
+.ltab_btn_div {
+    float: left;
+}
+
+#cattabs * {
+    background-image: url("https://assets.zameen.com/profolio/images/dev.png");
+}
+
+#cattabs {
+    float: left;
+    height: 25px;
+    margin-left: 20px;
+}
+
+#cattabs * {
+    float: left;
+    height: 28px;
+    background-color: white;
+}
+
+#nearby_tabs label {
+    background-position: -8px -7px;
+    width: 60px;
+}
+
+#cattabs li {
+    background-position: 0 -404px;
+    line-height: 29px;
+    margin-right: 9px;
+    padding-left: 15px;
+}
+
+#cattabs a {
+    background-position: right -404px;
+    padding-right: 15px;
+    color: #55BB11;
+    /*color:#5F7E2A;*/
+}
+
+#cattabs .selected {
+    background-position: 0 -454px;
+    position: relative;
+    z-index: 1;
+}
+
+#cattabs .selected a {
+    background-position: right -454px;
+    color: #0F7AAE;
+    font-weight: bold;
+}
+
+#cattabs li:hover {
+    background-position: 0 -454px;
+}
+
+#cattabs li:hover a {
+    background-position: right -454px;
+    color: #0F7AAE;
+}
+
+.child_selected a {
+    color: red !important;
+}
+
+.area_info_btn {
+    background-image: url("https://assets.zameen.com/profolio/images/cat_location_text.png");
+    background-position: -47px -13px;
+    background-repeat: no-repeat;
+    float: left;
+    margin-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 19px;
+    padding-top: 3px;
+    /* 	*margin-top:-13px; */
+    font-size: 11px;
+    color: #EF7C21 !important;
+}
+
+.area_info_btn:hover {
+    color: #E23838;
+    text-decoration: underline;
+}
+
+.tab_inner_child {
+    float: left;
+    padding-left: 10px;
+}
+
+.tab_inner_child ul {}
+
+.tab_inner_child li {
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.tab_trans {
+    float: left;
+    padding-left: 22px;
+}
+
+/**************/
+
+.round_box .bd_auto {
+    border-left: 3px solid #ECECEC;
+    border-right: 3px solid #ECECEC;
+    clear: both;
+    overflow: hidden;
+}
+
+.round_box .hd {
+    background: url("https://assets.zameen.com/profolio/images/round_img.jpg") no-repeat scroll left top transparent;
+    float: left;
+    height: 8px;
+    width: 100%;
+}
+
+.round_box .ft {
+    background: url("https://assets.zameen.com/profolio/images/round_img.jpg") repeat scroll left -75px transparent;
+    float: left;
+    height: 9px;
+    width: 100%;
+}
+
+.round_box .hd .right {
+    background: url("https://assets.zameen.com/profolio/images/round_img.jpg") no-repeat scroll right top transparent;
+    float: right;
+    height: 100%;
+    overflow: hidden;
+    width: 10px;
+}
+
+.round_box .ft .right {
+    background: url("https://assets.zameen.com/profolio/images/round_img.jpg") repeat scroll right -75px transparent;
+    float: right;
+    height: 9px;
+    overflow: hidden;
+    width: 10px;
+}
+
+.tab_box_title {
+    padding-bottom: 6px;
+    padding-top: 29px;
+}
+
+.box_title {
+    color: #EF7C21;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tab_mian_title {
+    float: none;
+    /* padding-left: 16px; */
+    padding-top: 20px;
+}
+
+.ctab_left {
+    float: left;
+    padding-bottom: 2%;
+}
+
+.ctab_right {
+    float: right;
+}
+
+/* CSS FOR EMAIL ALERT */
+
+.ea_content {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 72% !important;
+    line-height: 130% !important;
+}
+
+.ea_content .round_text2 {
+    background: url("https://assets.zameen.com/profolio/images/input.png") no-repeat scroll 0 0 white;
+    float: left;
+    height: 25px;
+    padding-left: 5px;
+}
+
+.ea_content .round_text2 div {
+    background: url("https://assets.zameen.com/profolio/images/input.png") no-repeat scroll right 0 white;
+    float: left;
+    height: 25px;
+    padding-right: 5px;
+}
+
+.ea_content .round_text2 input {
+    border: 0 none;
+    float: left;
+    margin-top: 5px;
+}
+
+.ea_content input,
+.ea_content select,
+.ea_content textarea {
+    color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.ea_content div {
+    outline: 0 none;
+}
+
+.ea_content table {
+    border-collapse: collapse;
+}
+
+.ea_content ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ea_content .round .bt {
+    background-color: transparent;
+    background-position: 0 -20px;
+    height: 5px;
+    position: relative;
+    top: -2px;
+}
+
+.ea_content .round .bt div {
+    background-position: right -20px;
+    float: right;
+    height: 100%;
+    width: 20px;
+}
+
+.ea_content .subscribe_button_update {
+    background: url("https://assets.zameen.com/profolio/images/home.jpg") repeat scroll -283px -553px transparent;
+    border: 0 none;
+    cursor: pointer;
+    height: 22px;
+    width: 85px;
+}
+
+.ea_content .subscribe_button {
+    background: url("https://assets.zameen.com/profolio/images/home.jpg") repeat scroll -283px -553px transparent;
+    border: 0 none;
+    cursor: pointer;
+    height: 22px;
+    width: 85px;
+}
+
+.ea_content h1 {
+    color: #116F11;
+    font-size: 17px;
+    margin: 0;
+}
+
+#ea_message {
+    font-size: 13px !important;
+}
+
+.ea_content .jqac-menu ul {
+    cursor: default;
+    list-style: none outside none;
+    margin: 1px 9px 5px 5px;
+    max-height: 404px;
+    overflow-y: auto;
+    padding: 1px;
+}
+
+.jqac-link {
+    display: block !important;
+    padding: 3px 0 2px 4px !important;
+}
+
+.jqac-menu em {
+    border-bottom: 1px solid #DB0000;
+}
+
+.jqac-menu {
+    margin-top: 4px;
+    z-index: 1001;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sub_btn {
+    background: url("https://assets.zameen.com/profolio/images/confirm_button.png");
+    border: 0 none;
+    height: 21px;
+    width: 76px;
+    cursor: pointer;
+    margin-right: 7px;
+}
+
+.cancel_btn {
+    background: url("https://assets.zameen.com/profolio/images/cancel.png");
+    border: 0 none;
+    height: 21px;
+    width: 72px;
+    cursor: pointer;
+}
+
+.tick_icon {
+    background: url(https://assets.zameen.com/profolio/images/tick_green_sl.gif);
+    padding: 0px 10px;
+    background-repeat: no-repeat;
+}
+
+.cross_icon {
+    background: url(https://assets.zameen.com/profolio/images/cross_red_sl.gif);
+    padding: 0px 10px;
+    background-repeat: no-repeat;
+}
+
+.tab_menu {
+    margin-top: 11px !important;
+    height: auto;
+}
+
+.tab_menu .selected {
+    background: transparent;
+}
+
+.tab_menu a {
+    background: transparent;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #1F1F1F;
+    background-color: #E6E6E6;
+    padding: 4px 12px;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+}
+
+.tab_menu .selected a {
+    background: transparent;
+    background-color: #00a651;
+    color: #ffffff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 4px 12px;
+    margin-left: 0px;
+}
+
+.tab_menu div {
+    background: transparent;
+    height: auto;
+}

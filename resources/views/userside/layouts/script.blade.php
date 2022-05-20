@@ -79,6 +79,7 @@
         refill_place_holder($(this));
     });
 </script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/mybayut/mylisting_java3_30.js?v=15.3"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/autofill1_1.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/gmap_api1_13.js?v=1"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/add_property_single1_27.js?v=39"></script>
