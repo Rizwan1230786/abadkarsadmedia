@@ -1,13 +1,12 @@
 @extends('userside.layout')
 @section('main')
-    <style>
-        .d-none {
-            display: none;
-        }
+<style>
+	.d-none {
+		display: none;
+	}
+</style>
 
-    </style>
-
-    <body>
+<body>
 
 	<div class="box_title">
 		<div><b>Inventory Search</b></div>
@@ -140,293 +139,260 @@
 								</select></div>
 						</span>
 
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Users</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cm_combo style-update" width='100' name='user_name' onchange=""
-                                        style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='member'>abadkar.com member</option>
-                                        <option value='user'>{{ auth()->user()->firstname }}</option>
-                                    </select>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Construction Status</label>
-                            <span>
-                                <div class='cm' style='width: 100px;  '>
-                                    <select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n'
-                                        name='bulding_status' onchange="" style='width: 100px;'>
-                                        <option value=''>Any</option>
-                                        <option value='Complete'>Complete</option>
-                                        <option value='Under Construction'>Under Construction</option>
-                                    </select>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">ID or Ref</label>
-                            <span>
-                                <input type="text" id="txt_idref" name="id_or_ref" value=""
-                                    style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-                            </span>
-                            <div id="subtype_container" style="display:none;"></div>
-                        </div>
-                        <div class="search_div">
-                            <label class="search_label">Listed Date</label>
-                            <span style="width:45%">
-                                <input type="date" id="txt_listed_date_from" name="date_from" value=""
-                                    style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />&nbsp;&nbsp;To&nbsp;&nbsp;<input
-                                    type="date" id="txt_listed_date_to" name="date_to" value="" data-value="1"
-                                    style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-                            </span>
-                            <div id="subtype_container" style="display:none;"></div>
-                        </div>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Users</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cm_combo style-update" width='100' name='user_name' onchange="" style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='member'>abadkar.com member</option>
+									<option value='user'>{{ auth()->user()->firstname }}</option>
+								</select>
+							</div>
+						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Construction Status</label>
+						<span>
+							<div class='cm' style='width: 100px;  '>
+								<select class="cm_combo style-update" width='100' onkeyup='filter_items();' id='type_n' name='bulding_status' onchange="" style='width: 100px;'>
+									<option value=''>Any</option>
+									<option value='Complete'>Complete</option>
+									<option value='Under Construction'>Under Construction</option>
+								</select>
+							</div>
+						</span>
+					</div>
+					<div class="search_div">
+						<label class="search_label">ID or Ref</label>
+						<span>
+							<input type="text" id="txt_idref" name="id_or_ref" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
+					</div>
+					<div class="search_div">
+						<label class="search_label">Listed Date</label>
+						<span style="width:45%">
+							<input type="date" id="txt_listed_date_from" name="date_from" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />&nbsp;&nbsp;To&nbsp;&nbsp;<input type="date" id="txt_listed_date_to" name="date_to" value="" data-value="1" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
+					</div>
 
-                        <div class="search_div">
-                            <label class="search_label">Contact Person</label>
-                            <span>
-                                <input type="text" id="txt_person_name" name="contact_person_name" value=""
-                                    style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-                            </span>
-                            <div id="subtype_container" style="display:none;"></div>
-                        </div>
+					<div class="search_div">
+						<label class="search_label">Contact Person</label>
+						<span>
+							<input type="text" id="txt_person_name" name="contact_person_name" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
+					</div>
 
-                        <div class="search_div">
-                            <label class="search_label">Contact Cell</label>
-                            <span>
-                                <input type="text" id="txt_cell" name="contact_phone" value=""
-                                    style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
-                            </span>
-                            <div id="subtype_container" style="display:none;"></div>
-                        </div>
-                        <br>
-                        <div class="search_div">
-                            <label class="search_label">&nbsp;</label>
-                            <span>
-                                <!-- <a href="javascript:void(0)" name="sbsearch" id="sbsearch" onclick="submit_inventoryform();"><img src="/images/search_button1_1.png" border="0" /></a> -->
-                                <a href="javascript:void(0)" name="sbsearch" id="form_submit" class="search-box"
-                                    style="background-color: #FF385c ;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
-                            </span>
-                        </div>
-                        <br>
-                    </div>
-                </div>
-                <input type='hidden' name='order_by' id='order_by' value='' />
-                <input type="hidden" name="_token" value="768739f3e486beee9dfa0ade40589f68fb0d3f9151fd9d1fb84c4b957272b3ea">
-            </form>
-        </div>
-        <span id="table_container" class="d-none">
-            <div class="box_title">
-                <div><b>Inventory Results</b></div>
-            </div>
-            <div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
-                <div class="ant-table" id="data_Sale" style="height:auto">
+					<div class="search_div">
+						<label class="search_label">Contact Cell</label>
+						<span>
+							<input type="text" id="txt_cell" name="contact_phone" value="" style="width:160px; border:1px solid #BBBBBB; height:16px; padding:2px 0px 0px 2px;" />
+						</span>
+						<div id="subtype_container" style="display:none;"></div>
+					</div>
+					<br>
+					<div class="search_div">
+						<label class="search_label">&nbsp;</label>
+						<span>
+							<!-- <a href="javascript:void(0)" name="sbsearch" id="sbsearch" onclick="submit_inventoryform();"><img src="/images/search_button1_1.png" border="0" /></a> -->
+							<a href="javascript:void(0)" name="sbsearch" id="form_submit" class="search-box" style="background-color: #FF385c ;color: #ffffff;padding: 5px 24px;font-size: 12px;border-radius: 14px;">Search</a>
+						</span>
+					</div>
+					<br>
+				</div>
+			</div>
+			<input type='hidden' name='order_by' id='order_by' value='' />
+			<input type="hidden" name="_token" value="768739f3e486beee9dfa0ade40589f68fb0d3f9151fd9d1fb84c4b957272b3ea">
+		</form>
+	</div>
+	<span id="table_container" class="d-none">
+		<div class="box_title">
+			<div><b>Inventory Results</b></div>
+		</div>
+		<div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
+			<div class="ant-table" id="data_Sale" style="height:auto">
 
-                    <table id="myTable" class="listing_table list-table-left">
-                        <thead class="thead-light">
-                            <tr>
-                                <!-- <th style="padding:0px 0px 0px 15px;width: 13px;">
-               <input type="checkbox" name="chkall_Sale" class="margin-0 chk_all" id="chkall_Sale" />
-              </th> -->
-                                <th style="padding:0px 0px 0px 15px;">ID</th>
-                                <th>Type</th>
-                                <th>Location</th>
-                                <th>Details</th>
-                                <th>Price (PKR)</th>
-                                <th>Platform</th>
-                                <th>Quota</th>
-                                <th>Listed Date</th>
-                                <!-- <th>Actions</th> -->
-
-                            </tr>
-                        </thead>
-                        <tbody id="table_data"  style="float: none;">
+				<table id="demoApi" class="listing_table list-table-left">
+					<thead class="thead-light" id="table_head">
+					</thead>
+					<tbody id="table_data" style="float: none;">
 
 
-                            <!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
+						<!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
                <input type="checkbox" name="chk_38486606" class="margin-0" id="chk_38486606" style="position:relative;top:-2px;" />
               </td> -->
 
-                        </tbody>
-                    </table>
+					</tbody>
+				</table>
 
-                </div>
+			</div>
 
-            </div>
-        </span>
-        <script>
-            $(document).ready(function() {
-                $('.cat').on('change', function() {
-                    var cat_id = this.value;
-                    $.ajax({
-                        url: "{{ url('admin/property/fetch-subcat') }}",
-                        type: "POST",
-                        data: {
-                            cat_id: cat_id,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        dataType: 'json',
-                        success: function(result) {
-                            $('#subtype_select').html('');
-                            $('#subtype_select').html('<option value="">Any</option');
-                            $('#subtype_select').removeClass('d-none');
-                            $.each(result.subcat, function(key, value) {
-                                $('#subtype_select').append($('<option>', {
-                                    value: value.id,
-                                    text: value.name
-                                }));
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
-        <!-- State picker -->
-        <script>
-            $(document).ready(function() {
-                $('.location').on('change', function() {
-                    var cat_id = this.value;
-                    $.ajax({
-                        url: "{{ url('user/fetch-states') }}",
-                        type: "POST",
-                        data: {
-                            cat_id: cat_id,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        dataType: 'json',
-                        success: function(result) {
-                            $('#location_select').html('');
-                            $('#location_select').html('<option value="">Any</option');
-                            $('#location_select').removeClass('d-none');
-                            $.each(result.state, function(key, value) {
-                                $('#location_select').append($('<option>', {
-                                    value: value.name,
-                                    text: value.name
-                                }));
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
-        <!-- City picker -->
-        <script>
-            $(document).ready(function() {
-                $('.state').on('change', function() {
-                    var state_id = this.value;
-                    $.ajax({
-                        url: "{{ url('user/fetch-city') }}",
-                        type: "POST",
-                        data: {
-                            state_id: state_id,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        dataType: 'json',
-                        success: function(result) {
-                            $('#state_select').html('');
-                            $('#state_select').html('<option value="">Any</option');
-                            $('#state_select').removeClass('d-none');
-                            $.each(result.city, function(key, value) {
-                                $('#state_select').append($('<option>', {
-                                    value: value.id,
-                                    text: value.name
-                                }));
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
-        <!-- Area picker -->
-        <script>
-            $(document).ready(function() {
-                $('.city').on('change', function() {
-                    var city_id = this.value;
-                    $.ajax({
-                        url: "{{ url('user/fetch-area') }}",
-                        type: "POST",
-                        data: {
-                            city_id: city_id,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        dataType: 'json',
-                        success: function(result) {
-                            $('#city_select').html('');
-                            $('#city_select').html('<option value="">Any</option');
-                            $('#city_select').removeClass('d-none');
-                            $.each(result.area, function(key, value) {
-                                $('#city_select').append($('<option>', {
-                                    value: value.id,
-                                    text: value.areaname
-                                }));
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
-        <!-- Form Submit -->
-        <script>
-            $(document).ready(function() {
-                $('#form_submit').on('click', function() {
-                    var data = $('#form_serializa').serialize();
-                    $.ajax({
-                        url: "{{ url('user/fetch-data') }}",
-                        type: "POST",
-                        data: {
-                            data: data,
-                            _token: '{{ csrf_token() }}',
-                        },
+		</div>
+	</span>
+	<script>
+		$(document).ready(function() {
+			$('.cat').on('change', function() {
+				var cat_id = this.value;
+				$.ajax({
+					url: "{{ url('admin/property/fetch-subcat') }}",
+					type: "POST",
+					data: {
+						cat_id: cat_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#subtype_select').html('');
+						$('#subtype_select').html('<option value="">Any</option');
+						$('#subtype_select').removeClass('d-none');
+						$.each(result.subcat, function(key, value) {
+							$('#subtype_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- State picker -->
+	<script>
+		$(document).ready(function() {
+			$('.location').on('change', function() {
+				var cat_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-states') }}",
+					type: "POST",
+					data: {
+						cat_id: cat_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#location_select').html('');
+						$('#location_select').html('<option value="">Any</option');
+						$('#location_select').removeClass('d-none');
+						$.each(result.state, function(key, value) {
+							$('#location_select').append($('<option>', {
+								value: value.name,
+								text: value.name
+							}));
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- City picker -->
+	<script>
+		$(document).ready(function() {
+			$('.state').on('change', function() {
+				var state_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-city') }}",
+					type: "POST",
+					data: {
+						state_id: state_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#state_select').html('');
+						$('#state_select').html('<option value="">Any</option');
+						$('#state_select').removeClass('d-none');
+						$.each(result.city, function(key, value) {
+							$('#state_select').append($('<option>', {
+								value: value.id,
+								text: value.name
+							}));
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- Area picker -->
+	<script>
+		$(document).ready(function() {
+			$('.city').on('change', function() {
+				var city_id = this.value;
+				$.ajax({
+					url: "{{ url('user/fetch-area') }}",
+					type: "POST",
+					data: {
+						city_id: city_id,
+						_token: '{{ csrf_token() }}'
+					},
+					dataType: 'json',
+					success: function(result) {
+						$('#city_select').html('');
+						$('#city_select').html('<option value="">Any</option');
+						$('#city_select').removeClass('d-none');
+						$.each(result.area, function(key, value) {
+							$('#city_select').append($('<option>', {
+								value: value.id,
+								text: value.areaname
+							}));
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<!-- Form Submit -->
+	<script>
+		$(document).ready(function() {
+			$('#form_submit').on('click', function() {
+				var data = $('#form_serializa').serialize();
+				$.ajax({
+					url: "{{ url('user/fetch-data') }}",
+					type: "POST",
+					data: {
+						data: data,
+						_token: '{{ csrf_token() }}',
+					},
 
-                        dataType: 'json',
-                        success: function(result) {
-                            $('#table_data').html('');
-                            $('#table_container').removeClass('d-none');
-                            $.each(result, function(key, value) {
-                                $('#table_data').append(
-                                    '<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' +
-                                    value.id +
-                                    '&nbsp;</td><td class="selector-id-table inventory">' +
-                                    value.category +
-                                    '&nbsp;</td><td class="selector-id-table inventory">' +
-                                    value.location +
-                                    '&nbsp;</td><td class="selector-id-table inventory">' +
-                                    value.area_size +
-                                    '&nbsp;</td><td class="selector-id-table inventory">' +
-                                    value.price +
-                                    '&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' +
-                                    value.listed_date + '&nbsp;</td></tr>');
-                            });
-                        }
-                    });
-                });
-            });
+					dataType: 'json',
+					success: function(result) {
+						$('#table_data').html('');
+						$('#table_head').html('');
+						$('#table_container').removeClass('d-none');
+						$('#table_head').append('<tr><th style="padding:0px 0px 0px 15px;">ID</th><th>Type</th><th>Location</th><th>Details</th><th>Price (PKR)</th><th>Platform</th><th>Quota</th><th>Listed Date</th></tr>');
+						$.each(result, function(key, value) {
+							$('#table_data').append('<tr id="selector_38486606" class="grid-column-data"><td class="selector-id-table inventory">' + value.id +'&nbsp;</td><td class="selector-id-table inventory">' + value.category +'&nbsp;</td><td class="selector-id-table inventory">' + value.location +'&nbsp;</td><td class="selector-id-table inventory">' + value.area_size +'&nbsp;</td><td class="selector-id-table inventory">' + value.price +'&nbsp;</td><td class="selector-id-table inventory">abadkar.com&nbsp;</td><td class="selector-id-table inventory">1&nbsp;</td><td class="selector-id-table inventory">' + value.listed_date + '&nbsp;</td></tr>');
+						});
+						$('#demoApi').DataTable();
+					}
+				});
+			});
+		});
 
-            function myFunction(obj) {
-                var id = $(obj).children('.dropdown-content').attr("id");
-                if (!$('#' + id).hasClass('show')) {
-                    $('.dropdown-content').removeClass('show');
-                    document.getElementById(id).classList.toggle("show");
-                } else
-                    $('.dropdown-content').removeClass('show');
-            }
+		function myFunction(obj) {
+			var id = $(obj).children('.dropdown-content').attr("id");
+			if (!$('#' + id).hasClass('show')) {
+				$('.dropdown-content').removeClass('show');
+				document.getElementById(id).classList.toggle("show");
+			} else
+				$('.dropdown-content').removeClass('show');
+		}
 
-            // Close the dropdown menu if the user clicks outside of it
-            window.onclick = function(event) {
-                if (!event.target.matches('.dropbtn')) {
-                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
-            }
-        </script>
-    @endsection
+		// Close the dropdown menu if the user clicks outside of it
+		window.onclick = function(event) {
+			if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for (i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show')) {
+						openDropdown.classList.remove('show');
+					}
+				}
+			}
+		}
+	</script>
+	@endsection
