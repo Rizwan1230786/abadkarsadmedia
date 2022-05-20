@@ -2,8 +2,8 @@
 	<div id="headerrightcorner" style="margin-right:5px;">
 		<div id="header_body">
 			<ul>
-				<li class="z-logo-icon-header">
-					<a href="https://abadkar.com/" rel="nofollow" id="header_home">Go to abadkar.com</a>
+				<li class="">
+					<a href="https://abadkar.com/" rel="nofollow" id="header_home"><img src="{{ asset('userside/profolio/images/auto_utilization_go_button1_1.png') }}" style="position: absolute; right:85px" alt=""> to abadkar.com</a>
 				</li>
 				<li class="z-email-icon-header">{{ Auth::guard('customeruser')->user()->email }}</li>
 				<li class="z-logout-icon-header">
