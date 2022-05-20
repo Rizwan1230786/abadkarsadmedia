@@ -64,7 +64,13 @@ class PropertyManagementController extends Controller
         // Search for a property based on their price.
         if (!empty($data['price'])) {
             $price = explode(" ", $data['price']);
-            $user->whereBetween('price', [$price[0], $price[1]]);
+            if (isset($price[0]) && $price[0] == 0) {
+                $user->where('price', '<', $price[1]);
+            } elseif (isset($price[1]) && $price[1] == 0) {
+                $user->where('price', '>', $price[0]);
+            } else {
+                $user->whereBetween('price', [$price[0], $price[1]]);
+            }
         }
         // Search for a property based on their location.
         if (!empty($data['location'])) {
