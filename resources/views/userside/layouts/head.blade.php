@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mapbox-gl.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/inventory_css1_3.css">
 <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
 
 <!-- jquery-ui -->
 <link rel="stylesheet" href="{{ asset('userside') }}/css/add_property_single1_14.css?v=28" type="text/css">
@@ -35,3 +36,27 @@
 <script type="text/javascript" src="{{ asset('userside') }}/lib/combo/combo_tm1_19.js" ></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/mylisting_css.css" type="text/css">
 		<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">
+<style>
+    .dataTables_length{
+        padding: 8px 0 8px 15px !important;
+}
+#content{
+    font-size: 11px;
+    color: #333333;
+}
+.dataTables_filter{
+    padding: 8px 0 8px 15px !important;
+}
+.dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: transparent;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.dataTables_info{
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+}
+</style>
