@@ -106,7 +106,7 @@ class PropertyManagementController extends Controller
         }
 
         // Search for a property based on their contact_person_name.
-        // if (!empty($data['contact_person_name])) {
+        // if (!empty($data['contact_person_name'])) {
         //     $user->where('user_id sy get karna', $data['contact_person_name']);
         // }
         // Search for a property based on their contact_person_name.
