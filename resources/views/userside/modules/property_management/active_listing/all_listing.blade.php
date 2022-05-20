@@ -19,17 +19,20 @@
                         </tr>
                     </thead>
                     <tbody id="table_data" style="float: none;">
+                        @isset($property)
                         @foreach ($property as $value )
+                        @if(isset($value['type']) && $value['type'] == 'sale')
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->category }}</td>
                             <td>{{ $value->location }}</td>
                         </tr>
+                        @endif
                         @endforeach
+                        @endisset
                     </tbody>
                 </table>
             </div>
-
         </div>
     </span>
     </div>
