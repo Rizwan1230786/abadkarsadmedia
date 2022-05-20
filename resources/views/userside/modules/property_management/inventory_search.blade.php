@@ -404,60 +404,6 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="mass_action" style="padding:1%">
-                <div id="mass_Sale" name="Sale" style="">
-                    <b style="">Mass Action:</b>&nbsp;&nbsp;
-                    <a href="javascript:void(0);" onclick="shortlist_properties('Sale')">
-                        <img src="{{ asset('userside') }}/images/common/add_to_shortlist.gif" align="absmiddle" /></a>&nbsp;&nbsp;
-                    <!--		<a href="javascript:void(0);" class="mdel" name="-->
-                    <!--">-->
-                    <!--			<img src="-->
-                    <!--/images/common/delete_selected.gif" align="absmiddle" /></a>&nbsp;&nbsp;-->
-
-                    <a href="javascript:void(0);" class="ch_date">
-                        <img src="{{ asset('userside') }}/images/common/change_expiry_date.gif" align="absmiddle" /></a>&nbsp;&nbsp;
-                    <a href="javascript:void(0);" class="ref_listing" data-platform="">
-                        <img src="{{ asset('userside') }}/images/common/Refresh_listing.gif" align="absmiddle" /></a>&nbsp;&nbsp;
-                </div>
-            </div><br />
-            <div id="hotquota_msg_admin_only" style="display:none;">
-                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
-                    <tr>
-                        <th>Users</th>
-                        <th>Assigned</th>
-                        <th>Available</th>
-                    </tr>
-                    <tr>
-                        <td colspan='4' align='center'>No user has hot listing quota</td>
-                    </tr>
-                </table>
-            </div>
-            <div id="mzghotquota_msg_admin_only" style="display:none;">
-                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
-                    <tr>
-                        <th>Users</th>
-                        <th>Available</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td colspan='4' align='center'>No user has Magazine listing quota</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div id="refreshquota_msg_admin_only" style="display:none;">
-                <table style='width:100%; margin-bottom:5px;margin-top:10px;' cellpadding='2' align='center' border='1'>
-                    <tr>
-                        <th>Users</th>
-                        <th>Assigned</th>
-                        <th>Available</th>
-                    </tr>
-                    <tr>
-                        <td colspan='4' align='center'>No user has Refresh listing quota</td>
-                    </tr>
-                </table>
-            </div>
-
         </div>
         <div style="height:30px;overflow:hidden;margin-bottom:0px;;background: #f2f2f2;width: 100%;">
             <div style="float:left;margin-top:7px;width: 20%;margin-left: 10px;font-weight: bold;">
