@@ -64,7 +64,7 @@ use App\Models\Category;
                                                 @else
                                                     <td>Null</td>
                                                 @endif
-                                                <td><span class="textcoloractive">Active</span></td>
+                                                <td><span class="textcolor">Pending</span></td>
                                                 <td>
                                                     <ul class="icons-list">
                                                         <a href="{{ url('user/edit-listing-forsale/' . $value->id) }}">
