@@ -1,3 +1,7 @@
+<?php
+
+use App\Models\Category;
+?>
 @extends('userside.layout')
 @section('main')
     @include('userside.layouts.sidebar')
@@ -35,28 +39,48 @@
                                     @php
                                         $status = $value->status ?? 0;
                                     @endphp
-                                    @if (isset($value['type']) && $value['type'] == 'sale')
-                                        <tr>
-                                            <td>{{ $value->id }}</td>
-                                            <td>{{ $value->category }}</td>
-                                            <td>{{ Str::limit($value->location, 20) }}</td>
-                                            <td>{{ Str::limit($value->descripition, 20) }}</td>
-                                            <td>{{ $value->price }}</td>
-                                            <td>abadkar.com</td>
-                                            <td>1</td>
-                                            <td>{{ $value->listed_date }}</td>
-                                            <td><span class="textcolor">Pending</span></td></td>
-                                            <td>
-                                                <ul class="icons-list">
-                                                    <a href="{{ url('user/edit-listing-forsale/'.$value->id) }}">
-                                                        <li class="icons-list-item"><i class="fe fe-edit"
-                                                                data-toggle="tooltip" title="" data-original-title="Edit"></i>
-                                                        </li>
-                                                    </a>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    @endif
+                                     <?php
+                                     $category = Category::where(['id' => $value->category])->get();
+                                     ?>
+                                     @foreach ($category as $item)
+                                         @if (isset($value['type']) && $value['type'] == 'sale')
+                                             <tr>
+                                                 <td>{{ $value->id }}</td>
+                                                 <td>{{ $item->name }}</td>
+                                                 @if (isset($value) && !empty($value->location))
+                                                     <td>{{ Str::limit($value->location, 20) }}</td>
+                                                 @else
+                                                     <td>No Add</td>
+                                                 @endif
+                                                 @if (isset($value) && !empty($value->descripition))
+                                                     <td>{{ Str::limit($value->descripition, 20) }}</td>
+                                                 @else
+                                                     <td>No Add</td>
+                                                 @endif
+                                                 <td>{{ $value->price }}</td>
+                                                 <td>abadkar.com</td>
+                                                 <td>1</td>
+                                                 @if (isset($value) && !empty($value->listed_date))
+                                                     <td>
+                                                     <td>{{ $value->listed_date }}</td>
+                                                     </td>
+                                                 @else
+                                                     <td>Null</td>
+                                                 @endif
+                                                 <td><span class="textcoloractive">Active</span></td>
+                                                 <td>
+                                                     <ul class="icons-list">
+                                                         <a href="{{ url('user/edit-listing-forsale/' . $value->id) }}">
+                                                             <li class="icons-list-item"><i class="fe fe-edit"
+                                                                     data-toggle="tooltip" title=""
+                                                                     data-original-title="Edit"></i>
+                                                             </li>
+                                                         </a>
+                                                     </ul>
+                                                 </td>
+                                             </tr>
+                                         @endif
+                                     @endforeach
                                 @endforeach
                             @endisset
                         </tbody>
@@ -91,28 +115,48 @@
                         <tbody id="table_data" style="float: none;">
                             @isset($property)
                                 @foreach ($property as $value)
+                                <?php
+                                $category = Category::where(['id' => $value->category])->get();
+                                ?>
+                                @foreach ($category as $item)
                                     @if (isset($value['type']) && $value['type'] == 'rent')
                                         <tr>
                                             <td>{{ $value->id }}</td>
-                                            <td>{{ $value->category }}</td>
-                                            <td>{{ Str::limit($value->location, 20) }}</td>
-                                            <td>{{ Str::limit($value->descripition, 20) }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            @if (isset($value) && !empty($value->location))
+                                                <td>{{ Str::limit($value->location, 20) }}</td>
+                                            @else
+                                                <td>No Add</td>
+                                            @endif
+                                            @if (isset($value) && !empty($value->descripition))
+                                                <td>{{ Str::limit($value->descripition, 20) }}</td>
+                                            @else
+                                                <td>No Add</td>
+                                            @endif
                                             <td>{{ $value->price }}</td>
                                             <td>abadkar.com</td>
                                             <td>1</td>
-                                            <td>{{ $value->listed_date }}</td>
-                                            <td><span class="textcolor">Pending</span></td>
+                                            @if (isset($value) && !empty($value->listed_date))
+                                                <td>
+                                                <td>{{ $value->listed_date }}</td>
+                                                </td>
+                                            @else
+                                                <td>Null</td>
+                                            @endif
+                                            <td><span class="textcoloractive">Active</span></td>
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('edit-listing-forrent', ['id' => $value->id]) }}">
+                                                    <a href="{{ url('user/edit-listing-forsale/' . $value->id) }}">
                                                         <li class="icons-list-item"><i class="fe fe-edit"
-                                                                data-toggle="tooltip" title="" data-original-title="Edit"></i>
+                                                                data-toggle="tooltip" title=""
+                                                                data-original-title="Edit"></i>
                                                         </li>
                                                     </a>
                                                 </ul>
                                             </td>
                                         </tr>
                                     @endif
+                                @endforeach
                                 @endforeach
                             @endisset
                         </tbody>

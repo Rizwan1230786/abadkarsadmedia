@@ -168,6 +168,9 @@ class PropertyManagementController extends Controller
     {
         $user_id = Auth::user()->id;
         $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
+        foreach($property as $value){
+            $category_name=Category::where('id',$value->category)->get();
+        }
         $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
         $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
