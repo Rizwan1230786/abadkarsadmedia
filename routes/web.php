@@ -267,7 +267,10 @@ Route::prefix('user')->group(function () {
         Route::post('/fetch-area', [PropertyManagementController::class, 'fetchArea']);
         Route::post('/fetch-data', [PropertyManagementController::class, 'fetchData']);
         /////all-listing///////////
-        Route::get('/all_listing', [PropertyManagementController::class, 'all_listing'])->name('all_listing');
+        Route::get('/all-listing', [PropertyManagementController::class, 'all_listing'])->name('all_listing');
+        ////forsale listing + for rent///////
+        Route::get('/for-sale', [PropertyManagementController::class, 'for_sale'])->name('for_sale');
+        Route::get('/for-rent', [PropertyManagementController::class, 'for_rent'])->name('for_rent');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');

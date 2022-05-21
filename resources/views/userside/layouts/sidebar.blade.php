@@ -21,12 +21,12 @@
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_active"
                 onclick="menu_divtoggle('a_active','d_active');">Active <label>(1)</label></a>
             <div class="listing_class" style="display:block;" id="d_active">
-                <a href="{{ url('user/all_listing') }}"
-                    class="leftcolumnlink">All Listings</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=on"
-                    class="leftcolumnlink">For Sale (0)</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Rent&status=on"
-                    class="leftcolumnlink">For Rent (0)</a>
+                <a href="{{ url('user/all-listing') }}"
+                    class="leftcolumnlink">All Listings ({{ $count_all }})</a>
+                <a href="{{ url('user/for-sale') }}"
+                    class="leftcolumnlink">For Sale ({{ $count_sale }})</a>
+                <a href="{{ url('user/for-rent') }}"
+                    class="leftcolumnlink">For Rent ({{ $count_rent }})</a>
                 <!--		<a href="-->
                 <!--/index.php?tabs=2&section=listings&subsection=Wanted&status=-->
                 <!--" class="leftcolumnlink">-->
