@@ -2,7 +2,24 @@
 @section('main')
     @include('userside.layouts.sidebar')
     <div id="rightcolumn" style="
-            width:79% " class="rightcolumn_div post_story_margin">
+                        width:79% " class="rightcolumn_div post_story_margin">
+            <?php
+                    if (isset($record->id) && $record->id != 0) {?>
+                <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
+                    <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                            Management</a> &raquo; Edit Listing </span>
+                </div>
+            <?php
+                 }else{?>
+                <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
+                    <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                            Management</a> &raquo; Post Listing </span>
+                </div>
+               <?php
+                 }
+
+                ?>
+
         <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
 
             <div class="add_property_page step_1 purpose_ ">
@@ -34,8 +51,16 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <?php
+                if (isset($record->id) && $record->id != 0) {
+                    $url = route('admin:properties_update', [$data['updateId'] ?? 0]);
+                } else {
+                    $url = route('admin:properties_submit');
+                }
+
+                ?>
                 <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off"
-                    onsubmit="return validate_form()" action="">
+                    onsubmit="return validate_form()" action="{{ url($url) }}">
                     <div class="message_box" id="error_message_box"
                         style="padding-bottom: 10px;padding-top: 13px;display:none">
                         <div id='msg_box' class='error' style=''><span class='icon_error'></span>
@@ -736,20 +761,23 @@
                     <div class="divrow">
                         <label class="label l font_s">Contact Person: <img
                                 src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
-                        <input type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;'
+                        <input type='text' name='name' id='name'
+                            value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;'
                             class='rfield l ' />
                         <div class="bgc infologo r">
                             <p>Please enter your first and last name respectively.</p>
                         </div>
                     </div>
                     <!--
-                            class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
-                            dropdown
-                            -->
+                                        class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
+                                        dropdown
+                                        -->
                     <div class="divrow put_cell_input_after_this">
                         <label class="label l font_s">Landline Phone #: </label>
                         <span class="ph_input_box l">
-                            <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6'
+                            <input type='text' name='phone0' id='phone0'
+                                value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;'
+                                maxlength='6'
                                 onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")'
                                 class='rfield l ' /> <label class="separator">-</label>
                             <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6'
@@ -787,7 +815,8 @@
                     <div class="divrow">
                         <label class="label l font_s">Email: <img
                                 src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                        <input type='text' name='email' id='email' value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;'
+                        <input type='text' name='email' id='email'
+                            value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;'
                             class='rfield l ' />
                     </div>
                     <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />

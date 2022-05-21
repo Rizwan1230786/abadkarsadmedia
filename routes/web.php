@@ -266,12 +266,17 @@ Route::prefix('user')->group(function () {
         Route::post('/fetch-city', [PropertyManagementController::class, 'fetchCity']);
         Route::post('/fetch-area', [PropertyManagementController::class, 'fetchArea']);
         Route::post('/fetch-data', [PropertyManagementController::class, 'fetchData']);
-        /////all-listing///////////
+        /////Active-listing///////////
         Route::get('/all-listing', [PropertyManagementController::class, 'all_listing'])->name('all_listing');
         ////forsale listing + for rent///////
         Route::get('/for-sale', [PropertyManagementController::class, 'for_sale'])->name('for_sale');
         Route::get('/for-rent', [PropertyManagementController::class, 'for_rent'])->name('for_rent');
-
+        Route::get('/edit-listing-forsale/{id}', [PropertyManagementController::class, 'edit_for_sale'])->name('edit-listing-forsale');
+        Route::get('/edit-listing-forrent', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
+        ///////Pending-listing///////
+        Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
+        Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');
+        Route::get('/pending-for-rent', [PropertyManagementController::class, 'pending_for_rent'])->name('pending-for-rent');
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

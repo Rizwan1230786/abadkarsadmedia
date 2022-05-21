@@ -30,42 +30,82 @@
 
 <link rel="stylesheet" href="{{ asset('userside') }}/css/listing_css1_11.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/profolio_v2.css?v=38" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset('userside') }}/css/jtool_datepicker_css1_1.css"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('userside') }}/css/jtool_datepicker_css1_1.css" />
 
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/combo1_19.js"></script>
-<script type="text/javascript" src="{{ asset('userside') }}/lib/combo/combo_tm1_19.js" ></script>
+<script type="text/javascript" src="{{ asset('userside') }}/lib/combo/combo_tm1_19.js"></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/mylisting_css.css" type="text/css">
-		<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">
+<link href="{{ URL::asset('assets/css/icons.css') }}" rel="stylesheet" />
 <style>
-    .dataTables_length{
+    .textcolor {
+        font-size: 11px;
+        background: blue;
+        padding: 2px;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid blue;
+    }
+    .textcoloractive{
+        color: white;
+        background-color: #15b712;
+        border-radius: 5px;
+        padding: 2px;
+        font-size: 11px;
+        border: 1px solid #15b712;
+    }
+    .dataTables_length {
         padding: 8px 0 8px 15px !important;
-}
-#content{
-    font-size: 11px;
-    color: #333333;
-}
-.dataTables_filter{
-    padding: 8px 0 8px 15px !important;
-}
-.dataTables_filter input {
-    border: 1px solid #aaa;
-    border-radius: 3px;
-    background-color: transparent;
-    margin-left: 3px;
-    margin-right: 3px;
-}
-.dataTables_info{
-    clear: both;
-    float: left;
-    padding-top: 0.755em;
-}
-.listing_table.list-table-left tr>td {
-    padding: 0px;
-    height: 55px;
-    border-top: 0px;
-    vertical-align: middle;
-}
-.dataTables_paginate.paging_simple_numbers{
-    padding-bottom: 0.25em;
-}
+    }
+
+    #content {
+        font-size: 11px;
+        color: #333333;
+    }
+
+    .dataTables_filter {
+        padding: 8px 0 8px 15px !important;
+    }
+
+    .dataTables_filter input {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background-color: transparent;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        clear: both;
+        float: left;
+        padding-top: 0.6em;
+        margin-left: 5px;
+    }
+
+    .listing_table.list-table-left tr>td {
+        padding: 0px;
+        height: 55px;
+        border-top: 0px;
+        vertical-align: middle;
+    }
+
+    .dataTables_paginate.paging_simple_numbers {
+        padding-bottom: 0.25em;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 1.5em;
+        padding: 0.1em 0.6em;
+        margin-left: 2px;
+        text-align: center;
+        text-decoration: none !important;
+        cursor: pointer;
+        color: #333 !important;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        border-radius: 20px;
+    }
+
 </style>

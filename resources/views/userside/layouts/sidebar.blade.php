@@ -19,7 +19,7 @@
             </span>
             <!--     Active listings Menu     -->
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_active"
-                onclick="menu_divtoggle('a_active','d_active');">Active <label>(1)</label></a>
+                onclick="menu_divtoggle('a_active','d_active');">Active <label>({{ $count_all }})</label></a>
             <div class="listing_class" style="display:block;" id="d_active">
                 <a href="{{ url('user/all-listing') }}"
                     class="leftcolumnlink">All Listings ({{ $count_all }})</a>
@@ -50,15 +50,16 @@
                 <!--" class="leftcolumnlink">-->
                 <!--</a>-->
             </div>
+
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_pending"
-                onclick="menu_divtoggle('a_pending','d_pending');">Pending <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_pending">
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=Pending"
-                    class="leftcolumnlink">All Listings</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=Pending"
-                    class="leftcolumnlink">For Sale (0)</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Rent&status=Pending"
-                    class="leftcolumnlink">For Rent (0)</a>
+            onclick="myFunction('a_pending','d_pending');">Pending <label>({{ $count_all_pending }})</label></a>
+            <div class="listing_class dropbtn" style="display:block;" id="d_pending">
+                <a href="{{ url('user/pending-all-listing') }}"
+                    class="leftcolumnlink">All Listings ({{ $count_all_pending }})</a>
+                <a href="{{ url('user/pending-for-sale') }}"
+                    class="leftcolumnlink">For Sale ({{ $count_sale_pending }})</a>
+                <a href="{{ url('user/pending-for-rent') }}"
+                    class="leftcolumnlink">For Rent ({{ $count_rent_pending }})</a>
                 <!--		<a href="-->
                 <!--/index.php?tabs=2&section=listings&subsection=Wanted&status=-->
                 <!--" class="leftcolumnlink">-->

@@ -9,7 +9,7 @@
         </div>
         <span id="table_container" class="d-none">
             <div class="box_title">
-                <div><b>Active Listing For Sale</b></div>
+                <div><b>Pending Listing For Sale</b></div>
             </div>
             <div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
                 <div class="ant-table" id="data_Sale" style="height:auto">
@@ -45,7 +45,7 @@
                                             <td>abadkar.com</td>
                                             <td>1</td>
                                             <td>{{ $value->listed_date }}</td>
-                                            <td><span class="textcoloractive">Active</span></td>
+                                            <td><span class="textcolor">Pending</span></td></td>
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ url('user/edit-listing-forsale/'.$value->id) }}">
@@ -68,7 +68,7 @@
         <br>
         <span id="table_container" class="d-none">
             <div class="box_title">
-                <div><b>Active Listing For Rent</b></div>
+                <div><b>Pending Listing For Rent</b></div>
             </div>
             <div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
                 <div class="ant-table" id="data_Sale" style="height:auto">
@@ -101,7 +101,7 @@
                                             <td>abadkar.com</td>
                                             <td>1</td>
                                             <td>{{ $value->listed_date }}</td>
-                                            <td><span class="textcoloractive">Active</span></td>
+                                            <td><span class="textcolor">Pending</span></td>
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ route('edit-listing-forrent', ['id' => $value->id]) }}">
