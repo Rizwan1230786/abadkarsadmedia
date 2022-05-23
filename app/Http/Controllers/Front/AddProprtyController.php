@@ -42,8 +42,9 @@ class AddProprtyController extends Controller
         $data['areas'] = SubCategory::where("category_id", $request->city_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function submit(addProperty $request)
+    public function submit(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'subcat_id' => 'required',
         ]);
