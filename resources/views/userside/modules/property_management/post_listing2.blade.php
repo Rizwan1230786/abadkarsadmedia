@@ -434,8 +434,8 @@
                 <div class="imz_dialog" id="users_list_dialog" style="display:none">
                 </div>
                 <div class="divrow">
-                    <label class="label l font_s">Contact Person: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;' class='rfield l ' />
+                    <label class="label l font_s">Contact number: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input placeholder="Enter contact number..." type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;' class='rfield l ' />
                     <div class="bgc infologo r">
                         <p>Please enter your first and last name respectively.</p>
                     </div>
