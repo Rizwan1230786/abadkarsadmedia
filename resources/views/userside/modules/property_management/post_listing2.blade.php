@@ -179,7 +179,7 @@
                 <div class="subhead font_s ros subhead2" id="property_box_heading">PROPERTY SPECS AND PRICE</div>
                 <div class="divrow">
                     <label class="label l font_s">Area Size: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l ' /> <label class="label_inline l font_s">Unit: </label>
+                    <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l ' placeholder="Enter land area size..."/> <label class="label_inline l font_s">Unit: </label>
                     <span id='unit_sel_box' class='sb_combo sel_box ' style='width:135px'>
                         <select name='unit' id='unit' style='width:136px;' autocomplete='off'>
                             <option value='Square Feet' selected>Square Feet</option>
@@ -191,11 +191,11 @@
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Front Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l ' />
+                    <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l' placeholder="Enter front dimenssion..." />
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Back Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l ' />
+                    <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l ' placeholder="Enter back dimenssion..." />
                 </div>
 
                 <!-- <div class="divrow div_beds" id="div_beds">
@@ -292,7 +292,7 @@
 
                 <div class="divrow price_div">
                     <label class="label l font_s pheading display-block">All Inclusive Price: (PKR): <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' />
+                    <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' placeholder="Enter price..."/>
                 </div>
                 <div class="divrow price_div">
                     <label class="label l font_s">&nbsp;</label>
