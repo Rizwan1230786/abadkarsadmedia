@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Front\FrontUserController;
 use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\Front\AddProprtyController;
+use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
@@ -277,6 +278,9 @@ Route::prefix('user')->group(function () {
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');
         Route::get('/pending-for-rent', [PropertyManagementController::class, 'pending_for_rent'])->name('pending-for-rent');
+        ////////reports///////////
+        Route::get('/all-reports', [ReportsController::class, 'all_reports'])->name('all-reports');
+
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

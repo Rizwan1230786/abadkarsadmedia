@@ -32,6 +32,7 @@
                 <div class="clearfix"></div>
             </div>
             <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/add-property/submit">
+                @csrf
                 <div class="message_box" id="error_message_box" style="padding-bottom: 10px;padding-top: 13px;display:none">
                     <div id='msg_box' class='error' style=''><span class='icon_error'></span>
                         <ul class='items  single'>

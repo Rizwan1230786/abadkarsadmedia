@@ -4,6 +4,7 @@
 <link rel="shortcut icon" href="{{ asset('userside') }}/favicon.ico">
 <link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/plugins1_25.css?v=5" type="text/css" />
 {{-- jqueryy files --}}
+<script src="{{ asset('userside') }}/javascript/jquery/jquery.tools.min1_1.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <script type='text/javascript' src='{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js'></script>
 <script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
@@ -37,6 +38,7 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/mylisting_css.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">
 <link href="{{ URL::asset('assets/css/icons.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/profolio_reports_css1_8.css?v=2" type="text/css">
 <style>
     .textcolor {
         font-size: 11px;
