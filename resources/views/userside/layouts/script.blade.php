@@ -95,9 +95,7 @@
     var $jQuery_1_12_4 = jQuery.noConflict();
 </script>
 <script>
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+
 function myFunction(obj) {
 			var id = $(obj).children('.dropdown-content').attr("id");
 			if (!$('#' + id).hasClass('show')) {

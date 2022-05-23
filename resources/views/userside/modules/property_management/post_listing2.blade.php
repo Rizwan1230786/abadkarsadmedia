@@ -1,9 +1,26 @@
 @extends('userside.layout')
 @section('main')
-@include('userside.layouts.sidebar')
-<div id="rightcolumn" style="
-            width:79% " class="rightcolumn_div post_story_margin">
-    <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
+    @include('userside.layouts.sidebar')
+    <div id="rightcolumn" style="
+                        width:79% " class="rightcolumn_div post_story_margin">
+            <?php
+                    if (isset($record->id) && $record->id != 0) {?>
+                <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
+                    <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                            Management</a> &raquo; Edit Listing </span>
+                </div>
+            <?php
+                 }else{?>
+                <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
+                    <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                            Management</a> &raquo; Post Listing </span>
+                </div>
+               <?php
+                 }
+
+                ?>
+
+        <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
 
         <div class="add_property_page step_1 purpose_ ">
             <div class="clearfix"></div>
@@ -29,13 +46,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/add-property/submit">
-                <div class="message_box" id="error_message_box" style="padding-bottom: 10px;padding-top: 13px;display:none">
-                    <div id='msg_box' class='error' style=''><span class='icon_error'></span>
-                        <ul class='items  single'>
-                            <li></li>
+                <?php
+                if (isset($record->id) && $record->id != 0) {
+                    $url = route('admin:properties_update', [$data['updateId'] ?? 0]);
+                } else {
+                    $url = route('admin:properties_submit');
+                }
+
+                ?>
+                <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off"
+                    onsubmit="return validate_form()" action="{{ url($url) }}">
+                    <div class="message_box" id="error_message_box"
+                        style="padding-bottom: 10px;padding-top: 13px;display:none">
+                        <div id='msg_box' class='error' style=''><span class='icon_error'></span>
+                            <ul class='items  single'>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="hidden" id="hidden_buy_credits" name="buy_credits" value="0">
+                        <input type="hidden" id="hidden_rent_credits" name="rent_credits" value="0">
+                    </div>
+                    <div class="subhead font_s ros subhead1">Purpose, Property Type and Location</div>
+                    <div class="divrow">
+                        <label class="label l font_s">Purpose: <img
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                        <ul id='purpose_push_buttons' class='l push_buttons'>
+                            <input type='hidden' name='purpose' id='purpose' value='1' />
+                            <li class='l pushBtnLabel checked' id='purpose_label_1'
+                                onclick='pushBtnClick(this,"purpose","1")' title='For Sale'>
+                                <span class='span'>For Sale</span>
+                            </li>
+                            <li class='l pushBtnLabel ' id='purpose_label_2' onclick='pushBtnClick(this,"purpose","2")'
+                                title='Rent'>
+                                <span class='span'>Rent</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -656,27 +702,38 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="divrow">
-                    <label class="label l font_s">Contact Person: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
-                    <input type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;' class='rfield l ' />
-                    <div class="bgc infologo r">
-                        <p>Please enter your first and last name respectively.</p>
+                    <div class="divrow">
+                        <label class="label l font_s">Contact Person: <img
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                        <input type='text' name='name' id='name'
+                            value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;'
+                            class='rfield l ' />
+                        <div class="bgc infologo r">
+                            <p>Please enter your first and last name respectively.</p>
+                        </div>
                     </div>
-                </div>
-                <!--
-                            class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
-                            dropdown
-                            -->
-                <div class="divrow put_cell_input_after_this">
-                    <label class="label l font_s">Landline Phone #: </label>
-                    <span class="ph_input_box l">
-                        <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")' class='rfield l ' /> <label class="separator">-</label>
-                        <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your area code.&lt;br /&gt;Example: +92-&lt;b class=red&gt;51&lt;/b&gt;-1234567")' class='rfield l ' /> <label class="separator">-</label>
-                        <input type='text' name='phone2' id='phone2' value='' style='width:112px;' maxlength='500' onfocus='overlib_info(this,"Enter your phone number.&lt;br /&gt;Example: +92-51-&lt;b class=red&gt;1234567&lt;/b&gt;")' class='rfield l ' /> </span>
-                    <div class="bgc infologo r">
-                        <p>Enter your phone (land line or fixed phone) number along with area and international dialing
-                            code.<br />Example: +92-51-12345678</p>
+                    <!--
+                                        class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
+                                        dropdown
+                                        -->
+                    <div class="divrow put_cell_input_after_this">
+                        <label class="label l font_s">Landline Phone #: </label>
+                        <span class="ph_input_box l">
+                            <input type='text' name='phone0' id='phone0'
+                                value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;'
+                                maxlength='6'
+                                onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")'
+                                class='rfield l ' /> <label class="separator">-</label>
+                            <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6'
+                                onfocus='overlib_info(this,"Enter your area code.&lt;br /&gt;Example: +92-&lt;b class=red&gt;51&lt;/b&gt;-1234567")'
+                                class='rfield l ' /> <label class="separator">-</label>
+                            <input type='text' name='phone2' id='phone2' value='' style='width:112px;' maxlength='500'
+                                onfocus='overlib_info(this,"Enter your phone number.&lt;br /&gt;Example: +92-51-&lt;b class=red&gt;1234567&lt;/b&gt;")'
+                                class='rfield l ' /> </span>
+                        <div class="bgc infologo r">
+                            <p>Enter your phone (land line or fixed phone) number along with area and international dialing
+                                code.<br />Example: +92-51-12345678</p>
+                        </div>
                     </div>
                 </div>
 
@@ -694,22 +751,12 @@
                 </div>
 
 
-                <div class="divrow">
-                    <label class="label l font_s">Email: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <input type='text' name='email' id='email' value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;' class='rfield l ' />
-                </div>
-                <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />
-                <input type="hidden" name="userid" value="1001388906" id="userid" autocomplete="off" />
-                <input type="hidden" name="step_value" id="step_value" value="1" autocomplete="off" />
-                <input type="hidden" name="image_bank_ids" id="image_bank_ids" />
-                <input type="hidden" name="main_img_id" id="main_img_id" />
-                <input type="hidden" name="property_form_type" value="add" />
-                <input type="submit" name="add_property" value="1" style="visibility: hidden; position: absolute;" />
-
-                <div class="imz_dialog" id="popup_features" style="display:none">
-                    <div class="title_div">
-                        <span class="dialog_title">Add Features</span>
-                        <span onclick="imz_filter.click()" class="dialog_close"></span>
+                    <div class="divrow">
+                        <label class="label l font_s">Email: <img
+                                src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                        <input type='text' name='email' id='email'
+                            value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;'
+                            class='rfield l ' />
                     </div>
                     <div class="dialog_container"></div>
                 </div>
