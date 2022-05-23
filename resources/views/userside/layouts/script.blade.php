@@ -50,6 +50,24 @@
         refill_place_holder($(this));
     });
 </script>
+<script>
+$(document).ready(function(){
+    $(".a_active_hide").click(function(){
+    $(".a_active_show").toggle();
+  });
+});
+$(document).ready(function(){
+    $(".a_edited_hide").click(function(){
+    $(".a_active_show").removeClass('active');
+    $(".a_edited_show").toggleClass("active");
+  });
+});
+$(document).ready(function(){
+    $(".a_pending_hide").click(function(){
+    $(".a_pending_show").toggleClass("active");
+  });
+});
+</script>
 <script src="//cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script src="{{{ URL::asset('js/jquery.dataTables.min.js')}}}"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/mybayut/mylisting_java3_30.js?v=15.3"></script>
