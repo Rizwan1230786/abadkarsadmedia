@@ -437,27 +437,6 @@
                 </div>
                 <div class="subhead font_s ros subhead3">Contact Details</div>
                 <div class="imz_dialog" id="users_list_dialog" style="display:none">
-                    <!-- price_breakdown_dialog -->
-                    <div class="title_div">
-                        <span class="dialog_title">Users List</span>
-                        <span onclick="imz_filter.click()" class="dialog_close"></span>
-                    </div>
-                    <div class="dialog_container" id="pricedown_main">
-                        <div class="cluetip_div">
-                            <div class="rowdiv">
-                                <label class="pblabel">Select User</label>
-                                <select class='rfield l' id='users_list' name='users_list'>
-                                    <option value='1001388906'>Myself</option>
-                                </select>
-                            </div>
-
-                            <div class="rowdiv" style="">
-                                <label class="pblabel">&nbsp;</label>
-                                <span onclick="listing_owner_change_new($('#users_list'));" class="clr submit_button l bgdgry ros smargin">
-                                    Load Info </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Contact Person: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
@@ -489,13 +468,6 @@
                     <label class="label l font_s">Email: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <input type='text' name='email' id='email' value='{{ Auth::guard("customeruser")->user()->email }}' style='width:228px;' class='rfield l ' />
                 </div>
-                <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />
-                <input type="hidden" name="userid" value="1001388906" id="userid" autocomplete="off" />
-                <input type="hidden" name="step_value" id="step_value" value="1" autocomplete="off" />
-                <input type="hidden" name="image_bank_ids" id="image_bank_ids" />
-                <input type="hidden" name="main_img_id" id="main_img_id" />
-                <input type="hidden" name="property_form_type" value="add" />
-                <input type="submit" name="add_property" value="1" style="visibility: hidden; position: absolute;" />
 
                 <div class="imz_dialog" id="popup_features" style="display:none">
                     <div class="title_div">
