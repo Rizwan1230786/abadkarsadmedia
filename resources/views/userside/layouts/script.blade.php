@@ -779,6 +779,352 @@ $(document).ready(function(){
 <script type='text/javascript' src="{{asset('userside')}}/javascript/mybayut/inventory_java4_17"></script>
 <script type='text/javascript' src="{{asset('userside')}}/javascript/lib/combo/combo_tm1_19"></script>
 <script>
+	$(function() {
+		var current = location.pathname;
+		$("li a").each(function() {
+			var $this = $(this);
+			// if the current path is like this link, make it active
+			if ($this.attr('href').indexOf(current) !== -1) {
+				$this.parent().attr('id', 'current');
+				$this.addClass('active');
+			}
+		})
+	})
+	// $(document).ready(function() {
+	// 	$("li a").click(function() {
+	// 		$("li a").parent().attr('id', '');
+	// 		$(this).parent().attr('id', 'current');
+	// 	});
+	// });
+</script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="{{ asset('userside') }}/javascript/stats1_5.js?v=11"></script>
+	<script type='text/javascript'>
+		function bar_charts_data() {
+			return [{
+				"cols": [{
+					"id": "",
+					"label": "Location",
+					"pattern": "",
+					"type": "string"
+				}, {
+					"id": "",
+					"label": "For Sale",
+					"pattern": "",
+					"type": "number"
+				}, {
+					"id": "",
+					"label": "To Rent",
+					"pattern": "",
+					"type": "number"
+				}],
+				"rows": [{
+					"c": [{
+						"v": "Manthar Road Rahim Yar Khan",
+						"f": null
+					}, {
+						"v": 1,
+						"f": null
+					}, {
+						"v": 0,
+						"f": null
+					}]
+				}]
+			}];
+		}
+
+		function charts_data_trafic() {
+			return [{
+				"cols": [{
+					"id": "",
+					"label": "Location",
+					"pattern": "",
+					"type": "string"
+				}, {
+					"id": "",
+					"label": "For Sale",
+					"pattern": "",
+					"type": "number"
+				}, {
+					"id": "",
+					"label": "To Rent",
+					"pattern": "",
+					"type": "number"
+				}],
+				"rows": [{
+					"c": [{
+						"v": "Manthar Road",
+						"f": null
+					}, {
+						"v": 92,
+						"f": null
+					}, {
+						"v": 0,
+						"f": null
+					}]
+				}]
+			}];
+		}
+
+		function charts_data_leads() {
+			return [{
+				"cols": [{
+					"id": "",
+					"label": "Location",
+					"pattern": "",
+					"type": "string"
+				}, {
+					"id": "",
+					"label": "Sale Leads",
+					"pattern": "",
+					"type": "number"
+				}, {
+					"id": "",
+					"label": "Rental Leads",
+					"pattern": "",
+					"type": "number"
+				}],
+				"rows": [{
+					"c": [{
+						"v": "Manthar Road",
+						"f": null
+					}, {
+						"v": 3,
+						"f": null
+					}, {
+						"v": 0,
+						"f": null
+					}]
+				}]
+			}];
+		}
+
+		function charts_data2() {
+			return [{
+				"cols": [{
+					"id": "",
+					"label": "Phone",
+					"pattern": "",
+					"type": "string"
+				}, {
+					"id": "",
+					"label": "Phone Views",
+					"pattern": "",
+					"type": "number"
+				}],
+				"rows": [{
+					"c": [{
+						"v": "Others",
+						"f": null
+					}, {
+						"v": 1,
+						"f": null
+					}]
+				}, {
+					"c": [{
+						"v": "Pakistan",
+						"f": null
+					}, {
+						"v": 1,
+						"f": null
+					}]
+				}]
+			}];
+		}
+
+		function charts_data() {
+			return [{
+				"cols": [{
+					"id": "",
+					"label": "SMS",
+					"pattern": "",
+					"type": "string"
+				}, {
+					"id": "",
+					"label": "SMS Clicks",
+					"pattern": "",
+					"type": "number"
+				}],
+				"rows": [{
+					"c": [{
+						"v": "Others",
+						"f": null
+					}, {
+						"v": 1,
+						"f": null
+					}]
+				}]
+			}];
+		}
+		draw_multiple_charts({
+			'data_function': 'bar_charts_data()',
+			'div': 'chart_5',
+			'chart_type': 'bar',
+			'buttons': 'stat_button_bar',
+			opts: [{
+				vAxis: {
+					title: 'Location',
+					textStyle: {
+						fontSize: 10
+					},
+					viewWindow: {
+						min: 0
+					}
+				},
+				width: 800,
+				height: 150,
+				hAxis: {
+					title: 'Total',
+					viewWindow: {
+						min: 0
+					}
+				},
+				legend: 'top',
+				chartArea: {
+					width: '50%',
+					height: '30%'
+				},
+				colors: ['#DC3912', '#109618'],
+				isStacked: true
+			}]
+		});
+		draw_multiple_charts({
+			'data_function': 'charts_data_trafic()',
+			'div': 'chart_trafic',
+			'chart_type': 'bar',
+			'buttons': 'stat_button_trafic',
+			opts: [{
+				vAxis: {
+					title: 'Location',
+					textStyle: {
+						fontSize: 10
+					},
+					viewWindow: {
+						min: 0
+					}
+				},
+				width: 800,
+				height: 150,
+				hAxis: {
+					title: 'Property Views',
+					viewWindow: {
+						min: 0
+					}
+				},
+				legend: 'top',
+				chartArea: {
+					width: '60%',
+					height: '30%'
+				},
+				colors: ['#DC3912', '#109618'],
+				isStacked: true
+			}]
+		});
+		draw_multiple_charts({
+			'data_function': 'charts_data_leads()',
+			'div': 'chart_leads',
+			'chart_type': 'bar',
+			'buttons': 'stat_button_leads',
+			opts: [{
+				vAxis: {
+					title: 'Location',
+					textStyle: {
+						fontSize: 10
+					},
+					viewWindow: {
+						min: 0
+					}
+				},
+				width: 800,
+				height: 150,
+				hAxis: {
+					title: 'Total Leads',
+					viewWindow: {
+						min: 0
+					}
+				},
+				legend: 'top',
+				chartArea: {
+					width: '60%',
+					height: '30%'
+				},
+				colors: ['#DC3912', '#109618'],
+				isStacked: true
+			}]
+		});
+		draw_multiple_charts({
+			'data_function': 'charts_data()',
+			'div': 'chart_4',
+			'chart_type': 'pie',
+			'buttons': 'stat_button',
+			opts: [{
+				vAxis: {
+					title: ''
+				},
+				width: 350,
+				height: 250,
+				legend: {
+					position: 'right'
+				},
+				is3D: true
+			}, ]
+		});
+	</script>
+    <script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-W6GGGJ');
+	</script>
+	<div id="new_inq_res" style="display:none; border:5px solid #00FFCC;"></div>
+	<div id="inquiry_update_rec" style="display:none; border:5px solid #00FFCC;"></div>
+	<div id="new_loading_div" style="display:none;"></div>
+
+	<script type="text/javascript" src="{{ asset('userside') }}/javascript/listings_java1_23.js?v=12"></script>
+	<script type="text/javascript" src="{{ asset('userside') }}/javascript/mybayut/mybayut_java3_19.js?v=13"></script>
+
+	<script type="text/javascript">
+		window.NREUM || (NREUM = {});
+		NREUM.info = {
+			"beacon": "bam.nr-data.net",
+			"licenseKey": "4d0861c972",
+			"applicationID": "1086318949",
+			"transactionName": "Y1dQYRYAXxJRARBaXVodZ0cNTkETXwQLX1tbHVtbAARJT0AKFA==",
+			"queueTime": 0,
+			"applicationTime": 276,
+			"atts": "TxBTF14aTBw=",
+			"errorBeacon": "bam.nr-data.net",
+			"agent": ""
+		}
+	</script>
+     <script>
+        $(document).ready(function() {
+            $(".date_pick").dateinput({
+                format: 'dd/mm/yyyy',
+                speed: 'fast',
+                firstDay: 1,
+                offset: [10, 0]
+            });
+
+            $('.cm_combo_img').live("click", function() {
+                $(this).siblings(".cm_combo_txt").children(".date_f").trigger('click');
+            });
+            $(".dr_goto").live("click", function() {
+                $("#dr_form").submit();
+            });
+
+        });
+    </script>
     $(function() {
         var current = location.pathname;
         $("li a").each(function() {

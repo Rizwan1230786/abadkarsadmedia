@@ -431,7 +431,7 @@
                     <div class="clr">
                         <div class="filecontrol_images">
                             <input class="dropify" type="file" id="image_ids" name="image" value="" autocomplete="off" />
-                        
+
                         </div>
                     </div>
                 </div>

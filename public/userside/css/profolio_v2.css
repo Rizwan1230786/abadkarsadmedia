@@ -1110,10 +1110,6 @@ button:focus {
     height: 10px;
 }
 
-#statistics_graph #statdiv_heading {
-    min-height: 300px !important;
-}
-
 .clearfix {
     clear: both;
 }

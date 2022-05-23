@@ -1,0 +1,711 @@
+/************ New Statistics Charts - Waqar *************/
+
+h3 {
+    color: #00a651;
+    margin: 0px;
+    font-size: 14px;
+}
+
+#statistics_graph {
+    clear: both;
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+}
+
+#statistics_graph h3 {
+    margin-bottom: 15px;
+}
+
+#statistics_graph #chart_1 {
+    margin: auto;
+    margin-top: -8px;
+    width: auto;
+    height: auto;
+}
+
+#statistics_graph .box_heading {
+    background: url("https://assets.zameen.com/profolio/images/menu.png") no-repeat scroll left top transparent;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+    clear: none;
+    cursor: pointer;
+}
+
+#statistics_graph .box_heading div {
+    background: url("https://assets.zameen.com/profolio/images/menu.png") no-repeat scroll right top transparent;
+    color: #333333;
+    float: left;
+    font-weight: normal;
+    line-height: 19px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.box_heading div b,
+.box_heading_selected div b {
+    line-height: 20px;
+    margin-right: 5px;
+    font-weight: normal !important;
+}
+
+#statistics_graph .box_heading_selected {
+    background: url("https://assets.zameen.com/profolio/images/menu_selected.png") no-repeat scroll left top transparent;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+    clear: none;
+}
+
+#statistics_graph .box_heading_selected div {
+    background: url("https://assets.zameen.com/profolio/images/menu_selected.png") no-repeat scroll right top transparent;
+    color: white;
+    float: left;
+    font-weight: normal;
+    line-height: 19px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.stat_box {
+    margin-top: 20px;
+    width: 47%;
+}
+
+.stat_box_content a {
+    text-decoration: underline;
+}
+
+.stat_left {
+    float: left;
+}
+
+.stat_right {
+    float: right;
+}
+
+.stat_box_content {
+    padding-left: 25px;
+    padding-top: 10px;
+    line-height: 20px;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    float: left;
+    overflow: hidden;
+    width: 92%;
+}
+
+.stat_box_content .inner_heading {
+    font-weight: bold;
+}
+
+.stat_row,
+.stat_row_comp {
+    width: 250px;
+    padding-left: 0px;
+    color: #333333;
+}
+
+.stat_row span {
+    float: right !important;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333;
+    padding-right: 30px;
+}
+
+.stat_row_comp span {
+    width: 85px;
+    text-align: center;
+    float: right !important;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333333;
+}
+
+.stat_gap {
+    height: 10px !important;
+}
+
+.stat_box_content a {
+    color: #0F7AAE;
+}
+
+.google-visualization-table-td {
+    font-size: 11px !important;
+}
+
+.rpt_name {
+    background: url("https://assets.zameen.com/profolio/images/profolio_report_icon.png") no-repeat scroll left top transparent;
+    padding: 4px 10px !important;
+    background-position: 0 1px;
+}
+
+.rpt_email {
+    background: url("https://assets.zameen.com/profolio/images/profolio_report_icon.png") no-repeat scroll left top transparent;
+    padding: 4px 10px !important;
+    background-position: 0 -17px;
+}
+
+.rpt_ph {
+    background: url("https://assets.zameen.com/profolio/images/profolio_report_icon.png") no-repeat scroll left top transparent;
+    padding: 4px 10px !important;
+    background-position: 0 -38px;
+}
+
+.rpt_cell {
+    background: url("https://assets.zameen.com/profolio/images/profolio_report_icon.png") no-repeat scroll left top transparent;
+    padding: 4px 10px !important;
+    background-position: 0 -58px;
+}
+
+.rpt_country {
+    background: url("https://assets.zameen.com/profolio/images/profolio_report_icon.png") no-repeat scroll left top transparent;
+    padding: 4px 10px !important;
+    background-position: 0 -78px;
+}
+
+.dr_text {
+    float: left;
+    width: 90px;
+    margin-right: 10px;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 13px;
+    color: #0F7AAE;
+}
+
+.dr_dash {
+    float: left;
+    width: 10px;
+    margin: 0 5px;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.date_f {
+    border: none;
+    border: solid 0px #FFFFFF;
+}
+
+.dr_goto {
+    background: url("https://assets.zameen.com/profolio/images/go_button1_1.png") no-repeat scroll left top transparent;
+    padding: 5px 18px;
+    position: relative;
+    top: -1px;
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sf_box {
+    border: 1px solid #DADBDA;
+    padding: 10px;
+    background-color: #F8F8F8;
+    width: 450px;
+    overflow: auto;
+}
+
+.sf_text {
+    float: left;
+    width: 145px;
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+}
+
+.sf_combo {
+    float: left;
+    width: 250px;
+}
+
+.sf_goto {
+    background: url("https://assets.zameen.com/profolio/images/go_button1_1.png") no-repeat scroll left top transparent;
+    padding: 5px 18px;
+    position: relative;
+    top: -1px;
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.sub_head {
+    padding: 7px;
+    background-color: #EAEAEA;
+    color: #505050;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.sub_head a {
+    float: right;
+    color: #0F7AAE;
+    font-weight: normal;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.sb_head_days {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.traffic_summary {
+    clear: both;
+    margin-top: 15px;
+    line-height: 22px;
+    padding-left: 10px;
+}
+
+.sub_title {
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.leads_bd_box {
+    border: solid 1px #333333;
+    padding: 0 3px;
+    overflow: auto;
+    color: #333333;
+    line-height: 20px;
+    width: 90%;
+    overflow: hidden;
+}
+
+.leads_type {
+    width: 40%;
+    float: left;
+}
+
+.ph_cnt {
+    width: 15%;
+    float: left;
+    text-align: right;
+}
+
+.em_cnt {
+    width: 15%;
+    float: left;
+    text-align: right;
+}
+
+.tt_cnt {
+    width: 15%;
+    float: left;
+    text-align: right;
+}
+
+.uq_cnt {
+    width: 15%;
+    float: left;
+    font-weight: bold;
+    text-align: right;
+}
+
+.leads_con {
+    width: 40%;
+    float: left;
+    text-align: right;
+    border-right: solid 1px #333333;
+    padding-right: 3px;
+}
+
+.leads_rev {
+    width: 58%;
+    float: left;
+    text-align: right;
+}
+
+.cmsn_value {
+    clear: both;
+}
+
+.cmsn_value .stat_row {
+    width: 350px;
+    line-height: 22px;
+}
+
+.cmsn_value .stat_row span {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.cmsn_value .stat_row span.rev_tot {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.bold_val {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.leads_rev_nrml {
+    width: 58%;
+    float: left;
+    text-align: right;
+    font-weight: normal;
+}
+
+.rev_tot .propinfo_link {
+    position: relative;
+    top: -2px;
+}
+
+.comparision_box {
+    color: #333333;
+    width: 90%;
+    overflow: hidden;
+    clear: both;
+}
+
+.cmp_row_head {
+    padding: 0 10px;
+    line-height: 25px;
+    overflow: auto;
+    background-color: #386932;
+    color: #FFFFFF;
+}
+
+.cmp_row {
+    padding: 0 10px;
+    line-height: 25px;
+    overflow: auto;
+}
+
+.cmp_sub_head {
+    color: #000000;
+    display: block;
+    font-size: 13px;
+    line-height: 22px;
+    padding: 2px 10px;
+    background-color: #E2F3C2;
+    margin-top: 15px;
+    clear: both;
+    font-weight: bold;
+}
+
+.cmp_sub_head a {
+    color: #0F7AAE;
+    font-weight: normal;
+    padding-left: 10px;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.cmp_type_head {
+    width: 40%;
+    float: left;
+    text-align: left;
+}
+
+.cmp_you_head {
+    width: 25%;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+}
+
+.cmp_top_head {
+    width: 33%;
+    float: right;
+    text-align: right;
+    font-weight: bold;
+}
+
+.cmp_type {
+    width: 33%;
+    float: left;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.cmp_you {
+    width: 25%;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cmp_top {
+    width: 33%;
+    float: right;
+    text-align: right;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#frm_prop_perf {
+    padding-left: 25px;
+}
+
+#frm_prop_perf .data_row {
+    height: 30px;
+    overflow: visible;
+}
+
+.rpt_or_text {
+    position: absolute;
+    top: -2px;
+    left: 35px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.rpt_caption {
+    width: 15%;
+    float;
+    left;
+}
+
+.rpt_input {
+    width: 20%;
+    float;
+    left;
+}
+
+.rpt_caption_loc {
+    width: 7%;
+    float;
+    left;
+}
+
+.rpt_input_loc {
+    width: 35%;
+    float;
+    left;
+}
+
+.scr_box {}
+
+.scr_head {
+    font-weight: bold;
+    border-bottom: 2px solid #333333;
+    margin-bottom: 10px !important;
+}
+
+.scr_caption {
+    width: 30%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.scr_val {
+    width: 70%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.scr_val u {
+    border: 1px solid #333333;
+    padding: 6px 8px;
+    margin-right: 2px;
+    display: block;
+    float: left;
+}
+
+html* .scr_val u {
+    padding: 0 8px;
+}
+
+.scr_val u.fill {
+    background-color: #CCCCCC;
+}
+
+html* .scr_val u.fill {
+    padding-bottom: 3px;
+}
+
+.scr_note {
+    line-height: 20px;
+}
+
+.rpt_act {
+    color: green;
+}
+
+.exprt_to_excel {
+    background: url("https://assets.zameen.com/profolio/images/export_to_excel_button.gif") no-repeat scroll 0 0 transparent;
+    float: right;
+    margin-top: -5px;
+    padding: 12px 62px;
+    cursor: pointer;
+    display: block;
+}
+
+.rpt_link {
+    color: #0E77B0;
+    text-decoration: underline;
+}
+
+/************ End - New Statistics Charts *************/
+
+#leftcolumn,
+#ask_comm {
+    width: 150px;
+}
+
+#ask_comm textarea {
+    width: 130px;
+}
+
+#maincontent {
+    width: 100%;
+}
+
+#leftcolumn {
+    padding: 0;
+}
+
+/*#rightcolumn{width:837px !important;}*/
+
+#content {
+    font-family: Arial, Verdana, Helvetica, sans-serif
+}
+
+#ask_comm,
+#ask_comm .ask_now {
+    background-image: url("https://assets.zameen.com/profolio/images/advice_150.png");
+    border: 0 none;
+}
+
+#ask_comm #title {
+    font-size: 13px;
+    height: 32px;
+}
+
+#ask_comm .ask_now {
+    background-position: -64px -756px;
+    width: 86px;
+}
+
+#ask_comm a {
+    font-size: 11px !important;
+    margin-left: 7px !important;
+    margin-top: 13px !important;
+}
+
+.box_heading {
+    background: transparent;
+    background-color: #00a651;
+    clear: both;
+    float: left;
+    font-size: 10px;
+    height: 20px;
+}
+
+.box_heading div {
+    background: transparent;
+    background-color: #00a651;
+    color: #FFFFFF;
+    margin: 0 0 0 10px;
+}
+
+.box_heading div b {
+    line-height: 20px;
+    margin-right: 9px;
+}
+
+.stat_box .box_heading div b {
+    color: #ffffff;
+}
+
+.stat_box .box_heading div {
+    background-color: transparent;
+}
+
+/*
+.box_title{ padding-top:10px;}
+
+*/
+
+#statistics_graph .box_heading_selected {
+    background: transparent;
+    float: left;
+    height: auto;
+    margin-right: 10px;
+    clear: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#statistics_graph .box_heading_selected div {
+    background: transparent;
+    background-color: #00a651;
+    color: white;
+    float: left;
+    font-weight: normal;
+    line-height: 19px;
+    margin-left: 0px;
+    font-size: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#statistics_graph h3 {
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0px;
+    color: #00A651;
+    opacity: 1;
+}
+
+.box_heading div b {
+    margin-right: 5px;
+    padding: 4px 12px;
+    text-align: left;
+    font-weight: 700 !important;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1f1f1f;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+}
+
+.box_heading_selected div b {
+    margin-right: 5px;
+    padding: 4px 12px;
+    text-align: left;
+    font-weight: 700 !important;
+    font-size: 12px;
+    line-height: 14px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    box-sizing: border-box;
+    display: block;
+}
+
+#statistics_graph .box_heading {
+    background: transparent;
+    float: left;
+    height: auto;
+    margin-right: 10px;
+    clear: none;
+    cursor: pointer;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#statistics_graph .box_heading div {
+    background: transparent;
+    background-color: #E6E6E6;
+    color: #333333;
+    float: left;
+    margin-left: 0px;
+    font-size: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
