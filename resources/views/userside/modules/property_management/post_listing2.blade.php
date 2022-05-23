@@ -1,4 +1,8 @@
 @extends('userside.layout')
+@section('css')
+@include('admin.layouts.select2CssFiles')
+@include('admin.layouts.fancy-uploader-css')
+@endsection
 @section('main')
 @include('userside.layouts.sidebar')
 <style>
@@ -416,13 +420,6 @@
 
                 <div id="UploadImages" class="uploaderbox uploaderbox_images UploadImages noItems">
                     <div class="subhead font_s ros subhead_img">Images</div>
-
-                    <div class="clr info_msg l drag_images_message" style="margin-bottom: 13px;">Drag & drop images to
-                        change order</div>
-                    <div class="clr info_msg l multipleuploader" style="margin-bottom: 13px;display:none">Please use
-                        firefox or chrome to upload multiple images at once</div>
-                    <ul class="list_sortable" id="images_list" data-sortable_selector="#images_list" data-sortable_key="img_order"></ul>
-
                     <div class="clr">
                         <div class="filecontrol_images">
                             <input class="dropify" type="file" id="image_ids" name="image" value="" autocomplete="off" />
@@ -653,4 +650,11 @@
         });
     });
 </script>
+@endsection
+@section('js')
+<script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+@include('admin.layouts.select2JsFiles')
+@include('admin.layouts.fancy-uploader-js')
+@include('admin.layouts.tinymce-js')
+@include('admin.layouts.templateJquery')
 @endsection
