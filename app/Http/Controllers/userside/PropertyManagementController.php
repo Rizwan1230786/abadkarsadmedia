@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Cities;
+use App\Models\Customeruser;
 use App\Models\Features;
 use App\Models\Property;
 use App\Models\State;
 use App\Models\Webpages;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PropertyManagementController extends Controller
 {
@@ -119,13 +122,13 @@ class PropertyManagementController extends Controller
     public function post_listing()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $city = Cities::all();
         $state = State::all();
         $feature = Features::all();
@@ -137,13 +140,13 @@ class PropertyManagementController extends Controller
     public function listing_policy()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.listing_policy', get_defined_vars());
@@ -151,13 +154,13 @@ class PropertyManagementController extends Controller
     public function zone_detail()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $city = Cities::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
@@ -167,16 +170,16 @@ class PropertyManagementController extends Controller
     public function all_listing()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        foreach($property as $value){
-            $category_name=Category::where('id',$value->category)->get();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        foreach ($property as $value) {
+            $category_name = Category::where('id', $value->category)->get();
         }
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.active_listing.all_listing', get_defined_vars());
@@ -184,13 +187,13 @@ class PropertyManagementController extends Controller
     public function for_sale()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.active_listing.for_sale', get_defined_vars());
@@ -198,13 +201,13 @@ class PropertyManagementController extends Controller
     public function for_rent()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.active_listing.for_rent', get_defined_vars());
@@ -213,13 +216,13 @@ class PropertyManagementController extends Controller
     {
 
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 1])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $city = Cities::all();
         $state = State::all();
         $feature = Features::all();
@@ -230,15 +233,16 @@ class PropertyManagementController extends Controller
         return view('userside.modules.property_management.post_listing2', get_defined_vars());
     }
     /////////end active all listing////////
-    public function pending_all_listing(){
+    public function pending_all_listing()
+    {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 0])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.all_listing', get_defined_vars());
@@ -246,13 +250,13 @@ class PropertyManagementController extends Controller
     public function pending_for_sale()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 0])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.for_sale', get_defined_vars());
@@ -260,15 +264,42 @@ class PropertyManagementController extends Controller
     public function pending_for_rent()
     {
         $user_id = Auth::user()->id;
-        $property = Property::where(['user_id'=>$user_id,'status'=> 0])->get();
-        $count_all = Property::where(['user_id' => $user_id,'status'=> 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id,'status'=> 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status'=> 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status'=> 0])->count();
+        $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.for_rent', get_defined_vars());
+    }
+    public function submit_post_listing(Request $request)
+    {
+        $request->validate([
+            'subcat_id' => 'required',
+        ]);
+        $data = $request->all();
+        if ($data['email']) {
+            if (Auth::check()) {
+                $user_id = Auth::guard('customeruser')->user()->id;
+                if (isset($data['image']) && !empty($data['image'])) {
+                    $filename = time() . '.' . request()->image->extension();
+                    $data['image'] = $filename;
+                    request()->image->move(public_path('assets/images/properties/'), $filename);
+                }
+                $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
+                $data = array('status' => 1, 'area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
+
+                $query = Property::create($data);
+                $query->features()->attach($request->feature);
+                // Auth::logout();
+                return redirect()->back()->with('message', 'Property Added!');
+            } else {
+                return redirect()->back()->with('message', 'email or password is incorrect');
+            }
+        }
+        return redirect()->back()->with('message', 'Please enter email and password!');
     }
 }

@@ -104,7 +104,7 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/add-property/submit">
+            <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/user/submit_post_listing" enctype="multipart/form-data">
                 @csrf
                 <div class="message_box" id="error_message_box" style="padding-bottom: 10px;padding-top: 13px;display:none">
                     <div id='msg_box' class='error' style=''><span class='icon_error'></span>
@@ -422,7 +422,7 @@
                     <div class="subhead font_s ros subhead_img">Images</div>
                     <div class="clr">
                         <div class="filecontrol_images">
-                            <input class="dropify" type="file" id="image_ids" name="image" value="" autocomplete="off" />
+                            <input class="dropify" type="file"  name="image" multiple/>
 
                         </div>
                     </div>

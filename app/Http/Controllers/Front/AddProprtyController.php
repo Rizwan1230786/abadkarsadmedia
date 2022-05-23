@@ -42,17 +42,11 @@ class AddProprtyController extends Controller
         $data['areas'] = SubCategory::where("category_id", $request->city_id)->get(["name", "id"]);
         return response()->json($data);
     }
-    public function submit(Request $request)
+    public function submit(addProperty $request)
     {
-        dd($request->all());
         $request->validate([
             'subcat_id' => 'required',
         ]);
-        if ($request->email1 == null) {
-            $request->validate([
-                'CaptchaCode' => 'required|valid_captcha',
-            ]);
-        }
         $data = $request->all();
         if ($data['email'] || $data['email1'] ?? '') {
             $user = Customeruser::where('email', $data['email1'])->first();
