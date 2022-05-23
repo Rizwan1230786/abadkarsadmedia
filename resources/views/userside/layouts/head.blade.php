@@ -107,5 +107,10 @@
         border-radius: 2px;
         border-radius: 20px;
     }
-
+    .a_pending_show{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
 </style>

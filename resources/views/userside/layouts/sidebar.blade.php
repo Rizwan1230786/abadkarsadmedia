@@ -18,9 +18,8 @@
                 Listings
             </span>
             <!--     Active listings Menu     -->
-            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_active"
-                onclick="menu_divtoggle('a_active','d_active');">Active <label>({{ $count_all }})</label></a>
-            <div class="listing_class" style="display:block;" id="d_active">
+            <a href="javascript:void(0);" class="leftcolumnlink_sub a_active_hide" id="a_active">Active <label>({{ $count_all }})</label></a>
+            <div class="listing_class a_active_show active" id="d_active">
                 <a href="{{ url('user/all-listing') }}"
                     class="leftcolumnlink">All Listings ({{ $count_all }})</a>
                 <a href="{{ url('user/for-sale') }}"
@@ -36,9 +35,9 @@
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Hot_Listing&status=on"
                     class="leftcolumnlink">Hot Listings (0)</a>
             </div>
-            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_edited"
-                onclick="menu_divtoggle('a_edited','d_edited');">Edited <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_edited">
+            <a href="javascript:void(0);" class="leftcolumnlink_sub a_edited_hide" id="a_edited"
+                >Edited <label>(0)</label></a>
+            <div class="listing_class a_edited_show" id="d_edited">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=edited"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=edited"
@@ -50,10 +49,9 @@
                 <!--" class="leftcolumnlink">-->
                 <!--</a>-->
             </div>
-
-            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_pending"
-            onclick="myFunction('a_pending','d_pending');">Pending <label>({{ $count_all_pending }})</label></a>
-            <div class="listing_class dropbtn" style="display:block;" id="d_pending">
+            <a href="javascript:void(0);" class="leftcolumnlink_sub a_pending_hide" id="a_pending"
+           >Pending <label>({{ $count_all_pending }})</label></a>
+            <div class="listing_class a_pending_show" id="d_pending">
                 <a href="{{ url('user/pending-all-listing') }}"
                     class="leftcolumnlink">All Listings ({{ $count_all_pending }})</a>
                 <a href="{{ url('user/pending-for-sale') }}"
