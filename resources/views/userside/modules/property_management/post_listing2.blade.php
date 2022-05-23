@@ -110,17 +110,12 @@
                     </div>
                 </div>
                 <div class="subhead font_s ros subhead1">Purpose, Property Type and Location</div>
-                <div class="divrow">
+                <div class="divrow" style="display: flex;">
                     <label class="label l font_s">Purpose: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                    <ul id='purpose_push_buttons' class='l push_buttons'>
-                        <input type='hidden' name='property_purpose' id='purpose' value='' />
-                        <li class='l pushBtnLabel ' id='purpose_label_1' onclick='pushBtnClick(this,"purpose","for_sale")' title='For Sale'>
-                            <span class='span'>For Sale</span>
-                        </li>
-                        <li class='l pushBtnLabel ' id='purpose_label_2' onclick='pushBtnClick(this,"purpose","for_rent")' title='Rent'>
-                            <span class='span'>Rent</span>
-                        </li>
-                    </ul>
+                    <input type="radio" class="radio" name="property_purpose" id="sale" value="for_sale">
+                    <label for="sale" class="lable radio_container">For Sale</label>
+                    <input type="radio" class="radio" name="property_purpose" id="rent" value="for_rent">
+                    <label for="rent" class="lable radio_container">For Rent</label>
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Property Type: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
