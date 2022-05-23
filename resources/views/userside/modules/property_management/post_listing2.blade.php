@@ -155,7 +155,7 @@
                 <div id="city_class" class="divrow zameen-city-box d-none">
                     <label class="label l font_s">Address:</label>
                     <div class='sb_combo sel_box' style='width:150px'>
-                        <select name='city_name' class="city_data" style="width:151px;" id='area'>
+                        <select name='area_id' class="city_data" style="width:151px;" id='area'>
                             <option value='' selected>Select Address</option>
                         </select>
                     </div>
@@ -163,7 +163,7 @@
                 <div class="divrow">
                     <label class="label l font_s">Location: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
-                        <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="Then enter location here ..." disabled="disabled" />
+                        <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="" placeholder="Enter location here ..."/>
                     </div>
                 </div>
                 <!-- Property Title and Description -->
