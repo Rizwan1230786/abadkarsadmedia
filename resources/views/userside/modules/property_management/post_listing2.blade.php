@@ -430,72 +430,11 @@
 
                     <div class="clr">
                         <div class="filecontrol_images">
-                            <a id="add_more_images" class="l orng_smore mr-bt10 fileUpload">Add Images</a>
-                            <div class="info_msg l multiple_key_message">Press CTRL key while selecting images to
-                                upload multiple images at once</div>
-                            <input type="hidden" id="image_ids" name="image" value="" autocomplete="off" />
-                        </div>
-                        <div class="uploading_images" style="display:none">
-                            <img class="l pleasewait" src="{{ asset('userside') }}/images/common/pleasewait.gif" />
-                            <span class="l">Uploading. Please Wait...</span>
+                            <input class="dropify" type="file" id="image_ids" name="image" value="" autocomplete="off" />
+                        
                         </div>
                     </div>
-                    <div class="clr message_box_files" style="display:none;"></div>
                 </div>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        path_uploader_images = request_url_image + "&ajaxUpload=img";
-                        uploader_images = new plupload.Uploader({
-                            browse_button: 'add_more_images',
-                            url: path_uploader_images,
-                            filters: {
-                                mime_types: [{
-                                    title: "Image files",
-                                    extensions: "jpg,gif,png,jpeg"
-                                }]
-                            },
-                            resize: {
-                                width: 800,
-                                height: 800,
-                                crop: false,
-                                quality: 100
-                            },
-                            init: {
-                                FilesAdded: function(up, files) {
-                                    uploader_images.settings.url = path_uploader_images + "&edit_property=" +
-                                        edit_property_page;
-                                    up.start();
-                                },
-                                StateChanged: function(up) {
-                                    if (up.state == plupload.STARTED) {
-                                        $(".filecontrol_images").hide();
-                                        $(".uploading_images").show();
-                                    } else {
-                                        $(".filecontrol_images").show();
-                                        $(".uploading_images").hide();
-                                    }
-                                },
-                                FileUploaded: function(up, file, info) {
-                                    result = FileUploadedCallback(up, file, info, 'images');
-                                    all_img_ids = result[4];
-                                    if (all_img_ids) {
-                                        $("#image_ids").val(all_img_ids);
-                                    }
-                                },
-                                BeforeUpload: function(up) {
-                                    up.settings.multipart_params = {
-                                        'image_ids': $("#image_ids").val()
-                                    };
-                                }
-                            }
-                        });
-                        uploader_images.init();
-                    });
-                </script>
-                <script type="text/javascript">
-                    key = parseInt("0");
-                    image_upload_limit = parseInt("50");
-                </script>
                 <div class="subhead font_s ros subhead3">Contact Details</div>
 
                 <div class="divrow">
@@ -563,7 +502,7 @@
                     </div>
                 </div> -->
 
-               
+
 
 
                 <div class="divrow">
