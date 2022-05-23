@@ -436,26 +436,6 @@
                     </div>
                 </div>
                 <div class="subhead font_s ros subhead3">Contact Details</div>
-
-                <div class="divrow">
-                    <label class="label l font_s">Listing Owner: </label>
-                    <span id='listing_owner_sel_box' class='sb_combo sel_box ' style='width:242px'><select name='listing_owner' onchange='listing_owner_change(this); ' id='listing_owner' style='width:243px;' autocomplete='off'>
-                            <option value='{{auth()->user()->id}}' selected>{{auth()->user()->name}}</option>
-                        </select><span id='listing_owner_txt' class='txt'>{{auth()->user()->name}}</span>
-                </div>
-
-                <script type="text/javascript">
-                    agency_users_list = {
-                        "1001388906": {
-                            "userid": "1001388906",
-                            "name": "Muhammad Rizwan Akhtar",
-                            "email": "rizwan.13347@gmail.com",
-                            "phone": null,
-                            "cell": null,
-                            "fax": null
-                        }
-                    };
-                </script>
                 <div class="imz_dialog" id="users_list_dialog" style="display:none">
                     <!-- price_breakdown_dialog -->
                     <div class="title_div">
@@ -507,7 +487,7 @@
 
                 <div class="divrow">
                     <label class="label l font_s">Email: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                    <input type='text' name='email' id='email' value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;' class='rfield l ' />
+                    <input type='text' name='email' id='email' value='{{ Auth::guard("customeruser")->user()->email }}' style='width:228px;' class='rfield l ' />
                 </div>
                 <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />
                 <input type="hidden" name="userid" value="1001388906" id="userid" autocomplete="off" />
