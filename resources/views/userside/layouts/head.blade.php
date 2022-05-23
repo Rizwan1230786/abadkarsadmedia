@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/plugins1_25.css?v=5" type="text/css" />
 {{-- jqueryy files --}}
 @yield('css')
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.tools.min1_1.js"></script>
+
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <script type='text/javascript' src='{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js'></script>
 <script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
