@@ -32,6 +32,7 @@ use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
+use App\Http\Controllers\userside\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -281,6 +282,9 @@ Route::prefix('user')->group(function () {
         Route::get('/pending-for-rent', [PropertyManagementController::class, 'pending_for_rent'])->name('pending-for-rent');
         ////////reports///////////
         Route::get('/all-reports', [ReportsController::class, 'all_reports'])->name('all-reports');
+        /////userprofile routes//////////
+        Route::get('/user-profile', [UserProfileController::class, 'user_profile'])->name('user-profile');
+        Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');

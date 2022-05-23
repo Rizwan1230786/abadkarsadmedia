@@ -23,7 +23,7 @@
 	<li><a id="navigation" href='/user/dashboard'>Dashboard</a></li>
 	<li><a id="navigation" href='/user/all-listing'>Property Management</a></li>
 	<li><a id="navigation" href='#'>Message Center</a></li>
-	<li><a id="navigation" href='#'>My Account & Profiles</a></li>
+	<li><a id="navigation" href='/user/user-profile'>My Account & Profiles</a></li>
 	<li><a id="navigation" href='/user/all-reports'>Reports</a></li>
 	<li><a id="navigation" href='#'>Tools</a></li>
 	<li><a id="navigation" href='#'>Agency Staff</a></li>

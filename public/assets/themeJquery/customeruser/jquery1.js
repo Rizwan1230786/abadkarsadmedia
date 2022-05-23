@@ -17,7 +17,7 @@ $('.formSubmit').submit(function (e) {
                     toastr['error'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
                 } else {
                     toastr['success'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
-                    setTimeout(function () { window.location.href = '/user/profile' }, 1000);
+                    setTimeout(function () { window.location.href = '/user/user-profile' }, 1000);
                 }
             }
         });

@@ -33,7 +33,9 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/css/listing_css1_11.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/profolio_v2.css?v=38" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('userside') }}/css/jtool_datepicker_css1_1.css" />
-
+<link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" />
+<!-- Jquery js-->
+<script src="{{ URL::asset('assets/js/toastr.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/combo1_19.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/lib/combo/combo_tm1_19.js"></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/mylisting_css.css" type="text/css">
