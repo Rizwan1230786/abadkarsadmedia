@@ -1,6 +1,75 @@
 @extends('userside.layout')
 @section('main')
 @include('userside.layouts.sidebar')
+<style>
+    .radio_container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #cecece;
+        height: 28px;
+        box-shadow: inset 0.5px 0.5px 2px 0 rgb(0 0 0 / 15%);
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .radio {
+        appearance: none !important;
+        display: none !important;
+    }
+
+    .lable {
+        font-size: 12px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+        background-image: linear-gradient(0deg, #a7a1a161, transparent);
+        width: 95px;
+        text-align: center;
+        transition: linear 0.3s;
+        color: black;
+    }
+
+    .radio:checked+label {
+        background-color: #FF385C;
+        color: #f1f3f5;
+        font-weight: 900;
+        transition: 0.3s;
+    }
+
+    .lable1 {
+        font-size: 12px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: inherit;
+        background-image: linear-gradient(0deg, #a7a1a161, transparent);
+        width: 95%;
+        text-align: center;
+        transition: linear 0.3s;
+        color: #6e6e6edd;
+    }
+
+    .radio:checked+label {
+        background-color: #FF385C;
+        color: #f1f3f5;
+        font-weight: 400 !important;
+        transition: 0.3s;
+    }
+
+    .padding0 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .lable1 {
+        padding: 0px 20px;
+        text-align: left;
+    }
+</style>
 <div id="rightcolumn" style="
             width:79% " class="rightcolumn_div post_story_margin">
     <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
@@ -32,6 +101,7 @@
                 <div class="clearfix"></div>
             </div>
             <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/add-property/submit">
+                @csrf
                 <div class="message_box" id="error_message_box" style="padding-bottom: 10px;padding-top: 13px;display:none">
                     <div id='msg_box' class='error' style=''><span class='icon_error'></span>
                         <ul class='items  single'>
@@ -39,51 +109,32 @@
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <input type="hidden" id="hidden_buy_credits" name="buy_credits" value="0">
-                    <input type="hidden" id="hidden_rent_credits" name="rent_credits" value="0">
-                </div>
                 <div class="subhead font_s ros subhead1">Purpose, Property Type and Location</div>
                 <div class="divrow">
-                    <label class="label l font_s">Purpose: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                    <label class="label l font_s">Purpose: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <ul id='purpose_push_buttons' class='l push_buttons'>
-                        <input type='hidden' name='purpose' id='purpose' value='1' />
-                        <li class='l pushBtnLabel checked' id='purpose_label_1' onclick='pushBtnClick(this,"purpose","1")' title='For Sale'>
+                        <input type='hidden' name='property_purpose' id='purpose' value='' />
+                        <li class='l pushBtnLabel ' id='purpose_label_1' onclick='pushBtnClick(this,"purpose","for_sale")' title='For Sale'>
                             <span class='span'>For Sale</span>
                         </li>
-                        <li class='l pushBtnLabel ' id='purpose_label_2' onclick='pushBtnClick(this,"purpose","2")' title='Rent'>
-                            <span class='span'>Rent</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="divrow div_wantedfor" style="display:none">
-                    <label class="label l font_s">Wanted For: </label>
-                    <ul id='wanted_for_push_buttons' class='l push_buttons'>
-                        <input type='hidden' name='wanted_for' id='wanted_for' value='' />
-
-                        <li class='l pushBtnLabel ' id='wanted_for_label_Buy' onclick='pushBtnClick(this,"wanted_for","Buy")' title='Buy'>
-                            <span class='span'>Buy</span>
-                        </li>
-                        <li class='l pushBtnLabel ' id='wanted_for_label_Rent' onclick='pushBtnClick(this,"wanted_for","Rent")' title='Rent'>
+                        <li class='l pushBtnLabel ' id='purpose_label_2' onclick='pushBtnClick(this,"purpose","for_rent")' title='Rent'>
                             <span class='span'>Rent</span>
                         </li>
                     </ul>
                 </div>
                 <div class="divrow">
-                    <label class="label l font_s">Property Type: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <ul id='ptype_push_buttons' class='l push_buttons'>
-                        <input type='hidden' name='ptype' id='ptype' value='' />
-
-                        <li class='l pushBtnLabel ' id='ptype_label_1' onclick='pushBtnClick(this,"ptype","1")' title='Homes'>
-                            <span class='span'>Homes</span>
-                        </li>
-                        <li class='l pushBtnLabel ' id='ptype_label_2' onclick='pushBtnClick(this,"ptype","2")' title='Plots'>
-                            <span class='span'>Plots</span>
-                        </li>
-                        <li class='l pushBtnLabel ' id='ptype_label_3' onclick='pushBtnClick(this,"ptype","3")' title='Commercial'>
-                            <span class='span'>Commercial</span>
-                        </li>
-                    </ul>
+                    <label class="label l font_s">Property Type: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <div style="display: flex;">
+                        @foreach($category as $val)
+                        <input type="radio" class="form-switch1 radio cat" data-id="{{$val->id}}" name="category_id" id="{{$val->id}}" type="{{$val->id}}" value="{{$val->id}}">
+                        <label for="{{$val->id}}" class="lable radio_container">{{$val->name}}</label>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="divrow" style="display: flex;">
+                    <label id="cat_class" class="label l font_s d-none">Sub Property Type: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <span class="cat_data">
+                    </span>
                 </div>
                 <div class="divrow div_type" style="display:none">
                     <label class="label l font_s">&nbsp;</label>
@@ -93,98 +144,66 @@
                 <!-- /////////////////////CITY///////////////////////// -->
                 <div class="divrow zameen-city-box">
                     <label class="label l font_s">City:</label>
-                    <div class=''><select name='city_name' onchange='onchange_city(this)' id='city'>
+                    <div class='sb_combo sel_box' style='width:150px'>
+                        <select class="city" name='city_name' style="width:151px;" id='city'>
                             <option value='' selected>Select City</option>
                             @foreach ($city as $value)
                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
-                        </select></div>
-                    <div class="city_rest_tooltip" style="position: relative; top: -20px; left: 245px; display: none;">
-                        <img class="bgc" src="{{ asset('userside') }}/images/common/exclamation.gif" onmouseover="city_restriction_tooltip(this, 'Cross city restriction applied. You can post to specific platform only.');">
+                        </select>
                     </div>
+                </div>
+                <div id="city_class" class="divrow zameen-city-box d-none">
+                    <label class="label l font_s">Address:</label>
+                    <div class='sb_combo sel_box' style='width:150px'>
+                        <select name='city_name' class="city_data" style="width:151px;" id='area'>
+                            <option value='' selected>Select Address</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Location: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
+                        <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="Then enter location here ..." disabled="disabled" />
+                    </div>
+                </div>
+                <!-- Property Title and Description -->
+                <div class="subhead font_s ros subhead2">Property Title and Description</div>
+                <div class="divrow">
+                    <label class="label l font_s">Property Title: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <input type='text' name='title' id='title' value='' style='width:419px;' class='rfield l ' placeholder='Enter property title here...' /><br>
+                    <!-- <div id="title_validation">*Minimum of 5 characters required </div> -->
                 </div>
 
                 <div class="divrow">
-                    <label class="label l font_s">Location: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
-                        <input type="text" id="location_id_input" class="autofilter disabled" data-value="" value="Then enter location here ..." disabled="disabled" />
-                    </div>
-                    <input type="hidden" id="location_id_data" value='{"disabled_txt":"Then enter location here ...","default_txt":"Enter location here ...","keyboard":1}' />
-
-                    <input type="hidden" id="last_location" name="last_location" value="" />
-                    <div class=" empty_city" id="loc_selector_row">
-                        <label class="label l font_s">or</label>
-                        <input type="hidden" id="loc_selector" name="loc_selector" value="" />
-                        <div id="cat_selector" class="l cat_selector">
-                            <span id='_cat_selector_0_sel_box' class='sb_combo sel_box ' style='width:210px'><select name='_cat_selector_0' id='_cat_selector_0' style='width:211px;' autocomplete='off'>
-                                    <option value='' selected>Select from list</option>
-                                </select><span id='_cat_selector_0_txt' class='txt'>Select from list</span>
-                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                            </span> <span class="container"></span>
-                        </div>
-                    </div>
-
+                    <label class="label l font_s">Description: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <textarea name="description" id="description" style="width:418px" rows="5" class="rfield l" placeholder="Enter property description here..."></textarea><br>
+                    <!-- <div id="description_validation">*Minimum of 20 characters required </div> -->
                 </div>
-                <span class="sboxarrow" style="display:none">&raquo;</span>
-                <!-- ADDRESS -->
-                <div class="divrow field_detailed" id="div_address" style="display:none">
-                    <label class="label l font_s">Address: </label>
-                    <span class="l span" id="sp_unit">
-                        <label class="l label1" id="lb_unit">Unit #</label>
-                        <input type='text' name='unit_no' id='unit_no' value='' style='width:76px;' class='rfield l ' />
-                    </span>
-                    <span class="l span" id="sp_street">
-                        <label class="l label1">Street #</label>
-                        <input type='text' name='street_no' id='street_no' value='' style='width:76px;' class='rfield l ' /> </span>
-                    <span class="l span" id="sp_floor">
-                        <label class="l label1">Floor #</label>
-                        <input type='text' name='floor_no' id='floor_no' value='' style='width:76px;' class='rfield l ' /> </span>
-                    <span class="l span" id="sp_plot">
-                        <label class="l label1">Plot #</label>
-                        <input type='text' name='plot_no' id='plot_no' value='' style='width:76px;' class='rfield l ' />
-                    </span>
-                </div>
-                <!-- MAP -->
-                <div class="divrow" id="map_div" style="display:none">
-                    <div class="l span_breadcrumb label1" id="span_breadcrumb"></div>
-                    <label class="label l font_s clr">Map Pin:</label>
-                    <a class="link_select_loc l" onclick="show_map_enlarged({map_field_id:'map_field'})" rel="nofollow" title="Click the map to select your location">
-                        <img id="small_map" />
-                    </a>
-                    <span class="l map_msg_inline" id="map_msg_inline"></span>
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            google_image('#small_map', {
-                                latitude: '',
-                                longitude: '',
-                                zoom: 17
-                            });
-                        });
-                    </script>
-                    <input type="hidden" id="map_field" value="zoom=16&call_back=map_select_default&small_map=#small_map" autocomplete="off" />
-                    <input type="hidden" id="default_params" value="zoom=16&call_back=map_select_default&small_map=#small_map" autocomplete="off" />
-                    <input type="hidden" name="mylatitude" id="mylatitude" value="" autocomplete="off" />
-                    <input type="hidden" name="mylongitude" id="mylongitude" value="" autocomplete="off" />
-                </div>
-
+                <!-- PROPERTY SPECS AND PRICE -->
                 <div class="subhead font_s ros subhead2" id="property_box_heading">PROPERTY SPECS AND PRICE</div>
                 <div class="divrow">
-                    <label class="label l font_s">Area Size: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
-                    <input type='text' name='area' id='area' value='' style='width:135px;' class='rfield l ' /> <label class="label_inline l font_s">Unit: </label>
-                    <span id='unit_sel_box' class='sb_combo sel_box ' style='width:135px'><select name='unit' id='unit' style='width:136px;' autocomplete='off'>
+                    <label class="label l font_s">Area Size: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l ' /> <label class="label_inline l font_s">Unit: </label>
+                    <span id='unit_sel_box' class='sb_combo sel_box ' style='width:135px'>
+                        <select name='unit' id='unit' style='width:136px;' autocomplete='off'>
                             <option value='Square Feet' selected>Square Feet</option>
                             <option value='Square Meters'>Square Meters</option>
                             <option value='Square Yards'>Square Yards</option>
                             <option value='Marla'>Marla</option>
                             <option value='Kanal'>Kanal</option>
                         </select><span id='unit_txt' class='txt'>Square Feet</span>
-                        <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                    </span> <span class='bgc infologo2' onmouseover="land_convert_txt2(this,'')">Area Calculator</span>
-                    <input type="hidden" id="db_area" value="" />
-                    <input type="hidden" id="db_unit" value="Square Feet" />
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Front Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l ' />
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Back Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l ' />
                 </div>
 
-                <div class="divrow div_beds" id="div_beds">
+                <!-- <div class="divrow div_beds" id="div_beds">
                     <label class="label l font_s">Bedrooms:</label>
                     <span id='beds_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='beds' id='beds' style='width:151px;' autocomplete='off'>
                             <option value='' selected>Please Select</option>
@@ -221,10 +240,10 @@
                         </select><span id='baths_txt' class='txt'>Please Select</span>
                         <span class='bgc sb_combo_arrow r'>&nbsp;</span>
                     </span>
-                </div>
+                </div> -->
 
 
-                <div class="divrow div_oc_status field_detailed" id="div_oc_status">
+                <!-- <div class="divrow div_oc_status field_detailed" id="div_oc_status">
                     <label class="label l font_s">Occupancy Status:</label>
                     <span id='occupancy_status_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='occupancy_status' id='occupancy_status' style='width:151px;' autocomplete='off'>
                             <option value='' selected>Please Select</option>
@@ -274,10 +293,10 @@
                             </select><span id='occupancyyear_txt' class='txt'>2022</span>
                             <span class='bgc sb_combo_arrow r'>&nbsp;</span>
                         </span> </span>
-                </div>
+                </div> -->
 
                 <div class="divrow price_div">
-                    <label class="label l font_s pheading display-block">Total Price: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                    <label class="label l font_s pheading display-block">All Inclusive Price: (PKR): <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' />
                 </div>
                 <div class="divrow price_div">
@@ -285,7 +304,7 @@
                     <span class="l price_text txtfont ltr">&nbsp;</span>
                 </div>
 
-                <div class="divrow div_instalments">
+                <!-- <div class="divrow div_instalments">
                     <label class="label l font_s">Installments Available: </label>
                     <ul id="instalment_status_push_buttons" class="l push_buttons">
                         <input type="hidden" name="instalment_status" id="instalment_status" value="">
@@ -296,15 +315,15 @@
                 </div>
                 <div class="instalments-box " style="display: none;">
                     <div class="divrow ">
-                        <label class="label l font_s pheading display-block">Advance/Initial Payment: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                        <label class="label l font_s pheading display-block">Advance/Initial Payment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                         <input type='text' name='adv_amount' id='adv_amount' value='' style='width:228px;' class='rfield l ' />
                     </div>
                     <div class="divrow">
-                        <label class="label l font_s pheading display-block">No. of Remaining Installments: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                        <label class="label l font_s pheading display-block">No. of Remaining Installments: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                         <input type='text' name='no_of_instalments' id='no_of_instalments' value='' style='width:228px;' class='rfield l ' />
                     </div>
                     <div class="divrow">
-                        <label class="label l font_s pheading display-block">Monthly Installment: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                        <label class="label l font_s pheading display-block">Monthly Installment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                         <input type='text' name='monthly_instalments' id='monthly_instalments' value='' style='width:228px;' class='rfield l ' />
                     </div>
                 </div>
@@ -316,11 +335,11 @@
                             <span class="span">Available</span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
                 <div class="divrow field_detailed" style="display:block">
                     <label class="label l font_s">Listing Expiry:</label>
-                    <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='expiry_days' id='expiry_days' style='width:151px;' autocomplete='off'>
+                    <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='is_expired' id='expiry_days' style='width:151px;' autocomplete='off'>
                             <option value='30' selected>1 Month</option>
                             <option value='90'>3 Months</option>
                             <option value='180'>6 Months</option>
@@ -329,7 +348,7 @@
                     </span>
                 </div>
 
-                <div class="divrow div_features" style="display:none">
+                <!-- <div class="divrow div_features" style="display:none">
                     <label class="label l font_s">&nbsp;<span class="feature_label">Features:</span></label>
                     <a class="l orng_smore popup_features">Add Features</a>
                 </div>
@@ -348,9 +367,9 @@
                         <span class="notification_img"></span>
                         <span class="notification_txt"></span>
                     </div>
-                </div>
+                </div> -->
 
-                <div id="rental_prices" style="display:none">
+                <!-- <div id="rental_prices" style="display:block">
                     <div class="subhead font_s ros subhead3">Rental Price Details</div>
                     <div class="divrow" style="display:block">
                         <label class="label l font_s">Minimum Contract Period:</label>
@@ -379,7 +398,7 @@
                         </span>
                     </div>
                     <div class="divrow" style="display:block">
-                        <label class="label l font_s">Monthly Rent: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                        <label class="label l font_s">Monthly Rent: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                         <input type='text' name='rental' id='rental' value='' style='width:136px;' class='rfield l ' />
                     </div>
                     <div class="divrow">
@@ -398,20 +417,7 @@
                         <input type='text' name='advance_rent' id='advance_rent' value='' style='width:136px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">or</label>
                         <input type='text' name='advance_rent_perc' id='advance_rent_perc' value='' style='width:85px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">number of month's rental amount </label>
                     </div>
-                </div>
-
-                <div class="subhead font_s ros subhead2">Property Title and Description</div>
-                <div class="divrow">
-                    <label class="label l font_s">Property Title: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <input type='text' name='title' id='title' value='' style='width:419px;' class='rfield l ' placeholder='Enter property title here...' /><br>
-                    <div id="title_validation">*Minimum of 5 characters required </div>
-                </div>
-
-                <div class="divrow">
-                    <label class="label l font_s">Description: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <textarea name="description" id="description" style="width:418px" rows="5" class="rfield l" placeholder="Enter property description here..."></textarea><br>
-                    <div id="description_validation">*Minimum of 20 characters required </div>
-                </div>
+                </div> -->
 
                 <div id="UploadImages" class="uploaderbox uploaderbox_images UploadImages noItems">
                     <div class="subhead font_s ros subhead_img">Images</div>
@@ -427,8 +433,7 @@
                             <a id="add_more_images" class="l orng_smore mr-bt10 fileUpload">Add Images</a>
                             <div class="info_msg l multiple_key_message">Press CTRL key while selecting images to
                                 upload multiple images at once</div>
-                            <input type="hidden" id="image_ids" name="image_ids" value="" autocomplete="off" />
-                            <a class="orng_smore get_image_bank clr l" onclick="get_from_bank(this,'get_image_bank')" data-title="My Image Bank">Add image from image bank</a>
+                            <input type="hidden" id="image_ids" name="image" value="" autocomplete="off" />
                         </div>
                         <div class="uploading_images" style="display:none">
                             <img class="l pleasewait" src="{{ asset('userside') }}/images/common/pleasewait.gif" />
@@ -491,135 +496,13 @@
                     key = parseInt("0");
                     image_upload_limit = parseInt("50");
                 </script>
-                <div id="Uploadvideos" class="uploaderbox Uploadvideos noItems">
-                    <div class="subhead font_s ros subhead_img">Videos</div>
-
-                    <div class="clr info_msg l drag_videos_message" style="margin-bottom: 13px;">Drag & drop videos to
-                        change order</div>
-                    <ul class="list_sortable" id="videos_list" data-sortable_selector="#videos_list" data-sortable_key="video_order">
-                    </ul>
-
-                    <li id='ListItem_' class='ListItem video_listing_zpt' style='display:none;'>
-                        <span class='num txtfont'>1</span>
-                        <div class='thumb2'>
-
-                        </div>
-                        <div class='l subdiv'>
-                            <div class='drow'>
-                                <span>Video Status:</span> <input type='text' class='rfield l video_status readonly' name='video_status[]' value='Pending' disabled />
-                            </div>
-                            <div class='drow'>
-                                <span>Video Link:</span> <input type='text' class='rfield l' name='video_link[]' value='' />
-                                <span>Video Title:</span> <input type='text' class='rfield l' name='video_title[]' value='' />
-                            </div>
-                            <span class='l clr'>Video Host:</span> <select class='rfield l video_host_id' name='video_host[]' autocomplete='off'>
-                                <option value=''>Select</option>
-                                <option value='youtube' autocomplete='off'>Youtube</option>
-                                <option value='vimeo' autocomplete='off'>Vimeo</option>
-                                <option value='dailymotion' autocomplete='off'>Dailymotion</option>
-                                <option value='3d_view' autocomplete='off'>3D View</option>
-                            </select>
-                            <a id='a_1' class='removeImg clr l onserver remove_video' onclick='remove_video("",this)'>Remove this Video</a>
-                            <input type='hidden' class='js_field' name='video_id[]' value='' />
-                        </div>
-                    </li>
-                    <div class="clr">
-                        <div class="filecontrol">
-
-                            <a id="add_more_videos" onclick="check_image_count('add_more_videos')" class="l orng_smore">Add Videos</a>
-                        </div>
-                        <div class="uploading" style="display:none">
-                            <img class="l pleasewait" src="{{ asset('userside') }}/images/common/pleasewait.gif" />
-                            <span class="l">Uploading. Please Wait...</span>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="save_videos" value="1" />
-                </div>
-                <script type="text/javascript">
-                    key = parseInt("1");
-                    video_upload_limit = parseInt("10");
-                </script>
-                <div id="Uploaddocuments" class="uploaderbox uploaderbox_documents Uploaddocuments noItems">
-                    <div class="subhead font_s ros subhead_img">Documents</div>
-
-                    <div class="clr info_msg l drag_documents_message" style="margin-bottom: 13px;">Drag & drop
-                        documents to change order</div>
-                    <ul class="list_sortable" id="documents_list" data-sortable_selector="#documents_list" data-sortable_key="documents_order"></ul>
-
-                    <div class="clr message_box_files" style="display:none;"></div>
-                    <!-- <br /> -->
-                    <div class="clr">
-                        <div class="filecontrol_documents">
-                            <a id="add_doc" class="l orng_smore">Add document</a>
-                            <div class="info_msg l multiple_key_message">Press CTRL key while selecting documents to
-                                upload multiple documents at once</div>
-                            <input type="hidden" id="document_ids" name="document_ids" value="" autocomplete="off" />
-                        </div>
-                        <div class="uploading_documents" style="display:none">
-                            <img class="l pleasewait" src="{{ asset('userside') }}/images/common/pleasewait.gif" />
-                            <span class="l">Uploading. Please Wait...</span>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="save_documents" value="1" />
-                </div>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        path_uploader_documents = request_url + "&ajaxUploadDocs=1";
-                        uploader_documents = new plupload.Uploader({
-                            browse_button: 'add_doc',
-                            url: path_uploader_documents,
-                            filters: {
-                                mime_types: [{
-                                    extensions: "jpg,gif,png,jpeg"
-                                }]
-                            },
-                            init: {
-                                FilesAdded: function(up, files) {
-                                    uploader_documents.settings.url = path_uploader_documents + "&edit_property=" +
-                                        edit_property_page;
-                                    up.start();
-                                },
-                                StateChanged: function(up) {
-                                    if (up.state == plupload.STARTED) {
-                                        $(".filecontrol_documents").hide();
-                                        $(".uploading_documents").show();
-                                    } else {
-                                        $(".filecontrol_documents").show();
-                                        $(".uploading_documents").hide();
-                                    }
-                                },
-                                FileUploaded: function(up, file, info) {
-                                    result = FileUploadedCallback(up, file, info, 'documents');
-                                    all_doc_ids = result[4];
-                                    if (all_doc_ids) {
-                                        $("#document_ids").val(all_doc_ids);
-                                    }
-                                },
-                                BeforeUpload: function(up) {
-                                    up.settings.multipart_params = {
-                                        'document_ids': $("#document_ids").val()
-                                    };
-                                }
-                            }
-                        });
-                        uploader_documents.init();
-                    });
-                </script>
-                <script type="text/javascript">
-                    key = parseInt("0");
-                    document_upload_limit = parseInt("50");
-                </script>
                 <div class="subhead font_s ros subhead3">Contact Details</div>
 
                 <div class="divrow">
                     <label class="label l font_s">Listing Owner: </label>
                     <span id='listing_owner_sel_box' class='sb_combo sel_box ' style='width:242px'><select name='listing_owner' onchange='listing_owner_change(this); ' id='listing_owner' style='width:243px;' autocomplete='off'>
-                            <option value='1001388906' selected>Myself</option>
-                        </select><span id='listing_owner_txt' class='txt'>Myself</span>
-                        <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                    </span> <a class="l add_price_breakdown" style="margin-left: 10px;" href="javascript:void(0)" onclick='show_users_list();'>Load user info</a>
+                            <option value='{{auth()->user()->id}}' selected>{{auth()->user()->name}}</option>
+                        </select><span id='listing_owner_txt' class='txt'>{{auth()->user()->name}}</span>
                 </div>
 
                 <script type="text/javascript">
@@ -658,7 +541,7 @@
                     </div>
                 </div>
                 <div class="divrow">
-                    <label class="label l font_s">Contact Person: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /> </label>
+                    <label class="label l font_s">Contact Person: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;' class='rfield l ' />
                     <div class="bgc infologo r">
                         <p>Please enter your first and last name respectively.</p>
@@ -668,7 +551,7 @@
                             class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
                             dropdown
                             -->
-                <div class="divrow put_cell_input_after_this">
+                <!-- <div class="divrow put_cell_input_after_this">
                     <label class="label l font_s">Landline Phone #: </label>
                     <span class="ph_input_box l">
                         <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")' class='rfield l ' /> <label class="separator">-</label>
@@ -678,24 +561,13 @@
                         <p>Enter your phone (land line or fixed phone) number along with area and international dialing
                             code.<br />Example: +92-51-12345678</p>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="divrow cellinputs">
-                    <label class="label l font_s">Mobile #1: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
-                    <span class="ph_input_box l">
-                        <input type='text' name='cell[]' id='cell1' value='' style='width:245px;' maxlength='100' class='rfield l ' /><span id="valid-msg-cell1" class="valid-msg-cell" style="display: none"></span>
-                        <span id="error-msg-cell1" onmouseover="show_cell_message_tooltip(this)" class="error-msg-cell" style="display: none"></span> </span>
-
-                    <div class="bgc infologo r">
-                        <p>Enter your mobile number along with international dialing code.<br />Example: +92-3001234567
-                        </p>
-                    </div>
-                    <a class="l add_price_breakdown add_new_cell_input_listing_form" id="add_cell_id" style="margin-left: 10px;" href="javascript:void(0)" onclick='add_new_cell_input_listing_form(this.id);'>Add Another Mobile Number</a>
-                </div>
+               
 
 
                 <div class="divrow">
-                    <label class="label l font_s">Email: <img src='{{ asset('userside') }}/images/common/asteriskred.gif' /></label>
+                    <label class="label l font_s">Email: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <input type='text' name='email' id='email' value='{{ Auth::guard('customeruser')->user()->email }}' style='width:228px;' class='rfield l ' />
                 </div>
                 <input type="hidden" name="selector" value="0" id="selector" autocomplete="off" />
@@ -720,7 +592,7 @@
                 </div>
         </div>
         </form>
-        <div id='hidden_type_1' style='display:none'>
+        <div id='hidden_type_1' class='d-none'>
             <ul id='type_push_buttons' class='l push_buttons'>
                 <input type='hidden' name='type' id='type' value='' />
 
@@ -829,5 +701,70 @@
         <br>
     </div>
 </div>
-</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.form-switch1').on('change', function() {
+            $('#form1').removeClass('d-none');
+            var formToShow = '.form1-' + $(this).data('id');
+            $(formToShow).addClass('active');
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.cat').on('change', function() {
+            var cat_id = this.value;
+            $.ajax({
+                url: "{{ url('admin/property/fetch-subcat') }}",
+                type: "POST",
+                data: {
+                    cat_id: cat_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(result) {
+                    $.each(result.subcat, function(key, value) {
+                        $('.cat_data').html('');
+                        $('#cat_class').removeClass('d-none');
+                    });
+                    $.each(result.subcat, function(key, value) {
+                        //  $('.cat_data').append(
+                        //     ' <div class="col-lg-4 col-md-12 form1 form1-'+value.category_id+' '+value.category_id+'"></div>'
+                        // );
+                        $('.cat_data').append(
+                            '<div style="margin-bottom:2px;" class="form1-' + value.category_id + ' ' + value.category_id + '" active><input type="radio" class="radio" name="subcat_id" id=' + value.name + ' value=' + value.id + '><label for=' + value.name + ' class="lable1 radio_container">' + value.name + '</label></div>'
+                        );
+                    });
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.city').on('change', function() {
+            var city_id = this.value;
+            $.ajax({
+                url: "{{ url('/user/fetch-area') }}",
+                type: "POST",
+                data: {
+                    city_id: city_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(result) {
+                    $.each(result.area, function(key, value) {
+                        $('.city_data').html('');
+                        $('#city_class').removeClass('d-none');
+                    });
+                    $.each(result.area, function(key, value) {
+                        $('.city_data').append(
+                            '<option value="' + value.id + '">' + value.areaname + '</option>'
+                        );
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection
