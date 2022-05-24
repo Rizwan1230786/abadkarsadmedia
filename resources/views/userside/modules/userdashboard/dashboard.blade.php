@@ -656,9 +656,7 @@ use App\Models\Category;
                                                     <td>abadkar.com</td>
                                                     <td>1</td>
                                                     @if (isset($value) && !empty($value->listed_date))
-                                                        <td>
                                                         <td>{{ $value->listed_date }}</td>
-                                                        </td>
                                                     @else
                                                         <td>Null</td>
                                                     @endif
