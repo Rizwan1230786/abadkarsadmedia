@@ -22,6 +22,7 @@
                 width: 100%;
                 clear: both;
             }
+
             .cart_row_child {
                 float: left;
                 padding-left: 5px;
@@ -31,6 +32,9 @@
         @yield('main')
         @include('userside.layouts.footer')
         @include('userside.layouts.script')
+        @include('front.layout.toaster')
+
     </div>
 </body>
+
 </html>

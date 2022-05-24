@@ -73,53 +73,37 @@
         padding: 0px 20px;
         text-align: left;
     }
+
+    .error {
+        color: red;
+    }
 </style>
 <div id="rightcolumn" style="
             width:79% " class="rightcolumn_div post_story_margin">
     <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
 
         <div class="add_property_page step_1 purpose_ ">
-            <div class="clearfix"></div>
-            <div class="post-listing-credit-box" style="display: none;">
-                <h3>You do not have credits available on any platforms.</h3>
-                <p>Call the numbers below to buy more quota for the platforms provided below.</p>
-                <div class="contact-credit-info">
-                    <div class="zameen-details">
-                        <div>
-                            <img src="{{ asset('userside') }}/profolio/images/post_listing_credit_box_zlogo1_1.svg" width="110" alt="zameen.com">
-                        </div>
-                        <div class="number">
-                            Buy now or call<br /><b>0800-ZAMEEN (92633)</b>
-                        </div>
-                        <a href="{{ asset('userside') }}/profolio/index.php?tabs=13&section=advertise" class="buy-more-btn">Buy More</a>
-                    </div>
-                    <div class="olx-details">
-                        <div>
-                            <img src="{{ asset('userside') }}/profolio/images/post_listing_credit_box_olx_logo1_1.svg" width="27" alt="OLX">
-                        </div>
-                        <div class="number">
-                            Call to buy more quota<br /><b>0800-ZAMEEN (92633)</b>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
             <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off" action="/user/submit_post_listing" enctype="multipart/form-data">
                 @csrf
                 <div class="message_box" id="error_message_box" style="padding-bottom: 10px;padding-top: 13px;display:none">
-                    <div id='msg_box' class='error' style=''><span class='icon_error'></span>
+                    <div id='msg_box' class='error'><span class='icon_error'></span>
                         <ul class='items  single'>
                             <li></li>
                         </ul>
                     </div>
                 </div>
                 <div class="subhead font_s ros subhead1">Purpose, Property Type and Location</div>
-                <div class="divrow" style="display: flex;">
+                <div class="divrow">
                     <label class="label l font_s">Purpose: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                    <input type="radio" class="radio" name="property_purpose" id="sale" value="for_sale">
-                    <label for="sale" class="lable radio_container">For Sale</label>
-                    <input type="radio" class="radio" name="property_purpose" id="rent" value="for_rent">
-                    <label for="rent" class="lable radio_container">For Rent</label>
+                    <div style="display: flex;">
+                        <input type="radio" class="radio" name="property_purpose" id="sale" value="for_sale">
+                        <label for="sale" class="lable radio_container">For Sale</label>
+                        <input type="radio" class="radio" name="property_purpose" id="rent" value="for_rent">
+                        <label for="rent" class="lable radio_container">For Rent</label>
+                    </div>
+                    @if($errors->has('property_purpose'))
+                    <div class="error">{{ $errors->first('property_purpose') }}</div>
+                    @endif
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Property Type: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
@@ -129,6 +113,9 @@
                         <label for="{{$val->id}}" class="lable radio_container">{{$val->name}}</label>
                         @endforeach
                     </div>
+                    @if($errors->has('category_id'))
+                    <div class="error">{{ $errors->first('category_id') }}</div>
+                    @endif
                 </div>
                 <div class="divrow" style="display: flex;">
                     <label id="cat_class" class="label l font_s d-none">Sub Property Type: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
@@ -138,8 +125,10 @@
                 <div class="divrow div_type" style="display:none">
                     <label class="label l font_s">&nbsp;</label>
                     <div class="l" id="sub_type_box"></div>
+                    @if($errors->has('subcat_id'))
+                    <div class="error">{{ $errors->first('subcat_id') }}</div>
+                    @endif
                 </div>
-
                 <!-- /////////////////////CITY///////////////////////// -->
                 <div class="divrow zameen-city-box">
                     <label class="label l font_s">City:</label>
@@ -152,6 +141,11 @@
                         </select>
                     </div>
                 </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('city_name'))
+                    <div class="error">{{ $errors->first('city_name') }}</div>
+                    @endif
+                </div>
                 <div id="city_class" class="divrow zameen-city-box d-none">
                     <label class="label l font_s">Address:</label>
                     <div class='sb_combo sel_box' style='width:150px'>
@@ -159,11 +153,16 @@
                             <option value='' selected>Select Address</option>
                         </select>
                     </div>
+                    <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                        @if($errors->has('area_id'))
+                        <div class="error">{{ $errors->first('area_id') }}</div>
+                        @endif
+                    </div>
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Location: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
-                        <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="" placeholder="Enter location here ..."/>
+                        <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="" placeholder="Enter location here ..." />
                     </div>
                 </div>
                 <!-- Property Title and Description -->
@@ -172,34 +171,68 @@
                     <label class="label l font_s">Property Title: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <input type='text' name='title' id='title' value='' style='width:419px;' class='rfield l ' placeholder='Enter property title here...' /><br>
                     <!-- <div id="title_validation">*Minimum of 5 characters required </div> -->
+                    <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                        @if($errors->has('title'))
+                        <div class="error">{{ $errors->first('title') }}</div>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="divrow">
                     <label class="label l font_s">Description: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <textarea name="description" id="description" style="width:418px" rows="5" class="rfield l" placeholder="Enter property description here..."></textarea><br>
                     <!-- <div id="description_validation">*Minimum of 20 characters required </div> -->
+                    <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                        @if($errors->has('description'))
+                        <div class="error">{{ $errors->first('description') }}</div>
+                        @endif
+                    </div>
                 </div>
                 <!-- PROPERTY SPECS AND PRICE -->
                 <div class="subhead font_s ros subhead2" id="property_box_heading">PROPERTY SPECS AND PRICE</div>
                 <div class="divrow">
                     <label class="label l font_s">Area Size: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l ' placeholder="Enter land area size..."/> <label class="label_inline l font_s">Unit: </label>
-                    <span id='unit_sel_box' class='sb_combo sel_box ' style='width:135px'>
-                        <select name='unit' id='unit' style='width:136px;' autocomplete='off'>
+                    <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l ' placeholder="Enter land area size..." />
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('land_area'))
+                    <div class="error">{{ $errors->first('land_area') }}</div>
+                    @endif
+                </div>
+                <div class="divrow zameen-city-box">
+                    <label class="label l font_s">Unit: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                    <div class='sb_combo sel_box' style='width:150px'>
+                        <select class="city" name='unit' style="width:151px;" id='city'>
                             <option value='Square Feet' selected>Square Feet</option>
                             <option value='Square Meters'>Square Meters</option>
                             <option value='Square Yards'>Square Yards</option>
                             <option value='Marla'>Marla</option>
                             <option value='Kanal'>Kanal</option>
-                        </select><span id='unit_txt' class='txt'>Square Feet</span>
+                        </select>
+                    </div>
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('unit'))
+                    <div class="error">{{ $errors->first('unit') }}</div>
+                    @endif
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Front Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l' placeholder="Enter front dimenssion..." />
                 </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('front_dim'))
+                    <div class="error">{{ $errors->first('front_dim') }}</div>
+                    @endif
+                </div>
                 <div class="divrow">
                     <label class="label l font_s">Back Dimenssion: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l ' placeholder="Enter back dimenssion..." />
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('back_dim'))
+                    <div class="error">{{ $errors->first('back_dim') }}</div>
+                    @endif
                 </div>
 
                 <!-- <div class="divrow div_beds" id="div_beds">
@@ -296,7 +329,12 @@
 
                 <div class="divrow price_div">
                     <label class="label l font_s pheading display-block">All Inclusive Price: (PKR): <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' placeholder="Enter price..."/>
+                    <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l ' placeholder="Enter price..." />
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('price'))
+                    <div class="error">{{ $errors->first('price') }}</div>
+                    @endif
                 </div>
                 <div class="divrow price_div">
                     <label class="label l font_s">&nbsp;</label>
@@ -339,12 +377,17 @@
                 <div class="divrow field_detailed" style="display:block">
                     <label class="label l font_s">Listing Expiry:</label>
                     <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='is_expired' id='expiry_days' style='width:151px;' autocomplete='off'>
-                            <option value='30' selected>1 Month</option>
-                            <option value='90'>3 Months</option>
-                            <option value='180'>6 Months</option>
+                            <option value='1' selected>1 Month</option>
+                            <option value='3'>3 Months</option>
+                            <option value='6'>6 Months</option>
                         </select><span id='expiry_days_txt' class='txt'>1 Month</span>
                         <span class='bgc sb_combo_arrow r'>&nbsp;</span>
                     </span>
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('is_expired'))
+                    <div class="error">{{ $errors->first('is_expired') }}</div>
+                    @endif
                 </div>
 
                 <!-- <div class="divrow div_features" style="display:none">
@@ -422,20 +465,27 @@
                     <div class="subhead font_s ros subhead_img">Images</div>
                     <div class="clr">
                         <div class="filecontrol_images">
-                            <input class="dropify" type="file"  name="image" multiple/>
+                            <input class="dropify" type="file" name="image" multiple />
 
                         </div>
                     </div>
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('image'))
+                    <div class="error">{{ $errors->first('image') }}</div>
+                    @endif
                 </div>
                 <div class="subhead font_s ros subhead3">Contact Details</div>
                 <div class="imz_dialog" id="users_list_dialog" style="display:none">
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Contact number: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input placeholder="Enter contact number..." type='text' name='name' id='name' value='{{ Auth::guard('customeruser')->user()->firstname }}' style='width:228px;' class='rfield l ' />
-                    <div class="bgc infologo r">
-                        <p>Please enter your first and last name respectively.</p>
-                    </div>
+                    <input placeholder="Enter contact number..." type='text' name='contact' id='name' value='' style='width:228px;' class='rfield l ' />
+                </div>
+                <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                    @if($errors->has('contact'))
+                    <div class="error">{{ $errors->first('contact') }}</div>
+                    @endif
                 </div>
                 <!--
                             class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
@@ -459,6 +509,11 @@
                 <div class="divrow">
                     <label class="label l font_s">Email: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <input type='text' name='email' id='email' value='{{ Auth::guard("customeruser")->user()->email }}' style='width:228px;' class='rfield l ' />
+                    <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
+                        @if($errors->has('email'))
+                        <div class="error">{{ $errors->first('email') }}</div>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="imz_dialog" id="popup_features" style="display:none">
