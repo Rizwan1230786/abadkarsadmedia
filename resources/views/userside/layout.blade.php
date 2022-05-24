@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="content" class="" style="font-family:Arial,Verdana,Helvetica,sans-serif;line-height:140%;">
+    <div id="content" class="content_1200" style="font-family:Arial,Verdana,Helvetica,sans-serif;line-height:140%;">
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
