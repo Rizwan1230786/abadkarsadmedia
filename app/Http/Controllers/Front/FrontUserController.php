@@ -49,7 +49,6 @@ class FrontUserController extends Controller
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.customeruser.login', compact('meta', 'data'));
-    
     }
     public function signup()
     {
@@ -123,7 +122,6 @@ class FrontUserController extends Controller
         if ($validator->passes()) {
             $credentials = $request->only('email', 'password');
             if (Auth::guard('customeruser')->attempt($credentials)) {
-
                 $type = 'success';
                 $message = "You are login successfully";
             } else

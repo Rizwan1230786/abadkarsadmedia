@@ -50,7 +50,7 @@
         if (validateForm()) {
             $.ajax({
                 type: 'POST',
-                url: "{{ route('submitLogin') }}",
+                url: "{{ url('/user/submitlogin') }}",
                 data: $('form').serialize(),
                 success: function(result) {
                     var message = (_.hasIn(result,"message") ? result.message : "");
