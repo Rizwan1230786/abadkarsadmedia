@@ -87,9 +87,9 @@
                                         <label class="form-label">Purpose:<span style="color: red"> *
                                             </span></label>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="radio" name="property_purpose" id="one" value="for_rent">
+                                            <input type="radio" class="radio" name="property_purpose" id="one" value="rent">
                                             <label for="one" class="lable radio_container" style="margin-left: 5px;">For Rent</label>
-                                            <input type="radio" class="radio" name="property_purpose" id="two" value="for_sale">
+                                            <input type="radio" class="radio" name="property_purpose" id="two" value="sale">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
                                         @if ($errors->has('property_purpose'))
@@ -351,7 +351,7 @@
                                             <p class="no-mb last">
                                                 <label for="phone">Phone</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
+                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="+92" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
                                             </div>
                                             @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
