@@ -242,6 +242,7 @@
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                         <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l'
                             placeholder="Enter front dimenssion..." />
+                            <span style="color: #FF385C; margin-left:10px;">( Please Enter a Front dimenssion In sq ft )</span>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('front_dim'))
@@ -253,6 +254,7 @@
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                         <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l '
                             placeholder="Enter back dimenssion..." />
+                            <span style="color: #FF385C; margin-left:10px;">( Please Enter a Back Dimenssion In sq ft )</span>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('back_dim'))
