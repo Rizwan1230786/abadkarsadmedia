@@ -488,7 +488,7 @@
 
                     @else
                     <label class="label l font_s">Contact number: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input placeholder="Enter contact number..." type='text' name='contact' id="account-phone" value='' style='width:228px;' class='rfield l ' />
+                    <input placeholder="Enter contact number..." type='text' name='contact' id="account-phone" value='+92' style='width:228px;' class='rfield l ' />
 
                     @endif
                 </div>

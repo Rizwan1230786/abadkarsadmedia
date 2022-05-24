@@ -87,9 +87,9 @@
                                         <label class="form-label">Purpose:<span style="color: red"> *
                                             </span></label>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="radio" name="property_purpose" id="one" value="for_rent">
+                                            <input type="radio" class="radio" name="property_purpose" id="one" value="rent">
                                             <label for="one" class="lable radio_container" style="margin-left: 5px;">For Rent</label>
-                                            <input type="radio" class="radio" name="property_purpose" id="two" value="for_sale">
+                                            <input type="radio" class="radio" name="property_purpose" id="two" value="sale">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
                                         @if ($errors->has('property_purpose'))
