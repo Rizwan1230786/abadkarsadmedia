@@ -77,6 +77,9 @@
     .error {
         color: red;
     }
+    .iti--allow-dropdown{
+        width: 0px !important;
+    }
 </style>
 <div id="rightcolumn" style="
             width:79% " class="rightcolumn_div post_story_margin">
@@ -96,9 +99,9 @@
                 <div class="divrow">
                     <label class="label l font_s">Purpose: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <div style="display: flex;">
-                        <input type="radio" class="radio" name="property_purpose" id="sale" value="for_sale">
+                        <input type="radio" class="radio" name="property_purpose" id="sale" value="sale">
                         <label for="sale" class="lable radio_container">For Sale</label>
-                        <input type="radio" class="radio" name="property_purpose" id="rent" value="for_rent">
+                        <input type="radio" class="radio" name="property_purpose" id="rent" value="rent">
                         <label for="rent" class="lable radio_container">For Rent</label>
                     </div>
                     @if($errors->has('property_purpose'))
@@ -479,8 +482,15 @@
                 <div class="imz_dialog" id="users_list_dialog" style="display:none">
                 </div>
                 <div class="divrow">
+                    @if(Auth::user()->contact)
                     <label class="label l font_s">Contact number: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input placeholder="Enter contact number..." type='text' name='contact' id='name' value='' style='width:228px;' class='rfield l ' />
+                    <input placeholder="Enter contact number..." type='text' name='contact' id="account-phone" value='{{ Auth::user()->contact }}' style='width:228px;' class='rfield l ' />
+
+                    @else
+                    <label class="label l font_s">Contact number: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input placeholder="Enter contact number..." type='text' name='contact' id="account-phone" value='' style='width:228px;' class='rfield l ' />
+
+                    @endif
                 </div>
                 <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                     @if($errors->has('contact'))
@@ -712,4 +722,9 @@
 @include('admin.layouts.fancy-uploader-js')
 @include('admin.layouts.tinymce-js')
 @include('admin.layouts.templateJquery')
+<script src="{{ URL::asset('front/js/Tellcustom.js') }}"></script>
+<link href="{{ URL::asset('front/css/intlTelInput.css?1613236686837') }}" rel="stylesheet">
+<script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
+<script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
+<script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
 @endsection
