@@ -30,7 +30,7 @@ class AddProprtyController extends Controller
         $category = Category::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.userside.property.add_property', compact('meta', 'data', 'category', 'city', 'state', 'feature'));
+        return view("front.pages.userside.property.add_property", compact('meta', 'data', 'category', 'city', 'state', 'feature'));
     }
     public function myformAjax($id)
     {

@@ -285,7 +285,6 @@ Route::prefix('user')->group(function () {
         /////userprofile routes//////////
         Route::get('/user-profile', [UserProfileController::class, 'user_profile'])->name('user-profile');
         Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
-
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });
@@ -294,6 +293,13 @@ Route::prefix('user')->group(function () {
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
     // Artisan::call('route:cache');
+    // Artisan::call('view:clear');
+    // Artisan::call('config:cache');
+    dd("Cache Clear All");
+});
+Route::get('/routes', function () {
+    // Artisan::call('cache:clear');
+    Artisan::call('route:cache');
     // Artisan::call('view:clear');
     // Artisan::call('config:cache');
     dd("Cache Clear All");
