@@ -4,70 +4,70 @@
 
             <span class="leftcolumheadings">Reports and Stats</span>
 
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_main"
+            <a href="#"
                 class="leftcolumnlink_sub" id="a_1">Traffic</a>
             <div class="listing_class" id="d_1" style="display:none;">
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_main"
+                <a href="#"
                     class="leftcolumnlink">Traffic Summary</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_details&type=impr"
+                <a href="#"
                     class="leftcolumnlink">Property Views</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_details&type=view"
+                <a href="#"
                     class="leftcolumnlink">Property Visits</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_details&type=ctr"
+                <a href="#"
                     class="leftcolumnlink">CTR</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=trafic_by_location"
+                <a href="#"
                     class="leftcolumnlink">Traffic by Location</a>
             </div>
 
 
 
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=leads_main"
+            <a href="#"
                 class="leftcolumnlink_sub" id="a_2">Leads</a>
             <div class="listing_class" id="d_2" style="display:none;">
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=leads_main"
+                <a href="#"
                     class="leftcolumnlink">Leads Summary</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=ph_details"
+                <a href="#"
                     class="leftcolumnlink"> Phone Leads</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=email_details"
+                <a href="#"
                     class="leftcolumnlink"> Email Leads</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=sms_leads"
+                <a href="#"
                     class="leftcolumnlink"> SMS Leads</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=leads_by_location"
+                <a href="#"
                     class="leftcolumnlink">Leads by Location</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=leads_by_country"
+                <a href="#"
                     class="leftcolumnlink">Leads By Country</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=leads_potential_revenue"
+                <a href="#"
                     class="leftcolumnlink">
                     Leads Potential Revenue</a>
             </div>
 
 
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=comparision_summary"
+            <a href="#"
                 class="leftcolumnlink_sub" id="a_3">Compare Performance</a>
             <div class="listing_class" id="d_3" style="display:none;">
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=comparision_summary"
+                <a href="#"
                     class="leftcolumnlink">My Ranks (Leads)</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=comparision_lead"
+                <a href="#"
                     class="leftcolumnlink">My Ranks by Area (Leads)</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=comparision_main"
+                <a href="#"
                     class="leftcolumnlink">Top Performer Comparison</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=comparision_with_site"
+                <a href="#"
                     class="leftcolumnlink">Zameen Comparison</a>
             </div>
 
 
 
 
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=listings_summary"
+            <a href="#"
                 class="leftcolumnlink_sub" id="a_4">Listings</a>
             <div class="listing_class" id="d_4" style="display:none;">
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=listings_summary"
+                <a href="#"
                     class="leftcolumnlink">Summary</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=listings_main"
+                <a href="#"
                     class="leftcolumnlink">Listings by Day</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=listings_by_location"
+                <a href="#"
                     class="leftcolumnlink">Listings by Location</a>
-                <a href="https://profolio.zameen.com/profolio/index.php?tabs=10&section=reports&subsection=prop_performance"
+                <a href="#"
                     class="leftcolumnlink">Listing Performance</a>
             </div>
             <br>

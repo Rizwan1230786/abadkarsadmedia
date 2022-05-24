@@ -57,8 +57,9 @@
 
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery_min.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery.mask_smp.js"></script>
-<script type="text/javascript" src="{{ asset('userside') }}//javascript/intlTelInput_lib_smp.js?v=1"></script>
-<script type="text/javascript" src="{{ asset('userside') }}//javascript/intl_phone_unification.js?v=3"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/intlTelInput_lib_smp.js?v=1"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/intl_phone_unification.js?v=3"></script>
+
 @yield('js')
 <script>
     $("#cell").live('focusin',function(){
@@ -1101,7 +1102,2664 @@ function myFunction(obj) {
 				is3D: true
 			}, ]
 		});
+
 	</script>
+    <script type='text/javascript'>
+        function charts_data() {
+            return [{
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "Super Hot",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Hot",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Paid",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Free",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "All",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 23,
+                        "f": null
+                    }, {
+                        "v": 23,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 28,
+                        "f": null
+                    }, {
+                        "v": 28,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 8,
+                        "f": null
+                    }, {
+                        "v": 8,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 8,
+                        "f": null
+                    }, {
+                        "v": 8,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 14,
+                        "f": null
+                    }, {
+                        "v": 14,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 5,
+                        "f": null
+                    }, {
+                        "v": 5,
+                        "f": null
+                    }]
+                }]
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "Super Hot",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Hot",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Paid",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Free",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "All",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 1,
+                        "f": null
+                    }, {
+                        "v": 1,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 2,
+                        "f": null
+                    }, {
+                        "v": 2,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 3,
+                        "f": null
+                    }, {
+                        "v": 3,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }]
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "Phone Views",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 1,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 1,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }]
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "Emails Received",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }]
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "SMS Clicks",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 1,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }]
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }],
+                "rows": []
+            }, {
+                "cols": [{
+                    "id": "",
+                    "label": "Day",
+                    "pattern": "",
+                    "type": "date"
+                }, {
+                    "id": "",
+                    "label": "Hot",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Paid",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "Free",
+                    "pattern": "",
+                    "type": "number"
+                }, {
+                    "id": "",
+                    "label": "All",
+                    "pattern": "",
+                    "type": "number"
+                }],
+                "rows": [{
+                    "c": [{
+                        "v": new Date("04/24/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/25/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/26/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/27/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/28/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/29/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("04/30/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/01/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/02/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/03/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/04/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/05/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/06/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/07/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/08/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/09/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/10/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/11/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/12/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/13/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/14/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/15/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/16/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/17/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/18/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 4.35,
+                        "f": null
+                    }, {
+                        "v": 4.35,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/19/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 7.14,
+                        "f": null
+                    }, {
+                        "v": 7.14,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/20/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/21/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/22/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 21.43,
+                        "f": null
+                    }, {
+                        "v": 21.43,
+                        "f": null
+                    }]
+                }, {
+                    "c": [{
+                        "v": new Date("05/23/2022"),
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }, {
+                        "v": 0,
+                        "f": null
+                    }]
+                }]
+            }];
+        }
+        draw_multiple_charts({
+            'data_function': 'charts_data()',
+            'div': 'chart_1',
+            'buttons': 'stat_button',
+            opts: [{
+                    vAxis: {
+                        title: 'Property Views'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#DC3912', '#109618', '#FF9900', '#3366CC']
+                },
+                {
+                    vAxis: {
+                        title: 'Property Visits'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#DC3912', '#109618', '#FF9900', '#3366CC']
+                },
+                {
+                    vAxis: {
+                        title: 'Phone Leads'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#3366CC']
+                },
+                {
+                    vAxis: {
+                        title: 'Email Leads'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#3366CC']
+                },
+                {
+                    vAxis: {
+                        title: 'SMS Clicks'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#8a2be2']
+                },
+                {
+                    vAxis: {
+                        title: 'Whatsapp Clicks'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#8a2be2']
+                },
+                {
+                    vAxis: {
+                        title: 'CTR %'
+                    },
+                    width: 960,
+                    height: 270,
+                    colors: ['#DC3912', '#109618', '#FF9900', '#3366CC']
+                },
+            ]
+        });
+    </script>
     <script>
 		(function(w, d, s, l, i) {
 			w[l] = w[l] || [];

@@ -3,10 +3,10 @@
     <div id="leftcolumn">
 <div id="mybayut_menu" >
     <span class="leftcolumheadings">Profiles</span>
-    <a href="https://profolio.zameen.com/profolio/index.php?tabs=4&section=editRoles" class="leftcolumnlink">User Roles</a>
-    <a href="https://profolio.zameen.com/profolio/index.php?tabs=4&section=editUser" class="leftcolumnlink">User Profile</a>
-    <a href="https://profolio.zameen.com/profolio/index.php?tabs=4&section=userSettings" class="leftcolumnlink">User Settings</a>
-    <a href="https://profolio.zameen.com/profolio/index.php?tabs=4&section=editUserPw" class="leftcolumnlink">Change Password</a>
+    <a href="#" class="leftcolumnlink">User Roles</a>
+    <a href="/user/user-profile" class="leftcolumnlink">User Profile</a>
+    <a href="#" class="leftcolumnlink">User Settings</a>
+    <a href="#" class="leftcolumnlink">Change Password</a>
 
 
 </div>
