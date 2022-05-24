@@ -1183,7 +1183,7 @@ x:default {
 
 .paginate .selected {
     margin: 0px 3px;
-    color: #00A651;
+    color: #FF385c;;
     background: #F0F0F0;
     border: 1px solid #4AA35A;
     padding: 2px 6px;
@@ -1195,7 +1195,7 @@ x:default {
 }
 
 .paginate a:hover {
-    border: 1px solid #00a651;
+    border: 1px solid #FF385c;;
 }
 
 .paginate .page_x_of_y {
@@ -1258,13 +1258,13 @@ x:default {
 
 .success_msg_box {
     background-color: #F0FBDB;
-    border: 1px solid #00a651;
+    border: 1px solid #FF385c;;
     border-radius: 5px;
 }
 
 .note_msg_box {
     background-color: #F8FFFD;
-    border: 1px solid #00A651;
+    border: 1px solid #FF385c;;
     border-radius: 5px;
 }
 
@@ -2655,7 +2655,7 @@ ul {
 
 .tab_menu .selected a {
     background: transparent;
-    background-color: #00a651;
+    background-color: #FF385c;
     color: #ffffff;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
