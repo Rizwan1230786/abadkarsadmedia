@@ -122,6 +122,7 @@ class PropertyManagementController extends Controller
     }
     public function post_listing()
     {
+        $feature = Features::all();
         $user_id = Auth::user()->id;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();

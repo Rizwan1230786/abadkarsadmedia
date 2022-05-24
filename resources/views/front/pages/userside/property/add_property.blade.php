@@ -351,7 +351,7 @@
                                             <p class="no-mb last">
                                                 <label for="phone">Phone</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
+                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="+92" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
                                             </div>
                                             @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
