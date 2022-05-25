@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
@@ -38,17 +39,15 @@ class AuthController extends Controller
                 request()->image->move(public_path('assets/images/userphoto/'), $filename);
                 $query->image = $filename;
                 $query->save();
-
             }
             return response()->json(['type' => $type, 'message' => $message]);
         }
-
     }
     public function login()
     {
-        if(Auth::guard('web')->check()){
+        if (Auth::guard('web')->check()) {
             return redirect('admin/dashboard')->with("You are not allowed to access");
-        }else{
+        } else {
             return view('admin.modules.guest.login');
         }
     }
@@ -66,14 +65,13 @@ class AuthController extends Controller
                 if (isset($status) && $status != 0) {
                     $type = 'success';
                     $message = "User login successfully";
-                }
-                else {
+                } else {
                     Auth::guard('web')->logout();
                     $message = "User is inactive";
                 }
-            }else
+            } else
                 $message = "Invalid Email/Password";
-        }else {
+        } else {
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
@@ -110,14 +108,13 @@ class AuthController extends Controller
         $status = $request->status;
         if ($status == 1) {
             $status = 0;
-        }
-        else {
+        } else {
             $status = 1;
         }
-        if(isset($userid) && $userid ==1){
+        if (isset($userid) && $userid == 1) {
             $type = "success";
             $message = "Status can't be changed";
-        }else{
+        } else {
             $status = User::whereId($userid)->update(array('status' => $status));
             if (isset($status) && !empty($status)) {
                 $type = "success";
@@ -128,21 +125,20 @@ class AuthController extends Controller
     }
     public function destroy($id)
     {
-        if(isset($id) && $id !=1){
+        if (isset($id) && $id != 1) {
             $delete = User::findOrFail($id);
             $oldimage = public_path('assets/images/userphoto/' . $delete->image);
             if (File::exists($oldimage)) {
                 File::delete($oldimage);
             }
-            $user=$delete->delete();
-            if($user){
+            $user = $delete->delete();
+            if ($user) {
                 return response(['status' => true]);
-            }else{
+            } else {
                 return response(['status' => false]);
             }
-        }else {
+        } else {
             return response(['status' => false]);
         }
     }
-
 }
