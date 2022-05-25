@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\userside;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserDashboard\AddProperty;
+use Carbon\Carbon;
 use App\Models\Area;
-use App\Models\Category;
+use App\Models\State;
 use App\Models\Cities;
-use App\Models\Customeruser;
+use App\Models\Category;
 use App\Models\Features;
 use App\Models\Property;
-use App\Models\State;
 use App\Models\Webpages;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\Models\Customeruser;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserDashboard\AddProperty;
 
 class PropertyManagementController extends Controller
 {
@@ -228,6 +229,9 @@ class PropertyManagementController extends Controller
         $city = Cities::all();
         $state = State::all();
         $feature = Features::all();
+        $features_property = DB::table("features_property")->where("features_property.property_id", $id)
+        ->pluck('features_property.features_id', 'features_property.features_id')
+        ->all();
         $category = Category::all();
         $record = Property::where('id', $id)->first();
         $meta = Webpages::Where("page_title", "home")->first();

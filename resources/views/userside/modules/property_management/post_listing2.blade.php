@@ -83,13 +83,30 @@
         }
 
     </style>
+    <?php
+    if (isset($record->id) && $record->id != 0) {
+        $url = url('/user/update_post_listing/' . $record->id);
+    } else {
+        $url = url('/user/submit_post_listing');
+    }
+
+    ?>
     <div id="rightcolumn" style="
-                width:79% " class="rightcolumn_div post_story_margin">
+                                width:79% " class="rightcolumn_div post_story_margin">
+        <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
+            @if (isset($record->id) && !empty($record->id))
+                <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                        Management</a> &raquo; Edit Listing </span>
+            @else
+                <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
+                        Management</a> &raquo; Post Listing </span>
+            @endif
+        </div>
         <div id="add_prop_main" class="add_prop_main step_1 purpose_ AdvanceSubmision">
 
             <div class="add_property_page step_1 purpose_ ">
                 <form class="add_property add_property_form singleForm clr" method="post" autocomplete="off"
-                    action="/user/submit_post_listing" enctype="multipart/form-data">
+                    action="{{ $url }}" enctype="multipart/form-data">
                     @csrf
                     <div class="message_box" id="error_message_box"
                         style="padding-bottom: 10px;padding-top: 13px;display:none">
@@ -184,8 +201,8 @@
                     <div class="divrow">
                         <label class="label l font_s">Property Title: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                        <input type='text' name='title' id='title' value='' style='width:419px;' class='rfield l '
-                            placeholder='Enter property title here...' /><br>
+                        <input type='text' name='title' id='title' value="{{ $record->name ?? '' }}" style='width:419px;'
+                            class='rfield l ' placeholder='Enter property title here...' /><br>
                         <!-- <div id="title_validation">*Minimum of 5 characters required </div> -->
                         <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                             @if ($errors->has('title'))
@@ -198,7 +215,7 @@
                         <label class="label l font_s">Description: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                         <textarea name="description" id="description" style="width:418px" rows="5" class="rfield l"
-                            placeholder="Enter property description here..."></textarea><br>
+                            placeholder="Enter property description here...">{{ $record->descripition ?? '' }}</textarea><br>
                         <!-- <div id="description_validation">*Minimum of 20 characters required </div> -->
                         <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                             @if ($errors->has('description'))
@@ -211,8 +228,8 @@
                     <div class="divrow">
                         <label class="label l font_s">Area Size: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                        <input type='text' name='land_area' id='area' value='' style='width:135px;' class='rfield l '
-                            placeholder="Enter land area size..." />
+                        <input type='text' name='land_area' id='area' value="{{ $record->land_area ?? '' }}"
+                            style='width:135px;' class='rfield l ' placeholder="Enter land area size..." />
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('land_area'))
@@ -223,13 +240,24 @@
                         <label class="label l font_s">Unit: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                         <div class='sb_combo sel_box' style='width:150px'>
-                            <select class="city" name='unit' style="width:151px;" id='city'>
-                                <option value='Square Feet' selected>Square Feet</option>
-                                <option value='Square Meters'>Square Meters</option>
-                                <option value='Square Yards'>Square Yards</option>
-                                <option value='Marla'>Marla</option>
-                                <option value='Kanal'>Kanal</option>
-                            </select>
+                            @if (isset($record->unit) && !empty($record->unit))
+                                <select class="city" name='unit' style="width:151px;" id='city'>
+                                    <option value="{{ $record->unit ?? '' }}">{{ $record->unit ?? '' }}</option>
+                                    <option value='Square Feet'>Square Feet</option>
+                                    <option value='Square Meters'>Square Meters</option>
+                                    <option value='Square Yards'>Square Yards</option>
+                                    <option value='Marla'>Marla</option>
+                                    <option value='Kanal'>Kanal</option>
+                                </select>
+                            @else
+                                <select class="city" name='unit' style="width:151px;" id='city'>
+                                    <option value='Square Feet' selected>Square Feet</option>
+                                    <option value='Square Meters'>Square Meters</option>
+                                    <option value='Square Yards'>Square Yards</option>
+                                    <option value='Marla'>Marla</option>
+                                    <option value='Kanal'>Kanal</option>
+                                </select>
+                            @endif
                         </div>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
@@ -240,9 +268,9 @@
                     <div class="divrow">
                         <label class="label l font_s">Front Dimenssion: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                        <input type='text' name='front_dim' id='area' value='' style='width:135px;' class='rfield l'
-                            placeholder="Enter front dimenssion..." />
-                            <span style="color: #FF385C; margin-left:10px;">( Please Enter a Front dimenssion In sq ft )</span>
+                        <input type='text' name='front_dim' id='area' value='{{ $record->front_dim ?? '' }}'
+                            style='width:135px;' class='rfield l' placeholder="Enter front dimenssion..." />
+                        <span style="color: #FF385C; margin-left:10px;">( Please Enter a Front dimenssion In sq ft )</span>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('front_dim'))
@@ -252,9 +280,9 @@
                     <div class="divrow">
                         <label class="label l font_s">Back Dimenssion: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                        <input type='text' name='back_dim' id='area' value='' style='width:135px;' class='rfield l '
-                            placeholder="Enter back dimenssion..." />
-                            <span style="color: #FF385C; margin-left:10px;">( Please Enter a Back Dimenssion In sq ft )</span>
+                        <input type='text' name='back_dim' id='area' value='{{ $record->back_dim ?? '' }}'
+                            style='width:135px;' class='rfield l ' placeholder="Enter back dimenssion..." />
+                        <span style="color: #FF385C; margin-left:10px;">( Please Enter a Back Dimenssion In sq ft )</span>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('back_dim'))
@@ -263,102 +291,102 @@
                     </div>
 
                     <!-- <div class="divrow div_beds" id="div_beds">
-                        <label class="label l font_s">Bedrooms:</label>
-                        <span id='beds_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='beds' id='beds' style='width:151px;' autocomplete='off'>
-                                <option value='' selected>Please Select</option>
-                                <option value='-1'>Studio</option>
-                                <option value='1'>1</option>
-                                <option value='2'>2</option>
-                                <option value='3'>3</option>
-                                <option value='4'>4</option>
-                                <option value='5'>5</option>
-                                <option value='6'>6</option>
-                                <option value='7'>7</option>
-                                <option value='8'>8</option>
-                                <option value='9'>9</option>
-                                <option value='10'>10</option>
-                                <option value='11'>10+</option>
-                            </select><span id='beds_txt' class='txt'>Please Select</span>
-                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                        </span>
-                    </div>
-                    <div class="divrow div_bathrooms" id="div_bathrooms">
-                        <label class="label l font_s">Bathrooms:</label>
-                        <span id='baths_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='baths' id='baths' style='width:151px;' autocomplete='off'>
-                                <option value='' selected>Please Select</option>
-                                <option value='1'>1</option>
-                                <option value='2'>2</option>
-                                <option value='3'>3</option>
-                                <option value='4'>4</option>
-                                <option value='5'>5</option>
-                                <option value='6'>6</option>
-                                <option value='7'>7</option>
-                                <option value='8'>8</option>
-                                <option value='9'>9</option>
-                                <option value='10'>10</option>
-                            </select><span id='baths_txt' class='txt'>Please Select</span>
-                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                        </span>
-                    </div> -->
+                                        <label class="label l font_s">Bedrooms:</label>
+                                        <span id='beds_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='beds' id='beds' style='width:151px;' autocomplete='off'>
+                                                <option value='' selected>Please Select</option>
+                                                <option value='-1'>Studio</option>
+                                                <option value='1'>1</option>
+                                                <option value='2'>2</option>
+                                                <option value='3'>3</option>
+                                                <option value='4'>4</option>
+                                                <option value='5'>5</option>
+                                                <option value='6'>6</option>
+                                                <option value='7'>7</option>
+                                                <option value='8'>8</option>
+                                                <option value='9'>9</option>
+                                                <option value='10'>10</option>
+                                                <option value='11'>10+</option>
+                                            </select><span id='beds_txt' class='txt'>Please Select</span>
+                                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                        </span>
+                                    </div>
+                                    <div class="divrow div_bathrooms" id="div_bathrooms">
+                                        <label class="label l font_s">Bathrooms:</label>
+                                        <span id='baths_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='baths' id='baths' style='width:151px;' autocomplete='off'>
+                                                <option value='' selected>Please Select</option>
+                                                <option value='1'>1</option>
+                                                <option value='2'>2</option>
+                                                <option value='3'>3</option>
+                                                <option value='4'>4</option>
+                                                <option value='5'>5</option>
+                                                <option value='6'>6</option>
+                                                <option value='7'>7</option>
+                                                <option value='8'>8</option>
+                                                <option value='9'>9</option>
+                                                <option value='10'>10</option>
+                                            </select><span id='baths_txt' class='txt'>Please Select</span>
+                                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                        </span>
+                                    </div> -->
 
 
                     <!-- <div class="divrow div_oc_status field_detailed" id="div_oc_status">
-                        <label class="label l font_s">Occupancy Status:</label>
-                        <span id='occupancy_status_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='occupancy_status' id='occupancy_status' style='width:151px;' autocomplete='off'>
-                                <option value='' selected>Please Select</option>
-                                <option value='vacant'>Vacant</option>
-                                <option value='rented'>Occupied</option>
-                            </select><span id='occupancy_status_txt' class='txt'>Please Select</span>
-                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                        </span> <span class="ib span_rented_till" id="span_rented_till">
-                            <label class="label l font_s" style="width: auto; margin: 0px 6px;">Occupied Till:</label>
-                            <span id='occupancymonth_sel_box' class='sb_combo sel_box ' style='width:102px'><select name='occupancymonth' id='occupancymonth' style='width:103px;' autocomplete='off'>
-                                    <option value='01' selected>Jan</option>
-                                    <option value='02'>Feb</option>
-                                    <option value='03'>Mar</option>
-                                    <option value='04'>Apr</option>
-                                    <option value='05'>May</option>
-                                    <option value='06'>Jun</option>
-                                    <option value='07'>Jul</option>
-                                    <option value='08'>Aug</option>
-                                    <option value='09'>Sep</option>
-                                    <option value='10'>Oct</option>
-                                    <option value='11'>Nov</option>
-                                    <option value='12'>Dec</option>
-                                </select><span id='occupancymonth_txt' class='txt'>Jan</span>
-                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                            </span><span id='occupancyyear_sel_box' class='sb_combo sel_box ' style='width:102px'><select name='occupancyyear' id='occupancyyear' style='width:103px;' autocomplete='off'>
-                                    <option value='2022' selected>2022</option>
-                                    <option value='2023'>2023</option>
-                                    <option value='2024'>2024</option>
-                                    <option value='2025'>2025</option>
-                                    <option value='2026'>2026</option>
-                                    <option value='2027'>2027</option>
-                                    <option value='2028'>2028</option>
-                                    <option value='2029'>2029</option>
-                                    <option value='2030'>2030</option>
-                                    <option value='2031'>2031</option>
-                                    <option value='2032'>2032</option>
-                                    <option value='2033'>2033</option>
-                                    <option value='2034'>2034</option>
-                                    <option value='2035'>2035</option>
-                                    <option value='2036'>2036</option>
-                                    <option value='2037'>2037</option>
-                                    <option value='2038'>2038</option>
-                                    <option value='2039'>2039</option>
-                                    <option value='2040'>2040</option>
-                                    <option value='2041'>2041</option>
-                                    <option value='2042'>2042</option>
-                                </select><span id='occupancyyear_txt' class='txt'>2022</span>
-                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                            </span> </span>
-                    </div> -->
+                                        <label class="label l font_s">Occupancy Status:</label>
+                                        <span id='occupancy_status_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='occupancy_status' id='occupancy_status' style='width:151px;' autocomplete='off'>
+                                                <option value='' selected>Please Select</option>
+                                                <option value='vacant'>Vacant</option>
+                                                <option value='rented'>Occupied</option>
+                                            </select><span id='occupancy_status_txt' class='txt'>Please Select</span>
+                                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                        </span> <span class="ib span_rented_till" id="span_rented_till">
+                                            <label class="label l font_s" style="width: auto; margin: 0px 6px;">Occupied Till:</label>
+                                            <span id='occupancymonth_sel_box' class='sb_combo sel_box ' style='width:102px'><select name='occupancymonth' id='occupancymonth' style='width:103px;' autocomplete='off'>
+                                                    <option value='01' selected>Jan</option>
+                                                    <option value='02'>Feb</option>
+                                                    <option value='03'>Mar</option>
+                                                    <option value='04'>Apr</option>
+                                                    <option value='05'>May</option>
+                                                    <option value='06'>Jun</option>
+                                                    <option value='07'>Jul</option>
+                                                    <option value='08'>Aug</option>
+                                                    <option value='09'>Sep</option>
+                                                    <option value='10'>Oct</option>
+                                                    <option value='11'>Nov</option>
+                                                    <option value='12'>Dec</option>
+                                                </select><span id='occupancymonth_txt' class='txt'>Jan</span>
+                                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                            </span><span id='occupancyyear_sel_box' class='sb_combo sel_box ' style='width:102px'><select name='occupancyyear' id='occupancyyear' style='width:103px;' autocomplete='off'>
+                                                    <option value='2022' selected>2022</option>
+                                                    <option value='2023'>2023</option>
+                                                    <option value='2024'>2024</option>
+                                                    <option value='2025'>2025</option>
+                                                    <option value='2026'>2026</option>
+                                                    <option value='2027'>2027</option>
+                                                    <option value='2028'>2028</option>
+                                                    <option value='2029'>2029</option>
+                                                    <option value='2030'>2030</option>
+                                                    <option value='2031'>2031</option>
+                                                    <option value='2032'>2032</option>
+                                                    <option value='2033'>2033</option>
+                                                    <option value='2034'>2034</option>
+                                                    <option value='2035'>2035</option>
+                                                    <option value='2036'>2036</option>
+                                                    <option value='2037'>2037</option>
+                                                    <option value='2038'>2038</option>
+                                                    <option value='2039'>2039</option>
+                                                    <option value='2040'>2040</option>
+                                                    <option value='2041'>2041</option>
+                                                    <option value='2042'>2042</option>
+                                                </select><span id='occupancyyear_txt' class='txt'>2022</span>
+                                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                            </span> </span>
+                                    </div> -->
 
                     <div class="divrow price_div">
                         <label class="label l font_s pheading display-block">All Inclusive Price: (PKR): <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                        <input type='text' name='price' id='price' value='' style='width:228px;' class='rfield l '
-                            placeholder="Enter price..." />
+                        <input type='text' name='price' id='price' value="{{ $record->price ?? '' }}"
+                            style='width:228px;' class='rfield l ' placeholder="Enter price..." />
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('price'))
@@ -371,49 +399,63 @@
                     </div>
 
                     <!-- <div class="divrow div_instalments">
-                        <label class="label l font_s">Installments Available: </label>
-                        <ul id="instalment_status_push_buttons" class="l push_buttons">
-                            <input type="hidden" name="instalment_status" id="instalment_status" value="">
-                            <li class="l pushBtnLabel instalment_status " onclick="show_instalment_boxes(this)" style="border-radius: 4px;">
-                                <span class="span">Property on Installment</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="instalments-box " style="display: none;">
-                        <div class="divrow ">
-                            <label class="label l font_s pheading display-block">Advance/Initial Payment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                            <input type='text' name='adv_amount' id='adv_amount' value='' style='width:228px;' class='rfield l ' />
-                        </div>
-                        <div class="divrow">
-                            <label class="label l font_s pheading display-block">No. of Remaining Installments: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                            <input type='text' name='no_of_instalments' id='no_of_instalments' value='' style='width:228px;' class='rfield l ' />
-                        </div>
-                        <div class="divrow">
-                            <label class="label l font_s pheading display-block">Monthly Installment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                            <input type='text' name='monthly_instalments' id='monthly_instalments' value='' style='width:228px;' class='rfield l ' />
-                        </div>
-                    </div>
-                    <div class="divrow div_possession">
-                        <label class="label l font_s display-block">Possession Available: </label>
-                        <ul id="possession_available_push_buttons" class="l push_buttons">
-                            <input type="hidden" name="possession_available" id="possession_available" value="">
-                            <li class="l pushBtnLabel possession_available " onclick="show_checkbox_icon(this)" title="Possession Available:" style="border-radius:4px;">
-                                <span class="span">Available</span>
-                            </li>
-                        </ul>
-                    </div> -->
+                                        <label class="label l font_s">Installments Available: </label>
+                                        <ul id="instalment_status_push_buttons" class="l push_buttons">
+                                            <input type="hidden" name="instalment_status" id="instalment_status" value="">
+                                            <li class="l pushBtnLabel instalment_status " onclick="show_instalment_boxes(this)" style="border-radius: 4px;">
+                                                <span class="span">Property on Installment</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="instalments-box " style="display: none;">
+                                        <div class="divrow ">
+                                            <label class="label l font_s pheading display-block">Advance/Initial Payment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                                            <input type='text' name='adv_amount' id='adv_amount' value='' style='width:228px;' class='rfield l ' />
+                                        </div>
+                                        <div class="divrow">
+                                            <label class="label l font_s pheading display-block">No. of Remaining Installments: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                                            <input type='text' name='no_of_instalments' id='no_of_instalments' value='' style='width:228px;' class='rfield l ' />
+                                        </div>
+                                        <div class="divrow">
+                                            <label class="label l font_s pheading display-block">Monthly Installment: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                                            <input type='text' name='monthly_instalments' id='monthly_instalments' value='' style='width:228px;' class='rfield l ' />
+                                        </div>
+                                    </div>
+                                    <div class="divrow div_possession">
+                                        <label class="label l font_s display-block">Possession Available: </label>
+                                        <ul id="possession_available_push_buttons" class="l push_buttons">
+                                            <input type="hidden" name="possession_available" id="possession_available" value="">
+                                            <li class="l pushBtnLabel possession_available " onclick="show_checkbox_icon(this)" title="Possession Available:" style="border-radius:4px;">
+                                                <span class="span">Available</span>
+                                            </li>
+                                        </ul>
+                                    </div> -->
 
                     <div class="divrow field_detailed" style="display:block">
                         <label class="label l font_s">Listing Expiry: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                        <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select
-                                name='is_expired' id='expiry_days' style='width:151px;' autocomplete='off'>
-                                <option value='1' selected>1 Month</option>
-                                <option value='3'>3 Months</option>
-                                <option value='6'>6 Months</option>
-                            </select><span id='expiry_days_txt' class='txt'>1 Month</span>
-                            <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                        </span>
+                        @if (isset($record->is_expire) && !empty($record->is_expire))
+                            <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select
+                                    name='is_expired' id='expiry_days' style='width:151px;' autocomplete='off'>
+                                    <option value='{{ $record->is_expire }}' selected>{{ $record->is_expire }}
+                                    </option>
+                                    <option value='1'>1 Month</option>
+                                    <option value='3'>3 Months</option>
+                                    <option value='6'>6 Months</option>
+                                </select><span id='expiry_days_txt' class='txt'>1 Month</span>
+                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                            </span>
+                        @else
+                            <span id='expiry_days_sel_box' class='sb_combo sel_box ' style='width:150px'><select
+                                    name='is_expired' id='expiry_days' style='width:151px;' autocomplete='off'>
+                                    <option value='1' selected>1 Month</option>
+                                    <option value='3'>3 Months</option>
+                                    <option value='6'>6 Months</option>
+                                </select><span id='expiry_days_txt' class='txt'>1 Month</span>
+                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                            </span>
+                        @endif
+
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                         @if ($errors->has('is_expired'))
@@ -428,10 +470,24 @@
                                     <ul class="pro-feature-add pl-0">
                                         <li class="fl-wrap filter-tags clearfix">
                                             <div class="filter-tags-wrap">
+                                                <?php
+                                            if (isset($record) && !empty($record)) { ?>
                                                 @foreach ($feature as $feature)
-                                                <label style="font-size: 14px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'seting']) }}
-                                                    {{ $feature->name }}</label>
+                                                    <label
+                                                        style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, in_array($feature->id, $features_property) ? true : false, ['class' => 'name']) }}
+                                                        {{ $feature->name }}</label>
                                                 @endforeach
+                                                <?php
+                                            } else { ?>
+                                                @foreach ($feature as $feature)
+                                                    <label
+                                                        style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('feature[]', $feature->id, false, ['class' => 'seting']) }}
+                                                        {{ $feature->name }}</label>
+                                                @endforeach
+                                                <?php
+                                            }
+
+                                            ?>
                                             </div>
                                         </li>
 
@@ -441,81 +497,88 @@
                         </div>
                     </div>
                     <!-- <div class="divrow div_features" style="display:none">
-                        <label class="label l font_s">&nbsp;<span class="feature_label">Features:</span></label>
-                        <a class="l orng_smore popup_features">Add Features</a>
-                    </div>
+                                        <label class="label l font_s">&nbsp;<span class="feature_label">Features:</span></label>
+                                        <a class="l orng_smore popup_features">Add Features</a>
+                                    </div>
 
-                    <div class="divrow div_features" style="display:none">
-                        <label class="label l font_s">&nbsp;<span class="feature_label">Features:</span></label>
-                        <span class="l num_of_feature_text"> <span class='features_count'></span> Features Selected</span>
-                        <a class="l orng_smore popup_features">Add More Features</a>
-                    </div>
+                                    <div class="divrow div_features" style="display:none">
+                                        <label class="label l font_s">&nbsp;<span class="feature_label">Features:</span></label>
+                                        <span class="l num_of_feature_text"> <span class='features_count'></span> Features Selected</span>
+                                        <a class="l orng_smore popup_features">Add More Features</a>
+                                    </div>
 
-                    <div id="hfeatures"></div>
+                                    <div id="hfeatures"></div>
 
-                    <div class="divrow price-hide" id="price_notification" style="display: none;">
-                        <label class="label l font_s">&nbsp;</label>
-                        <div class="notification_outer notification_default">
-                            <span class="notification_img"></span>
-                            <span class="notification_txt"></span>
-                        </div>
-                    </div> -->
+                                    <div class="divrow price-hide" id="price_notification" style="display: none;">
+                                        <label class="label l font_s">&nbsp;</label>
+                                        <div class="notification_outer notification_default">
+                                            <span class="notification_img"></span>
+                                            <span class="notification_txt"></span>
+                                        </div>
+                                    </div> -->
 
                     <!-- <div id="rental_prices" style="display:block">
-                        <div class="subhead font_s ros subhead3">Rental Price Details</div>
-                        <div class="divrow" style="display:block">
-                            <label class="label l font_s">Minimum Contract Period:</label>
-                            <span id='txt_contract_period_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='txt_contract_period' id='txt_contract_period' style='width:151px;' autocomplete='off'>
-                                    <option value='' selected>Please Select</option>
-                                    <option value='1'>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
-                                    <option value='6'>6</option>
-                                    <option value='7'>7</option>
-                                    <option value='8'>8</option>
-                                    <option value='9'>9</option>
-                                    <option value='10'>10</option>
-                                    <option value='11'>11</option>
-                                    <option value='12'>12</option>
-                                </select><span id='txt_contract_period_txt' class='txt'>Please Select</span>
-                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                            </span><span id='sel_contract_period_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='sel_contract_period' id='sel_contract_period' style='width:151px;' autocomplete='off'>
-                                    <option value='' selected>Please Select</option>
-                                    <option value='year'>Year</option>
-                                    <option value='month'>Month</option>
-                                </select><span id='sel_contract_period_txt' class='txt'>Please Select</span>
-                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
-                            </span>
-                        </div>
-                        <div class="divrow" style="display:block">
-                            <label class="label l font_s">Monthly Rent: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
-                            <input type='text' name='rental' id='rental' value='' style='width:136px;' class='rfield l ' />
-                        </div>
-                        <div class="divrow">
-                            <label class="label l font_s">&nbsp;</label>
-                            <span class="l price_text">&nbsp;</span>
-                        </div>
-                        <div class="divrow" style="display:block">
-                            <label class="label l font_s">Security Deposit:</label>
+                                        <div class="subhead font_s ros subhead3">Rental Price Details</div>
+                                        <div class="divrow" style="display:block">
+                                            <label class="label l font_s">Minimum Contract Period:</label>
+                                            <span id='txt_contract_period_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='txt_contract_period' id='txt_contract_period' style='width:151px;' autocomplete='off'>
+                                                    <option value='' selected>Please Select</option>
+                                                    <option value='1'>1</option>
+                                                    <option value='2'>2</option>
+                                                    <option value='3'>3</option>
+                                                    <option value='4'>4</option>
+                                                    <option value='5'>5</option>
+                                                    <option value='6'>6</option>
+                                                    <option value='7'>7</option>
+                                                    <option value='8'>8</option>
+                                                    <option value='9'>9</option>
+                                                    <option value='10'>10</option>
+                                                    <option value='11'>11</option>
+                                                    <option value='12'>12</option>
+                                                </select><span id='txt_contract_period_txt' class='txt'>Please Select</span>
+                                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                            </span><span id='sel_contract_period_sel_box' class='sb_combo sel_box ' style='width:150px'><select name='sel_contract_period' id='sel_contract_period' style='width:151px;' autocomplete='off'>
+                                                    <option value='' selected>Please Select</option>
+                                                    <option value='year'>Year</option>
+                                                    <option value='month'>Month</option>
+                                                </select><span id='sel_contract_period_txt' class='txt'>Please Select</span>
+                                                <span class='bgc sb_combo_arrow r'>&nbsp;</span>
+                                            </span>
+                                        </div>
+                                        <div class="divrow" style="display:block">
+                                            <label class="label l font_s">Monthly Rent: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
+                                            <input type='text' name='rental' id='rental' value='' style='width:136px;' class='rfield l ' />
+                                        </div>
+                                        <div class="divrow">
+                                            <label class="label l font_s">&nbsp;</label>
+                                            <span class="l price_text">&nbsp;</span>
+                                        </div>
+                                        <div class="divrow" style="display:block">
+                                            <label class="label l font_s">Security Deposit:</label>
 
-                            <input type='text' name='security_deposit' id='security_deposit' value='' style='width:136px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">or</label>
-                            <input type='text' name='security_deposit_perc' id='security_deposit_perc' value='' style='width:85px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">number of month's rental amount </label>
-                        </div>
+                                            <input type='text' name='security_deposit' id='security_deposit' value='' style='width:136px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">or</label>
+                                            <input type='text' name='security_deposit_perc' id='security_deposit_perc' value='' style='width:85px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">number of month's rental amount </label>
+                                        </div>
 
-                        <div class="divrow" style="display:block">
-                            <label class="label l font_s">Advance Rent:</label>
-                            <input type='text' name='advance_rent' id='advance_rent' value='' style='width:136px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">or</label>
-                            <input type='text' name='advance_rent_perc' id='advance_rent_perc' value='' style='width:85px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">number of month's rental amount </label>
-                        </div>
-                    </div> -->
+                                        <div class="divrow" style="display:block">
+                                            <label class="label l font_s">Advance Rent:</label>
+                                            <input type='text' name='advance_rent' id='advance_rent' value='' style='width:136px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">or</label>
+                                            <input type='text' name='advance_rent_perc' id='advance_rent_perc' value='' style='width:85px;' onblur='rentalFieldsBlur(this);' class='rfield l ' /> <label class="label_inline l font_s">number of month's rental amount </label>
+                                        </div>
+                                    </div> -->
 
                     <div id="UploadImages" class="uploaderbox uploaderbox_images UploadImages noItems">
                         <div class="subhead font_s ros subhead_img">Images</div>
                         <div class="clr">
                             <div class="filecontrol_images">
-                                <input class="dropify" type="file" name="image" multiple />
+                                @if (isset($record->image) && !empty($record->image))
+                                    <input type="file" name="image" class="dropify"
+                                        data-default-file="{{ asset('assets/images/properties/' . $record->image) }}"
+                                        data-height="180" />
+                                @else
+                                    <input type="file" name="image" class="dropify notrequired" data-default-file=""
+                                        data-height="180" />
+                                @endif
 
                             </div>
                         </div>
@@ -547,20 +610,20 @@
                         @endif
                     </div>
                     <!--
-                                class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
-                                dropdown
-                                -->
+                                                class put_cell_input_after_this added, the purpose of this class is just to put a new cell field after it through a js function, that is being called on select contact person
+                                                dropdown
+                                                -->
                     <!-- <div class="divrow put_cell_input_after_this">
-                        <label class="label l font_s">Landline Phone #: </label>
-                        <span class="ph_input_box l">
-                            <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")' class='rfield l ' /> <label class="separator">-</label>
-                            <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your area code.&lt;br /&gt;Example: +92-&lt;b class=red&gt;51&lt;/b&gt;-1234567")' class='rfield l ' /> <label class="separator">-</label>
-                            <input type='text' name='phone2' id='phone2' value='' style='width:112px;' maxlength='500' onfocus='overlib_info(this,"Enter your phone number.&lt;br /&gt;Example: +92-51-&lt;b class=red&gt;1234567&lt;/b&gt;")' class='rfield l ' /> </span>
-                        <div class="bgc infologo r">
-                            <p>Enter your phone (land line or fixed phone) number along with area and international dialing
-                                code.<br />Example: +92-51-12345678</p>
-                        </div>
-                    </div> -->
+                                        <label class="label l font_s">Landline Phone #: </label>
+                                        <span class="ph_input_box l">
+                                            <input type='text' name='phone0' id='phone0' value='{{ Auth::guard('customeruser')->user()->contact }}' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your country code.&lt;br /&gt;Example: &lt;b class=red&gt;+92&lt;/b&gt;-51-1234567")' class='rfield l ' /> <label class="separator">-</label>
+                                            <input type='text' name='phone1' id='phone1' value='' style='width:33px;' maxlength='6' onfocus='overlib_info(this,"Enter your area code.&lt;br /&gt;Example: +92-&lt;b class=red&gt;51&lt;/b&gt;-1234567")' class='rfield l ' /> <label class="separator">-</label>
+                                            <input type='text' name='phone2' id='phone2' value='' style='width:112px;' maxlength='500' onfocus='overlib_info(this,"Enter your phone number.&lt;br /&gt;Example: +92-51-&lt;b class=red&gt;1234567&lt;/b&gt;")' class='rfield l ' /> </span>
+                                        <div class="bgc infologo r">
+                                            <p>Enter your phone (land line or fixed phone) number along with area and international dialing
+                                                code.<br />Example: +92-51-12345678</p>
+                                        </div>
+                                    </div> -->
 
 
 
