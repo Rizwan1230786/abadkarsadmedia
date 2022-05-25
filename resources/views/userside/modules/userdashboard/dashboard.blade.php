@@ -552,31 +552,6 @@ use App\Models\Category;
                     </div>
                 </div>
             </div>
-
-            <script type="text/javascript">
-                $(".showMoreDiv").click(function(e) {
-                    var classCounter = $(this).attr('class').split(' ')[1];
-                    var mainDiv = $(".showMoreDiv").parent().parent().parent().parent().parent().attr('id');
-                    var ids = [];
-                    $('#' + mainDiv + ' > *').filter(function() {
-                        return this.style.display === 'block';
-                    }).each(function() {
-                        ids.unshift(this.id);
-                    });
-                    if (classCounter == 0) {
-                        $("#" + ids[0]).find(".showMoreText").text('Hide Details');
-                        $("#" + ids[0]).find(".showMoreDiv").removeClass('0');
-                        $("#" + ids[0]).find(".showMoreDiv").addClass('1');
-                        $("#" + ids[0]).find(".showMoreImg").attr('src', "https://profolio.zameen.com/images/common/-.jpg");
-                    } else {
-                        $("#" + ids[0]).find(".showMoreText").text('Show Details');
-                        $("#" + ids[0]).find(".showMoreDiv").removeClass('1');
-                        $("#" + ids[0]).find(".showMoreDiv").addClass('0');
-                        $("#" + ids[0]).find(".showMoreImg").attr('src', "https://profolio.zameen.com/images/common/+.jpg");
-                    }
-                    $("#" + ids[0]).find(".show_credits_details").slideToggle();
-                });
-            </script>
             <div id="statistics_graph" style="margin-top: 35px;">
                 <h3>Your Performance (last 30 days)
                     <img src="{{ asset('front/images/abadkar-logo.png') }}" width="130" height="25"

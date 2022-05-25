@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserDashboard\AddProperty;
+use Illuminate\Support\Facades\File;
 
 class PropertyManagementController extends Controller
 {
@@ -172,7 +173,11 @@ class PropertyManagementController extends Controller
     //////////active listing code/////////
     public function all_listing()
     {
+
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         foreach ($property as $value) {
             $category_name = Category::where('id', $value->category)->get();
@@ -190,6 +195,9 @@ class PropertyManagementController extends Controller
     public function for_sale()
     {
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -204,6 +212,9 @@ class PropertyManagementController extends Controller
     public function for_rent()
     {
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -215,33 +226,13 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.active_listing.for_rent', get_defined_vars());
     }
-    public function edit_for_sale($id)
-    {
-
-        $user_id = Auth::user()->id;
-        $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
-        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
-        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
-        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
-        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
-        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
-        $city = Cities::all();
-        $state = State::all();
-        $feature = Features::all();
-        $features_property = DB::table("features_property")->where("features_property.property_id", $id)
-        ->pluck('features_property.features_id', 'features_property.features_id')
-        ->all();
-        $category = Category::all();
-        $record = Property::where('id', $id)->first();
-        $meta = Webpages::Where("page_title", "home")->first();
-        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.property_management.post_listing2', get_defined_vars());
-    }
     /////////end active all listing////////
     public function pending_all_listing()
     {
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -256,6 +247,9 @@ class PropertyManagementController extends Controller
     public function pending_for_sale()
     {
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -270,6 +264,9 @@ class PropertyManagementController extends Controller
     public function pending_for_rent()
     {
         $user_id = Auth::user()->id;
+        $total_qouta = Property::where(['user_id' => $user_id])->count();
+        $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $avilable=$total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -308,5 +305,68 @@ class PropertyManagementController extends Controller
             }
         }
         return redirect()->back()->with('message', 'Please enter email and password!');
+    }
+    public function edit_for_sale($id)
+    {
+
+        $user_id = Auth::user()->id;
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
+        $city = Cities::all();
+        $state = State::all();
+        $feature = Features::all();
+        $features_property = DB::table("features_property")->where("features_property.property_id", $id)
+        ->pluck('features_property.features_id', 'features_property.features_id')
+        ->all();
+        $category = Category::all();
+        $record = Property::where('id', $id)->first();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.property_management.post_listing2', get_defined_vars());
+    }
+    public function edit_for_rent($id)
+    {
+
+        $user_id = Auth::user()->id;
+        $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
+        $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
+        $count_rent = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 1])->count();
+        $count_all_pending = Property::where(['user_id' => $user_id, 'status' => 0])->count();
+        $count_sale_pending = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 0])->count();
+        $count_rent_pending = Property::where(['user_id' => $user_id, 'type' => 'rent', 'status' => 0])->count();
+        $city = Cities::all();
+        $state = State::all();
+        $feature = Features::all();
+        $features_property = DB::table("features_property")->where("features_property.property_id", $id)
+        ->pluck('features_property.features_id', 'features_property.features_id')
+        ->all();
+        $category = Category::all();
+        $record = Property::where('id', $id)->first();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.property_management.post_listing2', get_defined_vars());
+    }
+    public function update_post_listing(AddProperty $request ,$id){
+        $data=$request->all();
+        $post = Property::find($id);
+        if (isset($request->image) && !empty($request->image)) {
+            $oldimage = public_path('assets/images/properties/' . $post->image);
+            if (File::exists($oldimage)) {
+                File::delete($oldimage);
+            }
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            $post->image = $filename;
+            $imagePath = $request->file('image');
+            request()->image->move(public_path('assets/images/properties/'), $filename);
+        }
+        $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
+        $data = array('status'=>0,'area_id' => $data['area_id'], 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'],  'back_dim' => $data['back_dim'],'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
+        $post->update($data);
+        $post->features()->sync($request->feature);
+        return redirect()->back()->with('message', 'Property Updated!');
     }
 }

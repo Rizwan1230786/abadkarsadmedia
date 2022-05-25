@@ -274,8 +274,10 @@ Route::prefix('user')->group(function () {
         ////forsale listing + for rent///////
         Route::get('/for-sale', [PropertyManagementController::class, 'for_sale'])->name('for_sale');
         Route::get('/for-rent', [PropertyManagementController::class, 'for_rent'])->name('for_rent');
-        Route::get('/edit-listing-forsale/{id}', [PropertyManagementController::class, 'edit_for_sale'])->name('edit-listing-forsale');
-        Route::get('/edit-listing-forrent', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
+        Route::get('/edit-listing-for-sale/{id}', [PropertyManagementController::class, 'edit_for_sale'])->name('edit-listing-forsale');
+        Route::post('/update-listing/{id}', [PropertyManagementController::class, 'update_post_listing'])->name('update-listing-forsale');
+        Route::get('/edit-listing-for-rent/{id}', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
+
         ///////Pending-listing///////
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');

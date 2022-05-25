@@ -85,7 +85,7 @@
     </style>
     <?php
     if (isset($record->id) && $record->id != 0) {
-        $url = url('/user/update_post_listing/' . $record->id);
+        $url = url('/user/update-listing/' . $record->id);
     } else {
         $url = url('/user/submit_post_listing');
     }
@@ -121,10 +121,20 @@
                         <label class="label l font_s">Purpose: <img
                                 src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                         <div style="display: flex;">
+                            @if(isset($record->type) && !empty($record->type) && $record->type=='sale')
+                            <input type="radio" class="radio" name="property_purpose" id="sale" value="{{ $record->type }}">
+                            <label for="sale" selected class="lable radio_container">For Sale</label>
+                            @else
                             <input type="radio" class="radio" name="property_purpose" id="sale" value="sale">
                             <label for="sale" class="lable radio_container">For Sale</label>
+                            @endif
+                            @if(isset($record->type) && !empty($record->type) && $record->type=='rent')
+                            <input type="radio" class="radio" name="property_purpose" id="rent" value="{{ $record->type }}" selected>
+                            <label for="rent" class="lable radio_container">For Rent</label>
+                            @else
                             <input type="radio" class="radio" name="property_purpose" id="rent" value="rent">
                             <label for="rent" class="lable radio_container">For Rent</label>
+                            @endif
                         </div>
                         @if ($errors->has('property_purpose'))
                             <div class="error">{{ $errors->first('property_purpose') }}</div>

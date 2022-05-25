@@ -18,8 +18,9 @@
                 Listings
             </span>
             <!--     Active listings Menu     -->
-            <a href="javascript:void(0);" class="leftcolumnlink_sub a_active_hide" id="a_active">Active <label>({{ $count_all }})</label></a>
-            <div class="listing_class a_active_show active" id="d_active">
+            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_active"
+            onclick="menu_divtoggle('a_active','d_active');">Active <label>({{ $count_all }})</label></a>
+            <div class="listing_class" id="d_active">
                 <a href="{{ url('user/all-listing') }}"
                     class="leftcolumnlink">All Listings ({{ $count_all }})</a>
                 <a href="{{ url('user/for-sale') }}"
@@ -35,23 +36,23 @@
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Hot_Listing&status=on"
                     class="leftcolumnlink">Hot Listings (0)</a>
             </div>
-            <a href="javascript:void(0);" class="leftcolumnlink_sub a_edited_hide" id="a_edited"
-                >Edited <label>(0)</label></a>
-            <div class="listing_class a_edited_show" id="d_edited">
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=edited"
-                    class="leftcolumnlink">All Listings</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=edited"
-                    class="leftcolumnlink">For Sale (0)</a>
-                <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Rent&status=edited"
-                    class="leftcolumnlink">For Rent (0)</a>
+            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_edited"
+            onclick="menu_divtoggle('a_edited','d_edited');">Edited <label>({{ $count_all_pending }})</label></a>
+            <div class="listing_class" id="d_edited">
+                <a href="{{ url('user/pending-all-listing') }}"
+                    class="leftcolumnlink">All Listings  ({{ $count_all_pending }})</a>
+                <a href="{{ url('user/pending-for-sale') }}"
+                    class="leftcolumnlink">For Sale ({{ $count_sale_pending }})</a>
+                <a href="{{ url('user/pending-for-rent') }}"
+                    class="leftcolumnlink">For Rent ({{ $count_rent_pending }})</a>
                 <!--		<a href="-->
                 <!--/index.php?tabs=2&section=listings&subsection=Wanted&status=-->
                 <!--" class="leftcolumnlink">-->
                 <!--</a>-->
             </div>
-            <a href="javascript:void(0);" class="leftcolumnlink_sub a_pending_hide" id="a_pending"
-           >Pending <label>({{ $count_all_pending }})</label></a>
-            <div class="listing_class a_pending_show" id="d_pending">
+            <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_pending"
+            onclick="menu_divtoggle('a_pending','d_pending');">Pending <label>({{ $count_all_pending }})</label></a>
+            <div class="listing_class" id="d_pending">
                 <a href="{{ url('user/pending-all-listing') }}"
                     class="leftcolumnlink">All Listings ({{ $count_all_pending }})</a>
                 <a href="{{ url('user/pending-for-sale') }}"
@@ -65,7 +66,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_expired"
                 onclick="menu_divtoggle('a_expired','d_expired');">Expired <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_expired">
+            <div class="listing_class"  id="d_expired">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=expired"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=expired"
@@ -79,7 +80,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_uploaded"
                 onclick="menu_divtoggle('a_uploaded','d_uploaded');">Uploaded <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_uploaded">
+            <div class="listing_class" id="d_uploaded">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=u"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=u"
@@ -93,7 +94,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_hidden"
                 onclick="menu_divtoggle('a_hidden','d_hidden');">Hidden <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_hidden">
+            <div class="listing_class" id="d_hidden">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=hidden_listings"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=hidden_listings"
@@ -107,7 +108,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_deleted"
                 onclick="menu_divtoggle('a_deleted','d_deleted');">Deleted <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_deleted">
+            <div class="listing_class" id="d_deleted">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=Deleted"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=Deleted"
@@ -121,7 +122,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_rejected"
                 onclick="menu_divtoggle('a_rejected','d_rejected');">Rejected <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_rejected">
+            <div class="listing_class"  id="d_rejected">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=Rejected"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=Rejected"
@@ -135,7 +136,7 @@
             </div>
             <a href="javascript:void(0);" class="leftcolumnlink_sub" id="a_downgraded"
                 onclick="menu_divtoggle('a_downgraded','d_downgraded');">Downgraded <label>(0)</label></a>
-            <div class="listing_class" style="display:none;" id="d_downgraded">
+            <div class="listing_class" id="d_downgraded">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&status=downgraded"
                     class="leftcolumnlink">All Listings</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=listings&subsection=Sale&status=downgraded"
@@ -152,7 +153,7 @@
                 Rejected Images
                 <!-- <label><img style="margin-top: -10px;position: absolute;" src="{{ asset('userside') }}/images/common/new_img_small.png"></label> -->
             </a>
-            <div class="listing_class" style="display:none;" id="rejected_images_body">
+            <div class="listing_class"  id="rejected_images_body">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=rejected_images"
                     class="leftcolumnlink">All Images</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=rejected_images&purpose=sale"
@@ -169,7 +170,7 @@
                 Rejected Videos
                 <!-- <label><img style="margin-top: -10px;position: absolute;" src="{{ asset('userside') }}/images/common/new_img_small.png"></label> -->
             </a>
-            <div class="listing_class" style="display:none;" id="rejected_videos_body">
+            <div class="listing_class"  id="rejected_videos_body">
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=rejected_videos"
                     class="leftcolumnlink">All Videos</a>
                 <a href="{{ asset('userside') }}/profolio/index.php?tabs=2&section=rejected_videos&purpose=sale"

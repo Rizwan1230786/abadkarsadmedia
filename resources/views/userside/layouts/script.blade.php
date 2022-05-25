@@ -110,7 +110,30 @@ $(document).ready(function(){
 <link rel="stylesheet" href="{{ asset('userside') }}/css/jquery-ui-1_5.css" type="text/css">
 <!-- Added by labeeb -->
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
-
+<script type="text/javascript">
+    $(".showMoreDiv").click(function(e) {
+        var classCounter = $(this).attr('class').split(' ')[1];
+        var mainDiv = $(".showMoreDiv").parent().parent().parent().parent().parent().attr('id');
+        var ids = [];
+        $('#' + mainDiv + ' > *').filter(function() {
+            return this.style.display === 'block';
+        }).each(function() {
+            ids.unshift(this.id);
+        });
+        if (classCounter == 0) {
+            $("#" + ids[0]).find(".showMoreText").text('Hide Details');
+            $("#" + ids[0]).find(".showMoreDiv").removeClass('0');
+            $("#" + ids[0]).find(".showMoreDiv").addClass('1');
+            $("#" + ids[0]).find(".showMoreImg").attr('src', "https://profolio.zameen.com/images/common/-.jpg");
+        } else {
+            $("#" + ids[0]).find(".showMoreText").text('Show Details');
+            $("#" + ids[0]).find(".showMoreDiv").removeClass('1');
+            $("#" + ids[0]).find(".showMoreDiv").addClass('0');
+            $("#" + ids[0]).find(".showMoreImg").attr('src', "https://profolio.zameen.com/images/common/+.jpg");
+        }
+        $("#" + ids[0]).find(".show_credits_details").slideToggle();
+    });
+</script>
 <script type="text/javascript">
     var $jQuery_1_12_4 = jQuery.noConflict();
 </script>

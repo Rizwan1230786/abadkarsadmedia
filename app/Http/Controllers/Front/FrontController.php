@@ -117,7 +117,7 @@ class FrontController extends Controller
         $category = Category::with('cities')->with('url_slugs')->with('areas')->get();
         $get_city_name = Cities::where('slug', $city_slug)->first();
         $url_slug = UrlSlug::where('city_id', '=', $get_city_name->id)->first();
-        $city_area = Area::where('city_id', '=', $get_city_name->id)->orderBy('id', 'DESC')->get();
+        $city_area = Area::where(['city_id' => $get_city_name->id,'status'=>1])->orderBy('id', 'DESC')->get();
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
         $city_search_property = Property::where(['city_name'=>$get_city_name->id,'status'=>1])->get();
         $property = Property::where('status', 1)->paginate(4);
@@ -141,6 +141,7 @@ class FrontController extends Controller
         $url_slug = UrlSlug::where('url_slug', '=', $urlslug)->first();
         $get_city_name = Cities::where('id', $url_slug->city_id)->first();
         $city_area = Area::where(['city_id' => $url_slug->city_id, 'status' => 1])->orderBy('id', 'DESC')->get();
+
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
         $city_search_property = Property::where(['city_name'=>$url_slug->city_id,'status'=>1])->get();
 
