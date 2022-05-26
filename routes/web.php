@@ -34,6 +34,7 @@ use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
+use App\Http\Controllers\userside\advertise\AdvertiseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -292,6 +293,9 @@ Route::prefix('user')->group(function () {
         Route::post('/update-password', [UserProfileController::class, 'update_password'])->name('update-password');
         ////userroles/////////
         Route::get('/user-roles', [UserRolesController::class, 'index'])->name('user-roles');
+
+        //////////ad advertise controller////////////
+        Route::get('/advertise', [AdvertiseController::class, 'index'])->name('advertise');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');

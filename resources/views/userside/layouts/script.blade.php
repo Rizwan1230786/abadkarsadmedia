@@ -109,6 +109,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/date_time_picker1_1.js"></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/jquery-ui-1_5.css" type="text/css">
 <!-- Added by labeeb -->
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/opg.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <script type="text/javascript">
     $(".showMoreDiv").click(function(e) {
@@ -3804,7 +3805,8 @@ function myFunction(obj) {
 	<div id="new_loading_div" style="display:none;"></div>
 
 	<script type="text/javascript" src="{{ asset('userside') }}/javascript/listings_java1_23.js?v=12"></script>
-	<script type="text/javascript" src="{{ asset('userside') }}/javascript/mybayut/mybayut_java3_19.js?v=13"></script>
+    <script type="text/javascript" src="https://profolio.zameen.com/javascript/mybayut/mybayut_java3_19.js?v=13"></script>
+
 
 	<script type="text/javascript">
 		window.NREUM || (NREUM = {});
