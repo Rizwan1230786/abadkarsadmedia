@@ -15,6 +15,7 @@ use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Property\addProperty as PropertyAddProperty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserDashboard\AddProperty;
@@ -279,30 +280,26 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.for_rent', get_defined_vars());
     }
-    public function submit_post_listing(Request $request)
+    public function submit_post_listing(AddProperty $request)
     {
-
-        // $request->validate([
-        //     'subcat_id' => 'required',
-        // ]);
+        $request->validate([
+            'subcat_id' => 'required',
+        ]);
         $data = $request->all();
         if ($data['email']) {
             if (Auth::check()) {
                 $user_id = Auth::guard('customeruser')->user()->id;
                 if (isset($data['image']) && !empty($data['image'])) {
 
-                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $filename = time() . '.' . 'jpg';
                     $data['image'] = $filename;
 
                     $destinationPath = public_path('assets/images/properties/');
-                    $img = Image::make(request()->image->getRealPath());
-
-                    $img->resize(100, 100, function ($constraint) {
+                    $img = Image::make(request()->image->getRealPath())->encode('jpg', 75);
+                    $img->resize(600, 600, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($destinationPath . $data['image']);
-
                     // request()->image->move($destinationPath, $data['image']);
-                    dd($img);
                 }
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
                 $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'image' => $data['image'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'video_link' => $data['video_link']);
