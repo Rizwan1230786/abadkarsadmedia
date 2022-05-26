@@ -215,7 +215,7 @@
                                         <div class="single detail-wrapper mr-2">
                                             <div class="detail-wrapper-body">
                                                 <div class="listing-title-bar">
-                                                    <h4>{{ $properties->currency }} {{ $properties->price }}</h4>
+                                                    <h4>{{ $properties->currency }} {{ number_format($properties->price, 2) }}</h4>
                                                     {{-- <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <p>$ 1,200 / sq ft</p>
