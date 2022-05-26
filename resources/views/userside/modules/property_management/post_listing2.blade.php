@@ -590,20 +590,15 @@
                                             </div>
                                         </div> -->
 
-                    <div id="UploadImages" class="uploaderbox uploaderbox_images UploadImages noItems">
-                        <div class="subhead font_s ros subhead_img">Images</div>
-                        <div class="clr">
-                            <div class="filecontrol_images">
-                                @if (isset($record->image) && !empty($record->image))
-                                    <input type="file" name="image" class="dropify"
-                                        data-default-file="{{ asset('assets/images/properties/' . $record->image) }}"
-                                        data-height="180" />
-                                @else
-                                    <input type="file" name="image" class="dropify notrequired" data-default-file=""
-                                        data-height="180" />
-                                @endif
-
-                            </div>
+                <div id="UploadImages" class="uploaderbox uploaderbox_images UploadImages noItems">
+                    <div class="subhead font_s ros subhead_img">Images</div>
+                    <div class="clr">
+                        <div class="filecontrol_images">
+                            @if (isset($record->image) && !empty($record->image))
+                            <input type="file" name="image" class="dropify" data-default-file="{{ asset('assets/images/properties/' . $record->image) }}" data-height="180" multiple/>
+                            @else
+                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
+                            @endif
                         </div>
                     </div>
                     <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
