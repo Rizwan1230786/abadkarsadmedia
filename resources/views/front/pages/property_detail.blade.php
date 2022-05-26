@@ -254,7 +254,7 @@
                                 </li>
                                 <li>
                                     <span class="font-weight-bold mr-1">Property Price:</span>
-                                    <span class="det">{{ $properties->currency }}{{ $properties->price }}</span>
+                                    <span class="det">{{ $properties->currency }}{{ number_format($properties->price, 2) }}</span>
                                 </li>
                                 @if ($properties->number_of_floors)
                                 <li>

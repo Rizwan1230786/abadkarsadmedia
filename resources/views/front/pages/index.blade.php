@@ -417,7 +417,7 @@
                             <div class="price-properties footer pt-3 pb-0">
                                 <h3 class="title mt-3">
                                     <a href="{{ url('/property', $properties->url_slug) }}">(PKR)
-                                        {{ $properties->price }}</a>
+                                        {{ number_format($properties->price, 2) }}</a>
                                 </h3>
                                 <div class="compare">
                                     <a href="#" title="Compare">
