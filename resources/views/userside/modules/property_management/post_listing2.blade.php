@@ -559,9 +559,9 @@ if (isset($record->id) && $record->id != 0) {
                     <div class="clr">
                         <div class="filecontrol_images">
                             @if (isset($record->image) && !empty($record->image))
-                            <input type="file" name="image" class="dropify" data-default-file="{{ asset('assets/images/properties/' . $record->image) }}" data-height="180" />
+                            <input type="file" name="image" class="dropify" data-default-file="{{ asset('assets/images/properties/' . $record->image) }}" data-height="180" multiple/>
                             @else
-                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
                             @endif
                         </div>
                     </div>
