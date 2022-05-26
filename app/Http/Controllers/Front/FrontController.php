@@ -20,6 +20,7 @@ use App\Models\Webpages;
 use App\Models\subpages;
 use App\Models\Category;
 use App\Models\Features;
+use App\Models\PropertyImage;
 use App\Models\UrlSlug;
 
 class FrontController extends Controller
@@ -184,10 +185,11 @@ class FrontController extends Controller
         $properties = Property::where('id', $projectid->id)->first();
         $agent = Agent::all();
         $images = Image::all();
+        $property_images=PropertyImage::all();
         $Check_facility = Property_facilities::all();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.property_detail', compact('properties', 'assign', 'agent', 'images','meta','data'));
+        return view('front.pages.property_detail', get_defined_vars());
     }
     public function property_detail($slug1, $provider)
     {
@@ -200,10 +202,11 @@ class FrontController extends Controller
         $properties = Property::where('id', $projectid->id)->first();
         $agent = Agent::all();
         $images = Image::all();
+        $property_images=PropertyImage::all();
         $Check_facility = Property_facilities::all();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "property")->first();
-        return view('front.pages.property_detail', compact('properties', 'assign', 'agent', 'images','meta','data'));
+        return view('front.pages.property_detail', get_defined_vars());
     }
     public function search_city_area_base_property($slug1, $slug2)
     {

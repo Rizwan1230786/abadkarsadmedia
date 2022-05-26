@@ -37,8 +37,7 @@
                                                 </select>
                                             </div>
                                             <div class="rld-single-select ml-22">
-                                                <select id="country-dd" class="form-control single-select"
-                                                    name="city_name">
+                                                <select id="country-dd" class="form-control single-select" name="city_name">
                                                     <option value="">Select City</option>
                                                     @foreach ($city as $value)
                                                         <option value="{{ $value->slug }}">
@@ -206,7 +205,7 @@
                                 data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
                                     <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $search_property->image) }}');  background-size: cover;
-                                            background-position: center;background-repeat: no-repeat;height:30vh">
+                                                background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -254,31 +253,46 @@
                                         <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
                                         <span>{{ $search_property->number_of_bathrooms }}</span>
                                     </li>
-                                    @if (!empty($search_property->square))
+                                    @if ($search_property->unit == 'Marla')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $search_property->square }} ft</span>
+                                            <span>{{ $search_property->area_size }} Marla</span>
                                         </li>
                                     @endif
-                                    @if (!empty($search_property->marala))
+                                    @if ($search_property->unit == 'square yard')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $search_property->marala }} marla</span>
+                                            <span>{{ $search_property->area_size }} Sq.yd</span>
+                                        </li>
+                                    @endif
+                                    @if ($search_property->unit == 'square feet')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $search_property->area_size }} Sqft</span>
+                                        </li>
+                                    @endif
+                                    @if ($search_property->unit == 'square meter')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $search_property->area_size }} Sq.M</span>
+                                        </li>
+                                    @endif
+                                    @if ($search_property->unit == 'kanal')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $search_property->area_size }} Kanal</span>
                                         </li>
                                     @endif
                                 </ul>
                                 <!-- Price -->
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
-                                        <a href="#">{{ $search_property->currency }}
+                                        <a href="#">(PKR)
                                             {{ number_format($search_property->price, 2) }}</a>
                                     </h3>
                                     <div class="compare">
                                         <a href="#" title="Compare">
                                             <i class="fas fa-exchange-alt"></i>
-                                        </a>
-                                        <a href="#" title="Share">
-                                            <i class="fas fa-share-alt"></i>
                                         </a>
                                         <a href="#" title="Favorites">
                                             <i class="fa fa-heart-o"></i>
@@ -326,7 +340,7 @@
                                 data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
                                     <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $city_search_property->image) }}');  background-size: cover;
-                                            background-position: center;background-repeat: no-repeat;height:30vh">
+                                                background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $city_search_property->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -375,23 +389,41 @@
                                         <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
                                         <span>{{ $city_search_property->number_of_bathrooms }}</span>
                                     </li>
-                                    @if (!empty($city_search_property->square))
+                                    @if ($city_search_property->unit == 'Marla')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $city_search_property->square }} ft</span>
+                                            <span>{{ $city_search_property->area_size }} Marla</span>
                                         </li>
                                     @endif
-                                    @if (!empty($city_search_property->marala))
+                                    @if ($city_search_property->unit == 'square yard')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $city_search_property->marala }} marla</span>
+                                            <span>{{ $city_search_property->area_size }} Sq.yd</span>
+                                        </li>
+                                    @endif
+                                    @if ($city_search_property->unit == 'square feet')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $city_search_property->area_size }} Sqft</span>
+                                        </li>
+                                    @endif
+                                    @if ($city_search_property->unit == 'square meter')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $city_search_property->area_size }} Sq.M</span>
+                                        </li>
+                                    @endif
+                                    @if ($city_search_property->unit == 'kanal')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $city_search_property->area_size }} Kanal</span>
                                         </li>
                                     @endif
                                 </ul>
                                 <!-- Price -->
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
-                                        <a href="{{ url('/property', $city_search_property->id) }}">{{ $city_search_property->currency }}
+                                        <a href="{{ url('/property', $city_search_property->id) }}">(PKR)
                                             {{ number_format($city_search_property->price, 2) }}</a>
                                     </h3>
                                     <div class="compare">
@@ -416,7 +448,7 @@
                                 data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
                                     <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $area_search_propertys->image) }}');  background-size: cover;
-                                                background-position: center;background-repeat: no-repeat;height:30vh">>
+                                                    background-position: center;background-repeat: no-repeat;height:30vh">>
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $area_search_propertys->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -465,23 +497,41 @@
                                         <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
                                         <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
                                     </li>
-                                    @if ($area_search_propertys->square)
+                                    @if ($area_search_propertys->unit == 'Marla')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $area_search_propertys->square }} ft</span>
+                                            <span>{{ $area_search_propertys->area_size }} Marla</span>
                                         </li>
                                     @endif
-                                    @if ($area_search_propertys->marala)
+                                    @if ($area_search_propertys->unit == 'square yard')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $area_search_propertys->marala }} marla</span>
+                                            <span>{{ $area_search_propertys->area_size }} Sq.yd</span>
+                                        </li>
+                                    @endif
+                                    @if ($area_search_propertys->unit == 'square feet')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->area_size }} Sqft</span>
+                                        </li>
+                                    @endif
+                                    @if ($area_search_propertys->unit == 'square meter')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->area_size }} Sq.M</span>
+                                        </li>
+                                    @endif
+                                    @if ($area_search_propertys->unit == 'kanal')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $area_search_propertys->area_size }} Kanal</span>
                                         </li>
                                     @endif
                                 </ul>
                                 <!-- Price -->
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
-                                        <a href="#">{{ $area_search_propertys->currency }}
+                                        <a href="#">(PKR)
                                             {{ number_format($area_search_propertys->price, 2) }}</a>
                                     </h3>
                                     <div class="compare">
@@ -506,7 +556,7 @@
                                 data-aos="fade-up">
                                 <div class="project-single mb-0 bb-0">
                                     <div class="project-inner project-head" style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}');  background-size: cover;
-                                                background-position: center;background-repeat: no-repeat;height:30vh">
+                                                    background-position: center;background-repeat: no-repeat;height:30vh">
                                         <div class="project-bottom">
                                             <h4><a href="{{ url('/property', $properties->url_slug) }}">View
                                                     Property</a><span class="category">Real Estate</span></h4>
@@ -555,23 +605,41 @@
                                         <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
                                         <span>{{ $properties->number_of_bathrooms }}</span>
                                     </li>
-                                    @if ($properties->square)
+                                    @if ($properties->unit == 'Marla')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $properties->square }} ft</span>
+                                            <span>{{ $properties->area_size }} Marla</span>
                                         </li>
                                     @endif
-                                    @if ($properties->marala)
+                                    @if ($properties->unit == 'square yard')
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ $properties->marala }} marla</span>
+                                            <span>{{ $properties->area_size }} Sq.yd</span>
+                                        </li>
+                                    @endif
+                                    @if ($properties->unit == 'square feet')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $properties->area_size }} Sqft</span>
+                                        </li>
+                                    @endif
+                                    @if ($properties->unit == 'square meter')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $properties->area_size }} Sq.M</span>
+                                        </li>
+                                    @endif
+                                    @if ($properties->unit == 'kanal')
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ $properties->area_size }} Kanal</span>
                                         </li>
                                     @endif
                                 </ul>
                                 <!-- Price -->
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
-                                        <a href="#">{{ $properties->currency }}
+                                        <a href="#">(PKR)
                                             {{ number_format($properties->price, 2) }}</a>
                                     </h3>
                                     <div class="compare">
@@ -608,34 +676,33 @@
         });
     });
 </script>
-    <script>
-        $(document).ready(function() {
-            $('#country-dd').on('change', function() {
-                var idCountry = this.value;
-                $("#state-dd").html('');
-                $("#state-dd").parent().find('.nice-select .list').html('');
-                $.ajax({
-                    url: "{{ url('/search_property/fetch-states') }}",
-                    type: "POST",
-                    data: {
-                        city_slug: idCountry,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function(result) {
-                        // $('#state-dd').html('<select value=""">Select Area</select>');
-                        $.each(result.areas, function(key, value) {
-                            $("#state-dd").append('<option value="' + value
-                                .id + '">' + value.areaname + '</option>');
-                            $("#state-dd").parent().find('.nice-select .list').append(
-                                '<li data-value="' + value
-                                .id + '" class="option">' + value.areaname + '</li>'
-                            );
-                        });
-                    }
-                });
+<script>
+    $(document).ready(function() {
+        $('#country-dd').on('change', function() {
+            var idCountry = this.value;
+            $("#state-dd").html('');
+            $("#state-dd").parent().find('.nice-select .list').html('');
+            $.ajax({
+                url: "{{ url('/search_property/fetch-states') }}",
+                type: "POST",
+                data: {
+                    city_slug: idCountry,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(result) {
+                    // $('#state-dd').html('<select value=""">Select Area</select>');
+                    $.each(result.areas, function(key, value) {
+                        $("#state-dd").append('<option value="' + value
+                            .id + '">' + value.areaname + '</option>');
+                        $("#state-dd").parent().find('.nice-select .list').append(
+                            '<li data-value="' + value
+                            .id + '" class="option">' + value.areaname + '</li>'
+                        );
+                    });
+                }
             });
         });
-    </script>
+    });
+</script>
 @endsection
-

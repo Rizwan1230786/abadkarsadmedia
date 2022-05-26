@@ -188,10 +188,10 @@ use App\Models\Category;
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                @foreach ($images as $image)
+                @foreach ($property_images as $image)
                     @if ($image->property_id == $properties->id)
                         <div class="swiper-slide {{ $loop->first ? 'active' : '' }}">
-                            <img src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/' . $image->image) : asset('assets/images/properties/multipleimages/' . $image->image) }}"
+                            <img src="{{ is_null($image->file) ? asset('assets/images/properties/' . $image->image) : asset('assets/images/properties/' . $image->image) }}"
                                 class="d-block w-100" alt="..." height="300" width="350">
                         </div>
                     @endif
@@ -275,7 +275,7 @@ use App\Models\Category;
                                     <span class="det">For {{ $properties->type }}</span>
                                 </li>
                                 <li>
-                                    <span class="font-weight-bold mr-1">Property Price:</span>(PKR)
+                                    <span class="font-weight-bold mr-1">Property Price (PKR):</span>
                                     <span
                                         class="det">{{ number_format($properties->price, 2)}}</span>
                                 </li>
@@ -284,17 +284,32 @@ use App\Models\Category;
                                         <span class="font-weight-bold mr-1">Floors:</span>
                                         <span class="det">{{ $properties->number_of_floors }}</span>
                                     </li>
+                                    @else
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Floors:</span>
+                                        <span class="det">No Add</span>
+                                    </li>
                                 @endif
                                 @if ($properties->number_of_bedrooms)
                                     <li>
                                         <span class="font-weight-bold mr-1">Bedrooms:</span>
                                         <span class="det">{{ $properties->number_of_bedrooms }}</span>
                                     </li>
+                                    @else
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bedrooms:</span>
+                                        <span class="det">No Add</span>
+                                    </li>
                                 @endif
                                 @if ($properties->number_of_bathrooms)
                                     <li>
                                         <span class="font-weight-bold mr-1">Bath:</span>
                                         <span class="det">{{ $properties->number_of_bathrooms }}</span>
+                                    </li>
+                                    @else
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bath:</span>
+                                        <span class="det">No Add</span>
                                     </li>
                                 @endif
                                 @if ($properties->unit=='Marla')
