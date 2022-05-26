@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserDashboard\AddProperty;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class PropertyManagementController extends Controller
 {
@@ -177,7 +178,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         foreach ($property as $value) {
             $category_name = Category::where('id', $value->category)->get();
@@ -197,7 +198,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -214,7 +215,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 1])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -232,7 +233,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -249,7 +250,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -266,7 +267,7 @@ class PropertyManagementController extends Controller
         $user_id = Auth::user()->id;
         $total_qouta = Property::where(['user_id' => $user_id])->count();
         $qouta_used = Property::where(['user_id' => $user_id, 'status' => 1])->count();
-        $avilable=$total_qouta - $qouta_used;
+        $avilable = $total_qouta - $qouta_used;
         $property = Property::where(['user_id' => $user_id, 'status' => 0])->get();
         $count_all = Property::where(['user_id' => $user_id, 'status' => 1])->count();
         $count_sale = Property::where(['user_id' => $user_id, 'type' => 'sale', 'status' => 1])->count();
@@ -278,23 +279,33 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.for_rent', get_defined_vars());
     }
-    public function submit_post_listing(AddProperty $request)
+    public function submit_post_listing(Request $request)
     {
 
-        $request->validate([
-            'subcat_id' => 'required',
-        ]);
+        // $request->validate([
+        //     'subcat_id' => 'required',
+        // ]);
         $data = $request->all();
         if ($data['email']) {
             if (Auth::check()) {
                 $user_id = Auth::guard('customeruser')->user()->id;
                 if (isset($data['image']) && !empty($data['image'])) {
-                    $filename = time() . '.' . request()->image->extension();
+
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
                     $data['image'] = $filename;
-                    request()->image->move(public_path('assets/images/properties/'), $filename);
+
+                    $destinationPath = public_path('assets/images/properties/');
+                    $img = Image::make(request()->image->getRealPath());
+
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destinationPath . $data['image']);
+
+                    // request()->image->move($destinationPath, $data['image']);
+                    dd($img);
                 }
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'image' => $data['image'], 'back_dim' => $data['back_dim'],'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
+                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'image' => $data['image'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'video_link' => $data['video_link']);
 
                 $query = Property::create($data);
                 $query->features()->attach($request->feature);
@@ -320,8 +331,8 @@ class PropertyManagementController extends Controller
         $state = State::all();
         $feature = Features::all();
         $features_property = DB::table("features_property")->where("features_property.property_id", $id)
-        ->pluck('features_property.features_id', 'features_property.features_id')
-        ->all();
+            ->pluck('features_property.features_id', 'features_property.features_id')
+            ->all();
         $category = Category::all();
         $record = Property::where('id', $id)->first();
         $meta = Webpages::Where("page_title", "home")->first();
@@ -342,16 +353,17 @@ class PropertyManagementController extends Controller
         $state = State::all();
         $feature = Features::all();
         $features_property = DB::table("features_property")->where("features_property.property_id", $id)
-        ->pluck('features_property.features_id', 'features_property.features_id')
-        ->all();
+            ->pluck('features_property.features_id', 'features_property.features_id')
+            ->all();
         $category = Category::all();
         $record = Property::where('id', $id)->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.post_listing2', get_defined_vars());
     }
-    public function update_post_listing(AddProperty $request ,$id){
-        $data=$request->all();
+    public function update_post_listing(AddProperty $request, $id)
+    {
+        $data = $request->all();
         $post = Property::find($id);
         if (isset($request->image) && !empty($request->image)) {
             $oldimage = public_path('assets/images/properties/' . $post->image);
@@ -364,7 +376,7 @@ class PropertyManagementController extends Controller
             request()->image->move(public_path('assets/images/properties/'), $filename);
         }
         $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-        $data = array('status'=>0,'area_id' => $data['area_id'], 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'],  'back_dim' => $data['back_dim'],'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
+        $data = array('status' => 0, 'area_id' => $data['area_id'], 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'],  'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
         $post->update($data);
         $post->features()->sync($request->feature);
         return redirect()->back()->with('message', 'Property Updated!');
