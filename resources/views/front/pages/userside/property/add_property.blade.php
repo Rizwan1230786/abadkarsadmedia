@@ -171,6 +171,7 @@
                                                 <p style="margin-bottom: 4px;">
                                                     <label for="title">Property Title</label>
                                                     <input type="text" name="title" value="{{ old('title') }}" id="title" placeholder="Enter your property title">
+                                                    <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="hidden" readonly>
                                                 </p>
                                                 @if ($errors->has('title'))
                                                 <div class="error" style="position: absolute; right: 10px;">
@@ -276,7 +277,7 @@
                                 <div class="property-form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            <input type="file" name="image[]" class="dropify notrequired" data-default-file="" data-height="180" multiple />
                                             @if ($errors->has('image'))
                                             <div class="error">{{ $errors->first('image') }}</div>
                                             @endif
@@ -590,6 +591,12 @@
             var formToShow = '.form1-' + $(this).data('id');
             $(formToShow).addClass('active');
         });
+    });
+</script>
+<script>
+    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+        var page_title = $(this).val();
+        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
     });
 </script>
 @endsection

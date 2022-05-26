@@ -212,6 +212,7 @@ if (isset($record->id) && $record->id != 0) {
                         <div class="error">{{ $errors->first('title') }}</div>
                         @endif
                     </div>
+                    <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="hidden" readonly>
                 </div>
 
                 <div class="divrow">
@@ -561,7 +562,7 @@ if (isset($record->id) && $record->id != 0) {
                             @if (isset($record->image) && !empty($record->image))
                             <input type="file" name="image[]" class="dropify" data-default-file="{{ asset('assets/images/properties/' . $record->image) }}" data-height="180" />
                             @else
-                            <input type="file" name="image[]" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
+                            <input type="file" name="image[]" class="dropify notrequired" data-default-file="" data-height="180" multiple />
                             @endif
                         </div>
                     </div>
@@ -573,7 +574,7 @@ if (isset($record->id) && $record->id != 0) {
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Video Link: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='video_link' id='area' value="" style='width:135px;' class='rfield l ' placeholder="Video link..." />
+                    <input type='text' name='video_link' value="" style='width:135px;' class='rfield l ' placeholder="Video link..." />
                     <span style="color: #FF385C; margin-left:10px;">( Paste youtube video link ! )</span>
                 </div>
                 <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
@@ -820,6 +821,12 @@ if (isset($record->id) && $record->id != 0) {
                 }
             });
         });
+    });
+</script>
+<script>
+    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+        var page_title = $(this).val();
+        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
     });
 </script>
 @endsection

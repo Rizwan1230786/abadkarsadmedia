@@ -12,13 +12,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Property\addProperty;
 use App\Models\Customeruser;
-use App\Models\Image;
 use App\Models\Property;
+use App\Models\PropertyImage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
+use Intervention\Image\Facades\Image;
+
 
 class AddProprtyController extends Controller
 {
@@ -63,16 +65,22 @@ class AddProprtyController extends Controller
             }
             if (Auth::check()) {
                 $user_id = Auth::guard('customeruser')->user()->id;
-                if (isset($data['image']) && !empty($data['image'])) {
-                    $filename = time() . '.' . request()->image->extension();
-                    $data['image'] = $filename;
-                    request()->image->move(public_path('assets/images/properties/'), $filename);
-                }
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'image' => $data['image'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
-
+                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'status' => 1,"url_slug" => $data['url_slug']);
                 $query = Property::create($data);
                 $query->features()->attach($request->feature);
+                if (isset($request->image) && !empty($request->image)) {
+                    foreach ($request->image as $image) {
+                        $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                        $destinationPath = public_path('assets/images/properties/');
+                        $img = Image::make($image->getRealPath())->encode('jpg', 75);
+                        $img->resize(600, 600, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->save($destinationPath . $filename);
+                        // request()->image->move($destinationPath, $data['image']);
+                        PropertyImage::create(['image' => $filename, 'property_id' => $query->id]);
+                    }
+                }
                 Auth::logout();
                 return redirect()->back()->with('message', 'Property Added!');
             } else {
