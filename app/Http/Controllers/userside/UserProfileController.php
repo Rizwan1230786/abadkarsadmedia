@@ -7,6 +7,8 @@ use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
 
 class UserProfileController extends Controller
 {
@@ -44,5 +46,27 @@ class UserProfileController extends Controller
         if (isset($data) && !empty($data)) {
             return response()->json(['type' => $type, 'message' => $message]);
         }
+    }
+    public function change_password(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.user.customeruserprofile.changpassword.change-password',get_defined_vars());
+    }
+    public function update_password(Request $request)
+    {
+        $user_id=$request->id;
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+
+        $query=Customeruser::find($user_id)->update(['password'=> Hash::make($request->new_password)]);
+        if(isset($query) && !empty($query)){
+            return redirect()->back()->with('message','Password change successfully!');
+        }else{
+            dd('password is incoreected.');
+        }
+
     }
 }

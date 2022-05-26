@@ -118,4 +118,12 @@
     .active{
         display: block;
     }
+    .error{
+    color: red
+    }
+    #editusertext div {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+}
 </style>

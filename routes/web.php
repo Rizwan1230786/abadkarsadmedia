@@ -287,6 +287,9 @@ Route::prefix('user')->group(function () {
         /////userprofile routes//////////
         Route::get('/user-profile', [UserProfileController::class, 'user_profile'])->name('user-profile');
         Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
+        Route::get('/change-password', [UserProfileController::class, 'change_password'])->name('change-password');
+        Route::post('/update-password', [UserProfileController::class, 'update_password'])->name('update-password');
+
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

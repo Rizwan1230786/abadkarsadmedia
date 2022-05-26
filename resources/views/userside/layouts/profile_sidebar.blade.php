@@ -6,7 +6,7 @@
     <a href="#" class="leftcolumnlink">User Roles</a>
     <a href="/user/user-profile" class="leftcolumnlink">User Profile</a>
     <a href="#" class="leftcolumnlink">User Settings</a>
-    <a href="#" class="leftcolumnlink">Change Password</a>
+    <a href="/user/change-password" class="leftcolumnlink">Change Password</a>
 
 
 </div>

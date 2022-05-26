@@ -51,6 +51,7 @@ class PropertyManagementController extends Controller
         $data =  array();
         parse_str($box['data'], $data);
         $user = Property::query();
+
         // Search for a property based on their category name.
         if (!empty($data['category_id'])) {
             $data['category_id'] = Category::select('name')->where('id', $data['category_id'])->first();
