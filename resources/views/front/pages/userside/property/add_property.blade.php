@@ -276,7 +276,7 @@
                                 <div class="property-form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
+                                            <input type="file" name="image[]" class="dropify notrequired" data-default-file="" data-height="180" multiple/>
                                             @if ($errors->has('image'))
                                             <div class="error">{{ $errors->first('image') }}</div>
                                             @endif

@@ -573,7 +573,7 @@ if (isset($record->id) && $record->id != 0) {
                 </div>
                 <div class="divrow">
                     <label class="label l font_s">Video Link: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='video_link' id='area' value="" style='width:135px;' class='rfield l ' placeholder="Video link..." />
+                    <input type='text' name='video_link' value="" style='width:135px;' class='rfield l ' placeholder="Video link..." />
                     <span style="color: #FF385C; margin-left:10px;">( Paste youtube video link ! )</span>
                 </div>
                 <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
