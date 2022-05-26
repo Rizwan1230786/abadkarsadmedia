@@ -354,11 +354,11 @@ body {
     border-radius: 6px;
 }
 
-input,
+/* input,
 select,
 textarea {
-    border-radius: 4px;
-}
+    border-radius: 1px;
+} */
 
 .radius-4p {
     border-radius: 4px;
