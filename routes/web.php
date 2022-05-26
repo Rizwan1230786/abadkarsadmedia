@@ -17,6 +17,8 @@ use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\userside\UserRolesController;
+use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
@@ -32,7 +34,6 @@ use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
-use App\Http\Controllers\userside\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -289,6 +290,8 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
         Route::get('/change-password', [UserProfileController::class, 'change_password'])->name('change-password');
         Route::post('/update-password', [UserProfileController::class, 'update_password'])->name('update-password');
+        ////userroles/////////
+        Route::get('/user-roles', [UserRolesController::class, 'index'])->name('user-roles');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
