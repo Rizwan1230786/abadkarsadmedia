@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class CitiesController extends Controller
 {
@@ -55,9 +56,13 @@ class CitiesController extends Controller
                 $post->update($data);
             } else {
                 if (isset($data['image']) && !empty($data['image'])) {
-                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
-                    $data['image']=$filename;
-                    request()->image->move(public_path('assets/images/cities/'), $filename);
+                    $filename = time() . '.' . 'jpg';
+                    $data['image'] = $filename;
+                    $destinationPath = public_path('assets/images/cities/');
+                    $img = Image::make(request()->image->getRealPath())->encode('jpg', 75);
+                    $img->resize(100, 100, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destinationPath . $data['image']);
                 }
                 Cities::Create($data);
             }
