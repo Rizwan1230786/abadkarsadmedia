@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/profolio_reports_css1_8.css?v=2" type="text/css">
 <link rel="stylesheet" href="{{ asset('userside') }}/css/combo_new1_1.css"/>
 <link rel="stylesheet" href="{{ asset('userside') }}/newsite/skins/zameen/media_cdn/images_css/email_alert.css"/>
-
+<link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/staff_css2.css?v=3" type="text/css">
 <style>
     .textcolor {
         font-size: 11px;

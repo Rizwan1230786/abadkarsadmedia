@@ -10,6 +10,9 @@
 <script src="{{ asset('userside') }}/bayut/js/m_email_alert.js" type="text/javascript"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/profolio_combo_mvc1_2.js"></script>
 {{-- end --}}
+{{-- staff js --}}
+<script src="{{ asset('userside') }}/javascript/mybayut/staff_java1_32.js?v=3" type="text/javascript"></script>
+{{-- end --}}
 <script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
 <script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/zone_details.css" type="text/css">

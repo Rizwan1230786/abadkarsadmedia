@@ -36,6 +36,7 @@ use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
+use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -305,7 +306,11 @@ Route::prefix('user')->group(function () {
         Route::get('/favourite-listing', [ToolsController::class, 'index'])->name('favourite-listing');
         Route::get('/email-alert', [ToolsController::class, 'email_alert'])->name('email-alert');
         Route::get('/mange-email-alert', [ToolsController::class, 'mange_email_alert'])->name('mange-email-alert');
-
+        /////route of agency staf//////
+        Route::get('/mange-user', [AgencyStaffController::class, 'index'])->name('mange-user');
+        Route::get('/add-new-user', [AgencyStaffController::class, 'new_user'])->name('add-new-user');
+        Route::get('/invite-user', [AgencyStaffController::class, 'invite_user'])->name('invite-user');
+        Route::get('/mange-team', [AgencyStaffController::class, 'mange_team'])->name('mange-team');
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });

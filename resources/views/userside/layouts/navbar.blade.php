@@ -26,7 +26,7 @@
 	<li><a id="navigation" href='/user/user-profile'>My Account & Profiles</a></li>
 	<li><a id="navigation" href='/user/all-reports'>Reports</a></li>
 	<li><a id="navigation" href='/user/favourite-listing'>Tools</a></li>
-	<li><a id="navigation" href='#'>Agency Staff</a></li>
+	<li><a id="navigation" href='{{ url('user/mange-user') }}'>Agency Staff</a></li>
 	<li><a id="navigation" href='#' class='client_n_leads'>Clients & Leads</a></li>
 	<li><a id="navigation" href='#'>Agency Website</a></li>
 	<li><a id="navigation" href='/user/advertise'>Advertise</a></li>
