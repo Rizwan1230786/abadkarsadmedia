@@ -48,6 +48,14 @@ class PropertyManagementController extends Controller
         $data['area'] = Area::where('city_id', $request->city_id)->get();
         return response()->json($data);
     }
+    public function fetch_zone_area(Request $request)
+    {
+        $data = Area::where('city_id', $request->city_id)->get();
+        if(!empty($request->city_id) && !empty($request->zone_id)){
+            $data = Area::where(['city_id'=> $request->city_id,'zone' => $request->zone_id])->get();
+        }
+        return response()->json($data);
+    }
     public function fetchData(Request $request)
     {
         $user_id = Auth::user()->id;
@@ -283,7 +291,7 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.pending_listing.for_rent', get_defined_vars());
     }
-    public function submit_post_listing(Request $request)
+    public function submit_post_listing(AddProperty $request)
     {
         $request->validate([
             'subcat_id' => 'required',
@@ -291,14 +299,23 @@ class PropertyManagementController extends Controller
         $data = $request->all();
         if ($data['email']) {
             if (Auth::check()) {
+                if (isset($request->image) && !empty($request->image)) {
+                    $image = $request->image[0];
+                    $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                    $destinationPath = public_path('assets/images/properties/');
+                    $img = Image::make($image->getRealPath())->encode('jpg', 75);
+                    $img->resize(300, 300, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destinationPath . $filename);
+                }
                 $user_id = Auth::guard('customeruser')->user()->id;
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'video_link' => $data['video_link'],'status' => 1,"url_slug" => $data['url_slug']);
+                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'video_link' => $data['video_link'], 'status' => 1, "url_slug" => $data['url_slug'], 'image' => $filename);
                 $query = Property::create($data);
                 $query->features()->attach($request->feature);
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {
-                        $filename = rand(1000000000,9999999999) . '.' . 'jpg';
+                        $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
                         $destinationPath = public_path('assets/images/properties/');
                         $img = Image::make($image->getRealPath())->encode('jpg', 75);
                         $img->resize(600, 600, function ($constraint) {
