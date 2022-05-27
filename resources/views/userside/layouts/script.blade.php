@@ -6,7 +6,34 @@
 <link rel="stylesheet" href="{{asset('userside')}}/css/jquery.cluetip.css" type="text/css">
 <script src="{{asset('userside')}}/javascript/overlib/overlib1_2.js" type="text/javascript"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/mapbox-gl.js"></script>
+{{-- email alert  js --}}
+<script src="{{ asset('userside') }}/bayut/js/m_email_alert.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/profolio_combo_mvc1_2.js"></script>
+{{-- end --}}
+<script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
+<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{ asset('userside') }}/css/zone_details.css" type="text/css">
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/zone_details.js"></script>
+<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{ asset('userside') }}/css/jquery.cluetip.css" type="text/css">
 
+
+<script src="{{ asset('userside') }}/javascript/overlib/overlib_exclusive.js" type="text/javascript"></script>
+<script src="{{ asset('userside') }}/javascript/overlib/overlib_centerpopup.js"></script>
+
+<script type='text/javascript' src="{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js"></script>
+<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
+
+<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{ asset('userside') }}//css/jquery.cluetip.css" type="text/css">
+
+
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery_min.js"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery.mask_smp.js"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/intlTelInput_lib_smp.js?v=1"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/intl_phone_unification.js?v=3"></script>
+
+@yield('js')
 <script language="javascript">
 	var this_domain = document.domain;
 	var this_domain_property = "http://"+this_domain;
@@ -35,32 +62,6 @@
 	var system_products_list = {"refresh_listing":"1","premium_listing":"2","magazine_listing":"3","hot_listing":"4","shot_listing":"5","int_listing":"6","dotw_listing":"7","le_listing":"8","olx_premium_listing":"9","olx_refresh_listing":"10","olx_feature":"11","story_ad":"12"};
 	var is_new_olx_system = 0;
 </script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery_new3_11.js" type="text/javascript"></script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
-<link rel="stylesheet" href="{{ asset('userside') }}/css/zone_details.css" type="text/css">
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/zone_details.js"></script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
-<link rel="stylesheet" href="{{ asset('userside') }}/css/jquery.cluetip.css" type="text/css">
-<script src="{{ asset('userside') }}/javascript/overlib/overlib1_2.js" type="text/javascript"></script>
-
-<script src="{{ asset('userside') }}/javascript/overlib/overlib_exclusive.js" type="text/javascript"></script>
-<script src="{{ asset('userside') }}/javascript/overlib/overlib_centerpopup.js"></script>
-
-<script src="{{ asset('userside') }}/javascript/jquery.tools.min.js"></script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.tools.min1_1.js"></script>
-<script type='text/javascript' src="{{ asset('userside') }}/javascript/m_jquery-ui-1_2.js"></script>
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
-
-<script src="{{ asset('userside') }}/javascript/jquery/jquery.cluetip.js" type="text/javascript"></script>
-<link rel="stylesheet" href="{{ asset('userside') }}//css/jquery.cluetip.css" type="text/css">
-<script src="{{ asset('userside') }}/javascript/overlib/overlib1_2.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery_min.js"></script>
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery.mask_smp.js"></script>
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/intlTelInput_lib_smp.js?v=1"></script>
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/intl_phone_unification.js?v=3"></script>
-
-@yield('js')
 <script>
     $("#cell").live('focusin',function(){
         replace_place_holder_input($(this));
@@ -111,6 +112,7 @@ $(document).ready(function(){
 <!-- Added by labeeb -->
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/opg.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
+
 <script type="text/javascript">
     $(".showMoreDiv").click(function(e) {
         var classCounter = $(this).attr('class').split(' ')[1];

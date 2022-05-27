@@ -42,6 +42,9 @@
 <link rel="stylesheet" href="{{ asset('userside') }}/css/mybayut/newlisting_css1_3.css" type="text/css">
 <link href="{{ URL::asset('assets/css/icons.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('userside') }}/profolio/css/profolio_reports_css1_8.css?v=2" type="text/css">
+<link rel="stylesheet" href="{{ asset('userside') }}/css/combo_new1_1.css"/>
+<link rel="stylesheet" href="{{ asset('userside') }}/newsite/skins/zameen/media_cdn/images_css/email_alert.css"/>
+
 <style>
     .textcolor {
         font-size: 11px;

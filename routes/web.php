@@ -303,6 +303,8 @@ Route::prefix('user')->group(function () {
         Route::get('/superhot-advertise', [AdvertiseController::class, 'superhot'])->name('superhot-advertise');
         //////tools route/////////////////
         Route::get('/favourite-listing', [ToolsController::class, 'index'])->name('favourite-listing');
+        Route::get('/email-alert', [ToolsController::class, 'email_alert'])->name('email-alert');
+        Route::get('/mange-email-alert', [ToolsController::class, 'mange_email_alert'])->name('mange-email-alert');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');

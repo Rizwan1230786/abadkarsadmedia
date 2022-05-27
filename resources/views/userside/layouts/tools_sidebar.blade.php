@@ -7,9 +7,9 @@
                 class="leftcolumnlink">Post New Listing</a>
             <a href="{{ url('user/favourite-listing') }}"
                 class="leftcolumnlink">Favourites</a>
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=6&section=edit_advance_alerts"
+            <a href="{{ url('user/email-alert') }}"
                 class="leftcolumnlink">Create Email Alert</a>
-            <a href="https://profolio.zameen.com/profolio/index.php?tabs=6&section=advance_email_alert"
+            <a href="{{ url('user/mange-email-alert') }}"
                 class="leftcolumnlink">Manage Email Alerts</a>
 
 
