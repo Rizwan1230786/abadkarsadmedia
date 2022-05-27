@@ -2,26 +2,17 @@
 
     <div id="leftcolumn">
         <div id="mybayut_menu">
+            <span class="leftcolumheadings">Tools</span>
+            <a href="{{ url('user/post-listing') }}"
+                class="leftcolumnlink">Post New Listing</a>
+            <a href="{{ url('user/favourite-listing') }}"
+                class="leftcolumnlink">Favourites</a>
+            <a href="https://profolio.zameen.com/profolio/index.php?tabs=6&section=edit_advance_alerts"
+                class="leftcolumnlink">Create Email Alert</a>
+            <a href="https://profolio.zameen.com/profolio/index.php?tabs=6&section=advance_email_alert"
+                class="leftcolumnlink">Manage Email Alerts</a>
 
 
-            <a href="{{ url('user/advertise') }}" class="leftcolumnlink"
-                style="border-top: 1px solid #DADBDA !important;">Advertise</a>
-
-
-            <a href="{{ url('/user/refresh-advertise') }}"
-                class="leftcolumnlink"> Refresh Listing</a>
-
-
-            <a href="{{ url('user/premium-advertise') }}"
-                class="leftcolumnlink"> Premium Listing</a>
-
-
-            <a href="{{ url('user/hot-advertise') }}"
-                class="leftcolumnlink"> Hot Listing</a>
-
-
-            <a href="{{ url('user/superhot-advertise') }}"
-                class="leftcolumnlink"> Super Hot Listing</a>
         </div>
 
         <input type=hidden name=client_ownerlist id=client_ownerlist value=(1001388906)>

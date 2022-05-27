@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\userside\UserRolesController;
+use App\Http\Controllers\userside\tools\ToolsController;
 use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
@@ -296,6 +297,12 @@ Route::prefix('user')->group(function () {
 
         //////////ad advertise controller////////////
         Route::get('/advertise', [AdvertiseController::class, 'index'])->name('advertise');
+        Route::get('/refresh-advertise', [AdvertiseController::class, 'refresh'])->name('refresh-advertise');
+        Route::get('/premium-advertise', [AdvertiseController::class, 'premium'])->name('premium-advertise');
+        Route::get('/hot-advertise', [AdvertiseController::class, 'hot'])->name('hot-advertise');
+        Route::get('/superhot-advertise', [AdvertiseController::class, 'superhot'])->name('superhot-advertise');
+        //////tools route/////////////////
+        Route::get('/favourite-listing', [ToolsController::class, 'index'])->name('favourite-listing');
 
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
