@@ -51,6 +51,15 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-lg-12 form-group ">
+                                        <label class="form-label">Select Zone</label>
+                                        <select id="cars" class="form-control" name="zone">
+                                            <option value="">select</option>
+                                            <option value="Zone A">Zone A</option>
+                                            <option value="Zone B">Zone B</option>
+                                            <option value="Zone C">Zone C</option>
+                                        </select>
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="btn btn-list" style="text-align:center;width:100%">
                                             <button type="submit" class="btn btn-primary user_form submit_button">Save

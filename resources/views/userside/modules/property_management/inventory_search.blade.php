@@ -216,28 +216,7 @@
 		<div class="box_body listing-property-profolio" id="Sale_listings" style="padding: 0px; ">
 			<div class="ant-table" id="data_Sale" style="height:auto">
 
-				<table id="demoApi" class="listing_table list-table-left">
-					<thead class="thead-light" id="table_head">
-						<tr>
-							<th style="padding:0px 0px 0px 15px;">ID</th>
-							<th>Type</th>
-							<th>Location</th>
-							<th>Details</th>
-							<th>Price (PKR)</th>
-							<th>Platform</th>
-							<th>Quota</th>
-							<th>Listed Date</th>
-						</tr>
-					</thead>
-					<tbody id="table_data" style="float: none;">
-
-
-						<!-- <td style="padding: 0px 15px;" class="checkbox-inventor-table">
-               <input type="checkbox" name="chk_38486606" class="margin-0" id="chk_38486606" style="position:relative;top:-2px;" />
-              </td> -->
-
-					</tbody>
-				</table>
+				
 
 			</div>
 
@@ -359,6 +338,8 @@
 		$(document).ready(function() {
 			$('#form_submit').on('click', function() {
 				var data = $('#form_serializa').serialize();
+				$('#data_Sale').html('');
+				$('#data_Sale').html('Processing....');
 				$.ajax({
 					url: "{{ url('user/fetch-data') }}",
 					type: "POST",
@@ -371,6 +352,7 @@
 					success: function(result) {
 						$('#table_data').html('');
 						$('#table_head').html('');
+						$('#data_Sale').html('<table id="demoApi" class="listing_table list-table-left" style="min-width: 0px;"><thead class="thead-light" id="table_head"><tr></tr></thead><tbody id="table_data" style="float: none;"></tbody></table>');
 						$('#table_container').removeClass('d-none');
 						$('#table_head').append('<tr><th style="padding:0px 0px 0px 15px;">ID</th><th>Type</th><th>Location</th><th>Details</th><th>Price (PKR)</th><th>Platform</th><th>Quota</th><th>Listed Date</th></tr>');
 						$.each(result, function(key, value) {

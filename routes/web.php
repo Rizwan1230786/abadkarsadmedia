@@ -272,6 +272,8 @@ Route::prefix('user')->group(function () {
         Route::post('/fetch-states', [PropertyManagementController::class, 'fetchState']);
         Route::post('/fetch-city', [PropertyManagementController::class, 'fetchCity']);
         Route::post('/fetch-area', [PropertyManagementController::class, 'fetchArea']);
+        /////zone area filter
+        Route::post('/fetch-zone-area', [PropertyManagementController::class, 'fetch_zone_area']);
         Route::post('/fetch-data', [PropertyManagementController::class, 'fetchData']);
         /////Active-listing///////////
         Route::get('/all-listing', [PropertyManagementController::class, 'all_listing'])->name('all_listing');
