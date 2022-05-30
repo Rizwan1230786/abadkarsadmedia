@@ -185,7 +185,7 @@ class FrontController extends Controller
         $properties = Property::where('id', $projectid->id)->first();
         $agent = Agent::all();
         $images = Image::all();
-        $property_images=PropertyImage::all();
+        $property_images=PropertyImage::where('property_id', $properties->id)->get();
         $Check_facility = Property_facilities::all();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();

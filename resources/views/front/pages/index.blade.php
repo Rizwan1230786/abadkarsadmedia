@@ -38,7 +38,7 @@
                                                 <div class="rld-main-search">
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
-                                                            <select  class="form-control single-select" name="category1">
+                                                            <select class="form-control single-select" name="category1">
                                                                 <option value="">Property Type</option>
                                                                 @foreach ($category as $value)
                                                                 <option value="{{ $value->name }}">
@@ -62,7 +62,7 @@
 
                                                         </div>
                                                         <div class="rld-single-select">
-                                                        <select id="state-dd" class="form-control single-select" name="area_id">
+                                                            <select id="state-dd" class="form-control single-select" name="area_id">
                                                                 <option value="">Select Area</option>
                                                             </select>
                                                         </div>
@@ -146,7 +146,7 @@
                                                                         <div class="col-lg-6">
 
                                                                             <input style="position:absolute;left: 20px;top: 7px;" id="check-2" type="checkbox" name="check1">
-                                                                            <label  for="check-2">{{ $value->name }}</label>
+                                                                            <label for="check-2">{{ $value->name }}</label>
 
 
 
@@ -165,7 +165,7 @@
                                                 <div class="rld-main-search">
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
-                                                            <select  class="form-control single-select" name="category">
+                                                            <select class="form-control single-select" name="category">
                                                                 <option value="">Property Type</option>
                                                                 @foreach ($category as $value)
                                                                 <option value="{{ $value->name }}">
@@ -189,7 +189,7 @@
 
                                                         </div>
                                                         <div class="rld-single-select">
-                                                        <select id="state-dd" class="form-control single-select" name="area_id">
+                                                            <select id="state-dd" class="form-control single-select" name="area_id">
                                                                 <option value="">Select Area</option>
                                                             </select>
                                                         </div>
@@ -274,7 +274,7 @@
                                                                         <div class="col-lg-6">
 
                                                                             <input style="position:absolute;left: 20px;top: 7px;" id="check-2" type="checkbox" name="check">
-                                                                            <label  for="check-2">{{ $value->name }}</label>
+                                                                            <label for="check-2">{{ $value->name }}</label>
 
 
 

@@ -204,7 +204,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb">
-                                                    <label for="price">Front Dimension:</label>
+                                                    <label for="price">Front Dimension: (FT)</label>
                                                     <input style="border-radius: 5px;" type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="front_dim" placeholder="" id="price f1qs3">
                                                 </p>
                                                 @if ($errors->has('front_dim'))
@@ -213,7 +213,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
-                                                    <label for="price">Back Dimension:</label>
+                                                    <label for="price">Back Dimension: (FT)</label>
                                                     <input type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="back_dim" placeholder="" id="back_dim">
                                                 </p>
                                                 @if ($errors->has('back_dim'))
@@ -268,6 +268,33 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Bedrooms:</label>
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_bedrooms') }}" name="number_of_bedrooms" placeholder="Number Of Bedrooms..." id="price">
+                                                </p>
+                                                @if ($errors->has('number_of_bedrooms'))
+                                                <div class="error">{{ $errors->first('number_of_bedrooms') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Bathrooms:</label>
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_bathrooms') }}" name="number_of_bathrooms" placeholder="Number Of Bathrooms..." id="price">
+                                                </p>
+                                                @if ($errors->has('number_of_bathrooms'))
+                                                <div class="error">{{ $errors->first('number_of_bathrooms') }}</div>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Floors:</label>
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_floors') }}" name="number_of_floors" placeholder="Number Of Floors..." id="price">
+                                                </p>
+                                                @if ($errors->has('number_of_floors'))
+                                                <div class="error">{{ $errors->first('number_of_floors') }}</div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -282,6 +309,15 @@
                                             <div class="error">{{ $errors->first('image') }}</div>
                                             @endif
                                         </div>
+                                        <div class="col-lg-12 col-md-12">
+                                                <p class="no-mb" style="margin-bottom: 4px;">
+                                                    <label for="price">Video Link:</label>
+                                                    <input type="text" class="" value="{{ old('video_link') }}" name="video_link" placeholder="Youtube video link..." id="price">
+                                                </p>
+                                                @if ($errors->has('video_link'))
+                                                <div class="error">{{ $errors->first('video_link') }}</div>
+                                                @endif
+                                            </div>
                                     </div>
                                 </div>
                             </div>
