@@ -56,61 +56,30 @@
         <div class="box_body">
             <div id="data_data" style="height:auto">
                 <div class="titlebar" style="padding:0;margin-bottom: 5px;">
-                    <span style="width:20%">&nbsp;&nbsp;Type</span>
-                    <span style="width:25%">&nbsp;&nbsp;Quantity</span>
-                    <span style="width:10%">Price (PKR)</span>
-                    <span style="width:30%;text-align: center;">Total Price (PKR)</span>
-                    <span style="width:15%;">&nbsp;</span>
+                    <span style="width:40%">&nbsp;&nbsp;Type</span>
+                    <span style="width:40%">Price (PKR)</span>
+                    <span style="width:10%">Control</span>
                 </div>
-
                 <div id="credits-body">
-                    <div class="row" style="font-weight: 700;" id="product_5">
-                        <!-- <span id="product_id" style="display: none">5</span> -->
+                    <div class="row" style="font-weight: 700;" id="product_1">
+                        <!-- <span id="product_id" style="display: none">1</span> -->
                         <!-- Type -->
-                        <span style="width:20%"> &nbsp;Super Hot Listing &nbsp; <a href="javascript:void(0)"
+                        <span style="width:40%"> &nbsp;{{ $superhot->name }} &nbsp; <a href="javascript:void(0)"
                                 style="vertical-align: middle;">
                                 <img src="{{ asset('userside') }}/images/common/infographics.png"
                                     onclick="show_product_infographics();">
                             </a>
                         </span>
                         <!-- Quantity -->
-                        <span style="width:25%">
-                            <a href="javascript:void(0)" style="color:green; padding-right: 7px; font-size: 14px;"
-                                class="minus_count">
-                                <!-- <img src="{{ asset('userside') }}/images/common/-.jpg" border="0" /> --> -
-                            </a>
-                            <!-- <span style="float:none; border: 0.25px solid #eee;box-shadow: 0.5px 1px #ccc;padding: 2px;">1</span> -->
-                            <!-- <span class="product_quantity" style="float:none; border-bottom: 1.5px solid #eee;padding: 2px;">
-                0
-                </span>
-               -->
-                            <input type="text" class="product_quantity" onblur="cal_product_quantity(this);" style="display: inline;
-               font-family: inherit;
-               font-size: inherit;
-               padding: 0px !important;
-               margin: 0 !important;
-               border-top: none !important;
-               border-right: none !important;
-               border-left: none !important;
-               border-bottom: 1.5px solid #eee;
-               text-align: center;
-               width: 30px;" value="0">
-                            <a href="javascript:void(0)" style="color:green; padding-left: 6px; font-size: 14px;"
-                                class="plus_count">
-                                <!-- <img src="{{ asset('userside') }}/images/common/+.jpg" border="0" /> -->+
-                            </a>
-                            <a href="javascript:void(0)" class="reset_count"> Reset</a>
-                        </span>
+                        <span style="width:40%">
                         <!-- Price -->
-                        <span class="product_unit_price" data-product_price="12000" style="width:10%"> &nbsp;12,000 </span>
+                        <span class="product_unit_price" data-product_price="200" style="width:10%"> &nbsp;{{ $superhot->price }} </span>
                         <!-- Total Price -->
-                        <span class="product_total_price" data-total_price="0" style="text-align: center; width:30%">
-                            0
-                        </span>
                         <!-- Controls -->
-                        <span style="width:15%">
-                            <a href="javascript:void(0);" class="add_insert_to_cart" onclick="add_insert_to_cart(this)"
-                                data-product="Super Hot Listing">
+                        </span>
+                        <span style="width:10%">
+                            <a href="{{ route('add.to.cart', $superhot->id) }}" class="add_insert_to_cart"
+                                data-product="Refresh Listing">
                                 <img class="add_to_cart_btn"
                                     src="{{ asset('userside') }}/profolio/images/add_to_cart1_1.png" border="0" />
                                 <img class="loader" style="display:none; margin-left: 30%;"
