@@ -99,10 +99,11 @@ $(document).ready(function(){
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/add_property_single1_27.js?v=39"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/plupload.full.min.js"></script>
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/date_time_picker1_1.js"></script>
+<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
 <link rel="stylesheet" href="{{ asset('userside') }}/css/jquery-ui-1_5.css" type="text/css">
 <!-- Added by labeeb -->
 <script type="text/javascript" src="{{ asset('userside') }}/javascript/opg.js"></script>
-<script type="text/javascript" src="{{ asset('userside') }}/javascript/jquery-1.12.4.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script type="text/javascript">
     $(".showMoreDiv").click(function(e) {
