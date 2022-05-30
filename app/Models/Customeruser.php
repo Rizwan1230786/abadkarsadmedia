@@ -26,4 +26,5 @@ class Customeruser extends Authenticatable
     {
         return $this->belongsToMany(Property::class);
     }
+
 }

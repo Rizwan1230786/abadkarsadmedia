@@ -304,6 +304,15 @@ Route::prefix('user')->group(function () {
         Route::get('/premium-advertise', [AdvertiseController::class, 'premium'])->name('premium-advertise');
         Route::get('/hot-advertise', [AdvertiseController::class, 'hot'])->name('hot-advertise');
         Route::get('/superhot-advertise', [AdvertiseController::class, 'superhot'])->name('superhot-advertise');
+        ////add to cartroute///////
+        Route::get('cart', [AdvertiseController::class, 'cart'])->name('cart');
+        Route::get('add-to-cart/{id}', [AdvertiseController::class, 'addToCart'])->name('add.to.cart');
+        Route::post('update-cart', [AdvertiseController::class, 'update'])->name('update.cart');
+        Route::post('remove-from-cart', [AdvertiseController::class, 'remove'])->name('remove.from.cart');
+        Route::get('checkout', [AdvertiseController::class, 'checkout'])->name('checkout');
+        Route::post('place-order', [AdvertiseController::class, 'place_order'])->name('place-order');
+
+
         //////tools route/////////////////
         Route::get('/favourite-listing', [ToolsController::class, 'index'])->name('favourite-listing');
         Route::get('/email-alert', [ToolsController::class, 'email_alert'])->name('email-alert');

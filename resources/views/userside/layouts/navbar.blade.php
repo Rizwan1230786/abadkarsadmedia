@@ -34,13 +34,12 @@
 </div>
 <div class="prop-nav left">
 	<div class="left">
-		<a href="#" class="checkout_cart menu_list cart_icon icon-utl transparent" onclick="return false;" >
+		<a href="{{ route('cart') }}" class="menu_list cart_icon icon-utl transparent">
             cart
-                        <span id="header_cart_count" style="
+                <span id="header_cart_count" style="
                 position: absolute;right: -5px;top: -5px;min-height: 8px;min-width: 10px;text-align: center;background: red;border-radius:50%;
-                padding: 3px;color: #fff;font-size: 9px;line-height: 10px;display:none;
-                ">1
-        </span>
+                padding: 3px;color: #fff;font-size: 9px;line-height: 10px;
+                ">{{ count((array) session('cart')) }}</span>
         </a>
 		<span id="new" style="display: none;">0</span>
 		<a href="#" rel="nofollow" class="menu_list transparent billing_icon icon-utl" id="header_billing">Billing</a>
