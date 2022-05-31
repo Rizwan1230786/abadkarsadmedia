@@ -34,6 +34,7 @@
 </div>
 <div class="prop-nav left">
 	<div class="left">
+        @if(session('cart'))
 		<a href="{{ route('cart') }}" class="menu_list cart_icon icon-utl transparent">
             cart
                 <span id="header_cart_count" style="
@@ -41,6 +42,11 @@
                 padding: 3px;color: #fff;font-size: 9px;line-height: 10px;
                 ">{{ count((array) session('cart')) }}</span>
         </a>
+        @else
+        <a href="#" class="menu_list cart_icon icon-utl transparent">
+            cart
+        </a>
+        @endif
 		<span id="new" style="display: none;">0</span>
 		<a href="#" rel="nofollow" class="menu_list transparent billing_icon icon-utl" id="header_billing">Billing</a>
 		<a href="#" class="menu_list email_alert_icon icon-utl transparent">Email Alert</a>

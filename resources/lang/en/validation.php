@@ -126,6 +126,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'postal_code' => 'The :attribute is required',
+    'postal_code_with' => 'The post code will be match on zip-code',
 
     /*
     |--------------------------------------------------------------------------

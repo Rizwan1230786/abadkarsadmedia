@@ -164,6 +164,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         LaravelCaptcha\Providers\LaravelCaptchaServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Axlon\PostalCodeValidation\ValidationServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -13,49 +13,50 @@ use Illuminate\Support\Facades\Auth;
 
 class AdvertiseController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $products = Product::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.advertise',get_defined_vars());
-
+        return view('userside.modules.advertise.advertise', get_defined_vars());
     }
-    public function refresh(){
+    public function refresh()
+    {
         $products = Product::all();
-        $refresh=Product::where('name','Refresh Listing')->first();
+        $refresh = Product::where('name', 'Refresh Listing')->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.refresh_adevertise',get_defined_vars());
-
+        return view('userside.modules.advertise.refresh_adevertise', get_defined_vars());
     }
-    public function premium(){
+    public function premium()
+    {
         $products = Product::all();
-        $premium=Product::where('name','Premium Listing')->first();
+        $premium = Product::where('name', 'Premium Listing')->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.premium_advertise',get_defined_vars());
-
+        return view('userside.modules.advertise.premium_advertise', get_defined_vars());
     }
-    public function hot(){
+    public function hot()
+    {
         $products = Product::all();
-        $hot=Product::where('name','Hot Listing')->first();
+        $hot = Product::where('name', 'Hot Listing')->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.hot_advertise',get_defined_vars());
-
+        return view('userside.modules.advertise.hot_advertise', get_defined_vars());
     }
-    public function superhot(){
+    public function superhot()
+    {
         $products = Product::all();
-        $superhot=Product::where('name','Super Hot Listing')->first();
+        $superhot = Product::where('name', 'Super Hot Listing')->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.super_hot_adevertise',get_defined_vars());
-
+        return view('userside.modules.advertise.super_hot_adevertise', get_defined_vars());
     }
-    public function cart(){
+    public function cart()
+    {
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.add_to_cart.cart',get_defined_vars());
+        return view('userside.modules.advertise.add_to_cart.cart', get_defined_vars());
     }
     public function addToCart($id)
     {
@@ -63,7 +64,7 @@ class AdvertiseController extends Controller
 
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -77,7 +78,7 @@ class AdvertiseController extends Controller
     }
     public function update(Request $request)
     {
-        if($request->id && $request->quantity){
+        if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
@@ -86,49 +87,62 @@ class AdvertiseController extends Controller
     }
     public function remove(Request $request)
     {
-        if($request->id) {
+        if ($request->id) {
             $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
+            if (isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
             return response(['status' => true]);
         }
     }
-    public function checkout(){
+    public function checkout()
+    {
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('userside.modules.advertise.add_to_cart.checkout',get_defined_vars());
+        return view('userside.modules.advertise.add_to_cart.checkout', get_defined_vars());
     }
-    public function place_order(Request $request){
-
-       $request->validate([
-            'first_name' =>'required',
-            'last_name' =>'required',
-            'address' =>'required',
-            'city' =>'required',
-            'country' =>'required',
-            'post_code' =>'required',
-            'phone_number' =>'required',
-       ]);
-       $data=$request->all();
-       $query=Order::create($data);
-       $cart = session()->get('cart');
-       foreach($cart as $item){
-           OrderItem::create([
-            'order_id'=>$query->id,
-            'product_name'=>$item['name'],
-            'quantity'=>$item['quantity'],
-            'price'=>$item['price']
-           ]);
-       }
-       if(Auth::user()->address == Null){
-           $user=Customeruser::where('id',Auth::user()->id)->first();
-           $user->address=$request->input('address');
-           $user->lastname=$request->input('last_name');
-           $user->country=$request->input('country');
-           $user->contact=$request->input('phone_number');
-       }
-       return redirect()->back()->with('message','Place order successfully!');
+    public function place_order(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'phone_number' => 'required',
+            'zipcode'   => 'required|regex:/^[0-9]{3,7}$/'
+        ]);
+        $data = $request->all();
+        $query = Order::create($data);
+        $cart = session()->get('cart');
+        foreach ($cart as $item) {
+            OrderItem::create([
+                'order_id' => $query->id,
+                'product_name' => $item['name'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price']
+            ]);
+        }
+        if (Auth::user()->address == Null) {
+            $user = Customeruser::where('id', Auth::user()->id)->first();
+            $user->address = $request->input('address');
+            $user->lastname = $request->input('last_name');
+            $user->country = $request->input('country');
+            $user->contact = $request->input('phone_number');
+            $user->update();
+        }
+        if ($request->user_id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->user_id])) {
+                unset($cart[$request->user_id]);
+                session()->put('cart', $cart);
+            }
+        }
+        if(isset($query) && !empty($query)){
+            return redirect('user/advertise')->with('message', 'Place order successfully!');
+        }else{
+            return redirect()->back()->with('error', 'please check your problem');
+        }
     }
 }

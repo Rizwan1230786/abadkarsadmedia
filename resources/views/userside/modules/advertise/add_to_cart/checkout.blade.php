@@ -44,7 +44,7 @@
                                 <h4 class="card-title mt-2">Billing Details</h4>
                             </header>
                             <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-                            <article class="card-body">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-6 form-group">
                                         <label>First name</label>
@@ -66,8 +66,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>Address</label>
-                                        <input type="text" class="form-control" value="{{ auth()->user()->adddress }}"
-                                            name="address">
+                                        <textarea class="form-control" name="address" rows="3">{{ Auth::user()->address }}</textarea>
                                         @if ($errors->has('address'))
                                             <div class="error">{{ $errors->first('address') }}</div>
                                         @endif
@@ -80,6 +79,8 @@
                                             <div class="error">{{ $errors->first('city') }}</div>
                                         @endif
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>Country</label>
                                         <input type="text" class="form-control" value="{{ auth()->user()->country }}"
@@ -90,17 +91,24 @@
                                     </div>
                                     <div class="form-group  col-md-6">
                                         <label>Post Code</label>
-                                        <input type="number" class="form-control" name="post_code">
-                                        @if ($errors->has('post_code'))
-                                            <div class="error">{{ $errors->first('post_code') }}</div>
+                                        <input type="number" class="form-control" name="zipcode">
+                                        @if ($errors->has('zipcode'))
+                                            <div class="error">{{ $errors->first('zipcode') }}</div>
                                         @endif
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
-                                        <input type="number" class="form-control" value="{{ auth()->user()->contact }}"
-                                            name="phone_number">
-                                        @if ($errors->has('phone_number'))
-                                            <div class="error">{{ $errors->first('phone_number') }}</div>
+                                        @if (Auth::user()->contact)
+                                            <input type="text" class="form-control" id="account-phone" value="+92{{ Auth::user()->contact }}"
+                                                name="phone_number">
+                                        @else
+                                            <input type="number" class="form-control" id="account-phone" value='+92'
+                                                name="phone_number">
+                                            @if ($errors->has('phone_number'))
+                                                <div class="error">{{ $errors->first('phone_number') }}</div>
+                                            @endif
                                         @endif
                                     </div>
                                     <div class="form-group col-md-6">
@@ -112,15 +120,16 @@
 
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Order Notes</label>
-                                    <textarea class="form-control" name="notes" rows="6"></textarea>
-                                    @if ($errors->has('notes'))
-                                        <div class="error">{{ $errors->first('notes') }}</div>
-                                    @endif
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Order Notes</label>
+                                        <textarea class="form-control" name="notes" rows="6"></textarea>
+                                        @if ($errors->has('notes'))
+                                            <div class="error">{{ $errors->first('notes') }}</div>
+                                        @endif
+                                    </div>
                                 </div>
-                            </article>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -172,4 +181,11 @@
             </form>
         </div>
     </section>
+@endsection
+@section('js')
+    <script src="{{ URL::asset('front/js/Tellcustom.js') }}"></script>
+    <link href="{{ URL::asset('front/css/intlTelInput.css?1613236686837') }}" rel="stylesheet">
+    <script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
+    <script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
+    <script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
 @endsection
