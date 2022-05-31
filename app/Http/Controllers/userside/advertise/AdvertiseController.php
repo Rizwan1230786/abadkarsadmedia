@@ -124,9 +124,10 @@ class AdvertiseController extends Controller
                 'price' => $item['price']
             ]);
         }
-        if (Auth::user()->address == Null) {
+        if (Auth::user()->lastname == Null) {
             $user = Customeruser::where('id', Auth::user()->id)->first();
             $user->address = $request->input('address');
+            $user->firstname = $request->input('first_name');
             $user->lastname = $request->input('last_name');
             $user->country = $request->input('country');
             $user->contact = $request->input('phone_number');
@@ -140,7 +141,7 @@ class AdvertiseController extends Controller
             }
         }
         if(isset($query) && !empty($query)){
-            return redirect('user/advertise')->with('message', 'Place order successfully!');
+            return redirect('user/advertise')->with('message', 'Order Place successfully!');
         }else{
             return redirect()->back()->with('error', 'please check your problem');
         }

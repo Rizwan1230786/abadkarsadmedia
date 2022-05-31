@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
 
             $table->boolean('payment_status')->default(1);
             $table->string('payment_method')->nullable();
-
+            $table->string('email')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->text('address');

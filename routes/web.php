@@ -33,6 +33,7 @@ use App\Http\Controllers\admin\realestate\CategoryController;
 use App\Http\Controllers\admin\realestate\FeaturesController;
 use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
+use App\Http\Controllers\admin\customerorders\OrderController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
@@ -186,6 +187,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/slugs/submit', [UrlslugController::class, 'submit'])->name('slugs.submit');
         Route::post('/update_status_slugs', [UrlslugController::class, 'update_slugs_status'])->name('update_status_slugs');
         Route::post('/delete_slugs/{id}', [UrlslugController::class, 'destroy'])->name('delete_slug');
+        ////route of orders////////
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);

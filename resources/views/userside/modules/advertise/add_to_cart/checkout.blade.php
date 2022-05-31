@@ -101,7 +101,7 @@
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
                                         @if (Auth::user()->contact)
-                                            <input type="text" class="form-control" id="account-phone" value="+92{{ Auth::user()->contact }}"
+                                            <input type="text" class="form-control" id="account-phone" value="{{ Auth::user()->contact }}"
                                                 name="phone_number">
                                         @else
                                             <input type="number" class="form-control" id="account-phone" value='+92'
