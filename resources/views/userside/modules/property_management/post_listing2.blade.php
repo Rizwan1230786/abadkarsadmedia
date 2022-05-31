@@ -90,8 +90,7 @@ if (isset($record->id) && $record->id != 0) {
 }
 
 ?>
-<div id="rightcolumn" style="
-                                width:79% " class="rightcolumn_div post_story_margin">
+<div id="rightcolumn" style="width:79% " class="rightcolumn_div post_story_margin">
     <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
         @if (isset($record->id) && !empty($record->id))
         <span class="worddashbord" style="display:inline;"> <a href="index.php?tabs=2&section=listings">Property
@@ -162,9 +161,9 @@ if (isset($record->id) && $record->id != 0) {
                 </div>
                 <!-- /////////////////////CITY///////////////////////// -->
                 <div class="divrow zameen-city-box">
-                    <label class="label l font_s">City:</label>
+                    <label class="label l font_s">City: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <div class='sb_combo sel_box' style='width:150px'>
-                        <select class="city" name='city_name' style="width:151px;" id='city'>
+                        <select class="city" name='city_name' style="width:151px;">
                             <option value='' selected>Select City</option>
                             @foreach ($city as $value)
                             <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -240,7 +239,7 @@ if (isset($record->id) && $record->id != 0) {
                     <label class="label l font_s">Unit: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /></label>
                     <div class='sb_combo sel_box' style='width:150px'>
                         @if (isset($record->unit) && !empty($record->unit))
-                        <select class="city" name='unit' style="width:151px;" id='city'>
+                        <select class="city" name='unit' style="width:151px;">
                             <option value="{{ $record->unit ?? '' }}">{{ $record->unit ?? '' }}</option>
                             <option value='Square Feet'>Square Feet</option>
                             <option value='Square Meters'>Square Meters</option>
@@ -249,7 +248,7 @@ if (isset($record->id) && $record->id != 0) {
                             <option value='Kanal'>Kanal</option>
                         </select>
                         @else
-                        <select class="city" name='unit' style="width:151px;" id='city'>
+                        <select class="city" name='unit' style="width:151px;">
                             <option value='Square Feet' selected>Square Feet</option>
                             <option value='Square Meters'>Square Meters</option>
                             <option value='Square Yards'>Square Yards</option>
@@ -451,6 +450,18 @@ if (isset($record->id) && $record->id != 0) {
                     @if ($errors->has('is_expired'))
                     <div class="error">{{ $errors->first('is_expired') }}</div>
                     @endif
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Bedrooms: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='number_of_bedrooms' id='area' value="{{ $record->number_of_bedrooms ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of bedrooms..." />
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Bathrooms: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='number_of_bathrooms' id='area' value="{{ $record->number_of_bathrooms ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of bathrooms..." />
+                </div>
+                <div class="divrow">
+                    <label class="label l font_s">Floors: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
+                    <input type='text' name='number_of_floors' id='area' value="{{ $record->number_of_floors ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of floors..." />
                 </div>
                 <div class="single-add-property">
                     <div class="subhead font_s ros subhead_img">Property Feature</div>
@@ -798,6 +809,7 @@ if (isset($record->id) && $record->id != 0) {
 <script>
     $(document).ready(function() {
         $('.city').on('change', function() {
+            alert('ok')
             var city_id = this.value;
             $.ajax({
                 url: "{{ url('/user/fetch-area') }}",

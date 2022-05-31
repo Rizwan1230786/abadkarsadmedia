@@ -51,8 +51,8 @@ class PropertyManagementController extends Controller
     public function fetch_zone_area(Request $request)
     {
         $data = Area::where('city_id', $request->city_id)->get();
-        if(!empty($request->city_id) && !empty($request->zone_id)){
-            $data = Area::where(['city_id'=> $request->city_id,'zone' => $request->zone_id])->get();
+        if (!empty($request->city_id) && !empty($request->zone_id)) {
+            $data = Area::where(['city_id' => $request->city_id, 'zone' => $request->zone_id])->get();
         }
         return response()->json($data);
     }
@@ -310,7 +310,31 @@ class PropertyManagementController extends Controller
                 }
                 $user_id = Auth::guard('customeruser')->user()->id;
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array('area_id' => $data['area_id'], 'user_id' => $user_id, 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'], 'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'), 'video_link' => $data['video_link'], 'status' => 1, "url_slug" => $data['url_slug'], 'image' => $filename);
+                $data = array(
+                    'area_id' => $data['area_id'],
+                    'user_id' => $user_id,
+                    'city_name' => $data['city_name'],
+                    'name' => $data['title'],
+                    'type' => $data['property_purpose'],
+                    'location' => $data['location'],
+                    'category' => $data['category_id'],
+                    'subcat_id' => $data['subcat_id'],
+                    'price' => $data['price'],
+                    'unit' => $data['unit'],
+                    'descripition' => $data['description'],
+                    'front_dim' => $data['front_dim'],
+                    'back_dim' => $data['back_dim'],
+                    'land_area' => $data['land_area'],
+                    'is_expired' => $data['is_expired'],
+                    'listed_date' => Carbon::now()->format('Y-m-d'),
+                    'video_link' => $data['video_link'],
+                    'status' => 1,
+                    "url_slug" => $data['url_slug'],
+                    'image' => $filename,
+                    'number_of_bedrooms' => $data['number_of_bedrooms'],
+                    'number_of_bathrooms' => $data['number_of_bathrooms'],
+                    'number_of_floors' => $data['number_of_floors'],
+                );
                 $query = Property::create($data);
                 $query->features()->attach($request->feature);
                 if (isset($request->image) && !empty($request->image)) {
