@@ -135,14 +135,14 @@ class AdvertiseController extends Controller
         }
         if ($request->user_id) {
             $cart = session()->get('cart');
-            if (isset($cart[$request->user_id])) {
-                unset($cart[$request->user_id]);
-                session()->put('cart', $cart);
+            if (isset($cart)) {
+                unset($cart);
+                session()->put('cart', []);
             }
         }
-        if(isset($query) && !empty($query)){
+        if (isset($query) && !empty($query)) {
             return redirect('user/advertise')->with('message', 'Order Place successfully!');
-        }else{
+        } else {
             return redirect()->back()->with('error', 'please check your problem');
         }
     }
