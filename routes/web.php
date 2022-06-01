@@ -25,6 +25,7 @@ use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\userside\UserDashboardController;
+use App\Http\Controllers\admin\addtocart\ProductController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
@@ -189,6 +190,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/delete_slugs/{id}', [UrlslugController::class, 'destroy'])->name('delete_slug');
         ////route of orders////////
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        /////route of add to cart product/////////////
+        Route::get('/product', [ProductController::class, 'index'])->name('product');
+        Route::get('/product/create', [ProductController::class, 'create'])->name('product.form');
+        Route::post('/product/submit', [ProductController::class, 'submit'])->name('product_submit');
+        Route::post('/update_status_product', [ProductController::class, 'update_product_status'])->name('update_status_product');
+        Route::post('/delete_product/{id}', [ProductController::class, 'destroy'])->name('delete_product');
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
