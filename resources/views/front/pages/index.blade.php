@@ -375,49 +375,29 @@
                             </p>
                             <!-- homes List -->
                             <ul class="homes-list clearfix pb-3">
+                                @if ($properties->number_of_bedrooms)
                                 <li class="the-icons">
                                     <i class="flaticon-bed mr-2" aria-hidden="true"></i>
                                     <span>{{ $properties->number_of_bedrooms }}</span>
                                 </li>
+                                @endif
+                                @if ($properties->number_of_bathroom)
                                 <li class="the-icons">
                                     <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
                                     <span>{{ $properties->number_of_bathroom }}</span>
                                 </li>
-                                @if ($properties->unit=='Marla')
-                                <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->area_size }} Marla</span>
-                                </li>
                                 @endif
-                                @if ($properties->unit=='square yard')
+                                @if ($properties->land_area)
                                 <li class="the-icons">
                                     <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->area_size }} Sq.yd</span>
-                                </li>
-                                @endif
-                                @if ($properties->unit=='square feet')
-                                <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->area_size }} Sqft</span>
-                                </li>
-                                @endif
-                                @if ($properties->unit=='square meter')
-                                <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->area_size }} Sq.M</span>
-                                </li>
-                                @endif
-                                @if ($properties->unit=='kanal')
-                                <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>{{ $properties->area_size }} Kanal</span>
+                                    <span>{{ number_format($properties->land_area, 1) }} {{$properties->unit}}</span>
                                 </li>
                                 @endif
                             </ul>
                             <div class="price-properties footer pt-3 pb-0">
                                 <h3 class="title mt-3">
                                     <a href="{{ url('/property', $properties->url_slug) }}">(PKR)
-                                        {{ number_format($properties->price, 2) }}</a>
+                                        {{ number_format($properties->price, 0) }}</a>
                                 </h3>
                                 <div class="compare">
                                     <a href="#" title="Compare">

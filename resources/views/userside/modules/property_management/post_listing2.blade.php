@@ -228,7 +228,7 @@ if (isset($record->id) && $record->id != 0) {
                 <div class="subhead font_s ros subhead2" id="property_box_heading">PROPERTY SPECS AND PRICE</div>
                 <div class="divrow">
                     <label class="label l font_s">Area Size: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
-                    <input type='text' name='land_area' id='area' value="{{ $record->land_area ?? '' }}" style='width:135px;' class='rfield l ' placeholder="Enter land area size..." />
+                    <input type='text' name='land_area' id='' value="{{ $record->land_area ?? '' }}" style='width:135px;' class='rfield l ' placeholder="Enter land area size..." />
                 </div>
                 <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                     @if ($errors->has('land_area'))

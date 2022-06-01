@@ -277,21 +277,11 @@ use App\Models\Category;
                                     <span class="font-weight-bold mr-1">Floors:</span>
                                     <span class="det">{{ $properties->number_of_floors }}</span>
                                 </li>
-                                @else
-                                <li>
-                                    <span class="font-weight-bold mr-1">Floors:</span>
-                                    <span class="det">Not Added</span>
-                                </li>
                                 @endif
                                 @if ($properties->number_of_bedrooms)
                                 <li>
                                     <span class="font-weight-bold mr-1">Bedrooms:</span>
                                     <span class="det">{{ $properties->number_of_bedrooms }}</span>
-                                </li>
-                                @else
-                                <li>
-                                    <span class="font-weight-bold mr-1">Bedrooms:</span>
-                                    <span class="det">Not Added</span>
                                 </li>
                                 @endif
                                 @if ($properties->number_of_bathrooms)
@@ -299,15 +289,10 @@ use App\Models\Category;
                                     <span class="font-weight-bold mr-1">Bath:</span>
                                     <span class="det">{{ $properties->number_of_bathrooms }}</span>
                                 </li>
-                                @else
-                                <li>
-                                    <span class="font-weight-bold mr-1">Bath:</span>
-                                    <span class="det">Not Added</span>
-                                </li>
                                 @endif
                                 <li>
                                     <span class="font-weight-bold mr-1">Area:</span>
-                                    <span class="det">{{ number_format($properties->land_area, 2) }} {{ $properties->unit }}</span>
+                                    <span class="det">{{ number_format($properties->land_area, 1) }} {{ $properties->unit }}</span>
                                 </li>
                             </ul>
                             <!-- title -->

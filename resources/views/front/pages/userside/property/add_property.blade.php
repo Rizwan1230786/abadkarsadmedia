@@ -223,7 +223,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
                                                     <label for="price">Land Area:</label>
-                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
+                                                    <input type="text" class="" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
                                                 </p>
                                                 @if ($errors->has('land_area'))
                                                 <div class="error">{{ $errors->first('land_area') }}</div>
