@@ -561,14 +561,14 @@ use App\Models\Category;
                                                 @if (isset($value) && !empty($value->location))
                                                     <td>{{ Str::limit($value->location, 20) }}</td>
                                                 @else
-                                                    <td>No Add</td>
+                                                    <td>Not Added</td>
                                                 @endif
                                                 @if (isset($value) && !empty($value->descripition))
                                                     <td>{{ Str::limit($value->descripition, 20) }}</td>
                                                 @else
-                                                    <td>No Add</td>
+                                                    <td>Not Added</td>
                                                 @endif
-                                                <td>{{ $value->price }}</td>
+                                                <td>{{ number_format($value->price,0) }}</td>
                                                 <td>abadkar.com</td>
                                                 <td>1</td>
                                                 @if (isset($value) && !empty($value->listed_date))

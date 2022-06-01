@@ -288,7 +288,7 @@
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
                                         <a href="#">(PKR)
-                                            {{ number_format($search_property->price, 2) }}</a>
+                                            {{ number_format($search_property->price, 0) }}</a>
                                     </h3>
                                     <div class="compare">
                                         <a href="#" title="Compare">
@@ -424,7 +424,7 @@
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
                                         <a href="{{ url('/property', $city_search_property->id) }}">(PKR)
-                                            {{ number_format($city_search_property->price, 2) }}</a>
+                                            {{ number_format($city_search_property->price, 0) }}</a>
                                     </h3>
                                     <div class="compare">
                                         <a href="#" title="Compare">
@@ -532,7 +532,7 @@
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
                                         <a href="#">(PKR)
-                                            {{ number_format($area_search_propertys->price, 2) }}</a>
+                                            {{ number_format($area_search_propertys->price, 0) }}</a>
                                     </h3>
                                     <div class="compare">
                                         <a href="#" title="Compare">
@@ -640,7 +640,7 @@
                                 <div class="price-properties">
                                     <h3 class="title mt-3">
                                         <a href="#">(PKR)
-                                            {{ number_format($properties->price, 2) }}</a>
+                                            {{ number_format($properties->price, 0) }}</a>
                                     </h3>
                                     <div class="compare">
                                         <a href="#" title="Compare">

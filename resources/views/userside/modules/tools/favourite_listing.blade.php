@@ -46,7 +46,7 @@ use App\Models\Category;
                                             @if (isset($value) && !empty($value->location))
                                                 <td>{{ Str::limit($value->location, 20) }}</td>
                                             @else
-                                                <td>No Add</td>
+                                                <td>Not Added</td>
                                             @endif
                                             <td>{{ $value->type }}</td>
                                             <td>{{ $value->price }}</td>
