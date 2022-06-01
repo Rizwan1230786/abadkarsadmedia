@@ -23,6 +23,11 @@
         background-color: #FF385c;
         border-color: #FF385c;
     }
+    .btn-danger:hover {
+        background-color: #FF385c;
+        border-color: #FF385c;
+    }
+
 
 </style>
 @section('main')
@@ -101,8 +106,8 @@
                                     <div class="form-group  col-md-6">
                                         <label>Phone Number</label>
                                         @if (Auth::user()->contact)
-                                            <input type="text" class="form-control" id="account-phone" value="{{ Auth::user()->contact }}"
-                                                name="phone_number">
+                                            <input type="text" class="form-control" id="account-phone"
+                                                value="{{ Auth::user()->contact }}" name="phone_number">
                                         @else
                                             <input type="number" class="form-control" id="account-phone" value='+92'
                                                 name="phone_number">
@@ -114,7 +119,7 @@
                                     <div class="form-group col-md-6">
                                         <label>Email Address</label>
                                         <input type="email" class="form-control" name="email"
-                                            value="{{ auth()->user()->email }}" disabled>
+                                            value="{{ auth()->user()->email }}" readonly>
                                         <small class="form-text text-muted">We'll never share your email with anyone
                                             else.</small>
 
@@ -164,16 +169,14 @@
                                             </tbody>
                                         </table>
                                         <div class="card-footer">
-
                                             <strong>Total ${{ $total }}</strong>
-
                                         </div>
                                     @endif
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4">
                                 <button type="submit" style="width: 100%;"
-                                    class="subscribe btn btn-danger btn-sm btn-block">Place Order</button>
+                                    class="subscribe submit_button btn btn-danger btn-sm btn-block">Place Order</button>
                             </div>
                         </div>
                     </div>
@@ -181,6 +184,20 @@
             </form>
         </div>
     </section>
+    <script>
+        var previousText = $('.submit_button').html();
+        $(document).on({
+            ajaxStart: function() {
+                $(".submit_button").html('<i class="fa fa-circle-o-notch fa-spin"></i> Processing...');
+            },
+            ajaxStop: function() {
+                $(".submit_button").html(previousText);
+            },
+            ajaxError: function() {
+                $(".submit_button").html(previousText);
+            }
+        });
+    </script>
 @endsection
 @section('js')
     <script src="{{ URL::asset('front/js/Tellcustom.js') }}"></script>

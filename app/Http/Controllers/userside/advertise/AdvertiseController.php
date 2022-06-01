@@ -6,10 +6,11 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Webpages;
 use App\Models\OrderItem;
+use App\Models\Customeruser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Customeruser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdvertiseController extends Controller
 {
@@ -111,7 +112,8 @@ class AdvertiseController extends Controller
             'city' => 'required',
             'country' => 'required',
             'phone_number' => 'required',
-            'zipcode'   => 'required|regex:/^[0-9]{3,7}$/'
+            'zipcode'   => 'required|regex:/^[0-9]{3,7}$/',
+            'email'=> 'required'
         ]);
         $data = $request->all();
         $query = Order::create($data);
@@ -123,6 +125,18 @@ class AdvertiseController extends Controller
                 'quantity' => $item['quantity'],
                 'price' => $item['price']
             ]);
+        }
+        $email_data = array(
+            'email' => "rizwan.13347@gmail.com",
+            'data'  => $data,
+            'cart' =>$cart,
+        );
+        $response = Mail::send('userside.modules.advertise.email.contectus_email', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'])->subject('Order Detail')->from($email_data["data"]["email"], $email_data['data']['first_name'].(isset($email_data['data']['last_name']) && !empty($email_data['data']['last_name']) ? ' '.$email_data['data']['last_name'] : ''));
+        });
+        if (Mail::failures()) {
+            $type = 'error';
+            $message = "Unknonw error occur";
         }
         if (Auth::user()->lastname == Null) {
             $user = Customeruser::where('id', Auth::user()->id)->first();
