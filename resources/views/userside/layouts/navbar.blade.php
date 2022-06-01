@@ -26,7 +26,7 @@
 	<li><a id="navigation" href='/user/user-profile'>My Account & Profiles</a></li>
 	<li><a id="navigation" href='/user/all-reports'>Reports</a></li>
 	<li><a id="navigation" href='/user/favourite-listing'>Tools</a></li>
-	<li><a id="navigation" href='{{ url('user/mange-user') }}'>Agency Staff</a></li>
+	<li><a id="navigation" href="{{ url('user/mange-user') }}">Agency Staff</a></li>
 	<li><a id="navigation" href='#' class='client_n_leads'>Clients & Leads</a></li>
 	<li><a id="navigation" href='#'>Agency Website</a></li>
 	<li><a id="navigation" href='/user/advertise'>Advertise</a></li>
@@ -51,7 +51,7 @@
 		<a href="#" rel="nofollow" class="menu_list transparent billing_icon icon-utl" id="header_billing">Billing</a>
 		<a href="#" class="menu_list email_alert_icon icon-utl transparent">Email Alert</a>
 		<a href="#" rel="nofollow" id="header_blog" class="menu_list transparent blog_icon icon-utl">Blog</a>
-		<a href="#" rel="nofollow" id="header_advertise" class="menu_list transparent advertise-icon icon-utl">Advertise</a>
+		<a href="/user/advertise" rel="nofollow" id="header_advertise" class="menu_list transparent advertise-icon icon-utl">Advertise</a>
 	</div>
 	<div class="right">
 		<a href="/user/inventory_search" class="menu_list invent_search_icon icon-utl">Inventory Search</a>
