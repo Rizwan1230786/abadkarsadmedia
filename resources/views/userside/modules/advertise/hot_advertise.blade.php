@@ -56,7 +56,7 @@
                     <div class="row" style="font-weight: 700;" id="product_1">
                         <!-- <span id="product_id" style="display: none">1</span> -->
                         <!-- Type -->
-                        <span style="width:40%"> &nbsp;{{ $hot->name }} &nbsp; <a href="javascript:void(0)"
+                        <span style="width:40%"> &nbsp;{{ $hot->name ?? ''}} &nbsp; <a href="javascript:void(0)"
                                 style="vertical-align: middle;">
                                 <img src="{{ asset('userside') }}/images/common/infographics.png"
                                     onclick="show_product_infographics();">
@@ -65,12 +65,12 @@
                         <!-- Quantity -->
                         <span style="width:40%">
                         <!-- Price -->
-                        <span class="product_unit_price" data-product_price="200" style="width:10%"> &nbsp;{{ $hot->price }} </span>
+                        <span class="product_unit_price" data-product_price="200" style="width:10%"> &nbsp;{{ $hot->price ?? ''}} </span>
                         <!-- Total Price -->
                         <!-- Controls -->
                         </span>
                         <span style="width:10%">
-                            <a href="{{ route('add.to.cart', $hot->id) }}" class="add_insert_to_cart"
+                            <a href="{{ route('add.to.cart', $hot->id ?? '') }}" class="add_insert_to_cart"
                                 data-product="Refresh Listing">
                                 <img class="add_to_cart_btn"
                                     src="{{ asset('userside') }}/profolio/images/add_to_cart1_1.png" border="0" />
