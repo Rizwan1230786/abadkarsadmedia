@@ -227,7 +227,7 @@ use App\Models\Category;
 
                                             <div class="detail-wrapper-body">
                                                 <div class="listing-title-bar">
-                                                    <h4>(PKR) {{ number_format($properties->price, 2)}}</h4>
+                                                    <h4>(PKR) {{ number_format($properties->price, 0)}}</h4>
                                                     {{-- <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ 1,200 / sq ft</p>
@@ -270,7 +270,7 @@ use App\Models\Category;
                                 </li>
                                 <li>
                                     <span class="font-weight-bold mr-1">Property Price (PKR):</span>
-                                    <span class="det">{{ number_format($properties->price, 2)}}</span>
+                                    <span class="det">{{ number_format($properties->price, 0)}}</span>
                                 </li>
                                 @if ($properties->number_of_floors)
                                 <li>
