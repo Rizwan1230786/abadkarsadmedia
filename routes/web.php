@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\userside\UserRolesController;
+use App\Http\Controllers\userside\roles\RoleController;
 use App\Http\Controllers\userside\tools\ToolsController;
 use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\realestate\AreaController;
@@ -332,6 +333,9 @@ Route::prefix('user')->group(function () {
         Route::get('/add-new-user', [AgencyStaffController::class, 'new_user'])->name('add-new-user');
         Route::get('/invite-user', [AgencyStaffController::class, 'invite_user'])->name('invite-user');
         Route::get('/mange-team', [AgencyStaffController::class, 'mange_team'])->name('mange-team');
+        ////route of user roles and permissions////////
+        Route::post('/create_roles', [RoleController::class, 'store'])->name('create_roles');
+
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
 });
