@@ -39,6 +39,7 @@ use App\Http\Controllers\admin\customerorders\OrderController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
+use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 
 /*
@@ -183,6 +184,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+        ///////route of testimonials///////
+        Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials');
+        Route::get('/create_testimonial', [TestimonialsController::class, 'create'])->name('create_testimonial');
+        Route::post('/testimonial_submit', [TestimonialsController::class, 'submit'])->name('testimonial_submit');
+        Route::post('/delete_testinomial/{id}', [TestimonialsController::class, 'destroy'])->name('delete_testinomial');
+
         ////route of urlslug///////////
         Route::get('/slugs', [UrlslugController::class, 'index'])->name('slugs');
         Route::get('/slugs/create', [UrlslugController::class, 'create'])->name('slugs.form');

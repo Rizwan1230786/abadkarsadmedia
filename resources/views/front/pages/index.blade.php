@@ -1034,72 +1034,20 @@
                 <p>We collect reviews from our customers.</p>
             </div>
             <div class="owl-carousel job_clientSlide">
+                @foreach ($testimonials as $value )
                 <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
+                        {{ $value->detail }}
                     </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt="" /></span>
-                        <h5>Lisa Smith</h5>
-                        <p>New York</p>
+                    <h6 class="mb-0 custom-white">{{ $value->name }}</h6>
+                    <span>{{ $value->designation }}</span>
+                    <div class="detailJC"  style="margin-top: 10px">
+                        <span><img src="{{ asset('assets/images/testimonials/'.$value->image) }}" alt="" /></span>
+                        <h5>{{ $value->name }}</h5>
+                        <p>{{ $value->city_name }}</p>
                     </div>
                 </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="250">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-2.jpg') }}" alt="" /></span>
-                        <h5>Jhon Morris</h5>
-                        <p>Los Angeles</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="350">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-3.jpg') }}" alt="" /></span>
-                        <h5>Mary Deshaw</h5>
-                        <p>Chicago</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-4.jpg') }}" alt="" /></span>
-                        <h5>Gary Steven</h5>
-                        <p>Philadelphia</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-5.jpg') }}" alt="" /></span>
-                        <h5>Cristy Mayer</h5>
-                        <p>San Francisco</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="{{ asset('/front/images/testimonials/ts-6.jpg') }}" alt="" /></span>
-                        <h5>Ichiro Tasaka</h5>
-                        <p>Houston</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
