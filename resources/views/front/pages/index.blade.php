@@ -1036,13 +1036,29 @@
             <div class="owl-carousel job_clientSlide">
                 @foreach ($testimonials as $value )
                 <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
-                    <p>
+                    <i class="fas fa-quote-left" style="font-size:40px; opacity: 0.8;"></i>
+                    <div class="mt-3">
+                        <h3 class="mb-0 h4 fw-semi-bold" style="opacity: 0.7; font-size:18px;">{{ $value->companyname }}</h3>
+                        <ul class="review-rate mb-0 list-unstyled list-inline">
+                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
+                            </li>
+                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
+                            </li>
+                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
+                            </li>
+                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
+                            </li>
+                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="mt-3">
                         {{ $value->detail }}
                     </p>
                     <h6 class="mb-0 custom-white">{{ $value->name }}</h6>
-                    <span>{{ $value->designation }}</span>
+                    <span style="color: #338be7">{{ $value->designation }} of {{ $value->companyname }}</span>
                     <div class="detailJC"  style="margin-top: 10px">
-                        <span><img src="{{ asset('assets/images/testimonials/'.$value->image) }}" alt="" /></span>
+                        <span><a href="{{ asset('assets/images/testimonials/'.$value->image) }}" target="_blanck"><img src="{{ asset('assets/images/testimonials/'.$value->image) }}" alt="" /></a></span>
                         <h5>{{ $value->name }}</h5>
                         <p>{{ $value->city_name }}</p>
                     </div>
