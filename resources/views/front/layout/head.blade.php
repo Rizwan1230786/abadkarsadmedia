@@ -47,6 +47,8 @@
     <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
+    <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
+    {{-- <link href="{{ asset('front/css') }}8966c3ccbe385acd9417e11ccc72a0349925460532.css" rel="stylesheet"> --}}
 
 </head>
 <style>
@@ -61,9 +63,11 @@
     .form.active {
         display: block
     }
-    .form1{
+
+    .form1 {
         display: none;
     }
+
     .form1.active {
         display: block
     }
@@ -150,7 +154,99 @@
         scrollbar-color: rebeccapurple green;
         scrollbar-width: thin;
     }
-    .header-user-menu ul li a:hover{
+
+    .header-user-menu ul li a:hover {
         color: #FF385C;
     }
+
+    @media (max-width: 1366px) .e1055059 {
+        max-width: calc(950px + 20rem);
+        min-width: 72rem;
+    }
+
+    .e1055059 {
+        /* min-width: 140rem;
+        max-width: 140rem; */
+        margin-bottom: 4rem;
+        margin-left: auto;
+        margin-right: auto;
+        /* -webkit-transition: all .25s ease-in; */
+        transition: all .25s ease-in;
+    }
+
+    .dc62c1ea {
+        padding: 0 85px;
+        position: relative;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+    }
+
+ ._9dd6c0c3 {
+        left: 0;
+        height: 2rem;
+        background-image: url('http://www.w3.org/2000/svg' class='svg-icon-sprite' viewBox='0 0 32 32' fill='%23222'%3E%3Cpath d='M24.337 28.65c.8.8.7 2.1-.1 2.8-.8.7-2 .7-2.7 0l-14-14c-.8-.8-.8-2 0-2.8l14-14c.8-.8 2-.8 2.8-.1.8.8.8 2 .1 2.8l-.1.1-12.6 12.5 12.6 12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
+    }
+
+    html[dir] .a871e3e8 {
+        right: 0;
+        height: 2rem;
+        background: url('http://www.w3.org/2000/svg' class='svg-icon-sprite' viewBox='0 0 32 32' fill='%23222'%3E%3Cpath d='M7.55 3.363c-.8-.8-.7-2.1.1-2.8.8-.7 2-.7 2.7 0l14 14c.8.8.8 2 0 2.8l-14 14c-.8.8-2 .8-2.8.1-.8-.8-.8-2-.1-2.8l.1-.1 12.6-12.5-12.6-12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
+    }
+
+    ._9687c3ac {
+        min-height: 100px;
+        color: #fff;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .b93fdef3 {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    ._84f112e7 {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-left: 0.3rem;
+    }
+    .ea29241f {
+    position: relative;
+}
+._2af66cb5 {
+    width: 4rem;
+    height: 4.1rem;
+    /* -o-object-fit: none; */
+    object-fit: none;
+    display: block;
+    border: 0.1rem solid #000;
+    /* -webkit-box-sizing: border-box; */
+    box-sizing: border-box;
+    margin-top: 0.8rem;
+}
+.caruswl-image{
+    border: 1px solid;
+    padding: 10px;
+    width: 140px !important;
+    height: 110px !important;
+}
+
 </style>

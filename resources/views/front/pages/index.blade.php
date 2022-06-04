@@ -419,6 +419,30 @@
         </div>
     </section>
     @endif
+    <section class="testimonials">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Titanium Agencies</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="customers-testimonials" class="owl-carousel">
+                        <!--TESTIMONIAL 1 -->
+                        @foreach ($agency as $value )
+                        <div class="item">
+                            <div class="shadow-effect" style="margin-top: 40px;">
+                                <img class="img-responsive caruswl-image"
+                                    src="{{ asset('assets/images/agency/'.$value->image) }}" alt="" title="{{ $value->name }}">
+
+                            </div>
+                        </div>
+                        @endforeach
+                        <!--END OF TESTIMONIAL 5 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- END SECTION FEATURED PROPERTIES -->
 
     <!-- START SECTION WHY CHOOSE US -->

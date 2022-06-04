@@ -35,11 +35,11 @@
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">ID</th>
-                                    <th class="wd-25p border-bottom-0">image</th>
                                     <th class="wd-15p border-bottom-0">Name</th>
                                     <th class="wd-15p border-bottom-0">CompanyName</th>
                                     <th class="wd-25p border-bottom-0">Designation</th>
-                                    <th class="wd-25p border-bottom-0">Status</th>
+                                    <th class="wd-25p border-bottom-0">image</th>
+                                    {{-- <th class="wd-25p border-bottom-0">Status</th> --}}
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
@@ -51,14 +51,14 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td><img src="{{ asset('assets/images/testimonials/' . $item->image) }}"
-                                                    width="60px" style="border-radius: 10px;"></td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->companyname }}</td>
                                             <td>{{ $item->designation }}</td>
-                                            <td style="text-align: center;"><span
+                                            <td><img src="{{ asset('assets/images/testimonials/' . $item->image) }}"
+                                                width="60px" style="border-radius: 10px;"></td>
+                                            {{-- <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{ $status != '1' ? 'UnPublish' : 'Publish' }}</span>
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <ul class="icons-list">
                                                     <a href="{{ route('admin:create_testimonial', ['id' => $item->id]) }}">

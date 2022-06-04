@@ -43,6 +43,7 @@
                                 <li><a href="{{ route('front.property') }}">Properties List</a></li>
                                 <li><a href="{{ route('front.property') }}">Property Details</a></li>
                                 <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents Listing</a></li>
+                                <li class="no-mgb"><a href="{{ route('front.advertise') }}">Advertise On Abadkar</a></li>
                             </ul>
                             <ul class="nav-right">
                                 <li><a href="#">Agents Details</a></li>

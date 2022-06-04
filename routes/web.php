@@ -217,6 +217,7 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/project', [FrontController::class, 'project'])->name('front.project');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
+Route::get('/advertise', [FrontController::class, 'advertise'])->name('front.advertise');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');

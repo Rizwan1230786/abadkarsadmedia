@@ -2,6 +2,25 @@
 use App\Models\Category;
 ?>
 @extends('userside.layout')
+<style>
+    .icon:hover .popup{
+        opacity: 1;
+        display: block;
+    }
+
+    .popup {
+        width: 300px;
+        left: 60px;
+        background-color: #f9f9f9;
+        padding: 1px 20px;
+        position: absolute;
+        top: 40px;
+        transition: all 0.25s ease;
+        opacity: 0;
+        display: none;
+    }
+
+</style>
 @section('main')
     <div id="maincontent">
         <div class="imz_dialog" id="common_popup" style="display:none">
@@ -20,7 +39,7 @@ use App\Models\Category;
         </div>
 
         <div id="rightcolumn" style="
-        width:100% !important; width: 92%; margin-left:0px !important; " class="rightcolumn_div post_story_margin">
+                width:100% !important; width: 92%; margin-left:0px !important; " class="rightcolumn_div post_story_margin">
 
             <div style="height:30px;margin-bottom:10px; display: block;" id="bc_container">
 
@@ -49,40 +68,40 @@ use App\Models\Category;
                     </div>
                     <div class="" id="a_superhotcredits">
                         <a onclick="I('a_storyadcredits').className='';I('quotastoryaddiv_heading').style.display='none';I('a_superhotcredits').className='selected';
-            I('quotasuperhotdiv_heading').style.display='block';
-            I('a_quotalisting').className='';
-            /*I('a_mgzcredits').className='';*/
-            I('quotadiv_heading').style.display='none';
-            I('a_hotcredits').className='';I('quotahotdiv_heading').style.display='none';
-            I('quotamgzdiv_heading').style.display='none';
-            I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';
-            // I('a_interlisting').className='';
-            //I('quotainterdiv_heading').style.display='none';
-            " href="javascript: void(0);">&nbsp;Super Hot CR <span class="heading_tab_small">(0)</span>&nbsp;</a>
+                    I('quotasuperhotdiv_heading').style.display='block';
+                    I('a_quotalisting').className='';
+                    /*I('a_mgzcredits').className='';*/
+                    I('quotadiv_heading').style.display='none';
+                    I('a_hotcredits').className='';I('quotahotdiv_heading').style.display='none';
+                    I('quotamgzdiv_heading').style.display='none';
+                    I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';
+                    // I('a_interlisting').className='';
+                    //I('quotainterdiv_heading').style.display='none';
+                    " href="javascript: void(0);">&nbsp;Super Hot CR <span class="heading_tab_small">(0)</span>&nbsp;</a>
                     </div>
                     <div class="" id="a_hotcredits">
                         <a onclick="I('a_storyadcredits').className='';I('quotastoryaddiv_heading').style.display='none';I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_quotalisting').className='';/*I('a_mgzcredits').className='';*/I('quotadiv_heading').style.display='none';I('a_hotcredits').className='selected';I('quotahotdiv_heading').style.display='block';/*I('quotamgzdiv_heading').style.display='none';*/I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';/*I('a_interlisting').className='';I('quotainterdiv_heading').style.display='none';*/"
                             href="javascript: void(0);">&nbsp;Hot CR <span class="heading_tab_small">(0)</span>&nbsp;</a>
                     </div>
                     <!-- <div class=""  id="a_interlisting">
-            <a onclick="I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_interlisting').className='selected';I('quotainterdiv_heading').style.display='block';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_hotcredits').className='';/*I('a_mgzcredits').className='';*/I('quotahotdiv_heading').style.display='none';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';/*I('quotamgzdiv_heading').style.display='none';*/" href="javascript: void(0);">&nbsp;International CR <span class="heading_tab_small">()</span>&nbsp;</a>
-        </div> -->
+                    <a onclick="I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_interlisting').className='selected';I('quotainterdiv_heading').style.display='block';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_hotcredits').className='';/*I('a_mgzcredits').className='';*/I('quotahotdiv_heading').style.display='none';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';/*I('quotamgzdiv_heading').style.display='none';*/" href="javascript: void(0);">&nbsp;International CR <span class="heading_tab_small">()</span>&nbsp;</a>
+                </div> -->
                     <!-- <div class="" id="a_mgzcredits">
-            <a onclick="I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_hotcredits').className='';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';I('a_mgzcredits').className='selected';I('quotahotdiv_heading').style.display='none';I('quotamgzdiv_heading').style.display='block';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_interlisting').className='';I('quotainterdiv_heading').style.display='none';" href="javascript: void(0);">&nbsp;Magazine CR <span class="heading_tab_small">(0)</span>&nbsp;</a>
-        </div> -->
+                    <a onclick="I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_hotcredits').className='';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';I('a_mgzcredits').className='selected';I('quotahotdiv_heading').style.display='none';I('quotamgzdiv_heading').style.display='block';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_interlisting').className='';I('quotainterdiv_heading').style.display='none';" href="javascript: void(0);">&nbsp;Magazine CR <span class="heading_tab_small">(0)</span>&nbsp;</a>
+                </div> -->
 
                     <div class="" id="a_storyadcredits" style="display: none">
                         <a onclick="I('a_superhotcredits').className='';
-                    I('quotasuperhotdiv_heading').style.display='none';
-                    I('a_storyadcredits').className='selected';
-                    I('quotastoryaddiv_heading').style.display='block';
-                    I('a_refreshlisting').className='';
-                    I('quotarefreshdiv_heading').style.display='none';
-                    I('a_hotcredits').className='';
-                    I('quotahotdiv_heading').style.display='none';
-                    I('a_quotalisting').className='';
-                    I('quotadiv_heading').style.display='none';" href="javascript: void(0);">&nbsp;Story Ad CR <span
-                                class="heading_tab_small">(0)</span>&nbsp;</a>
+                            I('quotasuperhotdiv_heading').style.display='none';
+                            I('a_storyadcredits').className='selected';
+                            I('quotastoryaddiv_heading').style.display='block';
+                            I('a_refreshlisting').className='';
+                            I('quotarefreshdiv_heading').style.display='none';
+                            I('a_hotcredits').className='';
+                            I('quotahotdiv_heading').style.display='none';
+                            I('a_quotalisting').className='';
+                            I('quotadiv_heading').style.display='none';" href="javascript: void(0);">&nbsp;Story Ad CR
+                            <span class="heading_tab_small">(0)</span>&nbsp;</a>
                     </div>
 
                     <div class="" id="a_refreshlisting">
@@ -95,8 +114,8 @@ use App\Models\Category;
                     </div>
 
                     <!--<div class=""  id="a_marketing_quota">
-            <a onclick="I('a_marketing_quota').className='selected'; I('quotamarketingdiv_heading').style.display='block';  I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_hotcredits').className='';I('a_mgzcredits').className='';I('quotahotdiv_heading').style.display='none';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';I('quotamgzdiv_heading').style.display='none';I('a_interlisting').className='';I('quotainterdiv_heading').style.display='none';" href="javascript: void(0);">Marketing<span class="heading_tab_small"> (0)</span></a>
-        </div> -->
+                    <a onclick="I('a_marketing_quota').className='selected'; I('quotamarketingdiv_heading').style.display='block';  I('a_superhotcredits').className='';I('quotasuperhotdiv_heading').style.display='none';I('a_refreshlisting').className='';I('quotarefreshdiv_heading').style.display='none';I('a_hotcredits').className='';I('a_mgzcredits').className='';I('quotahotdiv_heading').style.display='none';I('a_quotalisting').className='';I('quotadiv_heading').style.display='none';I('quotamgzdiv_heading').style.display='none';I('a_interlisting').className='';I('quotainterdiv_heading').style.display='none';" href="javascript: void(0);">Marketing<span class="heading_tab_small"> (0)</span></a>
+                </div> -->
 
                 </div>
 
@@ -487,12 +506,12 @@ use App\Models\Category;
 
 
                         <!-- <div style="clear:both; padding:10px 3px;">
-                    Zameen OutBurst :
+                            Zameen OutBurst :
 
-                    <span class="cross_icon" style="margin-right:20px;"></span>
-                    Featured Agency :
-                                        <span class="cross_icon"></span>
-                </div>	 -->
+                            <span class="cross_icon" style="margin-right:20px;"></span>
+                            Featured Agency :
+                                                <span class="cross_icon"></span>
+                        </div>	 -->
                     </div>
 
                     <div class="clr">
@@ -623,11 +642,16 @@ use App\Models\Category;
                                                         <td>Not Added</td>
                                                     @endif
                                                     @if (isset($value) && !empty($value->descripition))
-                                                        <td>{{ Str::limit($value->descripition, 20) }}</td>
+                                                        <td class="icon">{{ Str::limit($value->descripition, 20) }}
+                                                            <div class="popup">
+                                                                <p>Popup which contains some crazy cool information!</p>
+                                                            </div>
+                                                        </td>
+
                                                     @else
                                                         <td>Not Added</td>
                                                     @endif
-                                                    <td>{{ number_format($value->price,0) }}</td>
+                                                    <td>{{ number_format($value->price, 0) }}</td>
                                                     <td>abadkar.com</td>
                                                     <td>1</td>
                                                     @if (isset($value) && !empty($value->listed_date))
