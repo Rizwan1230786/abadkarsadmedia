@@ -265,7 +265,7 @@ Route::prefix('city')->group(function () {
 //////user login//////////
 Route::prefix('user')->group(function () {
     Route::get('/signin', [FrontUserController::class, 'index'])->name('signin');
-    Route::post('/submitlogin', [FrontUserController::class, 'submitLogin'])->name('submitLogin');
+    Route::POST('/submitlogin', [FrontUserController::class, 'submitLogin'])->name('submitLogin');
     Route::get('/signup', [FrontUserController::class, 'signup'])->name('signup');
     Route::post('/register', [FrontUserController::class, 'regester'])->name('register');
     Route::get('/auth/google', [FrontUserController::class, 'redirectToGoogle']);

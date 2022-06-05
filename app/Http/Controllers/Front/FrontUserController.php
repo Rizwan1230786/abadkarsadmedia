@@ -8,6 +8,7 @@ use App\Models\Cities;
 use App\Models\Category;
 use App\Models\Projects;
 use App\Models\Property;
+use App\Models\Agency;
 use App\Models\Webpages;
 use App\Models\Customeruser;
 use Illuminate\Http\Request;
@@ -38,8 +39,8 @@ class FrontUserController extends Controller
             $feature = Features::all();
             $city = Cities::all();
             $agents = Agent::all();
-            $agency=Agency::all();
-            $testimonials=Testimonials::all();
+            $agency = Agency::all();
+            $testimonials = Testimonials::all();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
             return view('front.pages.index', get_defined_vars());
@@ -209,7 +210,7 @@ class FrontUserController extends Controller
         }
         return redirect()->back()->with('message', $message);
     }
-    public function inquiry (Request $request)
+    public function inquiry(Request $request)
     {
         $message = "Fill the data in proper way!";
         $data = $request->all();

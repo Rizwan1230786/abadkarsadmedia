@@ -8,6 +8,8 @@
 		<meta content="Spruko Technologies Private Limited" name="author">
 		<meta name="keywords" content="admin panel ui"/>
 		<meta name="csrf-token" content="{{ csrf_token() }}" />
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
         @include('admin.layouts.head')
 	</head>
 
