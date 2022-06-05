@@ -46,8 +46,8 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $agents = Agent::all();
-        $agency=Agency::all();
-        $testimonials=Testimonials::all();
+        $agency = Agency::all();
+        $testimonials = Testimonials::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.index', get_defined_vars());
@@ -108,7 +108,7 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $category = Category::all();
-        $property = Property::where('status', 1)->paginate(4);
+        $property = Property::orderBy('id', 'desc')->where('status', 1)->paginate(4);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());

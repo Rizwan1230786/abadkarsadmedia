@@ -243,7 +243,7 @@
                         @if ($search_property->land_area)
                         <li class="the-icons">
                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                            <span>{{ number_format($properties->land_area, 1) }} {{ $search_property->unit }}</span>
+                            <span>{{ number_format($search_property->land_area, 1) }} {{ $search_property->unit }}</span>
                         </li>
                         @endif
                     </ul>
