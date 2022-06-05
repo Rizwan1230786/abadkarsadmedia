@@ -186,7 +186,34 @@
           }
       });
   </script>
-
+<script>
+    jQuery(document).ready(function($) {
+"use strict";
+$('#customers-testimonials').owlCarousel( {
+		loop: true,
+		center: true,
+		items: 4,
+		margin: 30,
+		autoplay: true,
+		dots:false,
+    nav:true,
+		autoplayTimeout: 5000,
+		smartSpeed: 1000,
+        navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+		responsive: {
+			0: {
+				items: 1
+			},
+			768: {
+				items: 2
+			},
+			1170: {
+				items: 5
+			}
+		}
+	});
+});
+</script>
   <script>
       $(".dropdown-filter").on('click', function() {
 

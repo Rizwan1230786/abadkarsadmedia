@@ -30,5 +30,6 @@
 						@include('admin.layouts.footer')
 		</div><!-- End Page -->
 			@include('admin.layouts.footer-scripts')
+            @include('admin.layouts.templateJquery')
 	</body>
 </html>

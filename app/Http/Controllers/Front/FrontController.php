@@ -22,6 +22,7 @@ use App\Models\Category;
 use App\Models\Customeruser;
 use App\Models\Features;
 use App\Models\PropertyImage;
+use App\Models\Testimonials;
 use App\Models\UrlSlug;
 
 class FrontController extends Controller
@@ -45,9 +46,11 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $agents = Agent::all();
+        $agency=Agency::all();
+        $testimonials=Testimonials::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city', 'feature'));
+        return view('front.pages.index', get_defined_vars());
     }
     public function project()
     {
@@ -65,6 +68,13 @@ class FrontController extends Controller
         $property = Property::where('status', 1)->latest()->take(3)->get();
         return view('front.pages.agent', get_defined_vars());
     }
+    public function advertise()
+    {
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.advertise', get_defined_vars());
+    }
+
     public function agent_detail($id)
     {
         $agents = Agent::where('id', $id)->get();

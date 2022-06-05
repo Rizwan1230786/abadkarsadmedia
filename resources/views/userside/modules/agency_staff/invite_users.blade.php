@@ -1,6 +1,7 @@
 @extends('userside.layout')
 @section('main')
     @include('userside.layouts.agency_staff_sidebar')
+    @if(Auth::user()->roles)
     <div id="rightcolumn" style="
     width:79% " class="rightcolumn_div post_story_margin">
 
@@ -72,5 +73,15 @@
             <div id="data_div"></div>
         </div>
     </div>
+    @else
+    <div id="rightcolumn" style="
+    width:79% " class="rightcolumn_div post_story_margin">
+    <div class="note_msg_box" style="display:block; width:99%;  margin-bottom:15px;height:auto;overflow:auto;" id="div_display_message">
+        <div style="margin-top:9px; margin-left:8px; padding-bottom:10px; display:inline;float:left;width:38px;">
+            <span><img src="{{ asset('userside') }}/profolio/images/critical_pending_icon.svg" style=""></span></div>
+        <div style="display:inline;float:left;width:80%;margin-top:15px; "><span style="color:#000000;font-size:12px;font-weight:bold;margin-top:15px;" id="errDiv">You do not have a right permissions in this module!</span></div>
+    </div>
+    </div>
+    @endif
     </div>
 @endsection

@@ -10,7 +10,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:testimonial') }}" class="btn btn-success"><i class="fe fe-block mr-1"></i> Back </a>
+                <a href="{{ route('admin:testimonials') }}" class="btn btn-success"><i class="fe fe-block mr-1"></i> Back </a>
             </div>
         </div>
     </div>
@@ -33,47 +33,57 @@
                                     <div class="row row-sm">
                                        <div class="col-6 form-group">
                                             <label class="form-label">Name</label>
-                                            <input class="form-control notrequired" placeholder="Title"
+                                            <input class="form-control notrequired" placeholder="Name"
                                                 name="name" value="{{ $data['record']->name ?? '' }}"  type="text">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label class="form-label">CompanyName</label>
                                             <input class="form-control notrequired" placeholder="Title"
-                                                name="companyname" value="{{ $data['record']->company_name ?? '' }}"  type="text">
+                                                name="companyname" value="{{ $data['record']->companyname ?? '' }}"  type="text">
                                         </div>
                                         <div class="col-6 form-group">
                                             <label class="form-label">Designaition</label>
-                                            <input class="form-control notrequired" placeholder="Url Slug"
+                                            <input class="form-control notrequired" placeholder="Designaition"
                                                 name="designation" value="{{ $data['record']->designation ?? '' }}"  type="text">
                                         </div>
-                                        <div class="col-12 form-group">
+                                        <div class="col-6 form-group">
                                             <label class="form-label">Timespending Description</label>
-                                            <textarea class="form-control disc_2 notrequired" name="timespending"
-                                                id="disc_2">{{ $data['record']->timespending ?? '' }}</textarea>
+                                            <textarea class="form-control disc_2 notrequired" name="detail"
+                                                id="disc_2">{{ $data['record']->detail ?? '' }}</textarea>
                                         </div>
-                                        <div class="col-lg-6 col-sm-12 form-group">
+                                        <div class="col-6 form-group ">
+                                            <label class="form-label">Select City</label>
+                                            <select id="cars" class="form-control" name="city_name">
+                                                <option value="">--select--</option>
+                                                @foreach($city as $city)
+                                                <option value="{{$city->name}}" <?php if (($data['record']->city_name ?? '') == $city->name) {
+                                                                                    echo 'selected';
+                                                                                } ?>>{{$city->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12 form-group ">
                                             <label class="form-label">Image</label>
-                                            @php
-                                                if (isset($data['record']->image) && !empty($data['record']->image) && File::exists(public_path(ORIGNAL_IMAGE_PATH_TESTIMONIAL.$data['record']->image))) {
-                                                    $path = BASE_URL . ORIGNAL_IMAGE_PATH_TESTIMONIAL.$data['record']->image;
-                                                } else {
-                                                    $path = NO_IMAGE;
-                                                }
-                                            @endphp
-                                            <input type="file" name="image" class="dropify notrequired"
-                                                data-default-file="{{$path}}" data-height="180" name="image" />
+                                            @if (isset($data['record']->image) && !empty($data['record']->image))
+                                                <input type="file" name="image" class="dropify notrequired"
+                                                    data-default-file="{{ asset('assets/images/testimonials/' . $data['record']->image) }}"
+                                                    data-height="180" />
+                                            @else
+                                                <input type="file" name="image"  class="dropify notrequired"
+                                                    data-default-file="" data-height="180" />
+                                            @endif
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="btn btn-list" style="text-align:center;width:100%">
                                                 <button type="submit" class="btn btn-success user_form submit_button">Save
                                                 </button>
-                                                <button type="button" href="{{ route('admin:testimonial') }}"
+                                                <button type="button" href="{{ route('admin:testimonials') }}"
                                                     class="btn btn-warning">Cancel </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                              
+
                             </form>
                         </div>
                     </div>

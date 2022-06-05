@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\userside\UserRolesController;
+use App\Http\Controllers\userside\roles\RoleController;
 use App\Http\Controllers\userside\tools\ToolsController;
 use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\realestate\AreaController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\admin\customerorders\OrderController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
+use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 
 /*
@@ -182,6 +184,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+        ///////route of testimonials///////
+        Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials');
+        Route::get('/create_testimonial', [TestimonialsController::class, 'create'])->name('create_testimonial');
+        Route::post('/testimonial_submit', [TestimonialsController::class, 'submit'])->name('testimonial_submit');
+        Route::post('/delete_testinomial/{id}', [TestimonialsController::class, 'destroy'])->name('delete_testinomial');
+
         ////route of urlslug///////////
         Route::get('/slugs', [UrlslugController::class, 'index'])->name('slugs');
         Route::get('/slugs/create', [UrlslugController::class, 'create'])->name('slugs.form');
@@ -209,6 +217,7 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/project', [FrontController::class, 'project'])->name('front.project');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
+Route::get('/advertise', [FrontController::class, 'advertise'])->name('front.advertise');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
@@ -333,6 +342,8 @@ Route::prefix('user')->group(function () {
         Route::get('/invite-user', [AgencyStaffController::class, 'invite_user'])->name('invite-user');
         Route::get('/mange-team', [AgencyStaffController::class, 'mange_team'])->name('mange-team');
         ////appointment with user
+        ////route of user roles and permissions////////
+        Route::post('/create_roles', [RoleController::class, 'store'])->name('create_roles');
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
     Route::post('/appointment', [FrontUserController::class, 'appointment'])->name('appointment');

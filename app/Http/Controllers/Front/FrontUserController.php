@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUs\Contact;
 use App\Models\Features;
+use App\Models\Testimonials;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Exception;
@@ -37,9 +38,11 @@ class FrontUserController extends Controller
             $feature = Features::all();
             $city = Cities::all();
             $agents = Agent::all();
+            $agency=Agency::all();
+            $testimonials=Testimonials::all();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-            return view('front.pages.index', compact('property', 'project', 'city', 'agents', 'meta', 'data', 'category', 'flats', 'search_city', 'feature'));
+            return view('front.pages.index', get_defined_vars());
         } else {
             return view('front.pages.customeruser.login');
         }
