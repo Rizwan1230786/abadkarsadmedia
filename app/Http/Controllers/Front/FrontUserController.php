@@ -180,11 +180,59 @@ class FrontUserController extends Controller
         $data = $request->all();
         if (isset($data["email"]) && !empty($data["email"])) {
             Mail::send('front.email.contact_us', ['data' => $data], function ($message) use ($data) {
-                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->to('support@abadkar.com');
                 $message->from($data["email"]);
                 $message->subject('Customer Support');
             });
             $message = "Our support team contact you soon!";
+        } else {
+            $message = "Please provide an email.";
+        }
+        return redirect()->back()->with('message', $message);
+    }
+    public function appointment(Request $request)
+    {
+        $message = "Fill the data in proper way!";
+        $data = $request->all();
+        if (isset($data["email"]) && !empty($data["email"])) {
+            Mail::send('front.email.appointment', ['data' => $data], function ($message) use ($data) {
+                $message->to($data['email']);
+                $message->from($data["user_email"]);
+                $message->subject('Appointment');
+            });
+            $message = "Owner will contact you soon!";
+        } else {
+            $message = "Please provide an email.";
+        }
+        return redirect()->back()->with('message', $message);
+    }
+    public function inquiry (Request $request)
+    {
+        $message = "Fill the data in proper way!";
+        $data = $request->all();
+        if (isset($data["email"]) && !empty($data["email"])) {
+            Mail::send('front.email.inquirey', ['data' => $data], function ($message) use ($data) {
+                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->from($data["email_address"]);
+                $message->subject('Inquirey');
+            });
+            $message = "Agent will contact you soon!";
+        } else {
+            $message = "Please provide an email.";
+        }
+        return redirect()->back()->with('message', $message);
+    }
+    public function agency(Request $request)
+    {
+        $message = "Fill the data in proper way!";
+        $data = $request->all();
+        if (isset($data["email"]) && !empty($data["email"])) {
+            Mail::send('front.email.inquirey', ['data' => $data], function ($message) use ($data) {
+                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->from($data["email_address"]);
+                $message->subject('Inquirey');
+            });
+            $message = "Agency agent will contact you soon!";
         } else {
             $message = "Please provide an email.";
         }

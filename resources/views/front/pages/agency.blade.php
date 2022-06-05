@@ -1,12 +1,12 @@
 @extends('front.layout')
 @section('body')
 
-    <body class="inner-pages agents homepage-4 hd-white">
+<body class="inner-pages agents homepage-4 hd-white">
     @section('main')
-      <!-- START SECTION BLOG -->
-      <section class="blog blog-section portfolio pt-5">
+    <!-- START SECTION BLOG -->
+    <section class="blog blog-section portfolio pt-5">
         <div class="container">
-           <section class="headings-2 pt-0 pb-55">
+            <section class="headings-2 pt-0 pb-55">
                 <div class="pro-wrapper">
                     <div class="detail-wrapper-body">
                         <div class="listing-title-bar">
@@ -20,7 +20,7 @@
             </section>
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-xs-12">
-                   <section class="headings-2 pt-0">
+                    <section class="headings-2 pt-0">
                         <div class="pro-wrapper">
                             <div class="detail-wrapper-body">
                                 <div class="listing-title-bar">
@@ -57,13 +57,15 @@
                                     </div>
                                 </a>
                                 <div class="news-item-text">
-                                    <a href="{{ route('front.agency_detail',$agency->id) }}"><h3>{{ $agency->name }}</h3></a>
+                                    <a href="{{ route('front.agency_detail',$agency->id) }}">
+                                        <h3>{{ $agency->name }}</h3>
+                                    </a>
                                     <div class="the-agents">
                                         <ul class="the-agents-details">
-                                            <li><a href="#">Office:  {{ $agency->office_number }}</a></li>
-                                            <li><a href="#">Mobile:  {{ $agency->mobile_number }}</a></li>
-                                            <li><a href="#">Fax:   {{ $agency->fax_number }}</a></li>
-                                            <li><a href="#">Email:  {{ $agency->email }}</a></li>
+                                            <li><a href="#">Office: {{ $agency->office_number }}</a></li>
+                                            <li><a href="#">Mobile: {{ $agency->mobile_number }}</a></li>
+                                            <li><a href="#">Fax: {{ $agency->fax_number }}</a></li>
+                                            <li><a href="#">Email: {{ $agency->email }}</a></li>
                                         </ul>
                                     </div>
                                     <div class="news-item-bottom">
@@ -77,74 +79,8 @@
                 </div>
                 <aside class="col-lg-4 col-md-12 car">
                     <div class="single widget">
-                        <!-- Start: Schedule a Tour -->
-                        <div class="schedule widget-boxed mt-33 mt-0">
-                            <div class="widget-boxed-header">
-                                <h4><i class="fa fa-calendar pr-3 padd-r-10"></i>Schedule a Tour</h4>
-                            </div>
-                            <div class="widget-boxed-body">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 book">
-                                        <input type="text" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 book2">
-                                        <input type="text" id="reservation-time" class="form-control" readonly="">
-                                    </div>
-                                </div>
-                                <div class="row mrg-top-15 mb-3">
-                                    <div class="col-lg-6 col-md-12 mt-4">
-                                        <label class="mb-4">Adult</label>
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                     <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                         <i class="fa fa-minus"></i>
-                                     </button>
-                                        </span>
-                                            <input type="text" name="quant[1]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
-                                            <span class="input-group-btn">
-                                         <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[1]">
-                                          <i class="fa fa-plus"></i>
-                                         </button>
-                                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 mt-4">
-                                        <label class="mb-4">Children</label>
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                     <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
-                                         <i class="fa fa-minus"></i>
-                                     </button>
-                                        </span>
-                                            <input type="text" name="quant[2]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
-                                            <span class="input-group-btn">
-                                         <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[2]">
-                                          <i class="fa fa-plus"></i>
-                                         </button>
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="payment-method.html" class="btn reservation btn-radius theme-btn full-width mrg-top-10">Submit Request</a>
-                            </div>
-                        </div>
-                        <!-- End: Schedule a Tour -->
                         <!-- end author-verified-badge -->
                         <div class="sidebar">
-                            <div class="widget-boxed mt-33 mt-5">
-                                <div class="sidebar-widget author-widget2">
-                                    <div class="agent-contact-form-sidebar border-0 pt-0">
-                                        <h4>Request Inquiry</h4>
-                                        <form name="contact_form" method="post" action="functions.php">
-                                            <input type="text" id="fname" name="full_name" placeholder="Full Name" required />
-                                            <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number" required />
-                                            <input type="email" id="emailid" name="email_address" placeholder="Email Address" required />
-                                            <textarea placeholder="Message" name="message" required></textarea>
-                                            <input type="submit" name="sendmessage" class="multiple-send-message" value="Submit Request" />
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="main-search-field-2">
                                 <div class="widget-boxed mt-5">
                                     <div class="widget-boxed-header">
@@ -157,7 +93,9 @@
                                                     <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-1.jpg') }}" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
@@ -166,7 +104,9 @@
                                                     <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-2.jpg') }}" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
@@ -175,7 +115,9 @@
                                                     <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-3.jpg') }}" alt=""></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                    <a href="blog-details.html">
+                                                        <h6>Family Home</h6>
+                                                    </a>
                                                     <p>$230,000</p>
                                                 </div>
                                             </div>
@@ -319,7 +261,7 @@
             <nav aria-label="..." class="pt-55">
                 <ul class="pagination disabled">
                     <li class="page-item active">
-                        <li>{!! $agencies->links() !!}</li>
+                    <li>{!! $agencies->links() !!}</li>
                     </li>
                 </ul>
             </nav>

@@ -13,5 +13,7 @@
 		@yield('content')
 		@include('admin.layouts.custom-footer-scripts')
         @include('front.layout.regestertheamjequery')
+        @include('front.layout.toaster')
+
 	</body>
 </html>

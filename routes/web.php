@@ -332,8 +332,12 @@ Route::prefix('user')->group(function () {
         Route::get('/add-new-user', [AgencyStaffController::class, 'new_user'])->name('add-new-user');
         Route::get('/invite-user', [AgencyStaffController::class, 'invite_user'])->name('invite-user');
         Route::get('/mange-team', [AgencyStaffController::class, 'mange_team'])->name('mange-team');
+        ////appointment with user
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
+    Route::post('/appointment', [FrontUserController::class, 'appointment'])->name('appointment');
+    Route::post('/inquiry', [FrontUserController::class, 'inquiry'])->name('inquiry ');
+    Route::post('/agency', [FrontUserController::class, 'agency'])->name('/agency');
 });
 /////end front
 
