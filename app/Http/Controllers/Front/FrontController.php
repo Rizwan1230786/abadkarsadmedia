@@ -306,6 +306,7 @@ class FrontController extends Controller
     }
     public function search_property(Request $request)
     {
+
         $flats = Category::with('cities')->with('url_slugs')->get();
         $property = Property::where('status', 1)->limit(6)->get();
         $project = Projects::all();
@@ -378,7 +379,6 @@ class FrontController extends Controller
     }
     public function redirect_search_property(Request $request)
     {
-
         $category = Category::with('url_slugs')->get();
         $flats = Category::with('cities')->with('url_slugs')->get();
         $property = Property::where('status', 1)->limit(6)->get();

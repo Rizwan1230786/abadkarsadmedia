@@ -27,7 +27,7 @@
                                 <div class="rld-main-search">
                                     <div class="row">
                                         <div class="rld-single-select ml-22">
-                                            <select class="form-control single-select" name="category">
+                                            <select class="form-control single-select cat" name="category">
                                                 <option value="">Property Type</option>
                                                 @foreach ($category as $value)
                                                 <option value="{{ $value->name }}">
@@ -75,7 +75,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                                     <!-- Form Bedrooms -->
-                                                    <div class="form-group beds">
+                                                    <div class="form-group beds bed d-none">
                                                         <div class="form-group categories">
                                                             <select id="country-dd" class="form-control single-select" name="number_of_bedrooms">
                                                                 <option value="">Bedrooms</option>
@@ -94,7 +94,7 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
                                                     <!-- Form Bathrooms -->
-                                                    <div class="form-group bath">
+                                                    <div class="form-group bath bed d-none">
                                                         <div class="form-group categories">
                                                             <select id="country-dd" class="form-control single-select" name="number_of_bathrooms">
                                                                 <option value="">Bathrooms</option>
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     @endif
-                    <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
+                    <!-- <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
                         <div class="input-group border rounded input-group-lg w-auto mr-4">
                             <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
                             <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
@@ -182,7 +182,7 @@
                             <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
                             <a href="properties-full-grid-1.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             @if (isset($search_property) && !empty($search_property))
@@ -584,6 +584,30 @@
                     });
                 }
             });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.cat').on('change', function() {
+            var cat_id = this.value;
+            if (cat_id == "Homes") {
+                $('.bed').removeClass('d-none');
+            } else {
+                $('.bed').addClass('d-none');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.cat2').on('change', function() {
+            var cat_id = this.value;
+            if (cat_id == "Homes") {
+                $('.bed2').removeClass('d-none');
+            } else {
+                $('.bed2').addClass('d-none');
+            }
         });
     });
 </script>

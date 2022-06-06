@@ -1,4 +1,4 @@
-@extends('front.layout')
+@extends('userside.layout2')
 @section('css')
 @include('admin.layouts.select2CssFiles')
 @include('admin.layouts.fancy-uploader-css')
@@ -87,9 +87,9 @@
                                         <label class="form-label">Purpose:<span style="color: red"> *
                                             </span></label>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="radio" name="property_purpose" id="one" value="rent">
+                                            <input type="radio" class="radio" name="property_purpose" id="one" value="for_rent">
                                             <label for="one" class="lable radio_container" style="margin-left: 5px;">For Rent</label>
-                                            <input type="radio" class="radio" name="property_purpose" id="two" value="sale">
+                                            <input type="radio" class="radio" name="property_purpose" id="two" value="for_sale">
                                             <label for="two" class="lable radio_container">For Sale</label>
                                         </div>
                                         @if ($errors->has('property_purpose'))
@@ -171,7 +171,6 @@
                                                 <p style="margin-bottom: 4px;">
                                                     <label for="title">Property Title</label>
                                                     <input type="text" name="title" value="{{ old('title') }}" id="title" placeholder="Enter your property title">
-                                                    <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="hidden" readonly>
                                                 </p>
                                                 @if ($errors->has('title'))
                                                 <div class="error" style="position: absolute; right: 10px;">
@@ -204,7 +203,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb">
-                                                    <label for="price">Front Dimension: (FT)</label>
+                                                    <label for="price">Front Dimension:</label>
                                                     <input style="border-radius: 5px;" type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="front_dim" placeholder="" id="price f1qs3">
                                                 </p>
                                                 @if ($errors->has('front_dim'))
@@ -213,7 +212,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
-                                                    <label for="price">Back Dimension: (FT)</label>
+                                                    <label for="price">Back Dimension:</label>
                                                     <input type="text" value="{{ old('price') }}" class="numonly" oninput="return onlynum()" name="back_dim" placeholder="" id="back_dim">
                                                 </p>
                                                 @if ($errors->has('back_dim'))
@@ -223,7 +222,7 @@
                                             <div class="col-lg-6 col-md-12">
                                                 <p class="no-mb" style="margin-bottom: 4px;">
                                                     <label for="price">Land Area:</label>
-                                                    <input type="text" class="" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
+                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('price') }}" name="land_area" placeholder="" id="price">
                                                 </p>
                                                 @if ($errors->has('land_area'))
                                                 <div class="error">{{ $errors->first('land_area') }}</div>
@@ -268,33 +267,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 col-md-12 no-mb2">
-                                                <p class="no-mb d-none" style="margin-bottom: 4px;">
-                                                    <label for="price">Bedrooms:</label>
-                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_bedrooms') }}" name="number_of_bedrooms" placeholder="Number Of Bedrooms..." id="price">
-                                                </p>
-                                                @if ($errors->has('number_of_bedrooms'))
-                                                <div class="error">{{ $errors->first('number_of_bedrooms') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 no-mb2">
-                                                <p class="no-mb  d-none" style="margin-bottom: 4px;">
-                                                    <label for="price">Bathrooms:</label>
-                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_bathrooms') }}" name="number_of_bathrooms" placeholder="Number Of Bathrooms..." id="price">
-                                                </p>
-                                                @if ($errors->has('number_of_bathrooms'))
-                                                <div class="error">{{ $errors->first('number_of_bathrooms') }}</div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 no-mb2">
-                                                <p class="no-mb  d-none" style="margin-bottom: 4px;">
-                                                    <label for="price">Floors:</label>
-                                                    <input type="text" class="numonly" oninput="return onlynum()" value="{{ old('number_of_floors') }}" name="number_of_floors" placeholder="Number Of Floors..." id="price">
-                                                </p>
-                                                @if ($errors->has('number_of_floors'))
-                                                <div class="error">{{ $errors->first('number_of_floors') }}</div>
-                                                @endif
-                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -304,20 +276,11 @@
                                 <div class="property-form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="file" name="image[]" class="dropify notrequired" data-default-file="" data-height="180" multiple />
+                                            <input type="file" name="image" class="dropify notrequired" data-default-file="" data-height="180" />
                                             @if ($errors->has('image'))
                                             <div class="error">{{ $errors->first('image') }}</div>
                                             @endif
                                         </div>
-                                        <div class="col-lg-12 col-md-12">
-                                                <p class="no-mb" style="margin-bottom: 4px;">
-                                                    <label for="price">Video Link:</label>
-                                                    <input type="text" class="" value="{{ old('video_link') }}" name="video_link" placeholder="Youtube video link..." id="price">
-                                                </p>
-                                                @if ($errors->has('video_link'))
-                                                <div class="error">{{ $errors->first('video_link') }}</div>
-                                                @endif
-                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -388,7 +351,7 @@
                                             <p class="no-mb last">
                                                 <label for="phone">Phone</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="+92" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
+                                                <input type="text" style="border: 1px solid #a9a9a991;height: 48px;" class="numonly form-control" oninput="return onlynum()" value="{{ old('contact') }}" placeholder="Enter Your Phone Number" id="account-phone" name="contact" aria-label="Phone">
                                             </div>
                                             @if ($errors->has('contact'))
                                             <div class="error">{{ $errors->first('contact') }}</div>
@@ -443,6 +406,7 @@
                                         <div class="col-md-12">
                                             <div class="prperty-submit-button">
                                                 <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="submit">Submit Property</button>
+                                                <button class="" style="box-shadow: 4px 4px 9px #0f0e0e70;border-radius:8px" type="button" onclick="window.location='{{ url()->previous() }}'">Back</button>
                                             </div>
                                         </div>
                                     </div>
@@ -592,19 +556,6 @@
     });
 </script>
 <script>
-    $(document).ready(function(){
-        $('.cat').on('change',function(){
-            var cat_id = this.value;
-            if(cat_id == 7){
-                $('.no-mb2').removeClass('d-none');
-                $('.no-mb').removeClass('d-none');
-            }else{
-                  $('.no-mb2').addClass('d-none');
-            }
-        })
-    })
-</script>
-<script>
     $(document).ready(function() {
         $('.cat').on('change', function() {
             var cat_id = this.value;
@@ -640,12 +591,6 @@
             var formToShow = '.form1-' + $(this).data('id');
             $(formToShow).addClass('active');
         });
-    });
-</script>
-<script>
-    $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
-        var page_title = $(this).val();
-        $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
     });
 </script>
 @endsection

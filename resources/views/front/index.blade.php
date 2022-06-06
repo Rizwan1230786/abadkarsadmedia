@@ -38,7 +38,7 @@
                                                 <div class="rld-main-search">
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
-                                                            <select class="form-control single-select cat" name="category1">
+                                                            <select class="form-control single-select" name="category1">
                                                                 <option value="">Property Type</option>
                                                                 @foreach ($category as $value)
                                                                 <option value="{{ $value->name }}">
@@ -85,7 +85,7 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                                                     <!-- Form Bedrooms -->
-                                                                    <div class="form-group beds bed d-none">
+                                                                    <div class="form-group beds">
                                                                         <div class="form-group categories">
                                                                             <select id="country-dd" class="form-control single-select" name="number_of_bedrooms1">
                                                                                 <option value="">Bedrooms</option>
@@ -104,7 +104,7 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
                                                                     <!-- Form Bathrooms -->
-                                                                    <div class="form-group bath bed d-none">
+                                                                    <div class="form-group bath">
                                                                         <div class="form-group categories">
                                                                             <select id="country-dd" class="form-control single-select" name="number_of_bathrooms1">
                                                                                 <option value="">Bathrooms</option>
@@ -165,7 +165,7 @@
                                                 <div class="rld-main-search">
                                                     <div class="row">
                                                         <div class="rld-single-select ml-22">
-                                                            <select class="form-control single-select cat2" name="category">
+                                                            <select class="form-control single-select" name="category">
                                                                 <option value="">Property Type</option>
                                                                 @foreach ($category as $value)
                                                                 <option value="{{ $value->name }}">
@@ -213,8 +213,8 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                                                     <!-- Form Bedrooms -->
-                                                                    <div class="form-group beds bed2 d-none">
-                                                                        <div class="form-group categories ">
+                                                                    <div class="form-group beds">
+                                                                        <div class="form-group categories">
                                                                             <select id="country-dd" class="form-control single-select" name="number_of_bedrooms">
                                                                                 <option value="">Bedrooms</option>
                                                                                 <option value="1">1</option>
@@ -232,7 +232,7 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
                                                                     <!-- Form Bathrooms -->
-                                                                    <div class="form-group bath bed2 d-none">
+                                                                    <div class="form-group bath">
                                                                         <div class="form-group categories">
                                                                             <select id="country-dd" class="form-control single-select" name="number_of_bathrooms">
                                                                                 <option value="">Bathrooms</option>
@@ -419,29 +419,6 @@
         </div>
     </section>
     @endif
-    <section class="testimonials">
-        <div class="container">
-            <div class="sec-title">
-                <h2>Titanium Agencies</h2>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div id="customers-testimonials" class="owl-carousel">
-                        <!--TESTIMONIAL 1 -->
-                        @foreach ($agency as $value )
-                        <div class="item">
-                            <div class="shadow-effect" style="margin-top: 40px;">
-                                <img class="img-responsive caruswl-image" src="{{ asset('assets/images/agency/'.$value->image) }}" alt="" title="{{ $value->name }}">
-
-                            </div>
-                        </div>
-                        @endforeach
-                        <!--END OF TESTIMONIAL 5 -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- END SECTION FEATURED PROPERTIES -->
 
     <!-- START SECTION WHY CHOOSE US -->
@@ -1059,29 +1036,13 @@
             <div class="owl-carousel job_clientSlide">
                 @foreach ($testimonials as $value )
                 <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
-                    <i class="fas fa-quote-left" style="font-size:40px; opacity: 0.8;"></i>
-                    <div class="mt-3">
-                        <h3 class="mb-0 h4 fw-semi-bold" style="opacity: 0.7; font-size:18px;">{{ $value->companyname }}</h3>
-                        <ul class="review-rate mb-0 list-unstyled list-inline">
-                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
-                            </li>
-                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
-                            </li>
-                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
-                            </li>
-                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
-                            </li>
-                            <li class="list-inline-item" style="font-size: 10px;"><i class="fas fa-star text-warning"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="mt-3">
+                    <p>
                         {{ $value->detail }}
                     </p>
                     <h6 class="mb-0 custom-white">{{ $value->name }}</h6>
-                    <span style="color: #338be7">{{ $value->designation }} of {{ $value->companyname }}</span>
-                    <div class="detailJC" style="margin-top: 10px">
-                        <span><a href="{{ asset('assets/images/testimonials/'.$value->image) }}" target="_blanck"><img src="{{ asset('assets/images/testimonials/'.$value->image) }}" alt="" /></a></span>
+                    <span>{{ $value->designation }}</span>
+                    <div class="detailJC"  style="margin-top: 10px">
+                        <span><img src="{{ asset('assets/images/testimonials/'.$value->image) }}" alt="" /></span>
                         <h5>{{ $value->name }}</h5>
                         <p>{{ $value->city_name }}</p>
                     </div>
@@ -1262,30 +1223,6 @@
                             });
                         }
                     });
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('.cat').on('change', function() {
-                    var cat_id = this.value;
-                    if (cat_id == "Homes") {
-                        $('.bed').removeClass('d-none');
-                    } else {
-                        $('.bed').addClass('d-none');
-                    }
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('.cat2').on('change', function() {
-                    var cat_id = this.value;
-                    if (cat_id == "Homes") {
-                        $('.bed2').removeClass('d-none');
-                    } else {
-                        $('.bed2').addClass('d-none');
-                    }
                 });
             });
         </script>

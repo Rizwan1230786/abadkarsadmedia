@@ -451,15 +451,15 @@ if (isset($record->id) && $record->id != 0) {
                     <div class="error">{{ $errors->first('is_expired') }}</div>
                     @endif
                 </div>
-                <div class="divrow">
+                <div class="divrow bed d-none">
                     <label class="label l font_s">Bedrooms: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='number_of_bedrooms' id='area' value="{{ $record->number_of_bedrooms ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of bedrooms..." />
                 </div>
-                <div class="divrow">
+                <div class="divrow bed d-none">
                     <label class="label l font_s">Bathrooms: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='number_of_bathrooms' id='area' value="{{ $record->number_of_bathrooms ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of bathrooms..." />
                 </div>
-                <div class="divrow">
+                <div class="divrow bed d-none">
                     <label class="label l font_s">Floors: <img src="{{ asset('userside') }}/images/common/asteriskred.gif" /> </label>
                     <input type='text' name='number_of_floors' id='area' value="{{ $record->number_of_floors ?? '' }}" style='width:135px;' class='rfield l' placeholder="Number of floors..." />
                 </div>
@@ -768,6 +768,18 @@ if (isset($record->id) && $record->id != 0) {
             $('#form1').removeClass('d-none');
             var formToShow = '.form1-' + $(this).data('id');
             $(formToShow).addClass('active');
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.cat').on('change', function() {
+            var cat_id = this.value;
+            if (cat_id == 7) {
+                $('.bed').removeClass('d-none');
+            } else {
+                $('.bed').addClass('d-none');
+            }
         });
     });
 </script>
