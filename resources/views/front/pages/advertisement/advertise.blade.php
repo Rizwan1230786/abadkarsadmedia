@@ -1,5 +1,16 @@
 @extends('front.layout')
 @section('body')
+    <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
+    <style>
+        .dropdown-container {
+            display: none;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 1;
+            padding-left: 8px;
+        }
+
+    </style>
 
     <body class="inner-pages agents homepage-4 hd-white">
     @section('main')
@@ -45,7 +56,8 @@
                                     exposure on multiple platforms. Here&rsquo;s a look at our main advertising options.
                                 </p>
                                 <div class="mt40 title"> AGENCIES</div>
-                                <p>To date, over 10,000 agencies have signed up with Abadkar.com, and the number is rising by
+                                <p>To date, over 10,000 agencies have signed up with Abadkar.com, and the number is rising
+                                    by
                                     the minute. By providing targeted leads &ndash; from Pakistan and abroad &ndash; to
                                     these agencies through a range of advertising
                                     options, we make sure that they always stay one step ahead of the pack. And with offices
@@ -81,10 +93,10 @@
                                     </svg>
                                 </span>Advertise
                             </div>
-                            <div class="category dropbtn" onclick="myFunction()" data-i="packages-advertising">
+                            <div class="category dropdown-btn" data-i="packages-advertising">
                                 Packages
-                                <i class="fa-solid fa-circle-chevron-down dropbtn"></i>
-
+                                <i class="fa fa-caret-down dropbtn" style="float: right;
+                                margin-top: 5px;"></i>
                             </div>
                             {{-- <div class="category dropbtn" onclick="myFunction()" data-i="packages-advertising">
                                     Packages
@@ -94,27 +106,14 @@
                                         <a href="#contact">Contact</a>
                                     </div>
                                 </div> --}}
-                            <ul class="packages-advertising dropdown-content" id="myDropdown" data-nt="packages-advertising">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-titanium_plus.html">Titanium
-                                        Plus Package</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-middle_titaniums.html">Titanium
-                                        Package</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-middle_business.html">Business
-                                        Package</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-middle_Developer.html">Developer
-                                        Package</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-middle_starter.html">Starter
-                                        &amp; Response Package</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/packages-super_hot.html">Super Hot
-                                        Package</a></li>
-                            </ul>
 
+                                <ul class="packages-advertising dropdown-container" id="myDropdown"
+                                    data-nt="packages-advertising">
+                                    @foreach ($pakges as $value)
+                                        <li class=""><a
+                                                href="/advertise/{{ $value->title }}">{{ $value->title }}</a></li>
+                                    @endforeach
+                                </ul>
                             <div class="zpt-category" data-i="zpt-advertising">
                                 <a href="https://www.Abadkar.com/advertise/Abadkar-property_tour.html"
                                     class=" ">Abadkar Property Tours
@@ -234,27 +233,4 @@
         </div>
         </div>
     </body>
-    <script>
-        < script >
-            /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-                document.getElementById("myDropdown").classList.toggle("show");
-            }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
-    </script>
 @endsection

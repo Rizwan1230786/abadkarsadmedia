@@ -28,6 +28,7 @@ use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\addtocart\ProductController;
 use App\Http\Controllers\admin\customer\CustomerController;
+use App\Http\Controllers\admin\our_pakges\PakgesController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
 use App\Http\Controllers\admin\realestate\PropetyController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\admin\customerorders\OrderController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
+use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 
@@ -204,6 +206,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/product/submit', [ProductController::class, 'submit'])->name('product_submit');
         Route::post('/update_status_product', [ProductController::class, 'update_product_status'])->name('update_status_product');
         Route::post('/delete_product/{id}', [ProductController::class, 'destroy'])->name('delete_product');
+        ////////route off aour pakges//////////
+        Route::get('/pakges', [PakgesController::class, 'index'])->name('pakges');
+        Route::get('/pakges/create', [PakgesController::class, 'create'])->name('pakges.form');
+        Route::post('/pakges/submit', [PakgesController::class, 'submit'])->name('pakges_submit');
+        Route::post('/update_status_pakges', [PakgesController::class, 'update_pakges_status'])->name('update_status_pakges');
+        Route::post('/delete_pakges/{id}', [PakgesController::class, 'destroy'])->name('delete_pakges');
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
@@ -217,12 +225,17 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/project', [FrontController::class, 'project'])->name('front.project');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
-Route::get('/advertise', [FrontController::class, 'advertise'])->name('front.advertise');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
-
+/////////advertisement routes////////
+Route::prefix('advertise')->group(function () {
+    Route::get('/', [FrontAdvertiseController::class, 'advertise'])->name('front.advertise');
+    Route::get('/{id}', [FrontAdvertiseController::class, 'pakges_detail'])->name('front.pakges_detail');
+    /////send mail////////
+    Route::post('/mail-send', [FrontAdvertiseController::class, 'send_mail'])->name('front.mail-send');
+});
 //////user add property//////
 Route::prefix('add-property')->group(function () {
     Route::get('/', [AddProprtyController::class, 'add_property'])->name('front.add-property');
