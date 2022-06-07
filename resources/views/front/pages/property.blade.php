@@ -591,7 +591,7 @@
     $(document).ready(function() {
         $('.cat').on('change', function() {
             var cat_id = this.value;
-            if (cat_id == "Homes") {
+            if (cat_id == 7) {
                 $('.bed').removeClass('d-none');
             } else {
                 $('.bed').addClass('d-none');
@@ -603,7 +603,7 @@
     $(document).ready(function() {
         $('.cat2').on('change', function() {
             var cat_id = this.value;
-            if (cat_id == "Homes") {
+            if (cat_id == 7) {
                 $('.bed2').removeClass('d-none');
             } else {
                 $('.bed2').addClass('d-none');
