@@ -30,7 +30,7 @@
                                             <select class="form-control single-select cat" name="category">
                                                 <option value="">Property Type</option>
                                                 @foreach ($category as $value)
-                                                <option value="{{ $value->name }}">
+                                                <option value="{{ $value->id }}">
                                                     {{ $value->name }}
                                                 </option>
                                                 @endforeach
@@ -68,7 +68,7 @@
                                                         <select id="country-dd" class="form-control single-select" name="type">
                                                             <option value="">Select purpose</option>
                                                             <option value="sale">For Sale</option>
-                                                            <option value="rent">Rent</option>
+                                                            <option value="rent">For Rent</option>
                                                         </select>
                                                     </div>
                                                     <!--/ End Form Property Status -->
