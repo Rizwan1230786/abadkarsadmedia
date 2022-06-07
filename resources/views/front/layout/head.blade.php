@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
-    <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}"> --}}
     {{-- <link href="{{ asset('front/css') }}8966c3ccbe385acd9417e11ccc72a0349925460532.css" rel="stylesheet"> --}}
 
 </head>
