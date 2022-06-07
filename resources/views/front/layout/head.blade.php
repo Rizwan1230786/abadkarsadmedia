@@ -7,12 +7,12 @@
     <title>{{ $meta->meta_title }}</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/front/css/jquery-ui.css') }}">
     <!-- GOOGLE FONTS -->
     @yield('css')
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
     <!-- FONT AWESOME -->
-    <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/front/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/front/css/fontawesome-5-all.min.css') }}">
@@ -47,7 +47,6 @@
     <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
-    <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
     {{-- <link href="{{ asset('front/css') }}8966c3ccbe385acd9417e11ccc72a0349925460532.css" rel="stylesheet"> --}}
 
 </head>
