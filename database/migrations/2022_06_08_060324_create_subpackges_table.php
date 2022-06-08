@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePakgesTable extends Migration
+class CreateSubpackgesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreatePakgesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pakges', function (Blueprint $table) {
+        Schema::create('subpackges', function (Blueprint $table) {
             $table->id();
+            $table->integer('packges_id')->unsigned();
             $table->string('title')->nullable();
+            $table->string('detail')->nullable();
+            $table->string('image')->nullable();
+            $table->string('vedio')->nullable();
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreatePakgesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pakges');
+        Schema::dropIfExists('subpackges');
     }
 }

@@ -1,3 +1,6 @@
+<?php
+use App\Models\Subpackges;
+?>
 @extends('front.layout')
 @section('body')
     <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
@@ -88,141 +91,28 @@
                                 <span class="adv-icon">
                                     <svg class="icon">
                                         <use
-                                            xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise-icon">
+                                            xlink:href="https://www.zameen.com/Abadkar/images/header_common.svg#advertise-icon">
                                         </use>
                                     </svg>
                                 </span>Advertise
                             </div>
-                            <div class="category dropdown-btn" data-i="packages-advertising">
-                                Packages
-                                <i class="fa fa-caret-down dropbtn" style="float: right;
-                                margin-top: 5px;"></i>
-                            </div>
-                            {{-- <div class="category dropbtn" onclick="myFunction()" data-i="packages-advertising">
-                                    Packages
-                                    <div id="myDropdown" class="dropdown-content">
-                                        <a href="#home">Home</a>
-                                        <a href="#about">About</a>
-                                        <a href="#contact">Contact</a>
-                                    </div>
-                                </div> --}}
-
+                            @foreach ($pakges as $value)
+                                <?php
+                                $subPakges = Subpackges::where(['packges_id' => $value->id, 'status' => 1])->get();
+                                ?>
+                                <div class="category <?= isset($subPakges[0]->id) && !empty($subPakges[0]->id) ? 'dropdown-btn' : '' ?>" data-i="packages-advertising">
+                                    {{ $value->title }}
+                                    <i class="<?= isset($subPakges[0]->id) && !empty($subPakges[0]->id) ? 'fa fa-caret-down' : '' ?>" style="float: right;
+                                        margin-top: 5px;"></i>
+                                </div>
                                 <ul class="packages-advertising dropdown-container" id="myDropdown"
                                     data-nt="packages-advertising">
-                                    @foreach ($pakges as $value)
+                                    @foreach ($subPakges as $key => $value)
                                         <li class=""><a
                                                 href="/advertise/{{ $value->title }}">{{ $value->title }}</a></li>
                                     @endforeach
                                 </ul>
-                            <div class="zpt-category" data-i="zpt-advertising">
-                                <a href="https://www.Abadkar.com/advertise/Abadkar-property_tour.html"
-                                    class=" ">Abadkar Property Tours
-                                </a>
-                            </div>
-
-                            <div class="category" data-i="banner-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Banner Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="banner-advertising" data-nt="banner-advertising" style=" display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-leaderboard.html">Leaderboard</a>
-                                </li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-site_wide_banner.html">Site Wide
-                                        Right Banner</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-splash_banner.html">Splash
-                                        Banner</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_home.html">Middle
-                                        Banner Home</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_search.html">Middle
-                                        Banner Search</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_category.html">Middle
-                                        Banner Category</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-wallpaper_takeover.html">Wallpaper
-                                        Takeover</a></li>
-                            </ul>
-                            <div class="category" data-i="property-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Property Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising remove" data-nt="property-advertising" style="display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-premium_listings.html">Premium
-                                        Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-basic_listings.html">Basic
-                                        Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-superhot_property.html">Super
-                                        Hot Property</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-hot_property.html">Hot
-                                        Property</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-refresh_credits.html">Refresh
-                                        Credits</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-agency_logo_within_listings.html">Agency
-                                        Logo within Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-featured_agent.html">Featured
-                                        Agent</a></li>
-                            </ul>
-
-                            <div class="category" data-i="email-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Email Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising" data-nt="email-advertising" style="display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/emails-email_blast.html">E-mail Blast</a>
-                                </li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/emails-promotion_in_newsletter.html">Promotion
-                                        in Newsletter</a></li>
-                            </ul>
-                            <div class="category" data-i="developer-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Developer Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising" data-nt="developer-advertising" style="display:none;">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/developers-hot_developments.html">Hot
-                                        Developments</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/developers-featured_developments.html">Featured
-                                        Development &amp; Pages</a></li>
-                            </ul>
+                            @endforeach
                         </div>
             </div>
             </section>

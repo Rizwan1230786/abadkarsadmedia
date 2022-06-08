@@ -9,11 +9,11 @@
     <!--Page header-->
     <div class="page-header">
         <div class="page-leftheader">
-            <h4 class="page-title mb-0">Our Pakges</h4>
+            <h4 class="page-title mb-0">Banner Advertisement</h4>
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:pakges.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:banners.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>
@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Our Pakges Listing</div>
+                    <div class="card-title">Banner Advertisement Listing</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -56,7 +56,7 @@
                                             </td> --}}
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:pakges.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                    <a href="{{ route('admin:banners.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
 
                                                     {{-- @if($status == 1)
                                                     <a href="javascript:void(0)">
@@ -92,5 +92,5 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
-    <script src="{{ URL::asset('assets/themeJquery/pakges/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/banners_advertisement/jquery.js') }}"></script>
 @endsection
