@@ -47,8 +47,6 @@
     <link rel="stylesheet" href="{{ asset('front') }}/css/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('front') }}/css/owl-carousel.css">
     <link rel="stylesheet" id="color" href="{{ asset('front') }}/css/default.css">
-    {{-- <link href="{{ asset('front/css') }}8966c3ccbe385acd9417e11ccc72a0349925460532.css" rel="stylesheet"> --}}
-
 </head>
 <style>
     .error {
@@ -181,16 +179,16 @@
         height: fit-content;
     }
 
- ._9dd6c0c3 {
+    ._9dd6c0c3 {
         left: 0;
         height: 2rem;
-        background-image: url('http://www.w3.org/2000/svg' class='svg-icon-sprite' viewBox='0 0 32 32' fill='%23222'%3E%3Cpath d='M24.337 28.65c.8.8.7 2.1-.1 2.8-.8.7-2 .7-2.7 0l-14-14c-.8-.8-.8-2 0-2.8l14-14c.8-.8 2-.8 2.8-.1.8.8.8 2 .1 2.8l-.1.1-12.6 12.5 12.6 12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
+        background-image: url('http://www.w3.org/2000/svg'class='svg-icon-sprite'viewBox='0 0 32 32'fill='%23222'%3E%3Cpath d='M24.337 28.65c.8.8.7 2.1-.1 2.8-.8.7-2 .7-2.7 0l-14-14c-.8-.8-.8-2 0-2.8l14-14c.8-.8 2-.8 2.8-.1.8.8.8 2 .1 2.8l-.1.1-12.6 12.5 12.6 12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
     }
 
     html[dir] .a871e3e8 {
         right: 0;
         height: 2rem;
-        background: url('http://www.w3.org/2000/svg' class='svg-icon-sprite' viewBox='0 0 32 32' fill='%23222'%3E%3Cpath d='M7.55 3.363c-.8-.8-.7-2.1.1-2.8.8-.7 2-.7 2.7 0l14 14c.8.8.8 2 0 2.8l-14 14c-.8.8-2 .8-2.8.1-.8-.8-.8-2-.1-2.8l.1-.1 12.6-12.5-12.6-12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
+        background: url('http://www.w3.org/2000/svg'class='svg-icon-sprite'viewBox='0 0 32 32'fill='%23222'%3E%3Cpath d='M7.55 3.363c-.8-.8-.7-2.1.1-2.8.8-.7 2-.7 2.7 0l14 14c.8.8.8 2 0 2.8l-14 14c-.8.8-2 .8-2.8.1-.8-.8-.8-2-.1-2.8l.1-.1 12.6-12.5-12.6-12.7z'/%3E%3C/svg%3E) 50%/contain no-repeat;
     }
 
     ._9687c3ac {
@@ -227,25 +225,144 @@
         align-items: center;
         margin-left: 0.3rem;
     }
-    .ea29241f {
-    position: relative;
-}
-._2af66cb5 {
-    width: 4rem;
-    height: 4.1rem;
-    /* -o-object-fit: none; */
-    object-fit: none;
-    display: block;
-    border: 0.1rem solid #000;
-    /* -webkit-box-sizing: border-box; */
-    box-sizing: border-box;
-    margin-top: 0.8rem;
-}
-.caruswl-image{
-    border: 1px solid;
-    padding: 10px;
-    width: 140px !important;
-    height: 110px !important;
-}
 
+    .ea29241f {
+        position: relative;
+    }
+
+    ._2af66cb5 {
+        width: 4rem;
+        height: 4.1rem;
+        /* -o-object-fit: none; */
+        object-fit: none;
+        display: block;
+        border: 0.1rem solid #000;
+        /* -webkit-box-sizing: border-box; */
+        box-sizing: border-box;
+        margin-top: 0.8rem;
+    }
+
+    .caruswl-image {
+        border: 1px solid;
+        padding: 10px;
+        width: 100px !important;
+        height: 80px !important;
+    }
+    body {
+        background-color: #E0E0E0
+    }
+
+    .mt-100 {
+        margin-top: 150px;
+        margin-left: 200px
+    }
+
+    .card-header {
+        background-color: #9575CD
+    }
+
+    h5 {
+        color: #fff
+    }
+
+    .card-block {
+        margin-top: 10px
+    }
+
+    .mytooltip {
+        display: inline;
+        position: relative;
+        z-index: 999
+    }
+
+    .mytooltip .tooltip-item {
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 500;
+        padding: 0 10px
+    }
+
+    .mytooltip .tooltip-content {
+        position: absolute;
+        z-index: 9999;
+        width: 309px;
+        left: 2%;
+        /* margin: 0 0 20px -180px; */
+        bottom: 100%;
+        text-align: left;
+        font-size: 14px;
+        line-height: 30px;
+        -webkit-box-shadow: -5px -5px 15px rgb(48 54 61 / 20%);
+        box-shadow: -5px -5px 15px rgb(48 54 61 / 20%);
+        background: #2b2b2b;
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+        height: 119px;
+        border-radius: 10px;
+        margin-bottom: 10px
+    }
+
+    .mytooltip .tooltip-content::after {
+        content: '';
+        top: 100%;
+        left: 12%;
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: #2a3035 transparent transparent;
+        border-width: 10px;
+    }
+
+    .mytooltip .tooltip-content img {
+        position: relative;
+        height: 83px;
+        display: block;
+        float: left;
+        margin-right: 1em;
+        margin-left: 10px;
+        margin-top: 30px;
+        border-radius: 10px;
+        width: 82px;
+    }
+
+    .mytooltip .tooltip-item::after {
+        content: '';
+        position: absolute;
+        width: 360px;
+        height: 20px;
+        bottom: 100%;
+        left: 50%;
+        pointer-events: none;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+
+    .mytooltip:hover .tooltip-item::after {
+        pointer-events: auto
+    }
+
+    .mytooltip:hover .tooltip-content {
+        pointer-events: auto;
+        opacity: 0.7;
+        -webkit-transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg);
+        transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg)
+    }
+
+    .mytooltip:hover .tooltip-content2 {
+        opacity: 1;
+        font-size: 18px
+    }
+
+    .mytooltip .tooltip-text {
+        font-size: 14px;
+        line-height: 24px;
+        display: block;
+        padding: 1.31em 1.21em 1.21em 0;
+        color: #fff;
+        margin-top: 20px;
+
+    }
 </style>

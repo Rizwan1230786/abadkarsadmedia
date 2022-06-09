@@ -21,7 +21,10 @@ class FrontAdvertiseController extends Controller
     }
     public function pakges_detail($id){
         $pakges=Pakges::all();
-        $products=Product::all();
+        $products=Product::where('name','Premium Listing')->first();
+        $super_hot=Product::where('name','Super Hot Listing')->first();
+        $hot_property=Product::where('name','Hot Listing')->first();
+        $refresh_listing=Product::where('name','Refresh Listing')->first();
         $detail=Subpackges::where('title',$id)->first();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();

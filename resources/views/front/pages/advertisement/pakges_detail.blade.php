@@ -22,8 +22,8 @@ use App\Models\Subpackges;
 
         .primary-btn-success {
             width: 120;
-            height: 55px;
-            line-height: 55px;
+            height: 47px;
+            line-height: 42px;
             text-align: left;
             margin: 0 auto;
             margin-bottom: 10px;
@@ -214,19 +214,58 @@ use App\Models\Subpackges;
                                             style="margin-bottom: 30px;"><i class="fas fa-envelope"></i> Send Email</button>
                                     </div>
                                 </form>
-                                {{-- <div class="quantity-wrp">
+                                @if(isset($detail->title) && $detail->title=='Premium Listings')
+                                <div class="quantity-wrp">
                                     <ul class="th">
                                         <li class="type">type</li>
                                         <li class="type">price <span>(PKR)</span></li>
                                     </ul>
                                     <ul>
-                                        @foreach ($products as $value)
-                                            <li class="type">{{ $value->name }}</li>
-                                            <li class="type">{{ $value->price }}</li>
-                                        @endforeach
+                                        <li class="type">{{ $products->name }}</li>
+                                        <li class="type">{{ $products->price }}</li>
                                     </ul>
-                                    <button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button>
-                                </div> --}}
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
+                                </div>
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Super Hot Property')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $super_hot->name }}</li>
+                                        <li class="type">{{ $super_hot->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
+                                </div>
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Hot Property')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $hot_property->name }}</li>
+                                        <li class="type">{{ $hot_property->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
+                                </div>
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Refresh Listing')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $refresh_listing->name }}</li>
+                                        <li class="type">{{ $refresh_listing->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
+                                </div>
+                                @endif
                                 @if (isset($detail->vedio) && !empty($detail->vedio))
                                     <div class="adv-glance-video" style="text-align: center">
                                         <iframe width="600" height="400" src="{{ $detail->vedio }}" frameborder="0"

@@ -289,7 +289,7 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12 form-group">
+                                                <div class="col-lg-12 form-group divscrole">
                                                     <label class="form-label">Category</label>
                                                     @foreach ($categories as $category)
                                                         <li class="no-border">

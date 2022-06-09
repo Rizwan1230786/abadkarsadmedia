@@ -82,13 +82,13 @@ class PakgesController extends Controller
                 $type = 'success';
                 $message = "Data updated successfully";
                 if (isset($data['image']) && !empty($data['image'])) {
-                    $oldimage = public_path('assets/images/our_advertisement/pakges' . $post->image);
+                    $oldimage = public_path('assets/images/our_advertisement/pakges/' .$post->image);
                     if (File::exists($oldimage)) {
                         File::delete($oldimage);
                     }
                     $filename = time() . '.' . 'jpg';
                     $data['image'] = $filename;
-                    $destinationPath = public_path('assets/images/our_advertisement/pakges');
+                    $destinationPath = public_path('assets/images/our_advertisement/pakges/');
                     $img = Image::make(request()->image->getRealPath())->encode('jpg', 75);
                     $img->resize(800, 800, function ($constraint) {
                         $constraint->aspectRatio();
