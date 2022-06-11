@@ -36,10 +36,8 @@ class FrontController extends Controller
         $flats = Category::with('cities')->with('url_slugs', function ($q) {
             $q->where('status', 1);
         })->get();
-        $category = Category::with('url_slugs')->get();
-
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->limit(6)->get();
+        $property = Property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -147,7 +145,6 @@ class FrontController extends Controller
         $url_slug = UrlSlug::where('url_slug', '=', $urlslug)->first();
         $get_city_name = Cities::where('id', $url_slug->city_id)->first();
         $city_area = Area::where(['city_id' => $url_slug->city_id, 'status' => 1])->orderBy('id', 'DESC')->get();
-
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
         $city_search_property = Property::where(['city_name' => $url_slug->city_id, 'status' => 1])->get();
 

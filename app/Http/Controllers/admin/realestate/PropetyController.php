@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin\realestate;
 
 use App\Models\Area;
 use App\Models\Agent;
-use App\Models\Image;
 use App\Models\Agency;
 use App\Models\Cities;
 use App\Models\Category;
@@ -16,10 +15,12 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Facilities;
 use App\Models\Property_facilities;
+use App\Models\PropertyImage;
 use App\Models\SubCategory;
 use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 use Imagic;
 
 class PropetyController extends Controller
@@ -50,9 +51,9 @@ class PropetyController extends Controller
         $features_property = DB::table("features_property")->where("features_property.property_id", $updateId)
             ->pluck('features_property.features_id', 'features_property.features_id')
             ->all();
-        $multiimages = DB::table('images')
-            ->join("properties", "images.property_id", "=", "properties.id")
-            ->select('images.id as propertiesimagesid', 'images.property_id', 'properties.id', 'images.image')
+        $multiimages = DB::table('property_images')
+            ->join("properties", "property_images.property_id", "=", "properties.id")
+            ->select('property_images.id as propertiesimagesid', 'property_images.property_id', 'properties.id', 'property_images.image')
             ->get();
 
         if (is_numeric($updateId) && $updateId > 0) {
@@ -77,7 +78,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,
-                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
+                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -101,14 +102,26 @@ class PropetyController extends Controller
                 $imagePath = $request->file('property_map');
                 request()->property_map->move(public_path('assets/images/properties/maps'), $mapname);
             }
-            if ($request->has('images')) {
-                foreach ($request->file('images') as $image) {
-                    $imageName = time() . rand(1, 1000) . '.' . $image->extension();
-                    $image->move(public_path('assets/images/properties/multipleimages/'), $imageName);
-                    Image::create([
-                        'property_id' => $post->id,
-                        'image' => $imageName
-                    ]);
+            // if ($request->has('images')) {
+            //     foreach ($request->file('images') as $image) {
+            //         $imageName = time() . rand(1, 1000) . '.' . $image->extension();
+            //         $image->move(public_path('assets/images/properties/multipleimages/'), $imageName);
+            //         PropertyImage::create([
+            //             'property_id' => $post->id,
+            //             'image' => $imageName
+            //         ]);
+            //     }
+            // }
+            if (isset($request->images) && !empty($request->images)) {
+                foreach ($request->images as $image) {
+                    $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                    $destinationPath = public_path('assets/images/properties/multipleimages/');
+                    $img = Image::make($image->getRealPath())->encode('jpg', 75);
+                    $img->resize(600, 600, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destinationPath . $filename);
+                    // request()->image->move($destinationPath, $data['image']);
+                    PropertyImage::create(['image' => $filename, 'property_id' => $post->id]);
                 }
             }
             if (isset($request->facility) && !empty($request->facility)) {
@@ -164,7 +177,7 @@ class PropetyController extends Controller
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category, "agent_id" => $request->agent_id,
-                "agency_id" => $request->agency_id, "video" => $request->video, "meta_title" => $request->meta_title,
+                "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -179,22 +192,35 @@ class PropetyController extends Controller
             );
             $post->update($data);
             UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
-            Area::where('city_id', $request->city_name)->update(['status' => 1]);
-            if ($request->hasFile('images')) {
-                $images = array();
-                if ($files = $request['images']) {
-                    foreach ($request->images as $file) {
-                        $fileName =  rand(100, 200) . '.' . $file->extension();
-                        $file->move("assets/images/properties/multipleimages/", $fileName);
-                        $images = $fileName;
-                        /*Insert your data*/
-                        Image::where(['id' => $request->property_id])->update([
-                            'property_id' => $post->id,
-                            'image' => $images
-                        ]);
-                    }
-
-                    dd($images);
+            Area::where('id', $request->area_id)->update(['status' => 1]);
+            // if ($request->hasFile('images')) {
+            //     $images = array();
+            //     if ($files = $request['images']) {
+            //         foreach ($request->images as $file) {
+            //             $fileName =  rand(100, 200) . '.' . $file->extension();
+            //             $file->move("assets/images/properties/multipleimages/", $fileName);
+            //             $images = $fileName;
+            //             /*Insert your data*/
+            //             PropertyImage::where(['id' => $request->property_id])->update([
+            //                 'property_id' => $post->id,
+            //                 'image' => $images
+            //             ]);
+            //         }
+            //     }
+            // }
+            if (isset($request->images) && !empty($request->images)) {
+                foreach ($request->images as $image) {
+                    $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                    $destinationPath = public_path('assets/images/properties/multipleimages/');
+                    $img = Image::make($image->getRealPath())->encode('jpg', 75);
+                    $img->resize(600, 600, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($destinationPath . $filename);
+                    // request()->image->move($destinationPath, $data['image']);
+                    PropertyImage::where(['id' => $request->property_id])->update([
+                        'property_id' => $post->id,
+                        'image' => $filename
+                    ]);
                 }
             }
             if (isset($request->facility) && !empty($request->facility)) {

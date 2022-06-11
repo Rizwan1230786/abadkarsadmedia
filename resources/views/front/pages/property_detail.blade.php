@@ -186,7 +186,7 @@ use App\Models\Category;
                 @foreach ($property_images as $image)
                 @if ($image->property_id == $properties->id)
                 <div class="swiper-slide {{ $loop->first ? 'active' : '' }}">
-                    <img src="{{ is_null($image->file) ? asset('assets/images/properties/' . $image->image) : asset('assets/images/properties/' . $image->image) }}" class="d-block" alt="..." style="height: 300px;width: 400px;">
+                    <img src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/' . $image->image) : asset('assets/images/properties/' . $image->image) }}" class="d-block" alt="..." style="height: 300px;width: 400px;">
                 </div>
                 @endif
                 @endforeach
@@ -357,7 +357,7 @@ use App\Models\Category;
                                     <div class="widget-boxed-body">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12 book">
-                                                @if(!empty(Auth::user()->id))
+                                                @if(!empty($user->id))
                                                 <input type="hidden" name="email" id="" value="{{$user->email}}">
                                                 @endif
                                                 <input type="text" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="" name="date">

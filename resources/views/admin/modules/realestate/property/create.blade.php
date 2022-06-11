@@ -274,8 +274,8 @@
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <label class="form-label">Video</label>
-                                                <input class="form-control" placeholder="Enter Video URL" name="video"
-                                                    type="url" value="{{ $data['record']->video ?? '' }}">
+                                                <input class="form-control" placeholder="Enter Video URL" name="video_link"
+                                                    type="url" value="{{ $data['record']->video_link ?? '' }}">
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <h4 class="text-success">Seo Tags</h4>

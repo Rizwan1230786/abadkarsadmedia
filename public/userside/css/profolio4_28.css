@@ -1966,14 +1966,6 @@ body .hk_img_align {
     background-color: rgb(225, 225, 225);
 }
 
-.even:hover {
-    background: #ffffcc;
-}
-
-.odd:hover {
-    background: #ffffcc;
-}
-
 .tr_bg_rows_lite {
     height: 20px;
 }

@@ -1189,7 +1189,6 @@
                                                         </li>
                                                     </ul>
                                                 @endforeach
-
                                                 @if (isset($category) && !empty($category))
                                                     <a style="color: #338be7; margin-left: 38px;"
                                                         href="{{ url('/' . $category->name) }}">view all

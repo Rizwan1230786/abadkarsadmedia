@@ -333,22 +333,22 @@
                     </p>
                     <!-- homes List -->
                     <ul class="homes-list clearfix pb-3">
-                        @if ($search_property->number_of_bedrooms)
+                        @if ($city_search_property->number_of_bedrooms)
                         <li class="the-icons">
                             <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                            <span>{{ $search_property->number_of_bedrooms }}</span>
+                            <span>{{ $city_search_property->number_of_bedrooms }}</span>
                         </li>
                         @endif
-                        @if ($search_property->number_of_bathrooms)
+                        @if ($city_search_property->number_of_bathrooms)
                         <li class="the-icons">
                             <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                            <span>{{ $search_property->number_of_bathrooms }}</span>
+                            <span>{{ $city_search_property->number_of_bathrooms }}</span>
                         </li>
                         @endif
-                        @if ($search_property->land_area)
+                        @if ($city_search_property->land_area)
                         <li class="the-icons">
                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                            <span>{{number_format($properties->land_area, 1) }} {{ $search_property->unit }}</span>
+                            <span>{{number_format($city_search_property->land_area, 1) }} {{ $city_search_property->unit }}</span>
                         </li>
                         @endif
                     </ul>
@@ -416,22 +416,22 @@
                     </p>
                     <!-- homes List -->
                     <ul class="homes-list clearfix pb-3">
-                        @if ($search_property->number_of_bedrooms)
+                        @if ($area_search_propertys->number_of_bedrooms)
                         <li class="the-icons">
                             <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                            <span>{{ $search_property->number_of_bedrooms }}</span>
+                            <span>{{ $area_search_propertys->number_of_bedrooms }}</span>
                         </li>
                         @endif
-                        @if ($search_property->number_of_bathrooms)
+                        @if ($area_search_propertys->number_of_bathrooms)
                         <li class="the-icons">
                             <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                            <span>{{ $search_property->number_of_bathrooms }}</span>
+                            <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
                         </li>
                         @endif
-                        @if ($search_property->land_area)
+                        @if ($area_search_propertys->land_area)
                         <li class="the-icons">
                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                            <span>{{ number_format($search_property->land_area, 1) }} {{ $search_property->unit }}</span>
+                            <span>{{ number_format($area_search_propertys->land_area, 1) }} {{ $area_search_propertys->unit }}</span>
                         </li>
                         @endif
                     </ul>

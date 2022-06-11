@@ -53,8 +53,8 @@
                                             (PKR)
                                             {{ $details['price'] * $details['quantity'] }}</td>
                                         <td class="actions" data-th="">
-                                            <button class="btn-danger btn-sm remove-from-cart"><i
-                                                    class="fa fa-trash-o"></i></button>
+                                            <button class="btn-danger btn-sm remove-from-cart" style="cursor: pointer;">
+                                                <i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
