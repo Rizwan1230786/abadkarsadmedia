@@ -58,7 +58,7 @@
     }
 
     .form.active {
-        display: block
+        display: block;
     }
 
     .form1 {
@@ -66,11 +66,11 @@
     }
 
     .form1.active {
-        display: block
+        display: block;
     }
 
     .btn1 {
-        background: #18ba60 !important
+        background: #18ba60 !important;
     }
 
     .nav {
@@ -263,4 +263,8 @@
         margin-top: 20px;
 
     }
+    .homepage-9 .slick-dots li.slick-active,
+    .homepage-9 .slick-dots li{
+        box-shadow: inset 0 0 0 3px rgb(239 45 45 / 50%);
+   }
 </style>

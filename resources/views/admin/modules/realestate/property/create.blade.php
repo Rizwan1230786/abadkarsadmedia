@@ -445,27 +445,27 @@
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12 form-group divscrole">
                                                     <label class="form-label">Category</label>
-                                                    @foreach ($categories as $category)
+                                                    @foreach ($categories as $value)
                                                         <li class="no-border">
-                                                            @if (!empty($data['record']->category))
+                                                            @if(!empty($data['record']->category))
                                                                 <input type="radio" name="category"
-                                                                    value="{{ $category->id }}" checked
-                                                                    id="{{ $category->id }}">
+                                                                    value="{{ $value->id }}" {{ $data['record']->category == $value->id ? 'checked' : ''}}
+                                                                    id="{{ $value->id }}">
                                                                 <label
-                                                                    for="{{ $category->id }}">{{ $category->name }}</label>
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
                                                             @else
                                                                 <input type="radio" name="category"
-                                                                    value="{{ $category->id }}"
-                                                                    id="{{ $category->id }}">
+                                                                    value="{{ $value->id }}"
+                                                                    id="{{ $value->id }}">
                                                                 <label
-                                                                    for="{{ $category->id }}">{{ $category->name }}</label>
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
                                                             @endif
                                                             <ul style="margin-left: 34px;margin-bottom: 0;">
-                                                                @foreach ($category->subCategory as $sub_cat)
+                                                                @foreach ($value->subCategory as $sub_cat)
                                                                     <li>
-                                                                        @if (!empty($data['record']->category))
+                                                                        @if (!empty($data['record']->subcat_id))
                                                                             <input type="radio" name="subcat_id"
-                                                                                value="{{ $sub_cat->id }}"
+                                                                                value="{{ $sub_cat->id }}" {{ $data['record']->subcat_id == $sub_cat->id ? 'checked' : ''}}
                                                                                 id="{{ $sub_cat->id }}">
                                                                             <label
                                                                                 for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>

@@ -4,332 +4,346 @@
     <body class="homepage-9 hp-6 homepage-1">
     @section('main')
         <!-- STAR HEADER SEARCH -->
-        <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
-            <div class="hero-main">
-                <div class="container" data-aos="zoom-in">
-                    <div class="row">
-                        <div class="col-12-xl">
-                            <div class="hero-inner">
-                                <!-- Welcome Text -->
-                                <div class="welcome-text">
-                                    <h1 class="h1">Find Your Dream
-                                        <br class="d-md-none">
-                                        <span class="typed border-bottom"></span>
-                                    </h1>
-                                    <p class="mt-4">We Have Over Million Properties For You.</p>
-                                </div>
-                                <!--/ End Welcome Text -->
-                                <!-- Search Form -->
-                                <div class="col-12">
-                                    <div class="banner-search-wrap">
-                                        <ul class="nav nav-tabs rld-banner-tab">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Sale</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
-                                            </li>
-                                        </ul>
-                                        @foreach ($property as $properties)
-                                            <form action="{{ url('/search_property') }}" method="get">
-                                        @endforeach
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="tabs_1">
-                                                <div class="rld-main-search">
-                                                    <div class="row">
-                                                        <div class="rld-single-select ml-22">
-                                                            <select class="form-control single-select cat" name="category1">
-                                                                <option value="">Property Type</option>
-                                                                @foreach ($category as $value)
-                                                                    <option value="{{ $value->name }}">
-                                                                        {{ $value->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="rld-single-select ml-22">
-                                                            <select id="country-dd" class="form-control single-select"
-                                                                name="city_name1">
-                                                                <option value="">Select City</option>
-                                                                @foreach ($city as $value)
-                                                                    <option value="{{ $value->slug }}">
-                                                                        {{ $value->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                            @if ($errors->has('city_name'))
-                                                                <div class="error">
-                                                                    {{ $errors->first('city_name') }}</div>
-                                                            @endif
-
-                                                        </div>
-                                                        <div class="rld-single-select">
-                                                            <select id="state-dd" class="form-control single-select"
-                                                                name="area_id">
-                                                                <option value="">Select Area</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="dropdown-filter"><span>Advanced Search</span></div>
-                                                        <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                                            <button class="btn btn-yellow" type="submit">Search
-                                                                Now</button>
-                                                        </div>
-                                                        <div class="explore__form-checkbox-list full-filter">
-                                                            <div class="row">
-                                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
-                                                                    <!-- Form Property Status -->
-                                                                    <div class="form-group categories">
-                                                                        <select id="country-dd"
-                                                                            class="form-control single-select" name="type1">
-                                                                            <option value="">Select purpose</option>
-                                                                            <option value="sale">For Sale</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--/ End Form Property Status -->
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
-                                                                    <!-- Form Bedrooms -->
-                                                                    <div class="form-group beds bed d-none">
-                                                                        <div class="form-group categories">
-                                                                            <select id="country-dd"
-                                                                                class="form-control single-select"
-                                                                                name="number_of_bedrooms1">
-                                                                                <option value="">Bedrooms</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                                <option value="5">5</option>
-                                                                                <option value="6">6</option>
-                                                                                <option value="7">7</option>
-                                                                                <option value="8">8</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/ End Form Bedrooms -->
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
-                                                                    <!-- Form Bathrooms -->
-                                                                    <div class="form-group bath bed d-none">
-                                                                        <div class="form-group categories">
-                                                                            <select id="country-dd"
-                                                                                class="form-control single-select"
-                                                                                name="number_of_bathrooms1">
-                                                                                <option value="">Bathrooms</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                                <option value="5">5</option>
-                                                                                <option value="6">6</option>
-                                                                                <option value="7">7</option>
-                                                                                <option value="8">8</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/ End Form Bathrooms -->
-                                                                </div>
-                                                                <div
-                                                                    class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
-                                                                    <!-- Price Fields -->
-                                                                    <div class="main-search-field-2">
-                                                                        <!-- Area Range -->
-                                                                        <div class="range-slider">
-                                                                            <label>Area Size</label>
-                                                                            <div id="area-range" data-min="0"
-                                                                                data-max="1300" data-unit="sqft"></div>
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
-                                                                        <br>
-                                                                        <!-- Price Range -->
-                                                                        <div class="range-slider">
-                                                                            <label>Price Range</label>
-                                                                            <div id="price-range" data-min="0"
-                                                                                data-max="600000" data-unit="$"></div>
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
-                                                                    <!-- Checkboxes -->
-                                                                    <div class="row">
-                                                                        @foreach ($feature as $value)
-                                                                            <div class="col-lg-6">
-
-                                                                                <input
-                                                                                    style="position:absolute;left: 20px;top: 7px;"
-                                                                                    id="check-2" type="checkbox"
-                                                                                    name="check1">
-                                                                                <label
-                                                                                    for="check-2">{{ $value->name }}</label>
-
-
-
-                                                                            </div>
-                                                                        @endforeach
-
-                                                                    </div>
-                                                                    <!-- Checkboxes / End -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="tabs_2">
-                                                <div class="rld-main-search">
-                                                    <div class="row">
-                                                        <div class="rld-single-select ml-22">
-                                                            <select class="form-control single-select cat2" name="category">
-                                                                <option value="">Property Type</option>
-                                                                @foreach ($category as $value)
-                                                                    <option value="{{ $value->name }}">
-                                                                        {{ $value->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="rld-single-select ml-22">
-                                                            <select id="country-dd" class="form-control single-select"
-                                                                name="city_name">
-                                                                <option value="">Select City</option>
-                                                                @foreach ($city as $value)
-                                                                    <option value="{{ $value->slug }}">
-                                                                        {{ $value->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                            @if ($errors->has('city_name'))
-                                                                <div class="error">
-                                                                    {{ $errors->first('city_name') }}</div>
-                                                            @endif
-
-                                                        </div>
-                                                        <div class="rld-single-select">
-                                                            <select id="state-dd" class="form-control single-select"
-                                                                name="area_id">
-                                                                <option value="">Select Area</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="dropdown-filter"><span>Advanced Search</span></div>
-                                                        <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                                            <button class="btn btn-yellow" type="submit">Search
-                                                                Now</button>
-                                                        </div>
-                                                        <div class="explore__form-checkbox-list full-filter">
-                                                            <div class="row">
-                                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
-                                                                    <!-- Form Property Status -->
-                                                                    <div class="form-group categories">
-                                                                        <select id="country-dd"
-                                                                            class="form-control single-select" name="type">
-                                                                            <option value="">Select purpose</option>
-
-                                                                            <option value="rent">Rent</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--/ End Form Property Status -->
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
-                                                                    <!-- Form Bedrooms -->
-                                                                    <div class="form-group beds bed2 d-none">
-                                                                        <div class="form-group categories ">
-                                                                            <select id="country-dd"
-                                                                                class="form-control single-select"
-                                                                                name="number_of_bedrooms">
-                                                                                <option value="">Bedrooms</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                                <option value="5">5</option>
-                                                                                <option value="6">6</option>
-                                                                                <option value="7">7</option>
-                                                                                <option value="8">8</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/ End Form Bedrooms -->
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
-                                                                    <!-- Form Bathrooms -->
-                                                                    <div class="form-group bath bed2 d-none">
-                                                                        <div class="form-group categories">
-                                                                            <select id="country-dd"
-                                                                                class="form-control single-select"
-                                                                                name="number_of_bathrooms">
-                                                                                <option value="">Bathrooms</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                                <option value="5">5</option>
-                                                                                <option value="6">6</option>
-                                                                                <option value="7">7</option>
-                                                                                <option value="8">8</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/ End Form Bathrooms -->
-                                                                </div>
-                                                                <div
-                                                                    class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
-                                                                    <!-- Price Fields -->
-                                                                    <div class="main-search-field-2">
-                                                                        <!-- Area Range -->
-                                                                        <div class="range-slider">
-                                                                            <label>Area Size</label>
-                                                                            <div id="area-range-rent" data-min="0"
-                                                                                data-max="1300" data-unit="sqft"></div>
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
-                                                                        <br>
-                                                                        <!-- Price Range -->
-                                                                        <div class="range-slider">
-                                                                            <label>Price Range</label>
-                                                                            <div id="price-range-rent" data-min="0"
-                                                                                data-max="600000" data-unit="$"></div>
-                                                                            <div class="clearfix"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
-                                                                    <!-- Checkboxes -->
-                                                                    <div class="row">
-                                                                        @foreach ($feature as $value)
-                                                                            <div class="col-lg-6">
-
-                                                                                <input
-                                                                                    style="position:absolute;left: 20px;top: 7px;"
-                                                                                    id="check-2" type="checkbox"
-                                                                                    name="check">
-                                                                                <label
-                                                                                    for="check-2">{{ $value->name }}</label>
-
-
-
-                                                                            </div>
-                                                                        @endforeach
-
-                                                                    </div>
-                                                                    <!-- Checkboxes / End -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </form>
+        <div id="map-container" class="fullwidth-home-map dark-overlay">
+            <div class="video-container">
+                <video poster="images/bg/video-poster2.png" loop autoplay muted>
+                    <source src="{{ asset('front') }}/video/5.mp4" type="video/mp4">
+                </video>
+            </div>
+            {{-- <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1"
+                data-stellar-background-ratio="0.5"> --}}
+            <div id="hero-area" class="main-search-inner search-2 vid">
+                <div class="hero-main">
+                    <div class="container" data-aos="zoom-in">
+                        <div class="row">
+                            <div class="col-12-xl">
+                                <div class="hero-inner">
+                                    <!-- Welcome Text -->
+                                    <div class="welcome-text">
+                                        <h1 class="h1">Find Your Dream
+                                            <br class="d-md-none">
+                                            <span class="typed border-bottom"></span>
+                                        </h1>
+                                        <p class="mt-4">We Have Over Million Properties For You.</p>
                                     </div>
+                                    <!--/ End Welcome Text -->
+                                    <!-- Search Form -->
+                                    <div class="col-12">
+                                        <div class="banner-search-wrap">
+                                            <ul class="nav nav-tabs rld-banner-tab">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Sale</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
+                                                </li>
+                                            </ul>
+                                            @foreach ($property as $properties)
+                                                <form action="{{ url('/search_property') }}" method="get">
+                                            @endforeach
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="tabs_1">
+                                                    <div class="rld-main-search">
+                                                        <div class="row">
+                                                            <div class="rld-single-select ml-22">
+                                                                <select class="form-control single-select cat"
+                                                                    name="category1">
+                                                                    <option value="">Property Type</option>
+                                                                    @foreach ($category as $value)
+                                                                        <option value="{{ $value->name }}">
+                                                                            {{ $value->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="rld-single-select ml-22">
+                                                                <select id="country-dd" class="form-control single-select"
+                                                                    name="city_name1">
+                                                                    <option value="">Select City</option>
+                                                                    @foreach ($city as $value)
+                                                                        <option value="{{ $value->slug }}">
+                                                                            {{ $value->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('city_name'))
+                                                                    <div class="error">
+                                                                        {{ $errors->first('city_name') }}</div>
+                                                                @endif
+
+                                                            </div>
+                                                            <div class="rld-single-select">
+                                                                <select id="state-dd" class="form-control single-select"
+                                                                    name="area_id">
+                                                                    <option value="">Select Area</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                                            <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                                                <button class="btn btn-yellow" type="submit">Search
+                                                                    Now</button>
+                                                            </div>
+                                                            <div class="explore__form-checkbox-list full-filter">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                                        <!-- Form Property Status -->
+                                                                        <div class="form-group categories">
+                                                                            <select id="country-dd"
+                                                                                class="form-control single-select"
+                                                                                name="type1">
+                                                                                <option value="">Select purpose</option>
+                                                                                <option value="sale">For Sale</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <!--/ End Form Property Status -->
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                                        <!-- Form Bedrooms -->
+                                                                        <div class="form-group beds bed d-none">
+                                                                            <div class="form-group categories">
+                                                                                <select id="country-dd"
+                                                                                    class="form-control single-select"
+                                                                                    name="number_of_bedrooms1">
+                                                                                    <option value="">Bedrooms</option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/ End Form Bedrooms -->
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+                                                                        <!-- Form Bathrooms -->
+                                                                        <div class="form-group bath bed d-none">
+                                                                            <div class="form-group categories">
+                                                                                <select id="country-dd"
+                                                                                    class="form-control single-select"
+                                                                                    name="number_of_bathrooms1">
+                                                                                    <option value="">Bathrooms</option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/ End Form Bathrooms -->
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                        <!-- Price Fields -->
+                                                                        <div class="main-search-field-2">
+                                                                            <!-- Area Range -->
+                                                                            <div class="range-slider">
+                                                                                <label>Area Size</label>
+                                                                                <div id="area-range" data-min="0"
+                                                                                    data-max="1300" data-unit="sqft"></div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <br>
+                                                                            <!-- Price Range -->
+                                                                            <div class="range-slider">
+                                                                                <label>Price Range</label>
+                                                                                <div id="price-range" data-min="0"
+                                                                                    data-max="600000" data-unit="$"></div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
+                                                                        <!-- Checkboxes -->
+                                                                        <div class="row">
+                                                                            @foreach ($feature as $value)
+                                                                                <div class="col-lg-6">
+
+                                                                                    <input
+                                                                                        style="position:absolute;left: 20px;top: 7px;"
+                                                                                        id="check-2" type="checkbox"
+                                                                                        name="check1">
+                                                                                    <label
+                                                                                        for="check-2">{{ $value->name }}</label>
+
+
+
+                                                                                </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                        <!-- Checkboxes / End -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="tabs_2">
+                                                    <div class="rld-main-search">
+                                                        <div class="row">
+                                                            <div class="rld-single-select ml-22">
+                                                                <select class="form-control single-select cat2"
+                                                                    name="category">
+                                                                    <option value="">Property Type</option>
+                                                                    @foreach ($category as $value)
+                                                                        <option value="{{ $value->name }}">
+                                                                            {{ $value->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="rld-single-select ml-22">
+                                                                <select id="country-dd" class="form-control single-select"
+                                                                    name="city_name">
+                                                                    <option value="">Select City</option>
+                                                                    @foreach ($city as $value)
+                                                                        <option value="{{ $value->slug }}">
+                                                                            {{ $value->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('city_name'))
+                                                                    <div class="error">
+                                                                        {{ $errors->first('city_name') }}</div>
+                                                                @endif
+
+                                                            </div>
+                                                            <div class="rld-single-select">
+                                                                <select id="state-dd" class="form-control single-select"
+                                                                    name="area_id">
+                                                                    <option value="">Select Area</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                                            <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                                                <button class="btn btn-yellow" type="submit">Search
+                                                                    Now</button>
+                                                            </div>
+                                                            <div class="explore__form-checkbox-list full-filter">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                                        <!-- Form Property Status -->
+                                                                        <div class="form-group categories">
+                                                                            <select id="country-dd"
+                                                                                class="form-control single-select"
+                                                                                name="type">
+                                                                                <option value="">Select purpose</option>
+
+                                                                                <option value="rent">Rent</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <!--/ End Form Property Status -->
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                                        <!-- Form Bedrooms -->
+                                                                        <div class="form-group beds bed2 d-none">
+                                                                            <div class="form-group categories ">
+                                                                                <select id="country-dd"
+                                                                                    class="form-control single-select"
+                                                                                    name="number_of_bedrooms">
+                                                                                    <option value="">Bedrooms</option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/ End Form Bedrooms -->
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+                                                                        <!-- Form Bathrooms -->
+                                                                        <div class="form-group bath bed2 d-none">
+                                                                            <div class="form-group categories">
+                                                                                <select id="country-dd"
+                                                                                    class="form-control single-select"
+                                                                                    name="number_of_bathrooms">
+                                                                                    <option value="">Bathrooms</option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--/ End Form Bathrooms -->
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                        <!-- Price Fields -->
+                                                                        <div class="main-search-field-2">
+                                                                            <!-- Area Range -->
+                                                                            <div class="range-slider">
+                                                                                <label>Area Size</label>
+                                                                                <div id="area-range-rent" data-min="0"
+                                                                                    data-max="1300" data-unit="sqft"></div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <br>
+                                                                            <!-- Price Range -->
+                                                                            <div class="range-slider">
+                                                                                <label>Price Range</label>
+                                                                                <div id="price-range-rent" data-min="0"
+                                                                                    data-max="600000" data-unit="$"></div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
+                                                                        <!-- Checkboxes -->
+                                                                        <div class="row">
+                                                                            @foreach ($feature as $value)
+                                                                                <div class="col-lg-6">
+
+                                                                                    <input
+                                                                                        style="position:absolute;left: 20px;top: 7px;"
+                                                                                        id="check-2" type="checkbox"
+                                                                                        name="check">
+                                                                                    <label
+                                                                                        for="check-2">{{ $value->name }}</label>
+
+
+
+                                                                                </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                        <!-- Checkboxes / End -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!--/ End Search Form -->
                                 </div>
-                                <!--/ End Search Form -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            {{-- </section> --}}
+        </div>
         <!-- END HEADER SEARCH -->
 
         <!-- START SECTION POPULAR PLACES -->
@@ -477,9 +491,12 @@
                                             <span class="tooltip-content clearfix">
                                                 <img src="{{ asset('assets/images/agency/' . $value->image) }}">
                                                 <span class="tooltip-text">
-                                                    <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $value->office_address }}<br>
-                                                    <i class="fas fa-phone-alt" style="color: white"></i>&nbsp;&nbsp;{{ $value->mobile_number }}<br>
-                                                    <i class="fas fa-phone-alt" style="color: white"></i>&nbsp;&nbsp;{{ $value->office_number }}
+                                                    <i
+                                                        class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $value->office_address }}<br>
+                                                    <i class="fas fa-phone-alt"
+                                                        style="color: white"></i>&nbsp;&nbsp;{{ $value->mobile_number }}<br>
+                                                    <i class="fas fa-phone-alt"
+                                                        style="color: white"></i>&nbsp;&nbsp;{{ $value->office_number }}
                                                 </span>
                                             </span>
                                         </span>

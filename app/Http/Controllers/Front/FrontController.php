@@ -284,7 +284,9 @@ class FrontController extends Controller
         $agent = Agent::all();
         $agencies = Agency::all();
         $images = Project_image::all();
-        return view('front.pages.project_detail', compact('project', 'assign', 'agent', 'agencies', 'images'));
+        $meta = Webpages::Where("page_title", "property")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.project_detail', get_defined_vars());
     }
     public function list($slug)
     {
