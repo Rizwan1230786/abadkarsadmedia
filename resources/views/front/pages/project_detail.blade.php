@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\Category;
+use App\Models\subpages;
+
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -53,8 +59,7 @@
                     <div class="left-side">
                         <!-- Logo -->
                         <div id="logo">
-                            <a href="{{ route('front.index') }}"><img
-                                    src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
+                            <a href="{{ route('front.index') }}"><img src="{{ asset('/front/images/abadkar-logo.png') }}" alt=""></a>
                         </div>
                         <!-- Mobile Navigation -->
                         <div class="mmenu-trigger">
@@ -67,36 +72,59 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
-                                <li><a href="{{ route('front.index') }}">Home</a>
+                                @foreach ($data as $val)
+                                <?php
+                                $subPage = subpages::where(['parent_id' => $val->id, 'is_publish' => 1])
+                                    ->orderBy('page_rank', 'asc')
+                                    ->get(); ?>
+                                <li class="nav-item <?= isset($subPage[0]->id) && !empty($subPage[0]->id) ? 'dropdown' : '' ?>">
+                                    <a href="{{ url($val->url_slug) }}" role="button">
+                                        {{ $val->page_title }}
+                                    </a>
+                                    <ul>
+                                        <?php
+                                        foreach ($subPage as $key => $value) {
+                                        ?>
+                                            <li><a href="/{{ $value->url_slug }}">{{ $value->page_title }} </a></li>
 
-                                </li>
-                                <li><a href="{{ route('front.project') }}">Projects</a>
-                                </li>
-                                <li><a href="{{ route('front.property') }}">Property</a>
-                                </li>
-                                {{-- <li><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="{{ route('front.about') }}">About Us</a></li>
-                                        <li><a href="{{ route('front.faq') }}">Faq</a></li>
-                                        <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
-                                        <li><a href="{{ route('front.error') }}">Page 404</a></li>
-                                        <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
-                                    </ul>
-                                </li> --}}
-                                <li><a href="#">Agents</a>
-                                    <ul>
-                                        <li><a href="{{ route('front.agent') }}">Agent View</a></li>
-                                        <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
+
+                                        <?php }
+                                        ?>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('front.blog') }}">Blog</a>
+                                @endforeach
+                                @guest
+                                <li><a href="{{ url('/add-property') }}">Add Property</a>
+                                    @endguest
+                                    <!-- <li><a href="{{ route('front.index') }}">Home</a>
 
-                                </li>
-                                <li><a href="{{ route('front.contact') }}">Contact</a></li>
+                            </li>
+                            <li><a href="{{ route('front.project') }}">Projects</a>
+                            </li>
+                            <li><a href="{{ route('front.property') }}">Property</a>
+                            </li>
+                            {{-- <li><a href="#">Pages</a>
+                                <ul>
+                                    <li><a href="{{ route('front.about') }}">About Us</a></li>
+                            <li><a href="{{ route('front.faq') }}">Faq</a></li>
+                            <li><a href="{{ route('front.pricing') }}">Pricing Tables</a></li>
+                            <li><a href="{{ route('front.error') }}">Page 404</a></li>
+                            <li><a href="{{ route('front.soon') }}">Coming Soon</a></li>
+                        </ul>
+                        </li> --}}
+                        <li><a href="#">Agents</a>
+                            <ul>
+                                <li><a href="{{ route('front.agent') }}">Agent View</a></li>
+                                <li><a href="{{ route('front.agency') }}">Agencies View</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('front.blog') }}">Blog</a>
+
+                        </li>
+                        <li><a href="{{ route('front.contact') }}">Contact</a></li> -->
                                 <li class="d-none d-xl-none  d-block d-lg-block"><a href="login.html">Login</a></li>
                                 <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
-                                        href="add-property.html" class="button border btn-lg btn-block text-center">Add
+                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add
                                         Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
                             </ul>
                         </nav>
@@ -105,45 +133,46 @@
                     <!-- Left Side Content / End -->
 
                     <!-- Right Side Content / End -->
-                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex" style="width:150px ;">
                         <!-- Header Widget -->
                         <div class="header-widget">
-                            <a href="{{ route('front.contact') }}" class="button border">Contact us<i
-                                    class="fas fa-laptop-house ml-2"></i></a>
+                            <a href="{{ route('front.contact') }}" class="button border">Contact us<i class="fas fa-laptop-house ml-2"></i></a>
                         </div>
                         <!-- Header Widget / End -->
                     </div>
                     <!-- Right Side Content / End -->
 
                     <!-- Right Side Content / End -->
+
+                    <!-- Right Side Content / End -->
+                    @if (Auth::guard('customeruser')->user())
                     <div class="header-user-menu user-menu add">
                         <div class="header-user-name">
-                            <span><img src="{{ asset('/front/images/testimonials/ts-1.jpg') }}" alt=""></span>Hi,
-                            Mary!
+                            <span>
+                                @if (Auth::guard('customeruser')->user()->image != null)
+                                <img src="{{ URL::asset('assets/images/userphoto/' . Auth::guard('customeruser')->user()->image ?? '') }}" alt="">@else<img src="{{ URL::asset('/default/nodp.jpg') }}" alt="">
+                                @endif
+                            </span>Hi, {{ Auth::guard('customeruser')->user()->firstname }}!
                         </div>
                         <ul>
-                            <li><a href="user-profile.html"> Edit profile</a></li>
-                            <li><a href="add-property.html"> Add Property</a></li>
-                            <li><a href="payment-method.html"> Payments</a></li>
-                            <li><a href="change-password.html"> Change Password</a></li>
-                            <li><a href="#">Log Out</a></li>
+                            <li><a href="{{ url('user/dashboard') }}"> Dashboard</a></li>
+                            <li><a href="{{ url('user/logout') }}">Log Out</a></li>
                         </ul>
                     </div>
-                    <!-- Right Side Content / End -->
-
+                    @else
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                         <!-- Header Widget -->
                         <div class="header-widget sign-in">
-                            <div class="show-reg-form modal-open"><a href="#">Sign In</a></div>
+                            <div class="show-reg-form "><a href="{{ url('user/signin') }}">Sign In</a></div>
                         </div>
                         <!-- Header Widget / End -->
                     </div>
+                    @endif
                     <!-- Right Side Content / End -->
 
                     <!-- lang-wrap-->
 
                     <!-- lang-wrap end-->
-
                 </div>
             </div>
             <!-- Header / End -->
@@ -156,16 +185,14 @@
             <div class="swiper-wrapper">
                 @foreach ($images as $image)
                     @if ($image->projects_id == $project->id)
-                        <div class="swiper-slide {{ $loop->first ? 'active' : '' }}">
+                        <div class="swiper-slide {{ $loop->first ? 'active' : '' }}" style="margin-left: 10px;">
                             <img src="{{ is_null($image->file)? asset('assets/images/projects/multipleimages/' . $image->image): asset('assets/images/projects/multipleimages/' . $image->image) }}"
                                 class="d-block w-100" alt="..." height="300" width="350">
                         </div>
                     @endif
                 @endforeach
             </div>
-
             <div class="swiper-pagination swiper-pagination-white"></div>
-
             <div class="swiper-button-next swiper-button-white mr-3"></div>
             <div class="swiper-button-prev swiper-button-white ml-3"></div>
         </div>
@@ -195,7 +222,7 @@
                                         <div class="single detail-wrapper mr-2">
                                             <div class="detail-wrapper-body">
                                                 <div class="listing-title-bar">
-                                                    <h4>{{ $project->currency }} {{ $project->price }}</h4>
+                                                    {{-- <h6>Lower Price(PKR): {{ $project->lowest_price }}</h6> --}}
                                                     {{-- <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <p>$ 1,200 / sq ft</p>
@@ -221,13 +248,18 @@
                             <h5 class="mb-4">Property Details</h5>
                             <ul class="homes-list clearfix">
                                 <li>
-                                    <span class="font-weight-bold mr-1">Property ID:</span>
+                                    <span class="font-weight-bold mr-1">Project ID:</span>
                                     <span class="det">{{ $project->id }}</span>
                                 </li>
+                                <?php
+                                   $category = Category::where(['id' => $project->category])->first();
+                                ?>
+                                @if(!empty($project->category))
                                 <li>
-                                    <span class="font-weight-bold mr-1">Property Type:</span>
-                                    <span class="det">{{ $project->category }}</span>
+                                    <span class="font-weight-bold mr-1">Project Type:</span>
+                                    <span class="det">{{ $category->name }}</span>
                                 </li>
+                                @endif
                                 <li>
                                     <span class="font-weight-bold mr-1">Property status:</span>
                                     <span class="det">For {{ $project->status }}</span>
@@ -289,17 +321,21 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @if (!empty($project->project_map))
                         <div class="floor-plan property wprt-image-video w50 pro">
                             <h5>Property Map</h5>
                             <img alt="image"
-                                src="{{ asset('assets/images/projects/maps/' . $project->project_map) }}">
+                                src="{{ asset('assets/images/projects/maps/' . $project->project_map ?? '')  }}">
                         </div>
+                        @endif
+                        @if (!empty($project->price_plan))
                         <div class="floor-plan property wprt-image-video w50 pro">
                             <h5>Price Plan</h5>
                             <img alt="image"
-                                src="{{ asset('assets/images/projects/price/' . $project->price_plan) }}">
+                                src="{{ asset('assets/images/projects/price/' . $project->price_plan ?? '')  }}">
                         </div>
-                        @if ($project->video)
+                        @endif
+                        @if(!empty($project->video))
                         <div class="property wprt-image-video w50 pro vid-si2">
                             <h5>Project Video</h5>
                             <img alt="image" style="width:100%;" src="{{ asset('assets/images/projects/' . $project->image) }}">

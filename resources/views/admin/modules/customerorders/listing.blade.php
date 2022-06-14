@@ -62,7 +62,7 @@
                                     <td>{{$item->first_name}} {{$item->last_name}}</td>
                                     <td>{{$item->email}}</td>
                                     @if(isset($item->address) && !empty($item->address))
-                                    <td>{{Str::limit($item->address, 10)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="{{ $item->address }}">{{Str::limit($item->address, 10)}}</td>
                                     @else
                                     <td>NO</td>
                                     @endif

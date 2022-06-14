@@ -340,7 +340,7 @@ class PropertyManagementController extends Controller
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {
                         $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
-                        $destinationPath = public_path('assets/images/properties/');
+                        $destinationPath = public_path('assets/images/properties/multipleimages');
                         $img = Image::make($image->getRealPath())->encode('jpg', 75);
                         $img->resize(600, 600, function ($constraint) {
                             $constraint->aspectRatio();

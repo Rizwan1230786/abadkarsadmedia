@@ -95,8 +95,8 @@ class AddProprtyController extends Controller
                     'status' => 1,
                     "url_slug" => $data['url_slug'],
                     'image' => $filename,
-                    'number_of_bedrooms' => $data['number_of_bedrooms'], 
-                    'number_of_bathrooms' => $data['number_of_bathrooms'], 
+                    'number_of_bedrooms' => $data['number_of_bedrooms'],
+                    'number_of_bathrooms' => $data['number_of_bathrooms'],
                     'number_of_floors' => $data['number_of_floors'],
                     'video_link' => $data['video_link'],
                 );
@@ -105,7 +105,7 @@ class AddProprtyController extends Controller
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {
                         $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
-                        $Path = public_path('assets/images/properties/');
+                        $Path = public_path('assets/images/properties/multipleimages/');
                         $img = Image::make($image->getRealPath())->encode('jpg', 100);
                         $img->resize(300, 400, function ($constraint) {
                             $constraint->aspectRatio();

@@ -192,7 +192,7 @@
 $('#customers-testimonials').owlCarousel( {
 		loop: true,
 		center: true,
-		items: 4,
+		items: 7,
 		margin: 30,
 		autoplay: true,
 		dots:false,
@@ -208,7 +208,7 @@ $('#customers-testimonials').owlCarousel( {
 				items: 2
 			},
 			1170: {
-				items: 5
+				items:7
 			}
 		}
 	});

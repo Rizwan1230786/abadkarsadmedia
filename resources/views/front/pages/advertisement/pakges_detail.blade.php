@@ -1,3 +1,6 @@
+<?php
+use App\Models\Subpackges;
+?>
 @extends('front.layout')
 @section('body')
     <link rel="stylesheet" href="{{ asset('front/css/advertise.css') }}">
@@ -15,6 +18,23 @@
             font-size: 22px;
             background-color: #FF385C;
             text-transform: capitalize;
+        }
+
+        .primary-btn-success {
+            width: 120;
+            height: 47px;
+            line-height: 42px;
+            text-align: left;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            margin-top: 70px;
+            border-radius: 10px;
+            font-size: 22px;
+            background-color: #FF385C;
+            border: 1px solid #FF385C;
+            text-transform: capitalize;
+            color: #ffffff;
         }
 
         .primary-btn:hover {
@@ -48,6 +68,7 @@
         .breadcrumb .links a {
             color: #444444;
         }
+
         .dropdown-container {
             display: none;
             font-size: 14px;
@@ -55,7 +76,58 @@
             opacity: 1;
             padding-left: 8px;
         }
+
+        .quantity-wrp {
+            border: 1px solid #ededed;
+            background-color: #ffffff;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .quantity-wrp ul.th {
+            background-color: #FBFBFB;
+        }
+
+        .quantity-wrp ul {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 100%;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body,
+        ul,
+        li,
+        p,
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .quantity-wrp ul li.type {
+            width: 40%;
+        }
+
+        .quantity-wrp ul li {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            text-transform: capitalize;
+            font-weight: 700;
+            padding: 10px 20px;
+        }
+
     </style>
+
     <body class="inner-pages agents homepage-4 hd-white">
     @section('main')
         <div id='page_wrapper' class="page_wrapper">
@@ -88,69 +160,125 @@
                             </div>
                             <div class="adv-glance mt20" id="advertise-maps">
                                 <p>{!! $detail->detail !!}</p>
-                            </div>
-                            <div class="clearfix"></div>
-                            <a href="javascript:void(0);" id="formButton" class="primary-btn">Contact Now To
-                                Advertise</a>
-                            <form id="form1" action="/advertise/mail-send" method="post" class="mb-10 validationForm mailformSubmited">
-                                @csrf
-                                <div class="row" style="padding: 10px">
-                                    <div class="form-group col-6">
-                                        <label for="exampleInputPassword1">Name:</label>
-                                        <input type="text" name="name" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Name">
 
+                                <div class="clearfix"></div>
+                                <a href="javascript:void(0);" id="formButton" class="primary-btn">Contact Now To
+                                    Advertise</a>
+                                <form id="form1" action="/advertise/mail-send" method="post"
+                                    class="mb-10 validationForm mailformSubmited">
+                                    @csrf
+                                    <div class="row" style="padding: 10px">
+                                        <div class="form-group col-6">
+                                            <label for="exampleInputPassword1">Name:</label>
+                                            <input type="text" name="name" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Name">
+
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="exampleInputEmail1">Email address:</label>
+                                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email
+                                                with anyone else.</small>
+                                            @if ($errors->has('email'))
+                                                <div class="error">{{ $errors->first('email') }}</div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="exampleInputPassword1">Mobile:</label>
+                                            <input type="text" id="account-phone" value="+92" name="contact"
+                                                class="numonly form-control" id="exampleInputPassword1" placeholder="">
+                                            @if ($errors->has('contact'))
+                                                <div class="error">{{ $errors->first('contact') }}</div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="exampleInputPassword1">Subject:</label>
+                                            <input type="text" name="subject" value="{{ $detail->title }}"
+                                                class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                            @if ($errors->has('subject'))
+                                                <div class="error">{{ $errors->first('subject') }}</div>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-12 form-group">
+                                            <label class="form-label">Message:</label>
+                                            <textarea class="form-control notrequired" placeholder="Write your message here" name="message" rows="3"
+                                                spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
+                                            @if ($errors->has('message'))
+                                                <div class="error">{{ $errors->first('message') }}</div>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="form-group col-6">
-                                        <label for="exampleInputEmail1">Email address:</label>
-                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Enter email">
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email
-                                            with anyone else.</small>
-                                        @if ($errors->has('email'))
-                                            <div class="error">{{ $errors->first('email') }}</div>
-                                        @endif
+                                    <div class="col-12" style="text-align: center">
+                                        <button type="submit" class="btn btn-primary user_form submit_button button"
+                                            style="margin-bottom: 30px;"><i class="fas fa-envelope"></i> Send Email</button>
                                     </div>
-                                    <div class="form-group col-6">
-                                        <label for="exampleInputPassword1">Mobile:</label>
-                                        <input type="text" id="account-phone" value="+92" name="contact"
-                                            class="numonly form-control" id="exampleInputPassword1" placeholder="">
-                                        @if ($errors->has('contact'))
-                                            <div class="error">{{ $errors->first('contact') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group col-6">
-                                        <label for="exampleInputPassword1">Subject:</label>
-                                        <input type="text" name="subject" value="{{ $detail->title }}"
-                                            class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                        @if ($errors->has('subject'))
-                                            <div class="error">{{ $errors->first('subject') }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="col-lg-12 form-group">
-                                        <label class="form-label">Message:</label>
-                                        <textarea class="form-control notrequired" placeholder="Write your message here" name="message" rows="3"
-                                            spellcheck="false">{{ $data['record']->meta_description ?? '' }}</textarea>
-                                        @if ($errors->has('message'))
-                                            <div class="error">{{ $errors->first('message') }}</div>
-                                        @endif
-                                    </div>
+                                </form>
+                                @if(isset($detail->title) && $detail->title=='Premium Listings')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $products->name }}</li>
+                                        <li class="type">{{ $products->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
                                 </div>
-                                <div class="col-12" style="text-align: center">
-                                    <button type="submit" class="btn btn-primary user_form submit_button button" style="margin-bottom: 30px;"><i
-                                            class="fas fa-envelope"></i> Send Email</button>
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Super Hot Property')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $super_hot->name }}</li>
+                                        <li class="type">{{ $super_hot->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
                                 </div>
-                            </form>
-                            @if (isset($detail->vedio) && !empty($detail->vedio))
-                                <div class="adv-glance-video" style="text-align: center">
-                                    <iframe width="600" height="400" src="{{ $detail->vedio }}" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Hot Property')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $hot_property->name }}</li>
+                                        <li class="type">{{ $hot_property->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
                                 </div>
-                            @endif
-                            <div class="adv-glance-img mt-5" style="text-align: center">
-                                <img src="{{ asset('assets/images/pakges/' . $detail->image) }}"
-                                    alt="packages-titanium_plus">
+                                @endif
+                                @if(isset($detail->title) && $detail->title=='Refresh Listing')
+                                <div class="quantity-wrp">
+                                    <ul class="th">
+                                        <li class="type">type</li>
+                                        <li class="type">price <span>(PKR)</span></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="type">{{ $refresh_listing->name }}</li>
+                                        <li class="type">{{ $refresh_listing->price }}</li>
+                                    </ul>
+                                    <a href="/user/signin"><button class="primary-btn-success" data-width="400" data-role="popup">BUY NOW</button></a>
+                                </div>
+                                @endif
+                                @if (isset($detail->vedio) && !empty($detail->vedio))
+                                    <div class="adv-glance-video" style="text-align: center">
+                                        <iframe width="600" height="400" src="{{ $detail->vedio }}" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                                @if (isset($detail->image) && !empty($detail->image))
+                                <div class="adv-glance-img mt-5" style="text-align: center">
+                                    <img src="{{ asset('assets/images/our_advertisement/pakges/' . $detail->image) }}"
+                                        alt="packages-titanium_plus">
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </section>
@@ -167,135 +295,25 @@
                                     </svg>
                                 </span>Advertise
                             </div>
-                            <div class="category dropdown-btn" data-i="packages-advertising">
-                                Packages
-                                <i class="fa fa-caret-down dropbtn" style="float: right;
-                                margin-top: 5px;"></i>
-                            </div>
-                            {{-- <div class="category dropbtn" onclick="myFunction()" data-i="packages-advertising">
-                                    Packages
-                                    <div id="myDropdown" class="dropdown-content">
-                                        <a href="#home">Home</a>
-                                        <a href="#about">About</a>
-                                        <a href="#contact">Contact</a>
-                                    </div>
-                                </div> --}}
-                            <ul class="packages-advertising dropdown-container" id="myDropdown"
-                                data-nt="packages-advertising">
-                                @foreach ($pakges as $value)
-                                    <li class=""><a
-                                            href="/advertise/{{ $value->title }}">{{ $value->title }}</a></li>
-                                @endforeach
-                            </ul>
-                            <div class="zpt-category" data-i="zpt-advertising">
-                                <a href="https://www.Abadkar.com/advertise/Abadkar-property_tour.html"
-                                    class=" ">Abadkar Property Tours
-                                </a>
-                            </div>
-
-                            <div class="category" data-i="banner-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Banner Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="banner-advertising" data-nt="banner-advertising" style=" display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-leaderboard.html">Leaderboard</a>
-                                </li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-site_wide_banner.html">Site Wide
-                                        Right Banner</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-splash_banner.html">Splash
-                                        Banner</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_home.html">Middle
-                                        Banner Home</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_search.html">Middle
-                                        Banner Search</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-middle_banner_category.html">Middle
-                                        Banner Category</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/banners-wallpaper_takeover.html">Wallpaper
-                                        Takeover</a></li>
-                            </ul>
-                            <div class="category" data-i="property-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Property Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising remove" data-nt="property-advertising" style="display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-premium_listings.html">Premium
-                                        Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-basic_listings.html">Basic
-                                        Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-superhot_property.html">Super
-                                        Hot Property</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-hot_property.html">Hot
-                                        Property</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-refresh_credits.html">Refresh
-                                        Credits</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-agency_logo_within_listings.html">Agency
-                                        Logo within Listings</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/listings-featured_agent.html">Featured
-                                        Agent</a></li>
-                            </ul>
-
-                            <div class="category" data-i="email-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Email Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising" data-nt="email-advertising" style="display:none; ">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/emails-email_blast.html">E-mail Blast</a>
-                                </li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/emails-promotion_in_newsletter.html">Promotion
-                                        in Newsletter</a></li>
-                            </ul>
-                            <div class="category" data-i="developer-advertising"
-                                data-svg_down="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow"
-                                data-svg_up="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_uparrow">
-                                Developer Advertising
-                                <svg class="icon">
-                                    <use
-                                        xlink:href="https://www.Abadkar.com/Abadkar/images/header_common.svg#advertise_downarrow">
-                                    </use>
-                                </svg>
-                            </div>
-                            <ul class="property-advertising" data-nt="developer-advertising" style="display:none;">
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/developers-hot_developments.html">Hot
-                                        Developments</a></li>
-                                <li class=" "><a
-                                        href="https://www.Abadkar.com/advertise/developers-featured_developments.html">Featured
-                                        Development &amp; Pages</a></li>
-                            </ul>
+                            @foreach ($pakges as $value)
+                                <?php
+                                $subPakges = Subpackges::where(['packges_id' => $value->id, 'status' => 1])->get();
+                                ?>
+                                <div class="category <?= isset($subPakges[0]->id) && !empty($subPakges[0]->id) ? 'dropdown-btn' : '' ?>"
+                                    data-i="packages-advertising">
+                                    {{ $value->title }}
+                                    <i class="<?= isset($subPakges[0]->id) && !empty($subPakges[0]->id) ? 'fa fa-caret-down' : '' ?>"
+                                        style="float: right;
+                                                                margin-top: 5px;"></i>
+                                </div>
+                                <ul class="packages-advertising dropdown-container" id="myDropdown"
+                                    data-nt="packages-advertising">
+                                    @foreach ($subPakges as $key => $value)
+                                        <li class=""><a
+                                                href="/advertise/{{ $value->title }}">{{ $value->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endforeach
                         </div>
             </div>
             </section>
@@ -350,5 +368,5 @@
     <script src="{{ URL::asset('front/js/Tellprism.js') }}"></script>
     <script src="{{ URL::asset('front/js/intlTelInput.js') }}"></script>
     <script src="{{ URL::asset('front/js/Tellinput.js') }}"></script>
-    <script src="{{ URL::asset('assets/themeJquery/pakges/jquery.js') }}"></script>
+    <script src="{{ URL::asset('assets/themeJquery/our_advertisement/pakges/jquery.js') }}"></script>
 @endsection

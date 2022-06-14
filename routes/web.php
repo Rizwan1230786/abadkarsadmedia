@@ -43,6 +43,7 @@ use App\Http\Controllers\userside\advertise\AdvertiseController;
 use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
+use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -212,6 +213,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/pakges/submit', [PakgesController::class, 'submit'])->name('pakges_submit');
         Route::post('/update_status_pakges', [PakgesController::class, 'update_pakges_status'])->name('update_status_pakges');
         Route::post('/delete_pakges/{id}', [PakgesController::class, 'destroy'])->name('delete_pakges');
+        ///////route of sub pakges//////////
+        Route::get('/subpakges', [PakgesController::class, 'subpakgeslisting'])->name('subpakges');
+        Route::get('/createsubpakges', [PakgesController::class, 'subpakges_create'])->name('createsubpakges.form');
+        Route::post('/submitsubpakges', [PakgesController::class, 'submit_subpakges'])->name('submitsubpakges');
+        Route::post('/update_status_subpakges', [PakgesController::class, 'update_status_subpakges'])->name('update_status_subpakges');
+        Route::post('/delete_subpakges/{id}', [PakgesController::class, 'subpakges_destroy'])->name('delete_subpakges');
+        /////route of banner advertisement controler//////
+        Route::get('/banners', [BannerAdvertisementController::class, 'index'])->name('banners');
+        Route::get('/banners/create', [BannerAdvertisementController::class, 'create'])->name('banners.form');
+        Route::post('/banners/submit', [BannerAdvertisementController::class, 'submit'])->name('banners_submit');
+        Route::post('/update_status_banners', [BannerAdvertisementController::class, 'update_banners_status'])->name('update_status_banners');
+        Route::post('/delete_banners/{id}', [BannerAdvertisementController::class, 'destroy'])->name('delete_banners');
+
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
@@ -327,6 +341,10 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
         Route::get('/change-password', [UserProfileController::class, 'change_password'])->name('change-password');
         Route::post('/update-password', [UserProfileController::class, 'update_password'])->name('update-password');
+        Route::get('/agency-profile', [UserProfileController::class, 'agency_profile'])->name('agency-profile');
+        Route::post('/submit_agency_profile', [UserProfileController::class, 'submit_agency_profile'])->name('submit_agency_profile');
+
+
         ////userroles/////////
         Route::get('/user-roles', [UserRolesController::class, 'index'])->name('user-roles');
 

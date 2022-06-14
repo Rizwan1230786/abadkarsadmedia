@@ -54,11 +54,22 @@
                                             </div>
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Type</label>
-                                                <input type="radio" id="html" name="type" value="Sale">
-                                                <label for="html">Sale</label>
-                                                <input type="radio" id="css" name="type" value="Rent">
-                                                <label for="css">Rent</label>
-
+                                                @if (isset($data['record']->type) && $data['record']->type == 'sale')
+                                                    <input type="radio" id="html" checked name="type"
+                                                        value="{{ $data['record']->type ?? '' }}">
+                                                    <label for="html">Sale</label>
+                                                @else
+                                                    <input type="radio" id="html" name="type" value="sale">
+                                                    <label for="html">Sale</label>
+                                                @endif
+                                                @if (isset($data['record']->type) && $data['record']->type == 'rent')
+                                                    <input type="radio" id="css" checked name="type"
+                                                        value="{{ $data['record']->type ?? '' }}">
+                                                    <label for="css">Rent</label>
+                                                @else
+                                                    <input type="radio" id="css" name="type" value="rent">
+                                                    <label for="css">Rent</label>
+                                                @endif
                                                 {{-- <select id="cars" class="form-control" name="type">
                                                     <option value="rent">Rent</option>
                                                     <option value="sale">Sale</option>
@@ -71,8 +82,7 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="ckeditor form-control disc_2 notrequired" name="content"
-                                                    id="disc_2">{{ $data['record']->content ?? '' }}</textarea>
+                                                <textarea class="ckeditor form-control disc_2 notrequired" name="content" id="disc_2">{{ $data['record']->content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <label class="form-label">Image</label>
@@ -103,14 +113,11 @@
                                                     @endforeach
                                                 @endif
                                             </div>
-
-
-
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Property Location</label>
                                                 <input class="form-control notrequired" placeholder="Property Location"
-                                                    name="location"
-                                                    value="{{ $data['record']->property_location ?? '' }}" type="text">
+                                                    name="location" value="{{ $data['record']->location ?? '' }}"
+                                                    type="text">
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 form-group">
@@ -158,8 +165,8 @@
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Area size</label>
-                                                    <input class="form-control notrequired" placeholder="" name="area_size"
-                                                        value="{{ $data['record']->area_size ?? '' }}" type="number">
+                                                    <input class="form-control notrequired" placeholder="" name="land_area"
+                                                        value="{{ $data['record']->land_area ?? '' }}" type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Unit:</label>
@@ -190,13 +197,13 @@
                                                         <select id="cars" class="form-control" name="currency">
                                                             <option value="{{ $data['record']->currency }}">
                                                                 {{ $data['record']->currency }}</option>
-                                                            <option value="Rs">PKR</option>
-                                                            <option value="$">USA</option>
+                                                            <option value="PKR">PKR</option>
+                                                            <option value="USA">USA</option>
                                                         </select>
                                                     @else
                                                         <select id="cars" required class="form-control" name="currency">
-                                                            <option value="Rs">PKR</option>
-                                                            <option value="$">USA</option>
+                                                            <option value="PKR">PKR</option>
+                                                            <option value="USA">USA</option>
                                                         </select>
                                                     @endif
                                                 </div>
@@ -267,8 +274,8 @@
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <label class="form-label">Video</label>
-                                                <input class="form-control" placeholder="Enter Video URL" name="video"
-                                                    type="url" value="{{ $data['record']->video ?? '' }}">
+                                                <input class="form-control" placeholder="Enter Video URL" name="video_link"
+                                                    type="url" value="{{ $data['record']->video_link ?? '' }}">
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <h4 class="text-success">Seo Tags</h4>
@@ -301,89 +308,100 @@
                                             </div>
 
 
-                                         {{-- Rent details --}}
+                                            {{-- Rent details --}}
                                             <div class="Rent msg"
-                                            style="background-color: #d9edf7;padding-top: 10px;padding-bottom: 2px;padding-left: 10px;">
-                                            <h6>RENTAL PRICE DETAILS</h6>
-                                        </div>
-                                        <p class="Rent msg form-label mt-2 padding">Minimum Contract Period:</p>
-                                        <div class="Rent msg" style="display: flex;" >
-                                            @if (isset($data['record']->rental_contact_period_length) && !empty($data['record']->rental_contact_period_length))
-                                            <select id="cars" class=" form-control"  name="rental_contact_period_length" style="margin-right: 10px">
-                                                <option value="{{ $data['record']->rental_contact_period_length }}">  {{ $data['record']->rental_contact_period_length }}</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                            @else
-                                            <select id="cars" class=" form-control"  name="rental_contact_period_length" style="margin-right: 10px">
-                                                <option value="">Please Select</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                            @endif
-                                            @if (isset($data['record']->rental_contact_period) && !empty($data['record']->rental_contact_period))
-                                            <select id="cars" class="form-control"  name="rental_contact_period">
-                                                <option value="{{ $data['record']->rental_contact_period }}">  {{ $data['record']->rental_contact_period }}</option>
-                                                <option value="year">Year</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                            @else
-                                            <select id="cars" class="form-control"  name="rental_contact_period">
-                                                <option value="">Please Select</option>
-                                                <option value="year">Year</option>
-                                                <option value="month">Month</option>
-                                            </select>
-                                            @endif
-                                    </div>
-                                    <div class="Rent msg form-group mb-3 col-12 padding">
-                                        <label for="price" class="form-label">Monthly Rent: </label>
-                                        <input class="form-control notrequired" placeholder="" name="monthly_rent"
-                                            value="{{ $data['record']->monthly_rent ?? '' }}" type="number">
-                                    </div>
-                                    <p class="Rent msg form-label mt-2 padding">Security Deposit</p>
-                                    <div class="Rent msg form-group padding d-flex">
-                                        <input class="Rent msg form-control notrequired" placeholder="" name="security_deposit" style="width: 35%"
-                                            value="{{ $data['record']->security_deposit ?? '' }}" type="text">
+                                                style="background-color: #d9edf7;padding-top: 10px;padding-bottom: 2px;padding-left: 10px;">
+                                                <h6>RENTAL PRICE DETAILS</h6>
+                                            </div>
+                                            <p class="Rent msg form-label mt-2 padding">Minimum Contract Period:</p>
+                                            <div class="Rent msg" style="display: flex;">
+                                                @if (isset($data['record']->rental_contact_period_length) && !empty($data['record']->rental_contact_period_length))
+                                                    <select id="cars" class=" form-control"
+                                                        name="rental_contact_period_length" style="margin-right: 10px">
+                                                        <option
+                                                            value="{{ $data['record']->rental_contact_period_length }}">
+                                                            {{ $data['record']->rental_contact_period_length }}</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                @else
+                                                    <select id="cars" class=" form-control"
+                                                        name="rental_contact_period_length" style="margin-right: 10px">
+                                                        <option value="">Please Select</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
+                                                @endif
+                                                @if (isset($data['record']->rental_contact_period) && !empty($data['record']->rental_contact_period))
+                                                    <select id="cars" class="form-control" name="rental_contact_period">
+                                                        <option value="{{ $data['record']->rental_contact_period }}">
+                                                            {{ $data['record']->rental_contact_period }}</option>
+                                                        <option value="year">Year</option>
+                                                        <option value="month">Month</option>
+                                                    </select>
+                                                @else
+                                                    <select id="cars" class="form-control" name="rental_contact_period">
+                                                        <option value="">Please Select</option>
+                                                        <option value="year">Year</option>
+                                                        <option value="month">Month</option>
+                                                    </select>
+                                                @endif
+                                            </div>
+                                            <div class="Rent msg form-group mb-3 col-12 padding">
+                                                <label for="price" class="form-label">Monthly Rent: </label>
+                                                <input class="form-control notrequired" placeholder="" name="monthly_rent"
+                                                    value="{{ $data['record']->monthly_rent ?? '' }}" type="number">
+                                            </div>
+                                            <p class="Rent msg form-label mt-2 padding">Security Deposit</p>
+                                            <div class="Rent msg form-group padding d-flex">
+                                                <input class="Rent msg form-control notrequired" placeholder=""
+                                                    name="security_deposit" style="width: 35%"
+                                                    value="{{ $data['record']->security_deposit ?? '' }}" type="text">
 
-                                            <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent msg form-control notrequired" placeholder="" name="security_deposit_number_of_month" style="width: 34%"
-                                                value="{{ $data['record']->security_deposit_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
+                                                <input class="Rent msg form-control notrequired" placeholder=""
+                                                    name="security_deposit_number_of_month" style="width: 34%"
+                                                    value="{{ $data['record']->security_deposit_number_of_month ?? '' }}"
+                                                    type="text">
+                                                <p class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
-                                    </div>
+                                            </div>
 
 
-                                    <p class="Rent msg form-label mt-2 padding">Advance Rent:</p>
-                                    <div class="Rent msg form-group padding d-flex">
-                                        <input class="Rent msg form-control notrequired" placeholder="" name="advance_rent" style="width: 35%"
-                                            value="{{ $data['record']->advance_rent ?? '' }}" type="text">
+                                            <p class="Rent msg form-label mt-2 padding">Advance Rent:</p>
+                                            <div class="Rent msg form-group padding d-flex">
+                                                <input class="Rent msg form-control notrequired" placeholder=""
+                                                    name="advance_rent" style="width: 35%"
+                                                    value="{{ $data['record']->advance_rent ?? '' }}" type="text">
 
-                                            <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
-                                            <input class="Rent msg form-control notrequired" placeholder="" name="advance_rent_number_of_month" style="width: 34%"
-                                                value="{{ $data['record']->advance_rent_number_of_month ?? '' }}" type="text">
-                                                <p  class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
+                                                <span class="Rent msg ml-3 mr-3 pt-2"><b>OR</b></span>
+                                                <input class="Rent msg form-control notrequired" placeholder=""
+                                                    name="advance_rent_number_of_month" style="width: 34%"
+                                                    value="{{ $data['record']->advance_rent_number_of_month ?? '' }}"
+                                                    type="text">
+                                                <p class="Rent msg ml-3 mr-3 pt-2"> <b> number of month's rental amount</b>
                                                 </p>
-                                    </div>
+                                            </div>
 
 
                                         </div>
@@ -425,23 +443,39 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12 form-group">
+                                                <div class="col-lg-12 form-group divscrole">
                                                     <label class="form-label">Category</label>
-                                                    @foreach ($categories as $category)
+                                                    @foreach ($categories as $value)
                                                         <li class="no-border">
-                                                            <input type="radio" name="category"
-                                                                value="{{ $category->name }}"
-                                                                id="{{ $category->id }}">
-                                                            <label
-                                                                for="{{ $category->id }}">{{ $category->name }}</label>
+                                                            @if(!empty($data['record']->category))
+                                                                <input type="radio" name="category"
+                                                                    value="{{ $value->id }}" {{ $data['record']->category == $value->id ? 'checked' : ''}}
+                                                                    id="{{ $value->id }}">
+                                                                <label
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
+                                                            @else
+                                                                <input type="radio" name="category"
+                                                                    value="{{ $value->id }}"
+                                                                    id="{{ $value->id }}">
+                                                                <label
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
+                                                            @endif
                                                             <ul style="margin-left: 34px;margin-bottom: 0;">
-                                                                @foreach ($category->subCategory as $sub_cat)
+                                                                @foreach ($value->subCategory as $sub_cat)
                                                                     <li>
-                                                                        <input type="radio" name="category"
-                                                                            value="{{ $sub_cat->name }}"
-                                                                            id="{{ $sub_cat->id }}">
-                                                                        <label
-                                                                            for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @if (!empty($data['record']->subcat_id))
+                                                                            <input type="radio" name="subcat_id"
+                                                                                value="{{ $sub_cat->id }}" {{ $data['record']->subcat_id == $sub_cat->id ? 'checked' : ''}}
+                                                                                id="{{ $sub_cat->id }}">
+                                                                            <label
+                                                                                for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @else
+                                                                            <input type="radio" name="subcat_id"
+                                                                                value="{{ $sub_cat->id }}"
+                                                                                id="{{ $sub_cat->id }}">
+                                                                            <label
+                                                                                for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @endif
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -457,8 +491,8 @@
                                                         <option value="null">Select a project</option>
                                                         @foreach ($project as $project)
                                                             <option value="{{ $project->id }}" <?php if (($data['record']->project_id ?? '') == $project->id) {
-    echo 'selected';
-} ?>>
+                                                                echo 'selected';
+                                                            } ?>>
                                                                 {{ $project->title }}
                                                             </option>
                                                         @endforeach
@@ -472,8 +506,8 @@
                                                         <option value="null">Select a Agency</option>
                                                         @foreach ($agency as $agency)
                                                             <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
-    echo 'selected';
-} ?>>
+                                                                echo 'selected';
+                                                            } ?>>
                                                                 {{ $agency->name }}
                                                             </option>
                                                         @endforeach
@@ -485,9 +519,11 @@
                                                     <label class="form-label">Select City</label>
                                                     <select id="country-dd" class="form-control" name="city_name">
                                                         <option value="">Select City</option>
-                                                        @foreach ($cities as $data)
-                                                            <option value="{{ $data->id }}">
-                                                                {{ $data->name }}
+                                                        @foreach ($cities as $value)
+                                                            <option value="{{ $value->id }}" <?php if (($data['record']->city_name ?? '') == $value->id) {
+                                                                echo 'selected';
+                                                            } ?>>
+                                                                {{ $value->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>

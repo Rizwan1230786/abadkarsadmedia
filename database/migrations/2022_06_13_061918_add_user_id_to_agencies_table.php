@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePakgesTable extends Migration
+class AddUserIdToAgenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreatePakgesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pakges', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('title')->nullable();
-            $table->timestamps();
+        Schema::table('agencies', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unassigned();
         });
     }
 
@@ -27,6 +25,8 @@ class CreatePakgesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pakges');
+        Schema::table('agencies', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }

@@ -53,13 +53,11 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Description</label>
-                                                <textarea class="form-control notrequired" placeholder="Meta Description" name="detail" rows="3"
-                                                    spellcheck="false">{{ $data['record']->detail ?? '' }}</textarea>
+                                                <textarea class="form-control notrequired" placeholder="Meta Description" name="detail" rows="3" spellcheck="false">{{ $data['record']->detail ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
-                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content"
-                                                    id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
+                                                <textarea class="ckeditor form-control disc_2 notrequired" name="page_content" id="disc_2">{{ $data['record']->page_content ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 form-group padding">
                                                 <label class="form-label">Image</label>
@@ -289,23 +287,39 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
-                                                <div class="col-lg-12 form-group">
+                                                <div class="col-lg-12 form-group divscrole">
                                                     <label class="form-label">Category</label>
-                                                    @foreach ($categories as $category)
+                                                    @foreach ($categories as $value)
                                                         <li class="no-border">
-                                                            <input type="radio" name="category"
-                                                                value="{{ $category->name }}"
-                                                                id="{{ $category->id }}">
-                                                            <label
-                                                                for="{{ $category->id }}">{{ $category->name }}</label>
+                                                            @if (!empty($data['record']->category))
+                                                                <input type="radio" name="category"
+                                                                    value="{{ $value->id }}" {{ $data['record']->category == $value->id ? 'checked' : ''}}
+                                                                    id="{{ $value->id }}">
+                                                                <label
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
+                                                            @else
+                                                                <input type="radio" name="category"
+                                                                    value="{{ $value->id }}"
+                                                                    id="{{ $value->id }}">
+                                                                <label
+                                                                    for="{{ $value->id }}">{{ $value->name }}</label>
+                                                            @endif
                                                             <ul style="margin-left: 34px;margin-bottom: 0;">
-                                                                @foreach ($category->subCategory as $sub_cat)
+                                                                @foreach ($value->subCategory as $sub_cat)
                                                                     <li>
-                                                                        <input type="radio" name="category"
-                                                                            value="{{ $sub_cat->name }}"
-                                                                            id="{{ $sub_cat->id }}">
-                                                                        <label
-                                                                            for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @if(!empty($data['record']->subcat_id))
+                                                                            <input type="radio" name="subcat_id"
+                                                                                value="{{ $sub_cat->id }}" {{ $data['record']->subcat_id == $value->id ? 'checked' : ''}}
+                                                                                id="{{ $sub_cat->id }}">
+                                                                            <label
+                                                                                for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @else
+                                                                            <input type="radio" name="subcat_id"
+                                                                                value="{{ $sub_cat->id }}"
+                                                                                id="{{ $sub_cat->id }}">
+                                                                            <label
+                                                                                for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
+                                                                        @endif
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -320,8 +334,8 @@
                                                         <option value="">--select--</option>
                                                         @foreach ($investor as $investor)
                                                             <option value="{{ $investor->name }}" <?php if (($data['record']->investor_name ?? '') == $investor->name) {
-    echo 'selected';
-} ?>>
+                                                                echo 'selected';
+                                                            } ?>>
                                                                 {{ $investor->name }}</option>
                                                         @endforeach
                                                     </select>
@@ -373,8 +387,8 @@
                                                         <option value="null">Select a Agent</option>
                                                         @foreach ($agent as $agent)
                                                             <option value="{{ $agent->id }}" <?php if (($data['record']->agent_id ?? '') == $agent->id) {
-    echo 'selected';
-} ?>>
+                                                                echo 'selected';
+                                                            } ?>>
                                                                 {{ $agent->name }}
                                                             </option>
                                                         @endforeach
@@ -388,8 +402,8 @@
                                                         <option value="null">Select a Agency</option>
                                                         @foreach ($agency as $agency)
                                                             <option value="{{ $agency->id }}" <?php if (($data['record']->agency_id ?? '') == $agency->id) {
-    echo 'selected';
-} ?>>
+                                                                echo 'selected';
+                                                            } ?>>
                                                                 {{ $agency->name }}
                                                             </option>
                                                         @endforeach

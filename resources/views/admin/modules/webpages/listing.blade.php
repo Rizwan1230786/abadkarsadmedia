@@ -69,7 +69,7 @@
                                                     <li class="icons-list-item webpages_publish" rel="{{ $item->id }}"  status="{{ $status }}"><i class="fe fe-arrow-down" data-toggle="tooltip" title="" data-original-title="Un Publish"></i></li>
                                                     @endif
                                                     <a href="javascript:void(0)">
-                                                      <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
+                                                      <li class="icons-list-item webpage_delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
                                                     </a>
                                                 </ul>
                                             </td>
@@ -93,4 +93,33 @@
     @include('admin.layouts.dataTableJsFiles')
     <!-- INTERNAL Select2 js -->
     @include('admin.layouts.select2JsFiles')
+    <script>
+          ////sweet alerts////////
+          $(document).on('click', '.webpage_delete_record', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        swal({
+                title: "Are you sure!",
+                text: "You will not be able to recover this imaginary file!",
+                type: "error",
+                confirmButtonClass: "btn-danger",
+                confirmButtonColor : "#DD6B55",
+                confirmButtonText: "Yes!",
+                showCancelButton: true,
+            },
+            function() {
+                $.ajax({
+                    type: "delete",
+                    url: "{{url('admin/delete')}}/" + id,
+                    data: {id:id,_token:CSRF_TOKEN},
+                    success: function (data) {
+                            swal("Deleted!", "Page has been deleted.", "success");
+                            location.reload();
+                        }
+                });
+            });
+        });
+    </script>
 @endsection

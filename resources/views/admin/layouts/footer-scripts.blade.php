@@ -88,6 +88,33 @@
               }
           });
       });
+      ////////status code subpackages///////////////
+      $(document).on("click", ".subpakgespublish", function(event) {
+          event.preventDefault();
+          var id = $(this).attr('rel');
+          var status = $(this).attr('status');
+          $.ajax({
+              type: 'POST',
+              url: "{{ url('admin/update_status_subpakges') }}",
+              data: {
+                  'id': id,
+                  'status': status
+              },
+              async: false,
+              success: function(result) {
+                  var message = (_.hasIn(result, "message") ? result.message : "");
+                  var type = (_.hasIn(result, "type") ? result.type : 'success');
+                  if (_.isEqual(type, 'success')) {
+                      toastr['success'](message, {
+                          showMethod: 'slideDown',
+                          hideMethod: 'slideUp',
+                          timeOut: 2000
+                      });
+                      location.reload();
+                  }
+              }
+          });
+      });
       /////////realestate category status code////////
       $(document).on("click", ".category_publish", function(event) {
           event.preventDefault();

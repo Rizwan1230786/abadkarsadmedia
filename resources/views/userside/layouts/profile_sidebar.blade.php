@@ -7,8 +7,7 @@
     <a href="/user/user-profile" class="leftcolumnlink">User Profile</a>
     <a href="#" class="leftcolumnlink">User Settings</a>
     <a href="/user/change-password" class="leftcolumnlink">Change Password</a>
-
-
+    <a href="/user/agency-profile" class="leftcolumnlink">Agency Profile</a>
 </div>
 
 <input type=hidden name=client_ownerlist id=client_ownerlist value=(1001388906)>     	</div>
