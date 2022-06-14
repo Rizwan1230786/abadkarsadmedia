@@ -341,6 +341,10 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user_profile/{id}', [UserProfileController::class, 'update_user_profile'])->name('update_user_profile');
         Route::get('/change-password', [UserProfileController::class, 'change_password'])->name('change-password');
         Route::post('/update-password', [UserProfileController::class, 'update_password'])->name('update-password');
+        Route::get('/agency-profile', [UserProfileController::class, 'agency_profile'])->name('agency-profile');
+        Route::post('/submit_agency_profile', [UserProfileController::class, 'submit_agency_profile'])->name('submit_agency_profile');
+
+
         ////userroles/////////
         Route::get('/user-roles', [UserRolesController::class, 'index'])->name('user-roles');
 

@@ -21,5 +21,6 @@ class Agency extends Model
         'status',
         'agent',
         'city_name',
+        'user_id'
     ];
 }

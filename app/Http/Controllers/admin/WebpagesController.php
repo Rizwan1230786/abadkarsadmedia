@@ -70,8 +70,8 @@ class WebpagesController extends Controller
         return response()->json(['type'=>$type,'message'=>$message]);
     }
     public function update_webpage_status(Request $request){
-       
-         
+
+
         $userid = $request->id;
         $status = $request->status;
         if ($status == 1) {
@@ -89,10 +89,14 @@ class WebpagesController extends Controller
     }
     public function destroy($id)
     {
-        
         $delete = Webpages::findOrFail($id);
         $delete->delete();
-    } 
+        if ($delete) {
+            return response(['status' => true]);
+        } else {
+            return response(['status' => false]);
+        }
+    }
 
     /////subpages
     public function subpageslisting(Request $request){
@@ -116,7 +120,7 @@ class WebpagesController extends Controller
             'url_slug' => ['required',"max:150","min:1"],
             'page_title' => 'required|min:1|max:100',
         ]);
-       
+
         if ($validator->passes()) {
             $type = 'success';
             $message = "SubPage add successfully";

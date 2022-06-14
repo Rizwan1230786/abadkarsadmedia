@@ -14,14 +14,16 @@ class CreateSubpackgesTable extends Migration
     public function up()
     {
         Schema::create('subpackges', function (Blueprint $table) {
-            $table->id();
-            $table->integer('packges_id')->unsigned();
+            $table->integer('id', true);
+            $table->integer('packges_id');
+            $table->foreign('packges_id')->references('id')->on('pakges')->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('detail')->nullable();
             $table->string('image')->nullable();
             $table->string('vedio')->nullable();
             $table->string('status')->default(0);
             $table->timestamps();
+
         });
     }
 

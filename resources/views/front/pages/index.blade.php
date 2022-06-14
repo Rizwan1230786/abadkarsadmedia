@@ -356,7 +356,7 @@
                 <div class="row mt-5">
                     <!-- Single category -->
                     @foreach ($search_city as $city)
-                        <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+                        <div class="col-xl-3 col-lg-6 col-sm-12" data-aos="fade-up" data-aos-delay="150">
                             <div class="small-category-2">
                                 <a href="{{ url('/city' . '/' . $city->slug) }}" class="homes-img">
                                     <div class="small-category-2-thumb img-1">

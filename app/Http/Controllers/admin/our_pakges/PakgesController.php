@@ -50,6 +50,16 @@ class PakgesController extends Controller
         }
         return response()->json(['type' => $type, 'message' => $message]);
     }
+    public function destroy($id)
+    {
+        $delete = Pakges::findOrFail($id);
+        $user = $delete->delete();
+        if ($user) {
+            return response(['status' => true]);
+        } else {
+            return response(['status' => false]);
+        }
+    }
     public function subpakgeslisting(Request $request)
     {
         $record = Subpackges::where('packges_id', '=', $request->id)->get();

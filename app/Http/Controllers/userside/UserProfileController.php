@@ -5,9 +5,12 @@ namespace App\Http\Controllers\userside;
 use App\Models\Webpages;
 use App\Models\Customeruser;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use App\Rules\MatchOldPassword;
+use App\Http\Controllers\Controller;
+use App\Models\Agency;
+use App\Models\Cities;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class UserProfileController extends Controller
@@ -68,5 +71,41 @@ class UserProfileController extends Controller
             dd('password is incoreected.');
         }
 
+    }
+    public function agency_profile(){
+        $userid=Auth::user()->id;
+        // dd($userid);
+        $city=Cities::all();
+        $agency=Agency::where('user_id',$userid)->first();
+        // dd($agency);
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.user.customeruserprofile.agency_profile',get_defined_vars());
+    }
+    public function edit_agency_profile(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.user.customeruserprofile.agency_profile',get_defined_vars());
+    }
+    public function submit_agency_profile(Request $request)
+    {
+            $type = 'success';
+            $message = "Data add successfully";
+            $data=$request->all();
+            $updateId = $request->user_id;
+            if (isset($updateId) && $updateId != 0) {
+                $type = 'success';
+                $message = "Data updated successfully";
+                if (isset($request->image) && !empty($request->image)) {
+                    $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                    $data['image']=$filename;
+                    request()->image->move(public_path('assets/images/agency/'), $filename);
+                }
+                Agency::updateOrCreate(
+                    ['user_id' => $updateId],$data
+                );
+            }
+
+        return response()->json(['type' => $type, 'message' => $message]);
     }
 }
