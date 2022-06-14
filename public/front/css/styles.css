@@ -7499,9 +7499,10 @@ html input[disabled] {
 }
 
 .hp-6 .rld-main-search {
-  height: 112px;
-  padding: 30px 20px 30px 20px;
-  border-radius: 8px;
+    height: 78px;
+    padding: 24px 24px 4px 20px;
+    width: 710px;
+
 }
 
 .hp-6 .rld-single-select .single-select:before {
@@ -7595,13 +7596,15 @@ html input[disabled] {
 .hp-6 .btn.btn-yellow {
   border: 0px;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 12px;
+  margin-left: 7px;
   background-color: #FF385C;
   -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
           box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   color: #ffffff;
-  height: 50px;
-  width: 170px;
+  height: 29px;
+  line-height: 10px;
+  width: 124px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -7612,6 +7615,7 @@ html input[disabled] {
 
 .hp-6 .rld-main-search,
 .hp-6 .rld-main-search .rld-single-select .single-select {
+  font-size: 12px;
   margin-bottom: 0px;
   border-radius: 8px;
   margin-right: 15px;
@@ -7794,10 +7798,6 @@ html input[disabled] {
   color: #666;
 }
 
-.hp-6 .rld-single-select .single-select {
-  width: 180px;
-}
-
 .hp-6 .rld-single-input input {
   width: 255px;
   border: 1px solid #ebebeb;
@@ -7809,20 +7809,24 @@ html input[disabled] {
 }
 
 .hp-6 .dropdown-filter span {
-  width: 180px !important;
-  padding: 15px 34px 15px 34px;
-  border-radius: 8px;
-  line-height: 47px;
-  margin: 0 15px 0 15px;
-  border: 1px solid #ebebeb;
-  width: 150px;
-  position: relative;
-}
+    width: 180px !important;
+    padding: 7px 10px 6px 10px;
+    border-radius: 8px;
+    margin: 0px 0px 0 6px;
+    border: 1px solid #ebebeb;
 
+    position: relative;
+
+}
+.rld-single-select{
+    margin-left: 6px;
+}
+.dropdown-filter{
+    margin-top: 7px;
+}
 .hp-6 .dropdown-filter span::after {
   content: "\f142";
   font-family: FontAwesome;
-  font-size: 20px;
   font-weight: 400;
   margin-left: 15px;
   color: #FF385C;
@@ -10493,7 +10497,6 @@ a.button {
   position: relative;
   z-index: 99;
 }
-
 .parallax-searchs.thome-1 {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url(../images/bg/bg-h-1.jpg) no-repeat center top !important;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/bg/bg-h-1.jpg) no-repeat center top !important;
@@ -10519,7 +10522,7 @@ a.button {
 
 .parallax-searchs.home15.thome-6 .hero-inner {
   text-align: center;
-  padding: 290px 0;
+  padding: 90px 0;
 }
 
 .th-15 .rec-pro .container-fluid {
@@ -12423,8 +12426,8 @@ section.visited-cities {
 }
 
 .rld-single-select .single-select {
-  height: 48px;
-  line-height: 47px;
+  height: 30px;
+  line-height: 28px;
   width: 100%;
   padding: 0 34px 0 20px;
   border: 1px solid #D4D4D4;
