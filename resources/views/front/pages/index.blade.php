@@ -334,6 +334,88 @@
                                                     </div>
                                                 </div>
 
+                                                            </div>
+                                                            <div class="rld-single-select">
+                                                                <select id="state-dd" class="form-control single-select"
+                                                                    name="area_id">
+                                                                    <option value="">Select Area</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                                            <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                                                <button class="btn btn-yellow" type="submit">Search
+                                                                    Now</button>
+                                                            </div>
+                                                            <div class="explore__form-checkbox-list full-filter">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                                        <!-- Form Property Status -->
+                                                                        <div class="form-group categories">
+                                                                            <select id="country-dd"
+                                                                                class="form-control single-select"
+                                                                                name="type">
+                                                                                <option value="">Select purpose</option>
+
+                                                                                <option value="rent">Rent</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <!--/ End Form Property Status -->
+                                                                    </div>
+                                                                    <!--/ End Form Bathrooms -->
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                    <!-- Price Fields -->
+                                                                    <div class="main-search-field-2">
+                                                                        <!-- Area Range -->
+                                                                        <div class="range-slider">
+                                                                            <input class="form-control single-select" type="text" name="land_area" placeholder="Enter area size...">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="range-slider">
+                                                                            <select class="form-control single-select" name="unit">
+                                                                                <option value="">Select unit</option>
+                                                                                <option value="square feet">Square feet</option>
+                                                                                <option value="square yard">Square yard</option>
+                                                                                <option value="square meter">Square meter</option>
+                                                                                <option value="marla">Marla</option>
+                                                                                <option value="kanal">Kanal</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                        <br>
+                                                                        <!-- Price Range -->
+                                                                        <div class="range-slider" style="display: inline-flex;">
+                                                                            <input class="form-control single-select" type="text" name="min_price" placeholder="Enter minimum price..." style="margin-right: 10px;">
+                                                                            <input class="form-control single-select" type="text" name="max_price" placeholder="Enter maximum price...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
+                                                                        <!-- Checkboxes -->
+                                                                        <div class="row">
+                                                                            @foreach ($feature as $value)
+                                                                                <div class="col-lg-6">
+
+                                                                                    <input
+                                                                                        style="position:absolute;left: 20px;top: 7px;"
+                                                                                        id="check-2" type="checkbox"
+                                                                                        name="check">
+                                                                                    <label
+                                                                                        for="check-2">{{ $value->name }}</label>
+
+
+
+                                                                                </div>
+                                                                            @endforeach
+
+                                                                        </div>
+                                                                        <!-- Checkboxes / End -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             </form>
                                         </div>
                                     </div>
@@ -368,48 +450,81 @@
                                     <div class="sc-2-detail">
                                         <h4 class="sc-jb-title">{{ $city->name }}</h4>
 
-                                        <h4 class="sc-jb-title"><a href="#">{{ $city->state }}</a></h4>
-                                        {{-- <span>203 Properties</span> --}}
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <!-- /row -->
-            </div>
-        </section>
-        <!-- END SECTION POPULAR PLACES -->
-        <!-- START SECTION FEATURED PROPERTIES -->
-        @if (!empty($property))
-            <section class="featured portfolio bg-white-2 rec-pro full-l">
-                <div class="container-fluid">
-                    <div class="sec-title">
-                        <h2><span>Featured </span>Properties</h2>
-                        <p>These are our featured properties</p>
-                    </div>
-                    <div class="row portfolio-items">
-                        @foreach ($property as $properties)
-                            <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
-                                <div class="project-single" data-aos="fade-right">
-                                    <div class="project-inner "
-                                        style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}'); display: block; background-size: cover;background-position: center;background-repeat: no-repeat;width: 70%; ">
-                                        <div class="homes">
-                                            <!-- homes img -->
-                                            <a href="{{ url('/property', $properties->url_slug) }}"
-                                                class="homes-img">
-                                                <div class="homes-tag button alt featured">Featured</div>
-                                                <div class="homes-tag button alt sale">For Sale</div>
-                                            </a>
-                                        </div>
-                                        <div class="button-effect">
-                                            <a href="{{ url('/property', $properties->url_slug) }}"
-                                                class="btn"><i class="fa fa-link"></i></a>
-                                            @if (isset($properties->video) && !empty($properties->video))
-                                                <a href="{{ asset($properties->video) }}"
-                                                    class="btn popup-video popup-youtube"><i
-                                                        class="fas fa-video"></i></a>
-                                            @endif
+                                                                            <option value="rent">Rent</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <!--/ End Form Property Status -->
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                                    <!-- Form Bedrooms -->
+                                                                    <div class="form-group beds bed2 d-none">
+                                                                        <div class="form-group categories ">
+                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bedrooms">
+                                                                                <option value="">Bedrooms</option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="6">6</option>
+                                                                                <option value="7">7</option>
+                                                                                <option value="8">8</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/ End Form Bedrooms -->
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+                                                                    <!-- Form Bathrooms -->
+                                                                    <div class="form-group bath bed2 d-none">
+                                                                        <div class="form-group categories">
+                                                                            <select id="country-dd" class="form-control single-select" name="number_of_bathrooms">
+                                                                                <option value="">Bathrooms</option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="6">6</option>
+                                                                                <option value="7">7</option>
+                                                                                <option value="8">8</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/ End Form Bathrooms -->
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                    <!-- Price Fields -->
+                                                                    <div class="main-search-field-2">
+                                                                        <!-- Area Range -->
+                                                                        <div class="range-slider">
+                                                                            <input class="form-control single-select" type="text" name="land_area2" placeholder="Enter area size...">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="range-slider">
+                                                                            <select class="form-control single-select" name="unit2">
+                                                                                <option value="">Select unit</option>
+                                                                                <option value="square feet">Square feet</option>
+                                                                                <option value="square yard">Square yard</option>
+                                                                                <option value="square meter">Square meter</option>
+                                                                                <option value="marla">Marla</option>
+                                                                                <option value="kanal">Kanal</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                        <br>
+                                                                        <!-- Price Range -->
+                                                                        <div class="range-slider" style="display: inline-flex;">
+                                                                            <input class="form-control single-select" type="text" name="min_price2" placeholder="Enter minimum price..." style="margin-right: 10px;">
+                                                                            <input class="form-control single-select" type="text" name="max_price2" placeholder="Enter maximum price...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-12 py-1 pr-30">
+                                                                    <!-- Checkboxes -->
+                                                                    <div class="row">
+                                                                        @foreach ($feature as $value )
+                                                                        <div class="col-lg-6">
 
                                             <a href="{{ url('/property', $properties->url_slug) }}"
                                                 class="img-poppu btn"><i class="fa fa-photo"></i></a>
