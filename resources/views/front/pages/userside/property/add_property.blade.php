@@ -145,11 +145,22 @@
                                     <div class="col-lg-4 col-md-12">
                                         <p class="no-mb first" style="margin-bottom: 4px;">
                                             <label for="location">Location</label>
-                                            <input type="text" value="{{ old('latitude') }}" name="location" step="0.01" placeholder="Enter location here" id="location">
+                                            <input type="text" value="{{ old('location') }}" name="location" step="0.01" placeholder="Enter location here" id="pac-input">
+                                        </p>
+                                    </div>
+                                    <div class="lat col-lg-2 col-md-12 d-none">
+                                        <p class="no-mb first" style="margin-bottom: 4px;">
+                                            <label for="location">Latitude</label>
+                                            <input type="text" value="{{ old('latitude') }}" name="latitude" step="0.01" id="lat">
+                                        </p>
+                                    </div>
+                                    <div class="lat col-lg-2 col-md-12 d-none">
+                                        <p class="no-mb first" style="margin-bottom: 4px;">
+                                            <label for="location">Longitutde</label>
+                                            <input type="text" value="{{ old('longitude') }}" name="longitude" step="0.01" id="long">
                                         </p>
                                     </div>
                                     <div class="showarea col-lg-4 col-md-12 d-none">
-
                                         <div class="form-group">
                                             <label class="form-label">Select Area</label>
                                             <select id="state-dd" class="form-control" name="area_id">
@@ -237,7 +248,7 @@
                                                         <option value="square feet">Square feet</option>
                                                         <option value="square yard">Square yard</option>
                                                         <option value="square meter">Square meter</option>
-                                                        <option value="marla">Marala</option>
+                                                        <option value="marla">Marla</option>
                                                         <option value="kanal">Kanal</option>
                                                     </select>
                                                     @if ($errors->has('unit'))
@@ -310,14 +321,14 @@
                                             @endif
                                         </div>
                                         <div class="col-lg-12 col-md-12">
-                                                <p class="no-mb" style="margin-bottom: 4px;">
-                                                    <label for="price">Video Link:</label>
-                                                    <input type="text" class="" value="{{ old('video_link') }}" name="video_link" placeholder="Youtube video link..." id="price">
-                                                </p>
-                                                @if ($errors->has('video_link'))
-                                                <div class="error">{{ $errors->first('video_link') }}</div>
-                                                @endif
-                                            </div>
+                                            <p class="no-mb" style="margin-bottom: 4px;">
+                                                <label for="price">Video Link:</label>
+                                                <input type="text" class="" value="{{ old('video_link') }}" name="video_link" placeholder="Youtube video link..." id="price">
+                                            </p>
+                                            @if ($errors->has('video_link'))
+                                            <div class="error">{{ $errors->first('video_link') }}</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -453,82 +464,47 @@
             </div>
         </div>
     </section>
-    <!-- <!DOCTYPE html>
-    <html>
-
-    <head>
-        <title>Place Autocomplete With Latitude & Longitude </title>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <meta charset="utf-8">
-        <style>
-            #pac-input {
-                background-color: #fff;
-                padding: 0 11px 0 13px;
-                width: 400px;
-                font-family: Roboto;
-                font-size: 15px;
-                font-weight: 300;
-                text-overflow: ellipsis;
-            }
-
-            #pac-input:focus {
-                border-color: #4d90fe;
-                margin-left: -1px;
-                padding-left: 14px;
-                /* Regular padding-left + 1. */
-                width: 401px;
-            }
-            }
-        </style>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC-btU-x7YgZuLvv45OME1B8-iY4DLMEvI"></script>
-        <script>
-            function initialize() {
-                var address = (document.getElementById('pac-input'));
-                var autocomplete = new google.maps.places.Autocomplete(address);
-                autocomplete.setTypes(['geocode']);
-                google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                    var place = autocomplete.getPlace();
-                    if (!place.geometry) {
-                        return;
-                    }
-
-                    var address = '';
-                    if (place.address_components) {
-                        address = [
-                            (place.address_components[0] && place.address_components[0].short_name || ''),
-                            (place.address_components[1] && place.address_components[1].short_name || ''),
-                            (place.address_components[2] && place.address_components[2].short_name || '')
-                        ].join(' ');
-                    }
-                    /*********************************************************************/
-                    /* var address contain your autocomplete address *********************/
-                    /* place.geometry.location.lat() && place.geometry.location.lat() ****/
-                    /* will be used for current address latitude and longitude************/
-                    /*********************************************************************/
-                    document.getElementById('lat').innerHTML = place.geometry.location.lat();
-                    document.getElementById('long').innerHTML = place.geometry.location.lng();
-                });
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-    </head>
-
-    <body>
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-        <div id="lat"></div>
-        <div id="long"></div>
-    </body>
-
-    </html> -->
     @endsection
 </body>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAk3IEGbLHjlHjf5nJTEk6aXed_fe-vLFc"></script>
 <script>
     $(function() {
         $(".numonly").on('input', function(e) {
             $(this).val($(this).val().replace(/[^0-9]/g, ''));
         });
     });
+</script>
+<script>
+    function initialize() {
+        var address = (document.getElementById('pac-input'));
+        var autocomplete = new google.maps.places.Autocomplete(address);
+        autocomplete.setTypes(['geocode']);
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                return;
+            }
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+            /*********************************************************************/
+            /* var address contain your autocomplete address *********************/
+            /* place.geometry.location.lat() && place.geometry.location.lat() ****/
+            /* will be used for current address latitude and longitude************/
+            /*********************************************************************/
+            document.getElementById('lat').value = place.geometry.location.lat();
+            document.getElementById('long').value = place.geometry.location.lng();
+            $('.lat').removeClass('d-none');
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <script>
     function onlynum() {
@@ -592,14 +568,14 @@
     });
 </script>
 <script>
-    $(document).ready(function(){
-        $('.cat').on('change',function(){
+    $(document).ready(function() {
+        $('.cat').on('change', function() {
             var cat_id = this.value;
-            if(cat_id == 7){
+            if (cat_id == 7) {
                 $('.no-mb2').removeClass('d-none');
                 $('.no-mb').removeClass('d-none');
-            }else{
-                  $('.no-mb2').addClass('d-none');
+            } else {
+                $('.no-mb2').addClass('d-none');
             }
         })
     })
