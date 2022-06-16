@@ -292,12 +292,12 @@
                                                                             <!-- Price Fields -->
                                                                             <div class="main-search-field-2">
                                                                                 <div class="range-slider">
-                                                                                    <input class="form-control single-select" type="text" name="land_area" placeholder="Enter area size...">
+                                                                                    <input class="form-control single-select" type="text" name="land_area2" placeholder="Enter area size...">
                                                                                 </div>
                                                                                 <br>
                                                                                 <div class="range-slider">
                                                                                     <!-- Area Range -->
-                                                                                    <select class="form-control single-select" name="unit">
+                                                                                    <select class="form-control single-select" name="unit2">
                                                                                         <option value="">Select unit</option>
                                                                                         <option value="square feet">Square feet</option>
                                                                                         <option value="square yard">Square yard</option>
