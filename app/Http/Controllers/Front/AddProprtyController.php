@@ -105,11 +105,15 @@ class AddProprtyController extends Controller
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {
                         $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                        $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
                         $Path = public_path('assets/images/properties/multipleimages/');
                         $img = Image::make($image->getRealPath())->encode('jpg', 100);
                         $img->resize(300, 400, function ($constraint) {
                             $constraint->aspectRatio();
                         })->save($Path . $filename);
+                        $img->resize(300, 400, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->save($Path . $filename2);
                         // request()->image->move($destinationPath, $data['image']);
                         PropertyImage::create(['image' => $filename, 'property_id' => $query->id]);
                     }
