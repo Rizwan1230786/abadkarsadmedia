@@ -192,7 +192,6 @@
 $('#customers-testimonials').owlCarousel( {
 		loop: true,
 		center: true,
-		items: 7,
 		margin: 30,
 		autoplay: true,
 		dots:false,
@@ -202,10 +201,10 @@ $('#customers-testimonials').owlCarousel( {
         navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
 		responsive: {
 			0: {
-				items: 1
+				items: 3
 			},
 			768: {
-				items: 2
+				items: 4
 			},
 			1170: {
 				items:7
@@ -240,5 +239,4 @@ $('#customers-testimonials').owlCarousel( {
   <!-- MAIN JS -->
   <script src="{{ asset('/front/js/script.js') }}"></script>
 
-  </div>
   <!-- Wrapper / End -->
