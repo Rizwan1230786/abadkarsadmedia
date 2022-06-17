@@ -7552,16 +7552,16 @@ html input[disabled] {
 }
 
 .hp-6 .rld-banner-tab .nav-item a {
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .hp-6 .rld-banner-tab .nav-item a.active:before {
   content: "";
-  height: 20px;
+  height: 9px;
   margin-left: 20px;
   position: absolute;
-  top: 40px;
-  width: 20px;
+  top: 39px;
+  width: 9px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
@@ -7590,7 +7590,9 @@ html input[disabled] {
 .hp-6 .rld-banner-tab .nav-item a.active,
 .hp-6 .rld-banner-tab .nav-item a:hover,
 .hp-6 .rld-banner-tab .nav-item a.active:before {
-  background: #FF385C;
+  background-color: #FF385C;
+  border-color: #FF385C;
+
 }
 
 .hp-6 .btn.btn-yellow {
@@ -12546,21 +12548,28 @@ section.visited-cities {
 .rld-banner-tab .nav-item a {
   border: 0;
   border-radius: 5px 5px 0 0;
-  height: 50px;
-  line-height: 50px;
+  height: 44px;
+  line-height: 43px;
   padding: 0 35px;
   margin-right: 15px;
   position: relative;
   display: block;
   letter-spacing: 0.4px;
-  background: #fff;
-  color: #000;
+  border: 1px solid #ffffff;
+  background-color: rgba(86, 90, 92, 0.5);
+  color: #ffffff;
+  text-transform: uppercase;
   font-family: var(--heading-font);
-  font-weight: 600;
+  font-weight: 500;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+}
+.nav-tabs>li>a {
+    border-radius: 0px 0px 0 0 !important;
+}
 .rld-banner-tab .nav-item a:hover,
 .rld-banner-tab .nav-item a:focus,
 .rld-banner-tab .nav-item a.active {
@@ -14474,7 +14483,7 @@ a.button {
 }
 
 .homepage-23 .rld-banner-tab .nav-item a {
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .homepage-23 .range-slider .ui-slider .ui-slider-handle {
@@ -21385,7 +21394,6 @@ a.btn_1 {
   }
 }
 .inner-pages .form-control {
-  padding: .7rem;
   border: 1px solid #FF385C;
 }
 
@@ -21601,7 +21609,7 @@ a.btn_1 {
   }
 }
 .inner-pages .form-control {
-  padding: .7rem;
+
   border: 1px solid #dddddd;
 }
 

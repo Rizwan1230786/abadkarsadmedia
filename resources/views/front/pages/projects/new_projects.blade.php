@@ -24,13 +24,13 @@
                                         <div class="banner-search-wrap">
                                             <ul class="nav nav-tabs rld-banner-tab">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Sale</a>
+                                                    <a class="nav-link" data-toggle="tab" href="#tabs_1">For Sale</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="/new-projects">Projects</a>
+                                                    <a class="nav-link active" data-toggle="tab" href="#tabs_2">Projects</a>
                                                 </li>
                                             </ul>
                                             @foreach ($property as $properties)

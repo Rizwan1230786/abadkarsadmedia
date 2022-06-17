@@ -237,6 +237,7 @@ Route::post('/upload', [BlogController::class, 'upload']);
 ///Front
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/project', [FrontController::class, 'project'])->name('front.project');
+Route::get('/new-projects', [FrontController::class, 'new_projects'])->name('front.new-projects');
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
