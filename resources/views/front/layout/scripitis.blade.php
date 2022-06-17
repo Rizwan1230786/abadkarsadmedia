@@ -56,18 +56,55 @@
   <script src="{{ asset('front') }}/js/dropzone.js"></script>
 
 
-
   <script>
-    $(document).ready(function() {
-        // Select2 Multiple
-        $('.select2-multiple').select2({
-            placeholder: "Select",
-            allowClear: true
-        });
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      const dots = Array.from(document.querySelectorAll(".dot"));
 
-    });
+      let slideIndex = 1;
 
-</script>
+      function plusSlides(e) {
+          let num;
+
+          if (e.target === prevBtn) num = -1;
+          if (e.target === nextBtn) num = 1;
+
+          showSlides((slideIndex += num));
+      }
+
+      function currentSlide(e) {
+          if (e.target === dots[0]) showSlides((slideIndex = 1));
+          if (e.target === dots[1]) showSlides((slideIndex = 2));
+          if (e.target === dots[2]) showSlides((slideIndex = 3));
+      }
+
+      function showSlides(n) {
+          const slides = Array.from(document.querySelectorAll(".slide"));
+
+          if (n > slides.length) slideIndex = 1;
+          if (n < 1) slideIndex = slides.length;
+
+          slides.forEach((slide) => slide.classList.remove("is-active"));
+          dots.forEach((dot) => dot.classList.remove("is-active"));
+
+          slides[slideIndex - 1].classList.add("is-active");
+          dots[slideIndex - 1].classList.add("is-active");
+      }
+
+      prevBtn.addEventListener("click", plusSlides);
+      nextBtn.addEventListener("click", plusSlides);
+      dots.forEach((dot) => dot.addEventListener("click", currentSlide));
+  </script>
+  <script>
+      $(document).ready(function() {
+          // Select2 Multiple
+          $('.select2-multiple').select2({
+              placeholder: "Select",
+              allowClear: true
+          });
+
+      });
+  </script>
 
   <script>
       $(window).on('scroll load', function() {
@@ -186,33 +223,33 @@
           }
       });
   </script>
-<script>
-    jQuery(document).ready(function($) {
-"use strict";
-$('#customers-testimonials').owlCarousel( {
-		loop: true,
-		center: true,
-		margin: 30,
-		autoplay: true,
-		dots:false,
-    nav:true,
-		autoplayTimeout: 5000,
-		smartSpeed: 1000,
-        navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-		responsive: {
-			0: {
-				items: 3
-			},
-			768: {
-				items: 4
-			},
-			1170: {
-				items:7
-			}
-		}
-	});
-});
-</script>
+  <script>
+      jQuery(document).ready(function($) {
+          "use strict";
+          $('#customers-testimonials').owlCarousel({
+              loop: true,
+              center: true,
+              margin: 30,
+              autoplay: true,
+              dots: false,
+              nav: true,
+              autoplayTimeout: 5000,
+              smartSpeed: 1000,
+              navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+              responsive: {
+                  0: {
+                      items: 3
+                  },
+                  768: {
+                      items: 4
+                  },
+                  1170: {
+                      items: 7
+                  }
+              }
+          });
+      });
+  </script>
   <script>
       $(".dropdown-filter").on('click', function() {
 
@@ -220,22 +257,22 @@ $('#customers-testimonials').owlCarousel( {
 
       });
   </script>
- <script>
-    var dropdown = document.getElementsByClassName("dropdown-btn");
- var i;
+  <script>
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
 
- for (i = 0; i < dropdown.length; i++) {
-     dropdown[i].addEventListener("click", function() {
-         this.classList.toggle("active");
-         var dropdownContent = this.nextElementSibling;
-         if (dropdownContent.style.display === "block") {
-             dropdownContent.style.display = "none";
-         } else {
-             dropdownContent.style.display = "block";
-         }
-     });
- }
-</script>
+      for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+                  dropdownContent.style.display = "none";
+              } else {
+                  dropdownContent.style.display = "block";
+              }
+          });
+      }
+  </script>
   <!-- MAIN JS -->
   <script src="{{ asset('/front/js/script.js') }}"></script>
 
