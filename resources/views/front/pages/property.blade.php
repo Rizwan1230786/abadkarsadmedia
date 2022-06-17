@@ -64,7 +64,7 @@
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                                     <!-- Form Property Status -->
-                                                    <div class="form-group categories" style="border: 1px solid #FF385C;">
+                                                    <div class="form-group categories">
                                                         <select id="country-dd" class="form-control single-select" name="type">
                                                             <option value="">Select purpose</option>
                                                             <option value="sale">For Sale</option>
@@ -76,7 +76,7 @@
                                                 <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                                     <!-- Form Bedrooms -->
                                                     <div class="form-group beds bed d-none">
-                                                        <div class="form-group categories" style="border: 1px solid #FF385C;">
+                                                        <div class="form-group categories">
                                                             <select id="country-dd" class="form-control single-select" name="number_of_bedrooms">
                                                                 <option value="">Bedrooms</option>
                                                                 <option value="1">1</option>
@@ -95,7 +95,7 @@
                                                 <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
                                                     <!-- Form Bathrooms -->
                                                     <div class="form-group bath bed d-none">
-                                                        <div class="form-group categories" style="border: 1px solid #FF385C;">
+                                                        <div class="form-group categories">
                                                             <select id="country-dd" class="form-control single-select" name="number_of_bathrooms">
                                                                 <option value="">Bathrooms</option>
                                                                 <option value="1">1</option>
@@ -111,15 +111,15 @@
                                                     </div>
                                                     <!--/ End Form Bathrooms -->
                                                 </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
                                                     <!-- Price Fields -->
                                                     <div class="main-search-field-2">
-                                                        <!-- Area Range -->
                                                         <div class="range-slider">
                                                             <input class="form-control single-select" type="text" name="land_area" placeholder="Enter area size...">
                                                         </div>
                                                         <br>
                                                         <div class="range-slider">
+                                                            <!-- Area Range -->
                                                             <select class="form-control single-select" name="unit">
                                                                 <option value="">Select unit</option>
                                                                 <option value="square feet">Square feet</option>
@@ -128,7 +128,6 @@
                                                                 <option value="marla">Marla</option>
                                                                 <option value="kanal">Kanal</option>
                                                             </select>
-
                                                         </div>
                                                         <br>
                                                         <!-- Price Range -->
@@ -143,8 +142,12 @@
                                                     <div class="row">
                                                         @foreach ($feature as $value)
                                                         <div class="col-lg-6">
+
                                                             <input style="position:absolute;top: 7px;" id="check-2" type="checkbox" name="check1">
                                                             <label style="margin-left: 30px;" for="check-2">{{ $value->name }}</label>
+
+
+
                                                         </div>
                                                         @endforeach
 

@@ -441,7 +441,6 @@ class FrontController extends Controller
         }
         ///area size
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit)) {
-            dd($request->land_area);
             $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit])->paginate(4);
         }
         ///area size and category
