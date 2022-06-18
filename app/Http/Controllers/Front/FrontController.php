@@ -424,6 +424,7 @@ class FrontController extends Controller
             $cities = Cities::where('slug', $request->city_name)->first();
             $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
+        
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();
