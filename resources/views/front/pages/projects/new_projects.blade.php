@@ -4,7 +4,7 @@
 <body class="homepage-9 hp-6 homepage-1">
     @section('main')
     <!-- STAR HEADER SEARCH -->
-    <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
+    <section id="hero-area" class="parallax-searchs home16 overlay thome-11" data-stellar-background-ratio="0.5">
         <div id="hero-area" class="main-search-inner search-2 vid">
             <div class="hero-main">
                 <div class="container" data-aos="zoom-in">
@@ -25,13 +25,13 @@
                                     <div class="banner-search-wrap">
                                         <ul class="nav nav-tabs rld-banner-tab">
                                             <li class="nav-item">
-                                                <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Sale</a>
+                                                <a class="nav-link" data-toggle="tab" href="#tabs_1">For Sale</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" data-toggle="tab" href="#tabs_3">Project</a>
+                                                <a class="nav-link active" data-toggle="tab" href="#tabs_3">Project</a>
                                             </li>
                                         </ul>
                                         @foreach ($property as $properties)
@@ -39,7 +39,7 @@
                                             @endforeach
 
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active" id="tabs_1">
+                                                <div class="tab-pane fade" id="tabs_1">
                                                     <div class="rld-main-search">
                                                         <div class="row">
                                                             <div class="rld-single-select ml-22">
@@ -316,7 +316,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="tabs_3">
+                                                <div class="tab-pane fade show active" id="tabs_3">
                                                     <div class="rld-main-search">
                                                         <div class="row">
                                                             <div class="rld-single-select ml-22">

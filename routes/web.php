@@ -29,6 +29,7 @@ use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\addtocart\ProductController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\our_pakges\PakgesController;
+use App\Http\Controllers\admin\partners\PartnersController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
 use App\Http\Controllers\admin\realestate\PropetyController;
@@ -187,12 +188,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
         Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
         Route::post('/delete_blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
-        ///////route of testimonials///////
+        ///////route of partners///////
+        Route::get('/partners', [PartnersController::class, 'index'])->name('partners');
+        Route::get('/create_partners', [PartnersController::class, 'create'])->name('create_partners');
+        Route::post('/partners_submit', [PartnersController::class, 'submit'])->name('partners_submit');
+        Route::post('/delete_partners/{id}', [PartnersController::class, 'destroy'])->name('delete_partners');
+        ////////route of testimonials/////////
         Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('testimonials');
         Route::get('/create_testimonial', [TestimonialsController::class, 'create'])->name('create_testimonial');
         Route::post('/testimonial_submit', [TestimonialsController::class, 'submit'])->name('testimonial_submit');
         Route::post('/delete_testinomial/{id}', [TestimonialsController::class, 'destroy'])->name('delete_testinomial');
-
         ////route of urlslug///////////
         Route::get('/slugs', [UrlslugController::class, 'index'])->name('slugs');
         Route::get('/slugs/create', [UrlslugController::class, 'create'])->name('slugs.form');
