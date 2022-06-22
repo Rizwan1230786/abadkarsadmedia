@@ -181,36 +181,32 @@ use App\Models\Category;
         <div class="clearfix"></div>
         <!-- Header Container / End -->
 
-        <div class="swiper-container">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
+        <div class="swiper-container" style="width:1100px">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     @foreach ($property_images as $image)
                     @if ($image->property_id == $properties->id)
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/' . $image->image) : asset('assets/images/properties/' . $image->image) }}" alt="First slide" style="height: 300px;width: 1100px;">
+                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                        <?php if (strpos($_SERVER['HTTP_ACCEPT'], 'image/webp') !== false) { ?>
+                            <img class="d-block w-100" src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/webp/' . $image->image_webp) : asset('assets/images/properties/' . $image->image) }}" alt="First slide" style="height:450px">
+                        <?php } else { ?>
+                            <img class="d-block w-100" src="{{ is_null($image->file) ? asset('assets/images/properties/multipleimages/jpg/' . $image->image) : asset('assets/images/properties/' . $image->image) }}" alt="First slide" style="height:450px">
+                        <?php } ?>
                     </div>
                     @endif
                     @endforeach
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div class="swiper-pagination swiper-pagination-white"></div>
-
-            <div class="swiper-button-next swiper-button-white mr-3"></div>
-            <div class="swiper-button-prev swiper-button-white ml-3"></div>
         </div>
+
         <!-- END SECTION HEADINGS -->
 
         <!-- START SECTION PROPERTIES LISTING -->
