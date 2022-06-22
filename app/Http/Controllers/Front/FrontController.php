@@ -392,6 +392,20 @@ class FrontController extends Controller
             $cities = Cities::where('slug', $request->city_name)->first();
             $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
+        ////only title
+        if (isset($request->project_title) && !empty($request->project_title)) {
+            $property = Projects::where('title', $request->project_title)->paginate(4);
+        }
+        /// city and purpose
+        if (isset($request->project_title) && !empty($request->city_name && $request->project_title)) {
+            $cities = Cities::where('slug', $request->city_name)->first();
+            $property = Projects::where(['city_name' => $cities->id, 'title' => $request->project_title])->paginate(4);
+        }
+        /// purpose and catgorey, city ,area
+        if (isset($request->category) && !empty($request->type && $request->category)) {
+            $cities = Cities::where('slug', $request->city_name)->first();
+            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+        }
         ///bedrooms
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms)) {
             $property = Property::where('number_of_bedrooms', $request->number_of_bedrooms)->paginate(4);
@@ -424,7 +438,7 @@ class FrontController extends Controller
             $cities = Cities::where('slug', $request->city_name)->first();
             $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
-        
+
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();

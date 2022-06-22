@@ -15,6 +15,7 @@ class Customeruser extends Authenticatable
         'email',
         'password',
         'google_id',
+        'contact',
     ];
     protected $hidden = [
         'password', 'remember_token',

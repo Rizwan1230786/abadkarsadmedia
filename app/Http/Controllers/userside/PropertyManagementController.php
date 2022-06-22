@@ -345,6 +345,13 @@ class PropertyManagementController extends Controller
                         $img->resize(600, 600, function ($constraint) {
                             $constraint->aspectRatio();
                         })->save($destinationPath . $filename);
+                        $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
+                        $img2 = Image::make($image->getRealPath())->encode('webp', 75);
+                        $img2->resize(300, 300, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->save($destinationPath . $filename2);
+                        // request()->image->move($destinationPath, $data['image']);
+                        PropertyImage::create(['image' => $filename, 'property_id' => $query->id, 'image_webp' => $filename2]);
                         // request()->image->move($destinationPath, $data['image']);
                         PropertyImage::create(['image' => $filename, 'property_id' => $query->id]);
                     }

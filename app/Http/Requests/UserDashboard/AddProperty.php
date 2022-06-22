@@ -41,6 +41,8 @@ class AddProperty extends FormRequest
             'category_id' => 'required',
             'property_purpose' => 'required',
             'video_link' => 'required'
+            'url_slug' => 'required'
+
         ];
     }
     public function messages()
@@ -63,6 +65,7 @@ class AddProperty extends FormRequest
             'category_id.required' => 'Please select any category name.',
             'property_purpose.required' => 'Please select Rent or Sale.',
             'video_link.required' => 'Youtube video link is required.',
+            'url_slug.required' => 'URL slug is required.',
         ];
     }
 }

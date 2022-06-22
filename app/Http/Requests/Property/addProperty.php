@@ -43,7 +43,8 @@ class addProperty extends FormRequest
             'land_area' => 'required',
             'is_expired' => 'required',
             'category_id' => 'required',
-            'property_purpose' => 'required'
+            'property_purpose' => 'required',
+            'url_slug' => 'required'
         ];
     }
     public function messages()
@@ -69,6 +70,7 @@ class addProperty extends FormRequest
             'is_expired.required' => __('Property expiry duration is required.'),
             'category_id.required' => 'Please select any category name.',
             'property_purpose.required' => 'Please select Rent or Sale.',
+            'url_slug.required' => 'URL slug is required.',
         ];
     }
 }

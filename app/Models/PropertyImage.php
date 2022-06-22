@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyImage extends Model
 {
     use HasFactory;
-    protected $fillable = ['image', 'property_id'];
+    protected $fillable = ['image', 'property_id','image_webp'];
 }
