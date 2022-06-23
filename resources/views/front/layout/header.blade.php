@@ -2,10 +2,10 @@
 use App\Models\subpages;
 ?>
 <!-- START PRELOADER -->
-<div id="preloader">
+<!-- <div id="preloader">
     <div id="status">
         <div class="status-mes"></div>
-    </div>
+    </div> -->
 </div>
 <!-- END PRELOADER -->
 <header id="header-container">
