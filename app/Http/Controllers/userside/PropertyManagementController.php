@@ -340,20 +340,19 @@ class PropertyManagementController extends Controller
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {
                         $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
-                        $destinationPath = public_path('assets/images/properties/multipleimages');
-                        $img = Image::make($image->getRealPath())->encode('jpg', 75);
-                        $img->resize(600, 600, function ($constraint) {
+                        $Path = public_path('assets/images/properties/multipleimages/jpg/');
+                        $img = Image::make($image->getRealPath())->encode('jpg', 100);
+                        $img->resize(1100, 450, function ($constraint) {
                             $constraint->aspectRatio();
-                        })->save($destinationPath . $filename);
+                        })->save($Path . $filename);
                         $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
+                        $Path2 = public_path('assets/images/properties/multipleimages/webp/');
                         $img2 = Image::make($image->getRealPath())->encode('webp', 75);
-                        $img2->resize(300, 300, function ($constraint) {
+                        $img2->resize(1100, 450, function ($constraint) {
                             $constraint->aspectRatio();
-                        })->save($destinationPath . $filename2);
+                        })->save($Path2 . $filename2);
                         // request()->image->move($destinationPath, $data['image']);
                         PropertyImage::create(['image' => $filename, 'property_id' => $query->id, 'image_webp' => $filename2]);
-                        // request()->image->move($destinationPath, $data['image']);
-                        PropertyImage::create(['image' => $filename, 'property_id' => $query->id]);
                     }
                 }
                 // Auth::logout();
