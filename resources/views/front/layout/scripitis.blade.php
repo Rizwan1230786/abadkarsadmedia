@@ -55,7 +55,18 @@
   <script src="{{ asset('front') }}/js/forms-2.js"></script>
   <script src="{{ asset('front') }}/js/dropzone.js"></script>
 
-
+  <script>
+      $(function() {
+          $("#slider").slick({
+              arrows: false,
+              autoplay: true,
+              autoplaySpeed: 0,
+              speed: 7000,
+              cssEase: "linear",
+              pauseOnHover: true
+          });
+      });
+  </script>
   <script>
       const prevBtn = document.querySelector(".prev");
       const nextBtn = document.querySelector(".next");
