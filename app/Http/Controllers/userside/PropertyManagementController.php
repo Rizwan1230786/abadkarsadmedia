@@ -301,10 +301,10 @@ class PropertyManagementController extends Controller
             if (Auth::check()) {
                 if (isset($request->image) && !empty($request->image)) {
                     $image = $request->image[0];
-                    $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                    $filename = rand(1000000000, 9999999999) . '.' . 'webp';
                     $destinationPath = public_path('assets/images/properties/');
-                    $img = Image::make($image->getRealPath())->encode('jpg', 75);
-                    $img->resize(300, 300, function ($constraint) {
+                    $img = Image::make($image->getRealPath())->encode('webp', 75);
+                    $img->resize(360, 250, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($destinationPath . $filename);
                 }
