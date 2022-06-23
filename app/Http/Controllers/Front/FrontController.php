@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Models\Projects;
-use App\Models\Property;
+use App\Models\property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -37,7 +37,7 @@ class FrontController extends Controller
             $q->where('status', 1);
         })->get();
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
+        $property = property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -59,7 +59,7 @@ class FrontController extends Controller
             $q->where('status', 1);
         })->get();
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
+        $property = property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -86,14 +86,14 @@ class FrontController extends Controller
         $meta = subpages::Where("page_title", "agents view")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $agents = Agent::paginate(4);
-        $property = Property::where('status', 1)->latest()->take(3)->get();
+        $property = property::where('status', 1)->latest()->take(3)->get();
         return view('front.pages.agent', get_defined_vars());
     }
     public function agent_detail($id)
     {
         $agents = Agent::where('id', $id)->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        $property = Property::all();
+        $property = property::all();
         $meta = Webpages::Where("page_title", "home")->first();
         return view('front.pages.agent_detail', get_defined_vars());
     }
@@ -122,7 +122,7 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $category = Category::all();
-        $property = Property::orderBy('id', 'desc')->where('status', 1)->paginate(10);
+        $property = property::orderBy('id', 'desc')->where('status', 1)->paginate(10);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -132,7 +132,7 @@ class FrontController extends Controller
 
         ///property search filter show data///
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->limit(6)->get();
+        $property = property::where('status', 1)->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -147,8 +147,8 @@ class FrontController extends Controller
         $city_area = Area::where(['city_id' => $get_city_name->id, 'status' => 1])->orderBy('id', 'DESC')->get();
 
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
-        $city_search_property = Property::where(['city_name' => $get_city_name->id, 'status' => 1])->get();
-        $property = Property::where(['city_name' => $get_city_name->id, 'status' => 1])->orderBy('id', 'desc')->paginate(10);
+        $city_search_property = property::where(['city_name' => $get_city_name->id, 'status' => 1])->get();
+        $property = property::where(['city_name' => $get_city_name->id, 'status' => 1])->orderBy('id', 'desc')->paginate(10);
 
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
@@ -158,7 +158,7 @@ class FrontController extends Controller
     {
         ///property search filter show data///
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->limit(6)->get();
+        $property = property::where('status', 1)->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -171,9 +171,9 @@ class FrontController extends Controller
         $get_city_name = Cities::where('id', $url_slug->city_id)->first();
         $city_area = Area::where(['city_id' => $url_slug->city_id, 'status' => 1])->orderBy('id', 'DESC')->get();
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
-        $city_search_property = Property::where(['city_name' => $url_slug->city_id, 'status' => 1])->get();
+        $city_search_property = property::where(['city_name' => $url_slug->city_id, 'status' => 1])->get();
 
-        $property = Property::where('status', 1)->paginate(10);
+        $property = property::where('status', 1)->paginate(10);
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -182,7 +182,7 @@ class FrontController extends Controller
     {
         ///property search filter show data///
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->limit(6)->get();
+        $property = property::where('status', 1)->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -190,26 +190,26 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $category = Category::all();
-        $property = Property::paginate(4);
+        $property = property::paginate(4);
         ////end////////
         $category_name = Category::where('name', $slug)->first();
         $city_slug = Cities::where('slug', $slug1)->first();
         $area = Area::where('slug', '=', $slug2)->first();
-        $area_search_property = Property::where(['area_id' => $area->id, 'status' => 1])->get();
-        $property = Property::paginate(10);
+        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->get();
+        $property = property::paginate(10);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
     }
     public function single_property_detail($provider)
     {
-        $projectid = Property::where('url_slug', '=', $provider)->first();
+        $projectid = property::where('url_slug', '=', $provider)->first();
         $assign = DB::table('features_property')
             ->join("features", "features_property.features_id", "=", "features.id")
             ->join('properties', 'features_property.property_id', '=', 'properties.id')
             ->select('features.name as FeaturesName', 'properties.id as propertiesID',)
             ->get();
-        $properties = Property::where('id', $projectid->id)->first();
+        $properties = property::where('id', $projectid->id)->first();
         $user = Customeruser::where('id', $properties->user_id)->first();
         $agent = Agent::all();
         $images = Image::all();
@@ -221,13 +221,13 @@ class FrontController extends Controller
     }
     public function property_detail($slug1, $provider)
     {
-        $projectid = Property::where('url_slug', '=', $provider)->first();
+        $projectid = property::where('url_slug', '=', $provider)->first();
         $assign = DB::table('features_property')
             ->join("features", "features_property.features_id", "=", "features.id")
             ->join('properties', 'features_property.property_id', '=', 'properties.id')
             ->select('features.name as FeaturesName', 'properties.id as propertiesID',)
             ->get();
-        $properties = Property::where('id', $projectid->id)->first();
+        $properties = property::where('id', $projectid->id)->first();
         $agent = Agent::all();
         $images = Image::all();
         $property_images = PropertyImage::all();
@@ -240,7 +240,7 @@ class FrontController extends Controller
     {
         ///property search filter show data///
         $flats = Category::with('cities')->with('url_slugs')->get();
-        $property = Property::where('status', 1)->limit(6)->get();
+        $property = property::where('status', 1)->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
             $q->where('status', 1);
@@ -250,8 +250,8 @@ class FrontController extends Controller
         $category = Category::all();
         ////end////////
         $area = Area::where('slug', '=', $slug2)->first();
-        $area_search_property = Property::where(['area_id' => $area->id, 'status' => 1])->get();
-        $property = Property::where('status', 1)->paginate(10);
+        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->get();
+        $property = property::where('status', 1)->paginate(10);
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -350,50 +350,50 @@ class FrontController extends Controller
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         if (isset($request->category) && !empty($request->category)) {
-            $property = Property::where('category', $request->category)->paginate(4);
+            $property = property::where('category', $request->category)->paginate(4);
         }
         ///only city name
         if (isset($request->city_name) && !empty($request->city_name)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id])->paginate(4);
         }
         ///only city name and area
         if (isset($request->area_id) && !empty($request->city_name && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
         }
         /// city and catgorey
         if (isset($request->category) && !empty($request->city_name) && !empty($request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'category' => $request->category])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'category' => $request->category])->paginate(4);
         }
         /// city catgorey and area
         if (isset($request->category) && !empty($request->city_name) && !empty($request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ////only purpose
         if (isset($request->type) && !empty($request->type)) {
-            $property = Property::where('type', $request->type)->paginate(4);
+            $property = property::where('type', $request->type)->paginate(4);
         }
         /// city and purpose
         if (isset($request->category) && !empty($request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type])->paginate(4);
         }
         /// purpose and catgorey
         if (isset($request->category) && !empty($request->type && $request->category)) {
-            $property = Property::where(['type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         /// purpose and catgorey, city
         if (isset($request->category) && !empty($request->type && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         /// purpose and catgorey, city ,area
         if (isset($request->category) && !empty($request->type && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ////only title
         if (isset($request->project_title) && !empty($request->project_title)) {
@@ -407,79 +407,79 @@ class FrontController extends Controller
         /// purpose and catgorey, city ,area
         if (isset($request->category) && !empty($request->type && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms)) {
-            $property = Property::where('number_of_bedrooms', $request->number_of_bedrooms)->paginate(4);
+            $property = property::where('number_of_bedrooms', $request->number_of_bedrooms)->paginate(4);
         }
         ///bedrooms and category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->category)) {
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'category' => $request->category])->paginate(4);
         }
         ///bedrooms and city
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id])->paginate(4);
         }
         ///bedrooms and city, area
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms and purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->type)) {
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type])->paginate(4);
         }
         ///bedrooms and city, category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         ///bedrooms and area, category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
 
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
         }
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms and category, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'category' => $request->category])->paginate(4);
         }
         ///area size
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit])->paginate(4);
         }
         ///area size and category
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category])->paginate(4);
         }
         ///area size and category, city
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name])->paginate(4);
         }
         ///area size and category, city, purpose
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
         }
         ///area size and category, city, purpose bedrooms
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type && $request->number_of_bedrooms)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms])->paginate(4);
         }
         ///area size and category, city, purpose bedrooms, bathrooms
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type && $request->number_of_bedrooms && $request->number_of_bedrooms)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms, 'number_of_bathrooms' => $request->number_of_bedrooms])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms, 'number_of_bathrooms' => $request->number_of_bedrooms])->paginate(4);
         }
         $category = Category::all();
         $city = Cities::all();
@@ -501,121 +501,121 @@ class FrontController extends Controller
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         if (isset($request->category) && !empty($request->category)) {
-            $property = Property::where('category', $request->category)->paginate(4);
+            $property = property::where('category', $request->category)->paginate(4);
         }
         ///only city name
         if (isset($request->city_name) && !empty($request->city_name)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id])->paginate(4);
         }
         ///only city name and area
         if (isset($request->area_id) && !empty($request->city_name && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
         }
         /// city and catgorey
         if (isset($request->category) && !empty($request->city_name) && !empty($request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'category' => $request->category])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'category' => $request->category])->paginate(4);
         }
         /// city catgorey and area
         if (isset($request->category) && !empty($request->city_name) && !empty($request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ////only purpose
         if (isset($request->type) && !empty($request->type)) {
-            $property = Property::where('type', $request->type)->paginate(4);
+            $property = property::where('type', $request->type)->paginate(4);
         }
         /// city and purpose
         if (isset($request->category) && !empty($request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type])->paginate(4);
         }
         /// purpose and catgorey
         if (isset($request->category) && !empty($request->type && $request->category)) {
-            $property = Property::where(['type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         /// purpose and catgorey, city
         if (isset($request->category) && !empty($request->type && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         /// purpose and catgorey, city ,area
         if (isset($request->category) && !empty($request->type && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['city_name' => $cities->id, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms)) {
-            $property = Property::where('number_of_bedrooms', $request->number_of_bedrooms)->paginate(4);
+            $property = property::where('number_of_bedrooms', $request->number_of_bedrooms)->paginate(4);
         }
         ///bedrooms and category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->category)) {
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'category' => $request->category])->paginate(4);
         }
         ///bedrooms and city
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id])->paginate(4);
         }
         ///bedrooms and city, area
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $cities->id, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms and purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->type)) {
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type])->paginate(4);
         }
         ///bedrooms and city, category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category])->paginate(4);
         }
         ///bedrooms and area, category
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'type' => $request->type, 'category' => $request->category, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
         }
         ///bedrooms and city, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->type && $request->area_id)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type, 'area_id' => $request->area_id])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'type' => $request->type, 'area_id' => $request->area_id])->paginate(4);
         }
         ///bedrooms and category, purpose
         if (isset($request->number_of_bedrooms) && !empty($request->number_of_bedrooms && $request->city_name && $request->category)) {
             $cities = Cities::where('slug', $request->city_name)->first();
-            $property = Property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'category' => $request->category])->paginate(4);
+            $property = property::where(['number_of_bedrooms' => $request->number_of_bedrooms, 'city_name' => $request->city_name, 'category' => $request->category])->paginate(4);
         }
         ///area size
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit])->paginate(4);
         }
         ///area size and category
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category])->paginate(4);
         }
         ///area size and category, city
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name])->paginate(4);
         }
         ///area size and category, city, purpose
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type])->paginate(4);
         }
         ///area size and category, city, purpose bedrooms
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type && $request->number_of_bedrooms)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms])->paginate(4);
         }
         ///area size and category, city, purpose bedrooms, bathrooms
         if (isset($request->land_area) && !empty($request->land_area && $request->unit && $request->unit && $request->category && $request->city_name && $request->type && $request->number_of_bedrooms && $request->number_of_bedrooms)) {
-            $property = Property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms, 'number_of_bathrooms' => $request->number_of_bedrooms])->paginate(4);
+            $property = property::where(['land_area' => $request->land_area, 'unit' => $request->unit, 'category' => $request->category, 'city_name' => $request->city_name, 'type' => $request->type, 'number_of_bedrooms' => $request->number_of_bedrooms, 'number_of_bathrooms' => $request->number_of_bedrooms])->paginate(4);
         }
         $category = Category::all();
         $city = Cities::all();
