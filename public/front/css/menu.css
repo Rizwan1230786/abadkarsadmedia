@@ -6,7 +6,7 @@
     margin-top: 1px;
 }
 #logo img {
-    width: 197px;
+    width: 153px;
     height: auto;
     transform: translate3d(0, 0, 0);
 }
@@ -26,7 +26,7 @@ img {
 #header {
     position: relative;
     z-index: 999;
-    padding: 22px 0 80px 0;
+    padding: 3px 0 66px 0;
 }
 /* Header Widget */
 .header-widget {
@@ -81,7 +81,8 @@ header.fullwidth .container {
     float: left;
 }
 #logo {
-    margin-right: 40px;
+    margin-top: 4px;
+    padding-left: 26px;
 }
 .header-widget {
     text-align: right;
@@ -343,7 +344,7 @@ a.button.border, a.button {
 #navigation {
     position: relative;
     display: block;
-    margin-top: 9px;
+    margin-top: 4px;
     margin-left: 40px;
 }
 #navigation ul {
@@ -509,7 +510,8 @@ a.button.border, a.button {
     color: #fff;
 }
 #navigation.style-1 ul a {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 500;
     text-transform: capitalize;
     line-height: 32px;
     padding: 6px 14px;
@@ -655,10 +657,10 @@ a.button.border, a.button {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     display: inline-block;
-    width: 190px;
+    width: 150px;
     font-size: 15px;
     transform: translate3d(0, 15px, 0);
-    padding: 16px 8px;
+    padding: 24px 8px;
     box-sizing: border-box;
     transition: 0.25s;
     visibility: hidden;
