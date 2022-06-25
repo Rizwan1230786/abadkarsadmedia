@@ -456,7 +456,6 @@
         </div>
     </section>
 
-
     <!-- STAR SECTION PARTNERS -->
     <div class="partners bg-white-1 home18">
         <div class="container">

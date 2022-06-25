@@ -8,7 +8,7 @@ use App\Models\Category;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta name="keywords" content="{{ $properties->meta_keywords }}">
     <meta name="description" content="{{ $properties->meta_description }}">
     <title>{{ $properties->meta_title }}</title>
@@ -229,6 +229,15 @@ use App\Models\Category;
                                                             <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>
                                                             {{ $properties->location }}
                                                         </a>
+                                                        @if(isset($properties->location))
+                                                        <div class="map-responsive">
+                                                            <iframe src="https://maps.google.com/maps?q={{$properties->latitude}},{{$properties->longitude}}&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                        </div>
+                                                        @else
+                                                        <div class="map-responsive">
+                                                            <iframe src="https://maps.google.com/maps?q={{ $properties->city_name }}&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

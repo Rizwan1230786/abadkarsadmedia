@@ -268,4 +268,125 @@
     .homepage-9 .slick-dots li{
         box-shadow: inset 0 0 0 3px rgb(239 45 45 / 50%);
    }
+   .header {
+    position: relative;
+    z-index: 3;
+    padding: 3px 0px;
+    font-size: 14px;
+    background-color: #33A137;
+}
+   .header .container1 {
+    width: 100%;
+    float: left;
+    padding-right: 30px;
+    position: relative;
+    background-color: #33A137;
+}
+.left {
+    float: left;
+}
+.right{
+    float: right;
+}
+.header nav {
+    margin-top: 0px;
+    height: 34px;
+    line-height: 34px;
+}
+.clearfix {
+    clear: both;
+}
+.header nav ul{
+    list-style: none;
+}
+.header nav li a.link-l {
+    position: relative;
+    padding: 0px 12px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 590;
+    color: #ffffff;
+}
+.header nav li a.adpid-wrp {
+    padding: 0 10px 0 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: block;
+    text-align: right;
+    width: 100px;
+    text-transform: capitalize;
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 3px;
+    color: #000;
+}
+.header nav li a.adpid-wrp .icon {
+    width: 15px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 11px;
+    font-size: 10px;
+}
+.icon-home{
+    font-size: 18px;
+}
+.icon-login{
+    font-size: 20px;
+    color: #ffffff;
+}
+.header nav.right > ul > li {
+    margin-right: 20px;
+}
+.box > ul {
+    max-height: 246px;
+    overflow-y: auto;
+    padding-right: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+}
+.box > ul li {
+    /* cursor: pointer; */
+    margin-bottom: 10px;
+    line-height: 34px;
+    height: 34px;
+    text-align: center;
+    border-bottom: none;
+}
+.box ul li a {
+    padding-top: 0px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background-color: #F7F7F7;
+    border: 1px solid #E3E3E3;
+    display: block;
+}
+.box ul li a {
+    position: relative;
+    color: #515151;
+    font-size: 12px;
+    padding-top: 6px;
+}
+.dropdon-heading{
+    text-align: center;
+    width: 100%;
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: auto;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 11px;
+
+
+}
 </style>

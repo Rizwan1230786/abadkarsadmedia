@@ -76,12 +76,14 @@ class AddProprtyController extends Controller
                 $user_id = Auth::guard('customeruser')->user()->id;
                 $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
                 $data = array(
-                    'area_id' => $data['area_id'],
+                    'area_id' => ($data['area_id'] ?? 0),
                     'user_id' => $user_id,
                     'city_name' => $data['city_name'],
                     'name' => $data['title'],
                     'type' => $data['property_purpose'],
                     'location' => $data['location'],
+                    'longitude' => ($data['longitude'] ?? null),
+                    'latitude' => ($data['latitude'] ?? null),
                     'category' => $data['category_id'],
                     'subcat_id' => $data['subcat_id'],
                     'price' => $data['price'],
