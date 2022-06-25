@@ -504,7 +504,6 @@
             /*********************************************************************/
             document.getElementById('lat').value = place.geometry.location.lat();
             document.getElementById('long').value = place.geometry.location.lng();
-            $('.lat').removeClass('d-none');
         });
     }
 
