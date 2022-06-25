@@ -470,7 +470,7 @@
 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=initialize&key=AIzaSyCYMlyYs_qCEHhoOsYq3QhRC_0v69Drnco"></script> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
-<script src="{{asset('')}}js/mapInput.js"></script>
+
 <script>
     $(function() {
         $(".numonly").on('input', function(e) {

@@ -25,8 +25,8 @@ class AddProperty extends FormRequest
     {
         return [
             'email' => 'required',
-            'city_name' => 'required',
-            'area_id' => 'required_without_all:location',
+            'city_name' => 'required_without_all:location,latitude,longitude',
+            'area_id' => 'required_without_all:location,latitude,longitude',
             'location' => 'required_without_all:area_id',
             'title' => 'required',
             'description' => 'required',
@@ -40,8 +40,7 @@ class AddProperty extends FormRequest
             'is_expired' => 'required',
             'category_id' => 'required',
             'property_purpose' => 'required',
-            'video_link' => 'required'
-            'url_slug' => 'required'
+            'video_link' => 'required_without_all:image',
 
         ];
     }
@@ -49,9 +48,9 @@ class AddProperty extends FormRequest
     {
         return [
             'email.required' => __('Email is required.'),
-            'city_name.required' => __('City Name is required.'),
+            'city_name.required_without_all' => __('City Name is required.'),
             'area_id.required_without_all' => __('Area name is required.'),
-            'location.required_without_all' => __('Location is required.'),
+            'location.required_without_all' => __('Location name is required.'),
             'title.required' => __('Title is required.'),
             'description.required' => __('Description is required.'),
             'price.required' => __('Price is required.'),
@@ -65,7 +64,6 @@ class AddProperty extends FormRequest
             'category_id.required' => 'Please select any category name.',
             'property_purpose.required' => 'Please select Rent or Sale.',
             'video_link.required' => 'Youtube video link is required.',
-            'url_slug.required' => 'URL slug is required.',
         ];
     }
 }

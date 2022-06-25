@@ -194,6 +194,18 @@ if (isset($record->id) && $record->id != 0) {
                     <div id="location_id_sel_box" class="l autofill cls_rtl sb_text_new">
                         <input name="location" type="text" id="location_id_input" class="autofilter disabled" data-value="" value="" placeholder="Enter location here ..." />
                     </div>
+                    <div class="lat col-lg-2 col-md-12 d-none">
+                        <p class="no-mb first" style="margin-bottom: 4px;">
+                            <label for="location">Latitude</label>
+                            <input type="text" value="{{ old('latitude') }}" name="latitude" step="0.01" id="lat">
+                        </p>
+                    </div>
+                    <div class="lat col-lg-2 col-md-12 d-none">
+                        <p class="no-mb first" style="margin-bottom: 4px;">
+                            <label for="location">Longitutde</label>
+                            <input type="text" value="{{ old('longitude') }}" name="longitude" step="0.01" id="long">
+                        </p>
+                    </div>
                 </div>
                 <div class="divrow zameen-city-box" style="width: 50%;margin: 0 auto;width: 20;">
                     @if ($errors->has('location'))
@@ -762,6 +774,39 @@ if (isset($record->id) && $record->id != 0) {
         <br>
     </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=initialize&key=AIzaSyCYMlyYs_qCEHhoOsYq3QhRC_0v69Drnco"></script>
+<script>
+    function initialize() {
+        var address = (document.getElementById('location_id_input'));
+        var autocomplete = new google.maps.places.Autocomplete(address);
+        autocomplete.setTypes(['geocode']);
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                return;
+            }
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+            /*********************************************************************/
+            /* var address contain your autocomplete address *********************/
+            /* place.geometry.location.lat() && place.geometry.location.lat() ****/
+            /* will be used for current address latitude and longitude************/
+            /*********************************************************************/
+            document.getElementById('lat').value = place.geometry.location.lat();
+            document.getElementById('long').value = place.geometry.location.lng();
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.form-switch1').on('change', function() {
@@ -821,7 +866,6 @@ if (isset($record->id) && $record->id != 0) {
 <script>
     $(document).ready(function() {
         $('.city').on('change', function() {
-            alert('ok')
             var city_id = this.value;
             $.ajax({
                 url: "{{ url('/user/fetch-area') }}",
