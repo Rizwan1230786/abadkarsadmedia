@@ -8,6 +8,8 @@
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <link rel="stylesheet" href="{{ asset('/front/css/jquery-ui.css') }}">
     <!-- GOOGLE FONTS -->
     @yield('css')
