@@ -17,9 +17,9 @@ use App\Http\Controllers\admin\OurclinetsController;
 use App\Http\Controllers\Front\AddProprtyController;
 use App\Http\Controllers\userside\ReportsController;
 use App\Http\Controllers\admin\TestimonialController;
+use App\Http\Controllers\admin\tools\ToolsController;
 use App\Http\Controllers\userside\UserRolesController;
 use App\Http\Controllers\userside\roles\RoleController;
-use App\Http\Controllers\userside\tools\ToolsController;
 use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
@@ -45,6 +45,7 @@ use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
+use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -230,7 +231,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/banners/submit', [BannerAdvertisementController::class, 'submit'])->name('banners_submit');
         Route::post('/update_status_banners', [BannerAdvertisementController::class, 'update_banners_status'])->name('update_status_banners');
         Route::post('/delete_banners/{id}', [BannerAdvertisementController::class, 'destroy'])->name('delete_banners');
-
+        ////////////routs of tools//////////
+        Route::get('/tools', [ToolsController::class, 'index'])->name('tools');
+        Route::get('/tools/create', [ToolsController::class, 'create'])->name('tools.form');
+        Route::post('/tools/submit', [ToolsController::class, 'submit'])->name('tools_submit');
+        Route::post('/update_status_tools', [ToolsController::class, 'update_tools_status'])->name('update_status_tools');
+        Route::post('/delete_tools/{id}', [ToolsController::class, 'destroy'])->name('delete_tools');
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
