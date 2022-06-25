@@ -297,71 +297,76 @@ class PropertyManagementController extends Controller
             'subcat_id' => 'required',
         ]);
         $data = $request->all();
-        if ($data['email']) {
-            if (Auth::check()) {
-                if (isset($request->image) && !empty($request->image)) {
-                    $image = $request->image[0];
-                    $filename = rand(1000000000, 9999999999) . '.' . 'webp';
-                    $destinationPath = public_path('assets/images/properties/');
-                    $img = Image::make($image->getRealPath())->encode('webp', 75);
-                    $img->resize(360, 250, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save($destinationPath . $filename);
-                }
-                $user_id = Auth::guard('customeruser')->user()->id;
-                $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-                $data = array(
-                    'area_id' => $data['area_id'],
-                    'user_id' => $user_id,
-                    'city_name' => $data['city_name'],
-                    'name' => $data['title'],
-                    'type' => $data['property_purpose'],
-                    'location' => $data['location'],
-                    'category' => $data['category_id'],
-                    'subcat_id' => $data['subcat_id'],
-                    'price' => $data['price'],
-                    'unit' => $data['unit'],
-                    'descripition' => $data['description'],
-                    'front_dim' => $data['front_dim'],
-                    'back_dim' => $data['back_dim'],
-                    'land_area' => $data['land_area'],
-                    'is_expired' => $data['is_expired'],
-                    'listed_date' => Carbon::now()->format('Y-m-d'),
-                    'video_link' => $data['video_link'],
-                    'status' => 1,
-                    "url_slug" => $data['url_slug'],
-                    'image' => $filename,
-                    'number_of_bedrooms' => $data['number_of_bedrooms'],
-                    'number_of_bathrooms' => $data['number_of_bathrooms'],
-                    'number_of_floors' => $data['number_of_floors'],
-                );
-                $query = Property::create($data);
-                $query->features()->attach($request->feature);
-                if (isset($request->image) && !empty($request->image)) {
-                    foreach ($request->image as $image) {
-                        $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
-                        $Path = public_path('assets/images/properties/multipleimages/jpg/');
-                        $img = Image::make($image->getRealPath())->encode('jpg', 100);
-                        $img->resize(1100, 450, function ($constraint) {
+        if ($data['url_slug']) {
+            if ($data['email']) {
+                if (Auth::check()) {
+                    if (isset($request->image) && !empty($request->image)) {
+                        $image = $request->image[0];
+                        $filename = rand(1000000000, 9999999999) . '.' . 'webp';
+                        $destinationPath = public_path('assets/images/properties/');
+                        $img = Image::make($image->getRealPath())->encode('webp', 75);
+                        $img->resize(360, 250, function ($constraint) {
                             $constraint->aspectRatio();
-                        })->save($Path . $filename);
-                        $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
-                        $Path2 = public_path('assets/images/properties/multipleimages/webp/');
-                        $img2 = Image::make($image->getRealPath())->encode('webp', 75);
-                        $img2->resize(1100, 450, function ($constraint) {
-                            $constraint->aspectRatio();
-                        })->save($Path2 . $filename2);
-                        // request()->image->move($destinationPath, $data['image']);
-                        PropertyImage::create(['image' => $filename, 'property_id' => $query->id, 'image_webp' => $filename2]);
+                        })->save($destinationPath . $filename);
                     }
+                    $user_id = Auth::guard('customeruser')->user()->id;
+                    $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
+                    $data = array(
+                        'area_id' => ($data['area_id'] ?? 0),
+                        'user_id' => $user_id,
+                        'city_name' => $data['city_name'],
+                        'name' => $data['title'],
+                        'type' => $data['property_purpose'],
+                        'location' => $data['location'],
+                        'longitude' => ($data['longitude'] ?? null),
+                        'latitude' => ($data['latitude'] ?? null),
+                        'category' => $data['category_id'],
+                        'subcat_id' => $data['subcat_id'],
+                        'price' => $data['price'],
+                        'unit' => $data['unit'],
+                        'descripition' => $data['description'],
+                        'front_dim' => $data['front_dim'],
+                        'back_dim' => $data['back_dim'],
+                        'land_area' => $data['land_area'],
+                        'is_expired' => $data['is_expired'],
+                        'listed_date' => Carbon::now()->format('Y-m-d'),
+                        'video_link' => $data['video_link'],
+                        'status' => 1,
+                        "url_slug" => $data['url_slug'],
+                        'image' => $filename,
+                        'number_of_bedrooms' => $data['number_of_bedrooms'],
+                        'number_of_bathrooms' => $data['number_of_bathrooms'],
+                        'number_of_floors' => $data['number_of_floors'],
+                    );
+                    $query = Property::create($data);
+                    $query->features()->attach($request->feature);
+                    if (isset($request->image) && !empty($request->image)) {
+                        foreach ($request->image as $image) {
+                            $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
+                            $Path = public_path('assets/images/properties/multipleimages/jpg/');
+                            $img = Image::make($image->getRealPath())->encode('jpg', 100);
+                            $img->resize(1100, 450, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->save($Path . $filename);
+                            $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
+                            $Path2 = public_path('assets/images/properties/multipleimages/webp/');
+                            $img2 = Image::make($image->getRealPath())->encode('webp', 75);
+                            $img2->resize(1100, 450, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->save($Path2 . $filename2);
+                            // request()->image->move($destinationPath, $data['image']);
+                            PropertyImage::create(['image' => $filename, 'property_id' => $query->id, 'image_webp' => $filename2]);
+                        }
+                    }
+                    // Auth::logout();
+                    return redirect()->back()->with('message', 'Property Added!');
+                } else {
+                    return redirect()->back()->with('error', 'Email or password is incorrect');
                 }
-                // Auth::logout();
-                return redirect()->back()->with('message', 'Property Added!');
-            } else {
-                return redirect()->back()->with('error', 'Email or password is incorrect');
             }
+            return redirect()->back()->with('error', 'Please enter email and password!');
         }
-        return redirect()->back()->with('error', 'Please enter email and password!');
+        return redirect()->back()->with('error', 'URL slug is missing!');
     }
     public function edit_for_sale($id)
     {

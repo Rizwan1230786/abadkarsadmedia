@@ -14,7 +14,7 @@ class AddAreasToPropertiesTable extends Migration
     public function up()
     {
         Schema::table('properties', function (Blueprint $table) {
-            $table->unsignedBigInteger('area_id')->after('id');
+            $table->unsignedBigInteger('area_id')->after('id')->nullable();
         });
     }
 
