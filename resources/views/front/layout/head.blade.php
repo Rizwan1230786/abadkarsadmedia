@@ -301,7 +301,7 @@
 }
 .header nav li a.link-l {
     position: relative;
-    padding: 0px 7px;
+    padding: 0px 12px;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 590;

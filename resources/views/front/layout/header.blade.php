@@ -16,10 +16,11 @@ use App\Models\subpages;
                 </li>
                 <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
                 <li class="left"><a class="link-l" href="#">Area Guides</a></li>
-                <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
-                <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
-                <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
-                <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
+                <li class="left"><a class="link-l" href="#">Partners</a></li>
+                <li class="left"><a class="link-l" href="#">Blogs</a></li>
+                <li class="left"><a class="link-l" href="#">Tools</a></li>
+                <li class="left"><a class="link-l" href="#">More</a></li>
+                <li class="left"><a class="link-l" href="#">Forum</a></li>
             </ul>
         </nav>
         <nav class="right">
