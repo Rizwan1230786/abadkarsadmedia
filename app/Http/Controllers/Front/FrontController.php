@@ -635,4 +635,28 @@ class FrontController extends Controller
         $data['areas'] = Area::where("city_id", $city_id->id)->get(["areaname", "id", "slug"]);
         return response()->json($data);
     }
+    /// Forum
+    public function forum(){
+        $category = Category::with('cities')->with('url_slugs', function ($q) {
+            $q->where('status', 1);
+        })->get();
+        $flats = Category::with('cities')->with('url_slugs', function ($q) {
+            $q->where('status', 1);
+        })->get();
+        $flats = Category::with('cities')->with('url_slugs')->get();
+        $property = property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
+        $project = Projects::all();
+        $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
+            $q->where('status', 1);
+        })->with('properties')->get();
+        $feature = Features::all();
+        $city = Cities::all();
+        $agents = Agent::all();
+        $agency = Agency::all();
+        $tools=Abadtools::all();
+        $testimonials = Testimonials::all();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.forum.index',get_defined_vars());
+    }
 }

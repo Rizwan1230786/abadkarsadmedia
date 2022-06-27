@@ -296,6 +296,8 @@ Route::prefix('search_property')->group(function () {
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
 });
+/// Forum 
+Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
 
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
