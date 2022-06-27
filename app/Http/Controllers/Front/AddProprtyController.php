@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers\Front;
 
+use Carbon\Carbon;
+use App\Models\Area;
 use App\Models\State;
 use App\Models\Cities;
+use App\Models\UrlSlug;
 use App\Models\Category;
 use App\Models\Features;
+use App\Models\Property;
 use App\Models\Webpages;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Property\addProperty;
 use App\Models\Customeruser;
-use App\Models\Property;
+use Illuminate\Http\Request;
 use App\Models\PropertyImage;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use Intervention\Image\Facades\Image;
+use App\Http\Requests\Property\addProperty;
 
 
 class AddProprtyController extends Controller
@@ -103,6 +105,8 @@ class AddProprtyController extends Controller
                     'video_link' => $data['video_link'],
                 );
                 $query = Property::create($data);
+                UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
+                Area::where("id" , $request->area_id)->update(['status' => 1]);
                 $query->features()->attach($request->feature);
                 if (isset($request->image) && !empty($request->image)) {
                     foreach ($request->image as $image) {

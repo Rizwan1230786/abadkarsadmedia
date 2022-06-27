@@ -976,22 +976,18 @@
                                         <p style="font-weight: bold; margin-left:24px;">Karachi</p>
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
-                                            @foreach ($search_cityies->properties as $property)
-                                                @if (isset($search_cityies->name) && $search_cityies->name == 'karachi')
-                                                    @if ($search_cityies->id == $property->city_name)
-                                                        @foreach ($search_cityies->areas->take(8) as $area)
-                                                            <ul>
-                                                                <li style="list-style: square;">
-                                                                    <a style="color: black;"
-                                                                        href="{{ url('/House_Property' . '/' . $search_cityies->name . '/' . $area->slug) }}">House
-                                                                        for sale in {{ $area->areaname }}
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        @endforeach
-                                                    @endif
-                                                @endif
-                                            @endforeach
+                                            @if (isset($search_cityies->name) && $search_cityies->name == 'Karachi')
+                                                @foreach ($search_cityies->areas->take(8) as $area)
+                                                    <ul>
+                                                        <li style="list-style: square;">
+                                                            <a style="color: black;"
+                                                                href="{{ url('/House_Property' . '/' . $search_cityies->name . '/' . $area->slug) }}">House
+                                                                for sale in {{ $area->areaname }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                @endforeach
+                                            @endif
                                         @endforeach
                                     </div>
                                     <div class="col-md-4">
@@ -999,7 +995,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
                                             @foreach ($search_cityies->areas->take(8) as $area)
-                                                @if (isset($search_cityies->name) && $search_cityies->name == 'rahim yar khan')
+                                                @if (isset($search_cityies->name) && $search_cityies->name == 'Rahim Yar Khan')
                                                     <ul>
                                                         <li style="list-style: square;">
                                                             <a style="color: black;"
