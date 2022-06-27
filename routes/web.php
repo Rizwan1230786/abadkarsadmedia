@@ -45,6 +45,7 @@ use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
+use App\Http\Controllers\admin\developer\DeveloperPatner;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
 
 /*
@@ -68,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
     Route::group(['middleware' => 'auth:web'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-
+        
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         /////customerusers//////////
@@ -237,6 +238,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/tools/submit', [ToolsController::class, 'submit'])->name('tools_submit');
         Route::post('/update_status_tools', [ToolsController::class, 'update_tools_status'])->name('update_status_tools');
         Route::post('/delete_tools/{id}', [ToolsController::class, 'destroy'])->name('delete_tools');
+
+       ////////////// // developer///////////////////////
+        Route::get('/create/form/developer', [DeveloperPatner::class, 'show_create'])->name('developer.submit');
+        Route::get('/index/developer', [DeveloperPatner::class, 'developer_index'])->name('developer.index');
+        Route::post('/create/developer', [DeveloperPatner::class, 'create'])->name('create_developer');
+        Route::get('/update/form/developer/{id}', [DeveloperPatner::class, 'developer_update'])->name('developer.update');
+        Route::post('/update/developer', [DeveloperPatner::class, 'update'])->name('developer.update.form');
+        Route::get('/delete/developer/{id}', [DeveloperPatner::class, 'delete'])->name('developer.delete');
+        
+        
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
@@ -295,7 +306,10 @@ Route::prefix('search_property')->group(function () {
     Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
+    
 });
+
+    
 
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
