@@ -308,6 +308,8 @@ Route::prefix('search_property')->group(function () {
     Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
     
 });
+/// Forum 
+Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
 
     
 
