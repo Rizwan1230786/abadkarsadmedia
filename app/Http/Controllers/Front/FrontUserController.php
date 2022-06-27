@@ -3,28 +3,29 @@
 namespace App\Http\Controllers\Front;
 
 use Session;
+use Exception;
 use App\Models\Agent;
+use App\Models\Agency;
 use App\Models\Cities;
 use App\Models\Category;
+use App\Models\Features;
 use App\Models\Projects;
 use App\Models\Property;
-use App\Models\Agency;
 use App\Models\Webpages;
+use App\Models\Abadtools;
 use App\Models\Customeruser;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactUs\Contact;
-use App\Models\Features;
 use App\Models\Testimonials;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Exception;
+use Illuminate\Http\Request;
 use Facade\FlareClient\Http\Client;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ContactUs\Contact;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class FrontUserController extends Controller
 {
@@ -40,6 +41,7 @@ class FrontUserController extends Controller
             $city = Cities::all();
             $agents = Agent::all();
             $agency = Agency::all();
+            $tools=Abadtools::all();
             $testimonials = Testimonials::all();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
