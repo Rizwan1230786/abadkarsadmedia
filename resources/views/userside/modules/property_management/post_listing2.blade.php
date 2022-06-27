@@ -223,7 +223,7 @@ if (isset($record->id) && $record->id != 0) {
                         <div class="error">{{ $errors->first('title') }}</div>
                         @endif
                     </div>
-                    <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="hidden" readonly>
+                    <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug" name="url_slug" value="{{ $record->url_slug ?? '' }}" type="hidden" readonly>
                 </div>
 
                 <div class="divrow">

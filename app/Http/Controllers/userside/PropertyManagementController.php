@@ -412,7 +412,7 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.property_management.post_listing2', get_defined_vars());
     }
-    public function update_post_listing(AddProperty $request, $id)
+    public function update_post_listing(Request $request, $id)
     {
         $data = $request->all();
         $post = Property::find($id);
@@ -427,7 +427,32 @@ class PropertyManagementController extends Controller
             request()->image->move(public_path('assets/images/properties/'), $filename);
         }
         $data['is_expired'] = Carbon::now()->addMonth($data['is_expired']);
-        $data = array('status' => 0, 'area_id' => $data['area_id'], 'city_name' => $data['city_name'], 'name' => $data['title'], 'type' => $data['property_purpose'], 'location' => $data['location'], 'category' => $data['category_id'], 'subcat_id' => $data['subcat_id'], 'price' => $data['price'], 'unit' => $data['unit'], 'descripition' => $data['description'], 'front_dim' => $data['front_dim'],  'back_dim' => $data['back_dim'], 'land_area' => $data['land_area'], 'is_expired' => $data['is_expired'], 'listed_date' => Carbon::now()->format('Y-m-d'));
+        $data = array(
+            'area_id' => ($data['area_id'] ?? 0),
+            'city_name' => $data['city_name'],
+            'name' => $data['title'],
+            'type' => $data['property_purpose'],
+            'location' => $data['location'],
+            'longitude' => ($data['longitude'] ?? null),
+            'latitude' => ($data['latitude'] ?? null),
+            'category' => $data['category_id'],
+            'subcat_id' => $data['subcat_id'],
+            'price' => $data['price'],
+            'unit' => $data['unit'],
+            'descripition' => $data['description'],
+            'front_dim' => $data['front_dim'],
+            'back_dim' => $data['back_dim'],
+            'land_area' => $data['land_area'],
+            'is_expired' => $data['is_expired'],
+            'listed_date' => Carbon::now()->format('Y-m-d'),
+            'video_link' => $data['video_link'],
+            'status' => 1,
+            "url_slug" => $data['url_slug'],
+            'image' => ($filename ?? ''),
+            'number_of_bedrooms' => $data['number_of_bedrooms'],
+            'number_of_bathrooms' => $data['number_of_bathrooms'],
+            'number_of_floors' => $data['number_of_floors'],
+        );
         $post->update($data);
         $post->features()->sync($request->feature);
         return redirect()->back()->with('message', 'Property Updated!');
