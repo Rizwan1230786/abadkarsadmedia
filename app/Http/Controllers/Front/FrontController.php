@@ -7,6 +7,7 @@ use App\Models\property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Abadtools;
 use App\Models\Agent;
 use App\Models\Cities;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
@@ -46,6 +47,7 @@ class FrontController extends Controller
         $city = Cities::all();
         $agents = Agent::all();
         $agency = Agency::all();
+        $tools=Abadtools::all();
         $testimonials = Testimonials::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();

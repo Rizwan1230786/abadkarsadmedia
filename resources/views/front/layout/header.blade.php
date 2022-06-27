@@ -1,6 +1,17 @@
 <?php
 use App\Models\subpages;
 ?>
+
+    <style>
+        .dropdown-container {
+            display: none;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 1;
+            padding-left: 8px;
+        }
+
+    </style>
 <!-- START PRELOADER -->
 <!-- <div id="preloader">
     <div id="status">
@@ -11,7 +22,7 @@ use App\Models\subpages;
 <section class="header">
     <div class="container1">
         <nav class="left">
-            <ul class="clearfix">
+            <ul class="clearfix" id="responsive">
                 <li class="left"><a class="link-l" href="{{ url('/') }}"><i class="fas fa-home icon-home"></i></a>
                 </li>
                 <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
@@ -19,8 +30,13 @@ use App\Models\subpages;
                 <li class="left"><a class="link-l" href="#">Partners</a></li>
                 <li class="left"><a class="link-l" href="#">Blogs</a></li>
                 <li class="left"><a class="link-l" href="#">Tools</a></li>
-                <li class="left"><a class="link-l" href="#">More</a></li>
-                <li class="left"><a class="link-l" href="#">Forum</a></li>
+                <li class="left dropdown-btn"><a class="link-l" href="#" role="button">More<i class="fa fa-caret-right" style="margin-left: 6px;"></i></a>
+
+                </li>
+                <ul class="dropdown-container left" id="myDropdown">
+                    <li class="left"><a class="link-l" style="padding: 0px;" href="#">Forum</a></li>
+                    <li class="left"><a class="link-l" href="#">Maps</a></li>
+                </ul>
             </ul>
         </nav>
         <nav class="right">
