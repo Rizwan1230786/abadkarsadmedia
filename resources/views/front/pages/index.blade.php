@@ -13,7 +13,6 @@
             -webkit-box-pack: justify;
             -ms-flex-pack: justify;
             justify-content: space-between;
-            margin-left: 20px;
         }
 
         .content {
@@ -459,15 +458,15 @@
         </section>
         <!-- END HEADER SEARCH -->
         {{-- Abad tools --}}
-        {{-- <section class="mt-5">
+        <section class="mt-5">
             <div class="container-fluid">
                 <div class="sec-title">
                     <h2><span>Abadkar </span>Tools</h2>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-3" style="padding: 20px;">
                     <!-- Single category -->
                     @foreach ($tools as $value)
-                        <div class="col-xl-2 col-lg-4 col-sm-12 main">
+                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 main">
                             <div class="row">
                                 <div class="col-xl-12 set">
                                     <a href="#" class="homes-img  img">
@@ -488,7 +487,7 @@
                 </div>
                 <!-- /row -->
             </div>
-        </section> --}}
+        </section>
         {{-- end abadtools --}}
         <!-- START SECTION POPULAR PLACES -->
         <section class="feature-categories bg-white rec-pro">
@@ -627,12 +626,13 @@
                                 <div class="item">
                                     <div class="shadow-effect" style="margin-top: 100px;">
                                         <span class="mytooltip tooltip-effect-1">
+                                            <a href="{{ route('front.agency_detail',$value->id) }}">
                                             <img class="img-responsive caruswl-image tooltip-item"
-                                                src="{{ asset('assets/images/agency/' . $value->image) }}"
+                                               style="padding: 5px;" src="{{ asset('assets/images/agency/' . $value->image) }}"
                                                 alt="">
-
+                                            </a>
                                             <span class="tooltip-content clearfix">
-                                                <img src="{{ asset('assets/images/agency/' . $value->image) }}">
+                                                <img style="padding: 10px;" src="{{ asset('assets/images/agency/' . $value->image) }}">
                                                 <span class="tooltip-text">
                                                     <i
                                                         class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $value->office_address }}<br>
@@ -786,9 +786,9 @@
                             data-aos-delay="150">
                             <div class="inner-box team-details">
                                 <div class="image team-head">
-                                    <a href="agents-listing-grid.html"><img
+                                    <a href="{{ asset('assets/images/agent/' . $agent->image) }}" target="_blank"><img
                                             src="{{ asset('assets/images/agent/' . $agent->image) }}"
-                                            alt="" /></a>
+                                            alt="" style="height: 170px;" /></a>
                                     <div class="team-hover">
                                         <ul class="team-social">
                                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -803,7 +803,7 @@
                                 </div>
                                 <div class="lower-box">
                                     <h3><a
-                                            href="{{ route('front.agent_detail', $agent->id) }}">{{ $agent->name }}</a>
+                                            href="{{ route('front.agent_detail', $agent->id) }}" style="font-size: 16px;">{{ $agent->name }}</a>
                                     </h3>
                                     <div class="designation">Real Estate Agent</div>
                                 </div>

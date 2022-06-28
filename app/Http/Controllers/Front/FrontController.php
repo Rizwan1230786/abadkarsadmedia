@@ -87,7 +87,8 @@ class FrontController extends Controller
     {
         $meta = subpages::Where("page_title", "agents view")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        $agents = Agent::paginate(4);
+        $agents = Agent::paginate(8);
+        $agent_count=Agent::count();
         $property = property::where('status', 1)->latest()->take(3)->get();
         return view('front.pages.agent', get_defined_vars());
     }
@@ -103,16 +104,19 @@ class FrontController extends Controller
     {
         $meta = subpages::Where("page_title", "agents view")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        $agencies = Agency::paginate(4);
-
+        $agencies = Agency::paginate(8);
+        $agency_count=Agency::count();
+        $property = property::where('status', 1)->latest()->take(3)->get();
         return view('front.pages.agency', get_defined_vars());
     }
     public function agency_detail($id)
     {
         $agency = Agency::where('id', $id)->first();
         $projects = Projects::all();
-        $agents = Agent::all();
-        return view('front.pages.agency_detail', compact('agency', 'projects', 'agents'));
+        $agents = Agent::where('agency',$agency->name)->get();
+        $meta = subpages::Where("page_title", "agenc")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.agency_detail', get_defined_vars());
     }
     public function property()
     {

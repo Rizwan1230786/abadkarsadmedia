@@ -2,9 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="{{ $meta->meta_description }}">
-    <meta name="meta_keywords" content="{{ $meta->meta_keywords }}">
-    <title>{{ $meta->meta_title }}</title>
+    <meta name="description" content="{{ $meta->meta_description ?? ''}}">
+    <meta name="meta_keywords" content="{{ $meta->meta_keywords ?? '' }}">
+    <title>{{ $meta->meta_title ?? '' }}</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
@@ -227,6 +227,7 @@
         margin-top: 30px;
         border-radius: 10px;
         width: 82px;
+        padding: 10px;
     }
 
     .mytooltip .tooltip-item::after {
@@ -258,7 +259,7 @@
     }
 
     .mytooltip .tooltip-text {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 24px;
         display: block;
         padding: 1.31em 1.21em 1.21em 0;

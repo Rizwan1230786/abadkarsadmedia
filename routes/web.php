@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
     Route::group(['middleware' => 'auth:web'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-        
+
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         /////customerusers//////////
@@ -246,8 +246,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/update/form/developer/{id}', [DeveloperPatner::class, 'developer_update'])->name('developer.update');
         Route::post('/update/developer', [DeveloperPatner::class, 'update'])->name('developer.update.form');
         Route::get('/delete/developer/{id}', [DeveloperPatner::class, 'delete'])->name('developer.delete');
-        
-        
+
+
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
@@ -265,7 +265,7 @@ Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
-Route::get('/agency/detail/{id}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
+Route::get('/agency/detail/{slug}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 /////////advertisement routes////////
 Route::prefix('advertise')->group(function () {
     Route::get('/', [FrontAdvertiseController::class, 'advertise'])->name('front.advertise');
@@ -306,12 +306,12 @@ Route::prefix('search_property')->group(function () {
     Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
-    
+
 });
-/// Forum 
+/// Forum
 Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
 
-    
+
 
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');

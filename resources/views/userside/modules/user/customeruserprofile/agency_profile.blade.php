@@ -25,7 +25,7 @@
                 @if (!empty($agency->user_id))
                     <input type="hidden" value="{{ $agency->user_id ?? '' }}" name="user_id">
                 @else
-                    <input type="text" value="{{ Auth::user()->id }}" name="user_id">
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                 @endif
                 <div id="editusertext">
                     <div>

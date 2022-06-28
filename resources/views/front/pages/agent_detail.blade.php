@@ -16,7 +16,7 @@
                                         <div class="detail-wrapper-body">
                                             <div class="listing-title-bar">
                                                 <div class="text-heading text-left">
-                                                    <p><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Agent
+                                                    <p><a href="/">Home </a> &nbsp;/&nbsp; <span>Agent
                                                             Details</span></p>
                                                 </div>
                                                 <h3>{{ $agent->name }}</h3>

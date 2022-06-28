@@ -15,7 +15,7 @@
                                         <div class="detail-wrapper-body">
                                             <div class="listing-title-bar">
                                                 <div class="text-heading text-left">
-                                                    <p><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Agencies detail</span></p>
+                                                    <p><a href="/">Home </a> &nbsp;/&nbsp; <span>Agencies detail</span></p>
                                                 </div>
                                                 <h3>Agencies Detail</h3>
                                             </div>
@@ -114,12 +114,11 @@
                             <!-- START SECTION AGENTS -->
                             <section class="blog blog-section portfolio py-0 age bg-white">
                                 <div class="container">
-                                    <h5>Agents</h5>
+                                    <h5>Agency Agents</h5>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-xs-12">
                                             <div class="row">
                                                 @foreach ($agents as $agent)
-                                                @if ($agent->agency == $agency->name)
                                                 <div class="col-md-12 col-xs-12 space">
                                                     <div class="news-item news-item-sm">
                                                         <a href="{{ route('front.agent_detail',$agent->id) }}" class="news-img-link">
@@ -145,12 +144,10 @@
                                                                     <p>Company : {{ $agent->agency }}</p>
                                                                 </div>
                                                                 @endif
-
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -172,7 +169,7 @@
                                                 <input type="text" id="fname" name="full_name" placeholder="Full Name" required />
                                                 <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number" required />
                                                 <input type="email" id="emailid" name="email_address" placeholder="Email Address" required />
-                                                <input type="email" id="emailid" name="email" value="{{$data->email}}" placeholder="Email Address" required />
+                                                <input type="email" id="emailid" name="email"  placeholder="Email Address" required />
                                                 <textarea placeholder="Message" name="message" required></textarea>
                                                 <input type="submit" name="sendmessage" class="multiple-send-message" value="Submit Request" />
                                             </form>

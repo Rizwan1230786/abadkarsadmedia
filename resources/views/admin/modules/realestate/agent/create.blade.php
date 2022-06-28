@@ -67,10 +67,10 @@
                                         </div>
                                         <div class="col-6 form-group">
                                             <label class="form-label">Agency</label>
-                                            <select id="cars" class="form-control" name="agency_id">
+                                            <select id="cars" class="form-control" name="agency">
                                                 <option value="null">Select a agency</option>
                                                 @foreach ($agency as $agency)
-                                                    <option value="{{ $agency->name }}" <?php if (($data['record']->agency_id ?? '') == $agency->name) {
+                                                    <option value="{{ $agency->name }}" <?php if (($data['record']->agency ?? '') == $agency->name) {
     echo 'selected';
 } ?>>
                                                         {{ $agency->name }}

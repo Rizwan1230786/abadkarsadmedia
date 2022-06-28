@@ -9,7 +9,7 @@
                     <div class="detail-wrapper-body">
                         <div class="listing-title-bar">
                             <div class="text-heading text-left">
-                                <p class="pb-2"><a href="{{ route('front.index') }}">Home </a> &nbsp;/&nbsp; <span>Listings</span></p>
+                                <p class="pb-2"><a href="{{ url('/') }}">Home </a> &nbsp;/&nbsp; <span>Listings</span></p>
                             </div>
                             <h3>All Agents</h3>
                         </div>
@@ -23,7 +23,7 @@
                             <div class="detail-wrapper-body">
                                 <div class="listing-title-bar">
                                     <div class="text-heading text-left">
-                                        <p class="font-weight-bold mb-0 mt-3">7 Search results</p>
+                                        <p class="font-weight-bold mb-0 mt-3">Total ( {{ number_format($agent_count,0) }} ) Agents</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +96,9 @@
                                                     <a href="{{ url('/property', $val->url_slug) }}"><img src="{{ asset('assets/images/properties/' . $val->image) }}" alt="No Image"></a>
                                                 </div>
                                                 <div class="info-img">
-                                                    <a href="blog-details.html"><h6>{{$val->title}}</h6></a>
-                                                    <p>RS-{{$val->price}}</p>
+                                                    <a href="{{ url('/property', $val->url_slug) }}" title="{{ $val->name }}"> <h6>{{Str::limit($val->name, 20)}}</h6></a>
+                                                    <p style="margin-bottom: 0px;">For {{ $val->type }}</p>
+                                                    <p>(PKR): {{ number_format($val->price, 0)}}</p>
                                                 </div>
                                             </div>
                                             @endforeach
