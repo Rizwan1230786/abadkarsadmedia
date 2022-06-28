@@ -127,11 +127,11 @@ class AddProprtyController extends Controller
                     }
                 }
                 Auth::logout();
-                return redirect()->back()->with('message', 'Property Added!');
+                return redirect()->back()->with('success', 'Property Added!');
             } else {
-                return redirect()->back()->with('message', 'email or password is incorrect');
+                return redirect()->back()->with('error', 'Email or password is incorrect');
             }
         }
-        return redirect()->back()->with('message', 'Please enter email and password!');
+        return redirect()->back()->with('error', 'Please enter email and password!');
     }
 }

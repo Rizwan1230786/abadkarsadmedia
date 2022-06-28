@@ -48,12 +48,12 @@
                     </section>
                     <div class="row">
                         @foreach ($agencies as $agency )
-                        <div class="col-md-12 col-xs-12">
+                        <div class="col-md-12 col-xs-12 mb-3">
                             <div class="news-item news-item-sm">
                                 <a href="agencies-details.html" class="news-img-link">
                                     <div class="news-item-img homes">
                                         {{-- <div class="homes-tag button alt featured">3 Listings</div> --}}
-                                        <img class="resp-img" src="{{asset('assets/images/agency/'.$agency->image)}}" alt="blog image">
+                                        <img class="resp-img" style="padding: 30px;" src="{{asset('assets/images/agency/'.$agency->image)}}" alt="blog image">
                                     </div>
                                 </a>
                                 <div class="news-item-text">
@@ -69,7 +69,7 @@
                                         </ul>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="properties-full-grid-2.html" class="news-link">View My Listings</a>
+                                        <a href="#" class="news-link">View My Listings</a>
                                     </div>
                                 </div>
                             </div>

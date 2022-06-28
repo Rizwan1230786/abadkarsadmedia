@@ -388,7 +388,11 @@
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 11px;
-
-
+}
+.range-slider .form-control{
+    font-size: 13px;
+}
+.lable{
+    font-size: 13px !important;
 }
 </style>

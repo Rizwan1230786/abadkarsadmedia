@@ -1959,16 +1959,16 @@ screen and (max-height:300px) {
 }
 .search-2 .form-group .nice-select {
 	margin: 0;
-	height: 50px;
-	line-height: 50px;
+    width: 200px;
+	line-height: 32px !important;
+    font-size: 12px;
 	padding: 0 15px;
-	border-radius: 5px;
+	border-radius: 13px;
 	border: none;
 	box-shadow: none;
 	color: #757575;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
-	font-size: 14px;
 }
 .search-2 .form-group .nice-select:hover {
 	color: #fa2964;

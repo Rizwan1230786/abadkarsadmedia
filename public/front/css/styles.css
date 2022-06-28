@@ -7983,7 +7983,7 @@ a.button {
 
 .hp-6 .parallax-searchs .form-group {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .hp-6 .parallax-searchs .form-group .nice-select {
@@ -8161,7 +8161,7 @@ a.button {
     }
 
     .homepage-9.hp-6 .explore__form-checkbox-list.full-filter.filter-block {
-        margin-top: 20px !important;
+        margin-top: 25px !important;
     }
 }
 
@@ -8408,7 +8408,7 @@ a.button {
 }
 
 .homepage-9.hp-6 .explore__form-checkbox-list.full-filter.filter-block {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -8648,8 +8648,7 @@ a.button {
 
 .search-2 .form-group .nice-select {
     margin: 0;
-    height: 50px;
-    line-height: 50px;
+    line-height: 32px !important;
     padding: 0 15px;
     border-radius: 5px;
     border: none;
@@ -11101,8 +11100,6 @@ a.button {
 
 .parallax-searchs .form-group .nice-select {
     margin: 0;
-    height: 50px;
-    line-height: 50px;
     padding: 0 15px;
     border-radius: 5px;
     border: none;

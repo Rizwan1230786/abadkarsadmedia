@@ -73,9 +73,14 @@
                 <form action="{{ url('add-property/submit') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-lg-12 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
-                        @if (session()->has('message'))
+                        @if (session()->has('success'))
                         <div class="alert alert-success">
-                            {{ session()->get('message') }}
+                            {{ session()->get('success') }}
+                        </div>
+                        @endif
+                        @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
                         </div>
                         @endif
 

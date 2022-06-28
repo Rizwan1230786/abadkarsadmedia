@@ -213,7 +213,7 @@
                                                                         <!--/ End Form Bathrooms -->
                                                                     </div>
                                                                     <div
-                                                                        class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                        class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-2 sld">
                                                                         <!-- Price Fields -->
                                                                         <div class="main-search-field-2">
                                                                             <div class="range-slider">
@@ -259,13 +259,11 @@
                                                                                 <div class="col-lg-6">
 
                                                                                     <input
-                                                                                        style="position:absolute;left: 20px;top: 7px;"
+                                                                                        style="position:absolute;left: 10px;top: 6px;"
                                                                                         id="check-2" type="checkbox"
                                                                                         name="check1">
-                                                                                    <label
+                                                                                    <label class="lable"
                                                                                         for="check-2">{{ $value->name }}</label>
-
-
 
                                                                                 </div>
                                                                             @endforeach
@@ -427,10 +425,10 @@
                                                                                 <div class="col-lg-6">
 
                                                                                     <input
-                                                                                        style="position:absolute;left: 20px;top: 7px;"
+                                                                                        style="position:absolute;left: 10px;top: 6px;"
                                                                                         id="check-2" type="checkbox"
                                                                                         name="check">
-                                                                                    <label
+                                                                                    <label class="lable"
                                                                                         for="check-2">{{ $value->name }}</label>
 
 
@@ -461,7 +459,7 @@
         </section>
         <!-- END HEADER SEARCH -->
         {{-- Abad tools --}}
-        <section class="mt-5">
+        {{-- <section class="mt-5">
             <div class="container-fluid">
                 <div class="sec-title">
                     <h2><span>Abadkar </span>Tools</h2>
@@ -490,7 +488,7 @@
                 </div>
                 <!-- /row -->
             </div>
-        </section>
+        </section> --}}
         {{-- end abadtools --}}
         <!-- START SECTION POPULAR PLACES -->
         <section class="feature-categories bg-white rec-pro">
