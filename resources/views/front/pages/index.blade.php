@@ -628,7 +628,7 @@
                                         <span class="mytooltip tooltip-effect-1">
                                             <a href="{{ route('front.agency_detail', $value->id) }}">
                                                 <img class="img-responsive caruswl-image tooltip-item"
-                                                    style="padding: 5px;"
+                                                    style="padding: 5px;" title="{{ $value->name }}"
                                                     src="{{ asset('assets/images/agency/' . $value->image) }}"
                                                     alt="">
                                             </a>
