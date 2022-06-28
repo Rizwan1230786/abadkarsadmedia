@@ -67,7 +67,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             {{-- <div class="homes-price">{{$projects->max_price  }}/mo</div> --}}
-                                            <img src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
+                                            <img style="height: 265px;" src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="button-effect">
@@ -80,12 +80,12 @@
                                     </div>
                                 </div>
                                 <!-- homes content -->
-                                <div class="homes-content">
+                                <div class="homes-content" style="height: 130px;">
                                     <!-- homes address -->
-                                    <h3><a href="{{ url('/project',$projects->url_slug) }}">{{$projects->title  }}</a></h3>
+                                    <h3><a href="{{ url('/project',$projects->url_slug) }}">{{Str::limit($projects->title, 45)}}</a></h3>
                                     <p class="homes-address mb-3">
-                                        <a href="{{ route('front.project_detail',$projects->id) }}">
-                                            <i class="fa fa-map-marker"></i><span>{{$projects->location  }}
+                                        <a href="{{ url('/project',$projects->url_slug) }}">
+                                            <i class="fa fa-map-marker"></i><span>{{$projects->location}}
                                                 </span>
                                         </a>
                                     </p>

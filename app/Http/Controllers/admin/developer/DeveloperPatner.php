@@ -16,16 +16,16 @@ class DeveloperPatner extends Controller
     }
     public function create(Request $request)
     {
-        
+
         $data = $request->all();
         $data = array(
             'name' => $data['name'],
             'address' => $data['address'],
             'phone_no' => $data['phone_no'],
-          
-            
+
+
         );
-           
+
         if (isset($data['image']) && !empty($data['image'])) {
             foreach ($request->image as $image) {
                 $filename = rand(1000000000, 9999999999) . '.' . 'jpg';
@@ -41,10 +41,10 @@ class DeveloperPatner extends Controller
                     $constraint->aspectRatio();
                 })->save($Path2 . $filename2);
                 // request()->image->move($destinationPath, $data['image']);
-                
+
             }
             develop::create(['image' => $filename,  'image_webp' => $filename2, $data]);
-        
+
             return redirect()->back()->with('message', 'Developer Added!');
 
     }
@@ -66,14 +66,14 @@ class DeveloperPatner extends Controller
   public function update(Request $request)
   {
       $id = $request->id;
-      
+
       $data = $request->all();
       $data = array(
           'name' => $data['name'],
           'address' => $data['address'],
           'phone_no' => $data['phone_no'],
           'image' => $data['image'],
-          
+
       );
       if(isset($id) && $id>0){
           $data = $request->$id;
@@ -112,7 +112,7 @@ public function delete($id)
           ]);
     }
 
-             
-             
-    
+
+
+
 }
