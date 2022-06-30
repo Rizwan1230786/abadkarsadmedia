@@ -485,20 +485,9 @@
                 <p>The Companies That Represent Us.</p>
             </div>
             <div class="owl-carousel style2">
-            <!--start foreach  -->
-                <div class="owl-item" data-aos="fade-up">
-                <img src="{{ asset('front') }}/images/partners/11.jpg" alt="">
-                </div>
-                <!-- end foreach -->
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/13.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/14.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/15.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/16.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/17.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/11.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/13.jpg" alt=""></div>
+                @foreach($developers as $developer)
+                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('assets/images/developer/webp/'.$developer->image_webp) }}" alt=" no image"></div>
+                @endforeach
             </div>
         </div>
     </div>

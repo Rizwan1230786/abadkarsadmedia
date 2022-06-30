@@ -21,6 +21,7 @@ use App\Models\Webpages;
 use App\Models\subpages;
 use App\Models\Category;
 use App\Models\Customeruser;
+use App\Models\develop;
 use App\Models\Features;
 use App\Models\Pakges;
 use App\Models\PropertyImage;
@@ -72,6 +73,7 @@ class FrontController extends Controller
         $agency = Agency::all();
         $testimonials = Testimonials::all();
         $meta = Webpages::Where("page_title", "home")->first();
+        $developers = develop::all();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.projects.new_projects', get_defined_vars());
     }

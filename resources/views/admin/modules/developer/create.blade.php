@@ -30,9 +30,9 @@
                                 @csrf
                                 <div class="card-body pb-2">
                                    @if ($message = Session::get('message'))
-                                        <div class="alert alert-danger alert-block">
+                                        <div class="alert alert-success alert-block">
                                             <button type="button" class="close" data-dismiss="alert">×</button>	
-                                                <strong style="color:red;">{{ $message }}</strong>
+                                                <strong style="color:white;">{{ $message }}</strong>
                                         </div>
                                     @endif
                                     <div class="row row-sm">
