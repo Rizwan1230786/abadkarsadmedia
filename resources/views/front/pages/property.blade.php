@@ -186,20 +186,20 @@
                             </div>
                         @endif
                         <!-- <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
-                                        <div class="input-group border rounded input-group-lg w-auto mr-4">
-                                            <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
-                                            <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
-                                                <option selected>Top Selling</option>
-                                                <option value="1">Most Viewed</option>
-                                                <option value="2">Price(low to high)</option>
-                                                <option value="3">Price(high to low)</option>
-                                            </select>
-                                        </div>
-                                        <div class="sorting-options">
-                                            <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
-                                            <a href="properties-full-grid-1.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
-                                        </div>
-                                    </div> -->
+                                                        <div class="input-group border rounded input-group-lg w-auto mr-4">
+                                                            <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
+                                                            <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
+                                                                <option selected>Top Selling</option>
+                                                                <option value="1">Most Viewed</option>
+                                                                <option value="2">Price(low to high)</option>
+                                                                <option value="3">Price(high to low)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="sorting-options">
+                                                            <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
+                                                            <a href="properties-full-grid-1.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
+                                                        </div>
+                                                    </div> -->
                     </div>
                 </section>
                 @if (isset($search_property) && !empty($search_property))
@@ -321,12 +321,12 @@
                                     <ul class="nav nav-tabs" style="display: table-header-group">
                                         <p class="mt-4 ml-3"><b>{{ $url_slug->title }}</b></p>
                                         @foreach ($city_area as $area)
-                                         @if($url_slug->city_id == $area->city_id)
-                                            <li style="list-style: square">
-                                                <a
-                                                    href="{{ url('/property' . '/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
-                                            </li>
-                                         @endif
+                                            @if ($url_slug->city_id == $area->city_id)
+                                                <li style="list-style: square; width: 200px;">
+                                                    <a style="font-size: 13px;"
+                                                        href="{{ url('/property' . '/' . $item->name . '/' . $get_city_name->slug . '/' . $area->slug) }}">{{ $area->areaname }}</a>
+                                                </li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>
@@ -529,19 +529,35 @@
                         </div>
                     @endforeach
                 @else
-                <section class="headings-2 pt-0">
-                    <div class="pro-wrapper">
-                        @if (isset($property) && !empty($property))
-                            <div class="detail-wrapper-body">
-                                <div class="listing-title-bar">
-                                    <div class="text-heading text-left">
-                                        <h5 class="font-weight-bold mb-0 mt-3">Total ( {{ number_format($count) }} ) Properties Available. </h5>
+                    <section class="headings-2 pt-0">
+                        <div class="pro-wrapper">
+                            @if (isset($property) && !empty($property))
+                                <div class="detail-wrapper-body">
+                                    <div class="listing-title-bar">
+                                        <div class="text-heading text-left">
+                                            <h5 class="font-weight-bold mb-0 mt-3">Total (
+                                                {{ number_format($count), 0 }} )
+                                                @if (!empty($name))
+                                                    {{ $name ?? '' }} for sale.<br><br>
+                                                @else
+                                                    Properties Available.<br><br>
+                                                @endif
+                                                @if (!empty($city_name))
+                                                    <span style="font-size:15px;">
+                                                        Properties for sale in
+                                                        {{ $city_name }}
+                                                        @if(isset($area_name) && !empty($area_name))
+                                                         Area {{ $area_name ?? '' }}
+                                                        @endif
+                                                    </span>
+                                                @endif
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                    </div>
-                </section>
+                            @endif
+                        </div>
+                    </section>
                     @foreach ($property as $properties)
                         <div class="row">
                             <div class="item mb-5 col-lg-4 col-md-12 col-xs-12   landscapes sale pr-0 pb-0"
@@ -661,8 +677,8 @@
                 success: function(result) {
                     // $('#state-dd').html('<select value=""">Select Area</select>');
                     $.each(result.areas, function(key, value) {
-                        $("#state-dd").append('<option value="' + value
-                            .id + '">' + value.areaname + '</option>');
+                        $("#state-dd").append(
+                            '<option value="' + value.id + '">' + value.areaname + '</option>');
                         $("#state-dd").parent().find('.nice-select .list').append(
                             '<li data-value="' + value
                             .id + '" class="option">' + value.areaname + '</li>'

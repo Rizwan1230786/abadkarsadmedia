@@ -486,7 +486,8 @@
                     <!--start foreach  -->
                     @foreach ($developer as $value)
                         <div class="owl-item" data-aos="fade-up">
-                            <img src="{{ asset('assets/images/developers/multipleimages/webp'.$value->image) }}" alt="">
+                            <img src="{{ asset('assets/images/developers/multipleimages/webp' . $value->image) }}"
+                                alt="">
                         </div>
                     @endforeach
                     <!-- end foreach -->
@@ -563,26 +564,17 @@
                     <p>The Companies That Represent Us.</p>
                 </div>
                 <div class="owl-carousel style2">
-                    @foreach ($partners as $val )
-                    <div class="owl-item" data-aos="fade-up">
-                        <img src="{{ asset('assets/images/partners/'.$val->image) }}"
-                        alt=""></div>
+                    @foreach ($partners as $val)
+                        <div class="owl-item" data-aos="fade-up">
+                            <img src="{{ asset('assets/images/partners/' . $val->image) }}" alt="">
+                        </div>
                     @endforeach
 
-    <div class="partners bg-white-1 home18">
-        <div class="container">
-            <div class="sec-title">
-                <h2><span>Our </span>Developers</h2>
-                <p>The Companies That Represent Us.</p>
-            </div>
-            <div class="owl-carousel style2">
-                @foreach($developers as $developer)
-                <div class="owl-item" data-aos="fade-up"><img src="{{ asset('assets/images/developer/webp/'.$developer->image_webp) }}" alt=" no image"></div>
-                @endforeach
+                </div>
+                <!-- END SECTION PARTNERS -->
+                <!-- END SECTION PARTNERS -->
             </div>
         </div>
-        <!-- END SECTION PARTNERS -->
-        <!-- END SECTION PARTNERS -->
         <section>
             <script>
                 $(document).ready(function() {
@@ -644,5 +636,5 @@
                 });
             </script>
         @endsection
-</body>
+    </body>
 @endsection

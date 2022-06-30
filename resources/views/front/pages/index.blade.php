@@ -143,7 +143,7 @@
                                                             </div>
                                                             <div class="rld-single-select ml-22">
                                                                 <select id="state-dd" class="form-control single-select"
-                                                                    name="area_id">
+                                                                    name="area_id1">
                                                                     <option value="">Select Area</option>
                                                                 </select>
                                                             </div>
