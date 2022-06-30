@@ -977,6 +977,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
                                             @if (isset($search_cityies->name) && $search_cityies->name == 'Karachi')
+
                                                 @foreach ($search_cityies->areas->take(8) as $area)
                                                     <ul>
                                                         <li style="list-style: square;">
