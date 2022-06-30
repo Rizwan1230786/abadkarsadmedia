@@ -23,7 +23,7 @@
                     <h4 class="card-title">Create Developer</h4>
                 </div>
                 <div class="card-body">
-               
+
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                         <form  action="{{route('admin:create_developer')}}"  enctype="multipart/form-data" method="Post">
@@ -39,27 +39,27 @@
                                         <div class="col-lg-6 form-group">
                                             <label class="form-label">Name</label>
                                             <input class="form-control " placeholder="Name" name="name" type="text" >
-                                                
+
                                          </div>
                                         <div class="col-lg-6 form-group">
                                             <label class="form-label">Address</label>
                                             <input class="form-control" placeholder="Address" name="address"
                                                  type="text" >
-                                                
+
                                         </div>
-                                        
-                                        
+
+
                                         <div class="col-lg-6 form-group">
                                             <label class="form-label">Phone Number</label>
-                                            <input class="form-control" placeholder="Phone Number" name="phone_no" 
+                                            <input class="form-control" placeholder="Phone Number" name="phone_no"
                                                  type="text" >
-                                                
+
                                         </div>
                                         <div class="col-lg-6 col-sm-12 form-group">
                                             <label class="form-label">Image</label>
                                             <input type="file" name="image" class="dropify notrequired"
                                             data-height="180"/>
-                                            
+
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="btn btn-list" style="text-align:center;width:100%">

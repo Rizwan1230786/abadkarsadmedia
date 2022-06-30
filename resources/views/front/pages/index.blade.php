@@ -534,8 +534,8 @@
                         @foreach ($property as $properties)
                             <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
                                 <div class="project-single" data-aos="fade-right">
-                                    <div class="project-inner "
-                                        style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}'); display: block; background-size: cover;background-position: center;background-repeat: no-repeat;width: 70%; ">
+                                    <div class="project-inner"
+                                        style="background-image: url('{{ asset('assets/images/properties/' . $properties->image) }}'); display: block; background-size: cover;background-position: center;background-repeat: no-repeat;width: 70%; height:286px;">
                                         <div class="homes">
                                             <!-- homes img -->
                                             <a href="{{ url('/property', $properties->url_slug) }}" class="homes-img">
@@ -556,14 +556,14 @@
                                         </div>
                                     </div>
                                     <!-- homes content -->
-                                    <div class="homes-content">
+                                    <div class="homes-content" style="height: 286px;">
                                         <!-- homes address -->
                                         <h3><a
-                                                href="{{ url('/property', $properties->url_slug) }}">{{ $properties->name }}</a>
+                                                href="{{ url('/property', $properties->url_slug) }}">{{Str::limit($properties->name, 45) }}</a>
                                         </h3>
                                         <p class="homes-address mb-3">
                                             <a href="{{ url('/property', $properties->url_slug) }}">
-                                                <i class="fa fa-map-marker"></i><span>{{ $properties->location }}</span>
+                                                <i class="fa fa-map-marker"></i><span>{{Str::limit($properties->location, 30) }}</span>
                                             </a>
                                         </p>
                                         <!-- homes List -->
@@ -589,11 +589,11 @@
                                             @endif
                                         </ul>
                                         <div class="price-properties footer pt-3 pb-0">
-                                            <h3 class="title mt-3">
+                                            <h3 class="title">
                                                 <a href="{{ url('/property', $properties->url_slug) }}">(PKR)
                                                     {{ number_format($properties->price, 0) }}</a>
                                             </h3>
-                                            <div class="compare">
+                                            <div class="compare" style="margin-top: 0px;">
                                                 <a href="#" title="Compare">
                                                     <i class="flaticon-compare"></i>
                                                 </a>
@@ -626,13 +626,15 @@
                                 <div class="item">
                                     <div class="shadow-effect" style="margin-top: 100px;">
                                         <span class="mytooltip tooltip-effect-1">
-                                            <a href="{{ route('front.agency_detail',$value->id) }}">
-                                            <img class="img-responsive caruswl-image tooltip-item"
-                                               style="padding: 5px;" src="{{ asset('assets/images/agency/' . $value->image) }}"
-                                                alt="">
+                                            <a href="{{ route('front.agency_detail', $value->id) }}">
+                                                <img class="img-responsive caruswl-image tooltip-item"
+                                                    style="padding: 5px;" title="{{ $value->name }}"
+                                                    src="{{ asset('assets/images/agency/' . $value->image) }}"
+                                                    alt="">
                                             </a>
                                             <span class="tooltip-content clearfix">
-                                                <img style="padding: 10px;" src="{{ asset('assets/images/agency/' . $value->image) }}">
+                                                <img style="padding: 10px;"
+                                                    src="{{ asset('assets/images/agency/' . $value->image) }}">
                                                 <span class="tooltip-text">
                                                     <i
                                                         class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $value->office_address }}<br>
@@ -735,7 +737,7 @@
                                                 <a href="{{ url('/project', $projects->url_slug) }}" class="homes-img">
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">For Sale</div>
-                                                    <img src="{{ asset('assets/images/projects/' . $projects->image) }}"
+                                                    <img style="height: 165px;" src="{{ asset('assets/images/projects/' . $projects->image) }}"
                                                         alt="home-1" class="img-responsive">
                                                 </a>
                                             </div>
@@ -751,13 +753,13 @@
                                         <!-- homes content -->
                                         <div class="homes-content">
                                             <!-- homes address -->
-                                            <h3><a
-                                                    href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
-                                            </h3>
+                                            <p style="font-size: 14px;">
+                                              <a style="color: black;" href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
+                                            </p>
                                             <p class="homes-address mb-3">
-                                                <a href="{{ route('front.project_detail', $projects->id) }}">
+                                                <a href="{{ url('/project', $projects->url_slug) }}">
                                                     <i
-                                                        class="fa fa-map-marker"></i><span>{{ $projects->location }}</span>
+                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40)}}</span>
                                                 </a>
                                             </p>
 
@@ -787,8 +789,8 @@
                             <div class="inner-box team-details">
                                 <div class="image team-head">
                                     <a href="{{ asset('assets/images/agent/' . $agent->image) }}" target="_blank"><img
-                                            src="{{ asset('assets/images/agent/' . $agent->image) }}"
-                                            alt="" style="height: 170px;" /></a>
+                                            src="{{ asset('assets/images/agent/' . $agent->image) }}" alt=""
+                                            style="height: 170px;" /></a>
                                     <div class="team-hover">
                                         <ul class="team-social">
                                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -802,8 +804,8 @@
                                     </div>
                                 </div>
                                 <div class="lower-box">
-                                    <h3><a
-                                            href="{{ route('front.agent_detail', $agent->id) }}" style="font-size: 16px;">{{ $agent->name }}</a>
+                                    <h3><a href="{{ route('front.agent_detail', $agent->id) }}"
+                                            style="font-size: 16px;">{{ $agent->name }}</a>
                                     </h3>
                                     <div class="designation">Real Estate Agent</div>
                                 </div>
@@ -975,6 +977,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
                                             @if (isset($search_cityies->name) && $search_cityies->name == 'Karachi')
+
                                                 @foreach ($search_cityies->areas->take(8) as $area)
                                                     <ul>
                                                         <li style="list-style: square;">

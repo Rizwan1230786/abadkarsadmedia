@@ -24,6 +24,7 @@ use App\Models\Customeruser;
 use App\Models\develop;
 use App\Models\Features;
 use App\Models\Pakges;
+use App\Models\Partners;
 use App\Models\PropertyImage;
 use App\Models\Testimonials;
 use App\Models\UrlSlug;
@@ -38,7 +39,6 @@ class FrontController extends Controller
         $flats = Category::with('cities')->with('url_slugs', function ($q) {
             $q->where('status', 1);
         })->get();
-        $flats = Category::with('cities')->with('url_slugs')->get();
         $property = property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $project = Projects::all();
         $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
@@ -71,7 +71,8 @@ class FrontController extends Controller
         $city = Cities::all();
         $agents = Agent::all();
         $agency = Agency::all();
-        $testimonials = Testimonials::all();
+        $developer=develop::all();
+        $partners=Partners::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $developers = develop::all();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
@@ -82,8 +83,9 @@ class FrontController extends Controller
         $project = Projects::paginate(4);
         $count = Projects::all()->count();
         $meta = Webpages::Where("page_title", "project")->first();
+        $property=property::where('status', 1)->latest()->take(3)->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.project', compact('project', 'meta', 'data', 'count'));
+        return view('front.pages.project', get_defined_vars());
     }
     public function agent()
     {
@@ -131,6 +133,7 @@ class FrontController extends Controller
         $city = Cities::all();
         $category = Category::all();
         $property = property::orderBy('id', 'desc')->where('status', 1)->paginate(10);
+        $count=property::count();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -155,9 +158,9 @@ class FrontController extends Controller
         $city_area = Area::where(['city_id' => $get_city_name->id, 'status' => 1])->orderBy('id', 'DESC')->get();
 
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
-        $city_search_property = property::where(['city_name' => $get_city_name->id, 'status' => 1])->get();
+        $city_search_property = property::where(['city_name' => $get_city_name->id, 'status' => 1])->paginate(10);
         $property = property::where(['city_name' => $get_city_name->id, 'status' => 1])->orderBy('id', 'desc')->paginate(10);
-
+        $count=property::where(['city_name' => $get_city_name->id, 'status' => 1])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -175,13 +178,14 @@ class FrontController extends Controller
         $city = Cities::all();
         ////end////////
         $category = Category::with('cities')->with('url_slugs')->with('areas')->get();
+        $categoryname=Category::where('name',$categoryName)->first();
         $url_slug = UrlSlug::where('url_slug', '=', $urlslug)->first();
         $get_city_name = Cities::where('id', $url_slug->city_id)->first();
         $city_area = Area::where(['city_id' => $url_slug->city_id, 'status' => 1])->orderBy('id', 'DESC')->get();
         // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
-        $city_search_property = property::where(['city_name' => $url_slug->city_id, 'status' => 1])->get();
-
-        $property = property::where('status', 1)->paginate(10);
+        $city_search_property = property::where(['category'=>$categoryname->id,'city_name' => $url_slug->city_id, 'status' => 1])->paginate(10);
+        $property = property::where(['category'=>$categoryname->id,'city_name' => $url_slug->city_id, 'status' => 1])->paginate(10);
+        $count=property::where(['category'=>$categoryname->id,'city_name' => $get_city_name->id, 'status' => 1])->count();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -198,13 +202,13 @@ class FrontController extends Controller
         $feature = Features::all();
         $city = Cities::all();
         $category = Category::all();
-        $property = property::paginate(4);
         ////end////////
         $category_name = Category::where('name', $slug)->first();
         $city_slug = Cities::where('slug', $slug1)->first();
-        $area = Area::where('slug', '=', $slug2)->first();
-        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->get();
-        $property = property::paginate(10);
+        $area = Area::where(['city_id'=> $city_slug->id,'slug'=>$slug2])->first();
+        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->paginate(10);
+        $property = property::where(['area_id' => $area->id, 'status' => 1])->paginate(10);
+        $count=property::where(['area_id' =>  $area->id, 'status' => 1])->count();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -257,9 +261,11 @@ class FrontController extends Controller
         $city = Cities::all();
         $category = Category::all();
         ////end////////
-        $area = Area::where('slug', '=', $slug2)->first();
-        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->get();
-        $property = property::where('status', 1)->paginate(10);
+        $city_slug=Cities::where('name',$slug1)->first();
+        $area = Area::where(['city_id'=> $city_slug->id,'slug'=>$slug2])->first();
+        $area_search_property = property::where(['area_id' => $area->id, 'status' => 1])->paginate(10);
+        $property = property::where(['area_id' => $area->id, 'status' => 1])->paginate(10);
+        $count=property::where(['area_id' =>  $area->id, 'status' => 1])->count();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());

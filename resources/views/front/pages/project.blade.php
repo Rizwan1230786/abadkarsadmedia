@@ -26,7 +26,7 @@
                             <div class="detail-wrapper-body">
                                 <div class="listing-title-bar">
                                     <div class="text-heading text-left">
-                                        <p class="font-weight-bold mb-0 mt-3">{{$count}} Search results</p>
+                                        <p class="font-weight-bold mb-0 mt-3">Total ( {{$count}} ) Projects</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                             <div class="homes-tag button alt featured">Featured</div>
                                             <div class="homes-tag button alt sale">For Sale</div>
                                             {{-- <div class="homes-price">{{$projects->max_price  }}/mo</div> --}}
-                                            <img src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
+                                            <img style="height: 265px;" src="{{asset('assets/images/projects/'.$projects->image)}}" alt="home-1" class="img-responsive">
                                         </a>
                                     </div>
                                     <div class="button-effect">
@@ -80,12 +80,12 @@
                                     </div>
                                 </div>
                                 <!-- homes content -->
-                                <div class="homes-content">
+                                <div class="homes-content" style="height: 130px;">
                                     <!-- homes address -->
-                                    <h3><a href="{{ url('/project',$projects->url_slug) }}">{{$projects->title  }}</a></h3>
+                                    <h3><a href="{{ url('/project',$projects->url_slug) }}">{{Str::limit($projects->title, 45)}}</a></h3>
                                     <p class="homes-address mb-3">
-                                        <a href="{{ route('front.project_detail',$projects->id) }}">
-                                            <i class="fa fa-map-marker"></i><span>{{$projects->location  }}
+                                        <a href="{{ url('/project',$projects->url_slug) }}">
+                                            <i class="fa fa-map-marker"></i><span>{{$projects->location}}
                                                 </span>
                                         </a>
                                     </p>
@@ -403,42 +403,18 @@
                             </div>
                             <div class="widget-boxed-body">
                                 <div class="recent-post">
-                                    <div class="recent-main">
-                                        <div class="recent-img">
-                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-1.jpg') }}"
-                                                    alt=""></a>
-                                        </div>
-                                        <div class="info-img">
-                                            <a href="blog-details.html">
-                                                <h6>Family Modern Home</h6>
-                                            </a>
-                                            <p>$230,000</p>
-                                        </div>
-                                    </div>
+                                    @foreach($property as $val)
                                     <div class="recent-main my-4">
                                         <div class="recent-img">
-                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-2.jpg') }}"
-                                                    alt=""></a>
+                                            <a href="{{ url('/property', $val->url_slug) }}"><img src="{{ asset('assets/images/properties/' . $val->image) }}" alt="No Image"></a>
                                         </div>
                                         <div class="info-img">
-                                            <a href="blog-details.html">
-                                                <h6>Luxury Villa House</h6>
-                                            </a>
-                                            <p>$120,000</p>
+                                            <a href="{{ url('/property', $val->url_slug) }}" title="{{ $val->name }}"> <h6>{{Str::limit($val->name, 20)}}</h6></a>
+                                            <p style="margin-bottom: 0px;">For {{ $val->type }}</p>
+                                            <p>(PKR): {{ number_format($val->price, 0)}}</p>
                                         </div>
                                     </div>
-                                    <div class="recent-main">
-                                        <div class="recent-img">
-                                            <a href="blog-details.html"><img src="{{ asset('/front/images/feature-properties/fp-3.jpg') }}"
-                                                    alt=""></a>
-                                        </div>
-                                        <div class="info-img">
-                                            <a href="blog-details.html">
-                                                <h6>Luxury Family Home</h6>
-                                            </a>
-                                            <p>$150,000</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

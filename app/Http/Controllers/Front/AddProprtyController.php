@@ -105,7 +105,7 @@ class AddProprtyController extends Controller
                     'video_link' => $data['video_link'],
                 );
                 $query = Property::create($data);
-                UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
+                UrlSlug::where(['category_id'=>$request->category_id])->update(['status' => 1]);
                 Area::where("id" , $request->area_id)->update(['status' => 1]);
                 $query->features()->attach($request->feature);
                 if (isset($request->image) && !empty($request->image)) {
