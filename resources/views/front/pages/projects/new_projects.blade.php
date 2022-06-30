@@ -504,8 +504,8 @@
         <!-- START SECTION RECENTLY PROPERTIES -->
         <section class="featured portfolio rec-pro disc">
             <div class="container-fluid">
-                <div class="sec-title discover">
-                    <h2><span></span>Popular Projects</h2>
+                <div class="sec-title">
+                    <h2><span>Popular</span> Projects</h2>
                     <p>We provide full service at every step.</p>
                 </div>
                 <div class="portfolio col-xl-12">
@@ -520,7 +520,7 @@
                                                 <a href="{{ url('/project', $projects->url_slug) }}" class="homes-img">
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">For Sale</div>
-                                                    <img src="{{ asset('assets/images/projects/' . $projects->image) }}"
+                                                    <img style="height: 165px;" src="{{ asset('assets/images/projects/' . $projects->image) }}"
                                                         alt="home-1" class="img-responsive">
                                                 </a>
                                             </div>
@@ -536,13 +536,13 @@
                                         <!-- homes content -->
                                         <div class="homes-content">
                                             <!-- homes address -->
-                                            <h3><a
-                                                    href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
-                                            </h3>
+                                            <p style="font-size: 14px;">
+                                              <a style="color: black;" href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
+                                            </p>
                                             <p class="homes-address mb-3">
-                                                <a href="{{ route('front.project_detail', $projects->id) }}">
+                                                <a href="{{ url('/project', $projects->url_slug) }}">
                                                     <i
-                                                        class="fa fa-map-marker"></i><span>{{ $projects->location }}</span>
+                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40)}}</span>
                                                 </a>
                                             </p>
 
