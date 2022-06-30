@@ -357,7 +357,8 @@ Route::prefix('user')->group(function () {
         Route::get('/edit-listing-for-sale/{id}', [PropertyManagementController::class, 'edit_for_sale'])->name('edit-listing-forsale');
         Route::post('/update-listing/{id}', [PropertyManagementController::class, 'update_post_listing'])->name('update-listing-forsale');
         Route::get('/edit-listing-for-rent/{id}', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
-
+            ///////////////   client&leads/////////////
+        Route::get('/client&lead', [PropertyManagementController::class, 'client_main'])->name('client_main');
         ///////Pending-listing///////
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');
