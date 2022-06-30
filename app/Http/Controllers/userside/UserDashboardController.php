@@ -5,7 +5,7 @@ namespace App\Http\Controllers\userside;
 use App\Models\Webpages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Property;
+use App\Models\property;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller

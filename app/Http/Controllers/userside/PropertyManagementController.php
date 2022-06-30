@@ -8,7 +8,7 @@ use App\Models\State;
 use App\Models\Cities;
 use App\Models\Category;
 use App\Models\Features;
-use App\Models\Property;
+use App\Models\property;
 use App\Models\Webpages;
 use Illuminate\Support\Arr;
 use App\Models\Customeruser;
@@ -456,5 +456,11 @@ class PropertyManagementController extends Controller
         $post->update($data);
         $post->features()->sync($request->feature);
         return redirect()->back()->with('message', 'Property Updated!');
+    }
+
+    public function client_main(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.client.client&leads',get_defined_vars());
     }
 }

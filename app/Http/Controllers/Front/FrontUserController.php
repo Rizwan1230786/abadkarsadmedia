@@ -10,7 +10,7 @@ use App\Models\Cities;
 use App\Models\Category;
 use App\Models\Features;
 use App\Models\Projects;
-use App\Models\Property;
+use App\Models\property;
 use App\Models\Webpages;
 use App\Models\Abadtools;
 use App\Models\Customeruser;

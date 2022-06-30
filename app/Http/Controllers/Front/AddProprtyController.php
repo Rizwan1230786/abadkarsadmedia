@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\Property\addProperty;
+use App\Http\Requests\Property\property;
 
 
 class AddProprtyController extends Controller
