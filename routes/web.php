@@ -310,6 +310,14 @@ Route::prefix('search_property')->group(function () {
 });
 /// Forum
 Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
+/// Forum-detail
+Route::get('/forum-detail', [FrontController::class, 'detail'])->name('front.detail');
+///index
+Route::get('/index-page1', [FrontController::class, 'page1'])->name('front.page1');
+
+
+
+
 
 
 

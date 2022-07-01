@@ -34,8 +34,9 @@ use App\Models\subpages;
 
                 </li>
                 <ul class="dropdown-container left" id="myDropdown">
-                    <li class="left"><a class="link-l" style="padding: 0px;" href="#">Forum</a></li>
+                    <li class="left"><a class="link-l" style="padding: 0px;" href="/forum">Forum</a></li>
                     <li class="left"><a class="link-l" href="#">Maps</a></li>
+                    <li class="left"><a class="link-l" href="/index-page1">Index</a></li>
                 </ul>
             </ul>
         </nav>
