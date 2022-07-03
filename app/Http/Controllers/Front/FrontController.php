@@ -707,4 +707,16 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.forum.index',get_defined_vars());
     }
+    ///forum-detail
+    function detail(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.forum.detail',get_defined_vars());
+    }
+    ///index-page1
+    function page1(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('index.page1',get_defined_vars());
+    }
 }
