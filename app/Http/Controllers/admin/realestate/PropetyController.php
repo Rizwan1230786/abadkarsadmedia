@@ -9,7 +9,7 @@ use App\Models\Cities;
 use App\Models\Category;
 use App\Models\Features;
 use App\Models\Projects;
-use App\Models\Property;
+use App\Models\property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -153,7 +153,7 @@ class PropetyController extends Controller
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data updated successfully";
-            $post = Property::find($updatedId);
+            $post = property::find($updatedId);
             if (isset($request->image) && !empty($request->image)) {
                 $oldimage = public_path('assets/images/properties/' . $post->image);
                 if (File::exists($oldimage)) {

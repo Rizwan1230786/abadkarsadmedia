@@ -246,6 +246,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/update/form/developer/{id}', [DeveloperPatner::class, 'developer_update'])->name('developer.update');
         Route::post('/update/developer', [DeveloperPatner::class, 'update'])->name('developer.update.form');
         Route::get('/delete/developer/{id}', [DeveloperPatner::class, 'delete'])->name('developer.delete');
+                    //  ////////  add Tags
+        Route::get('/tags', [DeveloperPatner::class, 'tags'])->name('tags');
+        Route::post('/create/tag', [DeveloperPatner::class, 'create_tag'])->name('creata_tag');
+        Route::get('/view/tag', [DeveloperPatner::class, 'view_tag'])->name('view_tag');
+        Route::get('/update/form/tag/{id}', [DeveloperPatner::class, 'edit_form'])->name('update.tag_form');
+        Route::post('/update/tag', [DeveloperPatner::class, 'tag_update'])->name('update_tag');
+        Route::post('/delete/tag/{id}', [DeveloperPatner::class, 'delete_tag'])->name('delete_tag');
 
 
     });
@@ -359,6 +366,9 @@ Route::prefix('user')->group(function () {
         Route::get('/edit-listing-for-rent/{id}', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
             ///////////////   client&leads/////////////
         Route::get('/client&lead', [PropertyManagementController::class, 'client_main'])->name('client_main');
+            // //////////  Management/////
+            Route::get('/manage/all', [PropertyManagementController::class, 'all'])->name('manage_all');
+            Route::get('/manage/very_hot', [PropertyManagementController::class, 'very_hot'])->name('manage.ver_hot');
         ///////Pending-listing///////
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');

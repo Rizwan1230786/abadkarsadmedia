@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Models\Features;
 use App\Models\develop;
+use App\Models\tags;
 
 class DeveloperPatner extends Controller
 {
@@ -79,4 +80,47 @@ class DeveloperPatner extends Controller
             'message' => 'Data deleted successfully!'
         ]);
     }
+
+    public function tags(){
+        return view('admin.modules.tags.tag');
+    }
+
+    public function create_tag(Request $request)
+    {
+    $data = $request->except('_token');
+    tags::create($data);
+    return redirect()->back()->with('message', 'Tag Added!');
+
+    }
+
+    public function tag_update(Request $request)
+    {
+        $id = $request->id;
+        $data = $request->except('_token');
+        tags::where('id', $id)->update(['name' => $data['name']]);
+        return redirect()->back()->with('message', 'Tag Updated!');
+    }
+
+    public function edit_form($id)
+    {
+        $tag = tags::find($id);
+        return view('admin.modules.tags.edit_tag', get_defined_vars());
+    }
+
+    public function delete_tag($id)
+    {
+        $tag = tags::find($id);
+        dd($tag);
+        $tag->delete();
+        return response()->json([
+            'message' => 'Data deleted successfully!'
+        ]);
+    }
+
+    public function view_tag()
+    {
+        $tag = tags::all();
+        return view('admin.modules.tags.view_tag', get_defined_vars());
+    }
+   
 }

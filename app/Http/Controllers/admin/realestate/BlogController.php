@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin\realestate;
 
 use App\Models\Blog;
+use App\Models\tags;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -25,9 +26,11 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.modules.realestate.blog.create');
+        
+        $tag = tags::all();
+        return view('admin.modules.realestate.blog.create', get_defined_vars());
     }
 
     /**
@@ -43,6 +46,7 @@ class BlogController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'descripition' => 'required',
             'content' => 'required',
+            'tag_id' => 'required',
         ]);
         $pic = $request->file('image')->store('public');
         $picture = explode('/', $pic);
@@ -51,6 +55,7 @@ class BlogController extends Controller
             'image' => $picture[1],
             'descripition' => $request->descripition,
             'content' => $request->content,
+            'tag_id' => $request->tag_id,
         ]);
         return redirect()->route('admin:blog.index')->with('message', 'Blog added Successfully');
     }

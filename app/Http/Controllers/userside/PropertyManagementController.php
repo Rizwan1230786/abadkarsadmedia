@@ -463,4 +463,16 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.client.client&leads',get_defined_vars());
     }
+
+    public function all(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.management.all',get_defined_vars());
+    }
+
+    public function very_hot(){
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('userside.modules.management.very_hot',get_defined_vars());
+    }
 }
