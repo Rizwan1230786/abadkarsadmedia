@@ -291,4 +291,19 @@ class PropetyController extends Controller
         $data['subcat'] = SubCategory::where("category_id", $request->cat_id)->get();
         return response()->json($data);
     }
+    public function approval()
+    {
+        $approve = Property::where('status', 0)->get();
+        return view('admin.modules.approval.approve', compact('approve'));
+    }
+
+
+
+    public function update_property($id)
+    {   
+        $app = Property::find($id);
+        $app->status = '1' ;
+        $app->save();
+        return redirect()->back()->with('message' , 'Status updated');
+    }
 }

@@ -154,6 +154,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_property_status', [PropetyController::class, 'update_property_status'])->name('update_property_status');
         Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
         Route::get('/checkslug', [PropetyController::class, 'checkslug'])->name('checkslug');
+            // /////////////////Approval
+        Route::get('/aproval', [PropetyController::class, 'approval'])->name('aproval');
+        Route::get('/update/property/{id}', [PropetyController::class, 'update_property'])->name('update_property');
 
         ///////route of agents//////
         Route::get('/agent', [AgentController::class, 'index'])->name('agent');
@@ -169,7 +172,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/agency/update/', [AgencyController::class, 'update'])->name('agency_update');
         Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
         Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
-
+        ///////////////   View Listing
+        Route::get('/view/listing/{id}', [AgencyController::class, 'detail_agent'])->name('detail_agent');
         ////Route of state////////
         Route::get('/states', [StateController::class, 'index'])->name('state');
         Route::get('/states/create', [StateController::class, 'create'])->name('state.form');
@@ -252,7 +256,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/view/tag', [DeveloperPatner::class, 'view_tag'])->name('view_tag');
         Route::get('/update/form/tag/{id}', [DeveloperPatner::class, 'edit_form'])->name('update.tag_form');
         Route::post('/update/tag', [DeveloperPatner::class, 'tag_update'])->name('update_tag');
-        Route::post('/delete/tag/{id}', [DeveloperPatner::class, 'delete_tag'])->name('delete_tag');
+        Route::get('/delete/tag/{id}', [DeveloperPatner::class, 'delete_tag'])->name('delete_tag');
 
 
     });

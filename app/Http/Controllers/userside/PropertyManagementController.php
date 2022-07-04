@@ -331,7 +331,7 @@ class PropertyManagementController extends Controller
                         'is_expired' => $data['is_expired'],
                         'listed_date' => Carbon::now()->format('Y-m-d'),
                         'video_link' => $data['video_link'],
-                        'status' => 1,
+                        'status' => 0,
                         "url_slug" => $data['url_slug'],
                         'image' => $filename,
                         'number_of_bedrooms' => $data['number_of_bedrooms'],
@@ -475,4 +475,6 @@ class PropertyManagementController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('userside.modules.management.very_hot',get_defined_vars());
     }
+
+  
 }

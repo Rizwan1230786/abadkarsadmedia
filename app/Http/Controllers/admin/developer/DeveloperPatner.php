@@ -110,11 +110,8 @@ class DeveloperPatner extends Controller
     public function delete_tag($id)
     {
         $tag = tags::find($id);
-        dd($tag);
         $tag->delete();
-        return response()->json([
-            'message' => 'Data deleted successfully!'
-        ]);
+        return redirect()->back()->with('message', 'Deleted successfully');
     }
 
     public function view_tag()
@@ -122,5 +119,7 @@ class DeveloperPatner extends Controller
         $tag = tags::all();
         return view('admin.modules.tags.view_tag', get_defined_vars());
     }
+
+    
    
 }

@@ -15,9 +15,9 @@
 
 	<body class="app sidebar-mini">
 		<!---Global-loader-->
-		<div id="global-loader" >
+		<!-- <div id="global-loader" >
 			<img src="{{URL::asset('assets/images/svgs/loader.svg')}}" alt="loader">
-		</div>
+		</div> -->
 		<!--- End Global-loader-->
 		<!-- Page -->
 		<div class="page">

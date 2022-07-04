@@ -77,6 +77,7 @@
                             </div>
                         </div>
                         @endforeach
+                       
                     </div>
                 </div>
                 <aside class="col-lg-4 col-md-12 car">

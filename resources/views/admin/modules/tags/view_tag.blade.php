@@ -31,6 +31,14 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+
+                <div class="card-body pb-2">
+                                   @if ($message = Session::get('message'))
+                                        <div class="alert alert-success alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                                <strong style="color:white;">{{ $message }}</strong>
+                            </div>
+                            @endif
                     <table class="table table-bordered text-nowrap" id="example1">
                         <thead>
                             <tr>
@@ -61,7 +69,7 @@
                                         </a>
 
                                         <a href="/admin/delete/tag/{{$tag->id}}">
-                                            <li class="icons-list-item delete_record" data-id=""><i class="fa fa-trash-o" data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
+                                            <li class="icons-list-item " data-id=""><i class="fa fa-trash-o" data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
                                         </a>
                                     </ul>
                                 </td>

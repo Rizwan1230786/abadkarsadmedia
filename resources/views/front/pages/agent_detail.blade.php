@@ -45,6 +45,7 @@
                                                 <li><a href="#">Email: {{ $agent->email }}</a></li>
                                             </ul>
                                         </div>
+                                       
                                         <div class="news-item-bottom">
                                             <a href="properties-full-grid-2.html" class="news-link">View My
                                                 Listings</a>
@@ -52,6 +53,7 @@
                                                 <p>{{ $agent->agency }}</p>
                                             </div>
                                         </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +68,7 @@
                         <!-- START SIMILAR PROPERTIES -->
                         <section class="similar-property featured portfolio bshd p-0 bg-white">
                             <div class="container">
-                                <h5>Listing By {{ $agent->name }}</h5>
+                                <h5>Listing By {{$agent->name}}</h5>
                                 <div class="row">
                                     @foreach ($property as $property)
                                         @if ($property->agent_id == $agent->id)
