@@ -9,7 +9,6 @@ use App\Models\Cities;
 use App\Models\UrlSlug;
 use App\Models\Category;
 use App\Models\Features;
-use App\Models\Property;
 use App\Models\Webpages;
 use App\Models\SubCategory;
 use App\Models\Customeruser;
@@ -22,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redis;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\Property\addProperty;
+use App\Http\Requests\property;
 
 
 class AddProprtyController extends Controller

@@ -154,6 +154,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_property_status', [PropetyController::class, 'update_property_status'])->name('update_property_status');
         Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
         Route::get('/checkslug', [PropetyController::class, 'checkslug'])->name('checkslug');
+            // /////////////////Approval
+        Route::get('/aproval', [PropetyController::class, 'approval'])->name('aproval');
+        Route::get('/update/property/{id}', [PropetyController::class, 'update_property'])->name('update_property');
 
         ///////route of agents//////
         Route::get('/agent', [AgentController::class, 'index'])->name('agent');
@@ -169,7 +172,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/agency/update/', [AgencyController::class, 'update'])->name('agency_update');
         Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
         Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
-
+        ///////////////   View Listing
+        Route::get('/view/listing/{id}', [AgencyController::class, 'detail_agent'])->name('detail_agent');
         ////Route of state////////
         Route::get('/states', [StateController::class, 'index'])->name('state');
         Route::get('/states/create', [StateController::class, 'create'])->name('state.form');
@@ -246,6 +250,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/update/form/developer/{id}', [DeveloperPatner::class, 'developer_update'])->name('developer.update');
         Route::post('/update/developer', [DeveloperPatner::class, 'update'])->name('developer.update.form');
         Route::get('/delete/developer/{id}', [DeveloperPatner::class, 'delete'])->name('developer.delete');
+                    //  ////////  add Tags
+        Route::get('/tags', [DeveloperPatner::class, 'tags'])->name('tags');
+        Route::post('/create/tag', [DeveloperPatner::class, 'create_tag'])->name('creata_tag');
+        Route::get('/view/tag', [DeveloperPatner::class, 'view_tag'])->name('view_tag');
+        Route::get('/update/form/tag/{id}', [DeveloperPatner::class, 'edit_form'])->name('update.tag_form');
+        Route::post('/update/tag', [DeveloperPatner::class, 'tag_update'])->name('update_tag');
+        Route::get('/delete/tag/{id}', [DeveloperPatner::class, 'delete_tag'])->name('delete_tag');
 
 
     });
@@ -310,6 +321,14 @@ Route::prefix('search_property')->group(function () {
 });
 /// Forum
 Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
+/// Forum-detail
+Route::get('/forum-detail', [FrontController::class, 'detail'])->name('front.detail');
+///index
+Route::get('/index-page1', [FrontController::class, 'page1'])->name('front.page1');
+
+
+
+
 
 
 
@@ -362,6 +381,9 @@ Route::prefix('user')->group(function () {
         Route::get('/edit-listing-for-rent/{id}', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
             ///////////////   client&leads/////////////
         Route::get('/client&lead', [PropertyManagementController::class, 'client_main'])->name('client_main');
+            // //////////  Management/////
+            Route::get('/manage/all', [PropertyManagementController::class, 'all'])->name('manage_all');
+            Route::get('/manage/very_hot', [PropertyManagementController::class, 'very_hot'])->name('manage.ver_hot');
         ///////Pending-listing///////
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');
