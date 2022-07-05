@@ -143,26 +143,32 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-4 form-group">
+                                                <div class="col-4 form-group no-mb2">
+                                                    <p class="no-mb d-none" style="margin-bottom: 4px;">
                                                     <label class="form-label">Number bedrooms</label>
                                                     <input class="form-control notrequired" placeholder="Number bedrooms"
                                                         value="{{ $data['record']->number_of_bedrooms ?? '' }}"
                                                         name="number_of_bedrooms"
                                                         value="{{ $data['record']->bedrooms ?? '' }}" type="number">
+                                                    </p>
                                                 </div>
-                                                <div class="col-4 form-group">
+                                                <div class="col-4 form-group no-mb2">
+                                                      <p class="no-mb d-none" style="margin-bottom: 4px;">
                                                     <label class="form-label">Number bathrooms</label>
                                                     <input class="form-control notrequired" placeholder="Number bathrooms"
                                                         value="{{ $data['record']->number_of_bathrooms ?? '' }}"
                                                         name="number_of_bathrooms"
                                                         value="{{ $data['record']->bathrooms ?? '' }}" type="number">
+                                                      </p>
                                                 </div>
-                                                <div class="col-4 form-group">
+                                                <div class="col-4 form-group no-mb2">
+                                                    <p class="no-mb d-none" style="margin-bottom: 4px;">
                                                     <label class="form-label">Number floors</label>
                                                     <input class="form-control notrequired" placeholder="Number floors"
                                                         value="{{ $data['record']->number_of_floors ?? '' }}"
                                                         name="number_of_floors"
                                                         value="{{ $data['record']->floors ?? '' }}" type="number">
+                                                    </p>
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Area size</label>
@@ -476,7 +482,7 @@
                                                                 <label
                                                                     for="{{ $value->id }}">{{ $value->name }}</label>
                                                             @else
-                                                                <input type="radio" name="category"
+                                                                <input type="radio" class="cat" name="category"
                                                                     value="{{ $value->id }}"
                                                                     id="{{ $value->id }}">
                                                                 <label
@@ -584,6 +590,19 @@
 
             $(".divtext").hide();
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.cat').on('change', function() {
+                var cat_id = this.value;
+                if (cat_id == 7) {
+                    $('.no-mb2').removeClass('d-none');
+                    $('.no-mb').removeClass('d-none');
+                } else {
+                    $('.no-mb2').addClass('d-none');
+                }
+            })
+        })
     </script>
     <script>
         $(document).ready(function() {

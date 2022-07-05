@@ -125,73 +125,61 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </span>
+                                <button class="btn btn-primary" type="button"><i class="fa fa-search"
+                                        aria-hidden="true"></i></button>
+                            </span>
                         </div>
                         <div class="recent-post py-5">
                             <h5 class="font-weight-bold">Category</h5>
                             <ul>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>House</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Garages</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Real Estate</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Real Home</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Bath</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Beds</a></li>
+                                @foreach ($category as $value)
+                                    <li><a href="#"><i class="fa fa-caret-right"
+                                                aria-hidden="true"></i>{{ $value->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="recent-post">
                             <h5 class="font-weight-bold mb-4">Popular Tags</h5>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Houses</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Real Home</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Baths</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Beds</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Garages</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Family</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Real Estates</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Properties</a></span>
-                            </div>
-                            <div class="tags">
-                                <span><a href="#" class="btn btn-outline-primary">Location</a></span>
-                                <span><a href="#" class="btn btn-outline-primary">Price</a></span>
+                            <div class="row">
+                                @foreach ($tags as $value)
+                                <div class="col-md-6 col-lg-6 tags">
+                                      <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
+
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                         {{-- <div class="recent-post pt-5">
-                            <h5 class="font-weight-bold mb-4">Recent Posts</h5>
-                            <div class="recent-main">
-                                <div class="recent-img">
-                                    <a href="{{ route('front.blog_detail') }}"><img src="{{ asset('/front/images/blog/b-1.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="{{ route('front.blog_detail') }}"><h6>Real Estate</h6></a>
-                                    <p>May 10, 2020</p>
-                                </div>
+                        <h5 class="font-weight-bold mb-4">Recent Posts</h5>
+                        <div class="recent-main">
+                            <div class="recent-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><img src="{{ asset('/front/images/blog/b-1.jpg') }}" alt=""></a>
                             </div>
-                            <div class="recent-main my-4">
-                                <div class="recent-img">
-                                    <a href="{{ route('front.blog_detail') }}"><img src="{{ asset('/front/images/blog/b-2.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="{{ route('front.blog_detail') }}"><h6>Real Estate</h6></a>
-                                    <p>May 10, 2020</p>
-                                </div>
+                            <div class="info-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><h6>Real Estate</h6></a>
+                                <p>May 10, 2020</p>
                             </div>
-                            <div class="recent-main no-mb">
-                                <div class="recent-img">
-                                    <a href="{{ route('front.blog_detail') }}"><img src="{{ asset('/front/images/blog/b-3.jpg') }}" alt=""></a>
-                                </div>
-                                <div class="info-img">
-                                    <a href="{{ route('front.blog_detail') }}"><h6>Real Estate</h6></a>
-                                    <p>May 10, 2020</p>
-                                </div>
+                        </div>
+                        <div class="recent-main my-4">
+                            <div class="recent-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><img src="{{ asset('/front/images/blog/b-2.jpg') }}" alt=""></a>
                             </div>
-                        </div> --}}
+                            <div class="info-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><h6>Real Estate</h6></a>
+                                <p>May 10, 2020</p>
+                            </div>
+                        </div>
+                        <div class="recent-main">
+                            <div class="recent-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><img src="{{ asset('/front/images/blog/b-3.jpg') }}" alt=""></a>
+                            </div>
+                            <div class="info-img">
+                                <a href="{{ route('front.blog_detail',$blogs->id) }}"><h6>Real Estate</h6></a>
+                                <p>May 10, 2020</p>
+                            </div>
+                        </div>
+                    </div> --}}
                     </div>
                 </aside>
             </div>

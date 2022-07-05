@@ -70,9 +70,6 @@ class PropetyController extends Controller
             'price' => 'required',
             'unit' => 'required',
             'land_area' => 'required',
-            'number_of_floors' => 'required',
-            'number_of_bathrooms' => 'required',
-            'number_of_bedrooms' => 'required',
             'location' => 'required',
             'image' => 'required',
         ]);

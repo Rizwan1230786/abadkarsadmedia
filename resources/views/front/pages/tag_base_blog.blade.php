@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 @empty
-                                <p>No any blogs in this tag!</p>
+                                <h3>No any blogs in this tag!</h3>
                             @endforelse
                         </div>
                     </div>

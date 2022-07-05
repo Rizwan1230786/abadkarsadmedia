@@ -316,11 +316,13 @@ class FrontController extends Controller
     }
     public function blog_detail($provider)
     {
+        $category = Category::all();
+        $tags=tags::all();
         $blogsetail = Blog::where('title', $provider)->first();
         $meta = Webpages::Where("page_title", "blog")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $blog = Blog::where('id', $blogsetail->id)->first();
-        return view('front.pages.blog_detail', compact('blog', 'data', 'meta'));
+        return view('front.pages.blog_detail', get_defined_vars());
     }
     public function contact()
     {

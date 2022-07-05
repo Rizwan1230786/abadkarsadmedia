@@ -64,7 +64,6 @@
         text-align: left;
     }
 </style>
-
 <body class="homepage-9 hp-6 homepage-1 inner-pages">
     @section('main')
     <section class="user-page section-padding pt-5" style="margin-top: 0px;">
