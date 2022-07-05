@@ -303,8 +303,13 @@ Route::prefix('House_Property')->group(function () {
     Route::get('/{slug1}/{slug2}', [FrontController::class, 'search_city_area_base_property'])->name('search_city_area_base_property');
 });
 ///////end properties///////
-Route::get('/blog', [FrontController::class, 'blog'])->name('front.blog');
-Route::get('/blog/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
+Route::prefix('blog')->group(function () {
+    Route::get('/', [FrontController::class, 'blog'])->name('front.blog');
+    Route::get('/{slug}-base-blogs', [FrontController::class, 'blogs_tags'])->name('front.blog_tags');
+    Route::get('/{provider}', [FrontController::class, 'blog_detail'])->name('front.blog_detail');
+});
+
+
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');

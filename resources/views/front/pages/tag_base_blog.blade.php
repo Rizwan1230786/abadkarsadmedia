@@ -87,7 +87,7 @@
                                 <div class="row">
                                     @foreach ($tags as $value)
                                     <div class="col-md-6 col-lg-6 tags">
-                                          <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
+                                          <span><a href="{{ url('blog/'.$value->name) }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                     </div>
                                     @endforeach
