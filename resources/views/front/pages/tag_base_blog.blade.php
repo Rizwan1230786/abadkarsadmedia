@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-12 col-xs-12">
                         <div class="row">
-                            @foreach ($blog as $blogs)
+                            @forelse ($blog as $blogs)
                                 <div class="col-md-12 col-xs-12 space">
                                     <div class="news-item news-item-sm">
                                         <a href="{{ route('front.blog_detail', $blogs->title) }}" class="news-img-link">
@@ -59,19 +59,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                                @empty
+                                <p>No any blogs in this tag!</p>
+                            @endforelse
                         </div>
                     </div>
                     <aside class="col-lg-3 col-md-12">
                         <div class="widget">
-                            <h5 class="font-weight-bold mb-4">Search</h5>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-search"
-                                            aria-hidden="true"></i></button>
-                                </span>
-                            </div>
                             <div class="recent-post py-5">
                                 <h5 class="font-weight-bold">Category</h5>
                                 <ul>
@@ -87,7 +81,7 @@
                                 <div class="row">
                                     @foreach ($tags as $value)
                                     <div class="col-md-6 col-lg-6 tags">
-                                          <span><a href="{{ url('blog/'.$value->name) }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
+                                          <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                     </div>
                                     @endforeach
@@ -127,13 +121,6 @@
                     </aside>
                 </div>
             </div>
-            <nav aria-label="..." class="pt-55">
-                <ul class="pagination disabled">
-                    <li class="page-item active">
-                    <li>{!! $blog->links() !!}</li>
-                    </li>
-                </ul>
-            </nav>
         </section>
         <!-- END SECTION BLOG -->
     @endsection

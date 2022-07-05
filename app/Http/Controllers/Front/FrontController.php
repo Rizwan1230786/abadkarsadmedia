@@ -309,19 +309,10 @@ class FrontController extends Controller
     {
         $tags=tags::all();
         $category = Category::all();
-        $tags_id=tags::where('name',$slug)->first();
-        $assign = DB::table('blog_tags')
-        ->join("tags", "blog_tags.tags_id", "=", "tags.id")
-        ->join('blogs', 'blog_tags.blog_id', '=', 'blogs.id')
-        ->select('tags.id as tagid', 'blogs.id as blogsID',)
-        ->where('tags.id', '=', $tags_id->id)
-        ->get();
-        foreach($assign as $value){
-            $blog = Blog::where('id',$value->blogsID)->paginate(4);
-        }
+        $blog=tags::where('name',$slug)->firstOrfail()->blogs;
         $meta = Webpages::Where("page_title", "blog")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.blog', get_defined_vars());
+        return view('front.pages.tag_base_blog', get_defined_vars());
     }
     public function blog_detail($provider)
     {
