@@ -28,7 +28,7 @@ class BlogController extends Controller
      */
     public function create(Request $request)
     {
-        
+
         $tag = tags::all();
         return view('admin.modules.realestate.blog.create', get_defined_vars());
     }
@@ -41,6 +41,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $request->validate([
             'title' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -80,7 +81,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $record = Blog::where('id', $id)->first();
-        return view('admin.modules.realestate.blog.edit', compact('record'));
+        $tag = tags::all();
+        return view('admin.modules.realestate.blog.edit', compact('record','tag'));
     }
 
     /**

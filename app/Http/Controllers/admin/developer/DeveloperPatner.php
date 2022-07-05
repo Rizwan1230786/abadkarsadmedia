@@ -120,6 +120,4 @@ class DeveloperPatner extends Controller
         return view('admin.modules.tags.view_tag', get_defined_vars());
     }
 
-    
-   
 }

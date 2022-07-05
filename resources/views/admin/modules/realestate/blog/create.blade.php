@@ -97,11 +97,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            
-    
-                                            
-                                             
-                                             <h3>Tags</h3>
+                                            <label class="form-label">Tags</label>
                                 <div class="property-form-group">
                                     <div class="row">
                                         <div class="col-md-12">

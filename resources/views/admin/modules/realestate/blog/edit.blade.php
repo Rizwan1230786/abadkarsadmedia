@@ -99,6 +99,24 @@
                                                     </div>
                                                 @endif
                                             </div>
+                                            <label class="form-label">Tags</label>
+                                            <div class="property-form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pro-feature-add pl-0">
+                                                            <li class="fl-wrap filter-tags clearfix">
+                                                                <div class="filter-tags-wrap">
+                                                                @foreach($tag as $value)
+                                                                    <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tag_id[]',  $record->tag_id, false, ['class' => 'seting']) }}
+                                                                        {{ $value->name }}</label>
+                                                                    @endforeach
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="btn btn-list" style="text-align:center;width:100%">

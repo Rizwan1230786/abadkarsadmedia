@@ -4,7 +4,7 @@ $('.formSubmited').submit(function(e) {
     if (validateForm()) {
             $.ajax({
                 type: 'POST',
-                url:  '/admin/features/submit',
+                url:  '/admin/tags/submit',
                 dataType: "JSON",
                 data: new FormData(this),
                 processData: false,
@@ -19,7 +19,7 @@ $('.formSubmited').submit(function(e) {
                             toastr['error'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
                     } else {
                         toastr['success'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000 });
-                        window.location.href ='/admin/features';
+                        window.location.href ='/admin/tags';
                     }
                 }
             });
@@ -43,7 +43,7 @@ $(document).on('click', '.delete_record', function (e) {
         function() {
             $.ajax({
                 type: "post",
-                url: '/admin/delete_features/' + id,
+                url: '/admin/delete_tags/' + id,
                 data: {id:id},
                 success: function (data) {
                         swal("Deleted!", "Product has been deleted.", "success");

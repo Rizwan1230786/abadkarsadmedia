@@ -27,6 +27,7 @@ use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\addtocart\ProductController;
+use App\Http\Controllers\admin\blogstags\BlogtagsController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\our_pakges\PakgesController;
 use App\Http\Controllers\admin\partners\PartnersController;
@@ -250,13 +251,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/update/form/developer/{id}', [DeveloperPatner::class, 'developer_update'])->name('developer.update');
         Route::post('/update/developer', [DeveloperPatner::class, 'update'])->name('developer.update.form');
         Route::get('/delete/developer/{id}', [DeveloperPatner::class, 'delete'])->name('developer.delete');
-                    //  ////////  add Tags
-        Route::get('/tags', [DeveloperPatner::class, 'tags'])->name('tags');
-        Route::post('/create/tag', [DeveloperPatner::class, 'create_tag'])->name('creata_tag');
-        Route::get('/view/tag', [DeveloperPatner::class, 'view_tag'])->name('view_tag');
-        Route::get('/update/form/tag/{id}', [DeveloperPatner::class, 'edit_form'])->name('update.tag_form');
-        Route::post('/update/tag', [DeveloperPatner::class, 'tag_update'])->name('update_tag');
-        Route::get('/delete/tag/{id}', [DeveloperPatner::class, 'delete_tag'])->name('delete_tag');
+        //////////  add Tags
+        Route::get('/tags', [BlogtagsController::class, 'index'])->name('tags');
+        Route::get('/tags/create', [BlogtagsController::class, 'create'])->name('tags.form');
+        Route::post('/tags/submit', [BlogtagsController::class, 'submit'])->name('tags_submit');
+        Route::post('/delete_tags/{id}', [BlogtagsController::class, 'destroy'])->name('delete_tags');
 
 
     });
