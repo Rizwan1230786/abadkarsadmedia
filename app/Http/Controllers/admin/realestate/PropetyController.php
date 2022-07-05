@@ -319,7 +319,7 @@ class PropetyController extends Controller
 
 
     public function update_property($id)
-    {   
+    {
         $app = Property::find($id);
         $app->status = '1' ;
         $app->save();

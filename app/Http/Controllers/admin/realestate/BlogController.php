@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin\realestate;
 use App\Models\Blog;
 use App\Models\tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
@@ -41,13 +42,12 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
         $request->validate([
             'title' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'descripition' => 'required',
             'content' => 'required',
-            'tag_id' => 'required',
         ]);
         $pic = $request->file('image')->store('public');
         $picture = explode('/', $pic);
@@ -56,8 +56,8 @@ class BlogController extends Controller
             'image' => $picture[1],
             'descripition' => $request->descripition,
             'content' => $request->content,
-            'tag_id' => $request->tag_id,
         ]);
+        $check->tags()->attach($request->tags);
         return redirect()->route('admin:blog.index')->with('message', 'Blog added Successfully');
     }
 
@@ -82,7 +82,10 @@ class BlogController extends Controller
     {
         $record = Blog::where('id', $id)->first();
         $tag = tags::all();
-        return view('admin.modules.realestate.blog.edit', compact('record','tag'));
+        $blogs_tags = DB::table("blog_tags")->where("blog_tags.blog_id", $id)
+        ->pluck('blog_tags.tags_id', 'blog_tags.tags_id')
+        ->all();
+        return view('admin.modules.realestate.blog.edit', compact('record','tag','blogs_tags'));
     }
 
     /**
@@ -103,21 +106,22 @@ class BlogController extends Controller
             $imagePath = public_path('storage/' . $request->image);
             $pic = $request->file('image')->store('public');
             $picture = explode('/', $pic);
-            Blog::where('id', $id)
+           $check= Blog::where('id', $id)
                 ->update([
                     'title' => $request->title,
                     'image' => $picture[1],
                     'descripition' => $request->descripition,
                     'content' => $request->content,
                 ]);
+            $check->tags()->sync($request->tags);
             return redirect()->route('admin:blog.index')->with('message', "Blog Updated Successfully");
         } else {
-            Blog::where('id', $id)
-                ->update([
-                    'title' => $request->title,
-                    'descripition' => $request->descripition,
-                    'content' => $request->content,
-                ]);
+            $check= Blog::find($id);
+            $check->title= $request->title;
+            $check->descripition = $request->descripition;
+            $check->content = $request->content;
+            $check->update();
+            $check->tags()->sync($request->tags);
             return redirect()->route('admin:blog.index')->with('message', "Blog Updated Successfully");
         }
     }

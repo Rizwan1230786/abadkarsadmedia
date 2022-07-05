@@ -9,4 +9,9 @@ class Blog extends Model
 {
     use HasFactory;
     protected $fillable=['title','image','descripition','content'];
+
+    public function tags()
+    {
+        return $this->belongsToMany(tags::class);
+    }
 }

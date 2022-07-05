@@ -106,10 +106,11 @@
                                                         <ul class="pro-feature-add pl-0">
                                                             <li class="fl-wrap filter-tags clearfix">
                                                                 <div class="filter-tags-wrap">
-                                                                @foreach($tag as $value)
-                                                                    <label style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tag_id[]',  $record->tag_id, false, ['class' => 'seting']) }}
+                                                                    @foreach ($tag as $value)
+                                                                    <label
+                                                                        style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $blogs_tags) ? true : false, ['class' => 'name']) }}
                                                                         {{ $value->name }}</label>
-                                                                    @endforeach
+                                                                @endforeach
                                                                 </div>
                                                             </li>
 
