@@ -1,5 +1,5 @@
 <script>
-    var validate_input = "input[type=text],input[type=radio],input[type=email],input[type=password],textarea, select";
+    var validate_input = "input[type=text],input[type=radio],input[type=email],input[type=password],textarea";
     function validateremove() {
         $(validate_input).off('keyup').keyup(function() {
             clearDiv();

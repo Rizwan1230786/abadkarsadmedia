@@ -53,7 +53,8 @@
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Description</label>
-                                                <textarea class="form-control notrequired" placeholder="Meta Description" name="detail" rows="3" spellcheck="false">{{ $data['record']->detail ?? '' }}</textarea>
+                                                <textarea class="form-control notrequired" placeholder="Meta Description" name="detail" rows="3"
+                                                    spellcheck="false">{{ $data['record']->detail ?? '' }}</textarea>
                                             </div>
                                             <div class="col-lg-12 form-group padding">
                                                 <label class="form-label">Content</label>
@@ -92,15 +93,15 @@
                                             <div class="col-12 form-group padding">
                                                 <label class="form-label">Location</label>
                                                 <input class="form-control notrequired" placeholder="Location"
-                                                    name="location" type="text"
+                                                    name="location" id="pac-input" step="0.01" type="text"
                                                     value="{{ $data['record']->title ?? '' }}">
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 form-group">
                                                     <label class="form-label">Latitude</label>
                                                     <input class="form-control notrequired" placeholder="Ex: 1.462260"
-                                                        name="latitude" value="{{ $data['record']->latitude ?? '' }}"
-                                                        type="decmial">
+                                                        name="latitude" step="0.01" id="lat"
+                                                        value="{{ $data['record']->latitude ?? '' }}" type="decmial">
                                                     <a class="form-control notrequired" style="background-color: #d9edf7"
                                                         href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                         target="_blank" rel="nofollow">
@@ -109,8 +110,8 @@
                                                 <div class="col-6  form-group">
                                                     <label class="form-label">Longitude</label>
                                                     <input class="form-control notrequired" placeholder="Ex: 103.812530"
-                                                        name="longitude" value="{{ $data['record']->longitude ?? '' }}"
-                                                        type="decimal">
+                                                        name="longitude" step="0.01" id="long"
+                                                        value="{{ $data['record']->longitude ?? '' }}" type="decimal">
                                                     <a class="form-control notrequired" style="background-color: #d9edf7"
                                                         href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                         target="_blank" rel="nofollow">
@@ -122,25 +123,29 @@
                                                     <label class="form-label">Number blocks</label>
                                                     <input class="form-control notrequired" placeholder="Number blocks"
                                                         name="num_of_blocks"
-                                                        value="{{ $data['record']->num_of_blocks ?? '' }}" type="number">
+                                                        value="{{ $data['record']->num_of_blocks ?? '' }}"
+                                                        type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Number floors</label>
                                                     <input class="form-control notrequired" placeholder="Number floors"
                                                         name="num_of_floors"
-                                                        value="{{ $data['record']->num_of_floors ?? '' }}" type="number">
+                                                        value="{{ $data['record']->num_of_floors ?? '' }}"
+                                                        type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Number flats</label>
                                                     <input class="form-control notrequired" placeholder="Number flats"
                                                         name="num_of_flats"
-                                                        value="{{ $data['record']->num_of_flats ?? '' }}" type="number">
+                                                        value="{{ $data['record']->num_of_flats ?? '' }}"
+                                                        type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Lowest price</label>
                                                     <input class="form-control notrequired" placeholder="Lowest price"
                                                         name="lowest_price"
-                                                        value="{{ $data['record']->lowest_price ?? '' }}" type="number">
+                                                        value="{{ $data['record']->lowest_price ?? '' }}"
+                                                        type="number">
                                                 </div>
                                                 <div class="col-4 form-group">
                                                     <label class="form-label">Max price</label>
@@ -251,12 +256,13 @@
                                                         <label class="form-label">Meta Title</label>
                                                         <input class="form-control notrequired" placeholder="Meta Title"
                                                             name="meta_title"
-                                                            value="{{ $data['record']->meta_title ?? '' }}" type="text">
+                                                            value="{{ $data['record']->meta_title ?? '' }}"
+                                                            type="text">
                                                     </div>
                                                     <div class="col-lg-6 form-group">
                                                         <label class="form-label">Meta Keyword</label>
-                                                        <input class="form-control notrequired" placeholder="Meta keywords"
-                                                            name="meta_keywords"
+                                                        <input class="form-control notrequired"
+                                                            placeholder="Meta keywords" name="meta_keywords"
                                                             value="{{ $data['record']->meta_keywords ?? '' }}"
                                                             type="text">
                                                     </div>
@@ -293,7 +299,8 @@
                                                         <li class="no-border">
                                                             @if (!empty($data['record']->category))
                                                                 <input type="radio" name="category"
-                                                                    value="{{ $value->id }}" {{ $data['record']->category == $value->id ? 'checked' : ''}}
+                                                                    value="{{ $value->id }}"
+                                                                    {{ $data['record']->category == $value->id ? 'checked' : '' }}
                                                                     id="{{ $value->id }}">
                                                                 <label
                                                                     for="{{ $value->id }}">{{ $value->name }}</label>
@@ -307,9 +314,10 @@
                                                             <ul style="margin-left: 34px;margin-bottom: 0;">
                                                                 @foreach ($value->subCategory as $sub_cat)
                                                                     <li>
-                                                                        @if(!empty($data['record']->subcat_id))
+                                                                        @if (!empty($data['record']->subcat_id))
                                                                             <input type="radio" name="subcat_id"
-                                                                                value="{{ $sub_cat->id }}" {{ $data['record']->subcat_id == $value->id ? 'checked' : ''}}
+                                                                                value="{{ $sub_cat->id }}"
+                                                                                {{ $data['record']->subcat_id == $value->id ? 'checked' : '' }}
                                                                                 id="{{ $sub_cat->id }}">
                                                                             <label
                                                                                 for="{{ $sub_cat->id }}">{{ $sub_cat->name }}</label>
@@ -369,7 +377,8 @@
                                                     <label class="form-label">Finish date</label>
                                                     <input class="form-control notrequired" placeholder="Finish date"
                                                         name="expire_date"
-                                                        value="{{ $data['record']->expire_date ?? '' }}" type="date">
+                                                        value="{{ $data['record']->expire_date ?? '' }}"
+                                                        type="date">
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
@@ -377,7 +386,8 @@
                                                     <label class="form-label">Open sell date</label>
                                                     <input class="form-control notrequired" placeholder="Open sell date"
                                                         name="Open_sell_date"
-                                                        value="{{ $data['record']->Open_sell_date ?? '' }}" type="date">
+                                                        value="{{ $data['record']->Open_sell_date ?? '' }}"
+                                                        type="date">
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
@@ -473,6 +483,40 @@
             var page_title = $(this).val();
             $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '_').replace(/[^\w-]+/g, ''));
         });
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize"
+        async defer></script>
+    <script>
+        function initialize() {
+            var address = (document.getElementById('pac-input'));
+            var autocomplete = new google.maps.places.Autocomplete(address);
+            autocomplete.setTypes(['geocode']);
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    return;
+                }
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+                /*********************************************************************/
+                /* var address contain your autocomplete address *********************/
+                /* place.geometry.location.lat() && place.geometry.location.lat() ****/
+                /* will be used for current address latitude and longitude************/
+                /*********************************************************************/
+                document.getElementById('lat').value = place.geometry.location.lat();
+                document.getElementById('long').value = place.geometry.location.lng();
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 @endsection
 @section('js')

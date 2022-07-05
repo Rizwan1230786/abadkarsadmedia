@@ -62,16 +62,19 @@
                                             <li><a href="#">Mobile:  {{ $agent->mobile_number }}</a></li>
                                             <li><a href="#">Fax:   {{ $agent->fax_number }}</a></li>
                                             <li><a href="#">Email:  {{ $agent->email }}</a></li>
+                                            <li><a href="#">City:  {{ $agent->city_name }}</a></li>
                                         </ul>
                                     </div>
                                     <div class="news-item-bottom">
                                         {{-- <a href="properties-full-grid-2.html" class="news-link">View My Listings</a> --}}
-                                        @if ($agent->agency)
+                                        @if (!empty($agent->agency))
                                         <div class="admin">
                                             <p>Company : {{ $agent->agency }}</p>
                                         </div>
+                                        <div class="admin">
+                                            <p>Desgination : {{ $agent->desgination }}</p>
+                                        </div>
                                         @endif
-
                                     </div>
                                 </div>
                             </div>

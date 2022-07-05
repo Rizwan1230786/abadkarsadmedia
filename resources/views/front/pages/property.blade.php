@@ -186,20 +186,20 @@
                             </div>
                         @endif
                         <!-- <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
-                                                        <div class="input-group border rounded input-group-lg w-auto mr-4">
-                                                            <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
-                                                            <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
-                                                                <option selected>Top Selling</option>
-                                                                <option value="1">Most Viewed</option>
-                                                                <option value="2">Price(low to high)</option>
-                                                                <option value="3">Price(high to low)</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="sorting-options">
-                                                            <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
-                                                            <a href="properties-full-grid-1.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
-                                                        </div>
-                                                    </div> -->
+                                                            <div class="input-group border rounded input-group-lg w-auto mr-4">
+                                                                <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
+                                                                <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
+                                                                    <option selected>Top Selling</option>
+                                                                    <option value="1">Most Viewed</option>
+                                                                    <option value="2">Price(low to high)</option>
+                                                                    <option value="3">Price(high to low)</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="sorting-options">
+                                                                <a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
+                                                                <a href="properties-full-grid-1.html" class="change-view-btn lde"><i class="fa fa-th-large"></i></a>
+                                                            </div>
+                                                        </div> -->
                     </div>
                 </section>
                 @if (isset($search_property) && !empty($search_property))
@@ -528,6 +528,111 @@
                             </div>
                         </div>
                     @endforeach
+                @elseif(isset($agency_search_property) && !empty($agency_search_property))
+                    <section class="headings-2 pt-0">
+                        <div class="pro-wrapper">
+                            @if (isset($agency_search_property) && !empty($agency_search_property))
+                                <div class="detail-wrapper-body">
+                                    <div class="listing-title-bar">
+                                        <div class="text-heading text-left">
+                                            <h5 class="font-weight-bold mb-0 mt-3">( {{ number_format($count) }} Property
+                                                for search in {{ $get_agency_id->name }} agency ) </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </section>
+                    @foreach ($agency_search_property as $value)
+                        <div class="row">
+                            <div class="item mb-5 col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
+                                data-aos="fade-up">
+                                <div class="project-single mb-0 bb-0">
+                                    <div class="project-inner project-head"
+                                        style="background-image: url('{{ asset('assets/images/properties/' . $value->image) }}');  background-size: cover;
+                                                    background-position: center;background-repeat: no-repeat;height:40vh">
+                                        >
+                                        <div class="project-bottom">
+                                            <h4><a href="{{ url('/property', $value->url_slug) }}">View
+                                                    Property</a><span class="category">Real Estate</span></h4>
+                                        </div>
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="{{ url('/property', $value->url_slug) }}"
+                                                class="homes-img">
+                                                <div class="homes-tag button alt featured">Featured</div>
+                                                <div class="homes-tag button alt sale">
+                                                    {{ $value->type }}
+                                                </div>
+                                                <div class="homes-price">Family Home</div>
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="#" class="btn"><i class="fa fa-link"></i></a>
+                                            @if ($value->video)
+                                                <a href="{{ $value->video }}"
+                                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            @endif
+                                            <a href="$" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- homes content -->
+                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-5" data-aos="fade-up">
+                                <!-- homes address -->
+                                <h3><a
+                                        href="{{ url('/property', $value->url_slug) }}">{{ $value->name }}</a>
+                                </h3>
+                                <p class="homes-address mb-3">
+                                    <a href="{{ url('/property', $value->url_slug) }}">
+                                        <i
+                                            class="fa fa-map-marker"></i><span>{{ $value->location }}</span>
+                                    </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    @if ($value->number_of_bedrooms)
+                                        <li class="the-icons">
+                                            <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                            <span>{{ $value->number_of_bedrooms }}</span>
+                                        </li>
+                                    @endif
+                                    @if ($value->number_of_bathrooms)
+                                        <li class="the-icons">
+                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                            <span>{{ $value->number_of_bathrooms }}</span>
+                                        </li>
+                                    @endif
+                                    @if ($value->land_area)
+                                        <li class="the-icons">
+                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{{ number_format($value->land_area, 1) }}
+                                                {{ $value->unit }}</span>
+                                        </li>
+                                    @endif
+                                </ul>
+                                <!-- Price -->
+                                <div class="price-properties">
+                                    <h3 class="title mt-3">
+                                        <a href="#">(PKR)
+                                            {{ number_format($value->price, 0) }}</a>
+                                    </h3>
+                                    <div class="compare">
+                                        <a href="#" title="Compare">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </a>
+                                        <a href="#" title="Share">
+                                            <i class="fas fa-share-alt"></i>
+                                        </a>
+                                        <a href="#" title="Favorites">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 @else
                     <section class="headings-2 pt-0">
                         <div class="pro-wrapper">
@@ -546,8 +651,8 @@
                                                     <span style="font-size:15px;">
                                                         Properties for sale in
                                                         {{ $city_name }}
-                                                        @if(isset($area_name) && !empty($area_name))
-                                                         Area {{ $area_name ?? '' }}
+                                                        @if (isset($area_name) && !empty($area_name))
+                                                            Area {{ $area_name ?? '' }}
                                                         @endif
                                                     </span>
                                                 @endif
@@ -678,7 +783,8 @@
                     // $('#state-dd').html('<select value=""">Select Area</select>');
                     $.each(result.areas, function(key, value) {
                         $("#state-dd").append(
-                            '<option value="' + value.id + '">' + value.areaname + '</option>');
+                            '<option value="' + value.id + '">' + value
+                            .areaname + '</option>');
                         $("#state-dd").parent().find('.nice-select .list').append(
                             '<li data-value="' + value
                             .id + '" class="option">' + value.areaname + '</li>'

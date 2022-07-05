@@ -13,7 +13,7 @@ class UrlslugController extends Controller
 {
      public function index()
     {
-        $record = UrlSlug::all();
+        $record = UrlSlug::orderby('id','desc')->get();
         return view('admin.modules.realestate.urlslugs.listing', compact('record'));
     }
     public function create(Request $request)

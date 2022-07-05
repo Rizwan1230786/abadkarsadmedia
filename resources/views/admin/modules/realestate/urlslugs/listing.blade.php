@@ -13,7 +13,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:slugs.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:slugs.form') }}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>
@@ -42,22 +42,33 @@
                             </thead>
                             <tbody>
                                 @isset($record)
+                                    @php
+                                        $count = 1;
+                                    @endphp
                                     @foreach ($record as $item)
                                         @php
                                             $status = $item->status ?? 0;
                                         @endphp
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->title}}</td>
-                                            <td>{{ $item->url_slug}}</td>
+                                            <td>{{ $count++; }}</td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->url_slug }}</td>
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:slugs.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
+                                                    <a href="{{ route('admin:slugs.form', ['id' => $item->id]) }}">
+                                                        <li class="icons-list-item"><i class="fe fe-edit-3"
+                                                                data-toggle="tooltip" title=""
+                                                                data-original-title="Edit"></i></li>
+                                                    </a>
                                                     <a href="#">
-                                                    <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
+                                                        <li class="icons-list-item view_details" rel="{{ $item->id }}"><i
+                                                                class="fe fe-file-text" data-toggle="tooltip" title=""
+                                                                data-original-title="Detail"></i></li>
                                                     </a>
                                                     <a href="javascript:void(0)">
-                                                      <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
+                                                        <li class="icons-list-item delete_record" data-id="{{ $item->id }}">
+                                                            <i class="fa fa-trash-o" data-toggle="tooltip" title=""
+                                                                data-original-title="Delete"></i></li>
                                                     </a>
                                                 </ul>
                                             </td>

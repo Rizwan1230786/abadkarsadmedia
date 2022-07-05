@@ -316,6 +316,9 @@ Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
 });
+Route::prefix('agency-property')->group(function () {
+    Route::get('/{slug}', [FrontController::class, 'agency_base_property'])->name('agency_base_property');
+});
 
 //////user login//////////
 Route::prefix('user')->group(function () {

@@ -26,7 +26,7 @@
                                     <a href="agencies-details.html" class="news-img-link">
                                         <div class="news-item-img homes">
                                             {{-- <div class="homes-tag button alt featured">4 Listings</div> --}}
-                                            <img class="resp-img" src="{{asset('assets/images/agency/'.$agency->image)}}" alt="blog image">
+                                            <img class="resp-img" style="padding: 20px;" src="{{asset('assets/images/agency/'.$agency->image)}}" alt="blog image">
                                         </div>
                                     </a>
                                     <div class="news-item-text">
@@ -57,12 +57,12 @@
 
                             </div>
                             <!-- START LISTING PROPERTIES -->
+                            @if(!empty($projects))
                             <section class="similar-property featured portfolio bshd p-0 bg-white">
                                 <div class="container-px-0">
                                     <h5>Agency Projects</h5>
                                     <div class="row">
                                         @foreach ($projects as $project )
-                                        @if ($project->agency_id == $agency->id)
                                         <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
                                             <div class="project-single">
                                                 <div class="project-inner project-head">
@@ -104,12 +104,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
                                         @endforeach
-
                                     </div>
                                 </div>
                             </section>
+                            @endif
                             <!-- END LISTING PROPERTIES -->
                             <!-- START SECTION AGENTS -->
                             <section class="blog blog-section portfolio py-0 age bg-white">
@@ -124,7 +123,7 @@
                                                         <a href="{{ route('front.agent_detail',$agent->id) }}" class="news-img-link">
                                                             <div class="news-item-img homes">
                                                                 {{-- <div class="homes-tag button alt featured">3 Listings</div> --}}
-                                                                <img class="resp-img" src="{{asset('assets/images/agent/'.$agent->image)}}" alt="blog image">
+                                                                <img class="resp-img" style="padding: 20px;" src="{{asset('assets/images/agent/'.$agent->image)}}" alt="blog image">
                                                             </div>
                                                         </a>
                                                         <div class="news-item-text">
@@ -142,6 +141,9 @@
                                                                 @if ($agent->agency)
                                                                 <div class="admin">
                                                                     <p>Company : {{ $agent->agency }}</p>
+                                                                </div>
+                                                                <div class="admin">
+                                                                    <p>Desgination : {{ $agent->desgination }}</p>
                                                                 </div>
                                                                 @endif
                                                             </div>

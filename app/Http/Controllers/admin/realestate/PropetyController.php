@@ -27,7 +27,7 @@ class PropetyController extends Controller
 {
     public function index()
     {
-        $record = Property::all();
+        $record = Property::orderBy('id', 'DESC')->get();
         return view('admin.modules.realestate.property.listing', compact('record'));
     }
     public function get_fecilites()
@@ -66,19 +66,31 @@ class PropetyController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'url_slug' => 'required',
+            'price' => 'required',
+            'unit' => 'required',
+            'land_area' => 'required',
+            'number_of_floors' => 'required',
+            'number_of_bathrooms' => 'required',
+            'number_of_bedrooms' => 'required',
+            'location' => 'required',
             'image' => 'required',
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
-            $filename = time() . '.' . request()->image->getClientOriginalExtension();
-            if ($request->file('image')) {
-                $imagePath = $request->file('image');
-                request()->image->move(public_path('assets/images/properties/'), $filename);
+            if (isset($request->image) && !empty($request->image)) {
+                $image = $request->image;
+                $filename = rand(1000000000, 9999999999) . '.' . 'webp';
+                $destinationPath = public_path('assets/images/properties/');
+                $img = Image::make($image->getRealPath())->encode('webp', 75);
+                $img->resize(360, 250, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . $filename);
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,
-                "category" => $request->category, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "category" => $request->category, "subcat_id"=>$request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -94,7 +106,7 @@ class PropetyController extends Controller
 
             $post = Property::Create($data);
             UrlSlug::where('city_id', $request->city_name)->update(['status' => 1]);
-            Area::where("id" , $request->area_id)->update(['status' => 1]);
+            Area::where("id", $request->area_id)->update(['status' => 1]);
 
             if ($request->file('property_map')) {
                 $mapname = time() . '.' . request()->property_map->getClientOriginalExtension();
@@ -120,8 +132,15 @@ class PropetyController extends Controller
                     $img->resize(600, 600, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($destinationPath . $filename);
+                    $filename2 = rand(1000000000, 9999999999) . '.' . 'webp';
+                    $Path2 = public_path('assets/images/properties/multipleimages/webp/');
+                    $img2 = Image::make($image->getRealPath())->encode('webp', 75);
+                    $img2->resize(1100, 450, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($Path2 . $filename2);
                     // request()->image->move($destinationPath, $data['image']);
-                    PropertyImage::create(['image' => $filename, 'property_id' => $post->id]);
+                    PropertyImage::create(['image' => $filename, 'property_id' => $post->id, 'image_webp' => $filename2]);
+
                 }
             }
             if (isset($request->facility) && !empty($request->facility)) {
@@ -159,7 +178,7 @@ class PropetyController extends Controller
                 if (File::exists($oldimage)) {
                     File::delete($oldimage);
                 }
-                $filename = time() . '.' . request()->image->getClientOriginalExtension();
+                $filename = rand(1000000000, 9999999999) . '.' . 'webp';
                 $post->image = $filename;
                 $imagePath = $request->file('image');
                 request()->image->move(public_path('assets/images/properties/'), $filename);
@@ -176,7 +195,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
-                "category" => $request->category, "agent_id" => $request->agent_id,
+                "category" => $request->category,  "subcat_id"=>$request->subcat_id, "agent_id" => $request->agent_id,
                 "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,

@@ -518,6 +518,11 @@
                         </div>
                     @endforeach
                 </div>
+                @if ($city_count >= 8)
+                <div class="bg-all mt-5">
+                    <a href="#" class="btn btn-outline-light">View All Cities</a>
+                </div>
+                @endif
                 <!-- /row -->
             </div>
         </section>
@@ -580,10 +585,10 @@
                                                     <span>{{ $properties->number_of_bathrooms }}</span>
                                                 </li>
                                             @endif
-                                            @if ($properties->land_area)
+                                            @if (!empty($properties->land_area))
                                                 <li class="the-icons">
                                                     <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                    <span>{{ number_format($properties->land_area, 1) }}
+                                                    <span>{{ $properties->land_area}}
                                                         {{ $properties->unit }}</span>
                                                 </li>
                                             @endif

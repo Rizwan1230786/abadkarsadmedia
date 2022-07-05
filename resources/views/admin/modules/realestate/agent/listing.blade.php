@@ -37,7 +37,7 @@
                                     <th class="wd-15p border-bottom-0">ID</th>
                                     <th class="wd-15p border-bottom-0">Image</th>
                                     <th class="wd-15p border-bottom-0">Name</th>
-                                    {{-- <th class="wd-10p border-bottom-0">Status</th> --}}
+                                    <th class="wd-10p border-bottom-0">Desigination</th>
                                     <th class="wd-25p border-bottom-0">Action</th>
                                 </tr>
                             </thead>
@@ -51,6 +51,7 @@
                                             <td>{{ $item->id }}</td>
                                             <td><img src="{{asset('assets/images/agent/'.$item->image)}}" width="50px" height="50px"></td>
                                             <td>{{ $item->name}}</td>
+                                            <td>{{ $item->desgination}}</td>
                                             {{-- <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{ $status != '1' ? 'UnPublish' : 'Publish' }}</span>
                                             </td> --}}

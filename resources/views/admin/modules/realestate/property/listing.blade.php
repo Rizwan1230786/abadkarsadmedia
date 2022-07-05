@@ -44,13 +44,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $count=1;
+                                @endphp
                                 @isset($record)
                                     @foreach ($record as $item)
                                         @php
                                             $status = $item->status ?? 0;
                                         @endphp
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $count++ ; }}</td>
                                             <td><img src="{{ asset('assets/images/properties/' . $item->image) }}"
                                                     width="50px" height="50px"></td>
                                             <td>{{Str::limit($item->name, 20)}}</td>

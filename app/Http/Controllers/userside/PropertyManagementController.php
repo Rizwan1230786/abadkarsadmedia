@@ -314,6 +314,7 @@ class PropertyManagementController extends Controller
                     $data = array(
                         'area_id' => ($data['area_id'] ?? 0),
                         'user_id' => $user_id,
+                        'agency_id' => $data['agency_id'],
                         'city_name' => $data['city_name'],
                         'name' => $data['title'],
                         'type' => $data['property_purpose'],
@@ -331,7 +332,7 @@ class PropertyManagementController extends Controller
                         'is_expired' => $data['is_expired'],
                         'listed_date' => Carbon::now()->format('Y-m-d'),
                         'video_link' => $data['video_link'],
-                        'status' => 1,
+                        'status' => 0,
                         "url_slug" => $data['url_slug'],
                         'image' => $filename,
                         'number_of_bedrooms' => $data['number_of_bedrooms'],

@@ -12,6 +12,7 @@ class Agent extends Model
     protected $fillable=[
         'name',
         'email',
+        'desgination',
         'office_address',
         'office_number',
         'mobile_number',

@@ -41,6 +41,11 @@
                                             <input class="form-control" placeholder="email"
                                                 value="{{ $data['record']->email ?? '' }}" name="email" type="email">
                                         </div>
+                                        <div class="col-lg-6 form-group">
+                                            <label class="form-label">Desigination</label>
+                                            <input class="form-control" placeholder="Desigination"
+                                                value="{{ $data['record']->desgination ?? '' }}" name="desgination" type="text">
+                                        </div>
                                         <div class="col-6 form-group">
                                             <label class="form-label">Office Address</label>
                                             <input class="form-control notrequired" placeholder="Office Adress "

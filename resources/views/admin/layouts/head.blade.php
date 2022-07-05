@@ -6,6 +6,7 @@
       <!-- <link rel="icon" href="{{ URL::asset('assets/images/brand/fav2.png') }}" type="image/x-icon"/> -->
 
       <!--Bootstrap css -->
+      <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
       <link href="{{ URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
       <!-- Style css -->
@@ -37,7 +38,6 @@
       <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" />
 
       <!-- Jquery js-->
-      <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
       <script src="{{ URL::asset('assets/js/toastr.min.js') }}"></script>
 
       <style>
