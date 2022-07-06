@@ -30,7 +30,7 @@ class BlogController extends Controller
     public function create(Request $request)
     {
 
-        $tag = tags::all();
+        $tag = tags::where('category',1)->get();
         return view('admin.modules.realestate.blog.create', get_defined_vars());
     }
 
@@ -81,7 +81,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $record = Blog::where('id', $id)->first();
-        $tag = tags::all();
+        $tag = tags::where('category',1)->get();
         $blogs_tags = DB::table("blog_tags")->where("blog_tags.blog_id", $id)
         ->pluck('blog_tags.tags_id', 'blog_tags.tags_id')
         ->all();

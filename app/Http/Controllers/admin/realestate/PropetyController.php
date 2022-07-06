@@ -17,6 +17,7 @@ use App\Models\Facilities;
 use App\Models\Property_facilities;
 use App\Models\PropertyImage;
 use App\Models\SubCategory;
+use App\Models\tags;
 use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,8 @@ class PropetyController extends Controller
 {
     public function index()
     {
-        $record = Property::orderBy('id', 'DESC')->get();
+
+        $record = Property::where('status',1)->orderBy('id', 'DESC')->get();
         return view('admin.modules.realestate.property.listing', compact('record'));
     }
     public function get_fecilites()
@@ -39,7 +41,7 @@ class PropetyController extends Controller
     {
         $cities = Cities::get(["name", "id"]);
         $facilites = Facilities::select('id', 'name')->get();
-
+        $tag = tags::where('category', 2)->get();
         $project = Projects::all();
         $feature = Features::all();
         $agent = Agent::all();
@@ -51,6 +53,9 @@ class PropetyController extends Controller
         $features_property = DB::table("features_property")->where("features_property.property_id", $updateId)
             ->pluck('features_property.features_id', 'features_property.features_id')
             ->all();
+        $tag_property = DB::table("property_tags")->where("property_tags.property_id", $updateId)
+            ->pluck('property_tags.tags_id', 'property_tags.tags_id')
+            ->all();
         $multiimages = DB::table('property_images')
             ->join("properties", "property_images.property_id", "=", "properties.id")
             ->select('property_images.id as propertiesimagesid', 'property_images.property_id', 'properties.id', 'property_images.image')
@@ -59,7 +64,7 @@ class PropetyController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Property::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.property.create', compact('data', 'cities', 'feature', 'project', 'categories', 'features_property', 'agent', 'agency', 'multiimages',));
+        return view('admin.modules.realestate.property.create', get_defined_vars());
     }
     public function submit(Request $request)
     {
@@ -87,7 +92,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,
-                "category" => $request->category, "subcat_id"=>$request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "category" => $request->category, "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -137,7 +142,6 @@ class PropetyController extends Controller
                     })->save($Path2 . $filename2);
                     // request()->image->move($destinationPath, $data['image']);
                     PropertyImage::create(['image' => $filename, 'property_id' => $post->id, 'image_webp' => $filename2]);
-
                 }
             }
             if (isset($request->facility) && !empty($request->facility)) {
@@ -152,6 +156,7 @@ class PropetyController extends Controller
             }
 
             $post->features()->attach($request->feature);
+            $post->tags()->attach($request->tags);
         } else {
             $message = $validator->errors()->toArray();
         }
@@ -192,7 +197,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
-                "category" => $request->category,  "subcat_id"=>$request->subcat_id, "agent_id" => $request->agent_id,
+                "category" => $request->category,  "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id,
                 "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
@@ -253,6 +258,7 @@ class PropetyController extends Controller
 
 
             $post->features()->sync($request->feature);
+            $post->tags()->sync($request->tags);
         } else {
             $message = $validator->errors()->toArray();
         }
@@ -309,17 +315,16 @@ class PropetyController extends Controller
     }
     public function approval()
     {
-        $approve = Property::where('status', 0)->get();
-        return view('admin.modules.approval.approve', compact('approve'));
+        $approve = Property::where('status', 0)->orderby('id','desc')->get();
+        return view('admin.modules.realestate.property.approve', compact('approve'));
     }
-
 
 
     public function update_property($id)
     {
         $app = Property::find($id);
-        $app->status = '1' ;
+        $app->status = '1';
         $app->save();
-        return redirect()->back()->with('message' , 'Status updated');
+        return redirect()->back()->with('message', 'Status updated');
     }
 }

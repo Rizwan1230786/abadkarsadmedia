@@ -20,4 +20,8 @@ class property extends Model
     {
         return $this->belongsToMany(Facilities::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(tags::class);
+    }
 }

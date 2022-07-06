@@ -145,29 +145,34 @@
                                             <div class="row">
                                                 <div class="col-4 form-group no-mb2">
                                                     <p class="no-mb d-none" style="margin-bottom: 4px;">
-                                                    <label class="form-label">Number bedrooms</label>
-                                                    <input class="form-control notrequired" placeholder="Number bedrooms"
-                                                        value="{{ $data['record']->number_of_bedrooms ?? '' }}"
-                                                        name="number_of_bedrooms"
-                                                        value="{{ $data['record']->bedrooms ?? '' }}" type="number">
+                                                        <label class="form-label">Number bedrooms</label>
+                                                        <input class="form-control notrequired"
+                                                            placeholder="Number bedrooms"
+                                                            value="{{ $data['record']->number_of_bedrooms ?? '' }}"
+                                                            name="number_of_bedrooms"
+                                                            value="{{ $data['record']->bedrooms ?? '' }}"
+                                                            type="number">
                                                     </p>
                                                 </div>
                                                 <div class="col-4 form-group no-mb2">
-                                                      <p class="no-mb d-none" style="margin-bottom: 4px;">
-                                                    <label class="form-label">Number bathrooms</label>
-                                                    <input class="form-control notrequired" placeholder="Number bathrooms"
-                                                        value="{{ $data['record']->number_of_bathrooms ?? '' }}"
-                                                        name="number_of_bathrooms"
-                                                        value="{{ $data['record']->bathrooms ?? '' }}" type="number">
-                                                      </p>
+                                                    <p class="no-mb d-none" style="margin-bottom: 4px;">
+                                                        <label class="form-label">Number bathrooms</label>
+                                                        <input class="form-control notrequired"
+                                                            placeholder="Number bathrooms"
+                                                            value="{{ $data['record']->number_of_bathrooms ?? '' }}"
+                                                            name="number_of_bathrooms"
+                                                            value="{{ $data['record']->bathrooms ?? '' }}"
+                                                            type="number">
+                                                    </p>
                                                 </div>
                                                 <div class="col-4 form-group no-mb2">
                                                     <p class="no-mb d-none" style="margin-bottom: 4px;">
-                                                    <label class="form-label">Number floors</label>
-                                                    <input class="form-control notrequired" placeholder="Number floors"
-                                                        value="{{ $data['record']->number_of_floors ?? '' }}"
-                                                        name="number_of_floors"
-                                                        value="{{ $data['record']->floors ?? '' }}" type="number">
+                                                        <label class="form-label">Number floors</label>
+                                                        <input class="form-control notrequired"
+                                                            placeholder="Number floors"
+                                                            value="{{ $data['record']->number_of_floors ?? '' }}"
+                                                            name="number_of_floors"
+                                                            value="{{ $data['record']->floors ?? '' }}" type="number">
                                                     </p>
                                                 </div>
                                                 <div class="col-4 form-group">
@@ -241,7 +246,8 @@
                                                 </div>
 
                                             </div>
-                                            <div class="col-12 form-group padding">
+                                            <div class="col-12 form-group padding mt-5"
+                                                style="border: 1px solid lightgray; padding:5px;">
                                                 <label class="form-label">Feature</label>
                                                 <?php
                                             if (isset($data['record']) && !empty($data['record'])) { ?>
@@ -262,7 +268,34 @@
 
                                             ?>
                                             </div>
-                                            <div class="table-responsive">
+                                            <div class="property-form-group" style="border: 1px solid lightgray">
+                                                <div class="row" style="padding: 5px;">
+                                                    <div class="col-md-12">
+                                                        <label class="form-label">Search Tags</label>
+                                                        <ul class="pro-feature-add pl-0">
+                                                            <li class="fl-wrap filter-tags clearfix">
+                                                                <div class="filter-tags-wrap">
+                                                                    @if (isset($data['record']) && !empty($data['record']))
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $tag_property) ? true : false, ['class' => 'name']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @else
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, false, ['class' => 'seting']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive mt-3">
                                                 <table class="table" id="dynamic_field">
                                                     <p><b>Distance Key between Facilities (Optional)</b></p>
                                                     <tr>
@@ -318,7 +351,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="divtext">
                                                 {{-- Rent details --}}
                                                 <div class="Rent msg"

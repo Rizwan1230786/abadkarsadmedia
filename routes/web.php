@@ -299,6 +299,9 @@ Route::prefix('property')->group(function () {
     Route::get('/{slug}/{slug1}/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
     Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 });
+Route::prefix('tags-property')->group(function () {
+    Route::get('/{slug}-base-property', [FrontController::class, 'tag_base_property'])->name('front.tag_base_property');
+});
 Route::prefix('House_Property')->group(function () {
     Route::get('/{slug1}/{slug2}', [FrontController::class, 'search_city_area_base_property'])->name('search_city_area_base_property');
 });

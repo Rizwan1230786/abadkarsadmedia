@@ -33,7 +33,7 @@ class BlogtagsController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $updateId = $request->id;
-            $data = array("name" => $request->name, "detail" => $request->detail);
+            $data = array("name" => $request->name, "category" => $request->category);
             if (isset($updateId) && !empty($updateId) && $updateId > 0) {
                 $data['id'] = $updateId;
                 $message = "Data update successfully";
