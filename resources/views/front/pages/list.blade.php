@@ -1,52 +1,72 @@
 @extends('front.layout')
-@section('main')
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            ;
-        }
+@section('body')
 
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            /* padding: 30px; */
-            text-decoration: none;
-        }
-
-    </style>
-    <div class="container-fluid bg-white-2">
-        <div class="row pb-5 pt-5">
-            <div class="col-12 mt-5">
-                <h2 class="mt-5" style="text-align: center">{{ $category->name }} for sale in all cities of
-                    Pakistan</h2>
-                <div class="mt-5" style="margin-left: 100px;">
-                    <div class="col-12">
+    <body class="inner-pages sin-1 homepage-4 hd-white">
+    @section('main')
+        <section class="headings">
+            <div class="text-heading text-center">
+                <div class="container">
+                    <h1>All Property Of {{ $category->name }} </h1>
+                </div>
+            </div>
+        </section>
+        <section class="blog blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-xs-12">
+                        <h2 class="mb-5" style="font-size: 1.5rem;">{{ $category->name }} For sale in all cities of
+                            Pakistan</h2>
                         <div class="row">
                             @foreach ($check as $check)
-                                <div class="col-3 p-1">
-                                    <a  style="color: black;font-size:15px;"
-                                        href="{{ url('/' . $category->name . '/' . $check->url_slug) }}">
-                                         {{ $check->title }}</a>
+                            <div class="col-4 p-1">
+                                <ul>
+                                    <li style="list-style: square;">
+                                        <a style="color: black;font-size:15px;"
+                                            href="{{ url('/property' . '/' . $category->name . '/' . $check->url_slug) }}">
+                                            {{ $check->title }}</a>
+                                    </li>
 
-                                </div>
-                            @endforeach
-                            <div class="col-4"></div>
+                                </ul>
+                            </div>
+                        @endforeach
                         </div>
-
                     </div>
+                    <aside class="col-lg-3 col-md-12">
+                        <div class="widget">
+                            <h5 class="font-weight-bold mb-4">Search</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-search"
+                                            aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                            <div class="recent-post py-5">
+                                <h5 class="font-weight-bold">Category</h5>
+                                <ul>
+                                    @foreach ($allcategory as $value)
+                                        <li><a href="#"><i class="fa fa-caret-right"
+                                                    aria-hidden="true"></i>{{ $value->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="recent-post">
+                                <h5 class="font-weight-bold mb-4">Popular Tags</h5>
+                                <div class="row">
+                                    @foreach ($tags as $value)
+                                    <div class="col-md-6 col-lg-6 tags">
+                                          <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
-
-
             </div>
-        </div>
-    </div>
+        </section>
+    @endsection
+</body>
 @endsection

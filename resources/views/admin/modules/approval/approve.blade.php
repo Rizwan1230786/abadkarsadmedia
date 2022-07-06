@@ -11,13 +11,6 @@
         <div class="page-leftheader">
             <h4 class="page-title mb-0">Approval</h4>
         </div>
-        <div class="page-rightheader">
-            <div class="btn btn-list">
-                <a href="{{ route('admin:properties.form') }}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
-                    New</a>
-
-            </div>
-        </div>
     </div>
     <!--End Page header-->
 @endsection
@@ -79,7 +72,7 @@
                                                             <li class="icons-list-item property_publish"
                                                                 rel="{{ $item->id }}" status="{{ $status }}"><i
                                                                     class="fe fe-arrow-up" data-toggle="tooltip" title=""
-                                                                    data-original-title="Publish"></i></li>
+                                                                    data-original-title="Approved"></i></li>
                                                         </a>
                                                     @else
                                                         <a href="javascript:void(0)">
@@ -95,8 +88,6 @@
                                                                 data-toggle="tooltip" title="" data-original-title="Delete"></i>
                                                         </li>
                                                     </a>
-                                                    <a  href="/admin/update/property/{{$item->id}}"  class="btn btn-success">Approved</a>
-                                                   
                                                 </ul>
                                             </td>
                                         </tr>

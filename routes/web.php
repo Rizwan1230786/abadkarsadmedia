@@ -316,7 +316,6 @@ Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 Route::get('/error', [FrontController::class, 'error'])->name('front.error');
 Route::get('/soon', [FrontController::class, 'soon'])->name('front.soon');
-Route::get('/all/{slug}', [FrontController::class, 'list'])->name('front.list');
 Route::prefix('search_property')->group(function () {
     Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
@@ -338,6 +337,10 @@ Route::get('/index-page1', [FrontController::class, 'page1'])->name('front.page1
 
 Route::prefix('city')->group(function () {
     Route::get('/{cityslug}', [FrontController::class, 'show_city'])->name('show_city');
+});
+Route::prefix('all-city')->group(function () {
+    Route::get('/', [FrontController::class, 'all_city'])->name('front.all-city');
+    Route::get('/{slug}-all-property', [FrontController::class, 'list'])->name('front.list');
 });
 Route::prefix('agency-property')->group(function () {
     Route::get('/{slug}', [FrontController::class, 'agency_base_property'])->name('agency_base_property');

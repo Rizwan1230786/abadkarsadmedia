@@ -520,7 +520,7 @@
                 </div>
                 @if ($city_count >= 8)
                 <div class="bg-all mt-5">
-                    <a href="#" class="btn btn-outline-light">View All Cities</a>
+                    <a href="{{ url('/all-city') }}" class="btn btn-outline-light">View All Cities</a>
                 </div>
                 @endif
                 <!-- /row -->
@@ -893,7 +893,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($category as $category)
                                             @if (isset($category->name) && $category->name == 'Homes')
-                                                @foreach ($category->url_slugs->take(5) as $urlslugs)
+                                                @foreach ($category->url_slugs->take(8) as $urlslugs)
                                                     <ul>
                                                         <li style="list-style: square;">
                                                             <a style="color: black;"
@@ -904,7 +904,7 @@
                                                 @endforeach
                                                 @if (isset($category) && !empty($category))
                                                     <a style="color: #338be7; margin-left: 38px;"
-                                                        href="{{ url('/' . $category->name) }}">view all
+                                                        href="{{ url('/all-city' . '/' . $category->name . '-all-property') }}">view all
                                                         cities
                                                     </a>
                                                 @endif
@@ -916,7 +916,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($flats as $flat)
                                             @if (isset($flat->name) && $flat->name == 'Plots')
-                                                @foreach ($flat->url_slugs->take(5) as $urlslugs)
+                                                @foreach ($flat->url_slugs->take(8) as $urlslugs)
                                                     <ul>
                                                         <li style="list-style: square;">
                                                             <a style="color: black;"
@@ -926,7 +926,7 @@
                                                     </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $flat->name) }}">view all
+                                                    href="{{ url('/all-city'. '/' . $flat->name . '-all-property') }}">view all
                                                     cities
                                                 </a>
                                             @endif
@@ -937,7 +937,7 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($flats as $flat)
                                             @if (isset($flat->name) && $flat->name == 'Commercial')
-                                                @foreach ($flat->url_slugs->take(5) as $urlslugs)
+                                                @foreach ($flat->url_slugs->take(8) as $urlslugs)
                                                     <ul>
                                                         <li style="list-style: square;">
                                                             <a style="color: black;"
@@ -947,7 +947,7 @@
                                                     </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/' . $flat->name) }}">view all
+                                                    href="{{ url('/all-city' . '/' . $flat->name . '-all-property') }}">view all
                                                     cities
                                                 </a>
                                             @endif
