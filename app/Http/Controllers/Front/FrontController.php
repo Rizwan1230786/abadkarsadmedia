@@ -94,6 +94,7 @@ class FrontController extends Controller
         $project = Projects::paginate(4);
         $count = Projects::all()->count();
         $meta = Webpages::Where("page_title", "project")->first();
+        $tags=tags::where('category','property')->orderBy('page_rank', 'asc')->get();
         $property = property::where('status', 1)->latest()->take(3)->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.project', get_defined_vars());
@@ -391,6 +392,7 @@ class FrontController extends Controller
         $agent = Agent::all();
         $agencies = Agency::all();
         $images = Project_image::all();
+        $tags=tags::where('category','property')->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.project_detail', get_defined_vars());
