@@ -38,14 +38,31 @@
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Category</label>
-                                            <select id="cars" class="form-control" name="category">
-
-                                                <option value="">Select category</option>
-                                                <option value="1">Blog</option>
-                                                <option value="2">Property</option>
+                                            @if (isset($data['record']->category) && !empty($data['record']->category))
+                                                <select id="cars" class="form-control" name="category">
+                                                    <option value="{{ $data['record']->category }}">
+                                                        {{ $data['record']->category }}</option>
+                                                    <option value="blog">Blog </option>
+                                                    <option value="property">Property</option>
+                                                </select>
+                                            @else
+                                                <select id="cars" class="form-control" name="category">
+                                                    <option value="">Select Category</option>
+                                                    <option value="blog">Blog </option>
+                                                    <option value="property">Property</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-6 form-group">
+                                            <label class="form-label">Page priority</label>
+                                            <select name="page_rank" id="page_rank" class="form-control custom-select select2 notrequired">
+                                                @for ($i = 0; $i <= 50; $i++) <option value="{{ $i }}" <?php if (($data['record']->page_rank ?? '') == $i) {
+                                                                                                            echo 'selected';
+                                                                                                        } ?>>
+                                                    {{ $i }}</option>
+                                                    @endfor
                                             </select>
                                         </div>
-
                                         <div class="col-lg-12">
                                             <div class="btn btn-list" style="text-align:center;width:100%">
                                                 <button type="submit" class="btn btn-primary user_form submit_button">Save

@@ -11,6 +11,7 @@ class tags extends Model
     protected $fillable = [
         'name',
         'category',
+        'page_rank',
     ];
     public function blogs()
     {

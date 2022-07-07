@@ -756,7 +756,7 @@
                                             </div>
                                         </div>
                                         <!-- homes content -->
-                                        <div class="homes-content">
+                                        <div class="homes-content" style="height: 165px;">
                                             <!-- homes address -->
                                             <p style="font-size: 14px;">
                                               <a style="color: black;" href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
@@ -1022,7 +1022,7 @@
             </section>
         @endif
         <!-- STAR SECTION PARTNERS -->
-        <div class="partners bg-white-1 home18">
+        <div class="partners bg-white-1 home18" id="partners">
             <div class="container">
                 <div class="sec-title">
                     <h2><span>Our </span>Partners</h2>

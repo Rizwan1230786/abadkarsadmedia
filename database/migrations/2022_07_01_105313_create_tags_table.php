@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('category')->nullable();
+            $table->string('page_rank')->nullable();
             $table->timestamps();
         });
     }

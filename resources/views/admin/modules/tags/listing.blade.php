@@ -40,13 +40,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $count=1;
+                                @endphp
                                 @isset($record)
                                     @foreach ($record as $item)
                                         @php
                                             $status = $item->status ?? 0;
                                         @endphp
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $count++; }}</td>
                                             <td>{{ $item->name}}</td>
                                             <td>
                                                 <ul class="icons-list">

@@ -39,6 +39,7 @@ class FrontUserController extends Controller
             $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
             $feature = Features::all();
             $city = Cities::all();
+            $city_count=$city->count();
             $agents = Agent::all();
             $agency = Agency::all();
             $tools=Abadtools::all();

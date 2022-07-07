@@ -542,7 +542,7 @@ use App\Models\Category;
                                                 <div class="row">
                                                     @foreach ($tags as $value)
                                                     <div class="col-md-6 col-lg-6 tags">
-                                                          <span><a href="{{ url('tags-property/'.$value->name.'-base-property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
+                                                          <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                                     </div>
                                                     @endforeach

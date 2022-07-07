@@ -41,25 +41,19 @@
                                             aria-hidden="true"></i></button>
                                 </span>
                             </div>
-                            <div class="recent-post py-5">
-                                <h5 class="font-weight-bold">Category</h5>
-                                <ul>
-                                    @foreach ($allcategory as $value)
-                                        <li><a href="#"><i class="fa fa-caret-right"
-                                                    aria-hidden="true"></i>{{ $value->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="recent-post">
+                            <div class="widget-boxed popular mt-5">
                                 <h5 class="font-weight-bold mb-4">Popular Tags</h5>
-                                <div class="row">
-                                    @foreach ($tags as $value)
-                                    <div class="col-md-6 col-lg-6 tags">
-                                          <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
+                                <div class="widget-boxed-body">
+                                    <div class="recent-post">
+                                        <div class="row">
+                                            @foreach ($tags as $value)
+                                            <div class="col-md-6 col-lg-6 tags">
+                                                  <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
+                                            </div>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
 </style>
 <body class="homepage-9 hp-6 homepage-1">
     @section('main')
-    <div class="container">
+    <div class="container" style="background-color: #f7f7f7;">
         <div class="row">
             <div class="col-lg-5">
                 <div class="row clr1 mt-3">
@@ -203,122 +203,122 @@
                 </div>
                 <div class="row mt-3">
                     <hr class="bord">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."> </div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."> </div>
                     <div class="col-lg-6 fnt1"> New Metro City Gujjar Khan</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
 
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Sell home fast and get instant cash</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt1">40x30 commercial plaza cost</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2 ta">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>
                 <hr>
                 <div class="row mt-3">
-                    <div class="col-lg-2"><img src="{{asset('Front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
+                    <div class="col-lg-2"><img src="{{asset('front/images/45.png')}}" class="d-block brd1 w-40" alt="..."></div>
                     <div class="col-lg-6 fnt2">Construction cost in Bahria phase 8, Block M, Rawalpindi/Islamabad</div>
                     <div class="col-lg-4 clr2">11.2K</div>
                 </div>

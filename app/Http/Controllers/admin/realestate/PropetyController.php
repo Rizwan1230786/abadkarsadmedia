@@ -41,7 +41,7 @@ class PropetyController extends Controller
     {
         $cities = Cities::get(["name", "id"]);
         $facilites = Facilities::select('id', 'name')->get();
-        $tag = tags::where('category', 2)->get();
+        $tag = tags::where('category', 'property')->orderBy('page_rank', 'asc')->get();
         $project = Projects::all();
         $feature = Features::all();
         $agent = Agent::all();

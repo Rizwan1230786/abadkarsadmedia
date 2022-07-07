@@ -200,24 +200,23 @@ class FrontController extends Controller
         return view('front.pages.property', get_defined_vars());
     }
     public function tag_base_property($slug){
-
-                ///property search filter show data///
-                $flats = Category::with('cities')->with('url_slugs')->get();
-                $property = property::where('status', 1)->limit(6)->get();
-                $project = Projects::all();
-                $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
-                    $q->where('status', 1);
-                })->with('properties')->get();
-                $feature = Features::all();
-                $city = Cities::all();
-                $category = Category::all();
-                ////end////////
-                $tag_property=tags::where('name',$slug)->firstOrfail()->property(['status'=>1])->paginate(10);
-                $property =tags::where('name',$slug)->firstOrfail()->property(['status'=>1])->paginate(10);
-                $count = $tag_property->count();
-                $meta = Webpages::Where("page_title", "home")->first();
-                $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-                return view('front.pages.property', get_defined_vars());
+        ///property search filter show data///
+        $flats = Category::with('cities')->with('url_slugs')->get();
+        $property = property::where('status', 1)->limit(6)->get();
+        $project = Projects::all();
+        $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
+            $q->where('status', 1);
+        })->with('properties')->get();
+        $feature = Features::all();
+        $city = Cities::all();
+        $category = Category::all();
+        ////end////////
+        $tag_property=tags::where('name',$slug)->firstOrfail()->property(['status'=>1])->paginate(10);
+        $property =tags::where('name',$slug)->firstOrfail()->property(['status'=>1])->paginate(10);
+        $count = $tag_property->count();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.property', get_defined_vars());
     }
     public function show_city_area($categoryName, $urlslug)
     {
@@ -281,7 +280,7 @@ class FrontController extends Controller
         $images = Image::all();
         $property_images = PropertyImage::where('property_id', $properties->id)->get();
         $Check_facility = Property_facilities::all();
-        $tags=tags::where('category',2)->get();
+        $tags=tags::where('category','property')->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property_detail', get_defined_vars());
@@ -299,7 +298,7 @@ class FrontController extends Controller
         $images = Image::all();
         $property_images = PropertyImage::all();
         $Check_facility = Property_facilities::all();
-        $tags=tags::where('category',2)->get();
+        $tags=tags::where('category','property')->orderBy('page_rank', 'asc')->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "property")->first();
         return view('front.pages.property_detail', get_defined_vars());
@@ -330,14 +329,14 @@ class FrontController extends Controller
     {
         $blog = Blog::paginate(4);
         $category = Category::all();
-        $tags=tags::where('category',1)->get();
+        $tags=tags::where('category','blog')->orderBy('page_rank', 'asc')->get();
         $meta = Webpages::Where("page_title", "blog")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.blog', get_defined_vars());
     }
     public function blogs_tags($slug)
     {
-        $tags=tags::where('category',1)->get();
+        $tags=tags::where('category','blog')->orderBy('page_rank', 'asc')->get();
         $category = Category::all();
         $blog=tags::where('name',$slug)->firstOrfail()->blogs;
         $meta = Webpages::Where("page_title", "blog")->first();
@@ -347,7 +346,7 @@ class FrontController extends Controller
     public function blog_detail($provider)
     {
         $category = Category::all();
-        $tags=tags::all();
+        $tags=tags::where('category','blog')->orderBy('page_rank', 'asc')->get();
         $blogsetail = Blog::where('title', $provider)->first();
         $meta = Webpages::Where("page_title", "blog")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
@@ -398,7 +397,7 @@ class FrontController extends Controller
     }
     public function list($slug)
     {
-        $tags=tags::all();
+        $tags=tags::where('category','property')->orderBy('page_rank', 'asc')->get();
         $allcategory = Category::all();
         $category = Category::where('name', $slug)->first();
         $check = UrlSlug::where('category_id', $category->id)->get();

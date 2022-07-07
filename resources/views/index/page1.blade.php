@@ -55,7 +55,7 @@
 <body class="homepage-9 hp-6 homepage-1">
     @section('main')
 
-    <div class="container">
+    <div class="container" style="background-color: #f7f7f7;">
         <div class="row mt-3">
             <div class="col-lg-4">
                 <div class="card text-dark  mb-3 wth">
@@ -143,7 +143,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" style="background-color: #f7f7f7;">
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="card text-dark  mb-3 wth">
