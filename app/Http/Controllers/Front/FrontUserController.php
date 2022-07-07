@@ -34,7 +34,7 @@ class FrontUserController extends Controller
         if (Auth::guard('customeruser')->check()) {
             $category = Category::with('cities')->with('url_slugs')->get();
             $flats = Category::with('cities')->with('url_slugs')->get();
-            $property = Property::limit(6)->get();
+            $property = property::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
             $project = Projects::all();
             $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
             $feature = Features::all();
