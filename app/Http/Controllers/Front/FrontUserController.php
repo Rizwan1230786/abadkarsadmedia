@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use Session;
 use Exception;
+use App\Models\Blog;
 use App\Models\Agent;
 use App\Models\Agency;
 use App\Models\Cities;
@@ -44,6 +45,7 @@ class FrontUserController extends Controller
             $agency = Agency::all();
             $tools=Abadtools::all();
             $testimonials = Testimonials::all();
+            $recentblogs=Blog::latest()->take(4)->get();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
             return view('front.pages.index', get_defined_vars());
