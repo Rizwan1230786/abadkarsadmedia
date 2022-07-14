@@ -48,8 +48,8 @@
                             <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 								<div class="card overflow-hidden dash1-card border-0">
 									<div class="card-body">
-										<p class=" mb-1 ">Total Sales</p>
-										<h2 class="mb-1 number-font">$3,257</h2>
+										<p class=" mb-1 ">Subscriber's</p>
+										<h2 class="mb-1 number-font">{{ $subscriber }}</h2>
 										<span class="ratio bg-warning"><br></span>
 									</div>
 									<div id="spark1"></div>

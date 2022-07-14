@@ -568,7 +568,7 @@
                 <div class="owl-carousel style2">
                     @foreach ($partners as $val)
                         <div class="owl-item seeting" data-aos="fade-up">
-                            <img class="img" src="{{ asset('assets/images/partners/' . $val->image) }}"
+                            <img class="img" title="{{ $val->name }}" src="{{ asset('assets/images/partners/' . $val->image) }}"
                                 alt="">
                         </div>
                     @endforeach

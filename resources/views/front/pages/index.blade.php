@@ -469,7 +469,7 @@
                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 main">
                             <div class="row">
                                 <div class="col-xl-12 set">
-                                    <a href="#" class="homes-img  img">
+                                    <a href="{{ $value->url_slug }}" class="homes-img  img">
                                         <img src="{{ asset('assets/images/tools/' . $value->image) }}" alt="">
                                     </a>
                                 </div>
@@ -1099,7 +1099,7 @@
                 <div class="owl-carousel style2">
                     @foreach ($partners as $val)
                         <div class="owl-item seeting" data-aos="fade-up">
-                            <img class="image-partenrs" src="{{ asset('assets/images/partners/' . $val->image) }}"
+                            <img class="image-partenrs" title="{{ $val->name }}" src="{{ asset('assets/images/partners/' . $val->image) }}"
                                 alt="">
                         </div>
                     @endforeach

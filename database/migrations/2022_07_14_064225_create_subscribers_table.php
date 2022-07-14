@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbadtoolsTable extends Migration
+class CreateSubscribersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateAbadtoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('abadtools', function (Blueprint $table) {
+        Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('url_slug')->nullable();
-            $table->string('detail')->nullable();
-            $table->string('image')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateAbadtoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abadtools');
+        Schema::dropIfExists('subscribers');
     }
 }

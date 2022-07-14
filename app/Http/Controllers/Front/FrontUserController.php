@@ -10,6 +10,7 @@ use App\Models\Agency;
 use App\Models\Cities;
 use App\Models\Category;
 use App\Models\Features;
+use App\Models\Partners;
 use App\Models\Projects;
 use App\Models\property;
 use App\Models\Webpages;
@@ -44,6 +45,7 @@ class FrontUserController extends Controller
             $agents = Agent::all();
             $agency = Agency::all();
             $tools=Abadtools::all();
+            $partners = Partners::all();
             $testimonials = Testimonials::all();
             $recentblogs=Blog::latest()->take(4)->get();
             $meta = Webpages::Where("page_title", "home")->first();

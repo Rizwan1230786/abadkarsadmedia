@@ -33,9 +33,12 @@
                                     <div class="row row-sm">
                                         <div class="col-6 form-group">
                                             <label class="form-label">Tool Name</label>
-                                            <input class="form-control notrequired" placeholder="Name" name="name"
-                                                value="{{ $data['record']->name ?? '' }}" type="text">
+                                            <input class="form-control notrequired" id="title" placeholder="Name"
+                                                name="name" value="{{ $data['record']->name ?? '' }}" type="text">
                                         </div>
+                                        <input class="form-control txtPageUrl" placeholder="Url Slug" id="url_slug"
+                                            name="url_slug" value="{{ $data['record']->url_slug ?? '' }}" type="hidden"
+                                            readonly>
                                         <div class="col-6 form-group">
                                             <label class="form-label">Detail</label>
                                             <input class="form-control notrequired" placeholder="Detail" name="detail"
@@ -73,6 +76,12 @@
     </div>
     </div>
     </div>
+    <script>
+        $(document).off("keyup", "#title").on("keyup", "#title", function(event) {
+            var page_title = $(this).val();
+            $("#url_slug").val(page_title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''));
+        });
+    </script>
 @endsection
 @section('js')
     <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>

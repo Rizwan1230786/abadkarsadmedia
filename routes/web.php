@@ -48,6 +48,7 @@ use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
 use App\Http\Controllers\admin\developer\DeveloperPatner;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
+use App\Http\Controllers\Front\subscriber\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,6 @@ use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
 */
 //check routes
 
-
 // end check
 Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -70,7 +70,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
     Route::group(['middleware' => 'auth:web'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-
+        /////////Subscribers route////////////////////////
+        Route::get('/subscribe', [SubscriberController::class, 'index'])->name('subribe');
+        /////////////Userroute//////////////////////
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.form');
         /////customerusers//////////
@@ -276,6 +278,7 @@ Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent
 Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{slug}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
+Route::post('/subscribe', [SubscriberController::class, 'subscriber_mail'])->name('front.subscribe');
 /////////advertisement routes////////
 Route::prefix('advertise')->group(function () {
     Route::get('/', [FrontAdvertiseController::class, 'advertise'])->name('front.advertise');

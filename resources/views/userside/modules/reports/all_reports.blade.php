@@ -45,9 +45,6 @@
         <div class="rpt_page">
 
             <h3 id="report_head">
-                <!-- <? php //=$rw_agent_data['company_name'];
-          ?> -->
-                <!--<br><br> -->
                 Your performance in last 31 days
             </h3>
 
