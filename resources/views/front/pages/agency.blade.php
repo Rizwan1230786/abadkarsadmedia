@@ -78,14 +78,16 @@ use App\Models\property;
                                                 <ul class="the-agents-details">
                                                     <li><a href="#">Office: {{ $agency->office_number }}</a></li>
                                                     <li><a href="#">Mobile: {{ $agency->mobile_number }}</a></li>
-                                                    <li><a href="#">Fax: {{ $agency->fax_number }}</a></li>
+                                                    @if (!empty($agency->fax_number))
+                                                        <li><a href="#">Fax: {{ $agency->fax_number }}</a></li>
+                                                    @endif
                                                     <li><a href="#">Email: {{ $agency->email }}</a></li>
                                                     <li><a href="#">City: {{ $agency->city_name }}</a></li>
                                                 </ul>
                                             </div>
                                             <div class="news-item-bottom">
                                                 <?php
-                                                 $agency_property = property::where(['agency_id'=>$agency->id,'status'=>1])->first();
+                                                $agency_property = property::where(['agency_id' => $agency->id, 'status' => 1])->first();
                                                 ?>
                                                 @if (!empty($agency_property->agency_id))
                                                     <a href="{{ url('agency-property/' . $agency->name) }}"

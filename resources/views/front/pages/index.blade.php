@@ -519,9 +519,9 @@
                     @endforeach
                 </div>
                 @if ($city_count >= 8)
-                <div class="bg-all mt-5">
-                    <a href="{{ url('/all-city') }}" class="btn btn-outline-light">View All Cities</a>
-                </div>
+                    <div class="bg-all mt-5">
+                        <a href="{{ url('/all-city') }}" class="btn btn-outline-light">View All Cities</a>
+                    </div>
                 @endif
                 <!-- /row -->
             </div>
@@ -564,11 +564,12 @@
                                     <div class="homes-content" style="height: 286px;">
                                         <!-- homes address -->
                                         <h3><a
-                                                href="{{ url('/property', $properties->url_slug) }}">{{Str::limit($properties->name, 45) }}</a>
+                                                href="{{ url('/property', $properties->url_slug) }}">{{ Str::limit($properties->name, 45) }}</a>
                                         </h3>
                                         <p class="homes-address mb-3">
                                             <a href="{{ url('/property', $properties->url_slug) }}">
-                                                <i class="fa fa-map-marker"></i><span>{{Str::limit($properties->location, 30) }}</span>
+                                                <i
+                                                    class="fa fa-map-marker"></i><span>{{ Str::limit($properties->location, 30) }}</span>
                                             </a>
                                         </p>
                                         <!-- homes List -->
@@ -588,7 +589,7 @@
                                             @if (!empty($properties->land_area))
                                                 <li class="the-icons">
                                                     <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                                    <span>{{ $properties->land_area}}
+                                                    <span>{{ $properties->land_area }}
                                                         {{ $properties->unit }}</span>
                                                 </li>
                                             @endif
@@ -742,7 +743,8 @@
                                                 <a href="{{ url('/project', $projects->url_slug) }}" class="homes-img">
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">For Sale</div>
-                                                    <img style="height: 165px;" src="{{ asset('assets/images/projects/' . $projects->image) }}"
+                                                    <img style="height: 165px;"
+                                                        src="{{ asset('assets/images/projects/' . $projects->image) }}"
                                                         alt="home-1" class="img-responsive">
                                                 </a>
                                             </div>
@@ -759,12 +761,13 @@
                                         <div class="homes-content" style="height: 165px;">
                                             <!-- homes address -->
                                             <p style="font-size: 14px;">
-                                              <a style="color: black;" href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
+                                                <a style="color: black;"
+                                                    href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
                                             </p>
                                             <p class="homes-address mb-3">
                                                 <a href="{{ url('/project', $projects->url_slug) }}">
                                                     <i
-                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40)}}</span>
+                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40) }}</span>
                                                 </a>
                                             </p>
 
@@ -904,7 +907,8 @@
                                                 @endforeach
                                                 @if (isset($category) && !empty($category))
                                                     <a style="color: #338be7; margin-left: 38px;"
-                                                        href="{{ url('/all-city' . '/' . $category->name . '-all-property') }}">view all
+                                                        href="{{ url('/all-city' . '/' . $category->name . '-all-property') }}">view
+                                                        all
                                                         cities
                                                     </a>
                                                 @endif
@@ -926,7 +930,8 @@
                                                     </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/all-city'. '/' . $flat->name . '-all-property') }}">view all
+                                                    href="{{ url('/all-city' . '/' . $flat->name . '-all-property') }}">view
+                                                    all
                                                     cities
                                                 </a>
                                             @endif
@@ -947,7 +952,8 @@
                                                     </ul>
                                                 @endforeach
                                                 <a style="color: #338be7; margin-left: 38px;"
-                                                    href="{{ url('/all-city' . '/' . $flat->name . '-all-property') }}">view all
+                                                    href="{{ url('/all-city' . '/' . $flat->name . '-all-property') }}">view
+                                                    all
                                                     cities
                                                 </a>
                                             @endif
@@ -982,7 +988,6 @@
                                         <hr style="width: 309px; ">
                                         @foreach ($search_city as $search_cityies)
                                             @if (isset($search_cityies->name) && $search_cityies->name == 'Karachi')
-
                                                 @foreach ($search_cityies->areas->take(8) as $area)
                                                     <ul>
                                                         <li style="list-style: square;">
@@ -1021,37 +1026,105 @@
                 </div>
             </section>
         @endif
+        <!-- recent blogs -->
+        <section class="how-it-works bg-white rec-pro">
+            <div class="container">
+                <div class="sec-title">
+                    <h2><span>Recent </span>Blogs</h2>
+                    <p>We provide full service at every step.</p>
+                </div>
+                <div class="row">
+                    @foreach ($recentblogs as $value)
+                        <div class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
+                            <div class="serv-flex serve-padding">
+                                <div class="art-1 img-13">
+                                    <a href="{{ route('front.blog_detail', $value->title) }}"><img style="height: 12rem; width:290px;"
+                                            src="{{ asset('storage/' . $value->image) }}" alt=""></a>
+                                </div>
+                                <div class="blog-text-p">
+                                    <p>{{ $value->updated_at->format('d M Y') }}</p>
+                                    <a href="{{ route('front.blog_detail', $value->title) }}">
+                                        <h3>{{str::limit($value->title, 55) }}</h3>
+                                    </a>
+                                    <a href="{{ route('front.blog_detail', $value->title) }}" style="color: black;">
+                                        <p>{{ str::limit($value->descripition, 55) }}</p>
+                                    </a>
+                                </div>
+                                <a href="{{ route('front.blog_detail', $value->title) }}"><button class="changecolor-btn">Read More</button></a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <style>
+                    .serve-padding {
+                        padding: 0px !important;
+                    }
+
+                    .blog-text-p {
+                        text-align: left;
+                        margin-left: 5px;
+                        margin-top: 5px;
+                    }
+                    .blog-text-p h3{
+                        font-size: 14px !important;
+                    }
+                    .blog-text-p a:hover {
+                        text-decoration: none;
+                        color: #33a137 !important;
+                    }
+                    .changecolor-btn {
+                        border: 0.1rem solid #ccc;
+                        background-color: transparent !important;
+                        color: black;
+                        width: 243px;
+                        margin-bottom: 5px;
+                        height: 37px;
+                        border-radius: 5px;
+                    }
+                    .changecolor-btn:hover{
+                        background-color: #FF385C !important;
+                        border: 0.1rem solid #FF385C;
+                        color: #fff;
+                    }
+                </style>
+            </div>
+        </section>
         <!-- STAR SECTION PARTNERS -->
-        <div class="partners bg-white-1 home18" id="partners">
+        <div class="partners">
             <div class="container">
                 <div class="sec-title">
                     <h2><span>Our </span>Partners</h2>
                     <p>The Companies That Represent Us.</p>
                 </div>
                 <div class="owl-carousel style2">
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/11.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/12.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/13.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/14.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/15.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/16.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/17.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/11.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/12.jpg"
-                            alt=""></div>
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ asset('front') }}/images/partners/13.jpg"
-                            alt=""></div>
+                    @foreach ($partners as $val)
+                        <div class="owl-item seeting" data-aos="fade-up">
+                            <img class="image-partenrs" src="{{ asset('assets/images/partners/' . $val->image) }}"
+                                alt="">
+                        </div>
+                    @endforeach
+
                 </div>
+                <!-- END SECTION PARTNERS -->
+                <!-- END SECTION PARTNERS -->
             </div>
         </div>
+        <style>
+            .seeting {
+                padding: 14px 15px 10px;
+                /* text-align: center; */
+                background: #EBEBEB 0% 0% no-repeat padding-box;
+                border-radius: 6px;
+                margin-right: 8px;
+                margin-bottom: 16px;
+            }
+
+            .image-partenrs{
+                height: 40px;
+                max-width: 124px;
+                opacity: 1.8 !important;
+            }
+        </style>
         <!-- END SECTION PARTNERS -->
         <!-- END SECTION PARTNERS -->
         <section>

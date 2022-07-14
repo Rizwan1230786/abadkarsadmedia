@@ -110,7 +110,7 @@
                                                                     <label
                                                                         style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $blogs_tags) ? true : false, ['class' => 'name']) }}
                                                                         {{ $value->name }}</label>
-                                                                @endforeach
+                                                                    @endforeach
                                                                 </div>
                                                             </li>
 

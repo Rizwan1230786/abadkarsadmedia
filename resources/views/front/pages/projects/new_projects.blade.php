@@ -520,7 +520,8 @@
                                                 <a href="{{ url('/project', $projects->url_slug) }}" class="homes-img">
                                                     <div class="homes-tag button alt featured">Featured</div>
                                                     <div class="homes-tag button alt sale">For Sale</div>
-                                                    <img style="height: 165px;" src="{{ asset('assets/images/projects/' . $projects->image) }}"
+                                                    <img style="height: 165px;"
+                                                        src="{{ asset('assets/images/projects/' . $projects->image) }}"
                                                         alt="home-1" class="img-responsive">
                                                 </a>
                                             </div>
@@ -537,12 +538,13 @@
                                         <div class="homes-content">
                                             <!-- homes address -->
                                             <p style="font-size: 14px;">
-                                              <a style="color: black;" href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
+                                                <a style="color: black;"
+                                                    href="{{ url('/project', $projects->url_slug) }}">{{ $projects->title }}</a>
                                             </p>
                                             <p class="homes-address mb-3">
                                                 <a href="{{ url('/project', $projects->url_slug) }}">
                                                     <i
-                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40)}}</span>
+                                                        class="fa fa-map-marker"></i><span>{{ Str::limit($projects->location, 40) }}</span>
                                                 </a>
                                             </p>
 
@@ -565,16 +567,33 @@
                 </div>
                 <div class="owl-carousel style2">
                     @foreach ($partners as $val)
-                        <div class="owl-item" data-aos="fade-up">
-                            <img src="{{ asset('assets/images/partners/' . $val->image) }}" alt="">
+                        <div class="owl-item seeting" data-aos="fade-up">
+                            <img class="img" src="{{ asset('assets/images/partners/' . $val->image) }}"
+                                alt="">
                         </div>
                     @endforeach
-
                 </div>
                 <!-- END SECTION PARTNERS -->
                 <!-- END SECTION PARTNERS -->
             </div>
         </div>
+        <style>
+            .seeting {
+                padding: 14px 15px 10px;
+                /* text-align: center; */
+                background: #EBEBEB 0% 0% no-repeat padding-box;
+                border-radius: 6px;
+                margin-left: 10px;
+                margin-bottom: 16px;
+            }
+
+            .img {
+                height: 40px;
+                max-width: 124px;
+                opacity: 1.8 !important;
+            }
+
+        </style>
         <section>
             <script>
                 $(document).ready(function() {
@@ -636,5 +655,5 @@
                 });
             </script>
         @endsection
-    </body>
+</body>
 @endsection

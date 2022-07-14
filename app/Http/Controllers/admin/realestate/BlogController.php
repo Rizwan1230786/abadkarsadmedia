@@ -81,7 +81,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $record = Blog::where('id', $id)->first();
-        $tag = tags::where('category',1)->orderBy('page_rank', 'asc')->get();
+        $tag = tags::where('category','blog')->orderBy('page_rank', 'asc')->get();
         $blogs_tags = DB::table("blog_tags")->where("blog_tags.blog_id", $id)
         ->pluck('blog_tags.tags_id', 'blog_tags.tags_id')
         ->all();

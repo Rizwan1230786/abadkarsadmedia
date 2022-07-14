@@ -51,6 +51,8 @@ class FrontController extends Controller
         $agents = Agent::all();
         $agency = Agency::all();
         $tools = Abadtools::all();
+        $partners=Partners::all();
+        $recentblogs=Blog::latest()->take(4)->get();
         $testimonials = Testimonials::all();
         $meta = Webpages::Where("page_title", "home")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
