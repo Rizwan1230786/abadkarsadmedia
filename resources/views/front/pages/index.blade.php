@@ -1156,6 +1156,7 @@ use App\Models\property;
                             dataType: 'json',
                             success: function(result) {
                                 // $('#state-dd').html('<select value=""">Select Area</select>');
+                                $("#state-dd").append('<option value="">Select Area</option>');
                                 $.each(result.areas, function(key, value) {
                                     $("#state-dd").append('<option value="' + value
                                         .id + '">' + value.areaname + '</option>');
