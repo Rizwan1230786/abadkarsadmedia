@@ -411,7 +411,6 @@ class FrontController extends Controller
     }
     public function search_property(Request $request)
     {
-
         // $category = Category::with('url_slugs')->where('name', $request->category)->get();
         ////only category
         if (isset($request->category1) && !empty($request->category1)) {
