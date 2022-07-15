@@ -41,19 +41,16 @@
                         <h3>Navigation</h3>
                         <div class="nav-footer" style="padding: 0px">
                             <ul>
-                                <li><a href="{{ route('front.index') }}">Home One</a></li>
-                                <li><a href="#">Properties Right</a></li>
-                                <li><a href="{{ route('front.property') }}">Properties List</a></li>
-                                <li><a href="{{ route('front.property') }}">Property Details</a></li>
-                                <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents Listing</a></li>
+                                <li><a href="{{ route('front.index') }}">Home</a></li>
+                                <li><a href="{{ route('front.property') }}">Properties</a></li>
+                                <li><a href="{{ route('front.new-projects') }}">Projects</a></li>
                                 <li class="no-mgb"><a href="{{ route('front.advertise') }}">Advertisement on
                                         abadkar</a></li>
                             </ul>
                             <ul class="nav-right">
-                                <li><a href="#">Agents Details</a></li>
-                                <li><a href="{{ route('front.about') }}">About Us</a></li>
-                                <li><a href="#">Blog Default</a></li>
-                                <li><a href="#">Blog Details</a></li>
+                                <li class="no-mgb"><a href="{{ route('front.agent') }}">Agents</a></li>
+                                <li><a href="{{ route('front.agency') }}">Agencies</a></li>
+                                <li><a href="{{ route('front.blog') }}">Blog Default</a></li>
                                 <li class="no-mgb"><a href="{{ route('front.contact') }}">Contact Us</a></li>
                             </ul>
                         </div>

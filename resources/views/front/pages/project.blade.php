@@ -426,7 +426,7 @@
                                 <div class="recent-post">
                                     <div class="row">
                                         @foreach ($tags as $value)
-                                        <div class="col-md-6 col-lg-6 tags">
+                                        <div class="col-md-4 col-lg-4 tags" style="padding-left: 0px;">
                                               <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                         </div>

@@ -499,10 +499,10 @@
                                             <span>{{ $area_search_propertys->number_of_bathrooms }}</span>
                                         </li>
                                     @endif
-                                    @if ($area_search_propertys->land_area)
+                                    @if (!empty($area_search_propertys->land_area))
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{ number_format($area_search_propertys->land_area, 1) }}
+                                            <span>{{ $area_search_propertys->land_area  }}
                                                 {{ $area_search_propertys->unit }}</span>
                                         </li>
                                     @endif
@@ -746,7 +746,7 @@
                                             <h5 class="font-weight-bold mb-0 mt-3">Total (
                                                 {{ number_format($count), 0 }} )
                                                 @if (!empty($name))
-                                                    {{ $name ?? '' }} for sale.<br><br>
+                                                Properties Available for {{ $name ?? '' }}.<br><br>
                                                 @else
                                                     Properties Available.<br><br>
                                                 @endif

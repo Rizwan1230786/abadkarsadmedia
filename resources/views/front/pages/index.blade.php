@@ -1,3 +1,6 @@
+<?php
+use App\Models\property;
+?>
 @extends('front.layout')
 @section('body')
     <style>
@@ -508,9 +511,12 @@
                                 </a>
                                 <a href="{{ url('/city' . '/' . $city->slug) }}">
                                     <div class="sc-2-detail">
+                                        <?php
+                                        $count_property = property::where(['city_name' => $city->id, 'status' => 1])->count();
+                                        ?>
                                         <h4 class="sc-jb-title">{{ $city->name }}</h4>
-
-                                        <h4 class="sc-jb-title"><a href="#">{{ $city->state }}</a></h4>
+                                        <h4 class="sc-jb-title"><a href="{{ url('/city' . '/' . $city->slug) }}">{{ $city->state }}</a></h4>
+                                        <p>({{ number_format($count_property, 0) }})</p>
                                         {{-- <span>203 Properties</span> --}}
                                     </div>
                                 </a>
@@ -1038,19 +1044,21 @@
                         <div class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
                             <div class="serv-flex serve-padding">
                                 <div class="art-1 img-13">
-                                    <a href="{{ route('front.blog_detail', $value->title) }}"><img style="height: 12rem; width:290px;"
+                                    <a href="{{ route('front.blog_detail', $value->title) }}"><img
+                                            style="height: 12rem; width:290px;"
                                             src="{{ asset('storage/' . $value->image) }}" alt=""></a>
                                 </div>
                                 <div class="blog-text-p">
                                     <p>{{ $value->updated_at->format('d M Y') }}</p>
                                     <a href="{{ route('front.blog_detail', $value->title) }}">
-                                        <h3>{{str::limit($value->title, 55) }}</h3>
+                                        <h3>{{ str::limit($value->title, 55) }}</h3>
                                     </a>
                                     <a href="{{ route('front.blog_detail', $value->title) }}" style="color: black;">
                                         <p>{{ str::limit($value->descripition, 55) }}</p>
                                     </a>
                                 </div>
-                                <a href="{{ route('front.blog_detail', $value->title) }}"><button class="changecolor-btn">Read More</button></a>
+                                <a href="{{ route('front.blog_detail', $value->title) }}"><button
+                                        class="changecolor-btn">Read More</button></a>
                             </div>
                         </div>
                     @endforeach
@@ -1065,13 +1073,16 @@
                         margin-left: 5px;
                         margin-top: 5px;
                     }
-                    .blog-text-p h3{
+
+                    .blog-text-p h3 {
                         font-size: 14px !important;
                     }
+
                     .blog-text-p a:hover {
                         text-decoration: none;
                         color: #33a137 !important;
                     }
+
                     .changecolor-btn {
                         border: 0.1rem solid #ccc;
                         background-color: transparent !important;
@@ -1081,7 +1092,8 @@
                         height: 37px;
                         border-radius: 5px;
                     }
-                    .changecolor-btn:hover{
+
+                    .changecolor-btn:hover {
                         background-color: #FF385C !important;
                         border: 0.1rem solid #FF385C;
                         color: #fff;
@@ -1099,8 +1111,8 @@
                 <div class="owl-carousel style2">
                     @foreach ($partners as $val)
                         <div class="owl-item seeting" data-aos="fade-up">
-                            <img class="image-partenrs" title="{{ $val->name }}" src="{{ asset('assets/images/partners/' . $val->image) }}"
-                                alt="">
+                            <img class="image-partenrs" title="{{ $val->name }}"
+                                src="{{ asset('assets/images/partners/' . $val->image) }}" alt="">
                         </div>
                     @endforeach
 
@@ -1119,7 +1131,7 @@
                 margin-bottom: 16px;
             }
 
-            .image-partenrs{
+            .image-partenrs {
                 height: 40px;
                 max-width: 124px;
                 opacity: 1.8 !important;

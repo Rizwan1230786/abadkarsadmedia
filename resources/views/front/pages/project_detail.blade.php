@@ -264,19 +264,24 @@ use App\Models\subpages;
                                     <span class="font-weight-bold mr-1">Property status:</span>
                                     <span class="det">For {{ $project->status }}</span>
                                 </li>
+                                @if(!empty($project->num_of_blocks))
                                 <li>
                                     <span class="font-weight-bold mr-1">Blocks:</span>
                                     <span class="det">{{ $project->num_of_blocks }}</span>
                                 </li>
+                                @endif
+                                @if(!empty($project->num_of_floors))
                                 <li>
                                     <span class="font-weight-bold mr-1">Floors:</span>
                                     <span class="det">{{ $project->num_of_floors }}</span>
                                 </li>
+                                @endif
+                                @if(!empty($project->num_of_flats))
                                 <li>
                                     <span class="font-weight-bold mr-1">Flats:</span>
-                                    <span class="det">{{ $project->num_of_floors }}</span>
+                                    <span class="det">{{ $project->num_of_flats }}</span>
                                 </li>
-
+                                @endif
                                 @if ($project->commercial_area_min || $project->commercial_area_max)
                                     <li style="width: 50%">
                                         <span class="font-weight-bold mr-1">Commercial Area (min)</span>
@@ -545,7 +550,7 @@ use App\Models\subpages;
                                             <div class="recent-post">
                                                 <div class="row">
                                                     @foreach ($tags as $value)
-                                                    <div class="col-md-6 col-lg-6 tags">
+                                                    <div class="col-md-4 col-lg-4 tags" style="padding-left: 0px;">
                                                           <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                                     </div>

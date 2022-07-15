@@ -170,7 +170,7 @@ class FrontController extends Controller
         $city = Cities::all();
         $category = Category::all();
         $property = property::orderBy('id', 'desc')->where('status', 1)->paginate(10);
-        $count = property::count();
+        $count = property::where('status', 1)->count();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
