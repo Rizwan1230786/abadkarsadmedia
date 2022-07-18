@@ -158,7 +158,7 @@
                                     <div class="sidebar-widget author-widget2">
                                         <div class="agent-contact-form-sidebar border-0 pt-0">
                                             <h4>{{ $agent->name }}</h4>
-                                            <form name="contact_form" method="post" action="/user/inquiry">
+                                            <form name="contact_form" method="post" action="/user/agent_inquiry">
                                                 @csrf
                                                 <input type="text" id="fname" name="full_name"
                                                     placeholder="Full Name" required />

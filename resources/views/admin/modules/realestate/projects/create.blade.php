@@ -174,28 +174,28 @@
                                                 <div class="col-6 form-group">
                                                     <label class="form-label">Commercial Area</label>
                                                     <input class="form-control notrequired"
-                                                        placeholder="size in marala (min)" name="commercial_area_min"
+                                                        placeholder="size in marla (min)" name="commercial_area_min"
                                                         value="{{ $data['record']->commercial_area_min ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-6 form-group">
                                                     <label class="form-label">Commercial Area</label>
                                                     <input class="form-control notrequired"
-                                                        placeholder="size in marala (max)" name="commercial_area_max"
+                                                        placeholder="size in marla (max)" name="commercial_area_max"
                                                         value="{{ $data['record']->commercial_area_max ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-6 form-group">
                                                     <label class="form-label">Residential Area</label>
                                                     <input class="form-control notrequired"
-                                                        placeholder="size in marala (min)" name="residential_area_min"
+                                                        placeholder="size in marla (min)" name="residential_area_min"
                                                         value="{{ $data['record']->residential_area_min ?? '' }}"
                                                         type="number">
                                                 </div>
                                                 <div class="col-6 form-group">
                                                     <label class="form-label">Residential Area</label>
                                                     <input class="form-control notrequired"
-                                                        placeholder="size in marala (max)" name="residential_area_max"
+                                                        placeholder="size in marla (max)" name="residential_area_max"
                                                         value="{{ $data['record']->residential_area_max ?? '' }}"
                                                         type="number">
                                                 </div>
