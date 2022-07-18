@@ -27,7 +27,7 @@ use App\Models\subpages;
                 </li>
                 <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
                 <li class="left"><a class="link-l" href="#">Area Guides</a></li>
-                <li class="left"><a class="link-l" href="#partners">Partners</a></li>
+                <li class="left"><a class="link-l" href="/user/our/partner">Partners</a></li>
                 <li class="left"><a class="link-l" href="{{ url('/blog') }}">Blogs</a></li>
                 <li class="left"><a class="link-l" href="#">Tools</a></li>
                 <li class="left dropdown-btn"><a class="link-l" href="#" role="button">More<i class="fa fa-caret-right" style="margin-left: 6px;"></i></a>

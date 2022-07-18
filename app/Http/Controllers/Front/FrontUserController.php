@@ -249,4 +249,9 @@ class FrontUserController extends Controller
         }
         return redirect()->back()->with('message', $message);
     }
+
+    public function user_partner()
+    {
+        return view('front.pages.partner.partner');
+    }
 }
