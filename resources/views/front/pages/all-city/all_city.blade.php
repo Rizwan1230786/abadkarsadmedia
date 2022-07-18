@@ -1,3 +1,6 @@
+<?php
+use App\Models\property;
+?>
 @extends('front.layout')
 <style>
     .small-category-2 {
@@ -65,9 +68,12 @@
                                 </a>
                                 <a href="{{ url('/city' . '/' . $city->slug) }}">
                                     <div class="sc-2-detail">
+                                        <?php
+                                         $property=property::where(['city_name'=>$city->id,'status'=>1])->count();
+                                        ?>
                                         <h4 class="sc-jb-title">{{ $city->name }}</h4>
-
-                                        <h4 class="sc-jb-title"><a href="#">{{ $city->state }}</a></h4>
+                                        <h4 class="sc-jb-title"><a href="{{ url('/city' . '/' . $city->slug) }}">{{ $city->state }}</a></h4>
+                                        <p>({{ number_format($property,0) }})</p>
                                         {{-- <span>203 Properties</span> --}}
                                     </div>
                                 </a>

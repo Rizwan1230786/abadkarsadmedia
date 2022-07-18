@@ -217,13 +217,14 @@ class FrontUserController extends Controller
         }
         return redirect()->back()->with('message', $message);
     }
-    public function inquiry(Request $request)
+    public function agent_inquiry(Request $request)
     {
+
         $message = "Fill the data in proper way!";
         $data = $request->all();
         if (isset($data["email"]) && !empty($data["email"])) {
             Mail::send('front.email.inquirey', ['data' => $data], function ($message) use ($data) {
-                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->to($data['email']);
                 $message->from($data["email_address"]);
                 $message->subject('Inquirey');
             });
@@ -233,13 +234,13 @@ class FrontUserController extends Controller
         }
         return redirect()->back()->with('message', $message);
     }
-    public function agency(Request $request)
+    public function agency_inquiry(Request $request)
     {
         $message = "Fill the data in proper way!";
         $data = $request->all();
         if (isset($data["email"]) && !empty($data["email"])) {
             Mail::send('front.email.inquirey', ['data' => $data], function ($message) use ($data) {
-                $message->to('jahanzaib.shakeel.75@gmail.com');
+                $message->to($data['email']);
                 $message->from($data["email_address"]);
                 $message->subject('Inquirey');
             });

@@ -170,7 +170,7 @@ class FrontController extends Controller
         $city = Cities::all();
         $category = Category::all();
         $property = property::orderBy('id', 'desc')->where('status', 1)->paginate(10);
-        $count = property::count();
+        $count = property::where('status', 1)->count();
         $meta = Webpages::Where("page_title", "property")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
@@ -411,7 +411,6 @@ class FrontController extends Controller
     }
     public function search_property(Request $request)
     {
-
         // $category = Category::with('url_slugs')->where('name', $request->category)->get();
         ////only category
         if (isset($request->category1) && !empty($request->category1)) {

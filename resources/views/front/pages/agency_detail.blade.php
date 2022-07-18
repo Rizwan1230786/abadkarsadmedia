@@ -192,15 +192,16 @@
                                     <div class="sidebar-widget author-widget2">
                                         <div class="agent-contact-form-sidebar border-0 pt-0">
                                             <h4>Contact Us</h4>
-                                            <form name="contact_form" method="post" action="/user/agency">
+                                            <form name="contact_form" method="post" action="/user/agency_inquiry">
+                                                @csrf
                                                 <input type="text" id="fname" name="full_name"
                                                     placeholder="Full Name" required />
                                                 <input type="number" id="pnumber" name="phone_number"
                                                     placeholder="Phone Number" required />
                                                 <input type="email" id="emailid" name="email_address"
                                                     placeholder="Email Address" required />
-                                                <input type="email" id="emailid" name="email"
-                                                    placeholder="Email Address" required />
+                                                    <input type="hidden" id="emailid" name="email"
+                                                    value="{{ $agency->email }}"/>
                                                 <textarea placeholder="Message" name="message" required></textarea>
                                                 <input type="submit" name="sendmessage" class="multiple-send-message"
                                                     value="Submit Request" />

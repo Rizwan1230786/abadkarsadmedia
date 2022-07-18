@@ -43,6 +43,23 @@ use App\Models\subpages;
     <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/styles.css">
     <link rel="stylesheet" id="color" href="{{ asset('/front') }}/css/default.css">
+    <style>
+        .buton-seeting{
+            border: 2px solid #666;
+            background: transparent;
+            height: 33px;
+            width: 146px;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+        .buton-seeting:hover{
+            background-color: #FF385C;
+            color: #fff;
+            border: 1px solid #FF385C;
+        }
+    </style>
 </head>
 
 <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -234,11 +251,20 @@ use App\Models\subpages;
                                     </div>
                                 </section>
                                 <!-- Star Description -->
+                                @if(!empty($project->page_content))
                                 <div class="blog-info details mb-30">
-                                    <h5 class="mb-4">Description</h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5 class="mb-4">Description</h5>
+                                        </div>
+                                        <div class="col-md-8 text-right">
+                                            <a href="{{ url('/pdf/create-pdf-file/'.$project->url_slug) }}"><button class="buton-seeting"> Genrate PDF <i class="fa fa-print"></i></button></a>
+                                        </div>
+                                    </div>
                                     <p class="mb-3">{!! $project->page_content !!}
                                     </p>
                                 </div>
+                                @endif
                                 <!-- End Description -->
                             </div>
                         </div>
@@ -264,19 +290,24 @@ use App\Models\subpages;
                                     <span class="font-weight-bold mr-1">Property status:</span>
                                     <span class="det">For {{ $project->status }}</span>
                                 </li>
+                                @if(!empty($project->num_of_blocks))
                                 <li>
                                     <span class="font-weight-bold mr-1">Blocks:</span>
                                     <span class="det">{{ $project->num_of_blocks }}</span>
                                 </li>
+                                @endif
+                                @if(!empty($project->num_of_floors))
                                 <li>
                                     <span class="font-weight-bold mr-1">Floors:</span>
                                     <span class="det">{{ $project->num_of_floors }}</span>
                                 </li>
+                                @endif
+                                @if(!empty($project->num_of_flats))
                                 <li>
                                     <span class="font-weight-bold mr-1">Flats:</span>
-                                    <span class="det">{{ $project->num_of_floors }}</span>
+                                    <span class="det">{{ $project->num_of_flats }}</span>
                                 </li>
-
+                                @endif
                                 @if ($project->commercial_area_min || $project->commercial_area_max)
                                     <li style="width: 50%">
                                         <span class="font-weight-bold mr-1">Commercial Area (min)</span>
@@ -545,7 +576,7 @@ use App\Models\subpages;
                                             <div class="recent-post">
                                                 <div class="row">
                                                     @foreach ($tags as $value)
-                                                    <div class="col-md-6 col-lg-6 tags">
+                                                    <div class="col-md-4 col-lg-4 tags" style="padding-left: 0px;">
                                                           <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                                     </div>

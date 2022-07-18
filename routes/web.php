@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
 use App\Http\Controllers\admin\OurteamController;
 use App\Http\Controllers\admin\UrlslugController;
+use App\Http\Controllers\Front\pdf\PdfController;
 use App\Http\Controllers\admin\WebpagesController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Front\FrontUserController;
@@ -21,18 +22,19 @@ use App\Http\Controllers\admin\tools\ToolsController;
 use App\Http\Controllers\userside\UserRolesController;
 use App\Http\Controllers\userside\roles\RoleController;
 use App\Http\Controllers\userside\UserProfileController;
+use App\Http\Controllers\admin\developer\DeveloperPatner;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
 use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\addtocart\ProductController;
-use App\Http\Controllers\admin\blogstags\BlogtagsController;
 use App\Http\Controllers\admin\customer\CustomerController;
 use App\Http\Controllers\admin\our_pakges\PakgesController;
 use App\Http\Controllers\admin\partners\PartnersController;
 use App\Http\Controllers\admin\realestate\AgencyController;
 use App\Http\Controllers\admin\realestate\CitiesController;
+use App\Http\Controllers\admin\blogstags\BlogtagsController;
 use App\Http\Controllers\admin\realestate\PropetyController;
 use App\Http\Controllers\admin\realestate\CategoryController;
 use App\Http\Controllers\admin\realestate\FeaturesController;
@@ -40,15 +42,14 @@ use App\Http\Controllers\admin\realestate\InvestorController;
 use App\Http\Controllers\admin\realestate\ProjectsController;
 use App\Http\Controllers\admin\customerorders\OrderController;
 use App\Http\Controllers\admin\realestate\FacilitiesController;
+use App\Http\Controllers\Front\subscriber\SubscriberController;
 use App\Http\Controllers\userside\PropertyManagementController;
 use App\Http\Controllers\userside\advertise\AdvertiseController;
 use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
-use App\Http\Controllers\admin\developer\DeveloperPatner;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
-use App\Http\Controllers\Front\subscriber\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -279,6 +280,11 @@ Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{slug}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::post('/subscribe', [SubscriberController::class, 'subscriber_mail'])->name('front.subscribe');
+
+///////genrate pdf///////
+Route::prefix('pdf')->group(function () {
+    Route::get('/create-pdf-file/{slug}', [PdfController::class, 'index'])->name('create-pdf-file');
+});
 /////////advertisement routes////////
 Route::prefix('advertise')->group(function () {
     Route::get('/', [FrontAdvertiseController::class, 'advertise'])->name('front.advertise');
@@ -447,8 +453,8 @@ Route::prefix('user')->group(function () {
     });
     Route::post('/contact_us', [FrontUserController::class, 'contact_us'])->name('contact_us');
     Route::post('/appointment', [FrontUserController::class, 'appointment'])->name('appointment');
-    Route::post('/inquiry', [FrontUserController::class, 'inquiry'])->name('inquiry ');
-    Route::post('/agency', [FrontUserController::class, 'agency'])->name('/agency');
+    Route::post('/agent_inquiry', [FrontUserController::class, 'agent_inquiry'])->name('inquiry ');
+    Route::post('/agency_inquiry', [FrontUserController::class, 'agency_inquiry'])->name('/agency');
 });
 /////end front
 

@@ -86,7 +86,7 @@
                                 <h5 class="font-weight-bold mb-4">Popular Tags</h5>
                                 <div class="row">
                                     @foreach ($tags as $value)
-                                    <div class="col-md-6 col-lg-6 tags">
+                                    <div class="col-md-4 col-lg-4 tags" style="padding-left: 0px;">
                                           <span><a href="{{ url('blog/'.$value->name.'-base-blogs') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                     </div>

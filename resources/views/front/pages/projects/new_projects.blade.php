@@ -486,7 +486,7 @@
                     <!--start foreach  -->
                     @foreach ($developer as $value)
                         <div class="owl-item" data-aos="fade-up">
-                            <img src="{{ asset('assets/images/developers/multipleimages/webp' . $value->image) }}"
+                            <img src="{{ asset('assets/images/developer/webp/' . $value->image_webp) }}"
                                 alt="">
                         </div>
                     @endforeach

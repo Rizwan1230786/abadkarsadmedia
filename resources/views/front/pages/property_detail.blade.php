@@ -41,6 +41,11 @@ use App\Models\Category;
     <link rel="stylesheet" href="{{ asset('/front') }}/css/slick.css">
     <link rel="stylesheet" href="{{ asset('/front') }}/css/styles.css">
     <link rel="stylesheet" id="color" href="{{ asset('/front') }}/css/default.css">
+    <style>
+        .rent-list li {
+            width: 50% !important;
+        }
+    </style>
 </head>
 
 <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -232,7 +237,6 @@ use App\Models\Category;
                                         <div class="col-md-7">
                                             <div class="detail-wrapper-body">
                                                 <div class="listing-title-bar">
-
                                                     <h3>{{ $properties->name }} <span
                                                             class="mrg-l-5 category-tag">For
                                                             {{ $properties->type }}</span></h3>
@@ -290,7 +294,8 @@ use App\Models\Category;
                         <div class="single homes-content details mb-30">
                             <!-- title -->
                             <h5 class="mb-4">Property Details</h5>
-                            <ul class="homes-list clearfix">
+                            @if($properties->type == 'sale')
+                            <ul class="homes-list rent-list clearfix">
                                 <li>
                                     <span class="font-weight-bold mr-1">Property ID:</span>
                                     <span class="det">{{ $properties->id }}</span>
@@ -332,10 +337,102 @@ use App\Models\Category;
                                 @endif
                                 <li>
                                     <span class="font-weight-bold mr-1">Area:</span>
-                                    <span class="det">{{ number_format($properties->land_area, 1) }}
+                                    <span class="det">{{ number_format($properties->land_area, 0) }}
                                         {{ $properties->unit }}</span>
                                 </li>
                             </ul>
+                            @else
+                            <ul class="homes-list rent-list clearfix">
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property ID:</span>
+                                    <span class="det">{{ $properties->id }}</span>
+                                </li>
+                                <?php
+                                $category = Category::where(['id' => $properties->category])->first();
+                                ?>
+                                @if (!empty($category))
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Property Type:</span>
+                                        <span class="det">{{ $category->name }}</span>
+                                    </li>
+                                @endif
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property status:</span>
+                                    <span class="det">For {{ $properties->type }}</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Rental Price (PKR):</span>
+                                    <span class="det">{{ number_format($properties->price, 0) }}</span>
+                                </li>
+                                @if (!empty($properties->number_of_floors))
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Floors:</span>
+                                        <span class="det">{{ $properties->number_of_floors }}</span>
+                                    </li>
+                                @endif
+                                @if (!empty($properties->number_of_bedrooms))
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bedrooms:</span>
+                                        <span class="det">{{ $properties->number_of_bedrooms }}</span>
+                                    </li>
+                                @endif
+                                @if (!empty($properties->number_of_bathrooms))
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Bath:</span>
+                                        <span class="det">{{ $properties->number_of_bathrooms }}</span>
+                                    </li>
+                                @endif
+                                @if (!empty($properties->land_area))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Area:</span>
+                                    <span class="det">{{ number_format($properties->land_area, 0) }}
+                                        {{ $properties->unit }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->occupency))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Occupency:</span>
+                                    <span class="det">{{ $properties->occupency }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->monthly_rent))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Monthly Rent:</span>
+                                    <span class="det">{{ $properties->monthly_rent }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->rental_contact_period_length) && !empty($properties->rental_contact_period))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Rental Contact Period:</span>
+                                    <span class="det">{{ $properties->rental_contact_period_length }} {{  $properties->rental_contact_period }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->security_deposit))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Security Deposit:</span>
+                                    <span class="det">{{ $properties->security_deposit }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->security_deposit_number_of_month))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Security Deposit No Of Month:</span>
+                                    <span class="det">{{ $properties->security_deposit_number_of_month }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->advance_rent))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Advance Rent:</span>
+                                    <span class="det">{{ $properties->advance_rent }}</span>
+                                </li>
+                                @endif
+                                @if (!empty($properties->advance_rent_number_of_month))
+                                <li>
+                                    <span class="font-weight-bold mr-1">Advance Rent No Of Month:</span>
+                                    <span class="det">{{ $properties->advance_rent_number_of_month }}</span>
+                                </li>
+                                @endif
+                            </ul>
+                            @endif
                             <!-- title -->
                             <h5 class="mt-5">Features</h5>
                             <!-- cars List -->
@@ -541,7 +638,7 @@ use App\Models\Category;
                                             <div class="recent-post">
                                                 <div class="row">
                                                     @foreach ($tags as $value)
-                                                    <div class="col-md-6 col-lg-6 tags">
+                                                    <div class="col-md-4 col-lg-4 tags" style="padding-left: 0px;">
                                                           <span><a href="{{ url('/tags-property'.'/'.$value->name.'_base_property') }}" class="btn btn-outline-primary">{{ $value->name }}</a></span>
 
                                                     </div>
