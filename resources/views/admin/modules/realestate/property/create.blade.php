@@ -576,6 +576,21 @@
                                                 </div>
                                             </div>
                                             <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
+                                                <div class="col-lg-12">
+                                                    <label class="form-label">Agent</label>
+                                                    <select id="cars" class="form-control" name="agent_id">
+                                                        <option value="null">Select a Agency</option>
+                                                        @foreach ($agent as $value)
+                                                            <option value="{{ $value->id }}" <?php if (($data['record']->agent_id ?? '') == $value->id) {
+                                                                echo 'selected';
+                                                            } ?>>
+                                                                {{ $value->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="pb-4 mt-5 pt-2" style="background-color: #d9edf7">
                                                 <div class="col-lg-12 form-group padding">
                                                     <label class="form-label">Select City</label>
                                                     <select id="country-dd" class="form-control" name="city_name">

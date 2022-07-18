@@ -1,3 +1,6 @@
+<?php
+use App\Models\property;
+?>
 @extends('front.layout')
 @section('body')
 
@@ -45,12 +48,18 @@
                                                         <li><a href="#">Fax: {{ $agent->fax_number }}</a></li>
                                                     @endif
                                                     <li><a href="#">Email: {{ $agent->email }}</a></li>
+                                                    <li><a href="#">City: {{ $agent->city_name }}</a></li>
                                                 </ul>
                                             </div>
 
                                             <div class="news-item-bottom">
-                                                <a href="properties-full-grid-2.html" class="news-link">View My
-                                                    Listings</a>
+                                                <?php
+                                                $agent_property = property::where(['agent_id' => $agent->id, 'status' => 1])->first();
+                                                ?>
+                                                @if (!empty($agent_property->agent_id))
+                                                    <a href="{{ url('agent-property/' . $agent->name) }}"
+                                                        class="news-link">View My Listings</a>
+                                                @endif
                                                 <div class="admin">
                                                     <p>{{ $agent->agency }}</p>
                                                 </div>
@@ -157,7 +166,7 @@
                                 <div class="widget-boxed mt-33 mt-5">
                                     <div class="sidebar-widget author-widget2">
                                         <div class="agent-contact-form-sidebar border-0 pt-0">
-                                            <h4>{{ $agent->name }}</h4>
+                                            <h4>Contactus by {{ $agent->name }}</h4>
                                             <form name="contact_form" method="post" action="/user/agent_inquiry">
                                                 @csrf
                                                 <input type="text" id="fname" name="full_name"

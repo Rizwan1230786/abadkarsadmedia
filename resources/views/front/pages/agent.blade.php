@@ -1,3 +1,6 @@
+<?php
+use App\Models\property;
+?>
 @extends('front.layout')
 @section('body')
 
@@ -68,7 +71,7 @@
                                             </div>
                                         </a>
                                         <div class="news-item-text">
-                                            <a href="{{ route('front.agent_detail', $agent->id) }}">
+                                            <a href="{{ url('agent/agent_detail', $agent->id) }}">
                                                 <h3>{{ $agent->name }}</h3>
                                             </a>
                                             <div class="the-agents">
@@ -93,11 +96,19 @@
                                                     </div>
                                                 @endif
                                             </div>
+                                            <div class="news-item-bottom">
+                                                <?php
+                                                $agent_property = property::where(['agent_id' => $agent->id, 'status' => 1])->first();
+                                                ?>
+                                                @if (!empty($agent_property->agent_id))
+                                                    <a href="{{ url('agent-property/' . $agent->name) }}"
+                                                        class="news-link">View My Listings</a>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
                     <aside class="col-lg-4 col-md-12 car">

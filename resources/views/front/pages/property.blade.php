@@ -537,7 +537,13 @@
                                         <div class="text-heading text-left">
                                             <h5 class="font-weight-bold mb-0 mt-3">( {{ number_format($count) }}
                                                 Property
-                                                for search in {{ $get_agency_id->name }} agency ) </h5>
+                                                for search in
+                                                @if(!empty($get_agency_id->name))
+                                                {{ $get_agency_id->name }} Agency )
+                                                @else
+                                                Agent of {{ $get_agent_id->name }} )
+                                                @endif
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
