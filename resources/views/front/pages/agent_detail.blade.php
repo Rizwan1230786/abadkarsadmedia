@@ -88,7 +88,7 @@ use App\Models\property;
                                                         <div class="project-inner project-head">
                                                             <div class="homes">
                                                                 <!-- homes img -->
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="homes-img">
                                                                     <div class="homes-tag button alt featured">Featured
                                                                     </div>
@@ -100,7 +100,7 @@ use App\Models\property;
                                                                 </a>
                                                             </div>
                                                             <div class="button-effect">
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="btn"><i class="fa fa-link"></i></a>
                                                                 @if ($property->video)
                                                                     <a href="{{ asset($property->video) }}"
@@ -108,7 +108,7 @@ use App\Models\property;
                                                                             class="fas fa-video"></i></a>
                                                                 @endif
 
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                                             </div>
                                                         </div>
@@ -116,7 +116,7 @@ use App\Models\property;
                                                         <div class="homes-content">
                                                             <!-- homes address -->
                                                             <h3><a
-                                                                    href="{{ route('front.property_detail', $property->id) }}">{{ $property->name }}</a>
+                                                                    href="{{ url('property', $property->url_slug) }}">{{ $property->name }}</a>
                                                             </h3>
                                                             <p class="homes-address mb-3">
                                                                 <a href="single-property-1.html">

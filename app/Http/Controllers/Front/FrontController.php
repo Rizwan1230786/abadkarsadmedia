@@ -112,7 +112,6 @@ class FrontController extends Controller
     }
     public function agent_detail($id)
     {
-
         $agents = Agent::where('id', $id)->get();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         $property = property::all();
@@ -311,8 +310,9 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property_detail', get_defined_vars());
     }
-    public function property_detail($slug1, $provider)
+    public function property_detail($slug1)
     {
+        dd($slug1);
         $projectid = property::where('url_slug', '=', $provider)->first();
         $assign = DB::table('features_property')
             ->join("features", "features_property.features_id", "=", "features.id")
