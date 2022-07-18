@@ -306,7 +306,8 @@ Route::prefix('property')->group(function () {
     // Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/{categoryName}/{slug}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
     Route::get('/{slug}/{slug1}/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
-    Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+    // Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+    Route::get('/property/{slug1}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 });
 Route::prefix('tags-property')->group(function () {
     Route::get('/{slug}_base_property', [FrontController::class, 'tag_base_property'])->name('front.tag_base_property');
