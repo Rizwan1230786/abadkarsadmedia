@@ -159,6 +159,28 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property', get_defined_vars());
     }
+    public function agent_base_property($agentname){
+        $flats = Category::with('cities')->with('url_slugs')->get();
+        $property = property::where('status', 1)->limit(6)->get();
+        $project = Projects::all();
+        $search_city = Cities::with('url_slugs')->with('areas', function ($q) {
+            $q->where('status', 1);
+        })->with('properties')->get();
+        $feature = Features::all();
+        $city = Cities::all();
+        $category = Category::all();
+        ////end////////
+        $category = Category::with('cities')->with('url_slugs')->with('areas')->get();
+        $get_agent_id = Agent::where('name', $agentname)->first();
+        // $category_area=Cities::where('slug', $cityName)->with('areas')->get();
+        $agency_search_property = property::where(['agent_id' => $get_agent_id->id, 'status' => 1])->paginate(10);
+
+        $property = property::where(['agent_id' => $get_agent_id->id, 'status' => 1])->orderBy('id', 'desc')->paginate(10);
+        $count = property::where(['agent_id' => $get_agent_id->id, 'status' => 1])->count();
+        $meta = Webpages::Where("page_title", "home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.property', get_defined_vars());
+    }
     public function property()
     {
         $flats = Category::with('cities')->with('url_slugs')->get();
@@ -288,8 +310,9 @@ class FrontController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.property_detail', get_defined_vars());
     }
-    public function property_detail($slug1, $provider)
+    public function property_detail($slug1)
     {
+        dd($slug1);
         $projectid = property::where('url_slug', '=', $provider)->first();
         $assign = DB::table('features_property')
             ->join("features", "features_property.features_id", "=", "features.id")

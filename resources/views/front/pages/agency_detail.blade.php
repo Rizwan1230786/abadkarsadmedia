@@ -32,9 +32,7 @@
                                         </div>
                                     </a>
                                     <div class="news-item-text">
-                                        <a href="agencies-details.html">
-                                            <h3>{{ $agency->name }}</h3>
-                                        </a>
+                                        <h3>{{ $agency->name }}</h3>
                                         <div class="the-agents">
                                             <ul class="the-agents-details">
                                                 <li><a href="#">Office: {{ $agency->office_number }}</a></li>
@@ -43,6 +41,7 @@
                                                     <li><a href="#">Fax: {{ $agency->fax_number }}</a></li>
                                                 @endif
                                                 <li><a href="#">Email: {{ $agency->email }}</a></li>
+                                                <li><a href="#">City: {{ $agency->city_name }}</a></li>
                                             </ul>
                                         </div>
                                         <div class="news-item-bottom">
@@ -158,6 +157,7 @@
                                                                                 {{ $agent->fax_number }}</a></li>
                                                                         <li><a href="#">Email:
                                                                                 {{ $agent->email }}</a></li>
+                                                                        <li><a href="#">City: {{ $agent->city_name }}</a></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="news-item-bottom">

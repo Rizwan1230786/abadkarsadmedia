@@ -46,6 +46,7 @@ class PropetyController extends Controller
         $feature = Features::all();
         $agent = Agent::all();
         $agency = Agency::all();
+        $agent = Agent::all();
         $categories = Category::with('SubCategory')->get();
         $data = null;
 
@@ -92,7 +93,7 @@ class PropetyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,
-                "category" => $request->category, "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "category" => $request->category, "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "agent_id" =>$request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -198,7 +199,7 @@ class PropetyController extends Controller
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category,  "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id,
-                "agency_id" => $request->agency_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "agency_id" => $request->agency_id, "agent_id" =>$request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,

@@ -1,3 +1,6 @@
+<?php
+use App\Models\property;
+?>
 @extends('front.layout')
 @section('body')
 
@@ -45,12 +48,18 @@
                                                         <li><a href="#">Fax: {{ $agent->fax_number }}</a></li>
                                                     @endif
                                                     <li><a href="#">Email: {{ $agent->email }}</a></li>
+                                                    <li><a href="#">City: {{ $agent->city_name }}</a></li>
                                                 </ul>
                                             </div>
 
                                             <div class="news-item-bottom">
-                                                <a href="properties-full-grid-2.html" class="news-link">View My
-                                                    Listings</a>
+                                                <?php
+                                                $agent_property = property::where(['agent_id' => $agent->id, 'status' => 1])->first();
+                                                ?>
+                                                @if (!empty($agent_property->agent_id))
+                                                    <a href="{{ url('agent-property/' . $agent->name) }}"
+                                                        class="news-link">View My Listings</a>
+                                                @endif
                                                 <div class="admin">
                                                     <p>{{ $agent->agency }}</p>
                                                 </div>
@@ -79,7 +88,7 @@
                                                         <div class="project-inner project-head">
                                                             <div class="homes">
                                                                 <!-- homes img -->
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="homes-img">
                                                                     <div class="homes-tag button alt featured">Featured
                                                                     </div>
@@ -91,7 +100,7 @@
                                                                 </a>
                                                             </div>
                                                             <div class="button-effect">
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="btn"><i class="fa fa-link"></i></a>
                                                                 @if ($property->video)
                                                                     <a href="{{ asset($property->video) }}"
@@ -99,7 +108,7 @@
                                                                             class="fas fa-video"></i></a>
                                                                 @endif
 
-                                                                <a href="{{ route('front.property_detail', $property->id) }}"
+                                                                <a href="{{ url('property', $property->url_slug) }}"
                                                                     class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                                             </div>
                                                         </div>
@@ -107,7 +116,7 @@
                                                         <div class="homes-content">
                                                             <!-- homes address -->
                                                             <h3><a
-                                                                    href="{{ route('front.property_detail', $property->id) }}">{{ $property->name }}</a>
+                                                                    href="{{ url('property', $property->url_slug) }}">{{ $property->name }}</a>
                                                             </h3>
                                                             <p class="homes-address mb-3">
                                                                 <a href="single-property-1.html">
@@ -157,7 +166,7 @@
                                 <div class="widget-boxed mt-33 mt-5">
                                     <div class="sidebar-widget author-widget2">
                                         <div class="agent-contact-form-sidebar border-0 pt-0">
-                                            <h4>{{ $agent->name }}</h4>
+                                            <h4>Contactus by {{ $agent->name }}</h4>
                                             <form name="contact_form" method="post" action="/user/agent_inquiry">
                                                 @csrf
                                                 <input type="text" id="fname" name="full_name"

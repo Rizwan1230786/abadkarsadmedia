@@ -158,7 +158,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_property_status', [PropetyController::class, 'update_property_status'])->name('update_property_status');
         Route::post('/delete_properties/{id}', [PropetyController::class, 'destroy'])->name('properties_features');
         Route::get('/checkslug', [PropetyController::class, 'checkslug'])->name('checkslug');
-            // /////////////////Approval
+        // /////////////////Approval
         Route::get('/aproval', [PropetyController::class, 'approval'])->name('aproval');
         Route::get('/update/property/{id}', [PropetyController::class, 'update_property'])->name('update_property');
 
@@ -247,7 +247,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/update_status_tools', [ToolsController::class, 'update_tools_status'])->name('update_status_tools');
         Route::post('/delete_tools/{id}', [ToolsController::class, 'destroy'])->name('delete_tools');
 
-       ////////////// // developer///////////////////////
+        ////////////// // developer///////////////////////
         Route::get('/create/form/developer', [DeveloperPatner::class, 'show_create'])->name('developer.submit');
         Route::get('/index/developer', [DeveloperPatner::class, 'developer_index'])->name('developer.index');
         Route::post('/create/developer', [DeveloperPatner::class, 'create'])->name('create_developer');
@@ -259,8 +259,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::get('/tags/create', [BlogtagsController::class, 'create'])->name('tags.form');
         Route::post('/tags/submit', [BlogtagsController::class, 'submit'])->name('tags_submit');
         Route::post('/delete_tags/{id}', [BlogtagsController::class, 'destroy'])->name('delete_tags');
-
-
     });
     Route::post('/property/fetch-states', [PropetyController::class, 'fetchState']);
     Route::post('/property/fetch-subcat', [PropetyController::class, 'fetchsubcat']);
@@ -276,7 +274,9 @@ Route::get('/new-projects', [FrontController::class, 'new_projects'])->name('fro
 Route::get('/project/{provider}', [FrontController::class, 'project_detail'])->name('front.project_detail');
 Route::get('/agents', [FrontController::class, 'agent'])->name('front.agent');
 Route::get('/agents-view', [FrontController::class, 'agent'])->name('front.agent');
-Route::get('/agent/detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
+Route::prefix('agent')->group(function () {
+    Route::get('/agent_detail/{id}', [FrontController::class, 'agent_detail'])->name('front.agent_detail');
+});
 Route::get('/agency-view', [FrontController::class, 'agency'])->name('front.agency');
 Route::get('/agency/detail/{slug}', [FrontController::class, 'agency_detail'])->name('front.agency_detail');
 Route::post('/subscribe', [SubscriberController::class, 'subscriber_mail'])->name('front.subscribe');
@@ -306,7 +306,8 @@ Route::prefix('property')->group(function () {
     // Route::get('/{provider}', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/{categoryName}/{slug}', [FrontController::class, 'show_city_area'])->name('front.show_city_area');
     Route::get('/{slug}/{slug1}/{slug2}', [FrontController::class, 'area_peroperty'])->name('front.area_peroperty');
-    Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+    // Route::get('/property/{slug1}/{slug2}', [FrontController::class, 'property_detail'])->name('front.property_detail');
+    // Route::get('/property/{slug1}', [FrontController::class, 'property_detail'])->name('front.property_detail');
 });
 Route::prefix('tags-property')->group(function () {
     Route::get('/{slug}_base_property', [FrontController::class, 'tag_base_property'])->name('front.tag_base_property');
@@ -332,7 +333,6 @@ Route::prefix('search_property')->group(function () {
     Route::post('/fetch-states', [FrontController::class, 'fetchState'])->name('fetch-states');
     Route::get('/', [FrontController::class, 'search_property'])->name('front.search_property');
     Route::get('/redirect', [FrontController::class, 'redirect_search_property'])->name('front.redirect_search_property');
-
 });
 /// Forum
 Route::get('/forum', [FrontController::class, 'forum'])->name('front.forum');
@@ -357,7 +357,9 @@ Route::prefix('all-city')->group(function () {
 Route::prefix('agency-property')->group(function () {
     Route::get('/{slug}', [FrontController::class, 'agency_base_property'])->name('agency_base_property');
 });
-
+Route::prefix('agent-property')->group(function () {
+    Route::get('/{slug}', [FrontController::class, 'agent_base_property'])->name('agent_base_property');
+});
 //////user login//////////
 Route::prefix('user')->group(function () {
     Route::get('/signin', [FrontUserController::class, 'index'])->name('signin');
@@ -400,11 +402,11 @@ Route::prefix('user')->group(function () {
         Route::get('/edit-listing-for-sale/{id}', [PropertyManagementController::class, 'edit_for_sale'])->name('edit-listing-forsale');
         Route::post('/update-listing/{id}', [PropertyManagementController::class, 'update_post_listing'])->name('update-listing-forsale');
         Route::get('/edit-listing-for-rent/{id}', [PropertyManagementController::class, 'edit_for_rent'])->name('edit-listing-forrent');
-            ///////////////   client&leads/////////////
+        ///////////////   client&leads/////////////
         Route::get('/client&lead', [PropertyManagementController::class, 'client_main'])->name('client_main');
-            // //////////  Management/////
-            Route::get('/manage/all', [PropertyManagementController::class, 'all'])->name('manage_all');
-            Route::get('/manage/very_hot', [PropertyManagementController::class, 'very_hot'])->name('manage.ver_hot');
+        // //////////  Management/////
+        Route::get('/manage/all', [PropertyManagementController::class, 'all'])->name('manage_all');
+        Route::get('/manage/very_hot', [PropertyManagementController::class, 'very_hot'])->name('manage.ver_hot');
         ///////Pending-listing///////
         Route::get('/pending-all-listing', [PropertyManagementController::class, 'pending_all_listing'])->name('pending-all-listing');
         Route::get('/pending-for-sale', [PropertyManagementController::class, 'pending_for_sale'])->name('pending-for-sale');
