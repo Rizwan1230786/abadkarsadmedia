@@ -1,14 +1,192 @@
 
-    
-       
-
-    
 
 @extends('front.layout')
 @section('body')
+
 <body>
 @section('main')
-          <header>
+    <script>
+        var __uzdbm_a = "";
+    </script>
+    <div id="ss_098786_234239_238479_190541"></div>
+    <script src="https://cdn.perfdrive.com/static/jscall_min.js" async="true"></script>
+
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WPXD527" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="fb-root"></div>
+
+    <script>
+        $(document).ready(function() {
+
+            var splash = readCookie('pop_ads');
+            showing_splash = false;
+
+            loc_hotstrip = readCookie('pop_ads_');
+            loc_hotstrip = readCookie('pop_ads_');
+
+
+            if (splash == null && loc_hotstrip != '2') {
+                document.cookie = 'pop_ads=1;path=/;';
+                showing_splash = true;
+                var splash_js_var = "&lt;div id='div-gpt-ad-1340020546239-1000' style='width:660px; height: 500px; ' class=''&gt;&lt;script type='text/javascript'&gt;googletag.cmd.push(function(){ googletag.display('div-gpt-ad-1340020546239-1000'); });&lt;/script&gt;&lt;/div&gt;";
+                $(document).ready(function() {
+                    $("#sitewide_ad_content").html($('<div/>').html(splash_js_var).text());
+                });
+            }
+
+        });
+    </script>
+
+    <div class="popup_round" id="sitewide_ad" style="width: 670px; height:510px;display: none;">
+        <div class="popup_body" id='sitewide_ad_content'>
+        </div>
+    </div>
+
+    <style>
+        #ft_hs iframe {
+            width: 100% !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+
+            var hotstrip = readCookie('pop_ads');
+
+
+
+            if (hotstrip == '1') {
+                document.cookie = 'pop_ads=2;path=/;';
+            }
+
+            if (hotstrip == '2' || loc_hotstrip == '2') {
+                if (loc_hotstrip == '2')
+                    document.cookie = 'pop_ads_=3;path=/;';
+                else
+                    document.cookie = 'pop_ads=3;path=/;';
+
+                var hotstrip_js_var = "&lt;div id='div-gpt-ad-1340020546666-102' style='width:1024px; height: 110px; ' class=''&gt;&lt;script type='text/javascript'&gt;googletag.cmd.push(function(){ googletag.display('div-gpt-ad-1340020546666-102'); });&lt;/script&gt;&lt;/div&gt;";
+                $(document).ready(function() {
+                    $("#ft_hs").html($('<div/>').html(hotstrip_js_var).text());
+                    $("#ft_hs div").css('width', '100%');
+                    $("#ft_hs").css('top', '271px !important');
+                    $("#ft_hs iframe").css('width', '100%');
+                });
+            }
+        });
+    </script>
+
+    <div id="ft_hs" style="border-top:0px;bottom:20px"></div>
+    <div id='wp_ad'></div>
+    <div id='wp_ad_div'>
+
+        <header id="head_container">
+            <div class="ldr_brd_cntner">
+                <div class="ldr_brd">
+                    <div class="l lb_container_div">
+                        <div id='div-gpt-ad-1340020546239-0' style='width:728px; height: 90px; ' class='byt_leaderborad'>
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function() {
+                                    googletag.display('div-gpt-ad-1340020546239-0');
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <a class="advt_link gray" href="https://www.zameen.com/advertise/index.html">Advertise</a>
+                </div>
+            </div>
+
+
+            <div class="hdr_top_nav" style='display: block;'>
+                <nav>
+                    <div class="l hdr_set1">
+                        <a class="hdr_hic" title="www.zameen.com" href="https://www.zameen.com/">
+					<svg class="icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.zameen.com/v3/images_css/header_common1_1.svg#hdhome_icon">
+                        </use>
+                    </svg>
+				&nbsp;</a>
+                        <span class="hdr_snav">
+					<a class="frst font_r " href="https://www.zameen.com/" title="Properties" >
+						<span class="hm_btn bgc l"></span>Properties </a>
+                        <a class="sixth font_r plot_finder " href="https://www.zameen.com/plotfinder/" title="Plot Finder">
+						<span class="blg_btn bgc l"></span>Plot Finder					</a>
+                        <a class="sixth font_r area_guide " href="https://www.zameen.com/area-guides/" title="Area Guides">
+						<span class="blg_btn bgc l"></span>Area Guides					</a>
+                        <a class="second font_r " href="https://www.zameen.com/forum/" title="Forum">
+						<span class="frm_btn bgc l"></span>Forum					</a>
+                        <a class="third font_r " href="https://www.zameen.com/blog/" title="Blog">
+						<span class="blg_btn bgc l"></span>Blog					</a>
+                        <a class="forth font_r " href="https://www.zameen.com/society_maps/" title="Maps">
+						<span class="blg_btn bgc l"></span>Maps					</a>
+                        <a class="forth font_r " href="https://www.zameen.com/trends.html" title="Search Trends">
+						<span class="blg_btn bgc l"></span>Trends					</a>
+                        <a class="fifth font_r " href="/index/" title="Index">
+						<span class="blg_btn bgc l"></span>Index					</a>
+                        </span>
+                    </div>
+                    <div class="left">
+                        <ul class="tools-btn" href="javascript:void()" title="Tools">
+                            <li class="tools l">
+                                <span>Tools</span>
+                                <span class="b377adc5 navbar_shine__2Opig">
+						   New
+					</span>
+                                <span class="drop_arrow_btn_header"></span>
+                                <ul class="abbecdbc_dropdown" style="display:none">
+                                    <li class="eec698b">
+                                        <a href="https://www.zameen.com/tools/home-loan-calculator/" title="Home Loan Calculator" target="_blank"> Home Loan Calculator</a>
+                                    </li>
+                                    <li class="eec698b">
+                                        <a href="https://www.zameen.com/tools/area-unit-converter" title="Area Unit Converter" target="_blank"> Area Unit Converter</a>
+                                    </li>
+                                    <li class="eec698b">
+                                        <a href="https://www.zameen.com/tools/land-records" title="Land Record Pages" target="_blank">Land Records</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="l">
+                                <a class="sixth font_r " href="https://www.zameen.com/partners/" title="Partners">
+							<span class="blg_btn bgc l"></span>Partners						</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script>
+                        $('.tools').on('click', function() {
+                            if ($(this).hasClass('active')) {
+                                $(this).removeClass('active');
+                                $('.abbecdbc_dropdown').hide();
+                            } else {
+                                $(this).addClass('active');
+
+                                $('.abbecdbc_dropdown').show();
+
+                                $(document).on('click touchstart', function(event) {
+                                    if (!$(event.target).closest(".tools").length) {
+                                        $(".abbecdbc_dropdown").hide();
+                                        $('.tools').removeClass('active');
+                                    }
+                                });
+                                $(document).on('keyup', function(event) {
+                                    if (event.keyCode == 27) {
+                                        $(".abbecdbc_dropdown").hide();
+                                        $('.tools').removeClass('active');
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                </nav>
+            </div>
+            <div id="hdr_cntner" class="clr">
+                <div id="hdr_main">
+
+                    <a href="https://www.zameen.com/partners/" class="logo l">
+			<img src="https://9bfb164cc130fa80219f-0951aea74e48cd703ee2eb5ca90acd24.ssl.cf1.rackcdn.com/partners_zam_logo.png" alt="Zameen.com, Pakistan's No.1 Property Website" />
+		</a>
+                    <a href="https://www.zameen.com/partners/">
+                        <div class="p_home_head l">Home Partners</div>
+                    </a>
+
                     <div class="hdr_right  l">
                         <nav class="main_nav clr">
                             <a title="PARTNERS" href="https://www.zameen.com/partners/companies/" class="l "> 
@@ -1169,8 +1347,7 @@
     </div>
     <footer>
         <!-- <div class='ftr_cty'>
-	<div class='ftr_tree'></div>
-</div> -->
+	
         <div id="home_login_popup" class="popup login-form displayNone popup">
             <div id="login-container-home" class="form-style form">
                 <div class="login-section">
@@ -1349,22 +1526,14 @@
             </svg>
           </a>
                         </div>
-                        <div class="flex footer_qr">
-                            <div class="footer_alignRight">
-                                <div class="u-mb8 qr-code">Scan the QR code to<br>get the app</div><svg width="33.946" height="28.904" viewBox="0 0 33.946 28.904">
+                        
+                          
               <path
                 d="M33.946 25.793L28.24 22.13l-.119 2.517C1.445 21.947 1.676.953 1.7.047L0-.002c-.007.238-.333 23.515 28.04 26.347l-.12 2.557z"
                 fill="#00a651"></path>
             </svg>
                             </div>
-                            <div class="footer_appQR">
-                                <svg id="app-qr" viewBox="0 0 300 300">
-              <path fill="#fff" d="M0 0h300v300H0z"></path>
-              <path
-                d="M12 12h11v11H12zm11 0h11v11H23zm11 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 23h11v11H12zm66 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm44 0h11v11h-11zm33 0h11v11h-11zm22 0h11v11h-11zm66 0h11v11h-11zM12 34h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm55 0h11v11h-11zm44 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zM12 45h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm33 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zM12 56h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm33 0h11v11h-11zm55 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zM12 67h11v11H12zm66 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm66 0h11v11h-11zm22 0h11v11h-11zm66 0h11v11h-11zM12 78h11v11H12zm11 0h11v11H23zm11 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm22 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM122 89h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zM12 100h11v11H12zm11 0h11v11H23zm33 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm44 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm77 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM34 111h11v11H34zm33 0h11v11H67zm33 0h11v11h-11zm55 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zM23 122h11v11H23zm22 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 133h11v11H12zm11 0h11v11H23zm22 0h11v11H45zm11 0h11v11H56zm33 0h11v11H89zm11 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm44 0h11v11h-11zm11 0h11v11h-11zM56 144h11v11H56zm22 0h11v11H78zm11 0h11v11H89zm11 0h11v11h-11zm44 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 155h11v11H12zm11 0h11v11H23zm22 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm33 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm33 0h11v11h-11zM78 166h11v11H78zm11 0h11v11H89zm44 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zM34 177h11v11H34zm22 0h11v11H56zm55 0h11v11h-11zm55 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 188h11v11H12zm11 0h11v11H23zm22 0h11v11H45zm22 0h11v11H67zm11 0h11v11H78zm11 0h11v11H89zm11 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm44 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm-154 11h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm33 0h11v11h-11zm44 0h11v11h-11zm22 0h11v11h-11zM12 210h11v11H12zm11 0h11v11H23zm11 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm33 0h11v11h-11zm22 0h11v11h-11zm55 0h11v11h-11zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zM12 221h11v11H12zm66 0h11v11H78zm22 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm22 0h11v11h-11zm44 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 232h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm44 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm11 0h11v11h-11zM12 243h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm44 0h11v11h-11zm55 0h11v11h-11zm33 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 254h11v11H12zm22 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm22 0h11v11H78zm55 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm22 0h11v11h-11zm33 0h11v11h-11zm11 0h11v11h-11zm44 0h11v11h-11zM12 265h11v11H12zm66 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm77 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11zM12 276h11v11H12zm11 0h11v11H23zm11 0h11v11H34zm11 0h11v11H45zm11 0h11v11H56zm11 0h11v11H67zm11 0h11v11H78zm22 0h11v11h-11zm11 0h11v11h-11zm33 0h11v11h-11zm110 0h11v11h-11zm11 0h11v11h-11zm11 0h11v11h-11z">
-              </path>
-            </svg>
-                            </div>
+              
                         </div>
                     </div>
                 </div>
@@ -1434,39 +1603,12 @@
 
 
 
-                    <!-- Mcb Ends -->
-                    <div style="padding:14px 65px 6px;">
 
-                        <svg class="footer_partnerLogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 516.1 433.1"><defs><clipPath id="b"><path d="M3 0h510v433.1H3z"/></clipPath><clipPath id="a"><path d="M354 277h162.1v103H354z"/></clipPath></defs><g clip-path="url(#b)"><path fill="#008f34" fill-rule="evenodd" d="M5.7 401.6h505.8v31.5H5.7zm-1-149.3L4 114.7c92.2-5.3 237.3 28.2 239.8 88.2v49.5zm10-160.7A142.1 142.1 0 0 1 45.3 56c56.8-3.2 153.5 20.2 213 55 59.3-34.8 156-58.2 212.8-55 11.9 10 22.2 21.7 30.4 35.5-81-2.7-198 19.4-243.3 71.5C212.7 111 95.8 88.9 14.8 91.6zm497.5 23l-.7 137.8H272.4v-49.6c2.5-60 147.6-93.5 239.8-88.2zM74.8 36C130.2 5.8 203.2 0 258 0c55 0 127.9 5.8 183.3 36a327.2 327.2 0 0 0-183.3 45.7A327.2 327.2 0 0 0 74.8 36z"/></g><g clip-path="url(#a)"><path fill="#0f2a82" fill-rule="evenodd" d="M469.8 325.4c13.6.7 24 2.5 31.1 5.5 10.2 4.3 15.3 11 15.3 20.4 0 11.6-7.3 19.7-22 24.3-8.1 2.6-21.6 4-40.3 4h-99.8v-5.3l4.7-.4c2.7-.3 5.1-.8 7.4-1.6 2.2-.8 3.7-1.6 4.6-2.4 1.3-1.5 2-4.8 2-10v-62.3c0-5.3-.7-8.6-2-10-.9-.9-2.4-1.7-4.7-2.5a33 33 0 0 0-7.3-1.6l-4.7-.4v-5.2h107.5c15.8 0 27.5 1.5 34.9 4.6 9.4 4 14.1 9.8 14.1 17.8 0 14-13.6 22.3-40.8 25zM421 323h11.8a42 42 0 0 0 21.7-4.7c5.6-3.5 8.4-8.6 8.4-15.3 0-12.7-10-19.1-30.2-19.1h-11.7zm0 50h12.6c9 0 16.7-1.6 23.2-4.6 4-2 7-4.9 9-9 1.3-2.8 2-6 2-9a18 18 0 0 0-8.2-16.2 45.3 45.3 0 0 0-24.7-5.5h-14z"/></g><path fill="#0f2a82" fill-rule="evenodd" d="M6.8 285.8v-8h64.5l43 61.2 37-61.1h61.1v7.9h-5c-8.6 0-11.3 3.2-11.2 7.7v69.7c0 5.5 2.9 8.5 9.2 8.6h7.8v8h-78.9v-8h7.4c5.9-.2 9-2 9.2-8.5v-67l-50.5 83.4H89.8L37 297.5v59.2c0 9.8 4.5 14.8 12.5 15.1H65v8H0v-8h16.2c8.8-.2 12.5-5.7 12.5-14.9v-62.6c0-6.4-4-8.2-10.8-8.5z"/><path fill="#0f2a82" fill-rule="evenodd" d="M201.6 328.8c-.6 29.5 33.4 54.8 88 53 18.2-.7 34.5-6.4 52.3-9.8 3.4-.4 4.8 4.4 5.3 7.8l8.6-.2-.3-43.6H347c-7.6 19.7-33.9 40.7-56.7 38.9-19.3-1.5-34.5-15.3-35.2-46.1.7-30.8 16-44.6 35.2-46 22.8-2 49.1 19 56.7 38.7h8.4l.3-43.5-8.6-.2c-.5 3.4-1.9 8.2-5.3 7.8-17.8-3.4-34-9-52.2-9.7-54.7-2-88.7 23.4-88 52.9z"/></svg>
-                    </div>
-                    <!-- Mcb  Ends -->
 
-                </div>
-            </div>
-        </div>
-       
+   
+   
     
-
 @endsection
-
 </body>
-
-
-
- 
-<style>
-    .hot_ribbn {
-        background-position: 12px -909px;
-    }
-
-    .rbn {
-        height: 57px;
-        margin: -3px 0 0 -13px;
-        position: absolute;
-        width: 58px;
-        z-index: 12;
-        left: 0;
-    }
-</style>
-
 @endsection
+

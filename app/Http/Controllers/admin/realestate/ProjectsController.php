@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Facilities;
+use App\Models\tags;
 
 class ProjectsController extends Controller
 {
@@ -32,6 +33,7 @@ class ProjectsController extends Controller
         $categories = Category::with('SubCategory')->get();
         $investor = Investor::all();
         $agent = Agent::all();
+        $tag = tags::where('category', 'project')->orderBy('page_rank', 'asc')->get();
         $agency = Agency::all();
         $area=Area::all();
         $data = null;
@@ -40,6 +42,9 @@ class ProjectsController extends Controller
         $features_projects = DB::table("features_projects")->where("features_projects.projects_id", $updateId)
             ->pluck('features_projects.features_id', 'features_projects.features_id')
             ->all();
+            $tag_project = DB::table("project_tags")->where("project_tags.project_id", $updateId)
+            ->pluck('project_tags.tags_id', 'project_tags.tags_id')
+            ->all();
         $multiimages = DB::table('project_images')
             ->join("projects", "project_images.projects_id", "=", "projects.id")
             ->select('project_images.id as projectsimagesid', 'project_images.projects_id', 'projects.id', 'project_images.image')
@@ -47,7 +52,7 @@ class ProjectsController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Projects::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data', 'cities', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages','area'));
+        return view('admin.modules.realestate.projects.create', compact('data', 'cities', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages','area', 'tag'));
     }
     public function submit(Request $request)
     {
