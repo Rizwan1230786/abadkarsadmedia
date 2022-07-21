@@ -368,6 +368,8 @@ Route::prefix('user')->group(function () {
     Route::post('/register', [FrontUserController::class, 'regester'])->name('register');
     Route::get('/auth/google', [FrontUserController::class, 'redirectToGoogle']);
     Route::get('/auth/google/callback', [FrontUserController::class, 'handleGoogleCallback']);
+    Route::get('/our/partner', [FrontUserController::class, 'user_partner']);
+
 
     Route::group(['middleware' => 'auth:customeruser'], function () {
         Route::get('/userpanel', [FrontUserController::class, 'userpanel'])->name('userpanel');

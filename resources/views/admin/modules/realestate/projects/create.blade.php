@@ -443,6 +443,32 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row" style="padding: 5px;">
+                                                    <div class="col-md-12">
+                                                        <label class="form-label">Search Tags</label>
+                                                        <ul class="pro-feature-add pl-0">
+                                                            <li class="fl-wrap filter-tags clearfix">
+                                                                <div class="filter-tags-wrap">
+                                                                    @if (isset($data['record']) && !empty($data['record']))
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $tag_project) ? true : false, ['class' => 'name']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @else
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, false, ['class' => 'seting']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                             </form>
                         </div>
                     </div>

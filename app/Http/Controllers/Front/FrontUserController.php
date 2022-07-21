@@ -250,4 +250,11 @@ class FrontUserController extends Controller
         }
         return redirect()->back()->with('message', $message);
     }
+
+    public function user_partner()
+    {
+        $meta = Webpages::Where("page_title", "Home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.partner.partner', get_defined_vars());
+    }
 }

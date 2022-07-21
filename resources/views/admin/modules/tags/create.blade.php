@@ -44,12 +44,14 @@
                                                         {{ $data['record']->category }}</option>
                                                     <option value="blog">Blog </option>
                                                     <option value="property">Property</option>
+                                                    <option value="project">project</option>
                                                 </select>
                                             @else
                                                 <select id="cars" class="form-control" name="category">
                                                     <option value="">Select Category</option>
                                                     <option value="blog">Blog </option>
                                                     <option value="property">Property</option>
+                                                    <option value="project">Project</option>
                                                 </select>
                                             @endif
                                         </div>
