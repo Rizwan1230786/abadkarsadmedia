@@ -22,4 +22,8 @@ class Projects extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(tags::class);
+    }
 }

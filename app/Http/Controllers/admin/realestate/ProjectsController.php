@@ -42,8 +42,8 @@ class ProjectsController extends Controller
         $features_projects = DB::table("features_projects")->where("features_projects.projects_id", $updateId)
             ->pluck('features_projects.features_id', 'features_projects.features_id')
             ->all();
-            $tag_project = DB::table("project_tags")->where("project_tags.project_id", $updateId)
-            ->pluck('project_tags.tags_id', 'project_tags.tags_id')
+            $tag_project = DB::table("projects_tags")->where("projects_tags.projects_id", $updateId)
+            ->pluck('projects_tags.tags_id', 'projects_tags.tags_id')
             ->all();
         $multiimages = DB::table('project_images')
             ->join("projects", "project_images.projects_id", "=", "projects.id")
@@ -52,7 +52,7 @@ class ProjectsController extends Controller
         if (is_numeric($updateId) && $updateId > 0) {
             $data['record'] = Projects::where('id', $updateId)->first();
         }
-        return view('admin.modules.realestate.projects.create', compact('data', 'cities', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages','area', 'tag'));
+        return view('admin.modules.realestate.projects.create', compact('data', 'cities', 'feature', 'categories', 'investor', 'features_projects', 'agent', 'agency', 'multiimages','area', 'tag','tag_project'));
     }
     public function submit(Request $request)
     {
@@ -99,6 +99,7 @@ class ProjectsController extends Controller
                 }
             }
             $post->features()->sync($request->feature, $request->category);
+            $post->tags()->attach($request->tags);
             // $post->category()->sync($request->category);
 
         } else {
@@ -168,6 +169,7 @@ class ProjectsController extends Controller
             }
         }
         $post->features()->sync($request->feature);
+        $post->tags()->sync($request->tags);
         // $post->category()->sync($request->category);
         return response()->json(['type' => $type, 'message' => $message]);
     }

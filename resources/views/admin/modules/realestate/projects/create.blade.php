@@ -200,7 +200,7 @@
                                                         type="number">
                                                 </div>
                                             </div>
-                                            <div class="col-12 form-group padding">
+                                            <div class="col-12 form-group padding mt-3"  style="border: 1px solid lightgray; padding:5px;">
                                                 <label class="form-label">Feature</label>
                                                 <?php
                                             if (isset($data['record']) && !empty($data['record'])) { ?>
@@ -221,8 +221,34 @@
 
                                             ?>
                                             </div>
+                                            <div class="property-form-group" style="border: 1px solid lightgray">
+                                                <div class="row" style="padding: 5px;">
+                                                    <div class="col-md-12">
+                                                        <label class="form-label">Search Tags</label>
+                                                        <ul class="pro-feature-add pl-0">
+                                                            <li class="fl-wrap filter-tags clearfix">
+                                                                <div class="filter-tags-wrap">
+                                                                    @if (isset($data['record']) && !empty($data['record']))
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $tag_project) ? true : false, ['class' => 'name']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @else
+                                                                        @foreach ($tag as $value)
+                                                                            <label
+                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, false, ['class' => 'seting']) }}
+                                                                                {{ $value->name }}</label>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </div>
+                                                            </li>
 
-                                            <div class="col-lg-12 col-sm-12 form-group padding">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 form-group padding mt-3">
                                                 <label class="form-label">Project Map</label>
                                                 @if (isset($data['record']->project_map) && !empty($data['record']->project_map))
                                                     <input type="file" name="project_map" class="dropify"
@@ -279,7 +305,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="col-3">
                                             <div class="col-lg-12">
@@ -443,38 +468,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="padding: 5px;">
-                                                    <div class="col-md-12">
-                                                        <label class="form-label">Search Tags</label>
-                                                        <ul class="pro-feature-add pl-0">
-                                                            <li class="fl-wrap filter-tags clearfix">
-                                                                <div class="filter-tags-wrap">
-                                                                    @if (isset($data['record']) && !empty($data['record']))
-                                                                        @foreach ($tag as $value)
-                                                                            <label
-                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, in_array($value->id, $tag_project) ? true : false, ['class' => 'name']) }}
-                                                                                {{ $value->name }}</label>
-                                                                        @endforeach
-                                                                    @else
-                                                                        @foreach ($tag as $value)
-                                                                            <label
-                                                                                style="font-size: 16px;font-weight: 100;">{{ Form::checkbox('tags[]', $value->id, false, ['class' => 'seting']) }}
-                                                                                {{ $value->name }}</label>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </div>
-                                                            </li>
 
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                            </form>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     </div>
