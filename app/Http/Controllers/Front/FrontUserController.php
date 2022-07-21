@@ -257,4 +257,11 @@ class FrontUserController extends Controller
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.partner.partner', get_defined_vars());
     }
+
+    public function map()
+    {
+        $meta = Webpages::Where("page_title", "Home")->first();
+        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+        return view('front.pages.plot_finder', get_defined_vars());
+    }
 }

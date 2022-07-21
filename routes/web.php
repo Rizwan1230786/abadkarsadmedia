@@ -369,6 +369,8 @@ Route::prefix('user')->group(function () {
     Route::get('/auth/google', [FrontUserController::class, 'redirectToGoogle']);
     Route::get('/auth/google/callback', [FrontUserController::class, 'handleGoogleCallback']);
     Route::get('/our/partner', [FrontUserController::class, 'user_partner']);
+    //////////////Plot Finder//////////////
+    Route::get('/plot_finder', [FrontUserController::class, 'map'])->name('plot_finder');
 
 
     Route::group(['middleware' => 'auth:customeruser'], function () {
@@ -380,7 +382,7 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user/{id}', [FrontUserController::class, 'update_user'])->name('update_user');
         ///////////end//////////
         Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
-
+         
         ////Property Management
         Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
         Route::post('/submit_post_listing', [PropertyManagementController::class, 'submit_post_listing'])->name('post-listing');

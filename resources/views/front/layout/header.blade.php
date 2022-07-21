@@ -25,7 +25,7 @@ use App\Models\subpages;
             <ul class="clearfix" id="responsive">
                 <li class="left"><a class="link-l" href="{{ url('/') }}"><i class="fas fa-home icon-home"></i></a>
                 </li>
-                <li class="left"><a class="link-l" href="#">PlotFinder</a></li>
+                <li class="left"><a class="link-l" href="/user/plot_finder">PlotFinder</a></li>
                 <li class="left"><a class="link-l" href="#">Area Guides</a></li>
                 <li class="left"><a class="link-l" href="/user/our/partner">Partners</a></li>
                 <li class="left"><a class="link-l" href="{{ url('/blog') }}">Blogs</a></li>
