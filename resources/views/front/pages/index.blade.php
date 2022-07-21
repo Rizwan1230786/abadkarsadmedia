@@ -1,5 +1,6 @@
 <?php
 use App\Models\property;
+use Illuminate\Support\Str;
 ?>
 @extends('front.layout')
 @section('body')
