@@ -40,6 +40,7 @@ class PropetyController extends Controller
     public function create(Request $request)
     {
         $cities = Cities::get(["name", "id"]);
+        $area = Area::get(["areaname","id"]);
         $facilites = Facilities::select('id', 'name')->get();
         $tag = tags::where('category', 'property')->orderBy('page_rank', 'asc')->get();
         $project = Projects::all();

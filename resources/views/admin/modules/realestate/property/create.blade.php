@@ -609,6 +609,14 @@
                                                 <div class="col-lg-12 form-group padding">
                                                     <label class="form-label">Select Area</label>
                                                     <select id="state-dd" class="form-control" name="area_id">
+                                                    <option value="">Select Area</option>
+                                                    @foreach ($area as $value)
+                                                            <option value="{{ $value->id }}" <?php if (($data['record']->area_id ?? '') == $value->id) {
+                                                                echo 'selected';
+                                                            } ?>>
+                                                                {{ $value->areaname }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
