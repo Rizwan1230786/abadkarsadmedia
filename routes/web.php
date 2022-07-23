@@ -50,6 +50,7 @@ use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
+use App\Http\Controllers\agency\AgencyDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -462,6 +463,9 @@ Route::prefix('user')->group(function () {
 });
 /////end front
 
+
+
+
 Route::get('/clear', function () {
     Artisan::call('cache:clear');
     // Artisan::call('route:cache');
@@ -484,3 +488,8 @@ Route::get('/link', function () {
     // Artisan::call('config:cache');
     dd("storage");
 });
+
+
+//////Agency//////////
+Route::get('/agencydashboard',[AgencyDashboardController::class,'agencydashboard']);
+//////End Agency
