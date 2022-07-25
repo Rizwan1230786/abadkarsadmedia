@@ -52,6 +52,7 @@ use App\Http\Controllers\userside\advertise\AdvertiseController;
 use App\Http\Controllers\Front\advertise\FrontAdvertiseController;
 use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
+use App\Http\Controllers\agency\AgencyUserController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
 
@@ -494,6 +495,8 @@ Route::get('/link', function () {
 
 Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
     //////Agency//////////
+    Route::get('/agencypanel', [AgencyUserController::class, 'agencypanel'])->name('agencypanel');
+    Route::post('/submit-login', [AgencyUserController::class, 'submitLogin'])->name('submitLogin');
     Route::get('/dashboard', [AgencyDashboardController::class, 'agencydashboard'])->name('dashboard');
 
     ///////route of agents//////

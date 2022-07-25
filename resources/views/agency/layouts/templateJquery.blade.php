@@ -44,13 +44,13 @@
             $(".submit_button").html(previousText);
         }
     });
-    $('.auth-login-form').submit(function(e) {
+    $('.agency-login-form').submit(function(e) {
         e.preventDefault();
         var self = this;
         if (validateForm()) {
             $.ajax({
                 type: 'POST',
-                url: "{{ route('admin:submitLogin') }}",
+                url: "{{ route('agency:submitLogin') }}",
                 data: $('form').serialize(),
                 success: function(result) {
                     var message = (_.hasIn(result,"message") ? result.message : "");
@@ -62,7 +62,7 @@
                             toastr['error'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000});
                     } else {
                         toastr['success'](message, { showMethod: 'slideDown', hideMethod: 'slideUp', timeOut: 2000});
-                        setTimeout(function() { window.location.href = "{{ route('admin:dashboard') }}"; }, 1000);
+                        setTimeout(function() { window.location.href = "{{ route('agency:dashboard') }}"; }, 1000);
                     }
                 }
             });

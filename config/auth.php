@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'guard' => 'customeruser',
+        'guard' => 'agency',
         'passwords' => 'users',
     ],
 
@@ -45,6 +46,10 @@ return [
             'driver' => 'session',
             'provider' => 'customeruser',
         ],
+        'agency' => [
+            'driver' => 'session',
+            'provider' => 'agency',
+        ],
     ],
 
     /*
@@ -72,6 +77,10 @@ return [
         'customeruser' => [
             'driver' => 'eloquent',
             'model' => App\Models\Customeruser::class,
+        ],
+        'agency' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\agency::class,
         ],
 
         // 'users' => [
