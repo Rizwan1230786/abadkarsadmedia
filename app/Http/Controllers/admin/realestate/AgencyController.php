@@ -37,6 +37,7 @@ class AgencyController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $data=$request->all();
+            $data['password']=hash::make('abadkar');
             $updateId = $request->id;
             $post = Agency::find($updateId);
             if (isset($updateId) && $updateId != 0) {
