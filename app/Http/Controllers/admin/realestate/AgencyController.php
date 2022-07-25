@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class AgencyController extends Controller
 {
@@ -37,7 +39,7 @@ class AgencyController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $data=$request->all();
-            $data['password']=hash::make('abadkar');
+            $data['password']=Hash::make('abadkar');
             $updateId = $request->id;
             $post = Agency::find($updateId);
             if (isset($updateId) && $updateId != 0) {
@@ -59,6 +61,10 @@ class AgencyController extends Controller
                     $data['image']=$filename;
                     request()->image->move(public_path('assets/images/agency/'), $filename);
                 }
+                Mail::send('admin.modules.realestate.agency.mail.mails', ['email'=> $request->email , 'password' => 'abadkar'], function($message) use($request){
+                    $message->to($request->email);
+                    $message->subject('Send Mail');
+                });
                 Agency::Create($data);
             }
         } else {
