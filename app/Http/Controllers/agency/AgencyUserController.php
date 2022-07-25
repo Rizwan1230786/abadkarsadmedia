@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 class AgencyUserController extends Controller
 {
     public function agencypanel()
@@ -31,5 +31,11 @@ class AgencyUserController extends Controller
             $message = $validator->errors()->toArray();
         }
         return response()->json(['type' => $type, 'message' => $message]);
+    }
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('front.index')->with('success', "Logout Successfully!");
     }
 }

@@ -497,6 +497,7 @@ Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
     //////Agency//////////
     Route::get('/agencypanel', [AgencyUserController::class, 'agencypanel'])->name('agencypanel');
     Route::post('/submit-login', [AgencyUserController::class, 'submitLogin'])->name('submitLogin');
+    Route::get('/logout', [AgencyUserController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [AgencyDashboardController::class, 'agencydashboard'])->name('dashboard');
 
     ///////route of agents//////
