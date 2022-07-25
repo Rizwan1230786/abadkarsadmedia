@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\InqueryController;
 use App\Http\Controllers\admin\OurblogController;
 use App\Http\Controllers\admin\OurteamController;
 use App\Http\Controllers\admin\UrlslugController;
+use App\Http\Controllers\agency\AgentsController;
 use App\Http\Controllers\Front\pdf\PdfController;
 use App\Http\Controllers\admin\WebpagesController;
 use App\Http\Controllers\admin\DashboardController;
@@ -21,12 +22,15 @@ use App\Http\Controllers\admin\TestimonialController;
 use App\Http\Controllers\admin\tools\ToolsController;
 use App\Http\Controllers\userside\UserRolesController;
 use App\Http\Controllers\userside\roles\RoleController;
+use App\Http\Controllers\agency\AgentPropertyController;
 use App\Http\Controllers\userside\UserProfileController;
 use App\Http\Controllers\admin\developer\DeveloperPatner;
 use App\Http\Controllers\admin\realestate\AreaController;
 use App\Http\Controllers\admin\realestate\BlogController;
+use App\Http\Controllers\agency\AgencyPropertyController;
 use App\Http\Controllers\admin\realestate\AgentController;
 use App\Http\Controllers\admin\realestate\StateController;
+use App\Http\Controllers\agency\AgencyDashboardController;
 use App\Http\Controllers\userside\UserDashboardController;
 use App\Http\Controllers\admin\addtocart\ProductController;
 use App\Http\Controllers\admin\customer\CustomerController;
@@ -50,7 +54,6 @@ use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
-use App\Http\Controllers\agency\AgencyDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -489,7 +492,34 @@ Route::get('/link', function () {
     dd("storage");
 });
 
+Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
+    //////Agency//////////
+    Route::get('/dashboard', [AgencyDashboardController::class, 'agencydashboard'])->name('dashboard');
 
-//////Agency//////////
-Route::get('/agencydashboard',[AgencyDashboardController::class,'agencydashboard']);
+    ///////route of agents//////
+    Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
+    Route::get('/agent/create', [AgentsController::class, 'create'])->name('agent.form');
+    Route::post('/agent/submit', [AgentsController::class, 'submit'])->name('agent_submit');
+    Route::post('/update_status_agent', [AgentsController::class, 'update_agent_status'])->name('update_status_facilities');
+    Route::post('/delete_agent/{id}', [AgentsController::class, 'destroy'])->name('delete_agent');
+
+    ////route of agency properties////////
+    Route::get('/properties', [AgencyPropertyController::class, 'index'])->name('properties');
+    Route::get('/properties/create', [AgencyPropertyController::class, 'create'])->name('properties.form');
+    Route::post('/properties/submit', [AgencyPropertyController::class, 'submit'])->name('properties_submit');
+    Route::post('/properties/update/', [AgencyPropertyController::class, 'update'])->name('properties_update');
+    Route::post('/update_property_status', [AgencyPropertyController::class, 'update_property_status'])->name('update_property_status');
+    Route::post('/delete_properties/{id}', [AgencyPropertyController::class, 'destroy'])->name('properties_destroy');
+    Route::get('/checkslug', [AgencyPropertyController::class, 'checkslug'])->name('checkslug');
+    Route::get('/get_fecilites', [AgencyPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+    ////////rout of agent propertes/////
+    Route::get('/agent-properties', [AgentPropertyController::class, 'index'])->name('agentproperties');
+    Route::get('/agent-properties/create', [AgentPropertyController::class, 'create'])->name('agentproperties.form');
+    Route::post('/agent-properties/submit', [AgentPropertyController::class, 'submit'])->name('agentproperties_submit');
+    Route::post('/agent-properties/update/', [AgentPropertyController::class, 'update'])->name('agentproperties_update');
+    Route::post('/update_agent_property_status', [AgentPropertyController::class, 'update_property_status'])->name('update_agentproperty_status');
+    Route::post('/delete_agent_properties/{id}', [AgentPropertyController::class, 'destroy'])->name('agentproperties_destroy');
+    Route::get('/checkslug', [AgentPropertyController::class, 'checkslug'])->name('checkslug');
+    Route::get('/get_fecilites', [AgentPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+});
 //////End Agency
