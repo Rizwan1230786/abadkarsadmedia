@@ -87,7 +87,7 @@
                                                         </a>
                                                     @endif
                                                     <a href="javascript:void(0)">
-                                                        <li class="icons-list-item delete_record"
+                                                        <li class="icons-list-item delete_record_agency"
                                                             data-id="{{ $item->id }}"><i class="fa fa-trash-o"
                                                                 data-toggle="tooltip" title="" data-original-title="Delete"></i>
                                                         </li>

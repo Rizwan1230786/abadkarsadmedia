@@ -26,11 +26,12 @@ class AgentPropertyController extends Controller
 {
     public function index()
     {
-        $agent=Agent::where('agency',9)->get();
-        foreach($agent as $value){
-            $record = Property::where(['agent_id'=>$value->id, 'agency_id' => $value->agency])->orderBy('id', 'DESC')->get();
-            return view('agency.modules.agentproperty.listing', compact('record'));
-        }
+        // $agent=Agent::where('agency',9)->get();
+        // foreach($agent as $value){
+
+        // }
+        $record = Property::orderBy('id', 'DESC')->get();
+        return view('agency.modules.agentproperty.listing', compact('record'));
 
     }
     public function get_fecilites()
