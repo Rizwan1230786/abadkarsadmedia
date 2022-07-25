@@ -382,7 +382,7 @@ Route::prefix('user')->group(function () {
         Route::post('/update_user/{id}', [FrontUserController::class, 'update_user'])->name('update_user');
         ///////////end//////////
         Route::get('/logout', [FrontUserController::class, 'logout'])->name('logout');
-         
+
         ////Property Management
         Route::get('/post-listing', [PropertyManagementController::class, 'post_listing'])->name('post-listing');
         Route::post('/submit_post_listing', [PropertyManagementController::class, 'submit_post_listing'])->name('post-listing');

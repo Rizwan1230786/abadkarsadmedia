@@ -610,7 +610,7 @@
                                                     <label class="form-label">Select Area</label>
                                                     <select id="state-dd" class="form-control" name="area_id">
                                                     <option value="">Select Area</option>
-                                                    @foreach ($area as $value)
+                                                        @foreach ($area as $value)
                                                             <option value="{{ $value->id }}" <?php if (($data['record']->area_id ?? '') == $value->id) {
                                                                 echo 'selected';
                                                             } ?>>
