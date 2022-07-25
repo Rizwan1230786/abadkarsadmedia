@@ -34,7 +34,7 @@
                             }
 
                             ?>
-                            <form class="validationForm formSubmited2" id="myForm" enctype="multipart/form-data"
+                            <form class="validationForm formSubmited3" id="myForm" enctype="multipart/form-data"
                                 method="POST" action="{{ $url }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $data['updateId'] ?? 0 }}">

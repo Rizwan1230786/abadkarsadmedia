@@ -27,7 +27,7 @@ class AgencyPropertyController extends Controller
     public function index()
     {
 
-        $record = Property::where(['agency_id'=>4])->orderBy('id', 'DESC')->get();
+        $record = Property::orderBy('id', 'DESC')->get();
         return view('agency.modules.property.listing', compact('record'));
     }
     public function get_fecilites()
