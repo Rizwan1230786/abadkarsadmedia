@@ -22,6 +22,7 @@ use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 class AgentPropertyController extends Controller
 {
     public function index()
@@ -30,7 +31,7 @@ class AgentPropertyController extends Controller
         // foreach($agent as $value){
 
         // }
-        $record = Property::orderBy('id', 'DESC')->get();
+        $record = Property::where('agency_id',Auth::id())->orderBy('id', 'DESC')->get();
         return view('agency.modules.agentproperty.listing', compact('record'));
 
     }

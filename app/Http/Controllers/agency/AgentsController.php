@@ -9,12 +9,15 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AgentsController extends Controller
 {
     public function index()
     {
-        $record = Agent::all();
+        $record=Agent::where('agency',Auth::id())->get();
+       
+        // $record = Agent::all();
         return view('agency.modules.agent.listing', compact('record'));
     }
 
