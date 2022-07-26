@@ -197,7 +197,7 @@
 										<div class="dropdown profile-dropdown">
 											<a href="{{url('/' . $page='#')}}" class="nav-link pr-0 leading-none" data-toggle="dropdown">
 												<span>
-													<img src="" alt="img" class="avatar avatar-md brround">
+													<img src="{{ asset('assets/images/agency/'.Auth()->user()->image) }}" alt="img" class="avatar avatar-md brround">
 												</span>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">

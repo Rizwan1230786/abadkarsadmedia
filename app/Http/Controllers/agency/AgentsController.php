@@ -5,16 +5,18 @@ namespace App\Http\Controllers\agency;
 use App\Models\Agent;
 use App\Models\Agency;
 use App\Models\Cities;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class AgentsController extends Controller
 {
     public function index()
     {
-        $record = Agent::all();
+        $agency_id=Auth::user()->id;
+        $record = Agent::where('agency',$agency_id)->get();
         return view('agency.modules.agent.listing', compact('record'));
     }
 
