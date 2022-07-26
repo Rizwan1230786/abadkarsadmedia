@@ -22,13 +22,12 @@ use App\Models\UrlSlug;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Auth;
 class AgencyPropertyController extends Controller
 {
     public function index()
     {
 
-        $record = Property::where('agency_id',Auth::id())->orderBy('id', 'DESC')->get();
+        $record = Property::orderBy('id', 'DESC')->get();
         return view('agency.modules.property.listing', compact('record'));
     }
     public function get_fecilites()

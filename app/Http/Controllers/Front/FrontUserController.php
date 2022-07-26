@@ -41,13 +41,13 @@ class FrontUserController extends Controller
             $search_city = Cities::with('url_slugs')->with('areas')->with('properties')->get();
             $feature = Features::all();
             $city = Cities::all();
-            $city_count=$city->count();
+            $city_count = $city->count();
             $agents = Agent::all();
             $agency = Agency::all();
-            $tools=Abadtools::all();
+            $tools = Abadtools::all();
             $partners = Partners::all();
             $testimonials = Testimonials::all();
-            $recentblogs=Blog::latest()->take(4)->get();
+            $recentblogs = Blog::latest()->take(4)->get();
             $meta = Webpages::Where("page_title", "home")->first();
             $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
             return view('front.pages.index', get_defined_vars());
@@ -57,9 +57,13 @@ class FrontUserController extends Controller
     }
     public function index()
     {
-        $meta = Webpages::Where("page_title", "home")->first();
-        $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        return view('front.pages.customeruser.login', compact('meta', 'data'));
+        if (Auth::guard('customeruser')->check()) {
+            $meta = Webpages::Where("page_title", "home")->first();
+            $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
+            return view('front.pages.customeruser.login', compact('meta', 'data'));
+        } else {
+            return view('front.pages.customeruser.login');
+        }
     }
     public function signup()
     {

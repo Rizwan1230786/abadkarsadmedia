@@ -7,7 +7,7 @@
 					<div class="app-sidebar__user">
 						<div class="dropdown user-pro-body text-center">
 							<div class="user-pic">
-								<img src="" alt="user-img" class="avatar-xl rounded-circle mb-1">
+								<img src="{{ asset('assets/images/agency/'.Auth()->user()->image) }}" alt="user-img" class="avatar-xl rounded-circle mb-1">
 							</div>
 							<div class="user-info">
 								<h5 class=" mb-1">{{Auth()->user()->name ?? ''}} <i class="ion-checkmark-circled  text-success fs-12"></i></h5>

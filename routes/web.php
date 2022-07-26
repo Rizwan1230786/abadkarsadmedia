@@ -497,33 +497,38 @@ Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
     //////Agency//////////
     Route::get('/agencypanel', [AgencyUserController::class, 'agencypanel'])->name('agencypanel');
     Route::post('/submit-login', [AgencyUserController::class, 'submitLogin'])->name('submitLogin');
-    Route::get('/logout', [AgencyUserController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [AgencyDashboardController::class, 'agencydashboard'])->name('dashboard');
 
-    ///////route of agents//////
-    Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
-    Route::get('/agent/create', [AgentsController::class, 'create'])->name('agent.form');
-    Route::post('/agent/submit', [AgentsController::class, 'submit'])->name('agent_submit');
-    Route::post('/update_status_agent', [AgentsController::class, 'update_agent_status'])->name('update_status_facilities');
-    Route::post('/delete_agent/{id}', [AgentsController::class, 'destroy'])->name('delete_agent');
 
-    ////route of agency properties////////
-    Route::get('/properties', [AgencyPropertyController::class, 'index'])->name('properties');
-    Route::get('/properties/create', [AgencyPropertyController::class, 'create'])->name('properties.form');
-    Route::post('/properties/submit', [AgencyPropertyController::class, 'submit'])->name('properties_submit');
-    Route::post('/properties/update/', [AgencyPropertyController::class, 'update'])->name('properties_update');
-    Route::post('/update_property_status', [AgencyPropertyController::class, 'update_property_status'])->name('update_property_status');
-    Route::post('/delete_properties/{id}', [AgencyPropertyController::class, 'destroy'])->name('properties_destroy');
-    Route::get('/checkslug', [AgencyPropertyController::class, 'checkslug'])->name('checkslug');
-    Route::get('/get_fecilites', [AgencyPropertyController::class, 'get_fecilites'])->name('get_fecilites');
-    ////////rout of agent propertes/////
-    Route::get('/agent-properties', [AgentPropertyController::class, 'index'])->name('agentproperties');
-    Route::get('/agent-properties/create', [AgentPropertyController::class, 'create'])->name('agentproperties.form');
-    Route::post('/agent-properties/submit', [AgentPropertyController::class, 'submit'])->name('agentproperties_submit');
-    Route::post('/agent-properties/update/', [AgentPropertyController::class, 'update'])->name('agentproperties_update');
-    Route::post('/update_agent_property_status', [AgentPropertyController::class, 'update_property_status'])->name('update_agentproperty_status');
-    Route::post('/delete_agent_properties/{id}', [AgentPropertyController::class, 'destroy'])->name('agentproperties_destroy');
-    Route::get('/checkslug', [AgentPropertyController::class, 'checkslug'])->name('checkslug');
-    Route::get('/get_fecilites', [AgentPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+    Route::group(['middleware' => 'auth:agency'], function () {
+
+        Route::get('/logout', [AgencyUserController::class, 'logout'])->name('logout');
+        Route::get('/dashboard', [AgencyDashboardController::class, 'agencydashboard'])->name('dashboard');
+
+        ///////route of agents//////
+        Route::get('/agent', [AgentsController::class, 'index'])->name('agent');
+        Route::get('/agent/create', [AgentsController::class, 'create'])->name('agent.form');
+        Route::post('/agent/submit', [AgentsController::class, 'submit'])->name('agent_submit');
+        Route::post('/update_status_agent', [AgentsController::class, 'update_agent_status'])->name('update_status_facilities');
+        Route::post('/delete_agent/{id}', [AgentsController::class, 'destroy'])->name('delete_agent');
+
+        ////route of agency properties////////
+        Route::get('/properties', [AgencyPropertyController::class, 'index'])->name('properties');
+        Route::get('/properties/create', [AgencyPropertyController::class, 'create'])->name('properties.form');
+        Route::post('/properties/submit', [AgencyPropertyController::class, 'submit'])->name('properties_submit');
+        Route::post('/properties/update/', [AgencyPropertyController::class, 'update'])->name('properties_update');
+        Route::post('/update_property_status', [AgencyPropertyController::class, 'update_property_status'])->name('update_property_status');
+        Route::post('/delete_properties/{id}', [AgencyPropertyController::class, 'destroy'])->name('properties_destroy');
+        Route::get('/checkslug', [AgencyPropertyController::class, 'checkslug'])->name('checkslug');
+        Route::get('/get_fecilites', [AgencyPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+        ////////rout of agent propertes/////
+        Route::get('/agent-properties', [AgentPropertyController::class, 'index'])->name('agentproperties');
+        Route::get('/agent-properties/create', [AgentPropertyController::class, 'create'])->name('agentproperties.form');
+        Route::post('/agent-properties/submit', [AgentPropertyController::class, 'submit'])->name('agentproperties_submit');
+        Route::post('/agent-properties/update/', [AgentPropertyController::class, 'update'])->name('agentproperties_update');
+        Route::post('/update_agent_property_status', [AgentPropertyController::class, 'update_property_status'])->name('update_agentproperty_status');
+        Route::post('/delete_agent_properties/{id}', [AgentPropertyController::class, 'destroy'])->name('agentproperties_destroy');
+        Route::get('/checkslug', [AgentPropertyController::class, 'checkslug'])->name('checkslug');
+        Route::get('/get_fecilites', [AgentPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+    });
 });
 //////End Agency
