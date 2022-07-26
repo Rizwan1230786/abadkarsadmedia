@@ -20,11 +20,11 @@ class Authenticate extends Middleware
             $middleware = $request->route()->gatherMiddleware();
             if ($middleware[1] == 'auth:web') {
                 return route('admin:login');
-            }else {
-                return route('signin');
             }
             if ($middleware[1] == 'auth:agency') {
                 return route('agency:agencypanel');
+            }else {
+                return route('signin');
             }
         }
     }

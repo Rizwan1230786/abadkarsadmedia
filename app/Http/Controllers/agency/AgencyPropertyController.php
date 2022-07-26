@@ -2,32 +2,36 @@
 
 namespace App\Http\Controllers\agency;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Area;
+use App\Models\tags;
 use App\Models\Agent;
 use App\Models\Agency;
 use App\Models\Cities;
+use App\Models\UrlSlug;
 use App\Models\Category;
 use App\Models\Features;
 use App\Models\Projects;
 use App\Models\property;
-use Illuminate\Support\Facades\DB;
 use App\Models\Facilities;
-use App\Models\Property_facilities;
-use App\Models\PropertyImage;
 use App\Models\SubCategory;
-use App\Models\tags;
-use App\Models\UrlSlug;
+use Illuminate\Http\Request;
+use App\Models\PropertyImage;
+use Illuminate\Support\Facades\DB;
+use App\Models\Property_facilities;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
+
 class AgencyPropertyController extends Controller
 {
     public function index()
     {
 
         $record = Property::orderBy('id', 'DESC')->get();
+        $agency_id=Auth::user()->id;
+        $record = Property::where('agency_id',$agency_id)->orderBy('id', 'DESC')->get();
         return view('agency.modules.property.listing', compact('record'));
     }
     public function get_fecilites()
