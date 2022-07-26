@@ -1,9 +1,9 @@
 		<!-- Title -->
-		<title>Abadkar Admin Panel</title>
+		<title>Abadkar Agency Portal</title>
 
 		<!--Favicon -->
 		<!-- <link rel="icon" href="{{URL::asset('assets/images/brand/fav2.png')}}" type="image/x-icon"/> -->
-
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 		<!--Bootstrap css -->
 		<link href="{{URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 

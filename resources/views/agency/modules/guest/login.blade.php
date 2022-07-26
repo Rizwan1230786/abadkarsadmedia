@@ -15,7 +15,7 @@
 												<div class="text-center title-style mb-6">
 													<h1 class="mb-2">Login</h1>
 													<hr>
-													<p class="text-muted">Sign In to your account Agency</p>
+													<p class="text-muted text-left">Are you registerd so sign In to your account otherwise <a style="color: #007bff; text-decoration:underline;" href="{{ route('front.contact') }}">Contact us</a> to admin.</p>
 												</div>
                                                 <form class="validationForm agency-login-form" action="javascript:void(0)" method="POST">
                                                     @csrf
@@ -37,7 +37,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-primary btn-block px-4 submit_button">Login</button>
+                                                            <button type="submit" class="btn btn-success btn-block px-4 submit_button">Login</button>
                                                         </div>
                                                         <div class="col-12 text-center">
                                                             <a href="{{ url('/' . $page='forgot-password-3')}}" class="btn btn-link box-shadow-0 px-0">Forgot password?</a>
@@ -46,7 +46,7 @@
                                                 </form>
 											</div>
 										</div>
-										<div class="card text-white bg-primary py-5 d-md-down-none page-content mt-0">
+										<div class="card text-white bg-success py-5 d-md-down-none page-content mt-0">
 											<div class="text-center justify-content-center page-single-content">
 												<div class="box">
 													<div></div>

@@ -42,14 +42,16 @@ use App\Models\subpages;
         </nav>
         <nav class="right">
             <ul class="clearfix">
+                <li class="left"><a class="adpid-wrp" title="Agency login" href="{{ url('/agency/agencypanel') }}"><i
+                    class="fas fa-plus icon"></i>Agency Portal</a></li>
                 <li class="left"><a class="adpid-wrp" title="Contact us" href="{{ route('front.contact') }}"><i
                             class="fas fa-laptop-house ml-2 icon"></i>Contact us</a></li>
-                @guest
+                @guest('customeruser')
                     <li class="left"><a class="adpid-wrp" title="Add Property" href="{{ url('/add-property') }}"><i
                                 class="fas fa-plus icon"></i>Add Property</a></li>
                 @endguest
                 <li class="left"><a href="#"><i class="fas fa-cog icon-login" title="Setting"></i></a></li>
-                @guest
+                @guest('customeruser')
                     <li class="left"><a href="{{ url('user/signin') }}"><i class="fas fa-user icon-login"
                                 title="Login"></i></a></li>
                 @endguest

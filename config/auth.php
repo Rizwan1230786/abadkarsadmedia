@@ -80,7 +80,7 @@ return [
         ],
         'agency' => [
             'driver' => 'eloquent',
-            'model' => App\Models\agency::class,
+            'model' => App\Models\Agency::class,
         ],
 
         // 'users' => [

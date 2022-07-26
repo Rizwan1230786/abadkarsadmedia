@@ -4,7 +4,7 @@
 
       <!--Favicon -->
       <!-- <link rel="icon" href="{{ URL::asset('assets/images/brand/fav2.png') }}" type="image/x-icon"/> -->
-
+      <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
       <!--Bootstrap css -->
       <script src="{{ URL::asset('assets/js/jquery-3.5.1.min.js') }}"></script>
       <link href="{{ URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
