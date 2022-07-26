@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class AgentsController extends Controller
 {
@@ -40,6 +42,7 @@ class AgentsController extends Controller
             $type = 'success';
             $message = "Data add successfully";
             $data = $request->all();
+            $data['password']=Hash::make('abadkar');
             $updateId = $request->id;
             $post = Agent::find($updateId);
             if (isset($updateId) && $updateId != 0) {
@@ -61,6 +64,10 @@ class AgentsController extends Controller
                     $data['image'] = $filename;
                     request()->image->move(public_path('assets/images/agent/'), $filename);
                 }
+                Mail::send('agency.modules.agent.mail.mails', ['email'=> $request->email , 'password' => 'abadkar'], function($message) use($request){
+                    $message->to($request->email);
+                    $message->subject('Send Mail');
+                });
                 Agent::Create($data);
             }
         } else {
