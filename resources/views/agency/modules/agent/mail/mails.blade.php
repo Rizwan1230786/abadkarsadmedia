@@ -24,7 +24,7 @@
         <tr>
             <td align="center" style="padding:0;">
             Your Email:{{$email}}<br>
-                    Your Password:abadkar
+            Your Password:{{ $password }}
             </td>
         </tr>
     </table>

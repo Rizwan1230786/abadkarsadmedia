@@ -63,14 +63,15 @@ class AgencyController extends Controller
                     request()->image->move(public_path('assets/images/agency/'), $filename);
                 }
                 $agency=Agency::Create($data);
+                $randum_pasword = rand(10000000,30000000);
                 $agencyportal = new AgencyPortal();
                 $agencyportal['email']=$agency->email;
                 $agencyportal['agency_id']=$agency->id;
-                $agencyportal['password']=Hash::make('abadkar786');
+                $agencyportal['password']=Hash::make($randum_pasword);
                 $agencyportal['type']="agency";
-                Mail::send('agency.modules.agent.mail.mails', ['email'=> $agencyportal['email'] , 'password' => 'abadkar786'], function($message) use($request){
+                Mail::send('agency.modules.agent.mail.mails', ['email'=> $agencyportal['email'] , 'password' => $randum_pasword], function($message) use($request){
                     $message->to($request->email);
-                    $message->from("social@abadkar.com");
+                    $message->from("support@abadkar.com");
                     $message->subject('Send Mail');
                 });
                 $agencyportal->save();

@@ -37,6 +37,7 @@ class AgentsController extends Controller
 
     public function submit(Request $request)
     {
+
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -68,13 +69,15 @@ class AgentsController extends Controller
                     request()->image->move(public_path('assets/images/agent/'), $filename);
                 }
                 $agent = Agent::Create($data);
+                $randum_pasword = rand(10000000,30000000);
                 $agentportal = new AgencyPortal();
                 $agentportal['email'] = $agent->email;
                 $agentportal['agent_id']=$agent->id;
-                $agentportal['password'] = Hash::make('abadkar');
+                $agentportal['password'] = Hash::make($randum_pasword);
                 $agentportal['type'] = "agent";
-                Mail::send('agency.modules.agent.mail.mails', ['email' => $agentportal['email'], 'password' => 'abadkar'], function ($message) use ($request) {
+                Mail::send('agency.modules.agent.mail.mails', ['email' => $agentportal['email'], 'password' => $randum_pasword], function ($message) use ($request) {
                     $message->to($request->email);
+                    $message->from("support@abadkar.com");
                     $message->subject('Send Mail');
                 });
                 $agentportal->save();
