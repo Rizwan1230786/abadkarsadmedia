@@ -13,6 +13,7 @@ class Agent extends Model
         'name',
         'email',
         'password',
+        'type',
         'desgination',
         'office_address',
         'office_number',

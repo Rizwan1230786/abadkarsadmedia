@@ -14,6 +14,7 @@ class Agency extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
         'office_address',
         'office_number',
         'mobile_number',
