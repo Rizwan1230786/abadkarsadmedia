@@ -6,7 +6,7 @@
 								<h4 class="page-title mb-0">Hi! Welcome Back</h4>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{url('/' . $page='#')}}"><i class="fe fe-home mr-2 fs-14"></i>Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}">Abadkar Dashboard</a></li>
+									<li class="breadcrumb-item active" aria-current="page"><a href="{{url('/' . $page='#')}}">Abadkar Agency Dashboard</a></li>
 								</ol>
 							</div>
 						</div>
@@ -18,8 +18,8 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 								<div class="card overflow-hidden dash1-card border-0">
 									<div class="card-body">
-										<p class=" mb-1 ">Total User</p>
-										<h2 class="mb-1 number-font">{{$user}}</h2>
+										<p class=" mb-1 ">Total Agency Properties</p>
+										<h2 class="mb-1 number-font">{{$agency_property}}</h2>
 										<span class="ratio bg-info"> <br> </span>
 									</div>
 									<div id="spark2"></div>
@@ -28,8 +28,8 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 								<div class="card overflow-hidden dash1-card border-0">
 									<div class="card-body">
-										<p class=" mb-1 ">Total Customer user</p>
-										<h2 class="mb-1 number-font">{{ $customer }}</h2>
+										<p class=" mb-1 ">Total Agent Property</p>
+										<h2 class="mb-1 number-font">{{ $agent_property }}</h2>
 										<span class="ratio bg-danger"><br></span>
 									</div>
 									<div id="spark3"></div>
@@ -38,8 +38,8 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
 								<div class="card overflow-hidden dash1-card border-0">
 									<div class="card-body">
-										<p class=" mb-1">Total Orders</p>
-										<h2 class="mb-1 number-font">{{ $orders }}</h2>
+										<p class=" mb-1">Total Agency Agents</p>
+										<h2 class="mb-1 number-font">{{ $agency_agents }}</h2>
 										<span class="ratio bg-success"><br></span>
 									</div>
 									<div id="spark4"></div>

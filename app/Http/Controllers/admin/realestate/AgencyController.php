@@ -4,12 +4,13 @@ namespace App\Http\Controllers\admin\realestate;
 
 use App\Models\Agency;
 use App\Models\Cities;
+use App\Models\AgencyPortal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AgencyController extends Controller
 {
@@ -34,12 +35,12 @@ class AgencyController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'email' => 'required|email|unique:agencies'
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $data=$request->all();
-            $data['password']=Hash::make('abadkar');
             $updateId = $request->id;
             $post = Agency::find($updateId);
             if (isset($updateId) && $updateId != 0) {
@@ -61,11 +62,18 @@ class AgencyController extends Controller
                     $data['image']=$filename;
                     request()->image->move(public_path('assets/images/agency/'), $filename);
                 }
-                Mail::send('admin.modules.realestate.agency.mail.mails', ['email'=> $request->email , 'password' => 'abadkar'], function($message) use($request){
+                $agency=Agency::Create($data);
+                $agencyportal = new AgencyPortal();
+                $agencyportal['email']=$agency->email;
+                $agencyportal['agency_id']=$agency->id;
+                $agencyportal['password']=Hash::make('abadkar786');
+                $agencyportal['type']="agency";
+                Mail::send('agency.modules.agent.mail.mails', ['email'=> $agencyportal['email'] , 'password' => 'abadkar786'], function($message) use($request){
                     $message->to($request->email);
+                    $message->from("social@abadkar.com");
                     $message->subject('Send Mail');
                 });
-                Agency::Create($data);
+                $agencyportal->save();
             }
         } else {
             $message = $validator->errors()->toArray();

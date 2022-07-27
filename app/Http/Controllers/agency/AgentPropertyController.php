@@ -28,10 +28,16 @@ class AgentPropertyController extends Controller
 {
     public function index()
     {
-        $agency_id=Auth::user()->id;
-        $agent=Agent::where('agency', $agency_id)->get();
-        return view('agency.modules.agentproperty.listing', compact('agent'));
 
+        $agency_id = Auth::user()->agency_id;
+        if (isset($agency_id) && !empty($agency_id)) {
+            $agent = Agent::where('agency', $agency_id)->get();
+            return view('agency.modules.agentproperty.listing', compact('agent'));
+        } else {
+            $agent_id = Auth::user()->agent_id;
+            $agent = Agent::where('id', $agent_id)->get();
+            return view('agency.modules.agentproperty.listing', compact('agent'));
+        }
     }
     public function get_fecilites()
     {
@@ -41,7 +47,7 @@ class AgentPropertyController extends Controller
     public function create(Request $request)
     {
         $cities = Cities::get(["name", "id"]);
-        $area = Area::get(["areaname","id"]);
+        $area = Area::get(["areaname", "id"]);
         $facilites = Facilities::select('id', 'name')->get();
         $tag = tags::where('category', 'property')->orderBy('page_rank', 'asc')->get();
         $project = Projects::all();
@@ -95,7 +101,7 @@ class AgentPropertyController extends Controller
             }
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "image" => $filename, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id,
-                "category" => $request->category, "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "agent_id" =>$request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "category" => $request->category, "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id, "agency_id" => $request->agency_id, "agent_id" => $request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -201,7 +207,7 @@ class AgentPropertyController extends Controller
             $data = array(
                 "name" => $request->name, "url_slug" => $request->url_slug, "type" => $request->type, "descripition" => $request->descripition, "content" => $request->content, "city_name" => $request->city_name, "location" => $request->location, "latitude" => $request->latitude, "longitude" => $request->longitude, "number_of_bedrooms" => $request->number_of_bedrooms, "number_of_bathrooms" => $request->number_of_bathrooms, "number_of_floors" => $request->number_of_floors, "land_area" => $request->land_area, "unit" => $request->unit, "currency" => $request->currency, "price" => $request->price, "property_status" => $request->property_status, "project_id" => $request->project_id, "moderation_status" => $request->moderation_status,
                 "category" => $request->category,  "subcat_id" => $request->subcat_id, "agent_id" => $request->agent_id,
-                "agency_id" => $request->agency_id, "agent_id" =>$request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
+                "agency_id" => $request->agency_id, "agent_id" => $request->agent_id, "video_link" => $request->video_link, "meta_title" => $request->meta_title,
                 "meta_keywords" => $request->meta_keywords,
                 "head_title" => $request->head_title,
                 "meta_description" => $request->meta_description,
@@ -318,7 +324,7 @@ class AgentPropertyController extends Controller
     }
     public function approval()
     {
-        $approve = Property::where('status', 0)->orderby('id','desc')->get();
+        $approve = Property::where('status', 0)->orderby('id', 'desc')->get();
         return view('admin.modules.realestate.property.approve', compact('approve'));
     }
 

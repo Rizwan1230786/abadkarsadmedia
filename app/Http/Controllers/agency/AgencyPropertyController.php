@@ -30,7 +30,7 @@ class AgencyPropertyController extends Controller
     {
 
         $record = Property::orderBy('id', 'DESC')->get();
-        $agency_id=Auth::user()->id;
+        $agency_id=Auth::user()->agency_id;
         $record = Property::where('agency_id',$agency_id)->orderBy('id', 'DESC')->get();
         return view('agency.modules.property.listing', compact('record'));
     }

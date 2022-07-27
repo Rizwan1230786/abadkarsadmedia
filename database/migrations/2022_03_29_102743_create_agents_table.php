@@ -14,11 +14,9 @@ class CreateAgentsTable extends Migration
     public function up()
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id', true);
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->string('type')->default('agent');
             $table->string('desgination')->nullable();
             $table->string('office_address')->nullable();
             $table->string('office_number')->nullable();

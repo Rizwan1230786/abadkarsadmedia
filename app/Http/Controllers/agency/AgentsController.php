@@ -5,18 +5,21 @@ namespace App\Http\Controllers\agency;
 use App\Models\Agent;
 use App\Models\Agency;
 use App\Models\Cities;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
+use App\Models\AgencyPortal;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AgentsController extends Controller
 {
     public function index()
     {
-        $record = Agent::all();
+        $agency_id = Auth::user()->agency_id;
+        $record = Agent::where('agency', $agency_id)->get();
         return view('agency.modules.agent.listing', compact('record'));
     }
 
@@ -37,12 +40,12 @@ class AgentsController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'email' => 'required|email|unique:agents'
         ]);
         if ($validator->passes()) {
             $type = 'success';
             $message = "Data add successfully";
             $data = $request->all();
-            $data['password']=Hash::make('abadkar');
             $updateId = $request->id;
             $post = Agent::find($updateId);
             if (isset($updateId) && $updateId != 0) {
@@ -64,11 +67,17 @@ class AgentsController extends Controller
                     $data['image'] = $filename;
                     request()->image->move(public_path('assets/images/agent/'), $filename);
                 }
-                Mail::send('agency.modules.agent.mail.mails', ['email'=> $request->email , 'password' => 'abadkar'], function($message) use($request){
+                $agent = Agent::Create($data);
+                $agentportal = new AgencyPortal();
+                $agentportal['email'] = $agent->email;
+                $agentportal['agent_id']=$agent->id;
+                $agentportal['password'] = Hash::make('abadkar');
+                $agentportal['type'] = "agent";
+                Mail::send('agency.modules.agent.mail.mails', ['email' => $agentportal['email'], 'password' => 'abadkar'], function ($message) use ($request) {
                     $message->to($request->email);
                     $message->subject('Send Mail');
                 });
-                Agent::Create($data);
+                $agentportal->save();
             }
         } else {
             $message = $validator->errors()->toArray();
@@ -90,7 +99,5 @@ class AgentsController extends Controller
         } else {
             return response(['status' => false]);
         }
-
     }
-
 }
