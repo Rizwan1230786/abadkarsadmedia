@@ -41,7 +41,7 @@ class AgentsController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:agents'
+            'email' => 'required|email|unique:agency_portals'
         ]);
         if ($validator->passes()) {
             $type = 'success';
@@ -73,7 +73,7 @@ class AgentsController extends Controller
                 $agentportal = new AgencyPortal();
                 $agentportal['email'] = $agent->email;
                 $agentportal['agent_id']=$agent->id;
-                $agentportal['password'] = Hash::make($randum_pasword);
+                $agentportal['password'] = encrypt($randum_pasword);
                 $agentportal['type'] = "agent";
                 Mail::send('agency.modules.agent.mail.mails', ['email' => $agentportal['email'], 'password' => $randum_pasword], function ($message) use ($request) {
                     $message->to($request->email);
@@ -102,5 +102,18 @@ class AgentsController extends Controller
         } else {
             return response(['status' => false]);
         }
+    }
+
+    public function resend_email_agency(Request $request){
+        $resend_data=AgencyPortal::where('agency_id',$request->id)->first();
+        $password=decrypt($resend_data->password);
+        $email=$resend_data->email;
+        Mail::send('agency.modules.agent.mail.mails', ['email'=> $email , 'password' => $password], function($message) use($email){
+            $message->to($email);
+            $message->from("support@abadkar.com");
+            $message->subject('Send Mail');
+        });
+        return redirect()->back();
+
     }
 }

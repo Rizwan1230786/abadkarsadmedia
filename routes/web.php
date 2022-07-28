@@ -181,6 +181,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:'], function () {
         Route::post('/agency/update/', [AgencyController::class, 'update'])->name('agency_update');
         Route::post('/update_status_agency', [AgencyController::class, 'update_agency_status'])->name('update_status_facilities');
         Route::post('/delete_agency/{id}', [AgencyController::class, 'destroy'])->name('delete_agency');
+        //////recent email bye agency /////////////////
+        Route::get('/agency/resend', [AgencyController::class, 'resend_email_agency'])->name('agency.resend');
         ///////////////   View Listing
         Route::get('/view/listing/{id}', [AgencyController::class, 'detail_agent'])->name('detail_agent');
         ////Route of state////////

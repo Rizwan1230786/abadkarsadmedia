@@ -19,7 +19,7 @@ class CreateAgencyPortalsTable extends Migration
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->integer('agent_id');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();

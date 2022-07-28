@@ -73,6 +73,8 @@
                                                     <a href="javascript:void(0)">
                                                         <li class="icons-list-item delete_record_agent" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
                                                     </a>
+                                                    <a href="{{ route('admin:agency.resend', ['id' => $item->id]) }}"
+                                                        class="btn btn-success btn-sm style">Resend email</a>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -89,6 +91,14 @@
     </div>
     </div><!-- end app-content-->
     </div>
+    <style>
+        .style {
+            line-height: 18px;
+            height: 32px;
+            margin-top: 9px;
+            margin-left: 10px;
+        }
+    </style>
 @endsection
 @section('js')
     <!-- INTERNAL Data tables -->

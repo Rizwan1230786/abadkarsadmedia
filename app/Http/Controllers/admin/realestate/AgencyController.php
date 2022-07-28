@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Crypt;
 use Illuminate\Support\Facades\Validator;
 
 class AgencyController extends Controller
@@ -35,7 +36,7 @@ class AgencyController extends Controller
         $type = 'error';
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:agencies'
+            'email' => 'required|email|unique:agency_portals'
         ]);
         if ($validator->passes()) {
             $type = 'success';
@@ -67,7 +68,7 @@ class AgencyController extends Controller
                 $agencyportal = new AgencyPortal();
                 $agencyportal['email']=$agency->email;
                 $agencyportal['agency_id']=$agency->id;
-                $agencyportal['password']=Hash::make($randum_pasword);
+                $agencyportal['password']=encrypt($randum_pasword);
                 $agencyportal['type']="agency";
                 Mail::send('agency.modules.agent.mail.mails', ['email'=> $agencyportal['email'] , 'password' => $randum_pasword], function($message) use($request){
                     $message->to($request->email);
@@ -94,5 +95,18 @@ class AgencyController extends Controller
         } else {
             return response(['status' => false]);
         }
+    }
+
+    public function resend_email_agency(Request $request){
+        $resend_data=AgencyPortal::where('agency_id',$request->id)->first();
+        $password=decrypt($resend_data->password);
+        $email=$resend_data->email;
+        Mail::send('agency.modules.agent.mail.mails', ['email'=> $email , 'password' => $password], function($message) use($email){
+            $message->to($email);
+            $message->from("support@abadkar.com");
+            $message->subject('Send Mail');
+        });
+        return redirect()->back();
+
     }
 }

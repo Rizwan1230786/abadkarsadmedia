@@ -112,9 +112,9 @@ class FrontController extends Controller
     }
     public function agent_detail($id)
     {
-        $agents = Agent::where('id', $id)->get();
+        $agent = Agent::where('id', $id)->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
-        $property = property::all();
+        $property = property::where(['agent_id' => $agent->id , 'agency_id' => $agent->agency]);
         $meta = Webpages::Where("page_title", "home")->first();
         return view('front.pages.agent_detail', get_defined_vars());
     }
@@ -131,7 +131,7 @@ class FrontController extends Controller
     {
         $agency = Agency::where('id', $id)->first();
         $projects = Projects::where('agency_id',$id)->get();
-        $agents = Agent::where('agency', $agency->name)->get();
+        $agents = Agent::where('agency', $agency->id)->get();
         $meta = subpages::Where("page_title", "agency")->first();
         $data = Webpages::where("status", "=", 1)->orderBy('page_rank', 'asc')->get();
         return view('front.pages.agency_detail', get_defined_vars());

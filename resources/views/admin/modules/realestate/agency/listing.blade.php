@@ -13,7 +13,7 @@
         </div>
         <div class="page-rightheader">
             <div class="btn btn-list">
-                <a href="{{ route('admin:agency.form')}}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
+                <a href="{{ route('admin:agency.form') }}" class="btn btn-primary"><i class="fe fe-user mr-1"></i> Add
                     New</a>
 
             </div>
@@ -49,18 +49,25 @@
                                         @endphp
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td><img src="{{asset('assets/images/agency/'.$item->image)}}" width="50px" height="50px"></td>
-                                            <td>{{ $item->name}}</td>
+                                            <td><img src="{{ asset('assets/images/agency/' . $item->image) }}" width="50px"
+                                                    height="50px"></td>
+                                            <td>{{ $item->name }}</td>
                                             {{-- <td style="text-align: center;"><span
                                                     class="m-badge  m-badge--{{ $status != '1' ? 'danger' : 'success' }} m-badge--wide">{{ $status != '1' ? 'UnPublish' : 'Publish' }}</span>
                                             </td> --}}
                                             <td>
                                                 <ul class="icons-list">
-                                                    <a href="{{ route('admin:agency.form', ['id'=>$item->id]) }}"><li class="icons-list-item"><i class="fe fe-edit-3" data-toggle="tooltip" title="" data-original-title="Edit"></i></li></a>
-                                                    <a href="#">
-                                                    <li class="icons-list-item view_details" rel="{{ $item->id }}" ><i class="fe fe-file-text" data-toggle="tooltip" title="" data-original-title="Detail"></i></li>
+                                                    <a href="{{ route('admin:agency.form', ['id' => $item->id]) }}">
+                                                        <li class="icons-list-item"><i class="fe fe-edit-3"
+                                                                data-toggle="tooltip" title=""
+                                                                data-original-title="Edit"></i></li>
                                                     </a>
-                                                    {{-- @if($status == 1)
+                                                    <a href="#">
+                                                        <li class="icons-list-item view_details" rel="{{ $item->id }}"><i
+                                                                class="fe fe-file-text" data-toggle="tooltip" title=""
+                                                                data-original-title="Detail"></i></li>
+                                                    </a>
+                                                    {{-- @if ($status == 1)
                                                     <a href="javascript:void(0)">
                                                       <li class="icons-list-item publish" rel="{{ $item->id }}" status="{{ $status }}"><i class="fe fe-arrow-up" data-toggle="tooltip" title="" data-original-title="Publish"></i></li>
                                                     </a>
@@ -70,8 +77,12 @@
                                                     </a>
                                                     @endif --}}
                                                     <a href="javascript:void(0)">
-                                                      <li class="icons-list-item delete_record" data-id="{{ $item->id }}"><i class="fa fa-trash-o"  data-toggle="tooltip" title="" data-original-title="Delete"></i></li>
+                                                        <li class="icons-list-item delete_record" data-id="{{ $item->id }}">
+                                                            <i class="fa fa-trash-o" data-toggle="tooltip" title=""
+                                                                data-original-title="Delete"></i></li>
                                                     </a>
+                                                    <a href="{{ route('admin:agency.resend', ['id' => $item->id]) }}"
+                                                        class="btn btn-success btn-sm style">Resend email</a>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -88,6 +99,14 @@
     </div>
     </div><!-- end app-content-->
     </div>
+    <style>
+        .style {
+            line-height: 18px;
+            height: 32px;
+            margin-top: 9px;
+            margin-left: 10px;
+        }
+    </style>
 @endsection
 @section('js')
     <!-- INTERNAL Data tables -->

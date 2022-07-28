@@ -1,5 +1,6 @@
 <?php
 use App\Models\property;
+use App\Models\Agency;
 ?>
 @extends('front.layout')
 @section('body')
@@ -14,7 +15,8 @@ use App\Models\property;
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
                                     <p class="pb-2"><a href="{{ url('/') }}">Home </a> &nbsp;/&nbsp;
-                                        <span>Listings</span></p>
+                                        <span>Listings</span>
+                                    </p>
                                 </div>
                                 <h3>All Agents</h3>
                             </div>
@@ -86,10 +88,13 @@ use App\Models\property;
                                                 </ul>
                                             </div>
                                             <div class="news-item-bottom">
+                                                <?php
+                                                $agency=Agency::where('id',$agent->agency)->first();
+                                                ?>
                                                 {{-- <a href="properties-full-grid-2.html" class="news-link">View My Listings</a> --}}
                                                 @if (!empty($agent->agency))
                                                     <div class="admin">
-                                                        <p>Company : {{ $agent->agency }}</p>
+                                                        <p>Company : {{ $agency->name }}</p>
                                                     </div>
                                                     <div class="admin">
                                                         <p>Desgination : {{ $agent->desgination }}</p>

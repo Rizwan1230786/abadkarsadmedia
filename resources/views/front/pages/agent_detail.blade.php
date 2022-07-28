@@ -1,5 +1,6 @@
 <?php
 use App\Models\property;
+use App\Models\Agency;
 ?>
 @extends('front.layout')
 @section('body')
@@ -12,7 +13,6 @@ use App\Models\property;
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-xs-12">
                         <div class="row">
-                            @foreach ($agents as $agent)
                                 <div class="col-md-12 col-xs-12">
                                     <section class="headings-2 pt-0 hee">
                                         <div class="pro-wrapper">
@@ -37,9 +37,7 @@ use App\Models\property;
                                             </div>
                                         </a>
                                         <div class="news-item-text">
-                                            <a href="{{ route('front.agent_detail', $agent->id) }}">
                                                 <h3>{{ $agent->name }}</h3>
-                                            </a>
                                             <div class="the-agents">
                                                 <ul class="the-agents-details">
                                                     <li><a href="#">Office: {{ $agent->office_number }}</a></li>
@@ -54,14 +52,17 @@ use App\Models\property;
 
                                             <div class="news-item-bottom">
                                                 <?php
-                                                $agent_property = property::where(['agent_id' => $agent->id, 'status' => 1])->first();
+                                                $agent_property = property::where(['agent_id' => $agent->id, 'agency_id' => $agent->agency, 'status' => 1])->first();
+                                                $agency=Agency::where('id',$agent->agency)->first();
                                                 ?>
                                                 @if (!empty($agent_property->agent_id))
                                                     <a href="{{ url('agent-property/' . $agent->name) }}"
                                                         class="news-link">View My Listings</a>
                                                 @endif
                                                 <div class="admin">
-                                                    <p>{{ $agent->agency }}</p>
+                                                    <p>Company : {{ $agency->name }}</p>
+                                                    <img src="{{ asset('assets/images/agency/' . $agency->image) }}"
+                                                        alt="">
                                                 </div>
                                             </div>
 
@@ -75,14 +76,12 @@ use App\Models\property;
                                 <h5 class="mb-4">Description</h5>
                                 <p class="mb-3">{{ $agent->descripition }}</p>
                             </div>
-                            @endforeach
                             <!-- START SIMILAR PROPERTIES -->
                             <section class="similar-property featured portfolio bshd p-0 bg-white">
                                 <div class="container">
                                     <h5>Listing By {{ $agent->name }}</h5>
                                     <div class="row">
                                         @foreach ($property as $property)
-                                            @if ($property->agent_id == $agent->id)
                                                 <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
                                                     <div class="project-single">
                                                         <div class="project-inner project-head">
@@ -149,9 +148,7 @@ use App\Models\property;
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endif
                                         @endforeach
-
                                     </div>
 
                                 </div>

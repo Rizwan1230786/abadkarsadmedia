@@ -24,7 +24,7 @@
                                     </div>
                                 </section>
                                 <div class="news-item news-item-sm">
-                                    <a href="agencies-details.html" class="news-img-link">
+                                    <a href="{{ asset('assets/images/agency/' . $agency->image) }}" target="_blanck" class="news-img-link">
                                         <div class="news-item-img homes">
                                             {{-- <div class="homes-tag button alt featured">4 Listings</div> --}}
                                             <img class="resp-img" style="padding: 20px;"
@@ -153,8 +153,10 @@
                                                                                 {{ $agent->office_number }}</a></li>
                                                                         <li><a href="#">Mobile:
                                                                                 {{ $agent->mobile_number }}</a></li>
+                                                                        @if(!empty($agent->fax_number))
                                                                         <li><a href="#">Fax:
                                                                                 {{ $agent->fax_number }}</a></li>
+                                                                        @endif
                                                                         <li><a href="#">Email:
                                                                                 {{ $agent->email }}</a></li>
                                                                         <li><a href="#">City: {{ $agent->city_name }}</a></li>
@@ -164,7 +166,7 @@
                                                                     {{-- <a href="properties-full-grid-2.html" class="news-link">View My Listings</a> --}}
                                                                     @if ($agent->agency)
                                                                         <div class="admin">
-                                                                            <p>Company : {{ $agent->agency }}</p>
+                                                                            <p>Company : {{ $agency->name }}</p>
                                                                         </div>
                                                                         <div class="admin">
                                                                             <p>Desgination : {{ $agent->desgination }}

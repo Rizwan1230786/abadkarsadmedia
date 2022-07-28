@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\agency;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Models\Agency;
+use App\Models\AgencyPortal;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 class AgencyUserController extends Controller
 {
     public function agencypanel()

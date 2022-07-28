@@ -23,8 +23,8 @@
     <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
         <tr>
             <td align="center" style="padding:0;">
-            Your Email:{{$email}}<br>
-            Your Password:{{ $password }}
+            Your Email: {{$email}}<br>
+            Your Password: {{ $password }}
             </td>
         </tr>
     </table>
