@@ -54,6 +54,7 @@ use App\Http\Controllers\admin\testimonials\TestimonialsController;
 use App\Http\Controllers\userside\agencystaff\AgencyStaffController;
 use App\Http\Controllers\agency\AgencyUserController;
 use App\Http\Controllers\admin\our_pakges\BannerAdvertisementController;
+use App\Http\Controllers\agency\forgetpassword\ForgotPasswordController;
 use App\Http\Controllers\admin\tools\ToolsController as ToolsToolsController;
 
 /*
@@ -499,7 +500,9 @@ Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
     //////Agency//////////
     Route::get('/agencypanel', [AgencyUserController::class, 'agencypanel'])->name('agencypanel');
     Route::post('/submit-login', [AgencyUserController::class, 'submitLogin'])->name('submitLogin');
-
+    Route::get('/showForgetPasswordForm', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('/forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+    Route::post('/reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
     Route::group(['middleware' => 'auth:agency'], function () {
 
