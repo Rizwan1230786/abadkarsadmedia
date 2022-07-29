@@ -531,6 +531,18 @@ Route::group(['prefix' => 'agency', 'as' => 'agency:'], function () {
         Route::post('/delete_agent_properties/{id}', [AgentPropertyController::class, 'destroy'])->name('agentproperties_destroy');
         Route::get('/checkslug', [AgentPropertyController::class, 'checkslug'])->name('checkslug');
         Route::get('/get_fecilites', [AgentPropertyController::class, 'get_fecilites'])->name('get_fecilites');
+        /////route of changepassword agency///////////////////////
+        Route::get('/change-password', [AgencyUserController::class, 'change_password'])->name('changepassword');
+        Route::post('/update-password', [AgencyUserController::class, 'update_password'])->name('update-password');
+        /////route of profile ///////////
+        Route::get('/change-profile/{id}', [AgencyUserController::class, 'change_profile'])->name('profile');
+        Route::post('/update_user_profile', [AgencyUserController::class, 'update_user_profile'])->name('update_user_profile');
+        /////// route of changepassword agent///////////
+        Route::get('/change-password-agent', [AgencyUserController::class, 'change_password_agent'])->name('changepasswordagent');
+        Route::post('/update-password-agent', [AgencyUserController::class, 'update_password_agent'])->name('update-password');
+        ///// route of agent profile ////////
+        Route::get('/change-profile-agent/{id}', [AgencyUserController::class, 'change_profile_agent'])->name('agentprofile');
+        Route::post('/update_agent_user_profile', [AgencyUserController::class, 'update_agent_user_profile'])->name('update_agentuser_profile');
     });
 });
 //////End Agency

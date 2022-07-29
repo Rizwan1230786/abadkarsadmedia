@@ -74,6 +74,32 @@ use App\Models\Agent;
 								</svg>
 								<span class="side-menu__label">Agent Property</span></a>
 						</li>
+                        <li class="slide">
+							<a class="side-menu__item dropdown-btn" href="#">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								<span class="side-menu__label">General Setting</span><i class="fa fa-caret-down"></i></a>
+                                <div class="dropdown-container">
+                                    <ul>
+                                        <a class="side-menu__item" href="{{route('agency:changepassword')}}">
+                                            <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                                            </svg>
+                                            <span class="side-menu__label">Change Password</span></a>
+                                    </ul>
+                                    <ul>
+                                        <a class="side-menu__item" href="{{ url('agency/change-profile/'.Auth()->user()->agency_id) }}">
+                                            <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                                            </svg>
+                                            <span class="side-menu__label">Update Profile</span></a>
+                                    </ul>
+                                </div>
+						</li>
                         @else
                         <li class="slide">
 							<a class="side-menu__item" href="{{route('agency:agentproperties')}}">
@@ -82,6 +108,32 @@ use App\Models\Agent;
 									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
 								</svg>
 								<span class="side-menu__label">Agent Property</span></a>
+						</li>
+                        <li class="slide">
+							<a class="side-menu__item dropdown-btn" href="#">
+								<svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0V0z" fill="none" />
+									<path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+								</svg>
+								<span class="side-menu__label">General Setting</span><i class="fa fa-caret-down"></i></a>
+                                <div class="dropdown-container">
+                                    <ul>
+                                        <a class="side-menu__item" href="{{route('agency:changepasswordagent')}}">
+                                            <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                                            </svg>
+                                            <span class="side-menu__label">Change Password</span></a>
+                                    </ul>
+                                    <ul>
+                                        <a class="side-menu__item" href="{{ url('agency/change-profile-agent/'.Auth()->user()->agent_id) }}">
+                                            <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                                <path d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                                            </svg>
+                                            <span class="side-menu__label">Update Profile</span></a>
+                                    </ul>
+                                </div>
 						</li>
                         @endif
 					</ul>
