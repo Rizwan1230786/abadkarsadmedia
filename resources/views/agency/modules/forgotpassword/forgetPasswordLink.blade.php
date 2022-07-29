@@ -13,56 +13,48 @@
 										<div class="card p-4">
 											<div class="card-body">
 												<div class="text-center title-style mb-6">
-													<h1 class="mb-2">Login</h1>
+													<h1 class="mb-2">Reset Password</h1>
 													<hr>
 													<p class="text-muted text-left">Are you registerd so sign In to your account otherwise <a style="color: #007bff; text-decoration:underline;" href="{{ route('front.contact') }}">Contact us</a> to admin.</p>
 												</div>
-                                                <form class="validationForm agency-login-form" action="javascript:void(0)" method="POST">
+                                                <form  action="{{ route('agency:reset.password.post') }}" method="POST">
                                                     @csrf
+                                                    <input type="hidden" name="email" value="{{ $email }}">
                                                     <div class="input-group mb-4">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
                                                                 <i class="fe fe-user"></i>
                                                             </div>
                                                         </div>
-                                                        <input type="text" name="email" class="form-control" placeholder="email address">
+                                                        <input type="text" name="otp" class="form-control" placeholder="Enter otp">
                                                     </div>
                                                     <div class="input-group mb-4">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                <i class="fe fe-lock"></i>
+                                                                <i class="fe fe-user"></i>
                                                             </div>
                                                         </div>
-                                                        <input type="password" name="password" class="form-control" placeholder="Password">
+                                                        <input type="password" name="password" class="form-control" placeholder="Enter New Password">
                                                     </div>
+                                                    <div class="input-group mb-4">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <i class="fe fe-user"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input type="password" name="password_confirmation" class="form-control" placeholder="Enter password confirmation">
+                                                    </div>
+                                                   
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-success btn-block px-4 submit_button">Login</button>
+                                                            <button type="submit" class="btn btn-success btn-block px-4">Submit</button>
                                                         </div>
-                                                        <div class="col-12 text-center">
-                                                            <a href="{{ url('agency/showForgetPasswordForm')}}" class="btn btn-link box-shadow-0 px-0">Forgot password?</a>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </form>
 											</div>
 										</div>
-										<div class="card text-white bg-success py-5 d-md-down-none page-content mt-0">
-											<div class="text-center justify-content-center page-single-content">
-												<div class="box">
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-													<div></div>
-												</div>
-												<img src="{{URL::asset('assets/images/png/login.png')}}" alt="img">
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
