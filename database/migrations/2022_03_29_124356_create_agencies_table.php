@@ -26,6 +26,7 @@ class CreateAgenciesTable extends Migration
             $table->string('status')->nullable();
             $table->string('agent')->nullable();
             $table->string('city_name')->nullable();
+            $table->string('is_verify')->default(0);
             $table->timestamps();
 
         });

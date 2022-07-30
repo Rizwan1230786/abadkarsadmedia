@@ -81,8 +81,11 @@
                                                             <i class="fa fa-trash-o" data-toggle="tooltip" title=""
                                                                 data-original-title="Delete"></i></li>
                                                     </a>
-                                                    <a href="{{ route('admin:agency.resend', ['id' => $item->id]) }}"
+                                                   @if($item->is_verify == 0)
+                                                    <a href="{{ route('admin:agency.resend', ['id' => $item->id]) }}" 
                                                         class="btn btn-success btn-sm style">Resend email</a>
+                                                       @endif
+                                                      
                                                 </ul>
                                             </td>
                                         </tr>

@@ -22,5 +22,6 @@ class Agent extends Model
         'status',
         'agency',
         'city_name',
+        'is_verify',
     ];
 }
